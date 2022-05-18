@@ -1,0 +1,152 @@
+.fusion-ui-tabview {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+
+  &__nav {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &-tab {
+    &__button {
+      background: none;
+      border: 0;
+      border-radius: 0;
+      cursor: pointer;
+      line-height: 14px;
+      margin: 0;
+      top: 0;
+      color: $fusion-ui-color-secondary-text-on-light;
+    
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      &:focus {
+        outline: none;
+        border-bottom-color: $fusion-ui-color-greyscale-85;
+      }
+    
+      & > h3 {
+        @include fusion-ui-h5;
+        display: block;
+        font-size: $fusion-ui-font-size-sm;
+        margin: 0;
+        padding: 0;
+        text-transform: uppercase;
+      }
+    }
+
+    &__content {
+      height: 100%;
+    
+      &:not(.selected) { 
+        display: none;
+      }
+    }
+  }
+  
+  &__panels {
+    display: block;
+    flex: 1;
+    overflow: auto;
+  }
+
+  &-type {
+    &-content {
+      .fusion-ui-tabview {
+        &__nav {
+          margin-bottom: $fusion-ui-spacing-md;
+        }
+
+        &-tab__button {
+          border-bottom: 6px solid $fusion-ui-color-greyscale-85;
+          padding: $fusion-ui-spacing-sm $fusion-ui-spacing-sm $fusion-ui-spacing-xs;
+
+          &:not(:disabled):not(.selected):hover,
+          &:not(:disabled):not(.selected):active,
+          &:not(:disabled):not(.selected):focus {
+            background-color: $fusion-ui-color-greyscale-85;
+            border-bottom-color: $fusion-ui-color-greyscale-85;
+          }
+
+          &:not(:disabled).selected {
+            background-color: $fusion-ui-color-blue-medium-dark;
+            color: $fusion-ui-color-primary-text-on-dark;
+            border-bottom-color: $fusion-ui-color-blue-medium-dark;
+          }
+        }
+      }
+    }
+
+    &-top {
+      .fusion-ui-tabview {
+        &__nav {
+          background-color: $fusion-ui-color-background-light;
+          border-top: $fusion-ui-border-light;
+          border-bottom: $fusion-ui-border-light;
+          box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+          padding-left: $fusion-ui-spacing-md;
+        }
+
+        &-tab__button {
+          border-bottom: 3px solid transparent;
+          padding: $fusion-ui-spacing-sm $fusion-ui-spacing-sm $fusion-ui-spacing-xs;
+
+          &:not(:disabled):not(.selected):hover,
+          &:not(:disabled):not(.selected):active,
+          &:not(:disabled):not(.selected):focus {
+            border-bottom-color: $fusion-ui-color-greyscale-76;
+          }
+
+          &:not(:disabled).selected {
+            border-bottom-color: $fusion-ui-color-interactive-default;
+          }
+        }
+
+        &__panels {
+          padding: $fusion-ui-spacing-xl $fusion-ui-spacing-xxl;
+        }
+      }
+    }
+
+    &-inner-content {
+      .fusion-ui-tabview {
+        &__nav {
+          // some styles have been added here to prevent unwanted cascading of the
+          // of the 'top'-type nav styles.  a card has been created to restructure
+          // the component itself such that the tab type is attached to the content,
+          // to prevent these sorts of issues.
+          // https://jira.ngage.netapp.com/browse/HCI-17778
+          box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+          padding-left: $fusion-ui-spacing-md;
+          background-color: transparent;
+          border-top: none;
+          border-bottom: none;
+        }
+
+        &-tab__button {
+          border-bottom: 3px solid transparent;
+          padding: $fusion-ui-spacing-sm $fusion-ui-spacing-sm $fusion-ui-spacing-xs;
+
+          &:not(:disabled):not(.selected):hover,
+          &:not(:disabled):not(.selected):active,
+          &:not(:disabled):not(.selected):focus {
+            border-bottom-color: $fusion-ui-color-greyscale-76;
+          }
+
+          &:not(:disabled).selected {
+            border-bottom-color: $fusion-ui-color-interactive-default;
+          }
+        }
+
+        &__panels {
+          padding: $fusion-ui-spacing-xl $fusion-ui-spacing-xxl;
+        }
+      }
+    }
+  }
+}

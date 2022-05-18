@@ -1,0 +1,121 @@
+.fusion-ui {
+  &-state {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+
+    // TODO: Verify this is still needed in next table PR
+    &--loaded {
+      justify-content: flex-start;
+    }
+
+    &__inner {
+      font-size: $fusion-ui-font-size-md;
+      text-align: center;
+      width: 100%;
+
+      &-graphic {
+        display: block;
+        font-size: $fusion-ui-font-size-icon-xl;
+        margin-bottom: $fusion-ui-spacing-md;
+
+        &--error {
+          display: block;
+          margin-bottom: $fusion-ui-spacing-md;
+
+          &:after {
+            background-position: center center;
+            background-repeat: no-repeat;
+            content: '';
+            display: block;
+            height: 100%;
+            margin: 0 auto;
+            min-height: 91px;
+            width: auto;
+          }
+
+          &.fusion-ui-state__inner-graphic {
+            &--generic {
+              &:after {
+                background-image: url('../../assets/graphics/state/error.svg');
+              }
+            }
+            &--table {
+              &:after {
+                background-image: url('../../assets/graphics/state/error-table.svg');
+              }
+            }
+          }
+        }
+
+        &--no-results {
+          display: block;
+          margin-bottom: $fusion-ui-spacing-md;
+
+          &:after {
+            background-position: center center;
+            background-repeat: no-repeat;
+            content: '';
+            display: block;
+            height: 100%;
+            margin: 0 auto;
+            min-height: 91px;
+            min-width: 129px;
+            width: auto;
+          }
+
+          &.fusion-ui-state__inner-graphic {
+            &--generic {
+              &:after {
+                background-image: url('../../assets/graphics/state/no-results.svg');
+              }
+            }
+            &--table {
+              &:after {
+                background-image: url('../../assets/graphics/state/no-results-table.svg');
+              }
+            }
+          }
+        }
+
+        &--not-loaded {
+          display: block;
+          margin-bottom: $fusion-ui-spacing-md;
+
+          &:after {
+            background-position: center center;
+            background-repeat: no-repeat;
+            content: '';
+            display: block;
+            height: 100%;
+            margin: 0 auto;
+            min-height: 91px;
+            width: auto;
+          }
+
+          &.fusion-ui-state__inner-graphic {
+            &--generic {
+              &:after {
+                background-image: url('../../assets/graphics/state/not-loaded.svg');
+              }
+            }
+            &--table {
+              &:after {
+                background-image: url('../../assets/graphics/state/not-loaded-table.svg');
+              }
+            }
+          }
+        }
+      }
+
+      &-content {
+        margin: 0 auto;
+        max-width: 400px;
+      }
+    }
+  }
+}

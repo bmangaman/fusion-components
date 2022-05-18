@@ -1,0 +1,32 @@
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { TableFilterComparatorModule } from '../table-filter-comparator';
+import { TableFilterComponent } from './table-filter.component';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TableFilterComparatorModule,
+    TranslateModule,
+  ],
+  declarations: [
+    TableFilterComponent,
+  ],
+  exports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TableFilterComparatorModule,
+
+    TableFilterComponent,
+  ],
+  entryComponents: [
+    TableFilterComponent,
+  ],
+})
+export class TableFilterModule {}

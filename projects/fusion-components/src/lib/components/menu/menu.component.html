@@ -1,0 +1,36 @@
+<div class="fusion-ui-menu" #fusionUiMenu>
+
+  <div class="fusion-ui-menu__button" #fusionUiMenuButton>
+    <ng-container *ngTemplateOutlet="menuButton"></ng-container>
+  </div>
+
+  <div
+    #fusionUiMenuDialog
+    class="fusion-ui-menu__dialog"
+    [ngClass]="menuDialogClasses"
+    *ngIf="isMenuDialogOpen"
+    [attr.aria-labelledby]="aria?.menuDialogLabelledBy"
+    [style.zIndex]="dialogZIndex"
+    [style.minWidth]="dialogMinWidth">
+
+    <div class="fusion-ui-menu__dialog--header" *ngIf="menuDialogHeader">
+      <ng-container *ngTemplateOutlet="menuDialogHeader"></ng-container>
+      <fusion-ui-button
+        [classes]="['fusion-ui-menu__dialog--close-button']"
+        type="secondary"
+        [size]="FusionUiSize.X_SMALL"
+        [isAutofocused]="isCloseButtonAutofocused"
+        [noBorder]="true"
+        icon="mdi-close"
+        [attr.aria-label]="aria?.closeButtonLabel"
+        (buttonClick)="closeMenuDialog()">
+      </fusion-ui-button>
+    </div>
+
+    <div class="fusion-ui-menu__dialog--content" [style.maxHeight]="dialogContentMaxHeight">
+      <ng-container *ngTemplateOutlet="menuDialogContent"></ng-container>
+    </div>
+
+  </div>
+
+</div>

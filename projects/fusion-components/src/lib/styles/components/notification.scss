@@ -1,0 +1,179 @@
+.fusion-ui-notification {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: auto;
+  margin: 0 0 24px;
+  padding: 0;
+
+  &:not(:last-of-type) {
+    margin-bottom: $fusion-ui-spacing-xs;
+  }
+
+  &--break {
+    flex-basis: 100%;
+    height: 0;
+  }
+
+  &.dismissed {
+    height: 0;
+    opacity: 0;
+    margin: 0;
+    transition: all 0.5s ease-out;
+  }
+
+  &.fusion-ui-notification__error {
+    .fusion-ui-notification__inner, .fusion-ui-notification__details-button-wrapper {
+      background-color: $fusion-ui-color-error-background;
+
+      .fusion-ui-notification__icon {
+        color: $fusion-ui-color-error-primary;
+      }
+    }
+
+    .fusion-ui-notification__details-content {
+      border: solid 3px $fusion-ui-color-error-background;
+    }
+  }
+
+  &.fusion-ui-notification__success {
+    .fusion-ui-notification__inner, .fusion-ui-notification__details-button-wrapper {
+      background-color: $fusion-ui-color-success-background;
+
+      .fusion-ui-notification__icon {
+        color: $fusion-ui-color-success-primary;
+      }
+    }
+
+    .fusion-ui-notification__details-content {
+      border: solid 3px $fusion-ui-color-success-background;
+    }
+  }
+
+  &.fusion-ui-notification__info {
+    .fusion-ui-notification__inner, .fusion-ui-notification__details-button-wrapper {
+      // May change as we figure out how we’re aligning with ONTAP, but for now use this yellow.
+      background-color: #fff7c0;
+
+      .fusion-ui-notification__icon {
+        color: $fusion-ui-color-greyscale-27;
+      }
+    }
+
+    .fusion-ui-notification__details-content {
+      border: solid 3px #fff7c0;
+    }
+  }
+
+  &.fusion-ui-notification__warning {
+    .fusion-ui-notification__inner, .fusion-ui-notification__details-button-wrapper {
+      background-color: $fusion-ui-color-warning-background;
+
+      .fusion-ui-notification__icon {
+        color: $fusion-ui-color-warning-primary;
+      }
+    }
+
+    .fusion-ui-notification__details-content {
+      border: solid 3px $fusion-ui-color-warning-background;
+    }
+  }
+
+  &.sticky-msg-position {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  &__inner {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  &__left {
+    width: 100%;
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-right: $fusion-ui-spacing-sm;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid $fusion-ui-border-light;
+
+    &-button-wrapper {
+      margin-top: -8px;
+      text-align: left;
+      padding-left: 36px;
+      padding-bottom: $fusion-ui-spacing-md;
+      width: 100%
+    }
+
+    &-button {
+      margin: 0 auto;
+
+      &-text {
+        line-height: 20px;
+      }
+
+      &-icon {
+        line-height: 20px;
+        font-size: $fusion-ui-font-size-icon-md;
+      }
+    }
+
+    &-content {
+      flex-basis: 100%;
+      height: auto;
+      font-size: $fusion-ui-font-size-sm;
+      padding: $fusion-ui-spacing-md 42px;
+      overflow-y: auto;
+    }
+  }
+
+  &__icon {
+    padding: 0 $fusion-ui-spacing-sm;
+    font-size: $fusion-ui-font-size-icon-md;
+  }
+
+  &__text {
+    min-height: 22px;
+    top: $fusion-ui-spacing-xxxs;
+    font-size: $fusion-ui-font-size-sm;
+    color: $fusion-ui-color-primary-text-on-light;
+    margin: 0;
+  }
+
+  &__close-button {
+    font-size: $fusion-ui-font-size-md;
+    opacity: 0.5;
+    cursor: pointer;
+    color: $fusion-ui-color-primary-text-on-light;
+    background: none;
+    min-height: 20px;
+    padding: 0;
+    margin-right: 22px;
+    border: none;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.50);
+      color: $fusion-ui-color-primary-text-on-dark;
+    }
+
+    &-icon {
+      width: auto;
+      height: auto;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

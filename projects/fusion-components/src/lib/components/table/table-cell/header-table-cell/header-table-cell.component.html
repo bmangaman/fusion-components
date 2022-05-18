@@ -1,0 +1,63 @@
+<!-- START: Sortable Column -->
+
+<button
+  *ngIf="col?.isResizable"
+  class="fusion-ui-table__table-cell-column-resizer"
+  [ngClass]="{ 'fusion-ui-table__table-cell-column-resizer--resizing': isResizing }"
+  aria-hidden="true"
+  (mousedown)="startResizing($event)"
+  (window:mouseup)="stopResizing($event)">
+  <i class="mdi mdi-arrow-split-vertical"></i>
+</button>
+
+<button
+  *ngIf="col?.isSortable; else nonSortableCell"
+  (click)="changeSort()"
+  [style.width]="col?.updatedWidth || col?.width"
+  [attr.aria-label]="col?.sorted === TableColumnSorted.ASCENDING
+    ? translations?.sortDescending || ( baseTranslationKey + '.table.cell.sortDescending' | translate )
+    : translations?.sortAscending || ( baseTranslationKey + '.table.cell.sortAscending' | translate )"
+  class="fusion-ui-table__table-cell-inner">
+
+  <div *ngIf="!!col?.isFiltered" class="fusion-ui-table__table-cell-filter-icon">
+    <i class="mdi mdi-filter" [attr.aria-label]="translations?.isFiltered || ( baseTranslationKey + '.table.cell.isFiltered' | translate )"></i>
+  </div>
+
+  <div class="fusion-ui-table__table-cell-content">
+    <ng-container *ngTemplateOutlet="cellContent"></ng-container>
+  </div>
+
+  <div *ngIf="!!col?.sorted" class="fusion-ui-table__table-cell-sorter">
+    <i
+      aria-hidden="true"
+      class="mdi"
+      [ngClass]="{
+        'mdi-arrow-up' : col?.sorted === TableColumnSorted.ASCENDING,
+        'mdi-arrow-down' : col?.sorted === TableColumnSorted.DESCENDING
+      }">
+    </i>
+  </div>
+</button>
+<!-- END: Sortable Column -->
+
+<!-- START: Non-sortable Column -->
+<ng-template #nonSortableCell>
+  <div class="fusion-ui-table__table-cell-inner" [style.width]="col?.width">
+    <ng-container *ngIf="!shouldProjectContent; else nonDataCell">
+      <ng-container *ngTemplateOutlet="cellContent"></ng-container>
+    </ng-container>
+    <ng-template #nonDataCell><ng-content></ng-content></ng-template>
+  </div>
+</ng-template>
+<!-- END: Non-sortable Column -->
+
+<!-- START: Shared Content Template -->
+<ng-template #cellContent>
+  <ng-container *ngIf="col?.headerTemplateRef; else noTemplate">
+    <ng-container *ngTemplateOutlet="col?.headerTemplateRef; context: { $implicit: rowData }"></ng-container>
+  </ng-container>
+  <ng-template #noTemplate>
+    {{ col?.header }}
+  </ng-template>
+</ng-template>
+<!-- END: Shared Content Template -->

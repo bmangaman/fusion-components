@@ -1,0 +1,116 @@
+.fusion-ui-badge {
+  align-items: center;
+  border-radius: $fusion-ui-border-radius-md;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  &__wrapper {
+    display: inline-block;
+
+    &--fill-container {
+      display: block;
+      height: 100%;
+      width: 100%;
+
+      & > .fusion-ui-badge {
+        height: 100%;
+      }
+    }
+  }
+
+  &--xSmall {
+    padding: $fusion-ui-spacing-xxxs $fusion-ui-spacing-xs;
+
+    & > * + * {
+      margin-top: $fusion-ui-spacing-xs;
+    }
+
+    .fusion-ui-badge__text {
+      font-size: $fusion-ui-font-size-xs;
+    }
+
+    .fusion-ui-badge__subtext {
+      display: none;
+    }
+  }
+
+  &--small {
+    padding: $fusion-ui-spacing-xs $fusion-ui-spacing-md;
+
+    & > * + * {
+      margin-top: $fusion-ui-spacing-sm;
+    }
+
+    .fusion-ui-badge__text {
+      font-size: $fusion-ui-font-size-sm;
+    }
+
+    .fusion-ui-badge__subtext {
+      font-size: $fusion-ui-font-size-xs;
+    }
+  }
+
+  &--medium {
+    padding: $fusion-ui-spacing-sm $fusion-ui-spacing-lg;
+
+    & > * + * {
+      margin-top: $fusion-ui-spacing-md;
+    }
+
+    .fusion-ui-badge__text {
+      font-size: $fusion-ui-font-size-md;
+    }
+
+    .fusion-ui-badge__subtext {
+      font-size: $fusion-ui-font-size-sm;
+    }
+  }
+
+  &--large {
+    padding: $fusion-ui-spacing-sm $fusion-ui-spacing-xl;
+
+    & > * + * {
+      margin-top: $fusion-ui-spacing-md;
+    }
+
+    .fusion-ui-badge__text {
+      font-size: $fusion-ui-font-size-xl;
+      font-weight: $fusion-ui-font-weight-light;
+    }
+
+    .fusion-ui-badge__subtext {
+      font-size: $fusion-ui-font-size-md;
+    }
+  }
+
+  &--unknown {
+    background-color: $fusion-ui-color-background-light;
+  }
+
+  &--base {
+    background-color: $fusion-ui-color-chart-1;
+  }
+
+  &--normal {
+    background-color: $fusion-ui-color-chart-1;
+  }
+
+  &--success {
+    background-color: $fusion-ui-color-success-chart;
+  }
+
+  &--warning {
+    background-color: $fusion-ui-color-warning-chart;
+  }
+
+  &--error {
+    background-color: $fusion-ui-color-warning-primary;
+  }
+
+  &--critical {
+    background-color: $fusion-ui-color-error-primary;
+    color: $fusion-ui-color-primary-text-on-dark;
+  }
+}

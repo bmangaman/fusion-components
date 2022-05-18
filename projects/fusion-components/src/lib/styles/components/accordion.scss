@@ -1,0 +1,61 @@
+.fusion-ui-accordion {
+  border-bottom: $fusion-ui-border-light;
+  width: 100%;
+
+  &-panel {
+    background-color: $fusion-ui-color-background-white;
+    border-top: $fusion-ui-border-light;
+
+    &__title {
+      align-items: center;
+      align-content: flex-start;
+      background-color: $fusion-ui-color-background-white;
+      border: none;
+      color: $fusion-ui-color-primary-text-on-light;
+      cursor: pointer;
+      display: flex;
+      font-size: 18px;
+      justify-content: flex-start;
+      min-height: 52px;
+      padding: $fusion-ui-spacing-sm $fusion-ui-spacing-xl;
+      width: 100%;
+
+      &-icon {
+        color: $fusion-ui-color-primary-text-on-light;
+        font-size: $fusion-ui-font-size-icon-lg;
+        margin-right: $fusion-ui-spacing-md;
+      }
+
+      &-content {
+        flex: 1;
+        text-align: left;
+      }
+
+      &:disabled,
+      &--disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+
+      &:hover:not(:disabled):not(.fusion-ui-accordion-panel__title--disabled),
+      &--hover:not(:disabled):not(.fusion-ui-accordion-panel__title--disabled) {
+        background-color: $fusion-ui-color-background-light;
+      }
+    }
+
+    &__content {
+      $left-hand-spacing: $fusion-ui-spacing-xl;
+      padding: $fusion-ui-spacing-lg $fusion-ui-spacing-xl $fusion-ui-spacing-xl $left-hand-spacing;
+
+      &--title-has-icon {
+        $left-hand-spacing: calc(#{$fusion-ui-font-size-icon-lg} + #{$fusion-ui-spacing-md} + #{$fusion-ui-spacing-xl}); // so it aligns with the panel title text/ content
+        padding: $fusion-ui-spacing-lg $fusion-ui-spacing-xl $fusion-ui-spacing-xl $left-hand-spacing;
+      }
+
+      &-container {
+        overflow: hidden;
+        transition: 250ms all linear;
+      }
+    }
+  }
+}

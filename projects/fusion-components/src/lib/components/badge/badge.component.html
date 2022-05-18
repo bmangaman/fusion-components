@@ -1,0 +1,5 @@
+<div [ngStyle]="styling"
+     class="fusion-ui-badge fusion-ui-badge--{{ size }} fusion-ui-badge--{{ type | getFusionUiStatusLevelText: null:true }}">
+  <div class="fusion-ui-badge__text">{{ text || '-' }}</div>
+  <div *ngIf="subText" class="fusion-ui-badge__subtext">{{ subText }}</div>
+</div>

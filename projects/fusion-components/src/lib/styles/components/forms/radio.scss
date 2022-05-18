@@ -1,0 +1,128 @@
+.fusion-ui-form {
+  &__radio {
+    display: inline-block;
+    overflow: visible;
+
+    &-label {
+      display: flex;
+      align-items: center;
+    }
+
+    &-input {
+      clip: rect(0 0 0 0);
+      left: 0;
+      position: absolute;
+      z-index: -1;
+      background: none;
+      margin: 0;
+      vertical-align: middle;
+
+      &:checked,
+      &--checked,
+      &--selected {
+        & + .fusion-ui-form__radio-button {
+          border: solid 2px $fusion-ui-color-blue-medium;
+
+          &:after {
+            @include centered-with-position-absolute;
+
+            background: $fusion-ui-color-blue-medium;
+            border-radius: 50%;
+            display: block;
+            height: 11px;
+            width: 11px;
+            content: '';
+          }
+        }
+
+        &.fusion-ui-form__radio-input--readonly {
+          & + .fusion-ui-form__radio-button {
+            border: solid 2px $fusion-ui-color-greyscale-76;
+
+            &:after {
+              background: $fusion-ui-color-greyscale-76;
+            }
+          }
+        }
+      }
+
+      &:disabled,
+      &--disabled {
+        & + .fusion-ui-form__radio-button {
+          background: $fusion-ui-color-background-light;
+          border: solid 2px $fusion-ui-color-greyscale-53;
+          cursor: not-allowed;
+
+          &:after {
+            background: $fusion-ui-color-greyscale-53;
+          }
+
+          & + .fusion-ui-form__radio-label-text {
+            color: $fusion-ui-color-greyscale-53;
+            cursor: not-allowed;
+          }
+        }
+      }
+
+      &--readonly {
+        & + .fusion-ui-form__radio-button {
+          background: $fusion-ui-color-background-light;
+          cursor: not-allowed;
+
+          & + .fusion-ui-form__radio-label-text {
+            cursor: not-allowed;
+          }
+        }
+      }
+
+      &:hover:not(:disabled):not(.fusion-ui-form__radio-input--disabled):not(:checked):not(.fusion-ui-form__radio-input--checked):not(.fusion-ui-form__radio-input--readonly),
+      &--hover {
+        & + .fusion-ui-form__radio-button {
+          border-color: $fusion-ui-color-greyscale-61;
+        }
+      }
+
+      &:focus,
+      &--focus {
+        & + .fusion-ui-form__radio-button {
+          outline: none;
+          box-shadow: 0 0 0 2px $fusion-ui-color-blue-medium-light;
+        }
+      }
+
+      &--warning {
+        box-shadow: 0 0 0 2px $fusion-ui-color-warning-primary
+      }
+
+      &--error,
+      &--invalid,
+      &.ng-touched.ng-invalid {
+        box-shadow: 0 0 0 2px $fusion-ui-color-error-primary
+      }
+    }
+
+    &-button {
+      background: $fusion-ui-color-background-white;
+      border: solid 2px $fusion-ui-color-greyscale-76;
+      border-radius: 50%;
+      cursor: pointer;
+      display: inline-block;
+      flex: 0 0 auto;
+      height: 18px;
+      position: relative;
+      vertical-align: middle;
+      width: 18px;
+      transition: all 0.25s;
+    }
+
+    &-label-text {
+      @include fusion-ui-label-radio;
+
+      cursor: pointer;
+      letter-spacing: 0;
+      color: $fusion-ui-color-primary-text-on-light;
+      padding: 0 0 0 $fusion-ui-spacing-sm;
+      margin: 0 auto 0 0;
+    }
+  }
+}

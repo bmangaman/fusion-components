@@ -1,0 +1,19 @@
+<span class="fusion-ui-form__checkbox">
+  <label [attr.for]="'fusion-ui-checkbox-' + uuid" class="fusion-ui-form__checkbox-label">
+    <input
+      class="fusion-ui-form__checkbox-input"
+      [ngClass]="{
+        'fusion-ui-form__checkbox-input--error': control?.touched && control?.invalid,
+        'fusion-ui-form__checkbox-input--valid': control?.valid,
+        'fusion-ui-form__checkbox-input--disabled': isDisabled
+      }"
+      type="checkbox"
+      [disabled]="isDisabled"
+      (change)="toggleValue()"
+      [checked]="value"
+      [attr.name]="'fusion-ui-checkbox-' + uuid"
+      [attr.id]="'fusion-ui-checkbox-' + uuid">
+    <span class="fusion-ui-form__checkbox-button"></span>
+    <span class="fusion-ui-form__checkbox-label-text"><ng-content></ng-content></span>
+  </label>
+</span>

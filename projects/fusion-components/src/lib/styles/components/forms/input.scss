@@ -1,0 +1,251 @@
+@import '../../tokens/tokens.scss';
+@import '../../mixins/mixins.scss';
+
+.fusion-ui-form {
+  &__input-wrapper {
+    display: block;
+    position: relative;
+
+    &-status-icon {
+      display: none;
+      position: absolute;
+      right: $fusion-ui-spacing-xs;
+      top: 50%;
+      pointer-events: none;
+      transform: translateY(-50%);
+
+      &:after {
+        font-family: 'Material Design Icons';
+        font-size: $fusion-ui-font-size-icon-md;
+      }
+    }
+
+    .fusion-ui-form__input {
+      &:focus,
+      &--focus {
+        outline: none;
+        box-shadow: 0 0 0 2px $fusion-ui-color-blue-medium-light;
+      }
+
+      &:not(.fusion-ui-form__input--no-validation-styling) {
+        &.fusion-ui-form__input--valid {
+          &[type="number"] {
+            padding-right: $fusion-ui-spacing-xl;
+          }
+          border-color: $fusion-ui-color-success-primary;
+          box-shadow:inset 0px 0px 0px 1px $fusion-ui-color-success-primary;
+
+          & + .fusion-ui-form__input-wrapper-status-icon {
+            display: block;
+
+            &:after {
+              color: $fusion-ui-color-success-primary;
+              content: '\F5E0';
+            }
+          }
+        }
+
+        &.fusion-ui-form__input--warning {
+          &[type="number"] {
+            padding-right: $fusion-ui-spacing-xl;
+          }
+
+          border-color: $fusion-ui-color-warning-primary;
+          box-shadow:inset 0px 0px 0px 1px $fusion-ui-color-warning-primary;
+
+          & + .fusion-ui-form__input-wrapper-status-icon {
+            display: block;
+
+            &:after {
+              color: $fusion-ui-color-warning-primary;
+              content: '\F026';
+            }
+          }
+        }
+
+        &.fusion-ui-form__input--error,
+        &.fusion-ui-form__input--invalid {
+          &[type="number"] {
+            padding-right: $fusion-ui-spacing-xl;
+          }
+
+          border-color: $fusion-ui-color-error-primary;
+          box-shadow:inset 0px 0px 0px 1px $fusion-ui-color-warning-primary;
+          
+          & + .fusion-ui-form__input-wrapper-status-icon {
+            display: block;
+
+            &:after {
+              color: $fusion-ui-color-error-primary;
+              content: '\F159';
+            }
+          }
+        }
+      }
+
+      &:disabled,
+      &--disabled {
+        background: $fusion-ui-color-background-light;
+        border: solid 2px $fusion-ui-color-greyscale-76;
+        cursor: not-allowed;
+      }
+
+      &:read-only:not(.fusion-ui-form__select),
+      &--readonly:not(.fusion-ui-form__select) {
+        background: $fusion-ui-color-background-light;
+        opacity: 1;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &__input {
+    border: solid 1px $fusion-ui-color-greyscale-76;
+    border-radius: $fusion-ui-border-size-md;
+    font-size: $fusion-ui-font-size-sm;
+    display: block;
+    padding: $fusion-ui-spacing-xs $fusion-ui-spacing-sm;
+    width: 100%;
+
+    &-label {
+      @include fusion-ui-label-sm;
+
+      display: inline-block;
+      margin-bottom: $fusion-ui-spacing-xs;
+    }
+
+    &-password-visibility-toggle {
+      &-wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+
+        & > input {
+          border-right: none;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+
+      &-inner {
+        width: 100%;
+
+        & > input {
+          border-right: none;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+
+      &-button {
+        background: $fusion-ui-color-background-light;
+        border: $fusion-ui-border-light;
+        border-radius: 0 $fusion-ui-border-radius-sm $fusion-ui-border-radius-sm 0;
+        cursor: pointer;
+        font-weight: $fusion-ui-font-size-icon-lg;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        width: 35px;
+      }
+    }
+  }
+
+  &__select-wrapper {
+    display: block;
+    position: relative;
+
+    &:after {
+      position: absolute;
+      font-family: 'Material Design Icons';
+      font-size: $fusion-ui-font-size-icon-md;
+      content: '\F140';
+      right: $fusion-ui-spacing-xs;
+      top: 50%;
+      pointer-events: none;
+      transform: translateY(-50%);
+    }
+
+    .fusion-ui-form__input-wrapper-status-icon {
+      right: calc(#{$fusion-ui-spacing-xl} - #{$fusion-ui-spacing-xxs});
+    }
+  }
+
+  &__select {
+    appearance: none;
+    background: $fusion-ui-color-background-white;
+    cursor: pointer;
+    padding: $fusion-ui-spacing-xs $fusion-ui-spacing-md $fusion-ui-spacing-xs $fusion-ui-spacing-sm;
+  }
+
+  // STYLES FOR THE SELECT COMPONENT
+
+  &__input-button-wrapper {
+    background: none;
+    border: none;
+    display: block;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+  }
+
+  &__select {
+    &--hidden {
+      display: none;
+    }
+
+    &-no-results {
+      justify-content: center;
+    }
+
+    &-dropdown {
+      background-color: $fusion-ui-color-background-white;
+      border: $fusion-ui-border-light;
+      border-radius: 0 0 $fusion-ui-border-radius-md $fusion-ui-border-radius-md;
+      box-shadow: $fusion-ui-box-shadow-elevation-level-2;
+      display: block;
+      height: 100%;
+      left: 0;
+      list-style-type: none;
+      margin: 0;
+      max-height: 400px;
+      min-height: 36px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      top: 35px;
+      width: 100%;
+      z-index: 1;
+
+      &-scroll-viewport {
+        height: 100%;
+        padding: 0;
+      }
+    }
+    
+    &-option {
+      cursor: pointer;
+      display: block;
+      font-size: $fusion-ui-font-size-md;
+      height: 36px;
+      margin: 0;
+      padding: $fusion-ui-spacing-xs $fusion-ui-spacing-md;
+
+      &:hover:not(.fusion-ui-form__select-option--active):not(.fusion-ui-form__select-option--disabled),
+      &:focus:not(.fusion-ui-form__select-option--active):not(.fusion-ui-form__select-option--disabled) {
+        background-color: $fusion-ui-color-background-light;
+      }
+
+      &--active {
+        color: $fusion-ui-color-primary-text-on-dark;
+        background-color: $fusion-ui-color-blue-medium;
+      }
+
+      &--disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+        pointer-events: none;
+      }
+    }
+  }
+}

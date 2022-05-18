@@ -1,0 +1,73 @@
+.fusion-ui-upload {
+  &__container {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  &__instructions {
+    line-height: 30px; // to equal browse button height
+  }
+
+  &__browse {
+    &-input {
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      width: 0.1px;
+    }
+
+    &-label {
+      margin-left: $fusion-ui-spacing-md;
+    }
+  }
+
+  &__files {
+    border: $fusion-ui-border-light;
+    margin-top: $fusion-ui-spacing-md;
+  }
+
+  &__file {
+    padding: $fusion-ui-spacing-sm;
+
+    &-info {
+      align-content: center;
+      align-items: center;
+      justify-content: space-between;
+      display: flex;
+      flex-wrap: nowrap;
+      width: 100%;
+
+      &-name {
+        font-weight: $fusion-ui-font-weight-bold;
+        line-height: 30px; // to equal info button(s) height(s)
+      }
+
+      &-size {
+        line-height: 30px; // to equal info button(s) height(s)
+        margin-left: $fusion-ui-spacing-xs;
+      }
+
+      &-buttons {
+        display: flex;
+        flex-wrap: nowrap;
+        margin-left: $fusion-ui-spacing-sm;
+
+        & > * + * {
+          margin-left: $fusion-ui-spacing-md;
+        }
+      }
+    }
+  }
+  
+  &__progress-bar {
+    margin-top: $fusion-ui-spacing-xs;
+  }
+
+  &__file-status {
+    font-size: $fusion-ui-font-size-sm;
+    margin-top: $fusion-ui-spacing-xs;
+  }
+}

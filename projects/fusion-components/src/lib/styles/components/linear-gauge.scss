@@ -1,0 +1,177 @@
+.fusion-ui-linear-gauge {
+  display: block;
+  width: 100%;
+
+  * {
+    transition: all 1s;
+  }
+
+  &__title {
+    display: flex;
+    margin: 0 0 $fusion-ui-spacing-xs 0;
+
+    & > * {
+      line-height: 20px;
+    }
+
+    &-text {
+      margin: 0;
+    }
+
+    &-icon {
+      display: inline-block;
+      margin-right: $fusion-ui-spacing-xxs;
+  
+      &.mdi-check-circle {
+        color: $fusion-ui-color-success-chart;
+      }
+      &.mdi-alert {
+        color: $fusion-ui-color-warning-chart;
+      }
+      &.mdi-alert-circle {
+        color: $fusion-ui-color-warning-primary;
+      }
+      &.mdi-close-circle {
+        color: $fusion-ui-color-error-primary;
+      }
+    }
+
+    &-text {
+      display: inline-block;
+      font-size: $fusion-ui-font-size-sm;
+      font-weight: $fusion-ui-font-weight-semibold;
+      margin: 0;
+    }
+  }
+
+  &__percentage {
+    margin-top: $fusion-ui-spacing-xs;
+    font-size: $fusion-ui-font-size-sm;
+  }
+
+  &__value-bar {
+    display: block;
+    height: 32px;
+
+    &--base {
+      background-color: $fusion-ui-color-chart-1;
+    }
+    &--normal {
+      background-color: $fusion-ui-color-success-chart;
+    }
+    &--warning {
+      background-color: $fusion-ui-color-warning-chart;
+    }
+    &--error {
+      background-color: $fusion-ui-color-warning-primary;
+    }
+    &--critical {
+      background-color: $fusion-ui-color-error-chart;
+    }
+  }
+
+  &__threshold {
+    background-color: $fusion-ui-color-alpha-greyscale-84;
+    border: none;
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    transform: translateX(-1px);
+    width: 2px;
+    z-index: 1;
+
+    &--passed {
+      width: 4px;
+      transform: translateX(-2px);
+    }
+
+    &--warning {
+      background-color: $fusion-ui-color-warning-chart;
+
+      &.fusion-ui-linear-gauge__threshold--passed {
+        background-color: $fusion-ui-color-warning-background;
+      }
+    }
+
+    &--error {
+      background-color: $fusion-ui-color-warning-primary;
+
+      &.fusion-ui-linear-gauge__threshold--passed {
+        background-color: $fusion-ui-color-warning-chart;
+      }
+    }
+
+    &--critical {
+      background-color: $fusion-ui-color-error-primary;
+
+      &.fusion-ui-linear-gauge__threshold--passed {
+        background-color: $fusion-ui-color-error-primary;
+      }
+    }
+  }
+
+  &__bar-container {
+    position: relative;
+    display: flex;
+  }
+
+  &__bar {
+    position: relative;
+    flex: 1;
+    background-color: $fusion-ui-color-background-light;
+  }
+
+  &__total {
+    margin-left: $fusion-ui-spacing-xs;
+    font-size: $fusion-ui-font-size-sm;
+    line-height: 16px;
+  }
+}
+
+.fusion-ui-linear-gauge__tooltip-content {
+  position: relative;
+
+  & > * {
+    position: relative;
+    margin: 0;
+    white-space: nowrap;
+  }
+}
+
+.fusion-ui-tooltip.fusion-ui-linear-gauge__threshold-tooltip {
+  &--warning {
+    background-color: $fusion-ui-color-warning-background;
+    border: 1px solid $fusion-ui-color-warning-background;
+    color: $fusion-ui-color-primary-text-on-light;
+
+    &:after {
+      background: $fusion-ui-color-warning-background;
+      border: 1px solid $fusion-ui-color-warning-background;
+    }
+  }
+
+  &--error {
+    background-color: $fusion-ui-color-error-background;
+    border: 1px solid $fusion-ui-color-error-background;
+    color: $fusion-ui-color-primary-text-on-light;
+
+    &:after {
+      background: $fusion-ui-color-error-background;
+      border: 1px solid $fusion-ui-color-error-background;
+    }
+  }
+
+  &--critical {
+    background-color: $fusion-ui-color-error-primary;
+    border: 1px solid $fusion-ui-color-error-primary;
+    color: $fusion-ui-color-primary-text-on-dark;
+
+    &:after {
+      background: $fusion-ui-color-error-primary;
+      border: 1px solid $fusion-ui-color-error-primary;
+    }
+  }
+}

@@ -1,0 +1,78 @@
+<li class="fusion-ui-navItem">
+
+  <ng-container *ngIf="!!href || !!route; else noLink;">
+    <ng-container *ngIf="!!route; else hrefLink">
+      <a
+        (click)="toggleExpansion(); setCurrentSelectedNavItem()"
+        [routerLink]="route"
+        [routerLinkActive]="['fusion-ui-navItem__link--active', 'fusion-ui-navItem__link--selected']"
+        [routerLinkActiveOptions]="isPathMatchFull ? { exact: true } : { exact: false }"
+        [ngClass]="linkCssClasses"
+        [attr.id]="id"
+        [attr.title]="(title | instanceOf: Observable) ? (title | async) : title"
+        [attr.disabled]="isDisabled"
+        [attr.aria-Disabled]="isDisabled"
+        [style.paddingLeft.px]="(index * 24) + 16">
+        <ng-container *ngTemplateOutlet="linkContent"></ng-container>
+      </a>
+    </ng-container>
+    <ng-template #hrefLink>
+      <a
+        (click)="toggleExpansion(); setCurrentSelectedNavItem()"
+        [ngClass]="linkCssClasses"
+        [attr.href]="href"
+        [attr.id]="id"
+        [attr.title]="(title | instanceOf: Observable) ? (title | async) : title"
+        [attr.disabled]="isDisabled"
+        [attr.aria-Disabled]="isDisabled"
+        [attr.target]="target"
+        [style.paddingLeft.px]="(index * 24) + 16">
+        <ng-container *ngTemplateOutlet="linkContent"></ng-container>
+      </a>
+    </ng-template>
+  </ng-container>
+
+  <ng-template #noLink>
+    <button
+      (click)="toggleExpansion()"
+      [ngClass]="linkCssClasses"
+      [attr.id]="id"
+      [attr.title]="(title | instanceOf: Observable) ? (title | async) : title"
+      [disabled]="isDisabled"
+      [attr.aria-Disabled]="isDisabled">
+      <ng-container *ngTemplateOutlet="linkContent"></ng-container>
+    </button>
+  </ng-template>
+
+  <div
+    class="fusion-ui-navItem__sub-items-container"
+    [@inOutAnimation]
+    *ngIf="isExpanded">
+
+    <ul class="fusion-ui-sidenav__items fusion-ui-navItem__sub-items">
+      <fusion-ui-nav-item
+        *ngFor="let navItem of children"
+        (itemSelected)="setCurrentSelectedNavItem($event)"
+        [id]="navItem?.id"
+        [title]="(navItem?.title | instanceOf: Observable) ? (navItem?.title | async) : navItem?.title"
+        [text]="(navItem?.text | instanceOf: Observable) ? (navItem?.text | async) : navItem?.text"
+        [icon]="navItem?.icon"
+        [isExpanded]="navItem?.isExpanded"
+        [isDisabled]="navItem?.isDisabled"
+        [route]="navItem?.route"
+        [href]="navItem?.href"
+        [children]="navItem?.children"
+        [target]="navItem?.target"
+        [index]="index + 1">
+      </fusion-ui-nav-item>
+    </ul>
+
+  </div>
+
+</li>
+
+<ng-template #linkContent>
+  <i *ngIf="icon" [ngClass]="iconCssClasses"></i>
+  <span class="fusion-ui-navItem__text">{{ (text | instanceOf: Observable) ? (text | async) : text }}</span>
+  <i *ngIf="children?.length" class="fusion-ui-navItem__isExpandable-icon mdi" [ngClass]="isExpanded ? 'mdi-chevron-down' : 'mdi-chevron-right'"></i>
+</ng-template>

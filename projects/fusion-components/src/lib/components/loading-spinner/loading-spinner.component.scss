@@ -1,0 +1,84 @@
+@import '../../styles/tokens/tokens.scss';
+@import '../../styles/mixins/mixins.scss';
+
+$xSmall: 10px;
+$small: 14px;
+$medium: 20px;
+$large: 28px;
+
+:host {
+  @include flex-centered;
+
+  @keyframes bouncedelay {
+    0%,
+    80%,
+    100% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    }
+    40% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+
+  .fusion-ui-loading-spinner {
+    &__spinner {
+      @include flex-centered-nowrap;
+
+      &--xSmall {
+        height: $xSmall;
+      }
+
+      &--small {
+        height: $small;
+      }
+
+      &--medium {
+        height: $medium;
+      }
+  
+      &--large {
+        height: $large;
+      }
+    }
+  
+    &__bounce {
+      background-color: $fusion-ui-color-greyscale-15;
+      border-radius: 100%;
+      animation: bouncedelay 1.4s infinite ease-in-out both;
+
+      &--xSmall {
+        width: calc(#{$xSmall} - 2px);
+        height: calc(#{$xSmall} - 2px);
+      }
+
+      &--small {
+        width: calc(#{$small} - 2px);
+        height: calc(#{$small} - 2px);
+      }
+
+      &--medium {
+        width: calc(#{$medium} - 2px);
+        height: calc(#{$medium} - 2px);
+      }
+  
+      &--large {
+        width: calc(#{$large} - 2px);
+        height: calc(#{$large} - 2px);
+      }
+  
+      & + .fusion-ui-loading-spinner__bounce {
+        margin-left: $fusion-ui-spacing-xxs;
+      }
+  
+      &--one {
+        animation-delay: -0.32s;
+      }
+  
+      &--two {
+        animation-delay: -0.16s;
+      }
+    }
+  }
+}

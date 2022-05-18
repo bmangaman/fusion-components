@@ -1,0 +1,233 @@
+.fusion-ui-modal {
+  height: 100%;
+  width: 100%;
+
+  &--visible {
+    display: block;
+    height: 100%;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+  }
+
+  &__backdrop {
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    pointer-events: auto;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &__container {
+    background-color: $fusion-ui-color-background-white;
+    box-shadow: $fusion-ui-box-shadow-elevation-level-3;
+    height: 100%;
+    padding: $fusion-ui-spacing-lg $fusion-ui-spacing-lg 0;
+    width: 100%;
+
+    &--alert {
+      height: auto;
+
+      .fusion-ui-modal__content {
+        overflow: auto;
+        max-height: 60vh;
+      }
+    }
+
+    &--full {
+      width: 100%;
+      padding: 0;
+
+      .fusion-ui-modal__content-wrapper {
+        overflow: auto;
+      }
+
+      .fusion-ui-modal__footer-buttons {
+        justify-content: flex-start;
+      }
+
+      .fusion-ui-modal__content-wrapper {
+        padding: 0;
+      }
+
+      .fusion-ui-modal {
+        &__content,
+        &__footer {
+          padding: 0 $fusion-ui-spacing-xxl;
+        }
+      }
+    }
+
+    &--small:not(.fusion-ui-modal__container--full) {
+      width: 90vw;
+      max-width: 450px;
+    }
+
+    &--medium:not(.fusion-ui-modal__container--full) {
+      width: 90vw;
+      max-width: 600px;
+    }
+
+    &--large:not(.fusion-ui-modal__container--full) {
+      width: 90vw;
+      max-width: 800px;
+    }
+  }
+
+  &__content-wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+    padding: $fusion-ui-spacing-sm $fusion-ui-spacing-sm 0;
+  }
+
+  &__window {
+    display: flex;
+    height: 100%;
+    pointer-events: auto;
+    width: 100%;
+
+    &--alert {
+      align-items: center;
+      justify-content: center;
+    }
+
+    &--side {
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    &--full {
+      height: 100%;
+      position: absolute;
+      right: 0;
+      width: 100%;
+    }
+  }
+
+  &__header {
+    border-bottom: $fusion-ui-border-light;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:$fusion-ui-spacing-lg;
+    padding-bottom:$fusion-ui-spacing-xs;
+
+    &-content {
+      color: $fusion-ui-color-secondary-text-on-light;
+      flex: 1;
+      font-size: $fusion-ui-font-size-h3;
+      line-height: $fusion-ui-line-height-h3;
+      font-weight: $fusion-ui-font-weight-semibold;
+    }
+
+    &-close-button {
+      align-items: center;
+      background: none;
+      border: none;
+      border-radius: 0;
+      color: $fusion-ui-color-greyscale-61;
+      cursor: pointer;
+      display: flex;
+      font-size: $fusion-ui-font-size-icon-lg;
+      justify-content: center;
+      padding: $fusion-ui-spacing-xs;
+      right: -#{$fusion-ui-spacing-xs};
+      top: -#{$fusion-ui-spacing-xs};
+      width: 36px;
+
+      i, i:before {
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+      }
+
+      &:hover:not(:disabled) {
+        color: $fusion-ui-color-interactive-hover;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &__full-header {
+    &-top-bar {
+      position: sticky;
+      top: 0;
+      height: $fusion-ui-spacing-xxl;
+      display: flex;
+      justify-content: flex-end;
+      box-shadow: $fusion-ui-box-shadow-elevation-level-1;
+      width: 100%;
+      background: $fusion-ui-color-white;
+      z-index: 1;
+    }
+
+    &-content {
+      padding: $fusion-ui-spacing-xl 0;
+      color: $fusion-ui-color-secondary-text-on-light;
+      flex: 1;
+      @include fusion-ui-h1
+    }
+
+    &-close-button {
+      align-items: center;
+      background: none;
+      border: none;
+      border-radius: 0;
+      color: $fusion-ui-color-greyscale-61;
+      cursor: pointer;
+      display: flex;
+      font-size: $fusion-ui-font-size-icon-lg;
+      justify-content: center;
+      padding: $fusion-ui-spacing-xs;
+
+      i, i:before {
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+      }
+
+      &:hover:not(:disabled) {
+        color: $fusion-ui-color-interactive-hover;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &__content {
+    display: block;
+    flex: 1;
+  }
+
+  &__footer {
+    display: block;
+    margin: $fusion-ui-spacing-xl 0 $fusion-ui-spacing-lg;
+
+    &-buttons {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+
+      button + button,
+      .luci-button + .luci-button, // TODO: remove references to luci button
+      fusion-ui-button + fusion-ui-button {
+        margin-left: $fusion-ui-spacing-md;
+      }
+    }
+  }
+}

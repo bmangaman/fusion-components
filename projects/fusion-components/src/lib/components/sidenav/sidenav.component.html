@@ -1,0 +1,52 @@
+<div class="fusion-ui-sidenav">
+  <nav
+    class="fusion-ui-sidenav__outer-container"
+    [ngClass]="{
+      'fusion-ui-sidenav__outer-container--expanded' : isMenuExpanded,
+      'fusion-ui-sidenav__outer-container--collapsed' : !isMenuExpanded,
+      'fusion-ui-sidenav__outer-container--floating' : !isWindowWidthGreaterThan768px
+    }"
+    [style.width]="isMenuExpanded ? (isWindowWidthGreaterThan768px ? 'auto' : minWidth) : '25px'"
+    [style.minWidth]="isMenuExpanded ? minWidth : '25px'">
+
+    <ng-container *ngIf="isMenuExpanded">
+
+      <div class="fusion-ui-sidenav__top">
+        <ng-container *ngTemplateOutlet="sidenavTopTemplate"></ng-container>
+      </div>
+
+      <ul class="fusion-ui-sidenav__items fusion-ui-sidenav__container">
+        <fusion-ui-nav-item
+          *ngFor="let navItem of navItems"
+          (itemSelected)="setCurrentSelectedNavItem($event)"
+          [id]="navItem?.id"
+          [title]="(navItem?.title | instanceOf: Observable) ? (navItem?.title | async) : navItem?.title"
+          [text]="(navItem?.text | instanceOf: Observable) ? (navItem?.text | async) : navItem?.text"
+          [icon]="navItem?.icon"
+          [isExpanded]="navItem?.isExpanded"
+          [isDisabled]="navItem?.isDisabled"
+          [isPathMatchFull]="navItem?.isPathMatchFull"
+          [route]="navItem?.route"
+          [href]="navItem?.href"
+          [target]="navItem?.target"
+          [children]="navItem?.children">
+        </fusion-ui-nav-item>
+      </ul>
+
+      <div class="fusion-ui-sidenav__bottom">
+        <ng-container *ngTemplateOutlet="sidenavBottomTemplate"></ng-container>
+      </div>
+
+    </ng-container>
+  </nav>
+</div>
+
+<button
+  class="fusion-ui-sidenav__expand-collapse-button"
+  [style.left]="isMenuExpanded ? minWidth : '25px'"
+  *ngIf="!isWindowWidthGreaterThan768px" (click)="isMenuExpanded = !isMenuExpanded">
+  <i
+    class="fusion-ui-sidenav__expand-collapse-button-icon mdi"
+    [ngClass]="isMenuExpanded ? 'mdi-chevron-left' : 'mdi-chevron-right'">
+  </i>
+</button>

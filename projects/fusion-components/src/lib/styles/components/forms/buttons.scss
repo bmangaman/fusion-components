@@ -1,0 +1,338 @@
+@import '../../tokens/tokens.scss';
+@import '../../mixins/mixins.scss';
+
+.fusion-ui-button__link {
+  @include fusion-ui-link;
+
+  background: transparent;
+  border: 0;
+  font-size: $fusion-ui-font-size-sm;
+  margin: 0;
+  padding: 0;
+}
+
+.fusion-ui-button {
+  background: none;
+  border: $fusion-ui-border-size-sm solid transparent;
+  border-radius: $fusion-ui-border-radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: $fusion-ui-font-weight-regular;
+  margin: 0;
+  white-space: nowrap;
+
+  font-size: $fusion-ui-font-size-md;
+  font-weight: $fusion-ui-font-weight-semibold;
+  height: 40px;
+  padding: 0 $fusion-ui-spacing-xl;
+
+  * + &__icon {
+    margin-left: $fusion-ui-spacing-xs;
+  }
+
+  &__icon + *:not(.fusion-ui-button__icon) {
+    margin-left: $fusion-ui-spacing-xs;
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &:disabled,
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  &:focus,
+  &--focus {
+    box-shadow: 0 0 0 2px $fusion-ui-color-blue-medium-light;
+  }
+
+  &.fusion-ui-button--icon {
+    padding: $fusion-ui-spacing-xxs;
+    min-width: 40px;
+  }
+
+  .fusion-ui-button__icon {
+    font-size: $fusion-ui-font-size-icon-md;
+  }
+
+  &--primary {
+    background-color: $fusion-ui-color-interactive-default;
+    color: $fusion-ui-color-primary-text-on-dark;
+
+    &:disabled,
+    &.fusion-ui-button--disabled {
+      background-color: $fusion-ui-color-greyscale-85;
+      color: $fusion-ui-color-greyscale-53;
+    }
+
+    &:not(:disabled):not(.fusion-ui-button--disabled) {
+      &:hover,
+      &.fusion-ui-button--hover {
+        background-color: $fusion-ui-color-blue-medium-dark;
+      }
+
+      &:active,
+      &.fusion-ui-button--active {
+        background-color: $fusion-ui-color-blue-dark;
+      }
+    }
+  }
+
+  &--secondary {
+    border: $fusion-ui-border-size-md solid $fusion-ui-color-interactive-default;
+    color: $fusion-ui-color-interactive-default;
+
+    &:disabled,
+    &.fusion-ui-button--disabled {
+      border-color: $fusion-ui-color-greyscale-85;
+      color: $fusion-ui-color-greyscale-53;
+    }
+
+    &:not(:disabled):not(.fusion-ui-button--disabled) {
+      &:hover,
+      &.fusion-ui-button--hover {
+        border-color: $fusion-ui-color-blue-medium-dark;
+        color: $fusion-ui-color-interactive-hover;
+      }
+
+      &:active,
+      &.fusion-ui-button--active {
+        background-color: $fusion-ui-color-blue-dark;
+        color: $fusion-ui-color-primary-text-on-dark;
+      }
+    }
+  }
+
+  &--tertiary {
+    border: $fusion-ui-border-size-md dashed $fusion-ui-color-border-light;
+    color: $fusion-ui-color-interactive-default;
+    padding: $fusion-ui-spacing-sm;
+
+    &:disabled,
+    &.fusion-ui-button--disabled {
+      border-color: $fusion-ui-color-border-light;
+      color: $fusion-ui-color-text-disabled-on-light;
+    }
+
+    &:not(:disabled):not(.fusion-ui-button--disabled) {
+      &:hover,
+      &.fusion-ui-button--hover {
+        background-color: $fusion-ui-color-background-light;
+        color: $fusion-ui-color-interactive-hover;
+      }
+
+      &:active,
+      &.fusion-ui-button--active {
+        background-color: inherit;
+      }
+    }
+  }
+
+  &--xSmall {
+    border-width: 1px;
+    font-size: $fusion-ui-font-size-xs;
+    line-height: $fusion-ui-font-size-xs;
+
+    &:not(.fusion-ui-button--tertiary) {
+      height: 20px;
+      padding: 0 $fusion-ui-spacing-xs;
+    }
+
+    &.fusion-ui-button--icon {
+      padding: $fusion-ui-spacing-xxs;
+      min-width: 20px;
+    }
+
+    .fusion-ui-button__icon {
+      font-size: $fusion-ui-font-size-icon-xs;
+      line-height: $fusion-ui-font-size-icon-xs;
+      height: $fusion-ui-font-size-icon-xs;
+
+      & + *:not(.fusion-ui-button__icon) {
+        margin-left: $fusion-ui-spacing-xxs;
+      }
+    }
+
+    * + .fusion-ui-button__icon {
+      margin-left: $fusion-ui-spacing-xxs;
+    }
+    }
+
+  &--small {
+    border-width: 1px;
+    font-size: $fusion-ui-font-size-sm;
+    line-height: $fusion-ui-font-size-sm;
+
+    &:not(.fusion-ui-button--tertiary) {
+      height: 30px;
+      padding: 0 $fusion-ui-spacing-sm;
+    }
+
+    &.fusion-ui-button--icon {
+      padding: $fusion-ui-spacing-xxs;
+      min-width: 30px;
+    }
+  }
+
+  &--large {
+    font-size: $fusion-ui-font-size-lg;
+    line-height: $fusion-ui-font-size-lg;
+
+    &:not(.fusion-ui-button--tertiary) {
+      height: 60px;
+      padding: 0 $fusion-ui-spacing-xl;
+    }
+
+    &.fusion-ui-button--icon {
+      padding: $fusion-ui-spacing-xxs;
+      min-width: 60px;
+    }
+
+    .fusion-ui-button__icon {
+      font-size: $fusion-ui-font-size-icon-lg;
+    }
+  }
+
+  &--selected {
+    background-color: $fusion-ui-color-interactive-default;
+    color: $fusion-ui-color-primary-text-on-dark;
+
+    &-dark {
+      background-color: $fusion-ui-color-blue-medium-dark;
+    }
+
+    &:not(:disabled):not(.fusion-ui-button--disabled) {
+      &:hover,
+      &.fusion-ui-button--hover {
+        background-color: $fusion-ui-color-blue-medium-dark;
+        color: $fusion-ui-color-primary-text-on-dark;
+      }
+
+      &:active,
+      &.fusion-ui-button--active {
+        background-color: $fusion-ui-color-blue-dark;
+        color: $fusion-ui-color-primary-text-on-dark;
+      }
+
+      &:focus,
+      &.fusion-ui-button--focus {
+        background-color: $fusion-ui-color-blue-dark;
+        color: $fusion-ui-color-primary-text-on-dark;
+      }
+    }
+  }
+
+  &--noBorder {
+    border-color: transparent;
+
+    &:disabled,
+    &.fusion-ui-button--disabled {
+      border-color: transparent;
+    }
+
+    &:not(:disabled):not(.fusion-ui-button--disabled) {
+      &:hover,
+      &.fusion-ui-button--hover,
+      &:active,
+      &.fusion-ui-button--active,
+      &:focus,
+      &.fusion-ui-button--focus {
+        border-color: transparent;
+      }
+    }
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+}
+
+.fusion-ui-button-group {
+  display: flex;
+  flex-wrap: nowrap;
+
+  .fusion-ui-button__radio,
+  .fusion-ui-button__checkbox {
+    margin: 0;
+
+    &:first-child {
+      .fusion-ui-button__radio-inner,
+      .fusion-ui-button__checkbox-inner {
+        border-right: none;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+
+    &:last-child {
+      .fusion-ui-button__radio-inner,
+      .fusion-ui-button__checkbox-inner {
+        border-left: none;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+
+    &:not(:first-child):not(:last-child) {
+      .fusion-ui-button__radio-inner,
+      .fusion-ui-button__checkbox-inner {
+        border-radius: 0;
+      }
+
+      & + .fusion-ui-button__radio,
+      & + .fusion-ui-button__checkbox {
+        .fusion-ui-button__radio-inner,
+        .fusion-ui-button__checkbox-inner {
+          border-left: none;
+        }
+      }
+    }
+
+    &-input {
+      clip: rect(0 0 0 0);
+      left: 0;
+      position: absolute;
+      z-index: -1;
+
+      &:checked + .fusion-ui-button__radio-inner,
+      &:checked + .fusion-ui-button__checkbox-inner {
+        background-color: $fusion-ui-color-blue-medium-dark;
+        color: $fusion-ui-color-primary-text-on-dark;
+
+        &:not(:disabled):not(.fusion-ui-button--disabled) {
+          &:hover {
+            background-color: $fusion-ui-color-blue-medium-dark;
+            color: $fusion-ui-color-primary-text-on-dark;
+          }
+
+          &:active {
+            background-color: $fusion-ui-color-blue-dark;
+            color: $fusion-ui-color-primary-text-on-dark;
+          }
+
+          &:focus {
+            background-color: $fusion-ui-color-blue-dark;
+            color: $fusion-ui-color-primary-text-on-dark;
+          }
+        }
+      }
+
+      &:focus + .fusion-ui-button__radio-inner,
+      &:focus + .fusion-ui-button__checkbox-inner {
+        outline: none;
+        box-shadow: 0 0 0 2px $fusion-ui-color-blue-medium-light;
+      }
+    }
+  }
+}
+
+.fusion-ui-inline-buttons {
+  display: flex;
+}

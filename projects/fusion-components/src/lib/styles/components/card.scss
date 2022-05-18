@@ -1,0 +1,190 @@
+$medium-spacing: $fusion-ui-spacing-xl;
+$small-spacing: $fusion-ui-spacing-md;
+
+.fusion-ui-card {
+  background: $fusion-ui-color-background-white;
+  border: $fusion-ui-border-light;
+  border-radius: $fusion-ui-border-radius-md;
+  box-shadow: $fusion-ui-box-shadow-elevation-level-1;
+  min-width: 295px;
+
+  &--medium {
+    padding: $medium-spacing;
+  }
+
+  &--small {
+    padding: $small-spacing;
+  }
+
+  &:before {
+    background: transparent;
+    border-radius: 2px 2px 0 0;
+    content: '';
+    display: block;
+    height: 4px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &--unknown:before {
+    background-color: $fusion-ui-color-greyscale-61;
+  }
+  &--normal:before,
+  &--base:before {
+    background-color: $fusion-ui-color-blue-medium;
+  }
+  &--success:before {
+    background-color: $fusion-ui-color-success-primary;
+  }
+  &--warning:before {
+    background-color: $fusion-ui-color-warning-chart;
+  }
+  &--error:before {
+    background-color: $fusion-ui-color-warning-primary;
+  }
+  &--critical:before {
+    background-color: $fusion-ui-color-error-primary;
+  }
+
+  &__title {
+    align-items: baseline;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding-bottom: $fusion-ui-spacing-xs;
+    margin-bottom: $fusion-ui-spacing-sm;
+
+    &-text {
+      margin-bottom: $medium-spacing;
+    }
+
+    &-statuses {
+      display: flex;
+      margin: 0 0 $fusion-ui-spacing-xl $fusion-ui-spacing-lg;
+    }
+
+    &--small {
+      border-bottom: $fusion-ui-border-size-sm solid rgba($fusion-ui-color-black, 0.125);
+
+      .fusion-ui-card__title-text,
+      .fusion-ui-card__title-statuses {
+        margin-bottom: 0;
+      }
+    }
+    &--medium {
+      .fusion-ui-card__title-text,
+      .fusion-ui-card__title-statuses {
+        margin-bottom: $medium-spacing;
+      }
+    }
+
+    &-status {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &-count {
+        display: inline-block;
+        font-size: $fusion-ui-font-size-sm;
+        margin-left: $fusion-ui-spacing-xxs;
+      }
+
+      &-text {
+        font-size: $fusion-ui-font-size-sm;
+        margin-left: $fusion-ui-spacing-xxs;
+      }
+
+      &-icon {
+        &--unknown {
+          color: $fusion-ui-color-greyscale-61;
+        }
+        &--base,
+        &--normal {
+          color: $fusion-ui-color-blue-medium;
+        }
+        &--success {
+          color: $fusion-ui-color-success-primary;
+        }
+        &--warning {
+          color: $fusion-ui-color-warning-chart;
+        }
+        &--error {
+          color: $fusion-ui-color-warning-primary;
+        }
+        &--critical {
+          color: $fusion-ui-color-error-primary;
+        }
+      }
+
+      & + .fusion-ui-card__title-status {
+        margin-left: $fusion-ui-spacing-sm;
+      }
+    }
+  }
+
+  &__content {
+    padding: $fusion-ui-spacing-md;
+    background: $fusion-ui-color-greyscale-85;
+  }
+
+  &__details {
+    &-button {
+      align-items: center;
+      display: flex;
+      margin: $fusion-ui-spacing-xl auto 0 auto;
+      text-align: center;
+
+      &-icon {
+        font-size: $fusion-ui-font-size-icon-md;
+        margin-right: $fusion-ui-spacing-xxxs;
+      }
+    }
+
+    &-content {
+      background: $fusion-ui-color-greyscale-85;
+      margin-top: $medium-spacing;
+      padding: $fusion-ui-spacing-md;
+    }
+
+    &--small {
+      .fusion-ui-card__details-button {
+        margin-top: $small-spacing;
+      }
+      .fusion-ui-card__details-content {
+        margin-top: 0;
+        font-size: $fusion-ui-font-size-sm;
+      }
+    }
+    &--medium {
+      .fusion-ui-card__details-button {
+        margin-top: $medium-spacing;
+      }
+      .fusion-ui-card__details-content {
+        margin-top: $medium-spacing;
+        font-size: $fusion-ui-font-size-md;
+      }
+    }
+  }
+
+  &__footer {
+
+    @at-root {
+
+      p#{&} {
+        text-align: center;
+      }
+
+      .fusion-ui-card--medium & {
+        margin-top: $fusion-ui-spacing-lg;
+        margin-bottom: -$small-spacing;
+      }
+
+      .fusion-ui-card--small & {
+        margin-top: 0;
+      }
+
+    }
+  }
+}

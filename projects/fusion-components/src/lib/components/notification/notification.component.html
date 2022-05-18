@@ -1,0 +1,37 @@
+<div
+  class="fusion-ui-notification__inner">
+  <div class="fusion-ui-notification__left">
+    <i class="mdi fusion-ui-notification__icon"
+       [attr.aria-label]="ariaTypeLabel || ((baseTranslationKey + '.notification.type.' + notificationType) | translate)"
+       [ngClass]="notificationIconClass">
+    </i>
+    <div tabindex="0" class="fusion-ui-notification__text">
+      <ng-content></ng-content>
+    </div>
+  </div>
+  <button
+    [attr.aria-controls]="id"
+    tabindex="0"
+    class="fusion-ui-notification__close-button"
+    *ngIf="dismissible"
+    (click)="dismissBanner();"
+  >
+    <i [attr.aria-label]="translations?.ariaCloseLabel ||
+     ((baseTranslationKey + '.notification.ariaCloseLabel') | translate)"
+       class="mdi mdi-close fusion-ui-notification__close-button-icon"></i>
+  </button>
+</div>
+<ng-container *ngIf="details">
+  <div class="fusion-ui-notification--break"></div>
+  <div class="fusion-ui-notification__details-button-wrapper">
+    <button class="fusion-ui-notification__details-button fusion-ui-button__link" (click)="toggleDetailsSection()">
+      <i class="fusion-ui-notification__details-button-icon mdi" [ngClass]="isDetailsExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
+      <span class="fusion-ui-notification__details-button-text">{{ isDetailsExpanded ?
+        translations?.hideDetails || ( baseTranslationKey + '.notification.hideDetails' | translate ) :
+        translations?.showDetails || ( baseTranslationKey + '.notification.showDetails' | translate ) }}</span>
+    </button>
+  </div>
+  <div class="fusion-ui-notification__details-content" [style.maxHeight]="detailsMaxHeight" *ngIf="isDetailsExpanded">
+    <ng-content select="[fusionUiTemplate=details]" *ngTemplateOutlet="details"></ng-content>
+  </div>
+</ng-container>

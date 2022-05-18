@@ -1,0 +1,366 @@
+<div [ngClass]="tableCssClasses" [attr.id]="'fusion-ui-table--' + tableUuid">
+
+  <!-- START: header -->
+  <div class="fusion-ui-table__header" *ngIf="enabledFunctionality?.header">
+    <ng-container *ngIf="tableHeader; else isTableTitle">
+      <ng-container *ngTemplateOutlet="tableHeader"></ng-container>
+    </ng-container>
+    <ng-template #isTableTitle>
+      <h3 class="fusion-ui-h3 fusion-ui-table__header-title">{{ tableTitle }}</h3>
+    </ng-template>
+  </div>
+  <!-- END: header -->
+
+  <!-- START: controls -->
+  <div class="fusion-ui-table__controls" *ngIf="enabledFunctionality?.controls">
+    <div class="fusion-ui-table__controls-left">
+
+      <!-- START: Table Views -->
+      <div class="fusion-ui-button-group fusion-ui-table__controls-table-views">
+        <ng-container *ngFor="let tableView of tableViews">
+          <label
+            class="fusion-ui-button__radio"
+            for="table-{{ tableUuid }}-views-{{ tableView?.label }}"
+            role="button"
+            *ngIf="tableView?.isVisible">
+            <input
+              class="fusion-ui-button__radio-input"
+              id="table-{{ tableUuid }}-views-{{ tableView?.label }}"
+              type="radio"
+              name="table-views"
+              [value]="tableView"
+              [(ngModel)]="appliedTableView" />
+            <span class="fusion-ui-button fusion-ui-button--secondary fusion-ui-button--small fusion-ui-button__radio-inner fusion-ui-table__controls--button fusion-ui-table__controls--button-view">
+              <span class="fusion-ui-button__radio-inner-text">{{ tableView?.label }}</span>
+            </span>
+          </label>
+        </ng-container>
+      </div>
+      <!-- END: Table Views -->
+
+      <ng-container *ngTemplateOutlet="leftControls"></ng-container>
+    </div>
+    <div class="fusion-ui-table__controls-right">
+      <ng-container *ngTemplateOutlet="rightControls"></ng-container>
+
+      <fusion-ui-table-filter-selector
+        *ngIf="enabledFunctionality?.filtering"
+        [filters]="filters"
+        [externalAppliedFilters]="appliedFilters"
+        [quickFilters]="quickFilters"
+        [tableView]="appliedTableView"
+        [data]="selectedTableData$ | async"
+        (filteredData)="filterTableData($event)"
+        [translations]="translations?.filtering"
+        (appliedFiltersChange)="appliedFiltersChange($event)">
+      </fusion-ui-table-filter-selector>
+
+      <div class="fusion-ui-table__controls-button-separator"></div>
+
+      <fusion-ui-table-column-selector
+        *ngIf="!!columns?.length"
+        [columns]="columns"
+        [translations]="translations?.columnSelector"
+        (visibleColumns)="updateColumnVisibilityChange($event)">
+      </fusion-ui-table-column-selector>
+
+      <div class="fusion-ui-table__controls-button-separator"></div>
+
+      <!-- START: Refresh Button -->
+      <ng-container *ngIf="refresh.observers.length > 0">
+        <fusion-ui-button
+          [classes]="['fusion-ui-table__controls-button', 'fusion-ui-table__controls--button--refresh']"
+          [type]="ButtonType.SECONDARY"
+          [size]="FusionUiSize.SMALL"
+          [noBorder]="true"
+          ariaLabel="refresh"
+          icon="mdi-refresh"
+          (buttonClick)="refreshData()">
+        </fusion-ui-button>
+        <!-- END: Refresh Button -->
+
+        <div class="fusion-ui-table__controls-button-separator"></div>
+      </ng-container>
+
+      <!-- START: Download Button -->
+      <fusion-ui-button
+        fusionUiDownload
+        [fileName]="exportFileName || 'table-data'"
+        [fileExtension]="DownloadDirectiveFileType.CSV"
+        [content]="finalTableData$ | async | downloadTableData: columns:downloadTransformationFunction"
+        [classes]="['fusion-ui-table__controls-button', 'fusion-ui-table__controls--button--download']"
+        [type]="ButtonType.SECONDARY"
+        [noBorder]="true"
+        [size]="FusionUiSize.SMALL"
+        ariaLabel="download"
+        icon="mdi-download">
+      </fusion-ui-button>
+      <!-- END: Download Button -->
+
+    </div>
+  </div>
+  <!-- END: controls -->
+
+  <!-- START: table -->
+  <div class="fusion-ui-table__container" [ngClass]="{ 'fusion-ui-table__container--fill-container': fillContainer }">
+
+    <span
+      *ngIf="flags?.resizeIndicatorVisibleListener"
+      class="fusion-ui-table__table-cell-column-resize-indicator"
+      [ngStyle]="{left: resizeXCoordinate + 'px'}">
+    </span>
+
+    <div class="fusion-ui-table__state fusion-ui-table__state--{{ state | getTableState: flags?.noResults }}">
+      <ng-container
+        *fusionUiState="
+          state | getTableState: flags?.noResults; location: StateLocation.TABLE;
+          error:tableError;
+          loading:tableLoading;
+          noResults:tableNoResults;">
+        <ng-container *ngTemplateOutlet="table"></ng-container>
+      </ng-container>
+    </div>
+
+  </div>
+  <!-- END: table -->
+
+  <!-- START: pagination -->
+  <fusion-ui-table-pagination
+    *ngIf="enabledFunctionality?.pagination"
+    [isDisabled]="(state | getTableState: flags?.noResults) !== FusionUiState.LOADED"
+    [data]="filteredTableData$ | async"
+    [config]="paginationConfig"
+    [translations]="translations?.pagination"
+    (paginatedTableData)="paginateTableData($event)"
+    (paginationChange)="paginationChange.emit($event)"
+    (deselectAll)="deselectAll()">
+  </fusion-ui-table-pagination>
+  <!-- END: pagination -->
+</div>
+
+<ng-template #table>
+  <table class="fusion-ui-table__table" *ngIf="finalTableData$ | async as finalTableData">
+
+    <thead class="fusion-ui-table__table-thead">
+      <tr class="fusion-ui-table__table-row fusion-ui-table__table-row--head">
+
+        <!-- START: row selection column header -->
+        <fusion-ui-table-cell-header
+          *ngIf="enabledFunctionality?.rowSelection"
+          [cssClasses]="['fusion-ui-table__table-cell--selection-control']"
+          [col]="{ width: '25px', cellContentAlignment: TableCellContentAlignment.CENTER }"
+          [isSticky]="fillContainer"
+          [shouldProjectContent]="true"
+          [spacing]="spacing">
+          <div *ngIf="selectionMode === SelectionMode.MULTIPLE" class="fusion-ui-form__fieldset fusion-ui-form__fieldset--no-margin">
+            <span class="fusion-ui-form__checkbox">
+              <label for="fusion-ui-table-{{ tableUuid }}-checkbox-toggle-all" class="fusion-ui-form__checkbox-label">
+                <input
+                  class="fusion-ui-form__checkbox-input"
+                  type="checkbox"
+                  (change)="updateSelectedData(null, true)"
+                  name="fusion-ui-table-{{ tableUuid }}-checkbox-toggle-all"
+                  id="fusion-ui-table-{{ tableUuid }}-checkbox-toggle-all"
+                  [attr.aria-label]="translations?.selection?.selectAll || ( baseTranslationKey + '.table.selection.selectAll' | translate )"
+                  [checked]="finalTableData | areAllVisibleRowsSelected"
+                  [indeterminate]="finalTableData | areAnyRowsSelected">
+                <span class="fusion-ui-form__checkbox-button"></span>
+              </label>
+            </span>
+          </div>
+        </fusion-ui-table-cell-header>
+        <!-- END: row selection column header -->
+
+        <!-- START: row expansion column header -->
+        <fusion-ui-table-cell-header
+          *ngIf="enabledFunctionality?.rowExpansion"
+          [cssClasses]="['fusion-ui-table__table-cell--expansion-control']"
+          [col]="{ width: '25px', cellContentAlignment: TableCellContentAlignment.CENTER }"
+          [isSticky]="fillContainer"
+          [shouldProjectContent]="true"
+          [spacing]="spacing">
+          <button
+            *ngIf="rowExpansionMode === RowExpansionMode.MULTIPLE"
+            class="fusion-ui-table__table-cell-expansion-button"
+            [attr.aria-label]="translations?.expansion?.expandAll || ( baseTranslationKey + '.table.expansion.expandAll' | translate )"
+            (click)="handleRowExpansion()">
+            <i class="mdi" [ngClass]="flags?.areAllVisibleRowsExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
+          </button>
+        </fusion-ui-table-cell-header>
+        <!-- END: row expansion column header -->
+
+        <!-- START: data column header -->
+        <fusion-ui-table-cell-header
+          *ngFor="let col of visibleColumns; index as j; trackBy: colTrackByFn"
+          [translations]="translations?.tableCell"
+          (sort)="sortTableData($event)"
+          (startResize)="startResize()"
+          (stopResize)="stopResize(col?.field, $event)"
+          [col]="col?.config"
+          [isSticky]="fillContainer"
+          [spacing]="spacing">
+        </fusion-ui-table-cell-header>
+        <!-- END: data column header -->
+
+        <!-- START: actions column header -->
+        <fusion-ui-table-cell-header
+          *ngIf="enabledFunctionality?.rowActions"
+          [cssClasses]="['fusion-ui-table__table-cell--actions']"
+          [col]="{ width: '30px', cellContentAlignment: TableCellContentAlignment.CENTER }"
+          [shouldProjectContent]="true"
+          [isSticky]="fillContainer"
+          [spacing]="spacing">
+          {{ translations?.actions?.columnTitle || ( baseTranslationKey + '.table.actions.columnTitle' | translate ) }}
+        </fusion-ui-table-cell-header>
+        <!-- END: actions column header -->
+
+      </tr>
+    </thead>
+
+    <tbody class="fusion-ui-table__table-tbody" *ngIf="(state | getTableState: flags?.noResults) === FusionUiState.LOADED">
+      <ng-container *ngFor="let rowData of finalTableData | visibleTableRows ; index as i; trackBy: rowTrackByFn">
+        <tr
+          class="fusion-ui-table__table-row fusion-ui-table__table-row--body fusion-ui-table__table-row--{{ i }} fusion-ui-table__table-row--{{ rowData?.tableRowUuid }}"
+          [ngClass]="{
+            'fusion-ui-table__table-row--gray' : i % 2 !== 0,
+            'fusion-ui-table__table-row--expandable': enabledFunctionality?.rowExpansion && rowData?.isExpandable,
+            'fusion-ui-table__table-row--expanded': enabledFunctionality?.rowExpansion && rowData?.isExpanded
+          }">
+
+          <!-- START: row selection column body -->
+          <fusion-ui-table-cell-body
+            *ngIf="enabledFunctionality?.rowSelection"
+            [cssClasses]="['fusion-ui-table__table-cell--selection-control']"
+            [col]="{ width: '25px', cellContentAlignment: TableCellContentAlignment.CENTER, isOverflowVisible: true }"
+            [rowData]="rowData"
+            [shouldProjectContent]="true"
+            [index]="i"
+            [spacing]="spacing">
+            <!-- START: row selection checkbox -->
+            <div *ngIf="selectionMode === SelectionMode.MULTIPLE" class="fusion-ui-form__fieldset fusion-ui-form__fieldset--no-margin">
+              <span class="fusion-ui-form__checkbox">
+                <label for="fusion-ui-table-{{ tableUuid }}-checkbox-{{ i }}" class="fusion-ui-form__checkbox-label">
+                  <input
+                    [disabled]="!rowData?.isSelectable"
+                    class="fusion-ui-form__checkbox-input"
+                    [ngClass]="{ 'fusion-ui-form__checkbox-input--disabled' : !rowData?.isSelectable, 'fusion-ui-form__radio-input--checked' : rowData?.isSelected }"
+                    type="checkbox"
+                    (change)="updateSelectedData(rowData)"
+                    name="fusion-ui-table-{{ tableUuid }}-checkbox-{{ i }}"
+                    id="fusion-ui-table-{{ tableUuid }}-checkbox-{{ i }}"
+                    [attr.aria-label]="(translations?.selection?.select || ( baseTranslationKey + '.table.selection.select' | translate )) + ' ' + i"
+                    [checked]="rowData?.isSelected">
+                  <span class="fusion-ui-form__checkbox-button"></span>
+                </label>
+              </span>
+            </div>
+            <!-- END: row selection checkbox -->
+            <!-- START: row selection radio button -->
+            <div *ngIf="selectionMode === SelectionMode.SINGLE" class="fusion-ui-form__fieldset fusion-ui-form__fieldset--no-margin">
+              <span class="fusion-ui-form__radio">
+                <label for="fusion-ui-table-{{ tableUuid }}-radio-{{ i }}" class="fusion-ui-form__radio-label">
+                  <input
+                    [disabled]="!rowData?.isSelectable"
+                    class="fusion-ui-form__radio-input"
+                    [ngClass]="{ 'fusion-ui-form__radio-input--disabled' : !rowData?.isSelectable, 'fusion-ui-form__radio-input--checked' : rowData?.isSelected }"
+                    type="radio"
+                    (click)="updateSelectedData(rowData)"
+                    name="fusion-ui-table-{{ tableUuid }}-radio-{{ i }}"
+                    id="fusion-ui-table-{{ tableUuid }}-radio-{{ i }}"
+                    [attr.aria-label]="(translations?.selection?.select || ( baseTranslationKey + '.table.selection.select' | translate )) + ' ' + i"
+                    [checked]="rowData?.isSelected">
+                  <span class="fusion-ui-form__radio-button"></span>
+                </label>
+              </span>
+            </div>
+            <!-- END: row selection radio button -->
+            <ng-container *ngTemplateOutlet="selectionColumn; context: { $implicit: rowData }"></ng-container>
+          </fusion-ui-table-cell-body>
+          <!-- END: row selection column body -->
+
+          <!-- START: row expansion column body -->
+          <fusion-ui-table-cell-body
+            *ngIf="enabledFunctionality?.rowExpansion"
+            [cssClasses]="['fusion-ui-table__table-cell--expansion-control']"
+            [col]="{ width: '25px', cellContentAlignment: TableCellContentAlignment.CENTER }"
+            [rowData]="rowData"
+            [shouldProjectContent]="true"
+            [index]="i"
+            [spacing]="spacing">
+            <button
+              class="fusion-ui-table__table-cell-expansion-button"
+              (click)="handleRowExpansion(rowData, i)"
+              [disabled]="!rowData?.isExpandable"
+              [attr.aria-label]="(translations?.expansion?.expand || ( baseTranslationKey + '.table.expansion.expand' | translate )) + ' ' + i"
+              [attr.aria-disabled]="!rowData?.isExpandable">
+              <i class="mdi" [ngClass]="rowData?.isExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
+            </button>
+          </fusion-ui-table-cell-body>
+          <!-- END: row expansion column body -->
+
+          <!-- START: data column body -->
+          <fusion-ui-table-cell-body
+            *ngFor="let col of visibleColumns; index as j; trackBy: colTrackByFn"
+            [col]="col?.config"
+            [rowData]="rowData"
+            [index]="i"
+            [spacing]="spacing">
+          </fusion-ui-table-cell-body>
+          <!-- END: data column body -->
+
+          <!-- START: actions column body -->
+          <fusion-ui-table-cell-body
+            *ngIf="enabledFunctionality?.rowActions"
+            [cssClasses]="['fusion-ui-table__table-cell--actions']"
+            [col]="{ width: '30px', cellContentAlignment: TableCellContentAlignment.CENTER, isOverflowVisible: true }"
+            [rowData]="rowData"
+            [shouldProjectContent]="true"
+            [index]="i"
+            [spacing]="spacing">
+            <fusion-ui-table-actions
+              [templateRef]="rowActions?.template"
+              [rowData]="rowData"
+              [isDisabled]="!rowData?.isActionable"
+              [dialogCssClasses]="rowActions?.dialogCssClasses">
+            </fusion-ui-table-actions>
+          </fusion-ui-table-cell-body>
+          <!-- END: actions column body -->
+
+        </tr>
+
+        <!-- START: expansion row -->
+        <tr
+          *ngIf="enabledFunctionality?.rowExpansion && rowData?.isExpanded"
+          class="fusion-ui-table__table-row fusion-ui-table__table-row--body fusion-ui-table__table-row--expansion"
+          [ngClass]="{ 'fusion-ui-table__table-row--gray' : i % 2 !== 0 }">
+          <td [attr.colspan]="visibleColumns?.length + (!!rowExpansion ? 1 : 0) + (!!rowActions ? 1 : 0) + (!!selectionMode ? 1 : 0)">
+            <ng-container *ngTemplateOutlet="rowExpansion; context: { $implicit: rowData }"></ng-container>
+          </td>
+        </tr>
+        <!-- END: expansion row -->
+      </ng-container>
+    </tbody>
+
+  </table>
+</ng-template>
+
+<ng-template #tableError>
+  <ng-container *ngTemplateOutlet="table"></ng-container>
+  <div class="fusion-ui-table__state-wrapper">
+    <fusion-ui-state [state]="FusionUiState.ERROR" [location]="StateLocation.TABLE"></fusion-ui-state>
+  </div>
+</ng-template>
+
+<ng-template #tableLoading>
+  <ng-container *ngTemplateOutlet="table"></ng-container>
+  <div class="fusion-ui-table__state-wrapper">
+    <fusion-ui-state [state]="FusionUiState.LOADING" [location]="StateLocation.TABLE"></fusion-ui-state>
+  </div>
+</ng-template>
+
+<ng-template #tableNoResults>
+  <ng-container *ngTemplateOutlet="table"></ng-container>
+  <div class="fusion-ui-table__state-wrapper">
+    <fusion-ui-state [state]="FusionUiState.NO_RESULTS" [location]="StateLocation.TABLE"></fusion-ui-state>
+  </div>
+</ng-template>

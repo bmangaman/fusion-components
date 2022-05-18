@@ -1,0 +1,27 @@
+.fusion-ui-key-value-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-top: 2px solid $fusion-ui-color-blue-medium-dark;
+  font-size: $fusion-ui-font-size-sm;
+  width: 100%;
+
+  &__row {
+    &--grey {
+      background-color: $fusion-ui-color-background-light;
+    }
+  }
+
+  &__cell {
+    padding: $fusion-ui-spacing-sm;
+    vertical-align: middle;
+
+    &--header {
+      text-align: left;
+      padding-right: $fusion-ui-spacing-xl;
+    }
+
+    &--body {
+      text-align: right;
+    }
+  }
+}

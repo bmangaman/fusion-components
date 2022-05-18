@@ -1,0 +1,91 @@
+.fusion-ui-wizard {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+
+  &__brand-image {
+    margin: $fusion-ui-spacing-sm $fusion-ui-spacing-md;
+  }
+
+  &__step-navigation {
+    background-color: $fusion-ui-color-blue-darkest;
+
+    &-button {
+      align-items: center;
+      background: none;
+      border: none;
+      color: $fusion-ui-color-primary-text-on-dark;
+      cursor: pointer;
+      display: flex;
+      font-size: $fusion-ui-font-size-md;
+      padding: $fusion-ui-spacing-sm $fusion-ui-spacing-md;
+      text-align: left;
+      width: 100%;
+
+      &-icon {
+        font-size: $fusion-ui-font-size-icon-md;
+        margin-right: $fusion-ui-spacing-md;
+      }
+
+      &-title {
+        line-height: $fusion-ui-font-size-md;
+      }
+
+      &--disabled {
+        cursor: not-allowed;
+      }
+      
+      &:not(:disabled) {
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: $fusion-ui-color-blue-dark;
+        }
+      }
+
+      &--completed {
+        .fusion-ui-wizard__step-navigation-button-icon {
+          color: $fusion-ui-color-success-chart;
+        }
+      }
+
+      &--current {
+        font-weight: $fusion-ui-font-weight-bold;
+
+        .fusion-ui-wizard__step-navigation-button-icon {
+          color: $fusion-ui-color-success-chart;
+        }
+      }
+    }
+  }
+
+  &__step-content {
+    flex: 1;
+  }
+
+  // When screen size is < 768px, move the step navigation to the top and hide the button text
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    &__step-navigation {
+      display: flex;
+      flex-direction: row;
+
+      &-buttons {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        overflow-x: auto;
+      }
+
+      &-button {
+        &-title {
+          display: none;
+        }
+        &-icon {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

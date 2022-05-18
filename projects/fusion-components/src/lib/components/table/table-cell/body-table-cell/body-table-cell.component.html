@@ -1,0 +1,9 @@
+<div class="fusion-ui-table__table-cell-inner" [style.width]="col?.updatedWidth || col?.width">
+  <ng-container *ngIf="col?.contentTemplateRef; else noTemplate">
+    <ng-container *ngTemplateOutlet="col?.contentTemplateRef; context: { $implicit: rowData, index: index }"></ng-container>
+  </ng-container>
+  <ng-template #noTemplate>
+    <ng-container *ngIf="!shouldProjectContent; else nonDataCell">{{ fieldData }}</ng-container>
+    <ng-template #nonDataCell><ng-content></ng-content></ng-template>
+  </ng-template>
+</div>

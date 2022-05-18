@@ -1,0 +1,34 @@
+.fusion-ui-table__actions {
+  min-width: 30px;
+  margin: 0 auto;
+
+  &-dialog.fusion-ui-menu__dialog {
+    padding: $fusion-ui-spacing-sm 0;
+    margin: 0;
+  }
+
+  &-dialog-button {
+    background: transparent;
+    border: none;
+    color: $fusion-ui-color-primary-text-on-light;
+    cursor: pointer;
+    display: block;
+    padding: $fusion-ui-spacing-sm $fusion-ui-spacing-lg;
+    text-align: left;
+    white-space: nowrap;
+    width: 100%;
+
+    &:not(:disabled) {
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $fusion-ui-color-blue-lightest;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}

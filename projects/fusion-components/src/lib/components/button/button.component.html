@@ -1,0 +1,38 @@
+<button
+  [disabled]="isButtonDisabled"
+  [attr.aria-disabled]="isButtonDisabled"
+  [attr.aria-label]="aria?.label"
+  [attr.aria-haspopup]="aria?.haspopup"
+  [attr.aria-controls]="aria?.controls"
+  [attr.aria-expanded]="aria?.expanded"
+  [attr.type]="inputType"
+  (click)="buttonClicked()"
+  [fusionUiAutofocus]="isAutofocused"
+  [ngClass]="buttonClasses">
+
+  <ng-container *ngIf="state === FusionUiState.LOADED; else loading">
+    <div class="fusion-ui-button__content" #buttonContent>
+      <i
+        class="fusion-ui-button__icon mdi {{ icon }}"
+        *ngIf="icon"
+        [attr.aria-hidden]="!!text"
+        [attr.aria-label]="aria?.iconAriaLabel"></i>
+      <span class="fusion-ui-button__text" *ngIf="text">{{ text }}</span>
+      <i
+        class="fusion-ui-button__icon mdi mdi-chevron-down"
+        *ngIf="opensMenu"
+        [attr.aria-hidden]="!!text"
+        [attr.aria-label]="aria?.menuIconAriaLabel"></i>
+    </div>
+  </ng-container>
+
+  <ng-template #loading>
+    <fusion-ui-loading-spinner
+      [size]="loadingSpinnerSize"
+      [opacity]="0.2"
+      [minWidth]="contentMinWidth"
+      [ariaLabel]="aria?.loadingSpinner">
+    </fusion-ui-loading-spinner>
+  </ng-template>
+
+</button>
