@@ -1,0 +1,130 @@
+<fusion-demo titleText="Progress Bar">
+
+  <form form class="fusion-components-demo__form fusion-ui-form" *ngIf="progressBarForm" [formGroup]="progressBarForm">
+
+    <!-- START: value input -->
+    <div class="fusion-ui-form__fieldset">
+      <label class="fusion-ui-form__input-label">Value</label>
+      <div class="fusion-ui-form__input-wrapper">
+        <input class="fusion-ui-form__input" type="number" formControlName="value" />
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: value input -->
+
+    <!-- START: minimum value input -->
+    <div class="fusion-ui-form__fieldset">
+      <label class="fusion-ui-form__input-label">Minimum Value</label>
+      <div class="fusion-ui-form__input-wrapper">
+        <input class="fusion-ui-form__input" type="number" formControlName="minValue" />
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: minimum value input -->
+
+    <!-- START: maximum value input -->
+    <div class="fusion-ui-form__fieldset">
+      <label class="fusion-ui-form__input-label">Maximum Value</label>
+      <div class="fusion-ui-form__input-wrapper">
+        <input class="fusion-ui-form__input" type="number" formControlName="maxValue" />
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: maximum value input -->
+
+    <!-- START: is value displayed checkbox -->
+    <div class="fusion-ui-form__fieldset">
+      <span class="fusion-ui-form__checkbox">
+        <label for="fusion-ui-checkbox-1" class="fusion-ui-form__checkbox-label">
+          <input
+            class="fusion-ui-form__checkbox-input"
+            type="checkbox"
+            value="true"
+            name="fusion-ui-checkbox-1"
+            id="fusion-ui-checkbox-1"
+            formControlName="isValueDisplayed">
+          <span class="fusion-ui-form__checkbox-button"></span>
+          <span class="fusion-ui-form__checkbox-label-text">Is Value Displayed</span>
+        </label>
+      </span>
+    </div>
+    <!-- END: is value displayed checkbox -->
+
+    <!-- START: minimum displayed percent input -->
+    <div class="fusion-ui-form__fieldset">
+      <label class="fusion-ui-form__input-label">Minimum Displayed Percent</label>
+      <div class="fusion-ui-form__input-wrapper">
+        <input class="fusion-ui-form__input" type="number" formControlName="minDisplayedPercent" />
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: minimum displayed percent input -->
+
+    <!-- START: size select -->
+    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
+      <label class="fusion-ui-form__input-label">Size</label>
+      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
+        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="size">
+          <option [value]="FusionUiSize.SMALL">{{ FusionUiSize.SMALL }}</option>
+          <option [value]="FusionUiSize.MEDIUM">{{ FusionUiSize.MEDIUM }}</option>
+          <option [value]="FusionUiSize.LARGE">{{ FusionUiSize.LARGE }}</option>
+        </select>
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: size select -->
+
+    <!-- START: status select -->
+    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
+      <label class="fusion-ui-form__input-label">Status</label>
+      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
+        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="status">
+          <option value="">- None -</option>
+          <option [value]="ProgressBarStatus.ERROR">{{ ProgressBarStatus.ERROR }}</option>
+          <option [value]="ProgressBarStatus.IN_PROGRESS">{{ ProgressBarStatus.IN_PROGRESS }}</option>
+          <option [value]="ProgressBarStatus.NOT_STARTED">{{ ProgressBarStatus.NOT_STARTED }}</option>
+          <option [value]="ProgressBarStatus.PAUSED">{{ ProgressBarStatus.PAUSED }}</option>
+          <option [value]="ProgressBarStatus.WARNING">{{ ProgressBarStatus.WARNING }}</option>
+        </select>
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: status select -->
+
+    <!-- START: display text input -->
+    <div class="fusion-ui-form__fieldset">
+      <label class="fusion-ui-form__input-label">Display Text</label>
+      <div class="fusion-ui-form__input-wrapper">
+        <input class="fusion-ui-form__input" formControlName="displayText" />
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: display text input -->
+
+    <!-- START: display text input -->
+    <div class="fusion-ui-form__fieldset">
+      <label class="fusion-ui-form__input-label">Aria Value Text</label>
+      <div class="fusion-ui-form__input-wrapper">
+        <input class="fusion-ui-form__input" formControlName="ariaValueText" />
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: display text input -->
+
+  </form>
+
+  <ng-container result>
+    <fusion-ui-progress-bar
+      [value]="progressBarForm?.get('value')?.value"
+      [minValue]="progressBarForm?.get('minValue')?.value"
+      [maxValue]="progressBarForm?.get('maxValue')?.value"
+      [isValueDisplayed]="progressBarForm?.get('isValueDisplayed')?.value"
+      [minDisplayedPercent]="progressBarForm?.get('minDisplayedPercent')?.value"
+      [size]="progressBarForm?.get('size')?.value"
+      [status]="progressBarForm?.get('status')?.value"
+      [displayText]="progressBarForm?.get('displayText')?.value"
+      [ariaValueText]="progressBarForm?.get('ariaValueText')?.value">
+    </fusion-ui-progress-bar>
+  </ng-container>
+
+</fusion-demo>

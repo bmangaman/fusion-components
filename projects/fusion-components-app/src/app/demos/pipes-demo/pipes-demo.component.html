@@ -1,0 +1,82 @@
+<fusion-demo titleText="Pipes">
+
+  <ng-container result>
+    <fusion-ui-tabview>
+
+      <fusion-ui-tabview-tab>
+        <ng-template fusionUiTemplate="tabHeader">
+          <h3>Bytes</h3>
+        </ng-template>
+        <ng-template fusionUiTemplate="tabContent">
+  
+          <div class="pipe-demo-container">
+  
+            <form class="fusion-ui-form" *ngIf="bytesPipeForm" [formGroup]="bytesPipeForm">
+  
+              <!-- START: bytes input -->
+              <div class="fusion-ui-form__fieldset">
+                <label class="fusion-ui-form__input-label">Bytes</label>
+                <div class="fusion-ui-form__input-wrapper">
+                  <input class="fusion-ui-form__input" type="number" formControlName="bytes" />
+                  <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+                </div>
+              </div>
+              <!-- END: bytes input -->
+  
+              <!-- START: include unit checkbox -->
+              <div class="fusion-ui-form__fieldset">
+                <span class="fusion-ui-form__checkbox">
+                  <label for="fusion-ui-checkbox-1" class="fusion-ui-form__checkbox-label">
+                    <input
+                      class="fusion-ui-form__checkbox-input"
+                      type="checkbox"
+                      value="true"
+                      name="fusion-ui-checkbox-1"
+                      id="fusion-ui-checkbox-1"
+                      formControlName="includeUnit">
+                    <span class="fusion-ui-form__checkbox-button"></span>
+                    <span class="fusion-ui-form__checkbox-label-text">Include Unit</span>
+                  </label>
+                </span>
+              </div>
+              <!-- END: include unit checkbox -->
+  
+              <!-- START: base select -->
+              <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
+                <label class="fusion-ui-form__input-label">Base</label>
+                <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
+                  <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="base">
+                    <option [value]="BytesPipeBase.TEN">Base 10 (1000)</option>
+                    <option [value]="BytesPipeBase.TWO">Base 2 (1024)</option>
+                  </select>
+                  <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+                </div>
+              </div>
+              <!-- END: base select -->
+  
+              <!-- START: precision input -->
+              <div class="fusion-ui-form__fieldset">
+                <label class="fusion-ui-form__input-label">Precision</label>
+                <div class="fusion-ui-form__input-wrapper">
+                  <input class="fusion-ui-form__input" type="number" formControlName="precision" />
+                  <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+                </div>
+              </div>
+              <!-- END: precision input -->
+  
+            </form>
+  
+            <div class="pipe-demo-result">
+              <h3>Result: </h3>
+              {{ bytesPipeResult }}
+            </div>
+  
+          </div>
+  
+        </ng-template>
+      </fusion-ui-tabview-tab>
+  
+    </fusion-ui-tabview>
+  </ng-container>
+
+</fusion-demo>

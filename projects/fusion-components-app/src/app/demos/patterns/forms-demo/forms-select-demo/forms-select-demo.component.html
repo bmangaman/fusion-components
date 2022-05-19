@@ -1,0 +1,4 @@
+<div class="fusion-demo__example" *ngFor="let selectExample of selectExamples">
+  <div class="fusion-demo__example--demo" [innerHtml]="selectExample | keepHtml"></div>
+  <code class="fusion-demo__example--code"><pre [innerText]="selectExample"></pre></code>
+</div>

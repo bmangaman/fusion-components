@@ -1,0 +1,271 @@
+<fusion-demo titleText="Card">
+
+  <form form class="fusion-components-demo__form fusion-ui-form" *ngIf="cardForm" [formGroup]="cardForm">
+
+    <!-- START: title input -->
+    <div class="fusion-ui-form__fieldset">
+      <label class="fusion-ui-form__input-label">Title</label>
+      <div class="fusion-ui-form__input-wrapper">
+        <input class="fusion-ui-form__input" formControlName="title" />
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: title input -->
+
+    <!-- START: useTitleTemplate checkbox -->
+    <div class="fusion-ui-form__fieldset">
+      <span class="fusion-ui-form__checkbox">
+        <label for="fusion-ui-checkbox-useTitleTemplate" class="fusion-ui-form__checkbox-label">
+          <input
+            formControlName="useTitleTemplate"
+            class="fusion-ui-form__checkbox-input"
+            type="checkbox"
+            name="fusion-ui-checkbox-useTitleTemplate"
+            id="fusion-ui-checkbox-useTitleTemplate">
+          <span class="fusion-ui-form__checkbox-button"></span>
+          <span class="fusion-ui-form__checkbox-label-text">Use Title Template</span>
+        </label>
+      </span>
+    </div>
+    <!-- END: useTitleTemplate checkbox -->
+
+    <!-- START: content input -->
+    <div class="fusion-ui-form__fieldset">
+      <label class="fusion-ui-form__input-label">Cotent</label>
+      <div class="fusion-ui-form__input-wrapper">
+        <input class="fusion-ui-form__input" formControlName="content" />
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: content input -->
+
+    <!-- START: useContentTemplate checkbox -->
+    <div class="fusion-ui-form__fieldset">
+      <span class="fusion-ui-form__checkbox">
+        <label for="fusion-ui-checkbox-useContentTemplate" class="fusion-ui-form__checkbox-label">
+          <input
+            formControlName="useContentTemplate"
+            class="fusion-ui-form__checkbox-input"
+            type="checkbox"
+            name="fusion-ui-checkbox-useContentTemplate"
+            id="fusion-ui-checkbox-useContentTemplate">
+          <span class="fusion-ui-form__checkbox-button"></span>
+          <span class="fusion-ui-form__checkbox-label-text">Use Content Template</span>
+        </label>
+      </span>
+    </div>
+    <!-- END: useContentTemplate checkbox -->
+
+    <!-- START: details input -->
+    <div class="fusion-ui-form__fieldset">
+      <label class="fusion-ui-form__input-label">Details</label>
+      <div class="fusion-ui-form__input-wrapper">
+        <input class="fusion-ui-form__input" formControlName="details" />
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: details input -->
+
+    <!-- START: useDetailsTemplate checkbox -->
+    <div class="fusion-ui-form__fieldset">
+      <span class="fusion-ui-form__checkbox">
+        <label for="fusion-ui-checkbox-useDetailsTemplate" class="fusion-ui-form__checkbox-label">
+          <input
+            formControlName="useDetailsTemplate"
+            class="fusion-ui-form__checkbox-input"
+            type="checkbox"
+            name="fusion-ui-checkbox-useDetailsTemplate"
+            id="fusion-ui-checkbox-useDetailsTemplate">
+          <span class="fusion-ui-form__checkbox-button"></span>
+          <span class="fusion-ui-form__checkbox-label-text">Use Details Template</span>
+        </label>
+      </span>
+    </div>
+    <!-- END: useDetailsTemplate checkbox -->
+
+    <!-- START: footer input -->
+    <div class="fusion-ui-form__fieldset">
+      <label class="fusion-ui-form__input-label">Footer</label>
+      <div class="fusion-ui-form__input-wrapper">
+        <input class="fusion-ui-form__input" formControlName="footer" />
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: footer input -->
+
+    <!-- START: useFooterTemplate checkbox -->
+    <div class="fusion-ui-form__fieldset">
+      <span class="fusion-ui-form__checkbox">
+        <label for="fusion-ui-checkbox-useFooterTemplate" class="fusion-ui-form__checkbox-label">
+          <input
+            formControlName="useFooterTemplate"
+            class="fusion-ui-form__checkbox-input"
+            type="checkbox"
+            name="fusion-ui-checkbox-useFooterTemplate"
+            id="fusion-ui-checkbox-useFooterTemplate">
+          <span class="fusion-ui-form__checkbox-button"></span>
+          <span class="fusion-ui-form__checkbox-label-text">Use Footer Template</span>
+        </label>
+      </span>
+    </div>
+    <!-- END: useFooterTemplate checkbox -->
+
+    <!-- START: size select -->
+    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
+      <label class="fusion-ui-form__input-label">Size</label>
+      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
+        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="size">
+          <option [value]="FusionUiSize.SMALL">Small</option>
+          <option [value]="FusionUiSize.MEDIUM">Medium</option>
+        </select>
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: size select -->
+
+    <!-- START: hideStatusBarStyling checkbox -->
+    <div class="fusion-ui-form__fieldset">
+      <span class="fusion-ui-form__checkbox">
+        <label for="fusion-ui-checkbox-hideStatusBarStyling" class="fusion-ui-form__checkbox-label">
+          <input
+            formControlName="hideStatusBarStyling"
+            class="fusion-ui-form__checkbox-input"
+            type="checkbox"
+            name="fusion-ui-checkbox-hideStatusBarStyling"
+            id="fusion-ui-checkbox-hideStatusBarStyling">
+          <span class="fusion-ui-form__checkbox-button"></span>
+          <span class="fusion-ui-form__checkbox-label-text">Hide Status Bar Styling</span>
+        </label>
+      </span>
+    </div>
+    <!-- END: hideStatusBarStyling checkbox -->
+
+    <h3 class="fusion-components-demo__form-array-header fusion-ui-h3">Statuses</h3>
+    <div class="fusion-components-demo__form-array">
+      <ng-container formArrayName="statuses" *ngFor="let status of cardForm?.get('statuses')?.controls; let i = index;">
+        <div class="fusion-components-demo__form-array-item" [formGroupName]="i">
+
+          <h3 class="fusion-components-demo__form-array-item-header fusion-ui-h3">
+            Status {{ i }}
+            <button class="fusion-components-demo__form-array-remove-button fusion-ui-button fusion-ui-button--secondary fusion-ui-button--xSmall" (click)="removeStatus(i)">
+              Remove Status
+            </button>
+          </h3>
+
+          <!-- START: status select -->
+          <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
+            <label class="fusion-ui-form__input-label">Status</label>
+            <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
+              <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="status">
+                <option [value]="FusionUiStatusLevel.UNKNOWN">Unknown</option>
+                <option [value]="FusionUiStatusLevel.BASE">Base</option>
+                <option [value]="FusionUiStatusLevel.NORMAL">Normal</option>
+                <option [value]="FusionUiStatusLevel.SUCCESS">Success</option>
+                <option [value]="FusionUiStatusLevel.WARNING">Warning</option>
+                <option [value]="FusionUiStatusLevel.ERROR">Error</option>
+                <option [value]="FusionUiStatusLevel.CRITICAL">Critical</option>
+              </select>
+              <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+            </div>
+          </div>
+          <!-- END: status select -->
+
+          <!-- START: count input -->
+          <div class="fusion-ui-form__fieldset">
+            <label class="fusion-ui-form__input-label">Count</label>
+            <div class="fusion-ui-form__input-wrapper">
+              <input class="fusion-ui-form__input" type="number" formControlName="count" />
+              <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+            </div>
+          </div>
+          <!-- END: count input -->
+
+          <!-- START: text input -->
+          <div class="fusion-ui-form__fieldset">
+            <label class="fusion-ui-form__input-label">Text</label>
+            <div class="fusion-ui-form__input-wrapper">
+              <input class="fusion-ui-form__input" formControlName="text" />
+              <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+            </div>
+          </div>
+          <!-- END: text input -->
+
+          <!-- START: isHidden checkbox -->
+          <div class="fusion-ui-form__fieldset">
+            <span class="fusion-ui-form__checkbox">
+              <label for="fusion-ui-checkbox-isHidden-{{ i }}" class="fusion-ui-form__checkbox-label">
+                <input
+                  formControlName="isHidden"
+                  class="fusion-ui-form__checkbox-input"
+                  type="checkbox"
+                  name="fusion-ui-checkbox-isHidden-{{ i }}"
+                  id="fusion-ui-checkbox-isHidden-{{ i }}">
+                <span class="fusion-ui-form__checkbox-button"></span>
+                <span class="fusion-ui-form__checkbox-label-text">Is Hidden</span>
+              </label>
+            </span>
+          </div>
+          <!-- END: isHidden checkbox -->
+
+          <!-- START: isTextHidden checkbox -->
+          <div class="fusion-ui-form__fieldset">
+            <span class="fusion-ui-form__checkbox">
+              <label for="fusion-ui-checkbox-isTextHidden-{{ i }}" class="fusion-ui-form__checkbox-label">
+                <input
+                  formControlName="isTextHidden"
+                  class="fusion-ui-form__checkbox-input"
+                  type="checkbox"
+                  name="fusion-ui-checkbox-isTextHidden-{{ i }}"
+                  id="fusion-ui-checkbox-isTextHidden-{{ i }}">
+                <span class="fusion-ui-form__checkbox-button"></span>
+                <span class="fusion-ui-form__checkbox-label-text">Is Text Hidden</span>
+              </label>
+            </span>
+          </div>
+          <!-- END: isTextHidden checkbox -->
+
+          <!-- START: isIconHidden checkbox -->
+          <div class="fusion-ui-form__fieldset">
+            <span class="fusion-ui-form__checkbox">
+              <label for="fusion-ui-checkbox-isIconHidden-{{ i }}" class="fusion-ui-form__checkbox-label">
+                <input
+                  formControlName="isIconHidden"
+                  class="fusion-ui-form__checkbox-input"
+                  type="checkbox"
+                  name="fusion-ui-checkbox-isIconHidden-{{ i }}"
+                  id="fusion-ui-checkbox-isIconHidden-{{ i }}">
+                <span class="fusion-ui-form__checkbox-button"></span>
+                <span class="fusion-ui-form__checkbox-label-text">Is Icon Hidden</span>
+              </label>
+            </span>
+          </div>
+          <!-- END: isIconHidden checkbox -->
+
+        </div>
+      </ng-container>
+    </div>
+
+    <button class="fusion-components-demo__form-array-add-button fusion-ui-button fusion-ui-button--primary fusion-ui-button--small" (click)="addNewStatus()">
+      Add New Status
+    </button>
+
+  </form>
+
+  <ng-container result>
+    <fusion-ui-card
+      *ngIf="isLoaded"
+      [title]="cardForm?.get('title')?.value"
+      [content]="cardForm?.get('content')?.value"
+      [details]="cardForm?.get('details')?.value"
+      [footer]="cardForm?.get('footer')?.value"
+      [hideStatusBarStyling]="cardForm?.get('hideStatusBarStyling')?.value"
+      [size]="cardForm?.get('size')?.value"
+      [statuses]="statuses">
+      <ng-template *ngIf="cardForm?.get('useTitleTemplate')?.value" [fusionUiTemplate]="CardTemplate.TITLE">Template Title</ng-template>
+      <ng-template *ngIf="cardForm?.get('useContentTemplate')?.value" [fusionUiTemplate]="CardTemplate.CONTENT">Template Content</ng-template>
+      <ng-template *ngIf="cardForm?.get('useDetailsTemplate')?.value" [fusionUiTemplate]="CardTemplate.DETAILS">Template Details</ng-template>
+      <ng-template *ngIf="cardForm?.get('useFooterTemplate')?.value" [fusionUiTemplate]="CardTemplate.FOOTER">Template Footer</ng-template>
+    </fusion-ui-card>
+  </ng-container>
+
+</fusion-demo>

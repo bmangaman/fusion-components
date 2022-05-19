@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+
+  .fusion-demo {
+    height: 100%;
+
+    .pipe-demo-container {
+      display: flex;
+      flex-direction: row;
+
+      .fusion-ui-form {
+        margin-right: 24px;
+        width: 400px;
+      }
+    }
+  }
+}

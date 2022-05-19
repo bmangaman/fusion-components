@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+
+  .fusion-demo {
+    height: 100%;
+
+    .button-demo-container {
+      display: flex;
+      flex-direction: row;
+
+      .fusion-ui-form {
+        margin-right: 24px;
+        width: 400px;
+      }
+
+      .button-demo-result {
+        flex: 1;
+      }
+    }
+  }
+}

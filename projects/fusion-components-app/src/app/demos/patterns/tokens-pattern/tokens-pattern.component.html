@@ -1,0 +1,31 @@
+<fusion-demo titleText="Tokens">
+
+  <ng-container result>
+    <div class="fusion-demo__section">
+      <h3 class="fusion-ui-h3">Colors</h3>
+      <ng-container *ngFor="let key of colors | objectKeys">
+        <div class="fusion-demo__section">
+          <h4 class="fusion-ui-h4">{{ key }}</h4>
+          <div class="fusion-demo__colors">
+            <div class="fusion-demo__colors-color" *ngFor="let color of colors[key]" [ngStyle]="{ background: color?.value }">
+              <div class="fusion-demo__colors-name fusion-demo__colors-name--{{ color?.textColor }}">{{ color?.name }}</div>
+              <pre class="fusion-demo__colors-text">{{ color?.token }}</pre>
+              <pre class="fusion-demo__colors-text">{{ color?.value }}</pre>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  
+    <div class="fusion-demo__section">
+      <h3 class="fusion-ui-h3">Spacing</h3>
+      <div class="fusion-demo__spacing">
+        <div class="fusion-demo__spacing-space" *ngFor="let space of spacing">
+          <pre class="fusion-demo__spacing-text">{{ space?.token }}</pre>
+          <pre class="fusion-demo__spacing-text">{{ space?.value }}</pre>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+</fusion-demo>

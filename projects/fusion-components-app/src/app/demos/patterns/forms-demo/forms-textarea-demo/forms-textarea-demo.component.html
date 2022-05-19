@@ -1,0 +1,37 @@
+<div class="fusion-demo__example" *ngFor="let inputExample of inputExamples">
+  <div class="fusion-demo__example--demo" [innerHtml]="inputExample | keepHtml"></div>
+  <code class="fusion-demo__example--code">
+    <pre [innerText]="inputExample"></pre>
+  </code>
+</div>
+
+<div class="fusion-demo__example">
+  <div class="fusion-demo__example--demo">
+    <form [formGroup]="demoForm">
+      <div class="fusion-ui-form__fieldset">
+        <label class="fusion-ui-form__input-label" for="textarea-validation-1">Validation Styling (w/ wrapper)</label>
+        <div class="fusion-ui-form__input-wrapper">
+          <textarea formControlName="input" class="fusion-ui-form__input" fusionUiValidationStyling id="textarea-validation-1"></textarea>
+          <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+        </div>
+      </div>
+    </form>
+  </div>
+  <code class="fusion-demo__example--code">
+    <pre [innerText]="validationExamples[0]"></pre>
+  </code>
+</div>
+
+<div class="fusion-demo__example">
+  <div class="fusion-demo__example--demo">
+    <form [formGroup]="demoForm">
+      <div class="fusion-ui-form__fieldset">
+        <label class="fusion-ui-form__input-label" for="textarea-validation-2">Validation Styling (w/o wrapper)</label>
+        <textarea formControlName="input2" class="fusion-ui-form__input" fusionUiValidationStyling id="textarea-validation-2"></textarea>
+      </div>
+    </form>
+  </div>
+  <code class="fusion-demo__example--code">
+    <pre [innerText]="validationExamples[1]"></pre>
+  </code>
+</div>

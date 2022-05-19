@@ -1,0 +1,16 @@
+<div class="fusion-components-demo">
+  <h2 class="fusion-components-demo__header fusion-ui-h2">{{ titleText }}</h2>
+
+  <div class="fusion-components-demo__container">
+
+    <div class="fusion-components-demo__form-container">
+      <ng-content select="[form]"></ng-content>
+    </div>
+
+    <div class="fusion-components-demo__result" [ngClass]="{ 'fusion-components-demo__result--centered' : isResultCentered }">
+      <ng-content select="[result]"></ng-content>
+    </div>
+
+  </div>
+
+</div>

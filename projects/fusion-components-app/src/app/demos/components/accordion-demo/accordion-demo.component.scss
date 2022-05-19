@@ -1,0 +1,63 @@
+:host {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+
+  .fusion-demo {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+
+    .pipe-demo-container {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      overflow: hidden;
+
+      .fusion-ui-form {
+        display: flex;
+        flex-direction: column;
+        margin-right: 24px;
+        width: 400px;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .pipe-demo-result {
+        flex: 1;
+        height: 100%;
+        overflow: auto;
+      }
+    }
+  }
+
+
+  .toggle-all-button {
+    margin-bottom: 12px;
+  }
+
+  .panels {
+    flex: 1;
+    overflow: auto;
+    margin: 12px;
+
+    .panel {
+      border-bottom: 1px solid #CCC;
+      padding: 16px 8px;
+  
+      h3 {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &:nth-child(even) {
+        background-color: #F5F5F5;
+      }
+    }
+
+    .add-panel-button {
+      margin-top: 12px;
+    }
+  }
+}

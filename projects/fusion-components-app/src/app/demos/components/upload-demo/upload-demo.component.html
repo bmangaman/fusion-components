@@ -1,0 +1,237 @@
+<fusion-demo titleText="Upload">
+
+  <form form class="fusion-components-demo__form fusion-ui-form" *ngIf="uploadForm" [formGroup]="uploadForm">
+    <h3>Configuration Options:</h3>
+
+    <!-- START: is browse hidden checkbox -->
+    <div class="fusion-ui-form__fieldset">
+      <span class="fusion-ui-form__checkbox">
+        <label for="fusion-ui-checkbox-isBrowseHidden" class="fusion-ui-form__checkbox-label">
+          <input
+            class="fusion-ui-form__checkbox-input"
+            type="checkbox"
+            value="true"
+            name="fusion-ui-checkbox-isBrowseHidden"
+            id="fusion-ui-checkbox-isBrowseHidden"
+            formControlName="isBrowseHidden">
+          <span class="fusion-ui-form__checkbox-button"></span>
+          <span class="fusion-ui-form__checkbox-label-text">Is Browse Hidden</span>
+        </label>
+      </span>
+    </div>
+    <!-- END: is browse hidden checkbox -->
+
+    <!-- START: is browse disabled checkbox -->
+    <div class="fusion-ui-form__fieldset">
+      <span class="fusion-ui-form__checkbox">
+        <label for="fusion-ui-checkbox-isBrowseDisabled" class="fusion-ui-form__checkbox-label">
+          <input
+            class="fusion-ui-form__checkbox-input"
+            type="checkbox"
+            value="true"
+            name="fusion-ui-checkbox-isBrowseDisabled"
+            id="fusion-ui-checkbox-isBrowseDisabled"
+            formControlName="isBrowseDisabled">
+          <span class="fusion-ui-form__checkbox-button"></span>
+          <span class="fusion-ui-form__checkbox-label-text">Is Browse Disabled</span>
+        </label>
+      </span>
+    </div>
+    <!-- END: is browse disabled checkbox -->
+
+    <!-- START: are multiple files allowed checkbox -->
+    <div class="fusion-ui-form__fieldset">
+      <span class="fusion-ui-form__checkbox">
+        <label for="fusion-ui-checkbox-areMultipleFilesAllowed" class="fusion-ui-form__checkbox-label">
+          <input
+            class="fusion-ui-form__checkbox-input"
+            type="checkbox"
+            value="true"
+            name="fusion-ui-checkbox-areMultipleFilesAllowed"
+            id="fusion-ui-checkbox-areMultipleFilesAllowed"
+            formControlName="areMultipleFilesAllowed">
+          <span class="fusion-ui-form__checkbox-button"></span>
+          <span class="fusion-ui-form__checkbox-label-text">Are Multiple Files Allowed</span>
+        </label>
+      </span>
+    </div>
+    <!-- END: are multiple files allowed checkbox -->
+
+    <!-- START: are files uploaded together checkbox -->
+    <div class="fusion-ui-form__fieldset">
+      <span class="fusion-ui-form__checkbox">
+        <label for="fusion-ui-checkbox-areFilesUploadedTogether" class="fusion-ui-form__checkbox-label">
+          <input
+            class="fusion-ui-form__checkbox-input"
+            type="checkbox"
+            value="true"
+            name="fusion-ui-checkbox-areFilesUploadedTogether"
+            id="fusion-ui-checkbox-areFilesUploadedTogether"
+            formControlName="areFilesUploadedTogether">
+          <span class="fusion-ui-form__checkbox-button"></span>
+          <span class="fusion-ui-form__checkbox-label-text">Are Files Uploaded Together</span>
+        </label>
+      </span>
+    </div>
+    <!-- END: are files uploaded together checkbox -->
+
+    <!-- START: is upload manual checkbox -->
+    <div class="fusion-ui-form__fieldset">
+      <span class="fusion-ui-form__checkbox">
+        <label for="fusion-ui-checkbox-isUploadManual" class="fusion-ui-form__checkbox-label">
+          <input
+            class="fusion-ui-form__checkbox-input"
+            type="checkbox"
+            value="true"
+            name="fusion-ui-checkbox-isUploadManual"
+            id="fusion-ui-checkbox-isUploadManual"
+            formControlName="isUploadManual">
+          <span class="fusion-ui-form__checkbox-button"></span>
+          <span class="fusion-ui-form__checkbox-label-text">Is Upload Manual</span>
+        </label>
+      </span>
+    </div>
+    <!-- END: is upload manual checkbox -->
+
+    <!-- START: is size hidden checkbox -->
+    <div class="fusion-ui-form__fieldset">
+      <span class="fusion-ui-form__checkbox">
+        <label for="fusion-ui-checkbox-isSizeHidden" class="fusion-ui-form__checkbox-label">
+          <input
+            class="fusion-ui-form__checkbox-input"
+            type="checkbox"
+            value="true"
+            name="fusion-ui-checkbox-isSizeHidden"
+            id="fusion-ui-checkbox-isSizeHidden"
+            formControlName="isSizeHidden">
+          <span class="fusion-ui-form__checkbox-button"></span>
+          <span class="fusion-ui-form__checkbox-label-text">Is Size Hidden</span>
+        </label>
+      </span>
+    </div>
+    <!-- END: is size hidden checkbox -->
+
+    <!-- START: is dismiss button hidden checkbox -->
+    <div class="fusion-ui-form__fieldset">
+      <span class="fusion-ui-form__checkbox">
+        <label for="fusion-ui-checkbox-isDismissButtonHidden" class="fusion-ui-form__checkbox-label">
+          <input
+            class="fusion-ui-form__checkbox-input"
+            type="checkbox"
+            value="true"
+            name="fusion-ui-checkbox-isDismissButtonHidden"
+            id="fusion-ui-checkbox-isDismissButtonHidden"
+            formControlName="isDismissButtonHidden">
+          <span class="fusion-ui-form__checkbox-button"></span>
+          <span class="fusion-ui-form__checkbox-label-text">Is Dismiss Button Hidden</span>
+        </label>
+      </span>
+    </div>
+    <!-- END: is dismiss button hidden checkbox -->
+
+    <!-- START: is cancel button hidden checkbox -->
+    <div class="fusion-ui-form__fieldset">
+      <span class="fusion-ui-form__checkbox">
+        <label for="fusion-ui-checkbox-isCancelButtonHidden" class="fusion-ui-form__checkbox-label">
+          <input
+            class="fusion-ui-form__checkbox-input"
+            type="checkbox"
+            value="true"
+            name="fusion-ui-checkbox-isCancelButtonHidden"
+            id="fusion-ui-checkbox-isCancelButtonHidden"
+            formControlName="isCancelButtonHidden">
+          <span class="fusion-ui-form__checkbox-button"></span>
+          <span class="fusion-ui-form__checkbox-label-text">Is Cancel Button Hidden</span>
+        </label>
+      </span>
+    </div>
+    <!-- END: is cancel button hidden checkbox -->
+
+    <!-- START: is progress section checkbox -->
+    <div class="fusion-ui-form__fieldset">
+      <span class="fusion-ui-form__checkbox">
+        <label for="fusion-ui-checkbox-isProgressSectionHidden" class="fusion-ui-form__checkbox-label">
+          <input
+            class="fusion-ui-form__checkbox-input"
+            type="checkbox"
+            value="true"
+            name="fusion-ui-checkbox-isProgressSectionHidden"
+            id="fusion-ui-checkbox-isProgressSectionHidden"
+            formControlName="isProgressSectionHidden">
+          <span class="fusion-ui-form__checkbox-button"></span>
+          <span class="fusion-ui-form__checkbox-label-text">Is Progress Section Hidden</span>
+        </label>
+      </span>
+    </div>
+    <!-- END: is progress section checkbox -->
+
+    <!-- START: is progress in bytes checkbox -->
+    <div class="fusion-ui-form__fieldset">
+      <span class="fusion-ui-form__checkbox">
+        <label for="fusion-ui-checkbox-isProgressInBytes" class="fusion-ui-form__checkbox-label">
+          <input
+            class="fusion-ui-form__checkbox-input"
+            type="checkbox"
+            value="true"
+            name="fusion-ui-checkbox-isProgressInBytes"
+            id="fusion-ui-checkbox-isProgressInBytes"
+            formControlName="isProgressInBytes">
+          <span class="fusion-ui-form__checkbox-button"></span>
+          <span class="fusion-ui-form__checkbox-label-text">Is Progress In Bytes</span>
+        </label>
+      </span>
+    </div>
+    <!-- END: is progress in bytes checkbox -->
+
+    <!-- START: make upload error checkbox -->
+    <div class="fusion-ui-form__fieldset">
+      <span class="fusion-ui-form__checkbox">
+        <label for="fusion-ui-checkbox-makeUploadError" class="fusion-ui-form__checkbox-label">
+          <input
+            class="fusion-ui-form__checkbox-input"
+            type="checkbox"
+            value="true"
+            name="fusion-ui-checkbox-makeUploadError"
+            id="fusion-ui-checkbox-makeUploadError"
+            formControlName="makeUploadError">
+          <span class="fusion-ui-form__checkbox-button"></span>
+          <span class="fusion-ui-form__checkbox-label-text">Simulate Upload Error</span>
+        </label>
+      </span>
+    </div>
+    <!-- END: make upload error checkbox -->
+
+  </form>
+
+  <ng-container result>
+    <fusion-ui-upload
+      [uploadFilesFunction]="uploadFilesFunction.bind(this)"
+      [removeFilesFunction]="removeFilesFunction.bind(this)"
+
+      [isBrowseHidden]="uploadForm?.get('isBrowseHidden')?.value"
+      [isBrowseDisabled]="uploadForm?.get('isBrowseDisabled')?.value"
+      [areMultipleFilesAllowed]="uploadForm?.get('areMultipleFilesAllowed')?.value"
+      [areFilesUploadedTogether]="uploadForm?.get('areFilesUploadedTogether')?.value"
+      [isUploadManual]="uploadForm?.get('isUploadManual')?.value"
+      [isSizeHidden]="uploadForm?.get('isSizeHidden')?.value"
+      [isDismissButtonHidden]="uploadForm?.get('isDismissButtonHidden')?.value"
+      [isCancelButtonHidden]="uploadForm?.get('isCancelButtonHidden')?.value"
+      [isProgressSectionHidden]="uploadForm?.get('isProgressSectionHidden')?.value"
+      [isProgressInBytes]="uploadForm?.get('isProgressInBytes')?.value"
+
+      (fileSelection)="fileSelection($event)"
+      (uploadUpdated)="uploadUpdated($event)"
+      (uploadFinished)="uploadFinished($event)"
+      (uploadCancelled)="uploadCancelled($event)">
+    </fusion-ui-upload>
+
+    <div class="fusion-components-demo__result-events">
+      <div class="fusion-components-demo__result-event" [ngClass]="{ 'fusion-components-demo__result-event--emitted' : fileSelectionCount }">File Selection ({{ fileSelectionCount }})</div>
+      <div class="fusion-components-demo__result-event" [ngClass]="{ 'fusion-components-demo__result-event--emitted' : uploadUpdatedCount }">Upload Updated ({{ uploadUpdatedCount }})</div>
+      <div class="fusion-components-demo__result-event" [ngClass]="{ 'fusion-components-demo__result-event--emitted' : uploadFinishedCount }">Upload Finished ({{ uploadFinishedCount }})</div>
+      <div class="fusion-components-demo__result-event" [ngClass]="{ 'fusion-components-demo__result-event--emitted' : uploadCancelledCount }">Upload Cancelled ({{ uploadCancelledCount }})</div>
+      <fusion-ui-button text="Reset State" (buttonClick)="resetState()"></fusion-ui-button>
+    </div>
+  </ng-container>
+
+</fusion-demo>

@@ -1,0 +1,4 @@
+<div class="fusion-demo__example" *ngFor="let buttonGroupExample of buttonGroupExamples">
+  <div class="fusion-demo__example--demo" [innerHtml]="buttonGroupExample | keepHtml"></div>
+  <code class="fusion-demo__example--code"><pre [innerText]="buttonGroupExample"></pre></code>
+</div>

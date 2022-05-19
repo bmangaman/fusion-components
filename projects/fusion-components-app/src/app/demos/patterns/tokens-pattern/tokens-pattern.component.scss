@@ -1,0 +1,82 @@
+:host {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+
+  .fusion-demo {
+    height: 100%;
+    overflow: auto;
+
+    &__section {
+      h4 {
+        margin-bottom: 12px;
+      }
+
+      & + .fusion-demo__section {
+        margin-top: 32px;
+      }
+    }
+
+    &__colors {
+      width: 100%;
+      max-width: 1024px;
+
+      &-color {
+        display: flex;
+        width: 100%;
+        padding: 12px 0;
+        align-items: center;
+        flex-wrap: nowrap;
+
+        & > * {
+          margin: 0 12px;
+          white-space: nowrap;
+        }
+      }
+      
+      &-name {
+        flex: 1;
+
+        &--dark {
+          color: black;
+        }
+
+        &--light {
+          color: white;
+        }
+      }
+
+      &-text {
+        display: inline-block;
+        padding: 4px 8px;
+        background: white;
+        border-radius: 2px;
+        margin: 0;
+      }
+    }
+
+    &__spacing {
+      width: 100%;
+      max-width: 1024px;
+      border: 1px solid #CCC;
+
+      &-space {
+        display: flex;
+        width: 100%;
+        padding: 12px 0;
+        align-items: center;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+
+        & > * {
+          margin: 0 12px;
+          white-space: nowrap;
+        }
+
+        & + .fusion-demo__spacing-space {
+          border-top: 1px solid #CCC;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+@import 'tokens/tokens.scss';
+
+.fusion-components-demo {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+
+  &__header {
+    border-bottom: $fusion-ui-border-light;
+    padding: $fusion-ui-spacing-md;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+
+    &-container {
+      background-color: $fusion-ui-color-background-light;
+      border-right: $fusion-ui-border-light;
+      height: 100%;
+      overflow: hidden;
+      padding: $fusion-ui-spacing-md;
+      width: 400px;
+
+      &:empty {
+        display: none;
+      }
+    }
+
+    &-array {
+      flex: 1;
+      overflow: auto;
+      margin: $fusion-ui-spacing-sm 0;
+
+      &-header {
+        margin-top: $fusion-ui-spacing-md;
+      }
+    
+      &-item {
+        background-color: $fusion-ui-color-background-white;
+        border: $fusion-ui-border-light;
+        border-radius: $fusion-ui-border-radius-md;
+        padding: $fusion-ui-spacing-md;
+    
+        &-header {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: $fusion-ui-spacing-md;
+        }
+
+        & + * {
+          margin-top: $fusion-ui-spacing-md;
+        }
+      }
+    
+      &-add-button {
+        margin-top: 12px;
+      }
+    }
+  }
+
+  &__result {
+    flex: 1;
+    height: 100%;
+    overflow: auto;
+    padding: $fusion-ui-spacing-md;
+
+    &:empty {
+      display: none;
+    }
+
+    &--centered {
+      align-items: center;
+      align-content: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    &-events {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: $fusion-ui-spacing-lg;
+
+      > * + * {
+        margin-left: $fusion-ui-spacing-md;
+      }
+    }
+
+    &-event {
+      padding: $fusion-ui-spacing-xs $fusion-ui-spacing-sm;
+      border: 1px solid #BBB;
+      border-radius: 3px;
+      opacity: 0.5;
+
+      &--emitted {
+        opacity: 1;
+        border-color: $fusion-ui-color-success-chart;
+        background: $fusion-ui-color-success-background;
+      }
+    }
+  }
+}

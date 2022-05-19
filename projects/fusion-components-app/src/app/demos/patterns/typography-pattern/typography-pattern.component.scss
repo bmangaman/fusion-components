@@ -1,0 +1,33 @@
+@import 'tokens/tokens.scss';
+
+:host {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+
+  .fusion-demo {
+    height: 100%;
+    overflow: auto;
+
+    &__section {
+      max-width: 800px;
+
+      & + .fusion-demo__section {
+        margin-top: $fusion-ui-spacing-lg;
+      }
+    }
+  }
+
+  ::ng-deep fusion-ui-table p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.pattern-code {
+  font-family: monospace;
+  border: $fusion-ui-border-light;
+  background-color: $fusion-ui-color-background-light;
+  padding: $fusion-ui-spacing-xxs;
+  border-radius: $fusion-ui-border-radius-sm;
+}

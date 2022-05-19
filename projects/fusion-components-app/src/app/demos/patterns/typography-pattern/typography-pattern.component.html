@@ -1,0 +1,149 @@
+<fusion-demo titleText="Typography">
+
+  <ng-container result>
+    <p>These type styles use LUCI as a basis, but for the most part have been tweaked to be smaller across the board. This better meets the need for our interfaces, which often need to display more condensed information.</p>
+    <p>Our applications use the Source Sans Pro font family. Four (4) font weights are provided to establish hierarchy, ensure legibility and create on-screen harmony.</p>
+    <a href="http://luci.netapp.com/visual-language/typography.html" target="_blank">LUCI Typography</a>
+  
+    <br />
+  
+    <div class="fusion-demo__section">
+      <fusion-ui-table tableTitle="Line Height" [type]="TableType.BASIC" [data]="lineHeights">
+        <fusion-ui-table-column header="Variable" field="variable">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-lineHeight>
+            <code class="pattern-code">{{ lineHeight?.variable }}</code>
+          </ng-template>
+        </fusion-ui-table-column>
+  
+        <fusion-ui-table-column  header="Height" field="height" [defaultSort]="TableColumnSorted.ASCENDING">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-lineHeight>
+            {{ lineHeight?.height }}em
+          </ng-template>
+        </fusion-ui-table-column>
+  
+        <fusion-ui-table-column  header="Result" field="result">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-lineHeight>
+            <div [innerHTML]="lineHeight?.result"></div>
+          </ng-template>
+        </fusion-ui-table-column>
+      </fusion-ui-table>
+    </div>
+    
+    <div class="fusion-demo__section">
+      <fusion-ui-table tableTitle="Font Weight" [type]="TableType.BASIC" [data]="fontWeights">
+        <fusion-ui-table-column header="Variable" field="variable">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-fontWeight>
+            <code class="pattern-code">{{ fontWeight?.variable }}</code>
+          </ng-template>
+        </fusion-ui-table-column>
+  
+        <fusion-ui-table-column  header="Weight" field="weight" [defaultSort]="TableColumnSorted.ASCENDING">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-fontWeight>
+            {{ fontWeight?.weight }}px
+          </ng-template>
+        </fusion-ui-table-column>
+  
+        <fusion-ui-table-column  header="Result" field="result">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-fontWeight>
+            <div [innerHTML]="fontWeight?.result"></div>
+          </ng-template>
+        </fusion-ui-table-column>
+      </fusion-ui-table>
+    </div>
+  
+    <div class="fusion-demo__section">
+      <fusion-ui-table tableTitle="Font Size" [type]="TableType.BASIC" [data]="fontSizes">
+        <fusion-ui-table-column header="Variable" field="variable">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-fontSize>
+            <code class="pattern-code">{{ fontSize?.variable }}</code>
+          </ng-template>
+        </fusion-ui-table-column>
+  
+        <fusion-ui-table-column  header="Size" field="size" [defaultSort]="TableColumnSorted.ASCENDING">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-fontSize>
+            {{ fontSize?.size }}px
+          </ng-template>
+        </fusion-ui-table-column>
+  
+        <fusion-ui-table-column  header="Result" field="result">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-fontSize>
+            <div [innerHTML]="fontSize?.result"></div>
+          </ng-template>
+        </fusion-ui-table-column>
+      </fusion-ui-table>
+    </div>
+  
+    <div class="fusion-demo__section">
+      <fusion-ui-table tableTitle="Headers" [type]="TableType.BASIC" [data]="headers">
+        <fusion-ui-table-column header="Level" field="level"></fusion-ui-table-column>
+  
+        <fusion-ui-table-column  header="Size" field="size">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-header>
+            {{ header?.size }}px
+          </ng-template>
+        </fusion-ui-table-column>
+  
+        <fusion-ui-table-column header="Weight" field="weight">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-header>
+            {{ header?.weight }}px
+          </ng-template>
+        </fusion-ui-table-column>
+  
+        <fusion-ui-table-column header="Height" field="height">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-header>
+            {{ header?.height }}px
+          </ng-template>
+        </fusion-ui-table-column>
+  
+        
+        <fusion-ui-table-column header="Class" field="class">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-header>
+            <code class="pattern-code">{{ header?.class }}</code>
+          </ng-template>
+        </fusion-ui-table-column>
+  
+        <fusion-ui-table-column  header="Result" field="result">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-header>
+            <div [innerHTML]="header?.result"></div>
+          </ng-template>
+        </fusion-ui-table-column>
+      </fusion-ui-table>
+    </div>
+  
+    <div class="fusion-demo__section">
+      <fusion-ui-table tableTitle="Paragraphs" [type]="TableType.BASIC" [data]="paragraphs">
+        <fusion-ui-table-column header="Level" field="level"></fusion-ui-table-column>
+  
+        <fusion-ui-table-column header="Size" field="size">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-paragraph>
+            {{ paragraph?.size }}px
+          </ng-template>
+        </fusion-ui-table-column>
+  
+        <fusion-ui-table-column header="Weight" field="weight">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-paragraph>
+            {{ paragraph?.weight }}px
+          </ng-template>
+        </fusion-ui-table-column>
+  
+        <fusion-ui-table-column header="Height" field="height">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-paragraph>
+            {{ paragraph?.height }}px
+          </ng-template>
+        </fusion-ui-table-column>
+  
+        
+        <fusion-ui-table-column header="Class" field="class">
+          <ng-template [fusionUiTemplate]="TableTemplate.TABLE_CELL" let-paragraph>
+            <code class="pattern-code">{{ paragraph?.class }}</code>
+          </ng-template>
+        </fusion-ui-table-column>
+  
+        <ng-template [fusionUiTemplate]="TableTemplate.ROW_EXPANSION" let-paragraph>
+          <div [innerHTML]="paragraph?.result"></div>
+        </ng-template>
+      </fusion-ui-table>
+    </div>
+  </ng-container>
+
+</fusion-demo>

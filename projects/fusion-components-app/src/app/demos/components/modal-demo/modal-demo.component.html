@@ -1,0 +1,56 @@
+<fusion-demo titleText="Modal2">
+
+  <form form class="fusion-components-demo__form fusion-ui-form" *ngIf="modalForm" [formGroup]="modalForm">
+
+    <!-- START: type select -->
+    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
+      <label for="typeSelect" class="fusion-ui-form__input-label">Type</label>
+      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
+        <select id="typeSelect" class="fusion-ui-form__input fusion-ui-form__select" formControlName="type">
+          <option [value]="ModalType.ALERT">Alert</option>
+          <option [value]="ModalType.SIDE">Side</option>
+          <option [value]="ModalType.FULL">Full</option>
+        </select>
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: type select -->
+
+    <!-- START: size select -->
+    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
+      <label for="containerSelect" class="fusion-ui-form__input-label">Container</label>
+      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
+        <select id="containerSelect" class="fusion-ui-form__input fusion-ui-form__select" formControlName="container">
+          <option [value]="'body'">body</option>
+          <option [value]="'.fusion-components-demo'">.fusion-components-demo</option>
+          <option [value]="'.fusion-components-demo__result'">.fusion-components-demo__result</option>
+        </select>
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: size select -->
+
+    <!-- START: size select -->
+    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
+      <label for="sizeSelect" class="fusion-ui-form__input-label">Size (N/A for full modals)</label>
+      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
+        <select id="sizeSelect" class="fusion-ui-form__input fusion-ui-form__select" formControlName="size">
+          <option [value]="FusionUiSize.SMALL">Small</option>
+          <option [value]="FusionUiSize.MEDIUM">Medium</option>
+          <option [value]="FusionUiSize.LARGE">Large</option>
+        </select>
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: size select -->
+
+    <fusion-ui-button
+      (buttonClick)="openModal()"
+      [text]="'Open Modal'">
+
+    </fusion-ui-button>
+  </form>
+
+  <ng-container result></ng-container>
+
+</fusion-demo>

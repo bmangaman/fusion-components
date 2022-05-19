@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+
+  .fusion-demo-header {
+    margin-bottom: 24px;
+  }
+
+  ::ng-deep {
+    .fusion-ui-button:not(.fusion-ui-button__radio):not(.fusion-ui-button__checkbox) + .fusion-ui-button:not(.fusion-ui-button__radio):not(.fusion-ui-button__checkbox) {
+      margin-left: 12px;
+    }
+  }
+}

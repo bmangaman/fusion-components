@@ -1,0 +1,69 @@
+<fusion-demo titleText="Badge">
+
+  <form form class="fusion-components-demo__form fusion-ui-form" *ngIf="badgeForm" [formGroup]="badgeForm">
+    <!-- START: type select -->
+    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
+      <label class="fusion-ui-form__input-label">Type</label>
+      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
+        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="type">
+          <option [value]="FusionUiStatusLevel.UNKNOWN">UNKNOWN (0)</option>
+          <option [value]="FusionUiStatusLevel.BASE">BASE (1)</option>
+          <option [value]="FusionUiStatusLevel.NORMAL">NORMAL (2)</option>
+          <option [value]="FusionUiStatusLevel.SUCCESS">SUCCESS (3)</option>
+          <option [value]="FusionUiStatusLevel.WARNING">WARNING (4)</option>
+          <option [value]="FusionUiStatusLevel.ERROR">ERROR (5)</option>
+          <option [value]="FusionUiStatusLevel.CRITICAL">CRITICAL (6)</option>
+        </select>
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: type select -->
+
+    <!-- START: size select -->
+    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
+      <label class="fusion-ui-form__input-label">Size</label>
+      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
+        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="size">
+          <option [value]="FusionUiSize.X_SMALL">X Small</option>
+          <option [value]="FusionUiSize.SMALL">Small</option>
+          <option [value]="FusionUiSize.MEDIUM">Medium</option>
+          <option [value]="FusionUiSize.LARGE">Large</option>
+        </select>
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: size select -->
+
+    <!-- START: text input -->
+    <div class="fusion-ui-form__fieldset">
+      <label class="fusion-ui-form__input-label">Text</label>
+      <div class="fusion-ui-form__input-wrapper">
+        <input class="fusion-ui-form__input" formControlName="text" />
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: text input -->
+
+    <!-- START: subtext input -->
+    <div class="fusion-ui-form__fieldset">
+      <label class="fusion-ui-form__input-label">Subtext</label>
+      <div class="fusion-ui-form__input-wrapper">
+        <input class="fusion-ui-form__input" formControlName="subText" />
+        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      </div>
+    </div>
+    <!-- END: subtext input -->
+
+  </form>
+
+  <ng-container result>
+    <fusion-ui-badge
+      [fillContainer]="badgeForm?.get('fillContainer')?.value"
+      [type]="badgeForm?.get('type')?.value"
+      [size]="badgeForm?.get('size')?.value"
+      [text]="badgeForm?.get('text')?.value"
+      [subText]="badgeForm?.get('subText')?.value">
+    </fusion-ui-badge>
+  </ng-container>
+
+</fusion-demo>

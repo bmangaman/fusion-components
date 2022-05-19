@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+
+  ::ng-deep {
+    .access-locked-color-red-highlight {
+      background-color: rgba(235, 73, 33, 0.3);
+    }
+
+    .overflow-hidden-table-cell {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+}
