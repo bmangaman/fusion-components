@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 
-import { PipeItem } from '@fusion-ui/fusion-components/lib/pipes';
-import { FusionUiStatusLevel } from '@fusion-ui/fusion-components/lib/shared';
+import { PipeItem } from '@fusion-components/lib/pipes';
+import { StatusLevel } from '@fusion-components/lib/shared';
 import { DEFAULT_LINEAR_GAUGE_TRANSLATIONS, LinearGaugeState, LinearGaugeThreshold, LinearGaugeTranslations } from './linear-gauge.interface';
 
 /**
@@ -11,14 +11,14 @@ import { DEFAULT_LINEAR_GAUGE_TRANSLATIONS, LinearGaugeState, LinearGaugeThresho
  * of something.
  */
 @Component({
-  selector: 'fusion-ui-linear-gauge',
+  selector: 'f-linear-gauge',
   templateUrl: './linear-gauge.component.html',
 })
 export class LinearGaugeComponent implements OnChanges {
-  readonly FusionUiStatusLevel = FusionUiStatusLevel;
+  readonly StatusLevel = StatusLevel;
 
-  private _level: FusionUiStatusLevel = FusionUiStatusLevel.BASE;
-  get level(): FusionUiStatusLevel {
+  private _level: StatusLevel = StatusLevel.BASE;
+  get level(): StatusLevel {
     return this._level;
   }
 
@@ -88,20 +88,20 @@ export class LinearGaugeComponent implements OnChanges {
    */
   calculateLevel(): number {
     if (!this.thresholds || !this.thresholds.length) {
-      return FusionUiStatusLevel.BASE;
+      return StatusLevel.BASE;
     }
 
     if (this.value >= this.maxValue) {
-      return FusionUiStatusLevel.CRITICAL;
+      return StatusLevel.CRITICAL;
     }
 
-    const crossedThresholds: FusionUiStatusLevel[] = this.thresholds
+    const crossedThresholds: StatusLevel[] = this.thresholds
       .filter((threshold: LinearGaugeThreshold) => threshold.passed = threshold.value <= this.value)
       .sort((threshold: LinearGaugeThreshold) => threshold.level)
       .map((threshold: LinearGaugeThreshold) => threshold.level);
-    const largestThresholdLevelPassed: FusionUiStatusLevel = Math.max.apply(Math, crossedThresholds);
+    const largestThresholdLevelPassed: StatusLevel = Math.max.apply(Math, crossedThresholds);
 
-    return largestThresholdLevelPassed >= 0 ? largestThresholdLevelPassed : FusionUiStatusLevel.NORMAL;
+    return largestThresholdLevelPassed >= 0 ? largestThresholdLevelPassed : StatusLevel.NORMAL;
   }
 
   /**

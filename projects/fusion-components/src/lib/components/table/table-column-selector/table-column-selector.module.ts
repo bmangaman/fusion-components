@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { ButtonModule } from '@fusion-ui/fusion-components/lib/components/button';
-import { MenuModule } from '@fusion-ui/fusion-components/lib/components/menu';
+import { ButtonModule } from '@fusion-components/lib/components/button';
+import { MenuModule } from '@fusion-components/lib/components/menu';
 
 import { TableColumnSelectorComponent } from './table-column-selector.component';
 

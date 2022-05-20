@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services';
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { TranslateService } from '@ngx-translate/core';
 
 import { Subscription } from 'rxjs';

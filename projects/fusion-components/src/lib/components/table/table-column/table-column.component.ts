@@ -1,6 +1,6 @@
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, Input, QueryList, TemplateRef } from '@angular/core';
 
-import { TemplateDirective } from '@fusion-ui/fusion-components/lib/directives/template';
+import { TemplateDirective } from '@fusion-components/lib/directives/template';
 import {
   TableCellContentAlignment,
   TableCellContentVerticalAlignment,
@@ -13,7 +13,7 @@ import {
  * TABLE COLUMN COMPONENT
  */
 @Component({
-  selector: 'fusion-ui-table-column',
+  selector: 'f-table-column',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

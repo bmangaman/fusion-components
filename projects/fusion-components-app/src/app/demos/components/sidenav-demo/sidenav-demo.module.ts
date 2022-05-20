@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { SidenavModule } from '@fusion-ui/fusion-components';
+import { SidenavModule } from '@fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { SidenavDemoComponent } from './sidenav-demo.component';

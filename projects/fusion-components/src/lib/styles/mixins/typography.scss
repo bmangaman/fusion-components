@@ -11,161 +11,161 @@
 
 
 // headers (h1, h2, h3, h4, h5)
-@mixin fusion-ui-h1 {
-  font-size: $fusion-ui-font-size-h1;
-  font-weight: $fusion-ui-font-weight-light;
-  line-height: $fusion-ui-line-height-h1;
+@mixin f-h1 {
+  font-size: $f-font-size-h1;
+  font-weight: $f-font-weight-light;
+  line-height: $f-line-height-h1;
 }
-.fusion-ui-h1 {
+.f-h1 {
   @include reset-header;
-  @include fusion-ui-h1;
+  @include f-h1;
 }
 
-@mixin fusion-ui-h2 {
-  font-size: $fusion-ui-font-size-h2;
-  font-weight: $fusion-ui-font-weight-semibold;
-  line-height: $fusion-ui-line-height-h2;
+@mixin f-h2 {
+  font-size: $f-font-size-h2;
+  font-weight: $f-font-weight-semibold;
+  line-height: $f-line-height-h2;
 }
-.fusion-ui-h2 {
+.f-h2 {
   @include reset-header;
-  @include fusion-ui-h2;
+  @include f-h2;
 }
 
-@mixin fusion-ui-h3 {
-  font-size: $fusion-ui-font-size-h3;
-  font-weight: $fusion-ui-font-weight-semibold;
-  line-height: $fusion-ui-line-height-h3;
+@mixin f-h3 {
+  font-size: $f-font-size-h3;
+  font-weight: $f-font-weight-semibold;
+  line-height: $f-line-height-h3;
 }
-.fusion-ui-h3 {
+.f-h3 {
   @include reset-header;
-  @include fusion-ui-h3;
+  @include f-h3;
 }
 
-@mixin fusion-ui-h4 {
-  font-size: $fusion-ui-font-size-h4;
-  font-weight: $fusion-ui-font-weight-semibold;
-  line-height: $fusion-ui-line-height-h4;
+@mixin f-h4 {
+  font-size: $f-font-size-h4;
+  font-weight: $f-font-weight-semibold;
+  line-height: $f-line-height-h4;
 }
-.fusion-ui-h4 {
+.f-h4 {
   @include reset-header;
-  @include fusion-ui-h4;
+  @include f-h4;
 }
 
-@mixin fusion-ui-h5 {
-  font-size: $fusion-ui-font-size-h5;
-  font-weight: $fusion-ui-font-weight-semibold;
-  line-height: $fusion-ui-line-height-h5;
+@mixin f-h5 {
+  font-size: $f-font-size-h5;
+  font-weight: $f-font-weight-semibold;
+  line-height: $f-line-height-h5;
 }
-.fusion-ui-h5 {
+.f-h5 {
   @include reset-header;
-  @include fusion-ui-h5;
+  @include f-h5;
 }
 
 
 // paragraphs (p)
-@mixin fusion-ui-p-sm {
-  font-size: $fusion-ui-font-size-paragraph-sm;
-  font-weight: $fusion-ui-font-weight-regular;
-  line-height: $fusion-ui-line-height-paragraph-sm;
+@mixin f-p-sm {
+  font-size: $f-font-size-paragraph-sm;
+  font-weight: $f-font-weight-regular;
+  line-height: $f-line-height-paragraph-sm;
 
-  & + .fusion-ui-p-sm {
-    margin-top: $fusion-ui-spacing-sm;
+  & + .f-p-sm {
+    margin-top: $f-spacing-sm;
   }
 }
-.fusion-ui-p-sm {
+.f-p-sm {
   @include reset-margin-and-padding;
-  @include fusion-ui-p-sm;
+  @include f-p-sm;
 }
 
-@mixin fusion-ui-p-md {
-  font-size: $fusion-ui-font-size-paragraph-md;
-  font-weight: $fusion-ui-font-weight-regular;
-  line-height: $fusion-ui-line-height-paragraph-md;
+@mixin f-p-md {
+  font-size: $f-font-size-paragraph-md;
+  font-weight: $f-font-weight-regular;
+  line-height: $f-line-height-paragraph-md;
 
-  & + .fusion-ui-p-md {
-    margin-top: $fusion-ui-spacing-md;
+  & + .f-p-md {
+    margin-top: $f-spacing-md;
   }
 }
-.fusion-ui-p-md {
+.f-p-md {
   @include reset-margin-and-padding;
-  @include fusion-ui-p-md;
+  @include f-p-md;
 }
 
-@mixin fusion-ui-p-lg {
-  font-size: $fusion-ui-font-size-paragraph-lg;
-  font-weight: $fusion-ui-font-weight-regular;
-  line-height: $fusion-ui-line-height-paragraph-lg;
+@mixin f-p-lg {
+  font-size: $f-font-size-paragraph-lg;
+  font-weight: $f-font-weight-regular;
+  line-height: $f-line-height-paragraph-lg;
 
-  & + .fusion-ui-p-lg {
-    margin-top: $fusion-ui-spacing-lg;
+  & + .f-p-lg {
+    margin-top: $f-spacing-lg;
   }
 }
-.fusion-ui-p-lg {
+.f-p-lg {
   @include reset-margin-and-padding;
-  @include fusion-ui-p-lg;
+  @include f-p-lg;
 }
 
 
 // labels (label)
-@mixin fusion-ui-label-sm {
-  font-size: $fusion-ui-font-size-label-sm;
-  font-weight: $fusion-ui-font-weight-regular;
+@mixin f-label-sm {
+  font-size: $f-font-size-label-sm;
+  font-weight: $f-font-weight-regular;
   line-height: 1em;
 }
-.fusion-ui-label-sm {
-  @include fusion-ui-label-sm;
+.f-label-sm {
+  @include f-label-sm;
 }
 
-@mixin fusion-ui-label-md {
-  font-size: $fusion-ui-font-size-label-md;
-  font-weight: $fusion-ui-font-weight-regular;
+@mixin f-label-md {
+  font-size: $f-font-size-label-md;
+  font-weight: $f-font-weight-regular;
   line-height: 1em;
 }
-.fusion-ui-label-md {
-  @include fusion-ui-label-md;
+.f-label-md {
+  @include f-label-md;
 }
 
-@mixin fusion-ui-label-radio {
-  font-size: $fusion-ui-font-size-label-sm;
+@mixin f-label-radio {
+  font-size: $f-font-size-label-sm;
   line-height: 1em;
 }
-.fusion-ui-label-radio {
-  @include fusion-ui-label-radio;
+.f-label-radio {
+  @include f-label-radio;
 }
 
 
 // link (a)
-@mixin fusion-ui-link {
-  color: $fusion-ui-color-interactive-default;
+@mixin f-link {
+  color: $f-color-interactive-default;
   cursor: pointer;
   text-decoration: none;
 
   &.--disabled,
   &:disabled {
-    color: $fusion-ui-color-text-disabled-on-light;
+    color: $f-color-text-disabled-on-light;
     cursor: not-allowed;
   }
 
   &:not(.--disabled):not(:disabled) {
     &.--hover,
     &:hover {
-      color: $fusion-ui-color-interactive-hover;
+      color: $f-color-interactive-hover;
       text-decoration: underline;
     }
 
     &.--focus,
     &:focus {
-      color: $fusion-ui-color-interactive-focus;
+      color: $f-color-interactive-focus;
       text-decoration: underline;
     }
 
     &.--active,
     &:active {
-      color: $fusion-ui-color-interactive-active;
+      color: $f-color-interactive-active;
       text-decoration: underline;
     }
   }
 }
-.fusion-ui-link {
-  @include fusion-ui-link;
+.f-link {
+  @include f-link;
 }

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
-import { TranslatedComponent } from '@fusion-ui/fusion-components/lib/shared';
+import { TranslatedComponent } from '@fusion-components/lib/shared';
 
 import { FilterComparator, FilterComparatorTranslations } from './table-filter-comparator.interface';
 
@@ -13,7 +13,7 @@ import { FilterComparator, FilterComparatorTranslations } from './table-filter-c
  * select and use the correct comparator for a given filter.
  */
 @Component({
-  selector: 'fusion-ui-table-filter-comparator',
+  selector: 'f-table-filter-comparator',
   templateUrl: './table-filter-comparator.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

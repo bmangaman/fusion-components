@@ -1,4 +1,4 @@
-.fusion-ui-form {
+.f-form {
   &__switch {
     display: inline-block;
     padding: 1px;
@@ -8,16 +8,16 @@
       align-items: center;
       display: flex;
       flex-wrap: nowrap;
-      font-size: $fusion-ui-font-size-sm;
+      font-size: $f-font-size-sm;
 
       &-text {
         cursor: pointer;
-        margin-left: $fusion-ui-spacing-xs;
+        margin-left: $f-spacing-xs;
       }
     }
 
     &-visual {
-      background-color: $fusion-ui-color-greyscale-76;
+      background-color: $f-color-greyscale-76;
       border-radius: 21px;
       cursor: pointer;
       display: block;
@@ -26,11 +26,11 @@
       width: 40px;
 
       &:after {
-        background-color: $fusion-ui-color-background-white;
-        border: 2px solid $fusion-ui-color-greyscale-76;
+        background-color: $f-color-background-white;
+        border: 2px solid $f-color-greyscale-76;
         border-radius: 100%;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-        // box-shadow: $fusion-ui-box-shadow-elevation-level-1;
+        // box-shadow: $f-box-shadow-elevation-level-1;
         box-sizing: border-box;
         content: '';
         display: block;
@@ -44,7 +44,7 @@
     }
 
     &--small {
-      .fusion-ui-form__switch-visual {
+      .f-form__switch-visual {
         height: 15px;
         border-radius: 15px;
         width: 30px;
@@ -55,11 +55,11 @@
         }
       }
 
-      .fusion-ui-form__switch-input {
+      .f-form__switch-input {
         &:checked,
         &--checked,
         &--selected {
-          & + .fusion-ui-form__switch-visual {
+          & + .f-form__switch-visual {
             &:after {
               left: calc(100% - 17px);
             }
@@ -80,11 +80,11 @@
       &:checked,
       &--checked,
       &--selected {
-        & + .fusion-ui-form__switch-visual {
-          background-color: $fusion-ui-color-blue-netapp;
+        & + .f-form__switch-visual {
+          background-color: $f-color-blue-netapp;
 
           &:after {
-            border: 2px solid $fusion-ui-color-blue-netapp;
+            border: 2px solid $f-color-blue-netapp;
             left: calc(100% - 23px);
           }
         }
@@ -92,39 +92,39 @@
 
       &:disabled,
       &--disabled {
-        & + .fusion-ui-form__switch-visual {
+        & + .f-form__switch-visual {
           cursor: not-allowed;
           opacity: 0.5;
 
-          & + .fusion-ui-form__switch-label-text {
-            color: $fusion-ui-color-text-disabled-on-light;
+          & + .f-form__switch-label-text {
+            color: $f-color-text-disabled-on-light;
             cursor: not-allowed;
           }
         }
       }
 
       &:read-only,
-      &.fusion-ui-form__switch-input--readonly {
-        & + .fusion-ui-form__switch-visual {
+      &.f-form__switch-input--readonly {
+        & + .f-form__switch-visual {
           opacity: 0.75;
         }
       }
 
-      &:hover:not(:disabled):not(.fusion-ui-form__switch-input--disabled):not(:read-only):not(.fusion-ui-form__switch-input--readonly),
+      &:hover:not(:disabled):not(.f-form__switch-input--disabled):not(:read-only):not(.f-form__switch-input--readonly),
       &--hover {
-        & + .fusion-ui-form__switch-visual {
+        & + .f-form__switch-visual {
           &:after {
-            border-color: $fusion-ui-color-interactive-hover;
+            border-color: $f-color-interactive-hover;
           }
         }
       }
 
       &:focus,
       &--focus {
-        & + .fusion-ui-form__switch-visual {
+        & + .f-form__switch-visual {
           &:after {
             outline: none;
-            box-shadow: 0 0 0 2px $fusion-ui-color-blue-medium-light;
+            box-shadow: 0 0 0 2px $f-color-blue-medium-light;
           }
         }
       }

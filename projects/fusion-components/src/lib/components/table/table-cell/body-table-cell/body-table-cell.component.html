@@ -1,4 +1,4 @@
-<div class="fusion-ui-table__table-cell-inner" [style.width]="col?.updatedWidth || col?.width">
+<div class="f-table__table-cell-inner" [style.width]="col?.updatedWidth || col?.width">
   <ng-container *ngIf="col?.contentTemplateRef; else noTemplate">
     <ng-container *ngTemplateOutlet="col?.contentTemplateRef; context: { $implicit: rowData, index: index }"></ng-container>
   </ng-container>

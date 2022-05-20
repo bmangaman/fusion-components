@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing';
 
-import { AccordionPageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/accordion.spec.po';
+import { AccordionPageObject } from '@fusion-components/unit-test-helpers/page-objects/accordion.spec.po';
 
 import { AccordionTestComponent } from './accordion.component.dom.spec';
 

@@ -2,7 +2,7 @@
 import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 import { Subscription } from 'rxjs';
 
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
 import { TableRowData } from '../table.interface';
 import { TablePaginationComponent } from './table-pagination.component';
 import { TablePaginationConfig } from './table-pagination.interface';

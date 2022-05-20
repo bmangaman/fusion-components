@@ -1,213 +1,213 @@
 <fusion-demo titleText="Table">
 
-  <form form class="fusion-components-demo__form fusion-ui-form" *ngIf="tableDemoForm" [formGroup]="tableDemoForm">
+  <form form class="fusion-components-demo__form f-form" *ngIf="tableDemoForm" [formGroup]="tableDemoForm">
     <!-- START: number of rows input -->
-    <div class="fusion-ui-form__fieldset">
-      <label class="fusion-ui-form__input-label">Number of Data Items</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input class="fusion-ui-form__input" type="number" min="0" [attr.max]="generatedData?.length" formControlName="numberOfDataItems" />
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+    <div class="f-form__fieldset">
+      <label class="f-form__input-label">Number of Data Items</label>
+      <div class="f-form__input-wrapper">
+        <input class="f-form__input" type="number" min="0" [attr.max]="generatedData?.length" formControlName="numberOfDataItems" />
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: number of rows input -->
 
     <!-- START: table title input -->
-    <div class="fusion-ui-form__fieldset">
-      <label class="fusion-ui-form__input-label">Table Title</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input class="fusion-ui-form__input" formControlName="tableTitle" />
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+    <div class="f-form__fieldset">
+      <label class="f-form__input-label">Table Title</label>
+      <div class="f-form__input-wrapper">
+        <input class="f-form__input" formControlName="tableTitle" />
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: table title input -->
 
     <!-- START: table type select -->
-    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
-      <label class="fusion-ui-form__input-label">Table Type</label>
-      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
-        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="type">
+    <div class="f-form__fieldset f-table__filter-input-field-selector">
+      <label class="f-form__input-label">Table Type</label>
+      <div class="f-form__input-wrapper f-form__select-wrapper">
+        <select class="f-form__input f-form__select" formControlName="type">
           <option [value]="TableComponentEnums.TableType.ADVANCED">{{ TableComponentEnums.TableType.ADVANCED }}</option>
           <option [value]="TableComponentEnums.TableType.BASIC">{{ TableComponentEnums.TableType.BASIC }}</option>
         </select>
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: table type select -->
 
     <!-- START: table spacing select -->
-    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
-      <label class="fusion-ui-form__input-label">Table Spacing</label>
-      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
-        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="spacing">
+    <div class="f-form__fieldset f-table__filter-input-field-selector">
+      <label class="f-form__input-label">Table Spacing</label>
+      <div class="f-form__input-wrapper f-form__select-wrapper">
+        <select class="f-form__input f-form__select" formControlName="spacing">
           <option [value]="TableComponentEnums.TableSpacing.CONDENSED">{{ TableComponentEnums.TableSpacing.CONDENSED }}</option>
           <option [value]="TableComponentEnums.TableSpacing.NORMAL">{{ TableComponentEnums.TableSpacing.NORMAL }}</option>
           <option [value]="TableComponentEnums.TableSpacing.SPACIOUS">{{ TableComponentEnums.TableSpacing.SPACIOUS }}</option>
         </select>
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: table spacing select -->
 
     <!-- START: table state select -->
-    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
-      <label class="fusion-ui-form__input-label">Table State</label>
-      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
-        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="state">
-          <option [value]="FusionUiState.LOADED">{{ FusionUiState.LOADED }}</option>
-          <option [value]="FusionUiState.NO_RESULTS">{{ FusionUiState.NO_RESULTS }}</option>
-          <option [value]="FusionUiState.LOADING">{{ FusionUiState.LOADING }}</option>
-          <option [value]="FusionUiState.ERROR">{{ FusionUiState.ERROR }}</option>
+    <div class="f-form__fieldset f-table__filter-input-field-selector">
+      <label class="f-form__input-label">Table State</label>
+      <div class="f-form__input-wrapper f-form__select-wrapper">
+        <select class="f-form__input f-form__select" formControlName="state">
+          <option [value]="State.LOADED">{{ State.LOADED }}</option>
+          <option [value]="State.NO_RESULTS">{{ State.NO_RESULTS }}</option>
+          <option [value]="State.LOADING">{{ State.LOADING }}</option>
+          <option [value]="State.ERROR">{{ State.ERROR }}</option>
         </select>
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: table state select -->
 
     <!-- START: fill container checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="table-demo-fill-container" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="table-demo-fill-container" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
             name="table-demo-fill-container"
             id="table-demo-fill-container"
             formControlName="fillContainer">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Fill Container</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Fill Container</span>
         </label>
       </span>
     </div>
     <!-- END: fill container checkbox -->
 
     <!-- START: table expansion mode select -->
-    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
-      <label class="fusion-ui-form__input-label">Row Expansion Mode</label>
-      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
-        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="rowExpansionMode">
+    <div class="f-form__fieldset f-table__filter-input-field-selector">
+      <label class="f-form__input-label">Row Expansion Mode</label>
+      <div class="f-form__input-wrapper f-form__select-wrapper">
+        <select class="f-form__input f-form__select" formControlName="rowExpansionMode">
           <option [value]="''">- NONE -</option>
           <option [value]="TableComponentEnums.RowExpansionMode.MULTIPLE">{{ TableComponentEnums.RowExpansionMode.MULTIPLE }}</option>
           <option [value]="TableComponentEnums.RowExpansionMode.SINGLE">{{ TableComponentEnums.RowExpansionMode.SINGLE }}</option>
         </select>
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: table expansion mode select -->
 
     <!-- START: table selection mode select -->
-    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
-      <label class="fusion-ui-form__input-label">Selection Mode Mode</label>
-      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
-        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="selectionMode">
+    <div class="f-form__fieldset f-table__filter-input-field-selector">
+      <label class="f-form__input-label">Selection Mode Mode</label>
+      <div class="f-form__input-wrapper f-form__select-wrapper">
+        <select class="f-form__input f-form__select" formControlName="selectionMode">
           <option [value]="''">- NONE -</option>
           <option [value]="TableComponentEnums.SelectionMode.MULTIPLE">{{ TableComponentEnums.SelectionMode.MULTIPLE }}</option>
           <option [value]="TableComponentEnums.SelectionMode.SINGLE">{{ TableComponentEnums.SelectionMode.SINGLE }}</option>
         </select>
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: table selection mode select -->
 
     <!-- START: applied table view name select -->
-    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
-      <label class="fusion-ui-form__input-label">Applied Table View Name</label>
-      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
-        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="appliedTableViewName">
+    <div class="f-form__fieldset f-table__filter-input-field-selector">
+      <label class="f-form__input-label">Applied Table View Name</label>
+      <div class="f-form__input-wrapper f-form__select-wrapper">
+        <select class="f-form__input f-form__select" formControlName="appliedTableViewName">
           <option [value]="''">- NONE -</option>
           <option value="deleted">deleted</option>
           <option value='active'>active</option>
         </select>
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: applied table view name select -->
 
     <!-- START: apply filters checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="table-demo-apply-filters" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="table-demo-apply-filters" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
             name="table-demo-apply-filters"
             id="table-demo-apply-filters"
             formControlName="useAppliedFilters">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Use Applied Filters</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Use Applied Filters</span>
         </label>
       </span>
     </div>
     <!-- END: apply filters checkbox -->
 
     <!-- START: disable row expnsion function checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="table-demo-disable-row-expansion" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="table-demo-disable-row-expansion" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
             name="table-demo-disable-row-expansion"
             id="table-demo-disable-row-expansion"
             formControlName="disableRowExpansionFunction">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Use Disable Row Expansion Function</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Use Disable Row Expansion Function</span>
         </label>
       </span>
     </div>
     <!-- END: disable row expnsion function checkbox -->
 
     <!-- START: disable row actions function checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="table-demo-disable-row-actions" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="table-demo-disable-row-actions" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
             name="table-demo-disable-row-actions"
             id="table-demo-disable-row-actions"
             formControlName="disableRowActionsFunction">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Use Disable Row Actions Function</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Use Disable Row Actions Function</span>
         </label>
       </span>
     </div>
     <!-- END: disable row actions function checkbox -->
 
     <!-- START: disable row selection function checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="table-demo-disable-row-selection" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="table-demo-disable-row-selection" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
             name="table-demo-disable-row-selection"
             id="table-demo-disable-row-selection"
             formControlName="disableRowSelectionFunction">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Use Disable Row Selection Function</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Use Disable Row Selection Function</span>
         </label>
       </span>
     </div>
     <!-- END: disable row selection function checkbox -->
 
     <!-- START: console log event outputs -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="table-demo-isConsoleLogEnabled" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="table-demo-isConsoleLogEnabled" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
             name="table-demo-isConsoleLogEnabled"
             id="table-demo-isConsoleLogEnabled"
             formControlName="isConsoleLogEnabled">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Console Log Event Outputs</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Console Log Event Outputs</span>
         </label>
       </span>
     </div>
@@ -217,7 +217,7 @@
   </form>
 
   <ng-container result>
-    <fusion-ui-table
+    <f-table
     fusionUiDeepLinkedTable
     [data]="data | async"
     dataKey="id"
@@ -251,35 +251,35 @@
     (refresh)="refresh()">
 
     <!-- START: filters -->
-    <fusion-ui-table-number-filter field="id"           filterName="ID"         ></fusion-ui-table-number-filter>
-    <fusion-ui-table-string-filter field="name"         filterName="Name"       ></fusion-ui-table-string-filter>
-    <fusion-ui-table-array-filter  field="accessGroups" filterName="Access Groups"></fusion-ui-table-array-filter>
-    <fusion-ui-table-string-filter field="account.name" filterName="Account"    ></fusion-ui-table-string-filter>
-    <fusion-ui-table-string-filter field="access"       filterName="Access"     ></fusion-ui-table-string-filter>
-    <fusion-ui-table-ip-filter     field="ip"           filterName="IP"         ></fusion-ui-table-ip-filter>
-    <fusion-ui-table-number-filter field="used"         filterName="Used"       ></fusion-ui-table-number-filter>
-    <fusion-ui-table-bytes-filter  field="size"         filterName="Size"       ></fusion-ui-table-bytes-filter>
-    <fusion-ui-table-number-filter field="snapshots"    filterName="Snapshots"  ></fusion-ui-table-number-filter>
-    <fusion-ui-table-string-filter field="qos"          filterName="QoS"        ></fusion-ui-table-string-filter>
-    <fusion-ui-table-number-filter field="iops.min"     filterName="Min IOPS"   ></fusion-ui-table-number-filter>
-    <fusion-ui-table-number-filter field="iops.max"     filterName="Max IOPS"   ></fusion-ui-table-number-filter>
-    <fusion-ui-table-number-filter field="iops.burst"   filterName="Burst IOPS" ></fusion-ui-table-number-filter>
+    <f-table-number-filter field="id"           filterName="ID"         ></f-table-number-filter>
+    <f-table-string-filter field="name"         filterName="Name"       ></f-table-string-filter>
+    <f-table-array-filter  field="accessGroups" filterName="Access Groups"></f-table-array-filter>
+    <f-table-string-filter field="account.name" filterName="Account"    ></f-table-string-filter>
+    <f-table-string-filter field="access"       filterName="Access"     ></f-table-string-filter>
+    <f-table-ip-filter     field="ip"           filterName="IP"         ></f-table-ip-filter>
+    <f-table-number-filter field="used"         filterName="Used"       ></f-table-number-filter>
+    <f-table-bytes-filter  field="size"         filterName="Size"       ></f-table-bytes-filter>
+    <f-table-number-filter field="snapshots"    filterName="Snapshots"  ></f-table-number-filter>
+    <f-table-string-filter field="qos"          filterName="QoS"        ></f-table-string-filter>
+    <f-table-number-filter field="iops.min"     filterName="Min IOPS"   ></f-table-number-filter>
+    <f-table-number-filter field="iops.max"     filterName="Max IOPS"   ></f-table-number-filter>
+    <f-table-number-filter field="iops.burst"   filterName="Burst IOPS" ></f-table-number-filter>
 
-    <fusion-ui-table-string-filter field="state"     filterName="state" [isVisible]="false"></fusion-ui-table-string-filter>
+    <f-table-string-filter field="state"     filterName="state" [isVisible]="false"></f-table-string-filter>
     <!-- END: filters -->
 
     <!-- START: columns -->
-    <fusion-ui-table-column
+    <f-table-column
       header="ID"
       field="id"
       [cellContentAlignment]="TableComponentEnums.TableCellContentAlignment.RIGHT"
       [width]="'50px'">
-    </fusion-ui-table-column>
-    <fusion-ui-table-column
+    </f-table-column>
+    <f-table-column
       header="Name"
       field="name">
-    </fusion-ui-table-column>
-    <fusion-ui-table-column
+    </f-table-column>
+    <f-table-column
       header="Access Groups"
       field="accessGroups"
       [isTruncated]="true"
@@ -288,68 +288,68 @@
       <ng-template [fusionUiTemplate]="TableComponentEnums.TableTemplate.TABLE_CELL" let-volume>
         <div *ngFor="let accessGroup of volume?.accessGroups; let i = index" class="overflow-hidden-table-cell">{{ accessGroup }}</div>
       </ng-template>
-    </fusion-ui-table-column>
-    <fusion-ui-table-column
+    </f-table-column>
+    <f-table-column
       header="Account"
       field="account.name">
       <ng-template [fusionUiTemplate]="TableComponentEnums.TableTemplate.TABLE_COLUMN_HEADER" let-volume>
         Account <i class="mdi mdi-account"></i>
       </ng-template>
-    </fusion-ui-table-column>
-    <fusion-ui-table-column
+    </f-table-column>
+    <f-table-column
       header="Access"
       field="access"
       [columnCellStyleClassesFunction]="columnCellStyleClassesFunction"
-    ></fusion-ui-table-column>
-    <fusion-ui-table-column
+    ></f-table-column>
+    <f-table-column
       header="IP"
       field="ip">
-    </fusion-ui-table-column>
-    <fusion-ui-table-column
+    </f-table-column>
+    <f-table-column
       header="Used"
       field="used">
-    </fusion-ui-table-column>
-    <fusion-ui-table-column
+    </f-table-column>
+    <f-table-column
       header="Size"
       field="size"
       [downloadTransformationFunction]="sizeDownloadTransformationFunction.bind(this)">
       <ng-template [fusionUiTemplate]="TableComponentEnums.TableTemplate.TABLE_CELL" let-volume>
         {{ volume?.size | bytes: BytesPipeBase.TWO:true:2 }}
       </ng-template>
-    </fusion-ui-table-column>
-    <fusion-ui-table-column
+    </f-table-column>
+    <f-table-column
       header="Snapshots"
       field="snapshots"
       [cellContentAlignment]="TableComponentEnums.TableCellContentAlignment.RIGHT"
       [width]="'100px'">
-    </fusion-ui-table-column>
-    <fusion-ui-table-column
+    </f-table-column>
+    <f-table-column
       header="QoS"
       field="qos"
       [width]="'60px'"
       [isTruncated]="true">
-    </fusion-ui-table-column>
-    <fusion-ui-table-column
+    </f-table-column>
+    <f-table-column
       header="Min IOPS"
       field="iops.min"
       [cellContentAlignment]="TableComponentEnums.TableCellContentAlignment.RIGHT">
-    </fusion-ui-table-column>
-    <fusion-ui-table-column
+    </f-table-column>
+    <f-table-column
       header="Max IOPS"
       field="iops.max"
       [cellContentAlignment]="TableComponentEnums.TableCellContentAlignment.RIGHT">
-    </fusion-ui-table-column>
-    <fusion-ui-table-column
+    </f-table-column>
+    <f-table-column
       header="Burst IOPS"
       field="iops.burst"
       [cellContentAlignment]="TableComponentEnums.TableCellContentAlignment.RIGHT">
-    </fusion-ui-table-column>
+    </f-table-column>
     <!-- END: columns-->
 
     <!-- START: row expansion -->
     <ng-template [fusionUiTemplate]="TableComponentEnums.TableTemplate.ROW_EXPANSION" let-volume>
       <div class="volume-details">
-        <h5 class="fusion-ui-h5">Volume Details</h5>
+        <h5 class="f-h5">Volume Details</h5>
       </div>
     </ng-template>
     <!-- END: row expansion -->
@@ -369,17 +369,17 @@
 
     <!-- START: row actions -->
     <ng-template [fusionUiTemplate]="TableComponentEnums.TableTemplate.ROW_ACTIONS" let-volume>
-      <button class="fusion-ui-table__actions-dialog-button" [disabled]="!volume?.actions?.edit">Edit</button>
-      <button class="fusion-ui-table__actions-dialog-button" [disabled]="!volume?.actions?.clone">Clone</button>
-      <button class="fusion-ui-table__actions-dialog-button" [disabled]="!volume?.actions?.delete">Delete</button>
-      <button class="fusion-ui-table__actions-dialog-button" [disabled]="!volume?.actions?.pair">Pair</button>
-      <button class="fusion-ui-table__actions-dialog-button" [disabled]="!volume?.actions?.snapshot">Snapshot</button>
-      <button class="fusion-ui-table__actions-dialog-button" [disabled]="!volume?.actions?.backupTo">Backup To...</button>
-      <button class="fusion-ui-table__actions-dialog-button" [disabled]="!volume?.actions?.backupFrom">Restore From...</button>
+      <button class="f-table__actions-dialog-button" [disabled]="!volume?.actions?.edit">Edit</button>
+      <button class="f-table__actions-dialog-button" [disabled]="!volume?.actions?.clone">Clone</button>
+      <button class="f-table__actions-dialog-button" [disabled]="!volume?.actions?.delete">Delete</button>
+      <button class="f-table__actions-dialog-button" [disabled]="!volume?.actions?.pair">Pair</button>
+      <button class="f-table__actions-dialog-button" [disabled]="!volume?.actions?.snapshot">Snapshot</button>
+      <button class="f-table__actions-dialog-button" [disabled]="!volume?.actions?.backupTo">Backup To...</button>
+      <button class="f-table__actions-dialog-button" [disabled]="!volume?.actions?.backupFrom">Restore From...</button>
     </ng-template>
     <!-- END: row actions -->
 
-  </fusion-ui-table>
+  </f-table>
   </ng-container>
 
 </fusion-demo>

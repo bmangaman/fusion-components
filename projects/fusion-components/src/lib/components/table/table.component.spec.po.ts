@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing';
 
-import { TablePageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/table.spec.po';
+import { TablePageObject } from '@fusion-components/unit-test-helpers/page-objects/table.spec.po';
 
 export class TableComponentPageObject {
   private fixture: ComponentFixture<any>;

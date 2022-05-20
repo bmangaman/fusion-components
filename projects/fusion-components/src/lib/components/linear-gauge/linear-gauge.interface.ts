@@ -1,4 +1,4 @@
-import { DEFAULT_FUSION_UI_STATUS_LEVEL_TRANSLATIONS, FusionUiStatusLevel, FusionUIStatusLevelTranslations } from '../../shared';
+import { DEFAULT_STATUS_LEVEL_TRANSLATIONS, StatusLevel, FusionUIStatusLevelTranslations } from '../../shared';
 
 export interface LinearGaugeTranslations extends FusionUIStatusLevelTranslations {
   title?: string;
@@ -10,13 +10,13 @@ export const DEFAULT_LINEAR_GAUGE_TRANSLATIONS: LinearGaugeTranslations = {
   title: 'Capacity',
   total: 'Total',
   used: 'Used',
-  ...DEFAULT_FUSION_UI_STATUS_LEVEL_TRANSLATIONS,
+  ...DEFAULT_STATUS_LEVEL_TRANSLATIONS,
 };
 
 export interface LinearGaugeThreshold {
   title: string;
   value: number;
-  level: FusionUiStatusLevel;
+  level: StatusLevel;
   passed?: boolean;
 }
 

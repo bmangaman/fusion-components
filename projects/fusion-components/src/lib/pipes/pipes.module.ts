@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { BytesModule } from './bytes';
 import { EnumToArrayModule } from './enum-to-array';
-import { GetFusionUiStatusLevelTextModule } from './get-fusion-ui-status-level-text';
+import { GetStatusLevelTextModule } from './get-status-level-text';
 import { MetaModule } from './meta';
 import { ObjectKeysModule } from './object-keys';
 import { PercentMapModule } from './percent-map';
@@ -14,7 +14,7 @@ import { ToCssClassModule } from './to-css-class';
     BytesModule,
     EnumToArrayModule,
     MetaModule,
-    GetFusionUiStatusLevelTextModule,
+    GetStatusLevelTextModule,
     ObjectKeysModule,
     PercentageModule,
     PercentMapModule,

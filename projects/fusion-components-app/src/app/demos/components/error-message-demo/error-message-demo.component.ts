@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 
 import { of } from 'rxjs';
 
-import { ErrorMessage, ErrorMessageGeneratorService } from '@fusion-ui/fusion-components';
+import { ErrorMessage, ErrorMessageGeneratorService } from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-error-message',

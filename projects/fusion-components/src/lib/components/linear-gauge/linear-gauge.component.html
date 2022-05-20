@@ -1,54 +1,54 @@
 
-<div class="fusion-ui-linear-gauge" [ngClass]="classes">
+<div class="f-linear-gauge" [ngClass]="classes">
 
-  <div class="fusion-ui-linear-gauge__title">
-    <i *ngIf="level !== FusionUiStatusLevel.BASE"
-      class="fusion-ui-linear-gauge__title-icon mdi"
+  <div class="f-linear-gauge__title">
+    <i *ngIf="level !== StatusLevel.BASE"
+      class="f-linear-gauge__title-icon mdi"
       [ngClass]="{
-        'mdi-check-circle' : level === FusionUiStatusLevel.NORMAL,
-        'mdi-alert' : level === FusionUiStatusLevel.WARNING,
-        'mdi-alert-circle' : level === FusionUiStatusLevel.ERROR,
-        'mdi-close-circle' : level === FusionUiStatusLevel.CRITICAL
+        'mdi-check-circle' : level === StatusLevel.NORMAL,
+        'mdi-alert' : level === StatusLevel.WARNING,
+        'mdi-alert-circle' : level === StatusLevel.ERROR,
+        'mdi-close-circle' : level === StatusLevel.CRITICAL
       }">
     </i>
-    <h3 class="fusion-ui-linear-gauge__title-text">{{ translations?.title }}</h3>
+    <h3 class="f-linear-gauge__title-text">{{ translations?.title }}</h3>
   </div>
 
-  <div class="fusion-ui-linear-gauge__bar-container">
-    <div class="fusion-ui-linear-gauge__bar">
+  <div class="f-linear-gauge__bar-container">
+    <div class="f-linear-gauge__bar">
 
       <button
         *ngFor="let threshold of thresholds"
-        class="fusion-ui-linear-gauge__threshold"
+        class="f-linear-gauge__threshold"
         [ngStyle]="{ 'left': threshold?.value | percentage: maxValue:minValue | percent }"
         [ngClass]="{
-          'fusion-ui-linear-gauge__threshold--normal' : threshold?.level === FusionUiStatusLevel.NORMAL,
-          'fusion-ui-linear-gauge__threshold--warning' : threshold?.level === FusionUiStatusLevel.WARNING,
-          'fusion-ui-linear-gauge__threshold--error' : threshold?.level === FusionUiStatusLevel.ERROR,
-          'fusion-ui-linear-gauge__threshold--critical' : threshold?.level === FusionUiStatusLevel.CRITICAL,
-          'fusion-ui-linear-gauge__threshold--passed' : threshold?.passed
+          'f-linear-gauge__threshold--normal' : threshold?.level === StatusLevel.NORMAL,
+          'f-linear-gauge__threshold--warning' : threshold?.level === StatusLevel.WARNING,
+          'f-linear-gauge__threshold--error' : threshold?.level === StatusLevel.ERROR,
+          'f-linear-gauge__threshold--critical' : threshold?.level === StatusLevel.CRITICAL,
+          'f-linear-gauge__threshold--passed' : threshold?.passed
         }"
         fusionUiTooltip
-        [attr.aria-label]="threshold?.level | getFusionUiStatusLevelText: translations:true"
+        [attr.aria-label]="threshold?.level | getStatusLevelText: translations:true"
         [templateWithContext]="{ template: tooltipContent, context: { $implicit: threshold } }"
         [hideDelay]="2000"
-        [classes]="[ 'fusion-ui-linear-gauge__threshold-tooltip', 'fusion-ui-linear-gauge__threshold-tooltip--' + (threshold?.level | getFusionUiStatusLevelText: null:true) ]">
+        [classes]="[ 'f-linear-gauge__threshold-tooltip', 'f-linear-gauge__threshold-tooltip--' + (threshold?.level | getStatusLevelText: null:true) ]">
       </button>
 
       <div
-        class="fusion-ui-linear-gauge__value-bar"
+        class="f-linear-gauge__value-bar"
         [ngStyle]="{ 'width' : value | percentage: maxValue:minValue:true | percent }"
         [ngClass]="{
-          'fusion-ui-linear-gauge__value-bar--base' : level === FusionUiStatusLevel.BASE,
-          'fusion-ui-linear-gauge__value-bar--normal' : level === FusionUiStatusLevel.NORMAL,
-          'fusion-ui-linear-gauge__value-bar--warning' : level === FusionUiStatusLevel.WARNING,
-          'fusion-ui-linear-gauge__value-bar--error' : level === FusionUiStatusLevel.ERROR,
-          'fusion-ui-linear-gauge__value-bar--critical' : level === FusionUiStatusLevel.CRITICAL
+          'f-linear-gauge__value-bar--base' : level === StatusLevel.BASE,
+          'f-linear-gauge__value-bar--normal' : level === StatusLevel.NORMAL,
+          'f-linear-gauge__value-bar--warning' : level === StatusLevel.WARNING,
+          'f-linear-gauge__value-bar--error' : level === StatusLevel.ERROR,
+          'f-linear-gauge__value-bar--critical' : level === StatusLevel.CRITICAL
         }">
       </div>
     </div>
 
-    <div class="fusion-ui-linear-gauge__total">
+    <div class="f-linear-gauge__total">
       {{ !!valueFormatPipeItem ? (maxValue | meta:[valueFormatPipeItem]) : (!!dataFormatPipeItem ? (maxValue | meta:[dataFormatPipeItem]) : maxValue) }}
       <br />
       {{ translations?.total }}
@@ -56,7 +56,7 @@
 
   </div>
 
-  <div class="fusion-ui-linear-gauge__percentage">
+  <div class="f-linear-gauge__percentage">
     {{ !!valueFormatPipeItem ? (value | meta:[valueFormatPipeItem]) : (!!dataFormatPipeItem ? (value | meta:[dataFormatPipeItem]) : value) }}
     ({{ value | percentage: maxValue:minValue:false | percent }})
     {{ translations?.used }}
@@ -65,11 +65,11 @@
 </div>
 
 <ng-template #tooltipContent let-threshold>
-  <div class="fusion-ui-linear-gauge__tooltip-content">
-    <h4 class="fusion-ui-linear-gauge__threshold-tooltip-title fusion-ui-h4" *ngIf="threshold?.title">{{ threshold?.title }}</h4>
-    <p class="fusion-ui-linear-gauge__threshold-tooltip-level-and-value fusion-ui-p-md">
-      <span class="fusion-ui-linear-gauge__threshold-tooltip-level">{{ threshold?.level | getFusionUiStatusLevelText: translations }}</span>: 
-      <span class="fusion-ui-linear-gauge__threshold-tooltip-value">{{ !!dataFormatPipeItem ? (threshold?.value | meta:[dataFormatPipeItem]) : threshold?.value }}</span>
+  <div class="f-linear-gauge__tooltip-content">
+    <h4 class="f-linear-gauge__threshold-tooltip-title f-h4" *ngIf="threshold?.title">{{ threshold?.title }}</h4>
+    <p class="f-linear-gauge__threshold-tooltip-level-and-value f-p-md">
+      <span class="f-linear-gauge__threshold-tooltip-level">{{ threshold?.level | getStatusLevelText: translations }}</span>: 
+      <span class="f-linear-gauge__threshold-tooltip-value">{{ !!dataFormatPipeItem ? (threshold?.value | meta:[dataFormatPipeItem]) : threshold?.value }}</span>
     </p>
   </div>
 </ng-template>

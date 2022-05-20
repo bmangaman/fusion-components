@@ -5,14 +5,14 @@ import { ModalHeaderComponentPageObject } from './modal-header.component.spec.po
 import { ModalHeaderModule } from './modal-header.module';
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
-    <fusion-ui-modal-header
+    <f-modal-header
       [hideCloseButton]="hideCloseButton"
       [isFullModal]="isFullModal"
       [disableCloseButton]="disableCloseButton">
       Header Text
-    </fusion-ui-modal-header>'`
+    </f-modal-header>'`
 })
 export class ModalHeaderTestComponent {
   hideCloseButton = false;
@@ -43,9 +43,9 @@ describe('ModalHeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should append the "fusion-ui__header" class to the component', () => {
+  it('should append the "f__header" class to the component', () => {
     expect(page.header).toBeTruthy();
-    expect(page.header.classList).toContain('fusion-ui-modal__header');
+    expect(page.header.classList).toContain('f-modal__header');
   });
 
   it('should display the inner content', () => {

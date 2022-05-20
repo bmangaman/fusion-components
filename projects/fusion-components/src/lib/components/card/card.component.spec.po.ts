@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing';
 
-import { CardPageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/card.spec.po';
+import { CardPageObject } from '@fusion-components/unit-test-helpers/page-objects/card.spec.po';
 
 import { CardTestComponent } from './card.component.dom.spec';
 

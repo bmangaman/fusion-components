@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing';
 
-import { BadgePageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/badge.spec.po';
+import { BadgePageObject } from '@fusion-components/unit-test-helpers/page-objects/badge.spec.po';
 
 import { BadgeTestComponent } from './badge.component.dom.spec';
 

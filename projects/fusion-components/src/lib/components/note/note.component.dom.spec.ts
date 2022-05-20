@@ -5,11 +5,11 @@ import { NoteComponentPageObject } from './note.component.spec.po';
 import { NoteModule } from './note.module';
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
-    <fusion-ui-note>
+    <f-note>
       <div class="projected-content">Projected Text</div>
-    </fusion-ui-note>
+    </f-note>
   `,
 })
 export class NoteTestComponent {}

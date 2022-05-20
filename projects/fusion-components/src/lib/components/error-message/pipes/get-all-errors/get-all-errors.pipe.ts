@@ -22,7 +22,7 @@ export class GetAllErrorsPipe implements PipeTransform {
    * @param validationErrors The applied validation errors of an abstract control.
    * @returns The translation values.
    */
-  transform(errors: ErrorMessage[], validationErrors: ValidationErrors): Observable<string | SafeHtml>[] {
+  transform(errors: ErrorMessage[], validationErrors: ValidationErrors): Observable<string | SafeHtml | undefined>[] {
     const displayedErrorMessages: Observable<string | SafeHtml>[] = [];
 
     if (!!errors?.length && !!validationErrors) {

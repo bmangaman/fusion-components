@@ -14,17 +14,17 @@ import { TableFilterArrayInputComparator, TableFilterArrayTranslations } from '.
  * It has one input for the value.
  */
 @Component({
-  selector: 'fusion-ui-table-array-filter',
+  selector: 'f-table-array-filter',
   templateUrl: './table-filter-array.component.html',
   providers: [{ provide: TableFilterComponent, useExisting: TableFilterArrayComponent }],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableFilterArrayComponent extends TableFilterComponent {
-  TableFilter = TableFilterArrayComponent;
+  override TableFilter = TableFilterArrayComponent;
 
-  @Input() translations: TableFilterArrayTranslations;
+  @Input() override translations: TableFilterArrayTranslations;
 
-  filterComparators: FilterComparator[] = [
+  override filterComparators: FilterComparator[] = [
     {
       name: TableFilterArrayInputComparator.CONTAINS,
       label: this.generateComparatorLabel(TableFilterArrayInputComparator.CONTAINS),
@@ -49,9 +49,9 @@ export class TableFilterArrayComponent extends TableFilterComponent {
    * @param comparator The filter comparator enum.
    * @returns Either the string provided by the translations input or the translated value.
    */
-  generateComparatorLabel(comparator: TableFilterArrayInputComparator): string | Observable<string> {
+  override generateComparatorLabel(comparator: TableFilterArrayInputComparator): string | Observable<string> {
     if (this.translations?.comparators && this.translations.comparators[comparator]) {
-      return this.translations.comparators[comparator];
+      return this.translations.comparators[comparator]!;
     }
     return this.translateService.get(`${this.translationService.baseTranslationKey}.table.filters.array.comparators.${comparator}`);
   }
@@ -63,7 +63,7 @@ export class TableFilterArrayComponent extends TableFilterComponent {
    * @param form Optional. Form to get input values.
    * @returns Either a string or observable string, depending on what the type of selected filter comparator label.
    */
-  generateDisplayString(comparator?: Partial<FilterComparator>, form?: any): string | Observable<string> {
+  override generateDisplayString(comparator?: Partial<FilterComparator>, form?: any): string | Observable<string> {
     const label: string | Observable<string> = comparator?.label || this.selectedFilterComparator?.value?.label;
     const value: any = form?.value || this.getFormValue();
 
@@ -77,7 +77,7 @@ export class TableFilterArrayComponent extends TableFilterComponent {
    * Builds the filterForm.
    * Automatically called in the constructor (inherited from the tableFilter class).
    */
-  buildForm(): void {
+  override buildForm(): void {
     this.filterForm = this.fb.group({
       value: [null, Validators.required],
     });
@@ -88,8 +88,8 @@ export class TableFilterArrayComponent extends TableFilterComponent {
    *
    * @returns the string input value
    */
-  getFormValue(): any {
-    return this.filterForm.get('value').value;
+  override getFormValue(): any {
+    return this.filterForm.get('value')?.value;
   }
 
   /**
@@ -100,7 +100,7 @@ export class TableFilterArrayComponent extends TableFilterComponent {
    *
    * @returns true if the form is invalid, false otherwise
    */
-  isFormInvalid(): boolean {
+  override isFormInvalid(): boolean {
     return this.filterForm.invalid;
   }
 

@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { BehaviorSubject } from 'rxjs';
 
 import { PercentMapPipe } from '../../pipes/percent-map';
-import { FusionUiSize } from '../../shared';
+import { Size } from '../../shared';
 import { ProgressBarStatus } from './progress-bar.interface';
 
 /**
@@ -13,10 +13,10 @@ import { ProgressBarStatus } from './progress-bar.interface';
  * some simple statuses based on the calculated progress. Otherwise the provided status is used.
  */
 @Component({
-  selector: 'fusion-ui-progress-bar',
+  selector: 'f-progress-bar',
   template: `
 <div
-  class="fusion-ui-progress-bar"
+  class="f-progress-bar"
   role="progressbar"
   [attr.aria-valuenow]="resultingValue$?.value"
   [attr.aria-valuemin]="0"
@@ -26,7 +26,7 @@ import { ProgressBarStatus } from './progress-bar.interface';
     [ngStyle]="{ width: resultingValue$.value + '%' }"
     [ngClass]="generatedClasses">
     <div
-      class="fusion-ui-progress-bar__value"
+      class="f-progress-bar__value"
       *ngIf="isValueDisplayed && resultingValue$?.value >= minDisplayedPercent">
       {{ displayText || (resultingValue$?.value ? resultingValue$?.value + '%' : '-') }}
     </div>
@@ -38,7 +38,7 @@ export class ProgressBarComponent implements OnInit, OnChanges {
   readonly percentMapPipe: PercentMapPipe = new PercentMapPipe();
 
   resultingValue$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  resultingStatus$: BehaviorSubject<ProgressBarStatus> = new BehaviorSubject<ProgressBarStatus>(undefined);
+  resultingStatus$: BehaviorSubject<ProgressBarStatus> = new BehaviorSubject<ProgressBarStatus>(undefined as unknown as ProgressBarStatus);
   generatedClasses: string[] = [];
 
   /**
@@ -76,7 +76,7 @@ export class ProgressBarComponent implements OnInit, OnChanges {
   /**
    * Determines the progress bar size. By default set to MEDIUM. Does NOT support X_SMALL.
    **/
-  @Input() size: FusionUiSize = FusionUiSize.MEDIUM;
+  @Input() size: Size = Size.MEDIUM;
 
   /**
    * Determines the state of the progress bar, which affects the styling.
@@ -91,7 +91,7 @@ export class ProgressBarComponent implements OnInit, OnChanges {
   @Input() displayText: string;
 
   /**
-   * Determines the custom CSS classes to append the 'fusion-ui-progress-bar__bar' div element.
+   * Determines the custom CSS classes to append the 'f-progress-bar__bar' div element.
    */
   @Input() classes: string[] = [];
 
@@ -115,15 +115,15 @@ export class ProgressBarComponent implements OnInit, OnChanges {
    * @param c the changed input{}
    */
   ngOnChanges(c: SimpleChanges): void {
-    if (c.size || c.classes) {
+    if (c['size'] || c['classes']) {
       this.generateClasses();
     }
 
-    if (c.value || c.minValue || c.maxValue) {
+    if (c['value'] || c['minValue'] || c['maxValue']) {
       this.calculateResultingValue();
     }
 
-    if (c.status) {
+    if (c['status']) {
       this.calculateResultingStatus();
     }
   }
@@ -156,17 +156,17 @@ export class ProgressBarComponent implements OnInit, OnChanges {
   }
 
   /**
-   * Generates the CSS classes to be appended to the 'fusion-ui-progress-bar__bar' element.
+   * Generates the CSS classes to be appended to the 'f-progress-bar__bar' element.
    */
   generateClasses(): void {
-    const classes: string[] = ['fusion-ui-progress-bar__bar'];
+    const classes: string[] = ['f-progress-bar__bar'];
 
     if (!!this.size) {
-      classes.push(`fusion-ui-progress-bar__bar--${this.size}`);
+      classes.push(`f-progress-bar__bar--${this.size}`);
     }
 
     if (!!this.resultingStatus$.value) {
-      classes.push(`fusion-ui-progress-bar__bar--${this.resultingStatus$.value}`);
+      classes.push(`f-progress-bar__bar--${this.resultingStatus$.value}`);
     }
 
     classes.push(...this.classes);

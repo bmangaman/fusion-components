@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services/translation';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
 import { UnsubscribeComponent } from '../unsubscribe';
 
 /**
@@ -10,7 +10,7 @@ import { UnsubscribeComponent } from '../unsubscribe';
  * The Translated Component provides a consistent way to set and keep track of the translations.
  */
 @Component({
-  selector: 'fusion-ui-translated',
+  selector: 'f-translated',
   template: '',
 })
 export class TranslatedComponent extends UnsubscribeComponent {

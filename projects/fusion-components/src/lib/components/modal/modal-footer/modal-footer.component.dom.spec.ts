@@ -5,8 +5,8 @@ import { ModalFooterComponentPageObject } from './modal-footer.component.spec.po
 import { ModalFooterModule } from './modal-footer.module';
 
 @Component({
-  selector: 'fusion-ui-test-component',
-  template: '<fusion-ui-modal-footer>Footer Content</fusion-ui-modal-footer>',
+  selector: 'f-test-component',
+  template: '<f-modal-footer>Footer Content</f-modal-footer>',
 })
 export class ModalFooterTestComponent {}
 
@@ -33,9 +33,9 @@ describe('ModalFooterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should append the "fusion-ui-modal__footer" class to the component', () => {
+  it('should append the "f-modal__footer" class to the component', () => {
     expect(page.footer).toBeTruthy();
-    expect(page.footer.classList).toContain('fusion-ui-modal__footer');
+    expect(page.footer.classList).toContain('f-modal__footer');
   });
 
   it('should display the inner content', () => {

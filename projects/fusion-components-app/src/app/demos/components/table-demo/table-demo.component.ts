@@ -7,7 +7,7 @@ import { debounce, delay } from 'rxjs/operators';
 import { cloneDeep, random, sample } from 'lodash';
 
 import {
-  FusionUiState,
+  State,
   TableSpacing,
   TableType,
   RowExpansionMode,
@@ -26,7 +26,7 @@ import {
   TableComponentEnums,
   TableRowData,
   TablePaginationConfig,
-} from '@fusion-ui/fusion-components';
+} from '@fusion-components';
 
 import { VolumeState, VolumeAccess } from './table-demo.interface';
 
@@ -37,7 +37,7 @@ import { VolumeState, VolumeAccess } from './table-demo.interface';
 })
 export class TableDemoComponent implements OnInit {
   readonly TableComponentEnums = TableComponentEnums;
-  readonly FusionUiState = FusionUiState;
+  readonly State = State;
   readonly VolumeAccess = VolumeAccess;
   readonly BytesPipeBase = BytesPipeBase;
 
@@ -175,7 +175,7 @@ export class TableDemoComponent implements OnInit {
       numberOfDataItems: [25, Validators.required],
       type: [TableType.ADVANCED, Validators.required],
       spacing: [TableSpacing.NORMAL, Validators.required],
-      state: [FusionUiState.LOADED, Validators.required],
+      state: [State.LOADED, Validators.required],
       fillContainer: [false],
       rowExpansionMode: [RowExpansionMode.MULTIPLE],
       selectionMode: [SelectionMode.MULTIPLE],
@@ -248,10 +248,10 @@ export class TableDemoComponent implements OnInit {
 
   refresh(): void {
     this.tableDemoForm.disable();
-    this.tableDemoForm.get('state').setValue(FusionUiState.LOADING);
+    this.tableDemoForm.get('state').setValue(State.LOADING);
     this.getTableData().pipe(delay(1000)).subscribe(() => {
       this.setNumberOfDataItems();
-      this.tableDemoForm.get('state').setValue(FusionUiState.LOADED);
+      this.tableDemoForm.get('state').setValue(State.LOADED);
       this.tableDemoForm.enable();
     });
   }

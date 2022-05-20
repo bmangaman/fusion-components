@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { FusionUiSize } from '../../shared';
+import { Size } from '../../shared';
 import { ProgressBarComponentPageObject } from './progress-bar.component.spec.po';
 import { ProgressBarStatus } from './progress-bar.interface';
 import { ProgressBarModule } from './progress-bar.module';
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
-  <fusion-ui-progress-bar
+  <f-progress-bar
     [value]="value"
     [minValue]="minValue"
     [maxValue]="maxValue"
@@ -20,7 +20,7 @@ import { ProgressBarModule } from './progress-bar.module';
     [displayText]="displayText"
     [classes]="classes"
     [ariaValueText]="ariaValueText">
-  </fusion-ui-progress-bar>
+  </f-progress-bar>
   `,
 })
 export class ProgressBarTestComponent {
@@ -29,7 +29,7 @@ export class ProgressBarTestComponent {
   maxValue: number;
   isValueDisplayed: boolean;
   minDisplayedPercent: number;
-  size: FusionUiSize;
+  size: Size;
   status: ProgressBarStatus;
   displayText: string;
   classes: string[];
@@ -111,51 +111,51 @@ describe('ProgressBarComponent', () => {
     component.maxValue = 100;
 
     fixture.detectChanges();
-    expect(page.progressBar.barClasses).toContain('fusion-ui-progress-bar__bar--not-started');
+    expect(page.progressBar.barClasses).toContain('f-progress-bar__bar--not-started');
 
     component.value = 50;
     fixture.detectChanges();
-    expect(page.progressBar.barClasses).toContain('fusion-ui-progress-bar__bar--in-progress');
+    expect(page.progressBar.barClasses).toContain('f-progress-bar__bar--in-progress');
 
     component.value = 100;
     fixture.detectChanges();
-    expect(page.progressBar.barClasses).toContain('fusion-ui-progress-bar__bar--success');
+    expect(page.progressBar.barClasses).toContain('f-progress-bar__bar--success');
 
     component.status = ProgressBarStatus.ERROR;
     fixture.detectChanges();
-    expect(page.progressBar.barClasses).toContain('fusion-ui-progress-bar__bar--error');
+    expect(page.progressBar.barClasses).toContain('f-progress-bar__bar--error');
 
     component.status = ProgressBarStatus.IN_PROGRESS;
     fixture.detectChanges();
-    expect(page.progressBar.barClasses).toContain('fusion-ui-progress-bar__bar--in-progress');
+    expect(page.progressBar.barClasses).toContain('f-progress-bar__bar--in-progress');
 
     component.status = ProgressBarStatus.NOT_STARTED;
     fixture.detectChanges();
-    expect(page.progressBar.barClasses).toContain('fusion-ui-progress-bar__bar--not-started');
+    expect(page.progressBar.barClasses).toContain('f-progress-bar__bar--not-started');
 
     component.status = ProgressBarStatus.PAUSED;
     fixture.detectChanges();
-    expect(page.progressBar.barClasses).toContain('fusion-ui-progress-bar__bar--paused');
+    expect(page.progressBar.barClasses).toContain('f-progress-bar__bar--paused');
 
     component.status = ProgressBarStatus.SUCCESS;
     fixture.detectChanges();
-    expect(page.progressBar.barClasses).toContain('fusion-ui-progress-bar__bar--success');
+    expect(page.progressBar.barClasses).toContain('f-progress-bar__bar--success');
 
     component.status = ProgressBarStatus.WARNING;
     fixture.detectChanges();
-    expect(page.progressBar.barClasses).toContain('fusion-ui-progress-bar__bar--warning');
+    expect(page.progressBar.barClasses).toContain('f-progress-bar__bar--warning');
 
-    component.size = FusionUiSize.SMALL;
+    component.size = Size.SMALL;
     fixture.detectChanges();
-    expect(page.progressBar.barClasses).toContain('fusion-ui-progress-bar__bar--small');
+    expect(page.progressBar.barClasses).toContain('f-progress-bar__bar--small');
 
-    component.size = FusionUiSize.MEDIUM;
+    component.size = Size.MEDIUM;
     fixture.detectChanges();
-    expect(page.progressBar.barClasses).toContain('fusion-ui-progress-bar__bar--medium');
+    expect(page.progressBar.barClasses).toContain('f-progress-bar__bar--medium');
 
-    component.size = FusionUiSize.LARGE;
+    component.size = Size.LARGE;
     fixture.detectChanges();
-    expect(page.progressBar.barClasses).toContain('fusion-ui-progress-bar__bar--large');
+    expect(page.progressBar.barClasses).toContain('f-progress-bar__bar--large');
   });
 
   it('should append the correct aria attributes to the container', () => {

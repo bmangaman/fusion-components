@@ -2,7 +2,7 @@ import { ElementRef } from '@angular/core';
 
 import { Subject, Subscription } from 'rxjs';
 
-import { FusionUiLocation, FusionUiPosition, FusionUiPositionConfig } from './interfaces';
+import { Location, Position, PositionConfig } from './interfaces';
 
 /**
  * Null-safe way to unsubscribe from a subscription
@@ -33,8 +33,8 @@ export const unsubscribeAll = (subs: Subscription[]): void => {
  */
 export const unsubscribeSubject = (subject: Subject<any>): void => {
   if (subject) {
-    subject.next();
     subject.complete();
+    subject.unsubscribe();
   }
 };
 
@@ -54,11 +54,11 @@ export const unsubscribeSubject = (subject: Subject<any>): void => {
 export const getElementAbsolutePositioning = (
   element: ElementRef,
   triggerElement: ElementRef,
-  position: FusionUiPosition | FusionUiLocation,
+  position: Position | Location,
   spacing: number = 0,
   win: Window = window,
   doc: Document = document,
-): FusionUiPositionConfig => {
+): PositionConfig => {
   if (!element || !element.nativeElement || !triggerElement || !triggerElement.nativeElement || !win || !doc) {
     return {};
   }
@@ -78,8 +78,8 @@ export const getElementAbsolutePositioning = (
   const triggerElementTop: number = triggerElementRect.top + scrollLeft;
 
   switch (position) {
-    case FusionUiPosition.TOP:
-    case FusionUiLocation.TOP:
+    case Position.TOP:
+    case Location.TOP:
     default:
       return {
         top: `${triggerElementTop - elementHeight - spacing}px`,
@@ -87,56 +87,56 @@ export const getElementAbsolutePositioning = (
         transform: 'translateX(-50%)',
       };
 
-    case FusionUiLocation.TOP_LEFT:
+    case Location.TOP_LEFT:
       return {
         top: `${triggerElementTop - elementHeight - spacing}px`,
         left: `${triggerElementLeft}px`,
       };
 
-    case FusionUiLocation.TOP_RIGHT:
+    case Location.TOP_RIGHT:
       return {
         top: `${triggerElementTop - elementHeight - spacing}px`,
         left: `${triggerElementLeft + triggerElementWidth - elementWidth}px`,
       };
 
-    case FusionUiPosition.BOTTOM:
-    case FusionUiLocation.BOTTOM:
+    case Position.BOTTOM:
+    case Location.BOTTOM:
       return {
         top: `${triggerElementTop + triggerElementHeight + spacing}px`,
         left: `${triggerElementLeft + (triggerElementWidth / 2)}px`,
         transform: 'translateX(-50%)',
       };
 
-    case FusionUiLocation.BOTTOM_LEFT:
+    case Location.BOTTOM_LEFT:
       return {
         top: `${triggerElementTop + triggerElementHeight + spacing}px`,
         left: `${triggerElementLeft}px`,
       };
 
-    case FusionUiLocation.BOTTOM_RIGHT:
+    case Location.BOTTOM_RIGHT:
       return {
         top: `${triggerElementTop + triggerElementHeight + spacing}px`,
         left: `${triggerElementLeft + triggerElementWidth - elementWidth}px`,
       };
 
-    case FusionUiPosition.LEFT:
-    case FusionUiLocation.LEFT:
+    case Position.LEFT:
+    case Location.LEFT:
       return {
         top: `${triggerElementTop + (triggerElementHeight / 2)}px`,
         left: `${triggerElementLeft - elementWidth - spacing}px`,
         transform: 'translateY(-50%)',
       };
 
-    case FusionUiPosition.RIGHT:
-    case FusionUiLocation.RIGHT:
+    case Position.RIGHT:
+    case Location.RIGHT:
       return {
         top: `${triggerElementTop + (triggerElementHeight / 2)}px`,
         left: `${triggerElementLeft + triggerElementWidth + spacing}px`,
         transform: 'translateY(-50%)',
       };
 
-    case FusionUiPosition.CENTER:
-    case FusionUiLocation.CENTER:
+    case Position.CENTER:
+    case Location.CENTER:
       return {
         top: `${triggerElementTop + triggerElementHeight / 2}px`,
         left: `${triggerElementLeft + triggerElementWidth / 2}px`,

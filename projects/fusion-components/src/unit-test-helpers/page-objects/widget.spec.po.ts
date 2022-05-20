@@ -5,20 +5,20 @@ import { ButtonPageObject } from './button.spec.po';
 /**
  * WIDGET PAGE OBJECT
  *
- * Page object for the fusion-ui-widget component.
- * Makes it easier to find and select certain fusion-ui-widget attributes and elements.
+ * Page object for the f-widget component.
+ * Makes it easier to find and select certain f-widget attributes and elements.
  */
 export class WidgetPageObject {
   private fixture: ComponentFixture<any>;
   private widgetClass: string;
 
   get widget(): HTMLElement {
-    // first try to get the fusion-ui-widget element by a provided class
+    // first try to get the f-widget element by a provided class
     const widgetClass: HTMLElement = this.widgetClass ? this.fixture.nativeElement.querySelector(this.widgetClass) : null;
-    // if no provided class or element not found, try to find the fusion-ui-widget element by the fusion-ui-widget tag
-    const fusionWidget: HTMLElement = widgetClass || this.fixture.nativeElement.querySelector('fusion-ui-widget');
-    // if fusion-ui-widget found, find the actual <widget> element by the .fusion-ui-widget class
-    const widget: HTMLElement = fusionWidget ? fusionWidget.querySelector('.fusion-ui-widget') : null;
+    // if no provided class or element not found, try to find the f-widget element by the f-widget tag
+    const fusionWidget: HTMLElement = widgetClass || this.fixture.nativeElement.querySelector('f-widget');
+    // if f-widget found, find the actual <widget> element by the .f-widget class
+    const widget: HTMLElement = fusionWidget ? fusionWidget.querySelector('.f-widget') : null;
 
     return widget;
   }
@@ -30,7 +30,7 @@ export class WidgetPageObject {
    */
   get header(): HTMLElement {
     const widget: HTMLElement = this.widget;
-    return widget ? widget.querySelector('.fusion-ui-widget__header') : null;
+    return widget ? widget.querySelector('.f-widget__header') : null;
   }
 
   /**
@@ -40,7 +40,7 @@ export class WidgetPageObject {
    */
   get headerTimestamp(): HTMLElement {
     const header: HTMLElement = this.header;
-    return header ? header.querySelector('.fusion-ui-widget__header-timestamp') : null;
+    return header ? header.querySelector('.f-widget__header-timestamp') : null;
   }
 
   /**
@@ -50,7 +50,7 @@ export class WidgetPageObject {
    */
   get headerContent(): HTMLElement {
     const header: HTMLElement = this.header;
-    return header ? header.querySelector('.fusion-ui-widget__header-content') : null;
+    return header ? header.querySelector('.f-widget__header-content') : null;
   }
 
   /**
@@ -70,7 +70,7 @@ export class WidgetPageObject {
    */
   get infoBoxesContainer(): HTMLElement {
     const widget: HTMLElement = this.widget;
-    return widget ? widget.querySelector('.fusion-ui-widget__info-boxes') : null;
+    return widget ? widget.querySelector('.f-widget__info-boxes') : null;
   }
 
   /**
@@ -80,7 +80,7 @@ export class WidgetPageObject {
    */
   get infoBoxes(): NodeListOf<HTMLElement> {
     const infoBoxesContainer: HTMLElement = this.infoBoxesContainer;
-    return infoBoxesContainer ? infoBoxesContainer.querySelectorAll('.fusion-ui-widget__info-boxes-box') : null;
+    return infoBoxesContainer ? infoBoxesContainer.querySelectorAll('.f-widget__info-boxes-box') : null;
   }
 
   /**
@@ -102,7 +102,7 @@ export class WidgetPageObject {
    */
   getInfoBoxHeaderAtIndex(index: number): HTMLElement {
     const infoBox: HTMLElement = this.getInfoBoxAtIndex(index);
-    return infoBox ? infoBox.querySelector('.fusion-ui-widget__info-boxes-box-header') : null;
+    return infoBox ? infoBox.querySelector('.f-widget__info-boxes-box-header') : null;
   }
 
   /**
@@ -113,7 +113,7 @@ export class WidgetPageObject {
    */
   getInfoBoxContentAtIndex(index: number): HTMLElement {
     const infoBox: HTMLElement = this.getInfoBoxAtIndex(index);
-    return infoBox ? infoBox.querySelector('.fusion-ui-widget__info-boxes-box-content') : null;
+    return infoBox ? infoBox.querySelector('.f-widget__info-boxes-box-content') : null;
   }
 
   /**
@@ -124,7 +124,7 @@ export class WidgetPageObject {
    */
   getInfoBoxBadgesContainerAtIndex(index: number): HTMLElement {
     const infoBox: HTMLElement = this.getInfoBoxAtIndex(index);
-    return infoBox ? infoBox.querySelector('.fusion-ui-widget__info-boxes-box-badges') : null;
+    return infoBox ? infoBox.querySelector('.f-widget__info-boxes-box-badges') : null;
   }
 
   /**
@@ -136,10 +136,10 @@ export class WidgetPageObject {
   getInfoBoxBadgesAtIndex(index: number): BadgePageObject[] {
     const badgesContainer: HTMLElement = this.getInfoBoxBadgesContainerAtIndex(index);
     const badgeElements: NodeListOf<HTMLElement> =
-      badgesContainer ? badgesContainer.querySelectorAll('.fusion-ui-widget__info-boxes-box-badges-badge') : null;
+      badgesContainer ? badgesContainer.querySelectorAll('.f-widget__info-boxes-box-badges-badge') : null;
 
     const badges: BadgePageObject[] = [];
-    badgeElements.forEach(() => badges.push(new BadgePageObject(this.fixture, '.fusion-ui-widget__info-boxes-box-badges-badge')));
+    badgeElements.forEach(() => badges.push(new BadgePageObject(this.fixture, '.f-widget__info-boxes-box-badges-badge')));
     return badges;
   }
 
@@ -151,7 +151,7 @@ export class WidgetPageObject {
    */
   getInfoBoxFooterAtIndex(index: number): HTMLElement {
     const infoBox: HTMLElement = this.getInfoBoxAtIndex(index);
-    return infoBox ? infoBox.querySelector('.fusion-ui-widget__info-boxes-box-footer') : null;
+    return infoBox ? infoBox.querySelector('.f-widget__info-boxes-box-footer') : null;
   }
 
   /**
@@ -161,7 +161,7 @@ export class WidgetPageObject {
    */
   get infoDetailsContainer(): HTMLElement {
     const widget: HTMLElement = this.widget;
-    return widget ? widget.querySelector('.fusion-ui-widget__info-details') : null;
+    return widget ? widget.querySelector('.f-widget__info-details') : null;
   }
 
   /**
@@ -171,7 +171,7 @@ export class WidgetPageObject {
    */
   get infoDetailsButton(): HTMLButtonElement {
     const infoDetailsContainer: HTMLElement = this.infoDetailsContainer;
-    return infoDetailsContainer ? infoDetailsContainer.querySelector('.fusion-ui-widget__info-details-button') : null;
+    return infoDetailsContainer ? infoDetailsContainer.querySelector('.f-widget__info-details-button') : null;
   }
 
   /**
@@ -181,7 +181,7 @@ export class WidgetPageObject {
    */
   get infoDetailsContent(): HTMLElement {
     const infoDetailsContainer: HTMLElement = this.infoDetailsContainer;
-    return infoDetailsContainer ? infoDetailsContainer.querySelector('.fusion-ui-widget__info-details-content') : null;
+    return infoDetailsContainer ? infoDetailsContainer.querySelector('.f-widget__info-details-content') : null;
   }
 
   /**
@@ -191,7 +191,7 @@ export class WidgetPageObject {
    */
   get infoDetailsTable(): HTMLElement {
     const infoDetailsContainer: HTMLElement = this.infoDetailsContainer;
-    return infoDetailsContainer ? infoDetailsContainer.querySelector('.fusion-ui-widget__info-details-table') : null;
+    return infoDetailsContainer ? infoDetailsContainer.querySelector('.f-widget__info-details-table') : null;
   }
 
   /**
@@ -201,7 +201,7 @@ export class WidgetPageObject {
    */
   get infoDetailsTableCells(): NodeListOf<HTMLElement> {
     const infoDetailsTable: HTMLElement = this.infoDetailsTable;
-    return infoDetailsTable ? infoDetailsTable.querySelectorAll('.fusion-ui-widget__info-details-table-cell') : null;
+    return infoDetailsTable ? infoDetailsTable.querySelectorAll('.f-widget__info-details-table-cell') : null;
   }
 
   /**
@@ -223,7 +223,7 @@ export class WidgetPageObject {
    */
   getInfoDetailsTableCellKeyAtIndex(index: number): HTMLElement {
     const tableCell: HTMLElement = this.getInfoDetailsTableCellAtIndex(index);
-    return tableCell ? tableCell.querySelector('.fusion-ui-widget__info-details-table-cell-key') : null;
+    return tableCell ? tableCell.querySelector('.f-widget__info-details-table-cell-key') : null;
   }
 
   /**
@@ -234,14 +234,14 @@ export class WidgetPageObject {
    */
   getInfoDetailsTableCellValueAtIndex(index: number): HTMLElement {
     const tableCell: HTMLElement = this.getInfoDetailsTableCellAtIndex(index);
-    return tableCell ? tableCell.querySelector('.fusion-ui-widget__info-details-table-cell-value') : null;
+    return tableCell ? tableCell.querySelector('.f-widget__info-details-table-cell-value') : null;
   }
 
   /**
-   * Creates a page object for a fusion-ui-widget DOM element based on the provided fixture and optional widgetClass
+   * Creates a page object for a f-widget DOM element based on the provided fixture and optional widgetClass
    *
-   * @param fixture the parent DOM fixture/ element that houses the fusion-ui-widget
-   * @param widgetClass optional, providing a css class appended to a fusion-ui-widget will help make sure the correct one is selected
+   * @param fixture the parent DOM fixture/ element that houses the f-widget
+   * @param widgetClass optional, providing a css class appended to a f-widget will help make sure the correct one is selected
    */
   constructor(fixture: ComponentFixture<any>, widgetClass?: string) {
     this.fixture = fixture;

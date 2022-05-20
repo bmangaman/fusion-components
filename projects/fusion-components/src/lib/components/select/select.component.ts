@@ -17,11 +17,11 @@ import { SelectOption, SelectTranslations } from './select.interface';
  * SELECT COMPONENT
  */
 @Component({
-  selector: 'fusion-ui-select',
+  selector: 'f-select',
   templateUrl: './select.component.html',
 })
 export class SelectComponent extends TranslatedComponent implements ControlValueAccessor, OnInit, OnDestroy {
-  private onChange: (...args) => void;
+  private onChange: (...args: unknown[]) => void;
   private onTouched: () => void;
 
   private readonly _optionHeight = 36;
@@ -195,7 +195,7 @@ export class SelectComponent extends TranslatedComponent implements ControlValue
    * On component teardown:
    *  - next and complete the unsubscribe Subject co clean up any active subscriptions
    */
-  ngOnDestroy(): void {
+  override ngOnDestroy(): void {
     this._unsubscribe$.next();
     this._unsubscribe$.complete();
   }
@@ -220,7 +220,7 @@ export class SelectComponent extends TranslatedComponent implements ControlValue
       }) || [];
 
       if (!this.filteredOptions.length) {
-        this.setValue(undefined, false);
+        this.setValue(undefined!, false);
       }
     } else {
       this.filteredOptions = this.options;
@@ -405,10 +405,10 @@ export class SelectComponent extends TranslatedComponent implements ControlValue
    * Generates button CSS classes based on the provided inputs and sets selectClasses.
    */
   generateSelectClasses(): void {
-    const classes: string[] = ['fusion-ui-select__classes-wrapper', 'fusion-ui-form__input-wrapper', 'fusion-ui-form__select-wrapper'];
+    const classes: string[] = ['f-select__classes-wrapper', 'f-form__input-wrapper', 'f-form__select-wrapper'];
 
     if (!!this.isDisabled) {
-      classes.push('fusion-ui-form__input--disabled');
+      classes.push('f-form__input--disabled');
     }
 
     classes.push(...this.cssClasses);

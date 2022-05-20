@@ -1,6 +1,6 @@
 import { ChangeDetectorRef } from '@angular/core';
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services';
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { TableColumnConfig, TableSpacing } from '../../table.interface';
 import { TableCellComponent } from './table-cell.component';
 

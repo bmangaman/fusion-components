@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing';
 
-import { MenuPageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/menu.spec.po';
+import { MenuPageObject } from '@fusion-components/unit-test-helpers/page-objects/menu.spec.po';
 
 import { MenuTestComponent } from './menu.component.dom.spec';
 

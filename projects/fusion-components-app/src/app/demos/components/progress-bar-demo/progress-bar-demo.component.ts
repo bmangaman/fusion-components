@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FusionUiSize, ProgressBarStatus } from '@fusion-ui/fusion-components';
+import { Size, ProgressBarStatus } from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-progress-bar',
@@ -8,7 +8,7 @@ import { FusionUiSize, ProgressBarStatus } from '@fusion-ui/fusion-components';
   styleUrls: ['./progress-bar-demo.component.scss']
 })
 export class ProgressBarDemoComponent {
-  readonly FusionUiSize = FusionUiSize;
+  readonly Size = Size;
   readonly ProgressBarStatus = ProgressBarStatus;
 
   progressBarForm: FormGroup;
@@ -26,7 +26,7 @@ export class ProgressBarDemoComponent {
       maxValue: [100, Validators.required],
       isValueDisplayed: [true],
       minDisplayedPercent: [5, Validators.required],
-      size: [FusionUiSize.MEDIUM, Validators.required],
+      size: [Size.MEDIUM, Validators.required],
       status: [''],
       displayText: [undefined],
       ariaValueText: [undefined],

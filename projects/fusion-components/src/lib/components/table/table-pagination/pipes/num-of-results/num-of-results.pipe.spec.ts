@@ -1,7 +1,7 @@
 import { TranslateService } from '@ngx-translate/core';
 
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services/translation';
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { NumOfResultsPipe } from './num-of-results.pipe';
 
 describe('NumOfResultsPipe', () => {

@@ -1,27 +1,27 @@
 <fusion-demo titleText="Checkbox">
 
-  <form form class="fusion-components-demo__form fusion-ui-form" *ngIf="checkboxForm" [formGroup]="checkboxForm">
+  <form form class="fusion-components-demo__form f-form" *ngIf="checkboxForm" [formGroup]="checkboxForm">
     <!-- START: label input -->
-    <div class="fusion-ui-form__fieldset">
-      <label class="fusion-ui-form__input-label" for="select-input">Label</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input class="fusion-ui-form__input" formControlName="label" id="select-input" />
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+    <div class="f-form__fieldset">
+      <label class="f-form__input-label" for="select-input">Label</label>
+      <div class="f-form__input-wrapper">
+        <input class="f-form__input" formControlName="label" id="select-input" />
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: label input -->
 
     <!-- START: is disabled checkbox -->
-    <fusion-ui-checkbox formControlName="isDisabled">isDisabled</fusion-ui-checkbox>
+    <f-checkbox formControlName="isDisabled">isDisabled</f-checkbox>
     <!-- END: is disabled checkbox -->
 
     <!-- START: is required checkbox -->
-    <fusion-ui-checkbox formControlName="isRequired">isRequired</fusion-ui-checkbox>
+    <f-checkbox formControlName="isRequired">isRequired</f-checkbox>
     <!-- END: is required checkbox -->
   </form>
 
   <ng-container result>
-    <fusion-ui-checkbox [formControl]="checkboxFormControl">{{ checkboxForm?.get('label')?.value }}</fusion-ui-checkbox>
+    <f-checkbox [formControl]="checkboxFormControl">{{ checkboxForm?.get('label')?.value }}</f-checkbox>
   </ng-container>
 
 </fusion-demo>

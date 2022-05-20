@@ -1,4 +1,4 @@
-.fusion-ui-modal {
+.f-modal {
   height: 100%;
   width: 100%;
 
@@ -27,16 +27,16 @@
   }
 
   &__container {
-    background-color: $fusion-ui-color-background-white;
-    box-shadow: $fusion-ui-box-shadow-elevation-level-3;
+    background-color: $f-color-background-white;
+    box-shadow: $f-box-shadow-elevation-level-3;
     height: 100%;
-    padding: $fusion-ui-spacing-lg $fusion-ui-spacing-lg 0;
+    padding: $f-spacing-lg $f-spacing-lg 0;
     width: 100%;
 
     &--alert {
       height: auto;
 
-      .fusion-ui-modal__content {
+      .f-modal__content {
         overflow: auto;
         max-height: 60vh;
       }
@@ -46,37 +46,37 @@
       width: 100%;
       padding: 0;
 
-      .fusion-ui-modal__content-wrapper {
+      .f-modal__content-wrapper {
         overflow: auto;
       }
 
-      .fusion-ui-modal__footer-buttons {
+      .f-modal__footer-buttons {
         justify-content: flex-start;
       }
 
-      .fusion-ui-modal__content-wrapper {
+      .f-modal__content-wrapper {
         padding: 0;
       }
 
-      .fusion-ui-modal {
+      .f-modal {
         &__content,
         &__footer {
-          padding: 0 $fusion-ui-spacing-xxl;
+          padding: 0 $f-spacing-xxl;
         }
       }
     }
 
-    &--small:not(.fusion-ui-modal__container--full) {
+    &--small:not(.f-modal__container--full) {
       width: 90vw;
       max-width: 450px;
     }
 
-    &--medium:not(.fusion-ui-modal__container--full) {
+    &--medium:not(.f-modal__container--full) {
       width: 90vw;
       max-width: 600px;
     }
 
-    &--large:not(.fusion-ui-modal__container--full) {
+    &--large:not(.f-modal__container--full) {
       width: 90vw;
       max-width: 800px;
     }
@@ -88,7 +88,7 @@
     overflow-y: auto;
     height: 100%;
     width: 100%;
-    padding: $fusion-ui-spacing-sm $fusion-ui-spacing-sm 0;
+    padding: $f-spacing-sm $f-spacing-sm 0;
   }
 
   &__window {
@@ -116,18 +116,18 @@
   }
 
   &__header {
-    border-bottom: $fusion-ui-border-light;
+    border-bottom: $f-border-light;
     display: flex;
     justify-content: space-between;
-    margin-bottom:$fusion-ui-spacing-lg;
-    padding-bottom:$fusion-ui-spacing-xs;
+    margin-bottom:$f-spacing-lg;
+    padding-bottom:$f-spacing-xs;
 
     &-content {
-      color: $fusion-ui-color-secondary-text-on-light;
+      color: $f-color-secondary-text-on-light;
       flex: 1;
-      font-size: $fusion-ui-font-size-h3;
-      line-height: $fusion-ui-line-height-h3;
-      font-weight: $fusion-ui-font-weight-semibold;
+      font-size: $f-font-size-h3;
+      line-height: $f-line-height-h3;
+      font-weight: $f-font-weight-semibold;
     }
 
     &-close-button {
@@ -135,14 +135,14 @@
       background: none;
       border: none;
       border-radius: 0;
-      color: $fusion-ui-color-greyscale-61;
+      color: $f-color-greyscale-61;
       cursor: pointer;
       display: flex;
-      font-size: $fusion-ui-font-size-icon-lg;
+      font-size: $f-font-size-icon-lg;
       justify-content: center;
-      padding: $fusion-ui-spacing-xs;
-      right: -#{$fusion-ui-spacing-xs};
-      top: -#{$fusion-ui-spacing-xs};
+      padding: $f-spacing-xs;
+      right: -#{$f-spacing-xs};
+      top: -#{$f-spacing-xs};
       width: 36px;
 
       i, i:before {
@@ -152,7 +152,7 @@
       }
 
       &:hover:not(:disabled) {
-        color: $fusion-ui-color-interactive-hover;
+        color: $f-color-interactive-hover;
       }
 
       &:disabled {
@@ -165,20 +165,20 @@
     &-top-bar {
       position: sticky;
       top: 0;
-      height: $fusion-ui-spacing-xxl;
+      height: $f-spacing-xxl;
       display: flex;
       justify-content: flex-end;
-      box-shadow: $fusion-ui-box-shadow-elevation-level-1;
+      box-shadow: $f-box-shadow-elevation-level-1;
       width: 100%;
-      background: $fusion-ui-color-white;
+      background: $f-color-white;
       z-index: 1;
     }
 
     &-content {
-      padding: $fusion-ui-spacing-xl 0;
-      color: $fusion-ui-color-secondary-text-on-light;
+      padding: $f-spacing-xl 0;
+      color: $f-color-secondary-text-on-light;
       flex: 1;
-      @include fusion-ui-h1
+      @include f-h1
     }
 
     &-close-button {
@@ -186,12 +186,12 @@
       background: none;
       border: none;
       border-radius: 0;
-      color: $fusion-ui-color-greyscale-61;
+      color: $f-color-greyscale-61;
       cursor: pointer;
       display: flex;
-      font-size: $fusion-ui-font-size-icon-lg;
+      font-size: $f-font-size-icon-lg;
       justify-content: center;
-      padding: $fusion-ui-spacing-xs;
+      padding: $f-spacing-xs;
 
       i, i:before {
         height: 20px;
@@ -200,7 +200,7 @@
       }
 
       &:hover:not(:disabled) {
-        color: $fusion-ui-color-interactive-hover;
+        color: $f-color-interactive-hover;
       }
 
       &:disabled {
@@ -216,7 +216,7 @@
 
   &__footer {
     display: block;
-    margin: $fusion-ui-spacing-xl 0 $fusion-ui-spacing-lg;
+    margin: $f-spacing-xl 0 $f-spacing-lg;
 
     &-buttons {
       align-items: center;
@@ -225,8 +225,8 @@
 
       button + button,
       .luci-button + .luci-button, // TODO: remove references to luci button
-      fusion-ui-button + fusion-ui-button {
-        margin-left: $fusion-ui-spacing-md;
+      f-button + f-button {
+        margin-left: $f-spacing-md;
       }
     }
   }

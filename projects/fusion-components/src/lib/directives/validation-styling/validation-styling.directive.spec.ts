@@ -1,7 +1,7 @@
 import { ElementRef, Renderer2 } from '@angular/core';
 import { FormControl, NgControl } from '@angular/forms';
-import { FormInputStatus } from '@fusion-ui/fusion-components';
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { FormInputStatus } from '@fusion-components';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { Subject } from 'rxjs';
 import { ValidationStylingDirective } from './validation-styling.directive';
 
@@ -81,7 +81,7 @@ describe('ValidationStylingDirective', () => {
 
     it('should set wrapper to parentNode if the element is already wrapped', () => {
       expect((directive as any).wrapperElement).not.toBeDefined();
-      const parent = setup('fusion-ui-form__input-wrapper');
+      const parent = setup('f-form__input-wrapper');
       directive.createParentWrapper();
 
       expect(renderer2Stub.insertBefore).not.toHaveBeenCalled();
@@ -102,14 +102,14 @@ describe('ValidationStylingDirective', () => {
 
     it('should set wrapper to parentNode if parent is a select wrapper', () => {
       expect((directive as any).wrapperElement).not.toBeDefined();
-      const parent = setup('fusion-ui-form__select-wrapper');
+      const parent = setup('f-form__select-wrapper');
 
       directive.createParentWrapper();
 
       expect(renderer2Stub.insertBefore).not.toHaveBeenCalled();
       expect(renderer2Stub.appendChild).not.toHaveBeenCalled();
       expect((directive as any).wrapperElement).toEqual(parent);
-      expect((directive as any).wrapperElement.classList.contains('fusion-ui-form__input-wrapper')).toBeTrue();
+      expect((directive as any).wrapperElement.classList.contains('f-form__input-wrapper')).toBeTrue();
     });
   });
 
@@ -117,7 +117,7 @@ describe('ValidationStylingDirective', () => {
     it('should not build anything if span exists', () => {
       const wrapperEl = document.createElement('div');
       const el = document.createElement('div');
-      el.classList.add('fusion-ui-form__input-wrapper-status-icon');
+      el.classList.add('f-form__input-wrapper-status-icon');
       wrapperEl.appendChild(el);
       (directive as any).wrapperElement = wrapperEl;
       directive.buildIconSpan();
@@ -139,34 +139,34 @@ describe('ValidationStylingDirective', () => {
   describe('setStyling', () => {
     beforeEach(() => {
       const el = document.createElement('div');
-      el.classList.add('fusion-ui-form__input--invalid', 'fusion-ui-form__input--valid');
+      el.classList.add('f-form__input--invalid', 'f-form__input--valid');
       (directive as any).inputElement = el;
     });
 
     it('should remove previous style classes', () => {
-      expect((directive as any).inputElement.classList.contains('fusion-ui-form__input--invalid')).toBeTrue();
-      expect((directive as any).inputElement.classList.contains('fusion-ui-form__input--valid')).toBeTrue();
+      expect((directive as any).inputElement.classList.contains('f-form__input--invalid')).toBeTrue();
+      expect((directive as any).inputElement.classList.contains('f-form__input--valid')).toBeTrue();
 
       directive.setStyling('');
 
-      expect((directive as any).inputElement.classList.contains('fusion-ui-form__input--invalid')).toBeFalse();
-      expect((directive as any).inputElement.classList.contains('fusion-ui-form__input--valid')).toBeFalse();
+      expect((directive as any).inputElement.classList.contains('f-form__input--invalid')).toBeFalse();
+      expect((directive as any).inputElement.classList.contains('f-form__input--valid')).toBeFalse();
     });
 
     it('should add valid class when control is valid', () => {
       (directive as any).control.value = 'blah';
       directive.setStyling(FormInputStatus.VALID);
 
-      expect((directive as any).inputElement.classList.contains('fusion-ui-form__input--valid')).toBeTrue();
-      expect((directive as any).inputElement.classList.contains('fusion-ui-form__input--invalid')).toBeFalse();
+      expect((directive as any).inputElement.classList.contains('f-form__input--valid')).toBeTrue();
+      expect((directive as any).inputElement.classList.contains('f-form__input--invalid')).toBeFalse();
     });
 
     it('should add invalid class when control is invalid', () => {
       (directive as any).control.value = 'blah';
       directive.setStyling(FormInputStatus.INVALID);
 
-      expect((directive as any).inputElement.classList.contains('fusion-ui-form__input--valid')).toBeFalse();
-      expect((directive as any).inputElement.classList.contains('fusion-ui-form__input--invalid')).toBeTrue();
+      expect((directive as any).inputElement.classList.contains('f-form__input--valid')).toBeFalse();
+      expect((directive as any).inputElement.classList.contains('f-form__input--invalid')).toBeTrue();
     });
   });
 });

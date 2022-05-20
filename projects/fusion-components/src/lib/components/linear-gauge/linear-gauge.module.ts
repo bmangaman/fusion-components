@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { EnumToArrayModule, GetFusionUiStatusLevelTextModule, MetaModule, PercentageModule } from '@fusion-ui/fusion-components/lib/pipes/';
+import { EnumToArrayModule, GetStatusLevelTextModule, MetaModule, PercentageModule } from '@fusion-components/lib/pipes/';
 
 import { TooltipDirectiveModule } from '../../directives/tooltip';
 import { LinearGaugeComponent } from './linear-gauge.component';
@@ -10,7 +10,7 @@ import { LinearGaugeComponent } from './linear-gauge.component';
   imports: [
     CommonModule,
     EnumToArrayModule,
-    GetFusionUiStatusLevelTextModule,
+    GetStatusLevelTextModule,
     MetaModule,
     PercentageModule,
     TooltipDirectiveModule,
@@ -21,7 +21,7 @@ import { LinearGaugeComponent } from './linear-gauge.component';
   exports: [
     CommonModule,
     EnumToArrayModule,
-    GetFusionUiStatusLevelTextModule,
+    GetStatusLevelTextModule,
     MetaModule,
     PercentageModule,
     TooltipDirectiveModule,

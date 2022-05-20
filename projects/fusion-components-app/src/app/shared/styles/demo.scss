@@ -7,8 +7,8 @@
   overflow: hidden;
 
   &__header {
-    border-bottom: $fusion-ui-border-light;
-    padding: $fusion-ui-spacing-md;
+    border-bottom: $f-border-light;
+    padding: $f-spacing-md;
   }
 
   &__container {
@@ -25,11 +25,11 @@
     overflow: hidden;
 
     &-container {
-      background-color: $fusion-ui-color-background-light;
-      border-right: $fusion-ui-border-light;
+      background-color: $f-color-background-light;
+      border-right: $f-border-light;
       height: 100%;
       overflow: hidden;
-      padding: $fusion-ui-spacing-md;
+      padding: $f-spacing-md;
       width: 400px;
 
       &:empty {
@@ -40,26 +40,26 @@
     &-array {
       flex: 1;
       overflow: auto;
-      margin: $fusion-ui-spacing-sm 0;
+      margin: $f-spacing-sm 0;
 
       &-header {
-        margin-top: $fusion-ui-spacing-md;
+        margin-top: $f-spacing-md;
       }
     
       &-item {
-        background-color: $fusion-ui-color-background-white;
-        border: $fusion-ui-border-light;
-        border-radius: $fusion-ui-border-radius-md;
-        padding: $fusion-ui-spacing-md;
+        background-color: $f-color-background-white;
+        border: $f-border-light;
+        border-radius: $f-border-radius-md;
+        padding: $f-spacing-md;
     
         &-header {
           display: flex;
           justify-content: space-between;
-          margin-bottom: $fusion-ui-spacing-md;
+          margin-bottom: $f-spacing-md;
         }
 
         & + * {
-          margin-top: $fusion-ui-spacing-md;
+          margin-top: $f-spacing-md;
         }
       }
     
@@ -73,7 +73,7 @@
     flex: 1;
     height: 100%;
     overflow: auto;
-    padding: $fusion-ui-spacing-md;
+    padding: $f-spacing-md;
 
     &:empty {
       display: none;
@@ -89,23 +89,23 @@
     &-events {
       display: flex;
       flex-wrap: wrap;
-      margin-top: $fusion-ui-spacing-lg;
+      margin-top: $f-spacing-lg;
 
       > * + * {
-        margin-left: $fusion-ui-spacing-md;
+        margin-left: $f-spacing-md;
       }
     }
 
     &-event {
-      padding: $fusion-ui-spacing-xs $fusion-ui-spacing-sm;
+      padding: $f-spacing-xs $f-spacing-sm;
       border: 1px solid #BBB;
       border-radius: 3px;
       opacity: 0.5;
 
       &--emitted {
         opacity: 1;
-        border-color: $fusion-ui-color-success-chart;
-        background: $fusion-ui-color-success-background;
+        border-color: $f-color-success-chart;
+        background: $f-color-success-background;
       }
     }
   }

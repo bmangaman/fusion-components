@@ -1,28 +1,28 @@
 <fusion-demo titleText="Tooltip" [isResultCentered]="true">
 
-  <form form class="fusion-components-demo__form fusion-ui-form" *ngIf="tooltipForm" [formGroup]="tooltipForm">
+  <form form class="fusion-components-demo__form f-form" *ngIf="tooltipForm" [formGroup]="tooltipForm">
     <!-- START: position select -->
-    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
-      <label class="fusion-ui-form__input-label">Status</label>
-      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
-        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="position">
+    <div class="f-form__fieldset f-table__filter-input-field-selector">
+      <label class="f-form__input-label">Status</label>
+      <div class="f-form__input-wrapper f-form__select-wrapper">
+        <select class="f-form__input f-form__select" formControlName="position">
           <option value="">- None -</option>
-          <option [value]="FusionUiPosition.TOP">{{ FusionUiPosition.TOP }}</option>
-          <option [value]="FusionUiPosition.BOTTOM">{{ FusionUiPosition.BOTTOM }}</option>
-          <option [value]="FusionUiPosition.LEFT">{{ FusionUiPosition.LEFT }}</option>
-          <option [value]="FusionUiPosition.RIGHT">{{ FusionUiPosition.RIGHT }}</option>
-          <option [value]="FusionUiPosition.CENTER">{{ FusionUiPosition.CENTER }}</option>
+          <option [value]="Position.TOP">{{ Position.TOP }}</option>
+          <option [value]="Position.BOTTOM">{{ Position.BOTTOM }}</option>
+          <option [value]="Position.LEFT">{{ Position.LEFT }}</option>
+          <option [value]="Position.RIGHT">{{ Position.RIGHT }}</option>
+          <option [value]="Position.CENTER">{{ Position.CENTER }}</option>
         </select>
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: position select -->
 
     <!-- START: displayOn select -->
-    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
-      <label class="fusion-ui-form__input-label">Display On Interaction</label>
-      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
-        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="displayOn">
+    <div class="f-form__fieldset f-table__filter-input-field-selector">
+      <label class="f-form__input-label">Display On Interaction</label>
+      <div class="f-form__input-wrapper f-form__select-wrapper">
+        <select class="f-form__input f-form__select" formControlName="displayOn">
           <option value="">- None -</option>
           <option [value]="MouseInteraction.CLICK">Click</option>
           <option [value]="MouseInteraction.MOUSE_ENTER">Mouse Enter</option>
@@ -30,16 +30,16 @@
           <option [value]="MouseInteraction.FOCUS">Focus</option>
           <option [value]="MouseInteraction.BLUR">Blur</option>
         </select>
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: dislayOn select -->
 
     <!-- START: hideOn select -->
-    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
-      <label class="fusion-ui-form__input-label">Hide On Interaction</label>
-      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
-        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="hideOn">
+    <div class="f-form__fieldset f-table__filter-input-field-selector">
+      <label class="f-form__input-label">Hide On Interaction</label>
+      <div class="f-form__input-wrapper f-form__select-wrapper">
+        <select class="f-form__input f-form__select" formControlName="hideOn">
           <option value="">- None -</option>
           <option [value]="MouseInteraction.CLICK">Click</option>
           <option [value]="MouseInteraction.MOUSE_ENTER">Mouse Enter</option>
@@ -47,34 +47,34 @@
           <option [value]="MouseInteraction.FOCUS">Focus</option>
           <option [value]="MouseInteraction.BLUR">Blur</option>
         </select>
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: hideOn select -->
 
     <!-- START: text input -->
-    <div class="fusion-ui-form__fieldset">
-      <label class="fusion-ui-form__input-label">Text</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input class="fusion-ui-form__input" formControlName="text" />
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+    <div class="f-form__fieldset">
+      <label class="f-form__input-label">Text</label>
+      <div class="f-form__input-wrapper">
+        <input class="f-form__input" formControlName="text" />
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: text input -->
 
     <!-- START: use custom template checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-1" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-1" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
-            name="fusion-ui-checkbox-1"
-            id="fusion-ui-checkbox-1"
+            name="f-checkbox-1"
+            id="f-checkbox-1"
             formControlName="template">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Use Template</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Use Template</span>
         </label>
       </span>
     </div>

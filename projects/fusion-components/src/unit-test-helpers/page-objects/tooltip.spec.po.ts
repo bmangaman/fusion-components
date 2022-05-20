@@ -1,11 +1,11 @@
 import { ComponentFixture } from '@angular/core/testing';
-import { FusionUiPositionConfig } from '@fusion-ui/fusion-components/lib/shared';
+import { PositionConfig } from '@fusion-components/lib/shared';
 
 /**
  * TOOLTIP PAGE OBJECT
  *
- * Page object for the fusion-ui-tooltip component.
- * Makes it easier to find and select certain fusion-ui-tooltip attributes and elements.
+ * Page object for the f-tooltip component.
+ * Makes it easier to find and select certain f-tooltip attributes and elements.
  */
 export class TooltipPageObject {
   private fixture: ComponentFixture<any>;
@@ -17,10 +17,10 @@ export class TooltipPageObject {
    * @returns The base tooltip DOM element.
    */
   get tooltip(): HTMLElement {
-    // first try to get the fusion-ui-button element by a provided class
+    // first try to get the f-button element by a provided class
     const tooltipClass: HTMLElement = this.tooltipClass ? this.fixture.nativeElement.querySelector(this.tooltipClass) : null;
-    // if no provided class or element not found, try to find the fusion-ui-tooltip element by the fusion-ui-tooltip tag
-    return  tooltipClass || this.fixture.nativeElement.querySelector('fusion-ui-tooltip');
+    // if no provided class or element not found, try to find the f-tooltip element by the f-tooltip tag
+    return  tooltipClass || this.fixture.nativeElement.querySelector('f-tooltip');
   }
 
   /**
@@ -40,7 +40,7 @@ export class TooltipPageObject {
    */
   get contentContainer(): HTMLElement {
     const button: HTMLElement = this.tooltip;
-    return button ? button.querySelector('.fusion-ui-tooltip__content') : null;
+    return button ? button.querySelector('.f-tooltip__content') : null;
   }
 
   /**
@@ -58,7 +58,7 @@ export class TooltipPageObject {
    *
    * @returns The position-related attributes of the tooltip.
    */
-  get position(): FusionUiPositionConfig {
+  get position(): PositionConfig {
     const tooltip: HTMLElement = this.tooltip;
 
     if (tooltip) {
@@ -75,10 +75,10 @@ export class TooltipPageObject {
   }
 
   /**
-   * Creates a page object for a fusion-ui-tooltip DOM element based on the provided fixture and optional tooltipClass
+   * Creates a page object for a f-tooltip DOM element based on the provided fixture and optional tooltipClass
    *
-   * @param fixture the parent DOM fixture/ element that houses the fusion-ui-tooltip
-   * @param tooltipClass optional, providing a css class appended to a fusion-ui-tooltip will help make sure the correct one is selected
+   * @param fixture the parent DOM fixture/ element that houses the f-tooltip
+   * @param tooltipClass optional, providing a css class appended to a f-tooltip will help make sure the correct one is selected
    */
   constructor(fixture: ComponentFixture<any>, tooltipClass?: string) {
     this.fixture = fixture;

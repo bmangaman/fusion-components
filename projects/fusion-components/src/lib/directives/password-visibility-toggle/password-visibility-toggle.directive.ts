@@ -8,12 +8,12 @@ import { Directive, ElementRef, EventEmitter, HostBinding, Output, Renderer2 } f
  * done by toggling the input type between 'text' and 'password'.
  *
  * @example
- * <form class="fusion-ui-form">
- *   <div class="fusion-ui-form__fieldset">
- *     <label class="fusion-ui-form__input-label">Example</label>
- *     <div class="fusion-ui-form__input-wrapper">
- *       <input class="fusion-ui-form__input" type="password" fusionUiPasswordVisibilityToggle />
- *       <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+ * <form class="f-form">
+ *   <div class="f-form__fieldset">
+ *     <label class="f-form__input-label">Example</label>
+ *     <div class="f-form__input-wrapper">
+ *       <input class="f-form__input" type="password" fusionUiPasswordVisibilityToggle />
+ *       <span class="f-form__input-wrapper-status-icon"></span>
  *     </div>
  *   </div>
  * </form>
@@ -41,7 +41,7 @@ export class PasswordVisibilityToggleDirective {
   /**
    * Emits when the password visibility is toggled with the current visibility status.
    */
-  @Output() passwordVisibilityToggled: EventEmitter<boolean> = new EventEmitter(null);
+  @Output() passwordVisibilityToggled: EventEmitter<boolean> = new EventEmitter(undefined);
 
   constructor(
     private el: ElementRef,
@@ -63,14 +63,14 @@ export class PasswordVisibilityToggleDirective {
   appendPasswordToggleButton(): void {
     // Get the parent element of the input element to which this directive is applied and add the appropriate CSS class
     const parentElement: HTMLElement = this.renderer.parentNode(this.el.nativeElement);
-    parentElement.classList.add('fusion-ui-form__input-password-visibility-toggle-wrapper');
+    parentElement.classList.add('f-form__input-password-visibility-toggle-wrapper');
 
     // If a status icon exists, create a inner wrapper for the input and icon
-    const statusIcon: HTMLElement = parentElement.querySelector('.fusion-ui-form__input-wrapper-status-icon');
+    const statusIcon: HTMLElement | null = parentElement.querySelector('.f-form__input-wrapper-status-icon');
 
     if (statusIcon) {
       const inputInner: HTMLElement = this.renderer.createElement('div');
-      this.renderer.addClass(inputInner, 'fusion-ui-form__input-password-visibility-toggle-inner');
+      this.renderer.addClass(inputInner, 'f-form__input-password-visibility-toggle-inner');
       this.renderer.appendChild(parentElement, inputInner);
       this.renderer.appendChild(inputInner, this.el.nativeElement);
       this.renderer.appendChild(inputInner, statusIcon);
@@ -78,7 +78,7 @@ export class PasswordVisibilityToggleDirective {
 
     // Create a new password toggle button and append the appropriate CSS classes
     const newPasswordVisibilityToggleButton: HTMLButtonElement = this.renderer.createElement('button');
-    this.renderer.addClass(newPasswordVisibilityToggleButton, 'fusion-ui-form__input-password-visibility-toggle-button');
+    this.renderer.addClass(newPasswordVisibilityToggleButton, 'f-form__input-password-visibility-toggle-button');
     this.renderer.addClass(newPasswordVisibilityToggleButton, 'mdi');
     this.renderer.setAttribute(newPasswordVisibilityToggleButton, 'aria-hidden', 'true');
 

@@ -7,23 +7,23 @@ import { cloneDeep } from 'lodash';
 import { BytesPipe, BytesPipeBase } from '../../pipes/bytes';
 import { PipeItem } from '../../pipes/meta';
 import { DomService } from '../../services/dom';
-import { FusionUiStatusLevel } from '../../shared';
+import { StatusLevel } from '../../shared';
 import { LinearGaugeComponentPageObject } from './linear-gauge.component.spec.po';
 import { LinearGaugeThreshold } from './linear-gauge.interface';
 import { LinearGaugeModule } from './linear-gauge.module';
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
     <body>
-      <fusion-ui-linear-gauge
+      <f-linear-gauge
         [value]="value"
         [maxValue]="maxValue"
         [minValue]="minValue"
         [dataFormatPipeItem]="useDataFormatPipe ? dataFormatPipe : null"
         [valueFormatPipeItem]="useValueFormatPipe ? valueFormatPipe : null"
         [thresholds]="thresholds">
-      </fusion-ui-linear-gauge>
+      </f-linear-gauge>
     </body>
   `,
 })
@@ -49,12 +49,12 @@ describe('LinearGaugeComponent', () => {
     {
       title: 'Warning Title',
       value: 5,
-      level: FusionUiStatusLevel.WARNING,
+      level: StatusLevel.WARNING,
     },
     {
       title: 'Error Title',
       value: 8,
-      level: FusionUiStatusLevel.ERROR,
+      level: StatusLevel.ERROR,
     },
   ];
 
@@ -103,27 +103,27 @@ describe('LinearGaugeComponent', () => {
       component.thresholds = [];
       component.value = 3;
       fixture.detectChanges();
-      expect(page.linearGauge.valueBar.classList).toContain('fusion-ui-linear-gauge__value-bar--base');
+      expect(page.linearGauge.valueBar.classList).toContain('f-linear-gauge__value-bar--base');
 
       component.thresholds = cloneDeep(thresholds);
       component.value = 3;
       fixture.detectChanges();
-      expect(page.linearGauge.valueBar.classList).toContain('fusion-ui-linear-gauge__value-bar--normal');
+      expect(page.linearGauge.valueBar.classList).toContain('f-linear-gauge__value-bar--normal');
 
       component.thresholds = cloneDeep(thresholds);
       component.value = 5;
       fixture.detectChanges();
-      expect(page.linearGauge.valueBar.classList).toContain('fusion-ui-linear-gauge__value-bar--warning');
+      expect(page.linearGauge.valueBar.classList).toContain('f-linear-gauge__value-bar--warning');
 
       component.thresholds = cloneDeep(thresholds);
       component.value = 7;
       fixture.detectChanges();
-      expect(page.linearGauge.valueBar.classList).toContain('fusion-ui-linear-gauge__value-bar--warning');
+      expect(page.linearGauge.valueBar.classList).toContain('f-linear-gauge__value-bar--warning');
 
       component.thresholds = cloneDeep(thresholds);
       component.value = 10;
       fixture.detectChanges();
-      expect(page.linearGauge.valueBar.classList).toContain('fusion-ui-linear-gauge__value-bar--critical');
+      expect(page.linearGauge.valueBar.classList).toContain('f-linear-gauge__value-bar--critical');
     });
   });
 

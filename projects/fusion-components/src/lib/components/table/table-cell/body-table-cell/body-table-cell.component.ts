@@ -13,7 +13,7 @@ import { TableCellComponent } from '../table-cell/table-cell.component';
  * It is used primarily for appending the correct CSS classes and styles to the cell.
  */
 @Component({
-  selector: 'fusion-ui-table-cell-body',
+  selector: 'f-table-cell-body',
   templateUrl: './body-table-cell.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -36,14 +36,14 @@ export class BodyTableCellComponent extends TableCellComponent implements DoChec
    * Checks to see if the provided inputs (rowData and index) have actually changed. If so, mark the component
    * to be checked and re-rendered.
    */
-  ngDoCheck(): void {
+  override ngDoCheck(): void {
     super.ngDoCheck();
 
-    let didAnythingChange: boolean;
+    let didAnythingChange: boolean = false;
 
     if (!isEqual(this.rowData, this._prevRowData)) {
       this._prevRowData = this.rowData;
-      this.fieldData = get(this.rowData, this.col.field, '');
+      this.fieldData = get(this.rowData, this.col.field || '', '');
       didAnythingChange = true;
     }
 
@@ -64,27 +64,27 @@ export class BodyTableCellComponent extends TableCellComponent implements DoChec
    *
    * @returns The generated CSS classes.
    */
-  generateTableCellClasses(): string[] {
-    const classes: string[] = ['fusion-ui-table__table-cell', 'fusion-ui-table__table-cell--body'];
+  override generateTableCellClasses(): string[] {
+    const classes: string[] = ['f-table__table-cell', 'f-table__table-cell--body'];
 
     if (!!this.col?.isOverflowVisible) {
-      classes.push('fusion-ui-table__table-cell--overflow-visible');
+      classes.push('f-table__table-cell--overflow-visible');
     }
 
     if (!!this.col?.cellContentAlignment) {
-      classes.push(`fusion-ui-table__table-cell--${this.col.cellContentAlignment}-aligned`);
+      classes.push(`f-table__table-cell--${this.col.cellContentAlignment}-aligned`);
     }
 
     if (!!this.col?.cellContentVerticalAlignment) {
-      classes.push(`fusion-ui-table__table-cell--${this.col.cellContentVerticalAlignment}-aligned`);
+      classes.push(`f-table__table-cell--${this.col.cellContentVerticalAlignment}-aligned`);
     }
 
     if (!!this.col?.isTruncated) {
-      classes.push('fusion-ui-table__table-cell--truncated');
+      classes.push('f-table__table-cell--truncated');
     }
 
     if (!!this.spacing) {
-      classes.push(`fusion-ui-table__table-cell--${this.spacing}`);
+      classes.push(`f-table__table-cell--${this.spacing}`);
     }
 
     if (!!this.col?.columnCellStyleClassesFunction) {
@@ -92,7 +92,7 @@ export class BodyTableCellComponent extends TableCellComponent implements DoChec
     }
 
     if (!!this.index && this.index % 2 !== 0) {
-      classes.push('fusion-ui-table__table-cell--grey');
+      classes.push('f-table__table-cell--grey');
     }
 
     classes.push(...this.cssClasses);

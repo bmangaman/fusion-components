@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { FusionUiStatusLevel } from '../../shared/interfaces';
+import { StatusLevel } from '../../shared/interfaces';
 import { WidgetComponentPageObject } from './widget.component.spec.po';
 import { DEFAULT_WIDGET_TRANSLATIONS, InfoBoxDetail, WidgetTemplate, WidgetTranslations } from './widget.interface';
 import { WidgetModule } from './widget.module';
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
-  <fusion-ui-widget
+  <f-widget
     *ngIf="isComponentRendered"
     [isTimestampDisplayed]="isTimestampDisplayed"
     [isRefreshButtonDisplayed]="isRefreshButtonDisplayed"
@@ -36,7 +36,7 @@ import { WidgetModule } from './widget.module';
     </ng-container>
     <!-- END: info details -->
 
-  </fusion-ui-widget>
+  </f-widget>
   `,
 })
 export class WidgetTestComponent {
@@ -76,7 +76,7 @@ describe('WizardComponent', () => {
       badges: [
         {
           text: 1807,
-          type: FusionUiStatusLevel.WARNING,
+          type: StatusLevel.WARNING,
         },
       ],
     },
@@ -86,12 +86,12 @@ describe('WizardComponent', () => {
         {
           text: 44,
           subText: 'Yes',
-          type: FusionUiStatusLevel.SUCCESS,
+          type: StatusLevel.SUCCESS,
         },
         {
           text: 93,
           subText: 'No',
-          type: FusionUiStatusLevel.CRITICAL,
+          type: StatusLevel.CRITICAL,
         },
       ],
     },

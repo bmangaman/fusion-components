@@ -1,4 +1,4 @@
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
 import { TranslatedComponent } from './translated.component';
 
 describe('TranslatedComponent', () => {

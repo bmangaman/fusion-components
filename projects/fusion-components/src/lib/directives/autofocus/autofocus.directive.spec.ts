@@ -1,7 +1,7 @@
 import { ElementRef } from '@angular/core';
 import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
 import { AutofocusDirective } from './autofocus.directive';
 

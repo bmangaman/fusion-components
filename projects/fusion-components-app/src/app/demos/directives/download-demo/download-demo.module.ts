@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { ButtonModule, DownloadModule } from '@fusion-ui/fusion-components';
+import { ButtonModule, DownloadModule } from 'fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { DownloadDemoComponent } from './download-demo.component';

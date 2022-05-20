@@ -15,8 +15,8 @@ import {
   TableFilterNumberComponent,
   TableFilterStringComponent,
   TableView,
-} from '@fusion-ui/fusion-components/lib/components/table';
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+} from '@fusion-components/lib/components/table';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
 import { FusionComponentsTranslationService } from '../../services';
 import { TableQueryParamsParser } from './table-query-params-parser';

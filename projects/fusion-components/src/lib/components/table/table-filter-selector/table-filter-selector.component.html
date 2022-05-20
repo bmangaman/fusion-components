@@ -1,23 +1,23 @@
-<div class="fusion-ui-table__filter-selector">
+<div class="f-table__filter-selector">
 
   <!-- START: Quick Filters -->
-  <div class="fusion-ui-inline-buttons fusion-ui-table__filter-selector-quick-filters" *ngIf="quickFilters?.length">
+  <div class="f-inline-buttons f-table__filter-selector-quick-filters" *ngIf="quickFilters?.length">
     <ng-container *ngFor="let quickFilter of quickFilters">
-      <fusion-ui-button
-        [classes]="['fusion-ui-table__filter-selector-quick-filter-button']"
+      <f-button
+        [classes]="['f-table__filter-selector-quick-filter-button']"
         type="secondary"
-        [size]="FusionUiSize.X_SMALL"
+        [size]="Size.X_SMALL"
         [text]="quickFilter.label"
         [isSelected]="quickFilter.isApplied"
         icon="mdi-filter"
         (buttonClick)="toggleQuickFilter(quickFilter)">
-      </fusion-ui-button>
+      </f-button>
     </ng-container>
   </div>
   <!-- END: Quick Filters -->
 
   <!-- START: Filter Selector Menu -->
-  <fusion-ui-menu
+  <f-menu
     [isMenuDialogOpen]="isMenuDialogOpen"
     (menuClosed)="isMenuDialogOpen = false"
     (menuOpened)="menuOpened()"
@@ -29,17 +29,17 @@
       closeButtonLabel: translations?.closeButtonAriaLabel || ( baseTranslationKey + '.table.filterSelector.closeButtonAriaLabel' | translate ),
       menuDialogLabelledBy: translations?.menuDialogLabelledBy || ( baseTranslationKey + '.table.filterSelector.menuDialogLabelledBy' | translate )
     }"
-    [dialogLocation]="FusionUiLocation.BOTTOM_RIGHT">
+    [dialogLocation]="Location.BOTTOM_RIGHT">
 
     <ng-template fusionUiTemplate="menuButton">
-      <div class="fusion-ui-table__filter-selector-button">
-        <fusion-ui-button
-          class="fusion-ui-table__filter-selector-clear-button-wrapper"
+      <div class="f-table__filter-selector-button">
+        <f-button
+          class="f-table__filter-selector-clear-button-wrapper"
           *ngIf="(appliedFilters | visibleAppliedFilters)?.length"
-          [classes]="['fusion-ui-table__filter-selector-clear-button']"
+          [classes]="['f-table__filter-selector-clear-button']"
           [noBorder]="true"
           type="secondary"
-          [size]="FusionUiSize.SMALL"
+          [size]="Size.SMALL"
           [isSelected]="(appliedFilters | visibleAppliedFilters)?.length"
           [text]="(appliedFilters | visibleAppliedFilters)?.length + ' ' + ((appliedFilters | visibleAppliedFilters)?.length > 1
             ? translations?.filtersApplied || ( baseTranslationKey + '.table.filterSelector.filtersApplied' | translate )
@@ -47,13 +47,13 @@
           icon="mdi-close"
           [aria]="{ label: translations?.removeAll || ( baseTranslationKey + '.table.filterSelector.removeAll' | translate ) }"
           (buttonClick)="removeAllFilters()">
-        </fusion-ui-button>
-        <fusion-ui-button
-          class="fusion-ui-table__filter-selector-open-button-wrapper"
-          [classes]="['fusion-ui-table__filter-selector-open-button']"
+        </f-button>
+        <f-button
+          class="f-table__filter-selector-open-button-wrapper"
+          [classes]="['f-table__filter-selector-open-button']"
           [noBorder]="true"
           type="secondary"
-          [size]="FusionUiSize.SMALL"
+          [size]="Size.SMALL"
           [isSelected]="(appliedFilters | visibleAppliedFilters)?.length"
           icon="mdi-filter"
           [opensMenu]="true"
@@ -64,7 +64,7 @@
             expanded: isMenuDialogOpen
           }"
           (buttonClick)="isMenuDialogOpen = !isMenuDialogOpen">
-        </fusion-ui-button>
+        </f-button>
       </div>
     </ng-template>
 
@@ -75,11 +75,11 @@
     <ng-template fusionUiTemplate="menuDialogContent">
 
       <!-- START: Select input with list of available filters -->
-      <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
-        <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
+      <div class="f-form__fieldset f-table__filter-input-field-selector">
+        <div class="f-form__input-wrapper f-form__select-wrapper">
           <select
             [formControl]="filterField"
-            class="fusion-ui-form__input fusion-ui-form__select"
+            class="f-form__input f-form__select"
             [attr.aria-label]="translations?.columnSelectorLabel || ( baseTranslationKey + '.table.filterSelector.columnSelectorLabel' | translate )">
             <option *ngIf="filterField?.disabled" [ngValue]="undefined">{{ translations?.allColumnsHidden || ( baseTranslationKey + '.table.filterSelector.allColumnsHidden' | translate ) }}</option>
             <ng-container *ngFor="let filter of filters?.toArray()">
@@ -94,21 +94,21 @@
   
       <ng-template fusionUiFilterHost></ng-template>
   
-      <fusion-ui-button
-        [classes]="['fusion-ui-table__filter-selector-apply-filter-button']"
+      <f-button
+        [classes]="['f-table__filter-selector-apply-filter-button']"
         text="Apply Filter"
         [noBorder]="true"
-        [size]="FusionUiSize.SMALL"
+        [size]="Size.SMALL"
         [isDisabled]="isFormInvalid()"
         (buttonClick)="applyFilter()">
-      </fusion-ui-button>
+      </f-button>
 
       <!-- START: List of applied filters -->
-      <div class="fusion-ui-table__filter-selector-filter-list" *ngIf="(appliedFilters | visibleAppliedFilters)?.length > 0">
-        <div class="fusion-ui-table__filter-selector-filter-list-group" *ngFor="let group of appliedFilters | groupAppliedFilters:filters">
-          <div class="fusion-ui-table__filter-selector-filter-list-group-name">{{ group?.filterName }}</div>
-          <div class="fusion-ui-table__filter-selector-filter-list-group-item" *ngFor="let application of group?.applications">
-            <div class="fusion-ui-table__filter-selector-filter-list-group-item-text">
+      <div class="f-table__filter-selector-filter-list" *ngIf="(appliedFilters | visibleAppliedFilters)?.length > 0">
+        <div class="f-table__filter-selector-filter-list-group" *ngFor="let group of appliedFilters | groupAppliedFilters:filters">
+          <div class="f-table__filter-selector-filter-list-group-name">{{ group?.filterName }}</div>
+          <div class="f-table__filter-selector-filter-list-group-item" *ngFor="let application of group?.applications">
+            <div class="f-table__filter-selector-filter-list-group-item-text">
               <ng-container *ngIf="application?.selectedFilterComparator?.value?.displayString; else standardText; let displayString;">
                 {{ (displayString() | instanceOf: Observable) ? (displayString() | async) : displayString() }}
               </ng-container>
@@ -116,15 +116,15 @@
                 {{ (application?.selectedFilterComparator?.value?.label | instanceOf: Observable) ? (application?.selectedFilterComparator?.value?.label | async) : application?.selectedFilterComparator?.value?.label }} {{ application?.getFormValue() }}
               </ng-template>
             </div>
-            <fusion-ui-button
-              [classes]="['fusion-ui-table__filter-selector-remove-filter-button']"
+            <f-button
+              [classes]="['f-table__filter-selector-remove-filter-button']"
               icon="mdi-close"
               [noBorder]="true"
-              [size]="FusionUiSize.X_SMALL"
+              [size]="Size.X_SMALL"
               [type]="ButtonType.SECONDARY"
               [aria]="{ label: (translations?.removeFilter || ( baseTranslationKey + '.table.filterSelector.removeFilter' | translate ) ) + application?.field }"
               (buttonClick)="removeFilter(application)">
-            </fusion-ui-button>
+            </f-button>
           </div>
         </div>
       </div>
@@ -132,7 +132,7 @@
 
     </ng-template>
 
-  </fusion-ui-menu>
+  </f-menu>
   <!-- END: Filter Selector Menu -->
 
 </div>

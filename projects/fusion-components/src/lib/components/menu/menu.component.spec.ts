@@ -2,9 +2,9 @@ import { ElementRef, QueryList, SimpleChange } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 
-import { TemplateDirective } from '@fusion-ui/fusion-components/lib/directives/template';
-import { DocumentClickService } from '@fusion-ui/fusion-components/lib/services/document-click';
-import { FusionUiLocation } from '@fusion-ui/fusion-components/lib/shared';
+import { TemplateDirective } from '@fusion-components/lib/directives/template';
+import { DocumentClickService } from '@fusion-components/lib/services/document-click';
+import { Location } from '@fusion-components/lib/shared';
 
 import { MenuComponent } from './menu.component';
 
@@ -156,7 +156,7 @@ describe('MenuComponent', () => {
 
       // eslint-disable-next-line @typescript-eslint/dot-notation
       component['_fusionUiMenuDialog'] = undefined;
-      component.dialogLocation = FusionUiLocation.LEFT;
+      component.dialogLocation = Location.LEFT;
       component.ngOnChanges({
         dialogLocation: new SimpleChange(null, component.dialogLocation, false),
       });
@@ -164,7 +164,7 @@ describe('MenuComponent', () => {
 
       // eslint-disable-next-line @typescript-eslint/dot-notation
       component['_fusionUiMenuDialog'] = new ElementRef(document.createElement('div'));
-      component.dialogLocation = FusionUiLocation.RIGHT_BOTTOM;
+      component.dialogLocation = Location.RIGHT_BOTTOM;
       component.ngOnChanges({
         dialogLocation: new SimpleChange(null, component.dialogLocation, false),
       });
@@ -253,19 +253,19 @@ describe('MenuComponent', () => {
       /* eslint-enable @typescript-eslint/dot-notation */
     });
 
-    testDialogLocation(FusionUiLocation.TOP, { bottom: '104px', left: '50px', transform: 'translateX(-50%)'});
-    testDialogLocation(FusionUiLocation.TOP_LEFT, { bottom: '104px', left: '0px' });
-    testDialogLocation(FusionUiLocation.TOP_RIGHT, { bottom: '104px', right: '0px' });
-    testDialogLocation(FusionUiLocation.BOTTOM, { top: '104px', left: '50px', transform: 'translateX(-50%)' });
-    testDialogLocation(FusionUiLocation.BOTTOM_LEFT, { top: '104px', left: '0px' });
-    testDialogLocation(FusionUiLocation.BOTTOM_RIGHT, { top: '104px', right: '0px' });
-    testDialogLocation(FusionUiLocation.LEFT, { top: '50px', right: '104px', transform: 'translateY(-50%)' });
-    testDialogLocation(FusionUiLocation.LEFT_TOP, { top: '0px', right: '104px' });
-    testDialogLocation(FusionUiLocation.LEFT_BOTTOM, { bottom: '0px', right: '104px' });
-    testDialogLocation(FusionUiLocation.RIGHT, { top: '50px', left: '104px', transform: 'translateY(-50%)' });
-    testDialogLocation(FusionUiLocation.RIGHT_TOP, { top: '0px', left: '104px' });
-    testDialogLocation(FusionUiLocation.RIGHT_BOTTOM, { bottom: '0px', left: '104px' });
-    testDialogLocation(FusionUiLocation.CENTER, { top: '50px', left: '50px', transform: 'translate(-50%, -50%)' });
+    testDialogLocation(Location.TOP, { bottom: '104px', left: '50px', transform: 'translateX(-50%)'});
+    testDialogLocation(Location.TOP_LEFT, { bottom: '104px', left: '0px' });
+    testDialogLocation(Location.TOP_RIGHT, { bottom: '104px', right: '0px' });
+    testDialogLocation(Location.BOTTOM, { top: '104px', left: '50px', transform: 'translateX(-50%)' });
+    testDialogLocation(Location.BOTTOM_LEFT, { top: '104px', left: '0px' });
+    testDialogLocation(Location.BOTTOM_RIGHT, { top: '104px', right: '0px' });
+    testDialogLocation(Location.LEFT, { top: '50px', right: '104px', transform: 'translateY(-50%)' });
+    testDialogLocation(Location.LEFT_TOP, { top: '0px', right: '104px' });
+    testDialogLocation(Location.LEFT_BOTTOM, { bottom: '0px', right: '104px' });
+    testDialogLocation(Location.RIGHT, { top: '50px', left: '104px', transform: 'translateY(-50%)' });
+    testDialogLocation(Location.RIGHT_TOP, { top: '0px', left: '104px' });
+    testDialogLocation(Location.RIGHT_BOTTOM, { bottom: '0px', left: '104px' });
+    testDialogLocation(Location.CENTER, { top: '50px', left: '50px', transform: 'translate(-50%, -50%)' });
   });
 
   describe('closeMenuDialog()', () => {
@@ -287,9 +287,9 @@ describe('MenuComponent', () => {
       expectedResult = [];
       expect(component.generateDialogClasses()).toEqual(expectedResult);
 
-      component.dialogLocation = FusionUiLocation.BOTTOM;
+      component.dialogLocation = Location.BOTTOM;
       component.dialogClasses = [];
-      expectedResult = ['fusion-ui-menu__dialog--location-bottom'];
+      expectedResult = ['f-menu__dialog--location-bottom'];
       expect(component.generateDialogClasses()).toEqual(expectedResult);
 
       component.dialogLocation = null;
@@ -302,9 +302,9 @@ describe('MenuComponent', () => {
       expectedResult = ['custom-class-1', 'custom-class-2'];
       expect(component.generateDialogClasses()).toEqual(expectedResult);
 
-      component.dialogLocation = FusionUiLocation.BOTTOM;
+      component.dialogLocation = Location.BOTTOM;
       component.dialogClasses = ['custom-class-1', 'custom-class-2'];
-      expectedResult = ['fusion-ui-menu__dialog--location-bottom', 'custom-class-1', 'custom-class-2'];
+      expectedResult = ['f-menu__dialog--location-bottom', 'custom-class-1', 'custom-class-2'];
       expect(component.generateDialogClasses()).toEqual(expectedResult);
     });
   });
@@ -316,7 +316,7 @@ describe('MenuComponent', () => {
    * @param styles the styles to test
    */
   function testDialogLocation(
-    location: FusionUiLocation,
+    location: Location,
     styles: {
       top?: string,
       bottom?: string,

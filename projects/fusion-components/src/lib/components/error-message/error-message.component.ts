@@ -4,7 +4,7 @@ import { AbstractControl } from '@angular/forms';
 import { ErrorMessage } from './error-message.interface';
 
 @Component({
-  selector: 'fusion-ui-error-message',
+  selector: 'f-error-message',
   templateUrl: './error-message.component.html',
 })
 export class ErrorMessageComponent {

@@ -6,9 +6,9 @@ import { KeyValueTableData } from './key-value-table.interface';
 import { KeyValueTableModule } from './key-value-table.module';
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
-    <fusion-ui-key-value-table *ngIf="loaded" [data]="data">
+    <f-key-value-table *ngIf="loaded" [data]="data">
 
       <ng-template fusionUiTemplate="hostname" type="key" *ngIf="customHostnameKey">
         Custom Hostname
@@ -18,7 +18,7 @@ import { KeyValueTableModule } from './key-value-table.module';
         Custom Hostname {{ data?.value }}
       </ng-template>
 
-    </fusion-ui-key-value-table>
+    </f-key-value-table>
   `,
 })
 export class KeyValueTableTestComponent {

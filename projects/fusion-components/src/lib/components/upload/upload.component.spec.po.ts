@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing';
 
-import { UploadPageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/upload.spec.po';
+import { UploadPageObject } from '@fusion-components/unit-test-helpers/page-objects/upload.spec.po';
 
 import { UploadTestComponent } from './upload.component.dom.spec';
 

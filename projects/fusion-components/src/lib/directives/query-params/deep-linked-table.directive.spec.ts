@@ -11,7 +11,7 @@ import {
   TableFilterComponent,
   TableFilterConfig,
   TableView,
-} from '@fusion-ui/fusion-components/lib/components/table';
+} from '@fusion-components/lib/components/table';
 import { DeepLinkedTableDirective } from './deep-linked-table.directive';
 import { TableQueryParamsParser } from './table-query-params-parser';
 

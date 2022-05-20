@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { FusionUiPosition, MouseInteraction } from '@fusion-ui/fusion-components';
+import { Position, MouseInteraction } from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-tooltip',
@@ -9,7 +9,7 @@ import { FusionUiPosition, MouseInteraction } from '@fusion-ui/fusion-components
   styleUrls: ['./tooltip-demo.component.scss']
 })
 export class TooltipDemoComponent {
-  readonly FusionUiPosition = FusionUiPosition;
+  readonly Position = Position;
   readonly MouseInteraction = MouseInteraction;
   tooltipForm: FormGroup;
 
@@ -21,7 +21,7 @@ export class TooltipDemoComponent {
 
   buildTooltipForm(): void {
     this.tooltipForm = this.fb.group({
-      position: [FusionUiPosition.TOP, Validators.required],
+      position: [Position.TOP, Validators.required],
       text: ['Tooltip Text'],
       template: [false],
       displayOn: [MouseInteraction.CLICK],

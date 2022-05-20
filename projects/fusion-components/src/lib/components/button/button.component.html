@@ -10,16 +10,16 @@
   [fusionUiAutofocus]="isAutofocused"
   [ngClass]="buttonClasses">
 
-  <ng-container *ngIf="state === FusionUiState.LOADED; else loading">
-    <div class="fusion-ui-button__content" #buttonContent>
+  <ng-container *ngIf="state === State.LOADED; else loading">
+    <div class="f-button__content" #buttonContent>
       <i
-        class="fusion-ui-button__icon mdi {{ icon }}"
+        class="f-button__icon mdi {{ icon }}"
         *ngIf="icon"
         [attr.aria-hidden]="!!text"
         [attr.aria-label]="aria?.iconAriaLabel"></i>
-      <span class="fusion-ui-button__text" *ngIf="text">{{ text }}</span>
+      <span class="f-button__text" *ngIf="text">{{ text }}</span>
       <i
-        class="fusion-ui-button__icon mdi mdi-chevron-down"
+        class="f-button__icon mdi mdi-chevron-down"
         *ngIf="opensMenu"
         [attr.aria-hidden]="!!text"
         [attr.aria-label]="aria?.menuIconAriaLabel"></i>
@@ -27,12 +27,12 @@
   </ng-container>
 
   <ng-template #loading>
-    <fusion-ui-loading-spinner
+    <f-loading-spinner
       [size]="loadingSpinnerSize"
       [opacity]="0.2"
       [minWidth]="contentMinWidth"
       [ariaLabel]="aria?.loadingSpinner">
-    </fusion-ui-loading-spinner>
+    </f-loading-spinner>
   </ng-template>
 
 </button>

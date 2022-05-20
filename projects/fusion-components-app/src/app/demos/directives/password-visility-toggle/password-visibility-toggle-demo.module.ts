@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { PasswordVisibilityToggleModule } from '@fusion-ui/fusion-components';
+import { PasswordVisibilityToggleModule } from 'fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { PasswordVisibilitytoggleDemoComponent } from './password-visibility-toggle-demo.component';

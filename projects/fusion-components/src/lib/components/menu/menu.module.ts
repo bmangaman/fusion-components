@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ButtonModule } from '@fusion-ui/fusion-components/lib/components/button';
-import { TemplateModule } from '@fusion-ui/fusion-components/lib/directives/template';
+import { ButtonModule } from '@fusion-components/lib/components/button';
+import { TemplateModule } from '@fusion-components/lib/directives/template';
 
 import { MenuComponent } from './menu.component';
 

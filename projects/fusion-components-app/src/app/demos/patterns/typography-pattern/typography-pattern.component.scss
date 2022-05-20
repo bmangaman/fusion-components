@@ -13,12 +13,12 @@
       max-width: 800px;
 
       & + .fusion-demo__section {
-        margin-top: $fusion-ui-spacing-lg;
+        margin-top: $f-spacing-lg;
       }
     }
   }
 
-  ::ng-deep fusion-ui-table p {
+  ::ng-deep f-table p {
     margin: 0;
     padding: 0;
   }
@@ -26,8 +26,8 @@
 
 .pattern-code {
   font-family: monospace;
-  border: $fusion-ui-border-light;
-  background-color: $fusion-ui-color-background-light;
-  padding: $fusion-ui-spacing-xxs;
-  border-radius: $fusion-ui-border-radius-sm;
+  border: $f-border-light;
+  background-color: $f-color-background-light;
+  padding: $f-spacing-xxs;
+  border-radius: $f-border-radius-sm;
 }

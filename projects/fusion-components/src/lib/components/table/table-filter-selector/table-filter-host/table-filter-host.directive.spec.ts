@@ -1,6 +1,6 @@
 import { ViewContainerRef } from '@angular/core';
 
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
 import { TableFilterHostDirective } from './table-filter-host.directive';
 

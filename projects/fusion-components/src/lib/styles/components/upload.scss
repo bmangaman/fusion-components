@@ -1,4 +1,4 @@
-.fusion-ui-upload {
+.f-upload {
   &__container {
     align-content: center;
     align-items: center;
@@ -20,17 +20,17 @@
     }
 
     &-label {
-      margin-left: $fusion-ui-spacing-md;
+      margin-left: $f-spacing-md;
     }
   }
 
   &__files {
-    border: $fusion-ui-border-light;
-    margin-top: $fusion-ui-spacing-md;
+    border: $f-border-light;
+    margin-top: $f-spacing-md;
   }
 
   &__file {
-    padding: $fusion-ui-spacing-sm;
+    padding: $f-spacing-sm;
 
     &-info {
       align-content: center;
@@ -41,33 +41,33 @@
       width: 100%;
 
       &-name {
-        font-weight: $fusion-ui-font-weight-bold;
+        font-weight: $f-font-weight-bold;
         line-height: 30px; // to equal info button(s) height(s)
       }
 
       &-size {
         line-height: 30px; // to equal info button(s) height(s)
-        margin-left: $fusion-ui-spacing-xs;
+        margin-left: $f-spacing-xs;
       }
 
       &-buttons {
         display: flex;
         flex-wrap: nowrap;
-        margin-left: $fusion-ui-spacing-sm;
+        margin-left: $f-spacing-sm;
 
         & > * + * {
-          margin-left: $fusion-ui-spacing-md;
+          margin-left: $f-spacing-md;
         }
       }
     }
   }
   
   &__progress-bar {
-    margin-top: $fusion-ui-spacing-xs;
+    margin-top: $f-spacing-xs;
   }
 
   &__file-status {
-    font-size: $fusion-ui-font-size-sm;
-    margin-top: $fusion-ui-spacing-xs;
+    font-size: $f-font-size-sm;
+    margin-top: $f-spacing-xs;
   }
 }

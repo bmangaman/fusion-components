@@ -1,11 +1,11 @@
-<li class="fusion-ui-navItem">
+<li class="f-navItem">
 
   <ng-container *ngIf="!!href || !!route; else noLink;">
     <ng-container *ngIf="!!route; else hrefLink">
       <a
         (click)="toggleExpansion(); setCurrentSelectedNavItem()"
         [routerLink]="route"
-        [routerLinkActive]="['fusion-ui-navItem__link--active', 'fusion-ui-navItem__link--selected']"
+        [routerLinkActive]="['f-navItem__link--active', 'f-navItem__link--selected']"
         [routerLinkActiveOptions]="isPathMatchFull ? { exact: true } : { exact: false }"
         [ngClass]="linkCssClasses"
         [attr.id]="id"
@@ -45,12 +45,12 @@
   </ng-template>
 
   <div
-    class="fusion-ui-navItem__sub-items-container"
+    class="f-navItem__sub-items-container"
     [@inOutAnimation]
     *ngIf="isExpanded">
 
-    <ul class="fusion-ui-sidenav__items fusion-ui-navItem__sub-items">
-      <fusion-ui-nav-item
+    <ul class="f-sidenav__items f-navItem__sub-items">
+      <f-nav-item
         *ngFor="let navItem of children"
         (itemSelected)="setCurrentSelectedNavItem($event)"
         [id]="navItem?.id"
@@ -64,7 +64,7 @@
         [children]="navItem?.children"
         [target]="navItem?.target"
         [index]="index + 1">
-      </fusion-ui-nav-item>
+      </f-nav-item>
     </ul>
 
   </div>
@@ -73,6 +73,6 @@
 
 <ng-template #linkContent>
   <i *ngIf="icon" [ngClass]="iconCssClasses"></i>
-  <span class="fusion-ui-navItem__text">{{ (text | instanceOf: Observable) ? (text | async) : text }}</span>
-  <i *ngIf="children?.length" class="fusion-ui-navItem__isExpandable-icon mdi" [ngClass]="isExpanded ? 'mdi-chevron-down' : 'mdi-chevron-right'"></i>
+  <span class="f-navItem__text">{{ (text | instanceOf: Observable) ? (text | async) : text }}</span>
+  <i *ngIf="children?.length" class="f-navItem__isExpandable-icon mdi" [ngClass]="isExpanded ? 'mdi-chevron-down' : 'mdi-chevron-right'"></i>
 </ng-template>

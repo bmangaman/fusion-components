@@ -1,4 +1,4 @@
-<div class="fusion-ui-accordion-panel">
+<div class="f-accordion-panel">
 
   <button
     (click)="toggleContentVisibility()"
@@ -6,14 +6,14 @@
     [attr.aria-disabled]="isDisabled"
     [attr.aria-expanded]="isExpanded"
     [attr.aria-controls]="'accordion-panel-' + id"
-    class="fusion-ui-accordion-panel__title">
+    class="f-accordion-panel__title">
 
     <i
       *ngIf="collapseIconClasses && expandIconClasses"
-      class="fusion-ui-accordion-panel__title-icon"
+      class="f-accordion-panel__title-icon"
       [ngClass]="isExpanded ? collapseIconClasses : expandIconClasses"
       aria-hidden="true"></i>
-    <span class="fusion-ui-accordion-panel__title-content">
+    <span class="f-accordion-panel__title-content">
       <ng-container *ngTemplateOutlet="titleTemplate"></ng-container>
     </span>
 
@@ -21,14 +21,14 @@
 
   <div
     #panelContentContainer
-    class="fusion-ui-accordion-panel__content-container"
+    class="f-accordion-panel__content-container"
     [style.maxHeight]="maxContentHeight"
     *ngIf="isExpanded"
     [@inOutAnimation]
     (@inOutAnimation.done)="toggleOverflow($event)"
     [attr.aria-labelledby]="'accordion-panel-' + id"
     role="region">
-    <div class="fusion-ui-accordion-panel__content" [ngClass]="{ 'fusion-ui-accordion-panel__content--title-has-icon' : collapseIconClasses && expandIconClasses }">
+    <div class="f-accordion-panel__content" [ngClass]="{ 'f-accordion-panel__content--title-has-icon' : collapseIconClasses && expandIconClasses }">
       <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
     </div>
   </div>

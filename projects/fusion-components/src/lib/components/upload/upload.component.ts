@@ -12,7 +12,7 @@ import {
   ViewChild,
 } from '@angular/core';
 
-import { TranslatedComponent } from '@fusion-ui/fusion-components/lib/shared';
+import { TranslatedComponent } from '@fusion-components/lib/shared';
 
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -20,7 +20,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { BytesPipeBase } from '../../pipes/bytes';
 import { FusionComponentsTranslationService } from '../../services';
-import { FusionUiSize } from '../../shared/interfaces';
+import { Size } from '../../shared/interfaces';
 import { ButtonType } from '../button';
 import { HTMLInputEvent, UploadInfo, UploadTranslations } from './upload.interface';
 
@@ -32,7 +32,7 @@ import { HTMLInputEvent, UploadInfo, UploadTranslations } from './upload.interfa
  * the progress bar to function properly.
  *
  * @example
- * <fusion-ui-upload
+ * <f-upload
  *   // Required
  *   [uploadFilesFunction]="uploadFilesFunction.bind(this)"
  *
@@ -55,17 +55,17 @@ import { HTMLInputEvent, UploadInfo, UploadTranslations } from './upload.interfa
  *   (uploadUpdated)="uploadUpdated($event)"
  *   (uploadFinished)="uploadFinished($event)"
  *   (uploadCancelled)="uploadCancelled($event)">
- * </fusion-ui-upload>
+ * </f-upload>
  */
 @Component({
-  selector: 'fusion-ui-upload',
+  selector: 'f-upload',
   templateUrl: 'upload.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UploadComponent extends TranslatedComponent implements OnDestroy {
   readonly ButtonType = ButtonType;
   readonly BytesPipeBase = BytesPipeBase;
-  readonly FusionUiSize = FusionUiSize;
+  readonly Size = Size;
 
   private _unsubscribe$ = new Subject<void>();
 
@@ -91,7 +91,7 @@ export class UploadComponent extends TranslatedComponent implements OnDestroy {
   /**
    * Determines the id of the upload input and label.
    */
-  @Input() uploadId: string = `fusion-ui-upload__browse-input--${uuidv4()}`;
+  @Input() uploadId: string = `f-upload__browse-input--${uuidv4()}`;
 
   /**
    * Determines whether or not the browse button is hidden.
@@ -200,11 +200,11 @@ export class UploadComponent extends TranslatedComponent implements OnDestroy {
   /**
    * The CSS classes to be appened to the host element.
    */
-  @HostBinding('class') hostClasses: string = 'fusion-ui-upload';
+  @HostBinding('class') hostClasses: string = 'f-upload';
 
   constructor(
     private changeDetector: ChangeDetectorRef,
-    protected translationService: FusionComponentsTranslationService,
+    protected override translationService: FusionComponentsTranslationService,
   ) {
     super(translationService);
   }
@@ -212,7 +212,7 @@ export class UploadComponent extends TranslatedComponent implements OnDestroy {
   /**
    * If areSubscriptionsCancelledOnDestroy input is true, complete any active subscriptions.
    */
-  ngOnDestroy(): void {
+  override ngOnDestroy(): void {
     if (this.areSubscriptionsCancelledOnDestroy) {
       this._unsubscribe$.next();
       this._unsubscribe$.complete();
@@ -232,21 +232,22 @@ export class UploadComponent extends TranslatedComponent implements OnDestroy {
     const newFiles: File[] = [];
     let totalSize = 0;
 
-    // eslint-disable-next-line @typescript-eslint/prefer-for-of
-    for (let i = 0; i < uploadEvent.target.files.length; i++) {
-      const file: File = uploadEvent.target.files[i];
-
-      if (this.areFilesUploadedTogether) {
-        newFiles.push(file);
-        totalSize += file.size;
-      } else {
-        this.fileList.push({
-          files: [file],
-          progressBytes: 0,
-          totalBytes: file.size,
-          error: null,
-          isComplete: false,
-        });
+    if (uploadEvent.target.files) {
+      for (let i = 0; i < uploadEvent.target.files.length; i++) {
+        const file: File = uploadEvent.target.files[i];
+  
+        if (this.areFilesUploadedTogether) {
+          newFiles.push(file);
+          totalSize += file.size;
+        } else {
+          this.fileList.push({
+            files: [file],
+            progressBytes: 0,
+            totalBytes: file.size,
+            error: null,
+            isComplete: false,
+          });
+        }
       }
     }
 
@@ -371,7 +372,7 @@ export class UploadComponent extends TranslatedComponent implements OnDestroy {
 
     if (index !== -1) {
       if (this.fileList[index].subscription) {
-        this.fileList[index].subscription.unsubscribe();
+        this.fileList[index].subscription?.unsubscribe();
       }
 
       this.fileList.splice(index, 1);

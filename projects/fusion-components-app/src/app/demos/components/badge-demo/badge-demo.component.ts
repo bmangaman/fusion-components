@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { FusionUiStatusLevel, FusionUiSize } from '@fusion-ui/fusion-components';
+import { StatusLevel, Size } from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-badge',
@@ -8,8 +8,8 @@ import { FusionUiStatusLevel, FusionUiSize } from '@fusion-ui/fusion-components'
   styleUrls: ['./badge-demo.component.scss'],
 })
 export class BadgeDemoComponent {
-  readonly FusionUiSize = FusionUiSize;
-  readonly FusionUiStatusLevel = FusionUiStatusLevel;
+  readonly Size = Size;
+  readonly StatusLevel = StatusLevel;
 
   badgeForm: FormGroup;
 
@@ -21,8 +21,8 @@ export class BadgeDemoComponent {
 
   buildBadgeForm(): void {
     this.badgeForm = this.fb.group({
-      type: [FusionUiStatusLevel.BASE, Validators.required],
-      size: [FusionUiSize.MEDIUM, Validators.required],
+      type: [StatusLevel.BASE, Validators.required],
+      size: [Size.MEDIUM, Validators.required],
       text: ['text'],
       subText: [],
       fillcontainer: [false],

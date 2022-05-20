@@ -10,6 +10,6 @@ export class ModalFooterComponentPageObject {
   }
 
   get footer(): HTMLElement {
-    return this.fixture.nativeElement.querySelector('.fusion-ui-modal__footer');
+    return this.fixture.nativeElement.querySelector('.f-modal__footer');
   }
 }

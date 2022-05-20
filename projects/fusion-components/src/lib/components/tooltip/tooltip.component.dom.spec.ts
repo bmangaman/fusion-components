@@ -2,22 +2,22 @@ import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FusionUiLocation, FusionUiPosition, FusionUiPositionConfig } from '../../shared';
+import { Location, Position, PositionConfig } from '../../shared';
 import * as Utilities from '../../shared/utilities';
 import { TooltipComponent } from './tooltip.component';
 import { TooltipComponentPageObject } from './tooltip.component.spec.po';
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
-  <fusion-ui-tooltip
+  <f-tooltip
     [id]="id"
     [text]="text"
     [template]="useTemplate ? template : null"
     [element]="element"
     [position]="position"
     [classes]="classes"
-  ></fusion-ui-tooltip>
+  ></f-tooltip>
 
   <div #element></div>
 
@@ -31,7 +31,7 @@ export class TooltipTestComponent {
   id: string;
   text: string;
   useTemplate: boolean;
-  position: FusionUiPosition | FusionUiLocation;
+  position: Position | Location;
   classes: string[];
 }
 
@@ -83,7 +83,7 @@ describe('TooltipComponent', () => {
 
   describe('positioning', () => {
     it('should update the left, right, top, bottom, and transform CSS styles when the position @Input changes', async () => {
-      const position: FusionUiPositionConfig = {
+      const position: PositionConfig = {
         left: '10px',
         right: '10px',
         top: '10px',
@@ -93,7 +93,7 @@ describe('TooltipComponent', () => {
 
       const spy = jasmine.createSpy('getElementAbsolutePositioning').and.returnValue(position);
       spyOnProperty(Utilities, 'getElementAbsolutePositioning').and.returnValue(spy);
-      component.position = FusionUiPosition.LEFT;
+      component.position = Position.LEFT;
       fixture.detectChanges();
       await fixture.whenStable();
       expect(page.tooltip.position).toEqual(position);
@@ -105,43 +105,43 @@ describe('TooltipComponent', () => {
       component.position = null;
       fixture.detectChanges();
       expect(page.tooltip.classes.length).toEqual(1);
-      expect(page.tooltip.classes).toContain('fusion-ui-tooltip');
+      expect(page.tooltip.classes).toContain('f-tooltip');
 
-      component.position = FusionUiPosition.LEFT;
+      component.position = Position.LEFT;
       fixture.detectChanges();
-      expect(page.tooltip.classes).toContain('fusion-ui-tooltip--left');
+      expect(page.tooltip.classes).toContain('f-tooltip--left');
 
-      component.position = FusionUiPosition.RIGHT;
+      component.position = Position.RIGHT;
       fixture.detectChanges();
-      expect(page.tooltip.classes).toContain('fusion-ui-tooltip--right');
+      expect(page.tooltip.classes).toContain('f-tooltip--right');
 
-      component.position = FusionUiPosition.TOP;
+      component.position = Position.TOP;
       fixture.detectChanges();
-      expect(page.tooltip.classes).toContain('fusion-ui-tooltip--top');
+      expect(page.tooltip.classes).toContain('f-tooltip--top');
 
-      component.position = FusionUiPosition.BOTTOM;
+      component.position = Position.BOTTOM;
       fixture.detectChanges();
-      expect(page.tooltip.classes).toContain('fusion-ui-tooltip--bottom');
+      expect(page.tooltip.classes).toContain('f-tooltip--bottom');
 
-      component.position = FusionUiPosition.CENTER;
+      component.position = Position.CENTER;
       fixture.detectChanges();
-      expect(page.tooltip.classes).toContain('fusion-ui-tooltip--center');
+      expect(page.tooltip.classes).toContain('f-tooltip--center');
 
-      component.position = FusionUiLocation.BOTTOM_LEFT;
+      component.position = Location.BOTTOM_LEFT;
       fixture.detectChanges();
-      expect(page.tooltip.classes).toContain('fusion-ui-tooltip--bottomLeft');
+      expect(page.tooltip.classes).toContain('f-tooltip--bottomLeft');
 
-      component.position = FusionUiLocation.BOTTOM_RIGHT;
+      component.position = Location.BOTTOM_RIGHT;
       fixture.detectChanges();
-      expect(page.tooltip.classes).toContain('fusion-ui-tooltip--bottomRight');
+      expect(page.tooltip.classes).toContain('f-tooltip--bottomRight');
 
-      component.position = FusionUiLocation.TOP_RIGHT;
+      component.position = Location.TOP_RIGHT;
       fixture.detectChanges();
-      expect(page.tooltip.classes).toContain('fusion-ui-tooltip--topRight');
+      expect(page.tooltip.classes).toContain('f-tooltip--topRight');
 
-      component.position = FusionUiLocation.TOP_LEFT;
+      component.position = Location.TOP_LEFT;
       fixture.detectChanges();
-      expect(page.tooltip.classes).toContain('fusion-ui-tooltip--topLeft');
+      expect(page.tooltip.classes).toContain('f-tooltip--topLeft');
     });
 
     it('should apply the correct CSS classes based on the provided custom classes', () => {

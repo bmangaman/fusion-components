@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FusionUiSize } from '@fusion-ui/fusion-components';
+import { Size } from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-loading-spinner',
@@ -8,7 +8,7 @@ import { FusionUiSize } from '@fusion-ui/fusion-components';
   styleUrls: ['./loading-spinner-demo.component.scss']
 })
 export class LoadingSpinnerDemoComponent {
-  readonly FusionUiSize = FusionUiSize;
+  readonly Size = Size;
   loadingSpinnerForm: FormGroup;
 
   constructor(
@@ -19,7 +19,7 @@ export class LoadingSpinnerDemoComponent {
 
   buildLoadingSpinnerForm(): void {
     this.loadingSpinnerForm = this.fb.group({
-      size: [FusionUiSize.MEDIUM, [Validators.required]],
+      size: [Size.MEDIUM, [Validators.required]],
       opacity: [1, [Validators.required]],
       minWidth: [undefined, [Validators.required]],
       ariaLabel: ['Loading', [Validators.required]],

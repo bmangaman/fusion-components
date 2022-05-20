@@ -1,4 +1,4 @@
-.fusion-ui-linear-gauge {
+.f-linear-gauge {
   display: block;
   width: 100%;
 
@@ -8,7 +8,7 @@
 
   &__title {
     display: flex;
-    margin: 0 0 $fusion-ui-spacing-xs 0;
+    margin: 0 0 $f-spacing-xs 0;
 
     & > * {
       line-height: 20px;
@@ -20,33 +20,33 @@
 
     &-icon {
       display: inline-block;
-      margin-right: $fusion-ui-spacing-xxs;
+      margin-right: $f-spacing-xxs;
   
       &.mdi-check-circle {
-        color: $fusion-ui-color-success-chart;
+        color: $f-color-success-chart;
       }
       &.mdi-alert {
-        color: $fusion-ui-color-warning-chart;
+        color: $f-color-warning-chart;
       }
       &.mdi-alert-circle {
-        color: $fusion-ui-color-warning-primary;
+        color: $f-color-warning-primary;
       }
       &.mdi-close-circle {
-        color: $fusion-ui-color-error-primary;
+        color: $f-color-error-primary;
       }
     }
 
     &-text {
       display: inline-block;
-      font-size: $fusion-ui-font-size-sm;
-      font-weight: $fusion-ui-font-weight-semibold;
+      font-size: $f-font-size-sm;
+      font-weight: $f-font-weight-semibold;
       margin: 0;
     }
   }
 
   &__percentage {
-    margin-top: $fusion-ui-spacing-xs;
-    font-size: $fusion-ui-font-size-sm;
+    margin-top: $f-spacing-xs;
+    font-size: $f-font-size-sm;
   }
 
   &__value-bar {
@@ -54,24 +54,24 @@
     height: 32px;
 
     &--base {
-      background-color: $fusion-ui-color-chart-1;
+      background-color: $f-color-chart-1;
     }
     &--normal {
-      background-color: $fusion-ui-color-success-chart;
+      background-color: $f-color-success-chart;
     }
     &--warning {
-      background-color: $fusion-ui-color-warning-chart;
+      background-color: $f-color-warning-chart;
     }
     &--error {
-      background-color: $fusion-ui-color-warning-primary;
+      background-color: $f-color-warning-primary;
     }
     &--critical {
-      background-color: $fusion-ui-color-error-chart;
+      background-color: $f-color-error-chart;
     }
   }
 
   &__threshold {
-    background-color: $fusion-ui-color-alpha-greyscale-84;
+    background-color: $f-color-alpha-greyscale-84;
     border: none;
     cursor: pointer;
     display: block;
@@ -89,26 +89,26 @@
     }
 
     &--warning {
-      background-color: $fusion-ui-color-warning-chart;
+      background-color: $f-color-warning-chart;
 
-      &.fusion-ui-linear-gauge__threshold--passed {
-        background-color: $fusion-ui-color-warning-background;
+      &.f-linear-gauge__threshold--passed {
+        background-color: $f-color-warning-background;
       }
     }
 
     &--error {
-      background-color: $fusion-ui-color-warning-primary;
+      background-color: $f-color-warning-primary;
 
-      &.fusion-ui-linear-gauge__threshold--passed {
-        background-color: $fusion-ui-color-warning-chart;
+      &.f-linear-gauge__threshold--passed {
+        background-color: $f-color-warning-chart;
       }
     }
 
     &--critical {
-      background-color: $fusion-ui-color-error-primary;
+      background-color: $f-color-error-primary;
 
-      &.fusion-ui-linear-gauge__threshold--passed {
-        background-color: $fusion-ui-color-error-primary;
+      &.f-linear-gauge__threshold--passed {
+        background-color: $f-color-error-primary;
       }
     }
   }
@@ -121,17 +121,17 @@
   &__bar {
     position: relative;
     flex: 1;
-    background-color: $fusion-ui-color-background-light;
+    background-color: $f-color-background-light;
   }
 
   &__total {
-    margin-left: $fusion-ui-spacing-xs;
-    font-size: $fusion-ui-font-size-sm;
+    margin-left: $f-spacing-xs;
+    font-size: $f-font-size-sm;
     line-height: 16px;
   }
 }
 
-.fusion-ui-linear-gauge__tooltip-content {
+.f-linear-gauge__tooltip-content {
   position: relative;
 
   & > * {
@@ -141,37 +141,37 @@
   }
 }
 
-.fusion-ui-tooltip.fusion-ui-linear-gauge__threshold-tooltip {
+.f-tooltip.f-linear-gauge__threshold-tooltip {
   &--warning {
-    background-color: $fusion-ui-color-warning-background;
-    border: 1px solid $fusion-ui-color-warning-background;
-    color: $fusion-ui-color-primary-text-on-light;
+    background-color: $f-color-warning-background;
+    border: 1px solid $f-color-warning-background;
+    color: $f-color-primary-text-on-light;
 
     &:after {
-      background: $fusion-ui-color-warning-background;
-      border: 1px solid $fusion-ui-color-warning-background;
+      background: $f-color-warning-background;
+      border: 1px solid $f-color-warning-background;
     }
   }
 
   &--error {
-    background-color: $fusion-ui-color-error-background;
-    border: 1px solid $fusion-ui-color-error-background;
-    color: $fusion-ui-color-primary-text-on-light;
+    background-color: $f-color-error-background;
+    border: 1px solid $f-color-error-background;
+    color: $f-color-primary-text-on-light;
 
     &:after {
-      background: $fusion-ui-color-error-background;
-      border: 1px solid $fusion-ui-color-error-background;
+      background: $f-color-error-background;
+      border: 1px solid $f-color-error-background;
     }
   }
 
   &--critical {
-    background-color: $fusion-ui-color-error-primary;
-    border: 1px solid $fusion-ui-color-error-primary;
-    color: $fusion-ui-color-primary-text-on-dark;
+    background-color: $f-color-error-primary;
+    border: 1px solid $f-color-error-primary;
+    color: $f-color-primary-text-on-dark;
 
     &:after {
-      background: $fusion-ui-color-error-primary;
-      border: 1px solid $fusion-ui-color-error-primary;
+      background: $f-color-error-primary;
+      border: 1px solid $f-color-error-primary;
     }
   }
 }

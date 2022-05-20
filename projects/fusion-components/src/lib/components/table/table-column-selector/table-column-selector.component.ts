@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, QueryList } from '@angular/core';
 
-import { FusionUiLocation, FusionUiSize, TranslatedComponent } from '../../../shared';
+import { Location, Size, TranslatedComponent } from '../../../shared';
 import { TableColumnComponent } from '../table-column/table-column.component';
 import { TableColumnSelectorTranslations } from './table-column-selector.interface';
 
@@ -11,13 +11,13 @@ import { TableColumnSelectorTranslations } from './table-column-selector.interfa
  * It uses the menu component to display the list of columns.
  */
 @Component({
-  selector: 'fusion-ui-table-column-selector',
+  selector: 'f-table-column-selector',
   templateUrl: './table-column-selector.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableColumnSelectorComponent extends TranslatedComponent {
-  readonly FusionUiLocation = FusionUiLocation;
-  readonly FusionUiSize = FusionUiSize;
+  readonly Location = Location;
+  readonly Size = Size;
 
   isMenuDialogOpen: boolean = false;
 

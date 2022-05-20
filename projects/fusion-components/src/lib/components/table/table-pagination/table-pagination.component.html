@@ -1,44 +1,44 @@
 <div
-  class="fusion-ui-table__pagination"
-  [ngClass]="{ 'fusion-ui-table__pagination--disabled' : isDisabled }"
+  class="f-table__pagination"
+  [ngClass]="{ 'f-table__pagination--disabled' : isDisabled }"
   [attr.aria-hidden]="isDisabled">
 
-  <div class="fusion-ui-table__pagination-results">
-    <div *ngIf="config?.displayNumSelected && numSelectedRows" class="fusion-ui-table__pagination-num-selected">
+  <div class="f-table__pagination-results">
+    <div *ngIf="config?.displayNumSelected && numSelectedRows" class="f-table__pagination-num-selected">
       {{ numSelectedRows }} {{ translations?.selected || ( baseTranslationKey + '.table.pagination.selected' | translate ) }}
 
-      <fusion-ui-button
+      <f-button
         *ngIf="numDeselectableSelectedRows"
         [type]="ButtonType.SECONDARY"
-        [size]="FusionUiSize.X_SMALL"
+        [size]="Size.X_SMALL"
         [text]="translations?.deselectAll || ( baseTranslationKey + '.table.pagination.deselectAll' | translate )"
         (buttonClick)="deselectAll.emit()">
-      </fusion-ui-button>
+      </f-button>
     </div>
-    <div class="fusion-ui-table__pagination-num-of-results">
+    <div class="f-table__pagination-num-of-results">
       {{ numVisibleData | numOfResults: numResultsPerPage?.value:currentPageIndex?.value:translations?.results | async }}
     </div>
   </div>
 
-  <div class="fusion-ui-table__pagination-controls">
+  <div class="f-table__pagination-controls">
     <ng-container *ngIf="!!numVisibleData; else noSelectedData">
       <button
-        class="fusion-ui-table__pagination-controls-button fusion-ui-table__pagination-controls-button--first"
+        class="f-table__pagination-controls-button f-table__pagination-controls-button--first"
         (click)="currentPageIndex?.next(0)"
         [attr.aria-label]="(translations?.navigateToPage || ( baseTranslationKey + '.table.pagination.navigateToPage' | translate )) + ' 1'"
         [disabled]="isDisabled || currentPageIndex?.value === 0">
         <i class="mdi mdi-page-first" aria-hidden="true"></i>
       </button>
       <button
-        class="fusion-ui-table__pagination-controls-button fusion-ui-table__pagination-controls-button--previous"
+        class="f-table__pagination-controls-button f-table__pagination-controls-button--previous"
         (click)="currentPageIndex?.next(currentPageIndex?.value - 1)"
         [attr.aria-label]="translations?.navigateToPrevPage || ( baseTranslationKey + '.table.pagination.navigateToPrevPage' | translate )"
         [disabled]="isDisabled || currentPageIndex?.value === 0">
         <i class="mdi mdi-chevron-left" aria-hidden="true"></i>
       </button>
       <button
-        class="fusion-ui-table__pagination-controls-button fusion-ui-table__pagination-controls-button--page fusion-ui-table__pagination-controls-button--page-{{ page + 1 }}"
-        [ngClass]="{ 'fusion-ui-table__pagination-controls-button-page--selected' : currentPageIndex?.value === page }"
+        class="f-table__pagination-controls-button f-table__pagination-controls-button--page f-table__pagination-controls-button--page-{{ page + 1 }}"
+        [ngClass]="{ 'f-table__pagination-controls-button-page--selected' : currentPageIndex?.value === page }"
         *ngFor="let page of numOfPages | getCenterFivePages: currentPageIndex?.value"
         (click)="currentPageIndex.next(page)"
         [attr.aria-label]="(translations?.navigateToPage || ( baseTranslationKey + '.table.pagination.navigateToPage' | translate ) ) + ' ' + (page + 1)"
@@ -46,14 +46,14 @@
         <span>{{ page + 1 }}</span>
       </button>
       <button
-        class="fusion-ui-table__pagination-controls-button fusion-ui-table__pagination-controls-button--next"
+        class="f-table__pagination-controls-button f-table__pagination-controls-button--next"
         (click)="currentPageIndex?.next(currentPageIndex?.value + 1)"
         [attr.aria-label]="translations?.navigateToNextPage || ( baseTranslationKey + '.table.pagination.navigateToNextPage' | translate )"
         [disabled]="isDisabled || currentPageIndex?.value === numOfPages - 1">
         <i class="mdi mdi-chevron-right" aria-hidden="true"></i>
       </button>
       <button
-        class="fusion-ui-table__pagination-controls-button fusion-ui-table__pagination-controls-button--last"
+        class="f-table__pagination-controls-button f-table__pagination-controls-button--last"
         (click)="currentPageIndex?.next(numOfPages - 1)"
         [attr.aria-label]="(translations?.navigateToPage || ( baseTranslationKey + '.table.pagination.navigateToPage' | translate )) + ' ' + (numOfPages)"
         [disabled]="isDisabled || currentPageIndex?.value === numOfPages - 1">
@@ -65,14 +65,14 @@
     </ng-template>
   </div>
 
-  <div class="fusion-ui-table__pagination-num-per-page">
+  <div class="f-table__pagination-num-per-page">
     <ng-container *ngIf="numVisibleData; else noSelectedData">
-      <div class="fusion-ui-form__fieldset">
-        <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
+      <div class="f-form__fieldset">
+        <div class="f-form__input-wrapper f-form__select-wrapper">
           <select
             [formControl]="numResultsPerPage"
             [attr.disabled]="isDisabled ? true : null"
-            class="fusion-ui-form__input fusion-ui-form__input--no-validation-styling fusion-ui-form__select fusion-ui-table__pagination-num-per-page-select">
+            class="f-form__input f-form__input--no-validation-styling f-form__select f-table__pagination-num-per-page-select">
             <option
               *ngFor="let option of config?.resultsPerPageOptions"
               [ngValue]="option?.value"

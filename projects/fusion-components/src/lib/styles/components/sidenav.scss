@@ -1,11 +1,11 @@
-.fusion-ui {
+.f {
   &-sidenav {
     height: 100%;
     min-width: 25px;
     overflow: hidden;
 
     &__outer-container {
-      background-color: $fusion-ui-color-blue-darkest;
+      background-color: $f-color-blue-darkest;
       display: flex;
       flex-direction: column;
       height: 100%;
@@ -37,7 +37,7 @@
     }
 
     &__expand-collapse-button {
-      background-color: $fusion-ui-color-blue-darkest;
+      background-color: $f-color-blue-darkest;
       border: none;
       border-radius: 0 4px 4px 0;
       cursor: pointer;
@@ -53,8 +53,8 @@
       z-index: 1;
 
       &-icon {
-        color: $fusion-ui-color-primary-text-on-dark;
-        font-size: $fusion-ui-font-size-icon-lg;
+        color: $f-color-primary-text-on-dark;
+        font-size: $f-font-size-icon-lg;
       }
     }
   }
@@ -63,42 +63,42 @@
     &__link {
       align-items: center;
       align-content: flex-start;
-      background-color: $fusion-ui-color-blue-darkest;
+      background-color: $f-color-blue-darkest;
       border: none;
-      color: $fusion-ui-color-primary-text-on-dark;
+      color: $f-color-primary-text-on-dark;
       cursor: pointer;
-      font-size: $fusion-ui-font-size-sm;
+      font-size: $f-font-size-sm;
       display: flex;
       justify-content: space-between;
-      padding: $fusion-ui-spacing-md;
+      padding: $f-spacing-md;
       text-align: left;
       text-decoration: none;
       transition: 150ms all linear;
       width: 100%;
 
-      &:hover:not(:disabled):not(.fusion-ui-navItem__link--disabled):not(.fusion-ui-navItem__link--selected):not(.fusion-ui-navItem__link--active),
-      &--hover:not(:disabled):not(.fusion-ui-navItem__link--disabled):not(.fusion-ui-navItem__link--selected):not(.fusion-ui-navItem__link--active) {
-        background-color: $fusion-ui-color-blue-dark;
+      &:hover:not(:disabled):not(.f-navItem__link--disabled):not(.f-navItem__link--selected):not(.f-navItem__link--active),
+      &--hover:not(:disabled):not(.f-navItem__link--disabled):not(.f-navItem__link--selected):not(.f-navItem__link--active) {
+        background-color: $f-color-blue-dark;
       }
 
-      &:focus:not(:disabled):not(.fusion-ui-navItem__link--disabled),
-      &--focus:not(:disabled):not(.fusion-ui-navItem__link--disabled) {
-        background-color: $fusion-ui-color-blue-dark;
-        box-shadow: 0 0 0 2px $fusion-ui-color-blue-medium-light;
+      &:focus:not(:disabled):not(.f-navItem__link--disabled),
+      &--focus:not(:disabled):not(.f-navItem__link--disabled) {
+        background-color: $f-color-blue-dark;
+        box-shadow: 0 0 0 2px $f-color-blue-medium-light;
         outline: none;
         z-index: 1;
       }
 
-      &:active:not(:disabled):not(.fusion-ui-navItem__link--disabled),
-      &--active:not(:disabled):not(.fusion-ui-navItem__link--disabled) {
-        background-color: $fusion-ui-color-blue-dark;
+      &:active:not(:disabled):not(.f-navItem__link--disabled),
+      &--active:not(:disabled):not(.f-navItem__link--disabled) {
+        background-color: $f-color-blue-dark;
         z-index: 1;
       }
 
       &--selected,
       &--active {
-        background-color: $fusion-ui-color-blue-medium-dark;
-        border-left: 8px solid $fusion-ui-color-blue-netapp;
+        background-color: $f-color-blue-medium-dark;
+        border-left: 8px solid $f-color-blue-netapp;
       }
 
     }
@@ -108,14 +108,14 @@
     }
 
     &__icon {
-      margin-right: $fusion-ui-spacing-sm;
+      margin-right: $f-spacing-sm;
     }
 
     &__text {
       flex: 1;
 
-      & + .fusion-ui-navItem__isExpandable-icon {
-        margin-left: $fusion-ui-spacing-sm;
+      & + .f-navItem__isExpandable-icon {
+        margin-left: $f-spacing-sm;
       }
     }
   }

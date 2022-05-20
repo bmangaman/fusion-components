@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { EnumToArrayPipe } from '@fusion-ui/fusion-components/lib/pipes/enum-to-array';
-import { BiBytesUnit, BytesUnit } from '@fusion-ui/fusion-components/lib/shared';
+import { EnumToArrayPipe } from '@fusion-components/lib/pipes/enum-to-array';
+import { BiBytesUnit, BytesUnit } from '@fusion-components/lib/shared';
 
 import { BytesPipeBase } from './bytes.interface';
 

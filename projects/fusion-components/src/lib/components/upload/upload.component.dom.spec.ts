@@ -10,8 +10,8 @@ import { Observable } from 'rxjs';
 
 import translations from 'projects/fusion-components-site/src/i18n/en.json';
 
-import { TranslatedComponentSpecModule } from '@fusion-ui/fusion-components/unit-test-helpers/translated-component.module.spec';
-import { UploadFilePageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/upload.spec.po';
+import { TranslatedComponentSpecModule } from '@fusion-components/unit-test-helpers/translated-component.module.spec';
+import { UploadFilePageObject } from '@fusion-components/unit-test-helpers/page-objects/upload.spec.po';
 import { FusionComponentsTranslationService } from '../../services/translation';
 
 import { UploadComponentPageObject } from './upload.component.spec.po';
@@ -21,9 +21,9 @@ import { UploadModule } from './upload.module';
 // TODO: HCI-16901 - Flush out and add more DOM unit tests to test all the different permuations
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
-  <fusion-ui-upload
+  <f-upload
     [uploadFilesFunction]="uploadFilesFunction.bind(this)"
     [removeFilesFunction]="removeFilesFunction.bind(this)"
 
@@ -42,7 +42,7 @@ import { UploadModule } from './upload.module';
     (uploadUpdated)="uploadUpdated($event)"
     (uploadFinished)="uploadFinished($event)"
     (uploadCancelled)="uploadCancelled($event)">
-  </fusion-ui-upload>`,
+  </f-upload>`,
 })
 export class UploadTestComponent {
   isBrowseHidden: boolean;

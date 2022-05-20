@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { CheckboxModule } from '@fusion-ui/fusion-components';
+import { CheckboxModule } from '@fusion-components';
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 
 

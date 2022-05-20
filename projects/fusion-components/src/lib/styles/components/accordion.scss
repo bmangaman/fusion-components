@@ -1,29 +1,29 @@
-.fusion-ui-accordion {
-  border-bottom: $fusion-ui-border-light;
+.f-accordion {
+  border-bottom: $f-border-light;
   width: 100%;
 
   &-panel {
-    background-color: $fusion-ui-color-background-white;
-    border-top: $fusion-ui-border-light;
+    background-color: $f-color-background-white;
+    border-top: $f-border-light;
 
     &__title {
       align-items: center;
       align-content: flex-start;
-      background-color: $fusion-ui-color-background-white;
+      background-color: $f-color-background-white;
       border: none;
-      color: $fusion-ui-color-primary-text-on-light;
+      color: $f-color-primary-text-on-light;
       cursor: pointer;
       display: flex;
       font-size: 18px;
       justify-content: flex-start;
       min-height: 52px;
-      padding: $fusion-ui-spacing-sm $fusion-ui-spacing-xl;
+      padding: $f-spacing-sm $f-spacing-xl;
       width: 100%;
 
       &-icon {
-        color: $fusion-ui-color-primary-text-on-light;
-        font-size: $fusion-ui-font-size-icon-lg;
-        margin-right: $fusion-ui-spacing-md;
+        color: $f-color-primary-text-on-light;
+        font-size: $f-font-size-icon-lg;
+        margin-right: $f-spacing-md;
       }
 
       &-content {
@@ -37,19 +37,19 @@
         opacity: 0.5;
       }
 
-      &:hover:not(:disabled):not(.fusion-ui-accordion-panel__title--disabled),
-      &--hover:not(:disabled):not(.fusion-ui-accordion-panel__title--disabled) {
-        background-color: $fusion-ui-color-background-light;
+      &:hover:not(:disabled):not(.f-accordion-panel__title--disabled),
+      &--hover:not(:disabled):not(.f-accordion-panel__title--disabled) {
+        background-color: $f-color-background-light;
       }
     }
 
     &__content {
-      $left-hand-spacing: $fusion-ui-spacing-xl;
-      padding: $fusion-ui-spacing-lg $fusion-ui-spacing-xl $fusion-ui-spacing-xl $left-hand-spacing;
+      $left-hand-spacing: $f-spacing-xl;
+      padding: $f-spacing-lg $f-spacing-xl $f-spacing-xl $left-hand-spacing;
 
       &--title-has-icon {
-        $left-hand-spacing: calc(#{$fusion-ui-font-size-icon-lg} + #{$fusion-ui-spacing-md} + #{$fusion-ui-spacing-xl}); // so it aligns with the panel title text/ content
-        padding: $fusion-ui-spacing-lg $fusion-ui-spacing-xl $fusion-ui-spacing-xl $left-hand-spacing;
+        $left-hand-spacing: calc(#{$f-font-size-icon-lg} + #{$f-spacing-md} + #{$f-spacing-xl}); // so it aligns with the panel title text/ content
+        padding: $f-spacing-lg $f-spacing-xl $f-spacing-xl $left-hand-spacing;
       }
 
       &-container {

@@ -6,11 +6,11 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { cloneDeep } from 'lodash';
 
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
-import { MockElementRef } from '@fusion-ui/fusion-components/unit-test-helpers/mock-utils.spec';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { MockElementRef } from '@fusion-components/unit-test-helpers/mock-utils.spec';
 import { TemplateDirective } from '../../directives/template';
 import { FusionComponentsTranslationService } from '../../services/translation';
-import { FusionUiState } from '../../shared';
+import { State } from '../../shared';
 import { TableColumnComponent } from './table-column';
 import { TableFilterConfig } from './table-filter-selector';
 import { TableFilterComponent } from './table-filters';
@@ -890,7 +890,7 @@ describe('TableComponent', () => {
       });
       expect(component.generateTableCssClasses).toHaveBeenCalled();
 
-      component.state = FusionUiState.LOADED;
+      component.state = State.LOADED;
       component.ngOnChanges({
         state: new SimpleChange(null, component.state, false),
       });
@@ -913,7 +913,7 @@ describe('TableComponent', () => {
   });
 
   describe('generateTableCssClasses()', () => {
-    const stylePrefix = 'fusion-ui-table';
+    const stylePrefix = 'f-table';
     let expectedResult: string[];
 
     beforeEach(() => {
@@ -924,13 +924,13 @@ describe('TableComponent', () => {
       component.state = undefined;
     });
 
-    it('should append the "fusion-ui-table" class by default', () => {
+    it('should append the "f-table" class by default', () => {
       expectedResult = [stylePrefix];
       component.generateTableCssClasses();
       expect(component.tableCssClasses).toEqual(expectedResult);
     });
 
-    it('should append the "fusion-ui-table--filterContainer" class if the input is set to true', () => {
+    it('should append the "f-table--filterContainer" class if the input is set to true', () => {
       component.fillContainer = false;
       expectedResult = [stylePrefix];
       component.generateTableCssClasses();
@@ -972,18 +972,18 @@ describe('TableComponent', () => {
     });
 
     it('should append the correct state class based on the input', () => {
-      component.state = FusionUiState.LOADING;
-      expectedResult = [stylePrefix, `${stylePrefix}--${FusionUiState.LOADING}`];
+      component.state = State.LOADING;
+      expectedResult = [stylePrefix, `${stylePrefix}--${State.LOADING}`];
       component.generateTableCssClasses();
       expect(component.tableCssClasses).toEqual(expectedResult);
 
-      component.state = FusionUiState.LOADED;
-      expectedResult = [stylePrefix, `${stylePrefix}--${FusionUiState.LOADED}`];
+      component.state = State.LOADED;
+      expectedResult = [stylePrefix, `${stylePrefix}--${State.LOADED}`];
       component.generateTableCssClasses();
       expect(component.tableCssClasses).toEqual(expectedResult);
 
-      component.state = FusionUiState.ERROR;
-      expectedResult = [stylePrefix, `${stylePrefix}--${FusionUiState.ERROR}`];
+      component.state = State.ERROR;
+      expectedResult = [stylePrefix, `${stylePrefix}--${State.ERROR}`];
       component.generateTableCssClasses();
       expect(component.tableCssClasses).toEqual(expectedResult);
     });

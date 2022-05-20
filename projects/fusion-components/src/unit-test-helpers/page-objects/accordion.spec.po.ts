@@ -3,25 +3,25 @@ import { ComponentFixture } from '@angular/core/testing';
 /**
  * ACCORDION PAGE OBJECT
  *
- * Page object for the fusion-ui-accordion component.
- * Makes it easier to find and select certain fusion-ui-accordion attributes and elements.
+ * Page object for the f-accordion component.
+ * Makes it easier to find and select certain f-accordion attributes and elements.
  */
 export class AccordionPageObject {
   private fixture: ComponentFixture<any>;
   private containerClass: string;
 
   /**
-   * Gets the "fusion-ui-accordion" element.
+   * Gets the "f-accordion" element.
    *
-   * @returns the "fusion-ui-accordion" element
+   * @returns the "f-accordion" element
    */
   get accordion(): HTMLElement {
     // first, if a containerClass was provided, try to find the element that has that class
     const container: HTMLElement = this.containerClass ? this.fixture.nativeElement.querySelector(this.containerClass) : null;
-    // if the container element was found, use that to query for the fusion-ui-accordion,
-    // otherwise, just use the fusion-ui-accordion tag
+    // if the container element was found, use that to query for the f-accordion,
+    // otherwise, just use the f-accordion tag
     const accordion: HTMLElement =
-      (this.containerClass && container ? container : this.fixture.nativeElement).querySelector('fusion-ui-accordion');
+      (this.containerClass && container ? container : this.fixture.nativeElement).querySelector('f-accordion');
 
     return accordion;
   }
@@ -33,7 +33,7 @@ export class AccordionPageObject {
    */
   get container(): HTMLElement {
     const accordion: HTMLElement = this.accordion;
-    return accordion ? accordion.querySelector('.fusion-ui-accordion') : null;
+    return accordion ? accordion.querySelector('.f-accordion') : null;
   }
 
   /**
@@ -43,7 +43,7 @@ export class AccordionPageObject {
    */
   get panels(): NodeListOf<HTMLElement> {
     const accordion: HTMLElement = this.accordion;
-    return accordion ? accordion.querySelectorAll('.fusion-ui-accordion-panel') : null;
+    return accordion ? accordion.querySelectorAll('.f-accordion-panel') : null;
   }
 
   /**
@@ -65,7 +65,7 @@ export class AccordionPageObject {
    */
   getTitleOfPanelAtIndex(index: number): HTMLButtonElement {
     const panel: HTMLElement = this.getPanelAtIndex(index);
-    return panel ? panel.querySelector('.fusion-ui-accordion-panel__title') : null;
+    return panel ? panel.querySelector('.f-accordion-panel__title') : null;
   }
 
   /**
@@ -76,14 +76,14 @@ export class AccordionPageObject {
    */
   getContentOfPanelAtIndex(index: number): HTMLButtonElement {
     const panel: HTMLElement = this.getPanelAtIndex(index);
-    return panel ? panel.querySelector('.fusion-ui-accordion-panel__content-container') : null;
+    return panel ? panel.querySelector('.f-accordion-panel__content-container') : null;
   }
 
   /**
-   * Creates a page object for a fusion-ui-accordion DOM element based on the provided fixture and optional containerClass.
+   * Creates a page object for a f-accordion DOM element based on the provided fixture and optional containerClass.
    *
-   * @param fixture the parent DOM fixture/ element that houses the fusion-ui-accordion
-   * @param containerClass optional, providing a css class of a parent element of the fusion-ui-accordion
+   * @param fixture the parent DOM fixture/ element that houses the f-accordion
+   * @param containerClass optional, providing a css class of a parent element of the f-accordion
    * will help make sure the correct one is selected
    */
   constructor(fixture: ComponentFixture<any>, containerClass?: string) {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { StateDirectiveModule } from '@fusion-ui/fusion-components';
+import { StateDirectiveModule } from 'fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { StateDemoComponent } from './state-demo.component';

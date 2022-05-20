@@ -22,7 +22,7 @@ $large: 28px;
     }
   }
 
-  .fusion-ui-loading-spinner {
+  .f-loading-spinner {
     &__spinner {
       @include flex-centered-nowrap;
 
@@ -44,7 +44,7 @@ $large: 28px;
     }
   
     &__bounce {
-      background-color: $fusion-ui-color-greyscale-15;
+      background-color: $f-color-greyscale-15;
       border-radius: 100%;
       animation: bouncedelay 1.4s infinite ease-in-out both;
 
@@ -68,8 +68,8 @@ $large: 28px;
         height: calc(#{$large} - 2px);
       }
   
-      & + .fusion-ui-loading-spinner__bounce {
-        margin-left: $fusion-ui-spacing-xxs;
+      & + .f-loading-spinner__bounce {
+        margin-left: $f-spacing-xxs;
       }
   
       &--one {

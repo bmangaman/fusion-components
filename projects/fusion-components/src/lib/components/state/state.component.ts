@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { FusionUiSize, FusionUiState } from '../../shared';
+import { Size, State } from '../../shared';
 import {
   DEFAULT_STATE_HEADLINES,
   DEFAULT_STATE_MESSAGES,
@@ -18,12 +18,12 @@ import {
  * the STATE DIRECTIVE, but can be used in isolation.
  */
 @Component({
-  selector: 'fusion-ui-state',
+  selector: 'f-state',
   templateUrl: './state.component.html',
 })
 export class StateComponent {
-  readonly FusionUiSize = FusionUiSize;
-  readonly FusionUiState = FusionUiState;
+  readonly Size = Size;
+  readonly State = State;
 
   cssClasses: StateCssClasses;
 
@@ -33,13 +33,13 @@ export class StateComponent {
    *
    * Currently supports LOADING, NOT_LOADED, NO_RESULTS, and ERROR.
    */
-  private _state: FusionUiState;
+  private _state: State;
   @Input()
-  set state(state: FusionUiState) {
+  set state(state: State) {
     this._state = state;
     this.generateCssClasses();
   }
-  get state(): FusionUiState {
+  get state(): State {
     return this._state;
   }
 
@@ -102,7 +102,7 @@ export class StateComponent {
    *  - the inner div content div
    */
   generateCssClasses(): void {
-    const base = 'fusion-ui-state';
+    const base = 'f-state';
 
     const wrapper: string[] = [base];
     const inner: string[] = [`${base}__inner`];

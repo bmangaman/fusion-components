@@ -1,5 +1,5 @@
 import { SimpleChange } from '@angular/core';
-import { FusionUiSize } from '../../shared';
+import { Size } from '../../shared';
 import { ProgressBarComponent } from '../progress-bar/progress-bar.component';
 import { ProgressBarStatus } from './progress-bar.interface';
 
@@ -29,7 +29,7 @@ describe('ProgressBarComponent', () => {
       component.size = undefined;
       component.classes = undefined;
 
-      component.size = FusionUiSize.MEDIUM;
+      component.size = Size.MEDIUM;
       component.ngOnChanges({
         size: new SimpleChange(null, component.size, false),
       });
@@ -133,29 +133,29 @@ describe('ProgressBarComponent', () => {
       component.size = undefined;
       component.resultingStatus$.next(undefined);
       component.classes = [];
-      expectedResult = ['fusion-ui-progress-bar__bar'];
+      expectedResult = ['f-progress-bar__bar'];
       component.generateClasses();
       expect(component.generatedClasses).toEqual(expectedResult);
 
       // SIZE
-      component.size = FusionUiSize.SMALL;
+      component.size = Size.SMALL;
       component.resultingStatus$.next(undefined);
       component.classes = [];
-      expectedResult = ['fusion-ui-progress-bar__bar', 'fusion-ui-progress-bar__bar--small'];
+      expectedResult = ['f-progress-bar__bar', 'f-progress-bar__bar--small'];
       component.generateClasses();
       expect(component.generatedClasses).toEqual(expectedResult);
 
-      component.size = FusionUiSize.MEDIUM;
+      component.size = Size.MEDIUM;
       component.resultingStatus$.next(undefined);
       component.classes = [];
-      expectedResult = ['fusion-ui-progress-bar__bar', 'fusion-ui-progress-bar__bar--medium'];
+      expectedResult = ['f-progress-bar__bar', 'f-progress-bar__bar--medium'];
       component.generateClasses();
       expect(component.generatedClasses).toEqual(expectedResult);
 
-      component.size = FusionUiSize.LARGE;
+      component.size = Size.LARGE;
       component.resultingStatus$.next(undefined);
       component.classes = [];
-      expectedResult = ['fusion-ui-progress-bar__bar', 'fusion-ui-progress-bar__bar--large'];
+      expectedResult = ['f-progress-bar__bar', 'f-progress-bar__bar--large'];
       component.generateClasses();
       expect(component.generatedClasses).toEqual(expectedResult);
 
@@ -163,42 +163,42 @@ describe('ProgressBarComponent', () => {
       component.size = undefined;
       component.resultingStatus$.next(ProgressBarStatus.ERROR);
       component.classes = [];
-      expectedResult = ['fusion-ui-progress-bar__bar', 'fusion-ui-progress-bar__bar--error'];
+      expectedResult = ['f-progress-bar__bar', 'f-progress-bar__bar--error'];
       component.generateClasses();
       expect(component.generatedClasses).toEqual(expectedResult);
 
       component.size = undefined;
       component.resultingStatus$.next(ProgressBarStatus.IN_PROGRESS);
       component.classes = [];
-      expectedResult = ['fusion-ui-progress-bar__bar', 'fusion-ui-progress-bar__bar--in-progress'];
+      expectedResult = ['f-progress-bar__bar', 'f-progress-bar__bar--in-progress'];
       component.generateClasses();
       expect(component.generatedClasses).toEqual(expectedResult);
 
       component.size = undefined;
       component.resultingStatus$.next(ProgressBarStatus.NOT_STARTED);
       component.classes = [];
-      expectedResult = ['fusion-ui-progress-bar__bar', 'fusion-ui-progress-bar__bar--not-started'];
+      expectedResult = ['f-progress-bar__bar', 'f-progress-bar__bar--not-started'];
       component.generateClasses();
       expect(component.generatedClasses).toEqual(expectedResult);
 
       component.size = undefined;
       component.resultingStatus$.next(ProgressBarStatus.PAUSED);
       component.classes = [];
-      expectedResult = ['fusion-ui-progress-bar__bar', 'fusion-ui-progress-bar__bar--paused'];
+      expectedResult = ['f-progress-bar__bar', 'f-progress-bar__bar--paused'];
       component.generateClasses();
       expect(component.generatedClasses).toEqual(expectedResult);
 
       component.size = undefined;
       component.resultingStatus$.next(ProgressBarStatus.SUCCESS);
       component.classes = [];
-      expectedResult = ['fusion-ui-progress-bar__bar', 'fusion-ui-progress-bar__bar--success'];
+      expectedResult = ['f-progress-bar__bar', 'f-progress-bar__bar--success'];
       component.generateClasses();
       expect(component.generatedClasses).toEqual(expectedResult);
 
       component.size = undefined;
       component.resultingStatus$.next(ProgressBarStatus.WARNING);
       component.classes = [];
-      expectedResult = ['fusion-ui-progress-bar__bar', 'fusion-ui-progress-bar__bar--warning'];
+      expectedResult = ['f-progress-bar__bar', 'f-progress-bar__bar--warning'];
       component.generateClasses();
       expect(component.generatedClasses).toEqual(expectedResult);
 
@@ -206,14 +206,14 @@ describe('ProgressBarComponent', () => {
       component.size = undefined;
       component.resultingStatus$.next(undefined);
       component.classes = ['custom-class-1'];
-      expectedResult = ['fusion-ui-progress-bar__bar', 'custom-class-1'];
+      expectedResult = ['f-progress-bar__bar', 'custom-class-1'];
       component.generateClasses();
       expect(component.generatedClasses).toEqual(expectedResult);
 
       component.size = undefined;
       component.resultingStatus$.next(undefined);
       component.classes = ['custom-class-1', 'custom-class-2'];
-      expectedResult = ['fusion-ui-progress-bar__bar', 'custom-class-1', 'custom-class-2'];
+      expectedResult = ['f-progress-bar__bar', 'custom-class-1', 'custom-class-2'];
       component.generateClasses();
       expect(component.generatedClasses).toEqual(expectedResult);
     });

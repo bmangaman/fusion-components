@@ -1,26 +1,26 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 
-import { FusionUiSize, FusionUiState } from '@fusion-ui/fusion-components/lib/shared/interfaces';
+import { Size, State } from '@fusion-components/lib/shared/interfaces';
 
 import { ButtonAria, ButtonInputType, ButtonType } from './button.interface';
 
 /**
  * BUTTON COMPONENT
  *
- * The button component simplifies the creation and use of the fusion-ui button. It provides an easy way
+ * The button component simplifies the creation and use of the f button. It provides an easy way
  * to specify the button type, size, content, etc. It also supports disabled and loading states.
  */
 @Component({
-  selector: 'fusion-ui-button',
+  selector: 'f-button',
   templateUrl: 'button.component.html',
 })
 export class ButtonComponent implements AfterViewInit, OnChanges {
-  readonly FusionUiState = FusionUiState;
-  readonly FusionUiSize = FusionUiSize;
+  readonly State = State;
+  readonly Size = Size;
 
   isButtonDisabled: boolean;
   buttonClasses: string[];
-  loadingSpinnerSize: FusionUiSize = FusionUiSize.MEDIUM;
+  loadingSpinnerSize: Size = Size.MEDIUM;
 
   /**
    * Used for when the button goes into the "loading" state - helps make the button keep the same width
@@ -44,7 +44,7 @@ export class ButtonComponent implements AfterViewInit, OnChanges {
   /**
    * Determines the size of the button; default is MEDIUM.
    */
-  @Input() size: FusionUiSize = FusionUiSize.MEDIUM;
+  @Input() size: Size = Size.MEDIUM;
 
   /**
    * Determines the icon to be displayed in the button to the left of the button content/ text.
@@ -56,7 +56,7 @@ export class ButtonComponent implements AfterViewInit, OnChanges {
    * The default state is LOADED.
    * When the button is LOADING, it is also disabled.
    */
-  @Input() state: FusionUiState = FusionUiState.LOADED;
+  @Input() state: State = State.LOADED;
 
   /**
    * Determines whether or not the button is disabled.
@@ -129,19 +129,19 @@ export class ButtonComponent implements AfterViewInit, OnChanges {
    */
   // eslint-disable-next-line complexity
   ngOnChanges(c: SimpleChanges): void {
-    if (c.text || c.icon || c.opensMenu) {
+    if (c['text'] || c['icon'] || c['opensMenu']) {
       setTimeout(() => this.setContentMinWidth());
     }
 
-    if (c.isDisabled || c.state) {
-      this.isButtonDisabled = this.isDisabled || this.state === FusionUiState.LOADING;
+    if (c['isDisabled'] || c['state']) {
+      this.isButtonDisabled = this.isDisabled || this.state === State.LOADING;
     }
 
-    if (c.size) {
-      this.loadingSpinnerSize = this.size !== FusionUiSize.LARGE ? this.size : FusionUiSize.MEDIUM;
+    if (c['size']) {
+      this.loadingSpinnerSize = this.size !== Size.LARGE ? this.size : Size.MEDIUM;
     }
 
-    if (c.type || c.size || c.state || c.isSelected || c.noBorder || c.fullWidth || c.isDisabled || c.icon || c.text || c.classes) {
+    if (c['type'] || c['size'] || c['state'] || c['isSelected'] || c['noBorder'] || c['fullWidth'] || c['isDisabled'] || c['icon'] || c['text'] || c['classes']) {
       this.buttonClasses = this.generateButtonClasses();
     }
   }
@@ -170,42 +170,42 @@ export class ButtonComponent implements AfterViewInit, OnChanges {
    */
   // eslint-disable-next-line complexity
   generateButtonClasses(): string[] {
-    const classes: string[] = ['fusion-ui-button'];
+    const classes: string[] = ['f-button'];
 
     if (!!this.type) {
-      classes.push(`fusion-ui-button--${this.type}`);
+      classes.push(`f-button--${this.type}`);
     }
 
     if (!!this.size) {
-      classes.push(`fusion-ui-button--${this.size}`);
+      classes.push(`f-button--${this.size}`);
     }
 
     if (!!this.state) {
-      classes.push(`fusion-ui-button--${this.state}`);
+      classes.push(`f-button--${this.state}`);
     }
 
     if (!!this.isSelected) {
-      classes.push('fusion-ui-button--selected');
+      classes.push('f-button--selected');
     }
 
-    if (!!this.isDisabled || (!!this.state && this.state === FusionUiState.LOADING)) {
-      classes.push('fusion-ui-button--disabled');
+    if (!!this.isDisabled || (!!this.state && this.state === State.LOADING)) {
+      classes.push('f-button--disabled');
     }
 
     if (!!this.noBorder) {
-      classes.push('fusion-ui-button--noBorder');
+      classes.push('f-button--noBorder');
     }
 
     if (!!this.fullWidth) {
-      classes.push('fusion-ui-button--full-width');
+      classes.push('f-button--full-width');
     }
 
     if (!this.icon && !!this.text) {
-      classes.push('fusion-ui-button--text');
+      classes.push('f-button--text');
     }
 
     if (!this.text && !!this.icon) {
-      classes.push('fusion-ui-button--icon');
+      classes.push('f-button--icon');
     }
 
     if (this.classes) {

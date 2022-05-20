@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
 import { TranslateService } from '@ngx-translate/core';
 
 import { EMPTY, Observable, of } from 'rxjs';
@@ -54,16 +54,16 @@ export class UploadFileStatusPipe implements PipeTransform {
         * null-safe check for specific error translation; if it does not exist,
         * fall back to error message from network request.
         */
-        return translations.errors?.[fileInfo.error.status] ?
-          of(translations.errors?.[fileInfo.error.status]) :
-          of(fileInfo.error.message);
+        return translations.errors?.[fileInfo.error!.status] ?
+          of(translations.errors?.[fileInfo.error!.status]) :
+          of(fileInfo.error!.message);
       }
-      return of(translations.statuses?.[statusKey]);
+      return of(translations.statuses?.[statusKey]!);
     }
     // otherwise fall back to "base" translations for app:
     // error states do not have base translations; check network request error message
     if (statusKey === UploadState.ERROR) {
-      return of(fileInfo.error.message);
+      return of(fileInfo.error!.message);
     }
     // non-error states may have base translations; perform null-safe check
     const statusKeyPath = `${this.translationService.baseTranslationKey}.upload.statuses.${statusKey}`;

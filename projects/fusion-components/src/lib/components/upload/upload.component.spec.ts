@@ -5,9 +5,9 @@ import { concat, Observable, of, Subscription, throwError } from 'rxjs';
 
 import { cloneDeep } from 'lodash';
 
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
 
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { UploadComponent } from './upload.component';
 import { HTMLInputEvent, UploadInfo } from './upload.interface';
 

@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing';
 
-import { SelectPageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/select.spec.po';
+import { SelectPageObject } from '@fusion-components/unit-test-helpers/page-objects/select.spec.po';
 
 import { SelectTestComponent } from './select.component.dom.spec';
 

@@ -5,8 +5,8 @@ import { ModalContentComponentPageObject } from './modal-content.component.spec.
 import { ModalContentModule } from './modal-content.module';
 
 @Component({
-  selector: 'fusion-ui-test-component',
-  template: '<fusion-ui-modal-content>Header Title</fusion-ui-modal-content>',
+  selector: 'f-test-component',
+  template: '<f-modal-content>Header Title</f-modal-content>',
 })
 export class ModalContentTestComponent {}
 
@@ -33,9 +33,9 @@ describe('ModalContentComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should append the "fusion-ui-modal__content" class to the component', () => {
+  it('should append the "f-modal__content" class to the component', () => {
     expect(page.content).toBeTruthy();
-    expect(page.content.classList).toContain('fusion-ui-modal__content');
+    expect(page.content.classList).toContain('f-modal__content');
   });
 
   it('should display the inner content', () => {

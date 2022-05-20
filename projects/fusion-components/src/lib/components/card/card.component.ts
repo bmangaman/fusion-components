@@ -2,21 +2,21 @@ import { AfterContentInit, Component, ContentChildren, Input, OnChanges, OnInit,
 import { Observable } from 'rxjs';
 
 import { TemplateDirective } from '../../directives/template';
-import { GetFusionUiStatusLevelTextPipe } from '../../pipes/get-fusion-ui-status-level-text';
-import { FusionUiSize, FusionUiStatusLevel } from '../../shared';
+import { GetStatusLevelTextPipe } from '../../pipes/get-status-level-text';
+import { Size, StatusLevel } from '../../shared';
 import { CardStatus, CardTemplate, CardTranslations, DEFAULT_CARD_TRANSLATIONS } from './card.interface';
 
 /**
  * CARD COMPONENT
  */
 @Component({
-  selector: 'fusion-ui-card',
+  selector: 'f-card',
   templateUrl: 'card.component.html',
 })
 export class CardComponent implements OnInit, AfterContentInit, OnChanges {
-  readonly FusionUiStatusLevel = FusionUiStatusLevel;
-  readonly FusionUiSize = FusionUiSize;
-  readonly getFusionUiStatusLevelPipe: GetFusionUiStatusLevelTextPipe = new GetFusionUiStatusLevelTextPipe();
+  readonly StatusLevel = StatusLevel;
+  readonly Size = Size;
+  readonly getStatusLevelPipe: GetStatusLevelTextPipe = new GetStatusLevelTextPipe();
   readonly Observable = Observable;
 
   containerCssClasses: string[] = [];
@@ -51,7 +51,7 @@ export class CardComponent implements OnInit, AfterContentInit, OnChanges {
    * Currently only supports MEDIUM and SMALL.
    * By default is MEDIUM.
    */
-  @Input() size: FusionUiSize = FusionUiSize.MEDIUM;
+  @Input() size: Size = Size.MEDIUM;
 
   /**
    * Allows for custom CSS classes to be appended to the wrapping container.
@@ -163,24 +163,24 @@ export class CardComponent implements OnInit, AfterContentInit, OnChanges {
    * Generates the container CSS classes based on the provided inputs.
    */
   generateContainerCssClasses(): void {
-    const classes: string[] = ['fusion-ui-card'];
+    const classes: string[] = ['f-card'];
 
     /**
-     * When the thresholds are provided, they are sorted by the FusionUiStatusLevel enum numerical values (0, 1, 2, etc).
+     * When the thresholds are provided, they are sorted by the StatusLevel enum numerical values (0, 1, 2, etc).
      * The last value in the tresholds array should have the highest value/ be the most critical/ important status.
      * Use that status to indicate what the overall status of the card is (which affects the top border color).
      */
     if (!this.hideStatusBarStyling && !!this.statuses && !!this.statuses.length) {
-      const status: string = this.getFusionUiStatusLevelPipe.transform(
+      const status: string = this.getStatusLevelPipe.transform(
         this.statuses[this.statuses.length - 1].status,
         this.translations.statuses,
         true,
       );
-      classes.push(`fusion-ui-card--${status}`);
+      classes.push(`f-card--${status}`);
     }
 
     if (!!this.size) {
-      classes.push(`fusion-ui-card--${this.size}`);
+      classes.push(`f-card--${this.size}`);
     }
 
     if (!!this.cssClasses) {

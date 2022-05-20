@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { unsubscribeAll } from '@hcc/app/shared/utilities/utils';
+import { unsubscribeAll } from '../../shared';
 
 import { Subscription } from 'rxjs';
 
@@ -27,19 +27,19 @@ import { TabviewType } from './tabview.interface';
  * <example-url>../../tabview?embedded</example-url>
  *
  * @example
- * <fusion-ui-tabview [type]="TabviewType.CONTENT" tablistAriaLabel="Test tabs">
- *   <fusion-ui-tabview-tab route="tabview">
+ * <f-tabview [type]="TabviewType.CONTENT" tablistAriaLabel="Test tabs">
+ *   <f-tabview-tab route="tabview">
  *     <ng-template fusionUiTemplate="tabHeader"><h3>Tab title 1</h3></ng-template>
  *     <ng-template fusionUiTemplate="tabContent">Tab Content 1</ng-template>
- *   </fusion-ui-tabview-tab>
- *   <fusion-ui-tabview-tab route="tabview" [isDisabled]="true">
+ *   </f-tabview-tab>
+ *   <f-tabview-tab route="tabview" [isDisabled]="true">
  *     <ng-template fusionUiTemplate="tabHeader"><h3>Tab Title 2</h3></ng-template>
  *     <ng-template fusionUiTemplate="tabContent">Tab Content 2</ng-template>
- *   </fusion-ui-tabview-tab>
- * </fusion-ui-tabview>
+ *   </f-tabview-tab>
+ * </f-tabview>
  */
 @Component({
-  selector: 'fusion-ui-tabview',
+  selector: 'f-tabview',
   templateUrl: 'tabview.component.html',
 })
 export class TabviewComponent implements AfterContentInit, OnDestroy {
@@ -74,7 +74,7 @@ export class TabviewComponent implements AfterContentInit, OnDestroy {
   @Input() type: TabviewType = TabviewType.CONTENT;
 
   /**
-   * Allows the addition of custom CSS classes to div.fusion-ui-tabview.
+   * Allows the addition of custom CSS classes to div.f-tabview.
    */
   @Input() classes: string[] = [];
 
@@ -125,10 +125,10 @@ export class TabviewComponent implements AfterContentInit, OnDestroy {
    */
   @HostBinding('attr.class')
   get hostClasses(): string {
-    const classes: string[] = ['fusion-ui-tabview'];
+    const classes: string[] = ['f-tabview'];
 
     if (!!this.type) {
-      classes.push(`fusion-ui-tabview-type-${this.type}`);
+      classes.push(`f-tabview-type-${this.type}`);
     }
 
     classes.push(...this.classes);
@@ -153,7 +153,7 @@ export class TabviewComponent implements AfterContentInit, OnDestroy {
         }
       });
     } else {
-      const firstAvailableTab: TabviewTabComponent = this.tabs.find((tab: TabviewTabComponent) => !tab.isDisabled);
+      const firstAvailableTab: TabviewTabComponent = this.tabs.find((tab: TabviewTabComponent) => !tab.isDisabled)!;
 
       if (firstAvailableTab) {
         firstAvailableTab.isSelected = true;

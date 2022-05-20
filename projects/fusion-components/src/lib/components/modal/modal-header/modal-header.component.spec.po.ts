@@ -10,18 +10,18 @@ export class ModalHeaderComponentPageObject {
   }
 
   get header(): HTMLElement {
-    return this.fixture.nativeElement.querySelector('.fusion-ui-modal__header');
+    return this.fixture.nativeElement.querySelector('.f-modal__header');
   }
 
   get fullHeader(): HTMLElement {
-    return this.fixture.nativeElement.querySelector('.fusion-ui-modal__full-header');
+    return this.fixture.nativeElement.querySelector('.f-modal__full-header');
   }
 
   get fullHeaderTopBar(): HTMLElement {
-    return this.fixture.nativeElement.querySelector('.fusion-ui-modal__full-header-top-bar');
+    return this.fixture.nativeElement.querySelector('.f-modal__full-header-top-bar');
   }
 
   get closeButton(): HTMLButtonElement {
-    return this.fixture.nativeElement.querySelector('.fusion-ui-modal__header-close-button');
+    return this.fixture.nativeElement.querySelector('.f-modal__header-close-button');
   }
 }

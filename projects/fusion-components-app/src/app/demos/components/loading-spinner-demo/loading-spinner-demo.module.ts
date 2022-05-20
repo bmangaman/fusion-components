@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { LoadingSpinnerModule } from '@fusion-ui/fusion-components';
+import { LoadingSpinnerModule } from '@fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { LoadingSpinnerDemoComponent } from './loading-spinner-demo.component';

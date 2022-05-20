@@ -5,8 +5,8 @@ import { of } from 'rxjs';
 
 import { cloneDeep } from 'lodash';
 
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
-import { MockTemplateDirective } from '@fusion-ui/fusion-components/unit-test-helpers/mock-utils.spec';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { MockTemplateDirective } from '@fusion-components/unit-test-helpers/mock-utils.spec';
 
 import { TemplateDirective } from '../../directives/template';
 import { SidenavComponent } from './sidenav.component';

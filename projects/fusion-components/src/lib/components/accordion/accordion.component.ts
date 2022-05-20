@@ -11,20 +11,20 @@ import { AccordionPanelComponent } from './panel';
  * The Accordion Component is made of tabs and panels.
  *
  * @example
- * <fusion-ui-accordion>
- *   <fusion-ui-accordion-panel>
+ * <f-accordion>
+ *   <f-accordion-panel>
  *     <ng-template fusionUiTemplate="panelTitle">Panel Title</ng-template>
  *     <ng-template fusionUiTemplate="panelContent">Panel Content</ng-template>
- *   </fusion-ui-accordion-panel>
- *   <fusion-ui-accordion-panel>
+ *   </f-accordion-panel>
+ *   <f-accordion-panel>
  *     <ng-template fusionUiTemplate="panelTitle">Panel Title 2</ng-template>
  *     <ng-template fusionUiTemplate="panelContent">Panel Content 2</ng-template>
- *   </fusion-ui-accordion-panel>
- * </fusion-ui-accordion>
+ *   </f-accordion-panel>
+ * </f-accordion>
  */
 @Component({
-  selector: 'fusion-ui-accordion',
-  template: '<div class="fusion-ui-accordion"><ng-content></ng-content></div>',
+  selector: 'f-accordion',
+  template: '<div class="f-accordion"><ng-content></ng-content></div>',
 })
 export class AccordionComponent implements AfterContentInit {
   subscriptions: Subscription[] = [];

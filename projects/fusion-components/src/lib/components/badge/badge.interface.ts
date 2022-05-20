@@ -1,8 +1,8 @@
-import { FusionUiSize, FusionUiStatusLevel } from '../../shared';
+import { Size, StatusLevel } from '../../shared';
 
 export interface BadgeConfig {
-  type?: FusionUiStatusLevel;
-  size?: FusionUiSize;
+  type?: StatusLevel;
+  size?: Size;
   text?: string | number;
   subText?: string | number;
 }

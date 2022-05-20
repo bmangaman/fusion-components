@@ -1,74 +1,74 @@
-<div class="fusion-ui-widget">
+<div class="f-widget">
 
   <!-- START: header -->
-  <div *ngIf="isTimestampDisplayed || isRefreshButtonDisplayed || header" class="fusion-ui-widget__header">
-    <div *ngIf="isTimestampDisplayed" class="fusion-ui-widget__header-timestamp">
-      <span *ngIf="translations?.lastUpdated" class="fusion-ui-widget__header-timestamp-label">{{ translations?.lastUpdated }}:</span>
-      <span class="fusion-ui-widget__header-timestamp-time">{{ timeStamp | date:'y-MM-dd HH:mm:ss' }}</span>
+  <div *ngIf="isTimestampDisplayed || isRefreshButtonDisplayed || header" class="f-widget__header">
+    <div *ngIf="isTimestampDisplayed" class="f-widget__header-timestamp">
+      <span *ngIf="translations?.lastUpdated" class="f-widget__header-timestamp-label">{{ translations?.lastUpdated }}:</span>
+      <span class="f-widget__header-timestamp-time">{{ timeStamp | date:'y-MM-dd HH:mm:ss' }}</span>
     </div>
-    <div *ngIf="header" class="fusion-ui-widget__header-content">
+    <div *ngIf="header" class="f-widget__header-content">
       <ng-content *ngTemplateOutlet="header"></ng-content>
     </div>
-    <fusion-ui-button
+    <f-button
       *ngIf="isRefreshButtonDisplayed"
       [type]="ButtonType.SECONDARY"
-      [size]="FusionUiSize.SMALL"
+      [size]="Size.SMALL"
       [noBorder]="true"
-      [classes]="['fusion-ui-widget__header-refresh-button']"
+      [classes]="['f-widget__header-refresh-button']"
       icon="mdi-refresh"
       (buttonClick)="refreshData()">
-    </fusion-ui-button>
+    </f-button>
   </div>
   <!-- END: header -->
 
   <!-- START: info boxes -->
-  <div *ngIf="!!infoBoxes?.length || !!infoBoxesDetails?.length" class="fusion-ui-widget__info-boxes">
+  <div *ngIf="!!infoBoxes?.length || !!infoBoxesDetails?.length" class="f-widget__info-boxes">
     <ng-container *ngIf="!!infoBoxes?.length; else infoBoxData">
-      <div *ngFor="let box of infoBoxes" class="fusion-ui-widget__info-boxes-box">
+      <div *ngFor="let box of infoBoxes" class="f-widget__info-boxes-box">
         <ng-content *ngTemplateOutlet="box"></ng-content>
       </div>
     </ng-container>
 
     <ng-template #infoBoxData>
-      <div *ngFor="let box of infoBoxesDetails" class="fusion-ui-widget__info-boxes-box">
-        <div *ngIf="box?.header" class="fusion-ui-widget__info-boxes-box-header">{{ box?.header }}</div>
-        <div *ngIf="box?.content" class="fusion-ui-widget__info-boxes-box-content">{{ box?.content }}</div>
-        <div *ngIf="box?.badges?.length" class="fusion-ui-widget__info-boxes-box-badges">
-          <fusion-ui-badge
+      <div *ngFor="let box of infoBoxesDetails" class="f-widget__info-boxes-box">
+        <div *ngIf="box?.header" class="f-widget__info-boxes-box-header">{{ box?.header }}</div>
+        <div *ngIf="box?.content" class="f-widget__info-boxes-box-content">{{ box?.content }}</div>
+        <div *ngIf="box?.badges?.length" class="f-widget__info-boxes-box-badges">
+          <f-badge
             *ngFor="let badge of box?.badges; index as i;"
-            [hostCssClasses]="['fusion-ui-widget__info-boxes-box-badges-badge', 'fusion-ui-widget__info-boxes-box-badges-badge--' + i]"
+            [hostCssClasses]="['f-widget__info-boxes-box-badges-badge', 'f-widget__info-boxes-box-badges-badge--' + i]"
             [fillContainer]="true"
             [type]="badge?.type"
-            [size]="FusionUiSize.LARGE"
+            [size]="Size.LARGE"
             [text]="badge?.text"
             [subText]="badge?.subText">
-          </fusion-ui-badge>
+          </f-badge>
         </div>
-        <div *ngIf="box?.footer" class="fusion-ui-widget__info-boxes-box-footer">{{ box?.footer }}</div>
+        <div *ngIf="box?.footer" class="f-widget__info-boxes-box-footer">{{ box?.footer }}</div>
       </div>
     </ng-template>
   </div>
   <!-- END: info boxes -->
 
   <!-- START: info details -->
-  <div *ngIf="infoDetails || infoDetailsData" class="fusion-ui-widget__info-details">
-    <div class="fusion-ui-widget__info-details-button-wrapper">
-      <button class="fusion-ui-widget__info-details-button fusion-ui-button__link" (click)="toggleInfoDetailsSection()">
-        <span class="fusion-ui-widget_info-details-button-text">{{ translations?.infoDetailsButton }}</span>
-        <i class="fusion-ui-widget__info-details-button-icon mdi" [ngClass]="isInfoDetailsExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
+  <div *ngIf="infoDetails || infoDetailsData" class="f-widget__info-details">
+    <div class="f-widget__info-details-button-wrapper">
+      <button class="f-widget__info-details-button f-button__link" (click)="toggleInfoDetailsSection()">
+        <span class="f-widget_info-details-button-text">{{ translations?.infoDetailsButton }}</span>
+        <i class="f-widget__info-details-button-icon mdi" [ngClass]="isInfoDetailsExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
       </button>
     </div>
 
-    <div *ngIf="isInfoDetailsExpanded" class="fusion-ui-widget__info-details-content">
+    <div *ngIf="isInfoDetailsExpanded" class="f-widget__info-details-content">
       <ng-container *ngIf="infoDetails; else infoDetailsTable">
         <ng-content *ngTemplateOutlet="infoDetails"></ng-content>
       </ng-container>
       
       <ng-template #infoDetailsTable>
-        <div class="fusion-ui-widget__info-details-table">
-          <div *ngFor="let cell of infoDetailsData | keyvalue" class="fusion-ui-widget__info-details-table-cell">
-            <div class="fusion-ui-widget__info-details-table-cell-key">{{ cell?.key }}</div>
-            <div class="fusion-ui-widget__info-details-table-cell-value">{{ cell?.value }}</div>
+        <div class="f-widget__info-details-table">
+          <div *ngFor="let cell of infoDetailsData | keyvalue" class="f-widget__info-details-table-cell">
+            <div class="f-widget__info-details-table-cell-key">{{ cell?.key }}</div>
+            <div class="f-widget__info-details-table-cell-value">{{ cell?.value }}</div>
           </div>
         </div>
       </ng-template>

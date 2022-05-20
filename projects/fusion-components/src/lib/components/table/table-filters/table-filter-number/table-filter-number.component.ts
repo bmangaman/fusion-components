@@ -14,7 +14,7 @@ import { TableFilterNumberInputComparator, TableFilterNumberTranslations } from 
  * It has one input for the numerical value.
  */
 @Component({
-  selector: 'fusion-ui-table-number-filter',
+  selector: 'f-table-number-filter',
   templateUrl: './table-filter-number.component.html',
   providers: [{ provide: TableFilterComponent, useExisting: TableFilterNumberComponent }],
   changeDetection: ChangeDetectionStrategy.OnPush,

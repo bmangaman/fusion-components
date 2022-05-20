@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { DomService, TooltipDirectiveModule, TooltipService } from '@fusion-ui/fusion-components';
+import { DomService, TooltipDirectiveModule, TooltipService } from '@fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { TooltipDemoComponent } from './tooltip-demo.component';

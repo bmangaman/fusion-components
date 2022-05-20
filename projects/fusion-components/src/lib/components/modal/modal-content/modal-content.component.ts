@@ -1,9 +1,9 @@
 import { Component, HostBinding } from '@angular/core';
 
 @Component({
-  selector: 'fusion-ui-modal-content',
+  selector: 'f-modal-content',
   template: '<ng-content></ng-content>',
 })
 export class ModalContentComponent {
-  @HostBinding('attr.class') class = 'fusion-ui-modal__content';
+  @HostBinding('attr.class') class = 'f-modal__content';
 }

@@ -1,7 +1,7 @@
 // Applies to elements that should not be visible but still readable by screen readers.
 // Example: a form input label that should not be displayed for stylistic reasons
 // but should still be attached to the input for screen reader users.
-.fusion-ui-screen-reader-only {
+.f-screen-reader-only {
   position: absolute;
   left: -10000px;
   top: auto;

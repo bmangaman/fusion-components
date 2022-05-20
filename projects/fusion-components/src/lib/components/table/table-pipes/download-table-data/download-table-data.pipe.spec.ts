@@ -1,6 +1,6 @@
 import { ChangeDetectorRef } from '@angular/core';
 
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
 import { TableColumnComponent } from '../../table-column';
 import { TableRowData } from '../../table.interface';

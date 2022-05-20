@@ -50,7 +50,7 @@ describe('GetAllErrorsPipe', () => {
     });
 
     it('should return an empty observable if no errors', (done: DoneFn) => {
-      zip(...pipe.transform(undefined, testControl.errors)).pipe(take(1)).subscribe((messages: string[] | SafeHtml[]) => {
+      zip(...pipe.transform([], testControl.errors!)).pipe(take(1)).subscribe((messages: string[] | SafeHtml[]) => {
         expect(messages.length).toEqual(1);
         expect(messages[0]).toEqual(undefined);
         done();
@@ -58,7 +58,7 @@ describe('GetAllErrorsPipe', () => {
     });
 
     it('should return an empty observable if an undefined control', (done: DoneFn) => {
-      zip(...pipe.transform(testErrorMessages, undefined)).pipe(take(1)).subscribe((messages: string[] | SafeHtml[]) => {
+      zip(...pipe.transform(testErrorMessages, undefined!)).pipe(take(1)).subscribe((messages: string[] | SafeHtml[]) => {
         expect(messages.length).toEqual(1);
         expect(messages[0]).toEqual(undefined);
         done();
@@ -66,7 +66,7 @@ describe('GetAllErrorsPipe', () => {
     });
 
     it('should only return applicable errors (all errors)', (done: DoneFn) => {
-      zip(...pipe.transform(testErrorMessages, testControl.errors)).pipe(take(1)).subscribe((messages: string[] | SafeHtml[]) => {
+      zip(...pipe.transform(testErrorMessages, testControl.errors!)).pipe(take(1)).subscribe((messages: string[] | SafeHtml[]) => {
         expect(messages).toBeDefined();
         expect(messages.length).toEqual(3);
         expect(messages[0]).toEqual('required');
@@ -80,7 +80,7 @@ describe('GetAllErrorsPipe', () => {
       delete testErrors.required;
       testControl.setErrors(testErrors);
 
-      zip(...pipe.transform(testErrorMessages, testControl.errors)).pipe(take(1)).subscribe((messages: string[] | SafeHtml[]) => {
+      zip(...pipe.transform(testErrorMessages, testControl.errors!)).pipe(take(1)).subscribe((messages: string[] | SafeHtml[]) => {
         expect(messages).toBeDefined();
         expect(messages.length).toEqual(2);
         expect(messages[0]).toEqual('cannot start with a hyphen');

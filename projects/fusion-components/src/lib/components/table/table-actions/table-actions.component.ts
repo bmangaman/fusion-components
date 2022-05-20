@@ -2,27 +2,27 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, Input, 
 
 import { isEqual } from 'lodash';
 
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services/translation';
-import { FusionUiLocation, FusionUiSize, TranslatedComponent } from '@fusion-ui/fusion-components/lib/shared';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
+import { Location, Size, TranslatedComponent } from '@fusion-components/lib/shared';
 
 import { ButtonType } from '../../button';
 import { TableRowData } from '../table.interface';
 import { TableActionsTranslations } from './table-actions.interface';
 
 @Component({
-  selector: 'fusion-ui-table-actions',
+  selector: 'f-table-actions',
   templateUrl: './table-actions.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableActionsComponent extends TranslatedComponent implements DoCheck {
-  readonly FusionUiLocation = FusionUiLocation;
-  readonly FusionUiSize = FusionUiSize;
+  readonly Location = Location;
+  readonly Size = Size;
   readonly ButtonType = ButtonType;
 
-  readonly dialogPosition: FusionUiLocation = FusionUiLocation.BOTTOM_RIGHT;
+  readonly dialogPosition: Location = Location.BOTTOM_RIGHT;
 
   isMenuDialogOpen: boolean;
-  cssClasses: string[] = ['fusion-ui-table__actions-dialog'];
+  cssClasses: string[] = ['f-table__actions-dialog'];
 
   /**
    * The data of the row that is used in the custom content.
@@ -66,7 +66,7 @@ export class TableActionsComponent extends TranslatedComponent implements DoChec
    * to be checked and re-rendered.
    */
   ngDoCheck(): void {
-    let didAnythingChange: boolean;
+    let didAnythingChange: boolean = false;
 
     if (!isEqual(this.rowData, this._prevRowData)) {
       this._prevRowData = this.rowData;
@@ -90,7 +90,7 @@ export class TableActionsComponent extends TranslatedComponent implements DoChec
 
     if (!isEqual(this.dialogCssClasses, this._prevDialogCssClasses)) {
       this._prevDialogCssClasses = this.dialogCssClasses;
-      this.cssClasses = ['fusion-ui-table__actions-dialog', ...this.dialogCssClasses];
+      this.cssClasses = ['f-table__actions-dialog', ...this.dialogCssClasses];
       didAnythingChange = true;
     }
 

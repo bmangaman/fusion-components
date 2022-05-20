@@ -1,7 +1,7 @@
 import { ElementRef, Renderer2 } from '@angular/core';
 import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { PasswordVisibilityToggleDirective } from './password-visibility-toggle.directive';
 
 import Spy = jasmine.Spy;
@@ -24,7 +24,7 @@ describe('PasswordVisibilityToggleDirective', () => {
     inputElement = document.createElement('input');
     parentElement = document.createElement('div');
     statusIcon = document.createElement('span');
-    statusIcon.classList.add('fusion-ui-form__input-wrapper-status-icon');
+    statusIcon.classList.add('f-form__input-wrapper-status-icon');
     inputInner = document.createElement('div');
     newPasswordVisibilityToggleButton = document.createElement('button');
 

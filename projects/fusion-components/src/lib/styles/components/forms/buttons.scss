@@ -1,39 +1,39 @@
 @import '../../tokens/tokens.scss';
 @import '../../mixins/mixins.scss';
 
-.fusion-ui-button__link {
-  @include fusion-ui-link;
+.f-button__link {
+  @include f-link;
 
   background: transparent;
   border: 0;
-  font-size: $fusion-ui-font-size-sm;
+  font-size: $f-font-size-sm;
   margin: 0;
   padding: 0;
 }
 
-.fusion-ui-button {
+.f-button {
   background: none;
-  border: $fusion-ui-border-size-sm solid transparent;
-  border-radius: $fusion-ui-border-radius-md;
+  border: $f-border-size-sm solid transparent;
+  border-radius: $f-border-radius-md;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-weight: $fusion-ui-font-weight-regular;
+  font-weight: $f-font-weight-regular;
   margin: 0;
   white-space: nowrap;
 
-  font-size: $fusion-ui-font-size-md;
-  font-weight: $fusion-ui-font-weight-semibold;
+  font-size: $f-font-size-md;
+  font-weight: $f-font-weight-semibold;
   height: 40px;
-  padding: 0 $fusion-ui-spacing-xl;
+  padding: 0 $f-spacing-xl;
 
   * + &__icon {
-    margin-left: $fusion-ui-spacing-xs;
+    margin-left: $f-spacing-xs;
   }
 
-  &__icon + *:not(.fusion-ui-button__icon) {
-    margin-left: $fusion-ui-spacing-xs;
+  &__icon + *:not(.f-button__icon) {
+    margin-left: $f-spacing-xs;
   }
 
   &__content {
@@ -50,86 +50,86 @@
 
   &:focus,
   &--focus {
-    box-shadow: 0 0 0 2px $fusion-ui-color-blue-medium-light;
+    box-shadow: 0 0 0 2px $f-color-blue-medium-light;
   }
 
-  &.fusion-ui-button--icon {
-    padding: $fusion-ui-spacing-xxs;
+  &.f-button--icon {
+    padding: $f-spacing-xxs;
     min-width: 40px;
   }
 
-  .fusion-ui-button__icon {
-    font-size: $fusion-ui-font-size-icon-md;
+  .f-button__icon {
+    font-size: $f-font-size-icon-md;
   }
 
   &--primary {
-    background-color: $fusion-ui-color-interactive-default;
-    color: $fusion-ui-color-primary-text-on-dark;
+    background-color: $f-color-interactive-default;
+    color: $f-color-primary-text-on-dark;
 
     &:disabled,
-    &.fusion-ui-button--disabled {
-      background-color: $fusion-ui-color-greyscale-85;
-      color: $fusion-ui-color-greyscale-53;
+    &.f-button--disabled {
+      background-color: $f-color-greyscale-85;
+      color: $f-color-greyscale-53;
     }
 
-    &:not(:disabled):not(.fusion-ui-button--disabled) {
+    &:not(:disabled):not(.f-button--disabled) {
       &:hover,
-      &.fusion-ui-button--hover {
-        background-color: $fusion-ui-color-blue-medium-dark;
+      &.f-button--hover {
+        background-color: $f-color-blue-medium-dark;
       }
 
       &:active,
-      &.fusion-ui-button--active {
-        background-color: $fusion-ui-color-blue-dark;
+      &.f-button--active {
+        background-color: $f-color-blue-dark;
       }
     }
   }
 
   &--secondary {
-    border: $fusion-ui-border-size-md solid $fusion-ui-color-interactive-default;
-    color: $fusion-ui-color-interactive-default;
+    border: $f-border-size-md solid $f-color-interactive-default;
+    color: $f-color-interactive-default;
 
     &:disabled,
-    &.fusion-ui-button--disabled {
-      border-color: $fusion-ui-color-greyscale-85;
-      color: $fusion-ui-color-greyscale-53;
+    &.f-button--disabled {
+      border-color: $f-color-greyscale-85;
+      color: $f-color-greyscale-53;
     }
 
-    &:not(:disabled):not(.fusion-ui-button--disabled) {
+    &:not(:disabled):not(.f-button--disabled) {
       &:hover,
-      &.fusion-ui-button--hover {
-        border-color: $fusion-ui-color-blue-medium-dark;
-        color: $fusion-ui-color-interactive-hover;
+      &.f-button--hover {
+        border-color: $f-color-blue-medium-dark;
+        color: $f-color-interactive-hover;
       }
 
       &:active,
-      &.fusion-ui-button--active {
-        background-color: $fusion-ui-color-blue-dark;
-        color: $fusion-ui-color-primary-text-on-dark;
+      &.f-button--active {
+        background-color: $f-color-blue-dark;
+        color: $f-color-primary-text-on-dark;
       }
     }
   }
 
   &--tertiary {
-    border: $fusion-ui-border-size-md dashed $fusion-ui-color-border-light;
-    color: $fusion-ui-color-interactive-default;
-    padding: $fusion-ui-spacing-sm;
+    border: $f-border-size-md dashed $f-color-border-light;
+    color: $f-color-interactive-default;
+    padding: $f-spacing-sm;
 
     &:disabled,
-    &.fusion-ui-button--disabled {
-      border-color: $fusion-ui-color-border-light;
-      color: $fusion-ui-color-text-disabled-on-light;
+    &.f-button--disabled {
+      border-color: $f-color-border-light;
+      color: $f-color-text-disabled-on-light;
     }
 
-    &:not(:disabled):not(.fusion-ui-button--disabled) {
+    &:not(:disabled):not(.f-button--disabled) {
       &:hover,
-      &.fusion-ui-button--hover {
-        background-color: $fusion-ui-color-background-light;
-        color: $fusion-ui-color-interactive-hover;
+      &.f-button--hover {
+        background-color: $f-color-background-light;
+        color: $f-color-interactive-hover;
       }
 
       &:active,
-      &.fusion-ui-button--active {
+      &.f-button--active {
         background-color: inherit;
       }
     }
@@ -137,94 +137,94 @@
 
   &--xSmall {
     border-width: 1px;
-    font-size: $fusion-ui-font-size-xs;
-    line-height: $fusion-ui-font-size-xs;
+    font-size: $f-font-size-xs;
+    line-height: $f-font-size-xs;
 
-    &:not(.fusion-ui-button--tertiary) {
+    &:not(.f-button--tertiary) {
       height: 20px;
-      padding: 0 $fusion-ui-spacing-xs;
+      padding: 0 $f-spacing-xs;
     }
 
-    &.fusion-ui-button--icon {
-      padding: $fusion-ui-spacing-xxs;
+    &.f-button--icon {
+      padding: $f-spacing-xxs;
       min-width: 20px;
     }
 
-    .fusion-ui-button__icon {
-      font-size: $fusion-ui-font-size-icon-xs;
-      line-height: $fusion-ui-font-size-icon-xs;
-      height: $fusion-ui-font-size-icon-xs;
+    .f-button__icon {
+      font-size: $f-font-size-icon-xs;
+      line-height: $f-font-size-icon-xs;
+      height: $f-font-size-icon-xs;
 
-      & + *:not(.fusion-ui-button__icon) {
-        margin-left: $fusion-ui-spacing-xxs;
+      & + *:not(.f-button__icon) {
+        margin-left: $f-spacing-xxs;
       }
     }
 
-    * + .fusion-ui-button__icon {
-      margin-left: $fusion-ui-spacing-xxs;
+    * + .f-button__icon {
+      margin-left: $f-spacing-xxs;
     }
     }
 
   &--small {
     border-width: 1px;
-    font-size: $fusion-ui-font-size-sm;
-    line-height: $fusion-ui-font-size-sm;
+    font-size: $f-font-size-sm;
+    line-height: $f-font-size-sm;
 
-    &:not(.fusion-ui-button--tertiary) {
+    &:not(.f-button--tertiary) {
       height: 30px;
-      padding: 0 $fusion-ui-spacing-sm;
+      padding: 0 $f-spacing-sm;
     }
 
-    &.fusion-ui-button--icon {
-      padding: $fusion-ui-spacing-xxs;
+    &.f-button--icon {
+      padding: $f-spacing-xxs;
       min-width: 30px;
     }
   }
 
   &--large {
-    font-size: $fusion-ui-font-size-lg;
-    line-height: $fusion-ui-font-size-lg;
+    font-size: $f-font-size-lg;
+    line-height: $f-font-size-lg;
 
-    &:not(.fusion-ui-button--tertiary) {
+    &:not(.f-button--tertiary) {
       height: 60px;
-      padding: 0 $fusion-ui-spacing-xl;
+      padding: 0 $f-spacing-xl;
     }
 
-    &.fusion-ui-button--icon {
-      padding: $fusion-ui-spacing-xxs;
+    &.f-button--icon {
+      padding: $f-spacing-xxs;
       min-width: 60px;
     }
 
-    .fusion-ui-button__icon {
-      font-size: $fusion-ui-font-size-icon-lg;
+    .f-button__icon {
+      font-size: $f-font-size-icon-lg;
     }
   }
 
   &--selected {
-    background-color: $fusion-ui-color-interactive-default;
-    color: $fusion-ui-color-primary-text-on-dark;
+    background-color: $f-color-interactive-default;
+    color: $f-color-primary-text-on-dark;
 
     &-dark {
-      background-color: $fusion-ui-color-blue-medium-dark;
+      background-color: $f-color-blue-medium-dark;
     }
 
-    &:not(:disabled):not(.fusion-ui-button--disabled) {
+    &:not(:disabled):not(.f-button--disabled) {
       &:hover,
-      &.fusion-ui-button--hover {
-        background-color: $fusion-ui-color-blue-medium-dark;
-        color: $fusion-ui-color-primary-text-on-dark;
+      &.f-button--hover {
+        background-color: $f-color-blue-medium-dark;
+        color: $f-color-primary-text-on-dark;
       }
 
       &:active,
-      &.fusion-ui-button--active {
-        background-color: $fusion-ui-color-blue-dark;
-        color: $fusion-ui-color-primary-text-on-dark;
+      &.f-button--active {
+        background-color: $f-color-blue-dark;
+        color: $f-color-primary-text-on-dark;
       }
 
       &:focus,
-      &.fusion-ui-button--focus {
-        background-color: $fusion-ui-color-blue-dark;
-        color: $fusion-ui-color-primary-text-on-dark;
+      &.f-button--focus {
+        background-color: $f-color-blue-dark;
+        color: $f-color-primary-text-on-dark;
       }
     }
   }
@@ -233,17 +233,17 @@
     border-color: transparent;
 
     &:disabled,
-    &.fusion-ui-button--disabled {
+    &.f-button--disabled {
       border-color: transparent;
     }
 
-    &:not(:disabled):not(.fusion-ui-button--disabled) {
+    &:not(:disabled):not(.f-button--disabled) {
       &:hover,
-      &.fusion-ui-button--hover,
+      &.f-button--hover,
       &:active,
-      &.fusion-ui-button--active,
+      &.f-button--active,
       &:focus,
-      &.fusion-ui-button--focus {
+      &.f-button--focus {
         border-color: transparent;
       }
     }
@@ -254,17 +254,17 @@
   }
 }
 
-.fusion-ui-button-group {
+.f-button-group {
   display: flex;
   flex-wrap: nowrap;
 
-  .fusion-ui-button__radio,
-  .fusion-ui-button__checkbox {
+  .f-button__radio,
+  .f-button__checkbox {
     margin: 0;
 
     &:first-child {
-      .fusion-ui-button__radio-inner,
-      .fusion-ui-button__checkbox-inner {
+      .f-button__radio-inner,
+      .f-button__checkbox-inner {
         border-right: none;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -272,8 +272,8 @@
     }
 
     &:last-child {
-      .fusion-ui-button__radio-inner,
-      .fusion-ui-button__checkbox-inner {
+      .f-button__radio-inner,
+      .f-button__checkbox-inner {
         border-left: none;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
@@ -281,15 +281,15 @@
     }
 
     &:not(:first-child):not(:last-child) {
-      .fusion-ui-button__radio-inner,
-      .fusion-ui-button__checkbox-inner {
+      .f-button__radio-inner,
+      .f-button__checkbox-inner {
         border-radius: 0;
       }
 
-      & + .fusion-ui-button__radio,
-      & + .fusion-ui-button__checkbox {
-        .fusion-ui-button__radio-inner,
-        .fusion-ui-button__checkbox-inner {
+      & + .f-button__radio,
+      & + .f-button__checkbox {
+        .f-button__radio-inner,
+        .f-button__checkbox-inner {
           border-left: none;
         }
       }
@@ -301,38 +301,38 @@
       position: absolute;
       z-index: -1;
 
-      &:checked + .fusion-ui-button__radio-inner,
-      &:checked + .fusion-ui-button__checkbox-inner {
-        background-color: $fusion-ui-color-blue-medium-dark;
-        color: $fusion-ui-color-primary-text-on-dark;
+      &:checked + .f-button__radio-inner,
+      &:checked + .f-button__checkbox-inner {
+        background-color: $f-color-blue-medium-dark;
+        color: $f-color-primary-text-on-dark;
 
-        &:not(:disabled):not(.fusion-ui-button--disabled) {
+        &:not(:disabled):not(.f-button--disabled) {
           &:hover {
-            background-color: $fusion-ui-color-blue-medium-dark;
-            color: $fusion-ui-color-primary-text-on-dark;
+            background-color: $f-color-blue-medium-dark;
+            color: $f-color-primary-text-on-dark;
           }
 
           &:active {
-            background-color: $fusion-ui-color-blue-dark;
-            color: $fusion-ui-color-primary-text-on-dark;
+            background-color: $f-color-blue-dark;
+            color: $f-color-primary-text-on-dark;
           }
 
           &:focus {
-            background-color: $fusion-ui-color-blue-dark;
-            color: $fusion-ui-color-primary-text-on-dark;
+            background-color: $f-color-blue-dark;
+            color: $f-color-primary-text-on-dark;
           }
         }
       }
 
-      &:focus + .fusion-ui-button__radio-inner,
-      &:focus + .fusion-ui-button__checkbox-inner {
+      &:focus + .f-button__radio-inner,
+      &:focus + .f-button__checkbox-inner {
         outline: none;
-        box-shadow: 0 0 0 2px $fusion-ui-color-blue-medium-light;
+        box-shadow: 0 0 0 2px $f-color-blue-medium-light;
       }
     }
   }
 }
 
-.fusion-ui-inline-buttons {
+.f-inline-buttons {
   display: flex;
 }

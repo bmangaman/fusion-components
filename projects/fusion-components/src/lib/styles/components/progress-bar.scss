@@ -17,30 +17,30 @@ $large_height: 43px;
   animation: progress-bar-stripes-#{$size} 2s linear infinite;
 }
 
-.fusion-ui-progress-bar {
-  background-color: rgba($fusion-ui-color-black, 0.04);
-  font-weight: $fusion-ui-font-weight-semibold;
+.f-progress-bar {
+  background-color: rgba($f-color-black, 0.04);
+  font-weight: $f-font-weight-semibold;
   width: 100%;
 
   &__bar {
     align-items: center;
-    background-color: $fusion-ui-color-success-chart;
+    background-color: $f-color-success-chart;
     background-image: none;
     display: flex;
     justify-content: center;
     transition: all 0.5s;
 
     &--warning {
-      background-color: $fusion-ui-color-warning-primary;
-      color: $fusion-ui-color-primary-text-on-dark;
+      background-color: $f-color-warning-primary;
+      color: $f-color-primary-text-on-dark;
     }
     &--error {
-      background-color: $fusion-ui-color-error-primary;
-      color: $fusion-ui-color-primary-text-on-dark;
+      background-color: $f-color-error-primary;
+      color: $f-color-primary-text-on-dark;
     }
     &--paused {
-      background-color: rgba($fusion-ui-color-black, 0.18);
-      color: $fusion-ui-color-greyscale-15;
+      background-color: rgba($f-color-black, 0.18);
+      color: $f-color-greyscale-15;
     }
     &--in-progress {
       @include gradient-striped;
@@ -49,9 +49,9 @@ $large_height: 43px;
     &--small {
       height: $small_height;
       background-size: calc(#{$small_height} * 2) calc(#{$small_height} * 2);
-      font-size: $fusion-ui-font-size-xs;
+      font-size: $f-font-size-xs;
 
-      &.fusion-ui-progress-bar__bar--in-progress {
+      &.f-progress-bar__bar--in-progress {
         @include progress-bar-stripes-animation($small-height);
       }
     }
@@ -59,9 +59,9 @@ $large_height: 43px;
     &--medium {
       height: $medium_height;
       background-size: calc(#{$medium_height} * 2) calc(#{$medium_height} * 2);
-      font-size: $fusion-ui-font-size-sm;
+      font-size: $f-font-size-sm;
 
-      &.fusion-ui-progress-bar__bar--in-progress {
+      &.f-progress-bar__bar--in-progress {
         @include progress-bar-stripes-animation($medium-height);
       }
     }
@@ -69,9 +69,9 @@ $large_height: 43px;
     &--large {
       height: $large_height;
       background-size: calc(#{$large_height} * 2) calc(#{$large_height} * 2);
-      font-size: $fusion-ui-font-size-md;
+      font-size: $f-font-size-md;
 
-      &.fusion-ui-progress-bar__bar--in-progress {
+      &.f-progress-bar__bar--in-progress {
         @include progress-bar-stripes-animation($large-height);
       }
     }

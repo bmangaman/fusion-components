@@ -1,7 +1,7 @@
 import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 import { NgControl } from '@angular/forms';
 
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { CheckboxComponent } from './checkbox.component';
 
 describe('CheckboxComponent', () => {
@@ -28,7 +28,7 @@ describe('CheckboxComponent', () => {
   describe('@Input()', () => {
     describe('uuid', () => {
       it('should set the uuid if provided', () => {
-        component.uuid = null;
+        component.uuid = '';
         expect(component.uuid).toBeTruthy();
 
         component.uuid = 'custom-uuid';

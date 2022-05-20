@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BytesPipeBase, BytesPipe } from '@fusion-ui/fusion-components';
+import { BytesPipeBase, BytesPipe } from 'fusion-components';
 
 @Component({
   selector: 'fusion-demo-pipes',

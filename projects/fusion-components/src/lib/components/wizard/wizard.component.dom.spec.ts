@@ -8,16 +8,16 @@ import { WizardStep } from './wizard.interface';
 import { WizardModule } from './wizard.module';
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
-    <fusion-ui-wizard
+    <f-wizard
       [steps]="steps"
       [disableNextSteps]="disableNextSteps"
       [disablePreviousSteps]="disablePreviousSteps"
       (stepsChanged)="stepsChanged($event)">
-    <img class="fusion-ui-wizard__brand-image" *ngIf="isBrandVisible" />
+    <img class="f-wizard__brand-image" *ngIf="isBrandVisible" />
     Inner Content
-    </fusion-ui-wizard>
+    </f-wizard>
   `,
 })
 export class WizardTestComponent {
@@ -137,28 +137,28 @@ describe('WizardComponent', () => {
     });
 
     it('should correctly set the current and completed steps', () => {
-      expect(page.wizard.stepNavigationButtons.item(0).classList).not.toContain('fusion-ui-wizard__step-navigation-button--completed');
-      expect(page.wizard.stepNavigationButtons.item(0).classList).toContain('fusion-ui-wizard__step-navigation-button--current');
-      expect(page.wizard.stepNavigationButtons.item(1).classList).not.toContain('fusion-ui-wizard__step-navigation-button--completed');
-      expect(page.wizard.stepNavigationButtons.item(1).classList).not.toContain('fusion-ui-wizard__step-navigation-button--current');
-      expect(page.wizard.stepNavigationButtons.item(2).classList).not.toContain('fusion-ui-wizard__step-navigation-button--completed');
-      expect(page.wizard.stepNavigationButtons.item(2).classList).not.toContain('fusion-ui-wizard__step-navigation-button--current');
+      expect(page.wizard.stepNavigationButtons.item(0).classList).not.toContain('f-wizard__step-navigation-button--completed');
+      expect(page.wizard.stepNavigationButtons.item(0).classList).toContain('f-wizard__step-navigation-button--current');
+      expect(page.wizard.stepNavigationButtons.item(1).classList).not.toContain('f-wizard__step-navigation-button--completed');
+      expect(page.wizard.stepNavigationButtons.item(1).classList).not.toContain('f-wizard__step-navigation-button--current');
+      expect(page.wizard.stepNavigationButtons.item(2).classList).not.toContain('f-wizard__step-navigation-button--completed');
+      expect(page.wizard.stepNavigationButtons.item(2).classList).not.toContain('f-wizard__step-navigation-button--current');
       page.wizard.stepNavigationButtons.item(1).click();
       fixture.detectChanges();
-      expect(page.wizard.stepNavigationButtons.item(0).classList).toContain('fusion-ui-wizard__step-navigation-button--completed');
-      expect(page.wizard.stepNavigationButtons.item(0).classList).not.toContain('fusion-ui-wizard__step-navigation-button--current');
-      expect(page.wizard.stepNavigationButtons.item(1).classList).not.toContain('fusion-ui-wizard__step-navigation-button--completed');
-      expect(page.wizard.stepNavigationButtons.item(1).classList).toContain('fusion-ui-wizard__step-navigation-button--current');
-      expect(page.wizard.stepNavigationButtons.item(2).classList).not.toContain('fusion-ui-wizard__step-navigation-button--completed');
-      expect(page.wizard.stepNavigationButtons.item(2).classList).not.toContain('fusion-ui-wizard__step-navigation-button--current');
+      expect(page.wizard.stepNavigationButtons.item(0).classList).toContain('f-wizard__step-navigation-button--completed');
+      expect(page.wizard.stepNavigationButtons.item(0).classList).not.toContain('f-wizard__step-navigation-button--current');
+      expect(page.wizard.stepNavigationButtons.item(1).classList).not.toContain('f-wizard__step-navigation-button--completed');
+      expect(page.wizard.stepNavigationButtons.item(1).classList).toContain('f-wizard__step-navigation-button--current');
+      expect(page.wizard.stepNavigationButtons.item(2).classList).not.toContain('f-wizard__step-navigation-button--completed');
+      expect(page.wizard.stepNavigationButtons.item(2).classList).not.toContain('f-wizard__step-navigation-button--current');
       page.wizard.stepNavigationButtons.item(2).click();
       fixture.detectChanges();
-      expect(page.wizard.stepNavigationButtons.item(0).classList).toContain('fusion-ui-wizard__step-navigation-button--completed');
-      expect(page.wizard.stepNavigationButtons.item(0).classList).not.toContain('fusion-ui-wizard__step-navigation-button--current');
-      expect(page.wizard.stepNavigationButtons.item(1).classList).toContain('fusion-ui-wizard__step-navigation-button--completed');
-      expect(page.wizard.stepNavigationButtons.item(1).classList).not.toContain('fusion-ui-wizard__step-navigation-button--current');
-      expect(page.wizard.stepNavigationButtons.item(2).classList).not.toContain('fusion-ui-wizard__step-navigation-button--completed');
-      expect(page.wizard.stepNavigationButtons.item(2).classList).toContain('fusion-ui-wizard__step-navigation-button--current');
+      expect(page.wizard.stepNavigationButtons.item(0).classList).toContain('f-wizard__step-navigation-button--completed');
+      expect(page.wizard.stepNavigationButtons.item(0).classList).not.toContain('f-wizard__step-navigation-button--current');
+      expect(page.wizard.stepNavigationButtons.item(1).classList).toContain('f-wizard__step-navigation-button--completed');
+      expect(page.wizard.stepNavigationButtons.item(1).classList).not.toContain('f-wizard__step-navigation-button--current');
+      expect(page.wizard.stepNavigationButtons.item(2).classList).not.toContain('f-wizard__step-navigation-button--completed');
+      expect(page.wizard.stepNavigationButtons.item(2).classList).toContain('f-wizard__step-navigation-button--current');
     });
   });
 

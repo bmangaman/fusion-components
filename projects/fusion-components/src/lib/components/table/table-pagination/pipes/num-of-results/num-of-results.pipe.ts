@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 

@@ -4,8 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { cloneDeep } from 'lodash';
 
-import { MockElementRef } from '@fusion-ui/fusion-components/unit-test-helpers/mock-utils.spec';
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { MockElementRef } from '@fusion-components/unit-test-helpers/mock-utils.spec';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { DocumentClickService } from '../../services/document-click';
 import { FusionComponentsTranslationService } from '../../services/translation';
 import { SelectComponent } from './select.component';
@@ -637,9 +637,9 @@ describe('SelectComponent', () => {
 
     beforeEach(() => {
       defaultClasses = [
-        'fusion-ui-select__classes-wrapper',
-        'fusion-ui-form__input-wrapper',
-        'fusion-ui-form__select-wrapper',
+        'f-select__classes-wrapper',
+        'f-form__input-wrapper',
+        'f-form__select-wrapper',
       ];
       expectedResult = [];
     });
@@ -653,7 +653,7 @@ describe('SelectComponent', () => {
     it('should append a --disabled class when isDisabled is set to true', () => {
       // eslint-disable-next-line @typescript-eslint/dot-notation
       component['_isDisabled'] = true;
-      expectedResult = [...defaultClasses, 'fusion-ui-form__input--disabled'];
+      expectedResult = [...defaultClasses, 'f-form__input--disabled'];
       component.generateSelectClasses();
       expect(component.selectClasses).toEqual(expectedResult);
     });

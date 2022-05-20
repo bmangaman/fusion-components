@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { TabviewModule } from '@fusion-ui/fusion-components';
+import { TabviewModule } from 'fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { EscapeHtmlModule } from '../../../shared/pipes/escape-html';

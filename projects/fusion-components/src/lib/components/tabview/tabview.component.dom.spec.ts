@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { TemplateModule } from '@fusion-ui/fusion-components/lib/directives/template';
-import { TabPageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/tabview.spec.po';
+import { TemplateModule } from '@fusion-components/lib/directives/template';
+import { TabPageObject } from '@fusion-components/unit-test-helpers/page-objects/tabview.spec.po';
 
 import { TabviewComponentPageObject } from './tabview.component.spec.po';
 import { TabviewType } from './tabview.interface';
@@ -19,15 +19,15 @@ export interface TestTabConfig {
 }
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
-  <fusion-ui-tabview
+  <f-tabview
     *ngIf="loadTabs"
     [lazyLoading]="lazyLoading"
     [unloadOnUnselect]="unloadOnUnselect"
     [routingParent]="routingParent"
     [type]="type">
-    <fusion-ui-tabview-tab
+    <f-tabview-tab
       *ngFor="let tab of tabConfigs"
       [id]="tab.id"
       [isDisabled]="tab.isDisabled"
@@ -38,8 +38,8 @@ export interface TestTabConfig {
       <ng-template hccTemplate="tabContent">
         {{ tab.tabContent }}
       </ng-template>
-    </fusion-ui-tabview-tab>
-  </fusion-ui-tabview>
+    </f-tabview-tab>
+  </f-tabview>
   `,
 })
 export class TabviewTestComponent implements OnInit {

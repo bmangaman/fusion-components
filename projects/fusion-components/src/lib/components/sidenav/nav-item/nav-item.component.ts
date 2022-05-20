@@ -8,7 +8,7 @@ import { NavItem } from '../sidenav.interface';
  * NAV ITEM COMPONENT
  */
 @Component({
-  selector: 'fusion-ui-nav-item',
+  selector: 'f-nav-item',
   templateUrl: './nav-item.component.html',
   animations: [
     trigger(
@@ -124,11 +124,11 @@ export class NavItemComponent implements OnChanges {
    * @param c Input changes.
    */
   ngOnChanges(c: SimpleChanges): void {
-    if (c.icon) {
+    if (c['icon']) {
       this.generateIconCssClasses();
     }
 
-    if (c.children || c.isExpanded || c.isDisabled) {
+    if (c['children'] || c['isExpanded'] || c['isDisabled']) {
       this.generateLinkCssClasses();
     }
   }
@@ -149,18 +149,18 @@ export class NavItemComponent implements OnChanges {
    * Generates the css classes to be appended to either the <a> or <button> tag.
    */
   generateLinkCssClasses(): void {
-    const classes: string[] = ['fusion-ui-navItem__link'];
+    const classes: string[] = ['f-navItem__link'];
 
     if (!!this.children && !!this.children.length) {
-      classes.push('fusion-ui-navItem__link--expandable');
+      classes.push('f-navItem__link--expandable');
     }
 
     if (this.isExpanded) {
-      classes.push('fusion-ui-navItem__link--expanded');
+      classes.push('f-navItem__link--expanded');
     }
 
     if (this.isDisabled) {
-      classes.push('fusion-ui-navItem__link--disabled');
+      classes.push('f-navItem__link--disabled');
     }
 
     this.linkCssClasses = classes;
@@ -170,7 +170,7 @@ export class NavItemComponent implements OnChanges {
    * Generates the CSS classes to be appended to the icon <i> tag.
    */
   generateIconCssClasses(): void {
-    const classes: string[] = ['fusion-ui-navItem__icon'];
+    const classes: string[] = ['f-navItem__icon'];
 
     if (!!this.icon) {
       if (this.icon.includes('mdi')) {

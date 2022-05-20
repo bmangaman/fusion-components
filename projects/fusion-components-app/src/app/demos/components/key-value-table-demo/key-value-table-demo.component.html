@@ -1,7 +1,7 @@
 <fusion-demo titleText="Key Value Table">
   <ng-container result>
     <div style="max-width: 400px">
-      <fusion-ui-key-value-table [data]="generatedData">
+      <f-key-value-table [data]="generatedData">
         <ng-template fusionUiTemplate="hostname" type="key" let-data>
           <i class="mdi mdi-home"></i>{{ data?.key }}
         </ng-template>
@@ -9,7 +9,7 @@
         <ng-template fusionUiTemplate="numOfDrives" type="value" let-data>
           <i class="mdi mdi-database"></i>{{ data?.value }}
         </ng-template>
-      </fusion-ui-key-value-table>
+      </f-key-value-table>
     </div>
   </ng-container>
 </fusion-demo>

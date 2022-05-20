@@ -2,7 +2,7 @@ import { ElementRef } from '@angular/core';
 
 import { Subject, Subscription, timer } from 'rxjs';
 
-import { FusionUiLocation, FusionUiPosition, FusionUiPositionConfig } from './interfaces';
+import { Location, Position, PositionConfig } from './interfaces';
 import * as utils from './utilities';
 
 describe('Utilities', () => {
@@ -134,7 +134,7 @@ describe('Utilities', () => {
     describe('TOP', () => {
       it('should return a fusion position config', () => {
         testGetElementAbsolutePositioning(
-          FusionUiPosition.TOP,
+          Position.TOP,
           '40px',
           '75px',
           'translateX(-50%)',
@@ -142,7 +142,7 @@ describe('Utilities', () => {
 
         spacing = 10;
         testGetElementAbsolutePositioning(
-          FusionUiPosition.TOP,
+          Position.TOP,
           '30px',
           '75px',
           'translateX(-50%)',
@@ -153,14 +153,14 @@ describe('Utilities', () => {
     describe('TOP LEFT', () => {
       it('should return a fusion location config', () => {
         testGetElementAbsoluteLocation(
-          FusionUiLocation.TOP_LEFT,
+          Location.TOP_LEFT,
           '40px',
           '50px',
         );
 
         spacing = 10;
         testGetElementAbsoluteLocation(
-          FusionUiLocation.TOP_LEFT,
+          Location.TOP_LEFT,
           '30px',
           '50px',
         );
@@ -170,14 +170,14 @@ describe('Utilities', () => {
     describe('TOP RIGHT', () => {
       it('should return a fusion location config', () => {
         testGetElementAbsoluteLocation(
-          FusionUiLocation.TOP_RIGHT,
+          Location.TOP_RIGHT,
           '40px',
           '90px',
         );
 
         spacing = 10;
         testGetElementAbsoluteLocation(
-          FusionUiLocation.TOP_RIGHT,
+          Location.TOP_RIGHT,
           '30px',
           '90px',
         );
@@ -187,7 +187,7 @@ describe('Utilities', () => {
     describe('BOTTOM', () => {
       it('should return a fusion position config', () => {
         testGetElementAbsolutePositioning(
-          FusionUiPosition.BOTTOM,
+          Position.BOTTOM,
           '100px',
           '75px',
           'translateX(-50%)',
@@ -195,7 +195,7 @@ describe('Utilities', () => {
 
         spacing = 10;
         testGetElementAbsolutePositioning(
-          FusionUiPosition.BOTTOM,
+          Position.BOTTOM,
           '110px',
           '75px',
           'translateX(-50%)',
@@ -206,14 +206,14 @@ describe('Utilities', () => {
     describe('BOTTOM LEFT', () => {
       it('should return a fusion location config', () => {
         testGetElementAbsoluteLocation(
-          FusionUiLocation.BOTTOM_LEFT,
+          Location.BOTTOM_LEFT,
           '100px',
           '50px',
         );
 
         spacing = 10;
         testGetElementAbsoluteLocation(
-          FusionUiLocation.BOTTOM_LEFT,
+          Location.BOTTOM_LEFT,
           '110px',
           '50px',
         );
@@ -223,14 +223,14 @@ describe('Utilities', () => {
     describe('BOTTOM RIGHT', () => {
       it('should return a fusion location config', () => {
         testGetElementAbsoluteLocation(
-          FusionUiLocation.BOTTOM_RIGHT,
+          Location.BOTTOM_RIGHT,
           '100px',
           '90px',
         );
 
         spacing = 10;
         testGetElementAbsoluteLocation(
-          FusionUiLocation.BOTTOM_RIGHT,
+          Location.BOTTOM_RIGHT,
           '110px',
           '90px',
         );
@@ -240,7 +240,7 @@ describe('Utilities', () => {
     describe('LEFT', () => {
       it('should return a fusion position config', () => {
         testGetElementAbsolutePositioning(
-          FusionUiPosition.LEFT,
+          Position.LEFT,
           '75px',
           '40px',
           'translateY(-50%)',
@@ -248,7 +248,7 @@ describe('Utilities', () => {
 
         spacing = 10;
         testGetElementAbsolutePositioning(
-          FusionUiPosition.LEFT,
+          Position.LEFT,
           '75px',
           '30px',
           'translateY(-50%)',
@@ -259,7 +259,7 @@ describe('Utilities', () => {
     describe('RIGHT', () => {
       it('should return a fusion position config', () => {
         testGetElementAbsolutePositioning(
-          FusionUiPosition.RIGHT,
+          Position.RIGHT,
           '75px',
           '100px',
           'translateY(-50%)',
@@ -267,7 +267,7 @@ describe('Utilities', () => {
 
         spacing = 10;
         testGetElementAbsolutePositioning(
-          FusionUiPosition.RIGHT,
+          Position.RIGHT,
           '75px',
           '110px',
           'translateY(-50%)',
@@ -278,7 +278,7 @@ describe('Utilities', () => {
     describe('CENTER', () => {
       it('should return a fusion position config', () => {
         testGetElementAbsolutePositioning(
-          FusionUiPosition.CENTER,
+          Position.CENTER,
           '75px',
           '75px',
           'translate(-50%, -50%)',
@@ -286,7 +286,7 @@ describe('Utilities', () => {
 
         spacing = 10;
         testGetElementAbsolutePositioning(
-          FusionUiPosition.CENTER,
+          Position.CENTER,
           '75px',
           '75px',
           'translate(-50%, -50%)',
@@ -297,7 +297,7 @@ describe('Utilities', () => {
     describe('TOP', () => {
       it('should return a fusion location config', () => {
         testGetElementAbsolutePositioning(
-          FusionUiLocation.TOP,
+          Location.TOP,
           '40px',
           '75px',
           'translateX(-50%)',
@@ -305,7 +305,7 @@ describe('Utilities', () => {
 
         spacing = 10;
         testGetElementAbsolutePositioning(
-          FusionUiLocation.TOP,
+          Location.TOP,
           '30px',
           '75px',
           'translateX(-50%)',
@@ -316,7 +316,7 @@ describe('Utilities', () => {
     describe('BOTTOM', () => {
       it('should return a fusion location config', () => {
         testGetElementAbsolutePositioning(
-          FusionUiLocation.BOTTOM,
+          Location.BOTTOM,
           '100px',
           '75px',
           'translateX(-50%)',
@@ -324,7 +324,7 @@ describe('Utilities', () => {
 
         spacing = 10;
         testGetElementAbsolutePositioning(
-          FusionUiLocation.BOTTOM,
+          Location.BOTTOM,
           '110px',
           '75px',
           'translateX(-50%)',
@@ -335,7 +335,7 @@ describe('Utilities', () => {
     describe('LEFT', () => {
       it('should return a fusion location config', () => {
         testGetElementAbsolutePositioning(
-          FusionUiLocation.LEFT,
+          Location.LEFT,
           '75px',
           '40px',
           'translateY(-50%)',
@@ -343,7 +343,7 @@ describe('Utilities', () => {
 
         spacing = 10;
         testGetElementAbsolutePositioning(
-          FusionUiLocation.LEFT,
+          Location.LEFT,
           '75px',
           '30px',
           'translateY(-50%)',
@@ -354,7 +354,7 @@ describe('Utilities', () => {
     describe('RIGHT', () => {
       it('should return a fusion location config', () => {
         testGetElementAbsolutePositioning(
-          FusionUiLocation.RIGHT,
+          Location.RIGHT,
           '75px',
           '100px',
           'translateY(-50%)',
@@ -362,7 +362,7 @@ describe('Utilities', () => {
 
         spacing = 10;
         testGetElementAbsolutePositioning(
-          FusionUiLocation.RIGHT,
+          Location.RIGHT,
           '75px',
           '110px',
           'translateY(-50%)',
@@ -373,7 +373,7 @@ describe('Utilities', () => {
     describe('CENTER', () => {
       it('should return a fusion location config', () => {
         testGetElementAbsolutePositioning(
-          FusionUiLocation.CENTER,
+          Location.CENTER,
           '75px',
           '75px',
           'translate(-50%, -50%)',
@@ -381,7 +381,7 @@ describe('Utilities', () => {
 
         spacing = 10;
         testGetElementAbsolutePositioning(
-          FusionUiLocation.CENTER,
+          Location.CENTER,
           '75px',
           '75px',
           'translate(-50%, -50%)',
@@ -391,22 +391,22 @@ describe('Utilities', () => {
 
     describe('with preset params', () => {
       it('should return a fusion position config', () => {
-        const response: FusionUiPositionConfig = utils.getElementAbsolutePositioning(
+        const response: PositionConfig = utils.getElementAbsolutePositioning(
           element,
           triggerElement,
-          FusionUiPosition.TOP,
+          Position.TOP,
         );
         expect(response).toBeTruthy();
       });
     });
 
     function testGetElementAbsolutePositioning(
-      position: FusionUiPosition | FusionUiLocation,
+      position: Position | Location,
       expectedTop: string,
       expectedLeft: string,
       expectedTransform: string,
     ): void {
-      const response: FusionUiPositionConfig = utils.getElementAbsolutePositioning(
+      const response: PositionConfig = utils.getElementAbsolutePositioning(
         element,
         triggerElement,
         position,
@@ -418,13 +418,13 @@ describe('Utilities', () => {
       expect(response).toEqual({ top: expectedTop, left: expectedLeft, transform: expectedTransform });
     }
    
-    // To test element position using fusion-ui-locations value.
+    // To test element position using f-locations value.
     function testGetElementAbsoluteLocation(
-      position: FusionUiLocation,
+      position: Location,
       expectedTop: string,
       expectedLeft: string,
     ): void {
-      const response: FusionUiPositionConfig = utils.getElementAbsolutePositioning(
+      const response: PositionConfig = utils.getElementAbsolutePositioning(
         element,
         triggerElement,
         position,

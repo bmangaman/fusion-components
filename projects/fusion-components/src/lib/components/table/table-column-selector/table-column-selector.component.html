@@ -1,6 +1,6 @@
-<div class="fusion-ui-table__column-selector">
+<div class="f-table__column-selector">
 
-  <fusion-ui-menu
+  <f-menu
     [isMenuDialogOpen]="isMenuDialogOpen"
     (menuClosed)="isMenuDialogOpen = false"
     dialogMinWidth="200px"
@@ -10,11 +10,11 @@
       closeButtonLabel: translations?.closeButtonAriaLabel || ( baseTranslationKey + '.table.columnSelector.closeButtonAriaLabel' | translate ),
       menuDialogLabelledBy: translations?.menuDialogLabelledBy || ( baseTranslationKey + '.table.columnSelector.menuDialogLabelledBy' | translate )
     }"
-    [dialogLocation]="FusionUiLocation.BOTTOM_RIGHT">
+    [dialogLocation]="Location.BOTTOM_RIGHT">
 
     <ng-template fusionUiTemplate="menuButton">
-      <fusion-ui-button
-        [classes]="['fusion-ui-table__column-selector-button']"
+      <f-button
+        [classes]="['f-table__column-selector-button']"
         [noBorder]="true"
         type="secondary"
         [opensMenu]="true"
@@ -24,10 +24,10 @@
           controls: translations?.menuDialogLabelledBy || ( baseTranslationKey + '.table.columnSelector.menuDialogLabelledBy' | translate ),
           expanded: isMenuDialogOpen
         }"
-        [size]="FusionUiSize.SMALL"
+        [size]="Size.SMALL"
         icon="mdi-view-column"
         (buttonClick)="isMenuDialogOpen = !isMenuDialogOpen">
-      </fusion-ui-button>
+      </f-button>
     </ng-template>
 
     <ng-template fusionUiTemplate="menuDialogHeader">
@@ -35,22 +35,22 @@
     </ng-template>
 
     <ng-template fusionUiTemplate="menuDialogContent">
-      <div class="fusion-ui-form__field-group">
+      <div class="f-form__field-group">
         <ng-container *ngFor="let col of columns?.toArray(); index as i; trackBy: colTrackByFn">
-          <div class="fusion-ui-form__fieldset" *ngIf="col?.isHidable">
-            <span class="fusion-ui-form__checkbox">
+          <div class="f-form__fieldset" *ngIf="col?.isHidable">
+            <span class="f-form__checkbox">
               <label
-                for="fusion-ui-column-selector-checkbox--{{ col?.header }}"
-                class="fusion-ui-form__checkbox-label">
+                for="f-column-selector-checkbox--{{ col?.header }}"
+                class="f-form__checkbox-label">
                 <input
-                  class="fusion-ui-form__checkbox-input fusion-ui-table__column-selector-checkbox"
+                  class="f-form__checkbox-input f-table__column-selector-checkbox"
                   type="checkbox"
                   (change)="updateColumnVisibility(i)"
-                  name="fusion-ui-column-selector-checkbox--{{ col?.header }}"
-                  id="fusion-ui-column-selector-checkbox--{{ col?.header }}"
+                  name="f-column-selector-checkbox--{{ col?.header }}"
+                  id="f-column-selector-checkbox--{{ col?.header }}"
                   [checked]="col?.isVisible">
-                <span class="fusion-ui-form__checkbox-button"></span>
-                <span class="fusion-ui-form__checkbox-label-text">{{ col?.header }}</span>
+                <span class="f-form__checkbox-button"></span>
+                <span class="f-form__checkbox-label-text">{{ col?.header }}</span>
               </label>
             </span>
           </div>
@@ -58,6 +58,6 @@
       </div>
     </ng-template>
 
-  </fusion-ui-menu>
+  </f-menu>
 
 </div>

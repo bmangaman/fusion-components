@@ -1,6 +1,6 @@
-.fusion-ui-table__filter {
+.f-table__filter {
   &-input-field-selector {
-    margin-bottom: $fusion-ui-spacing-md;
+    margin-bottom: $f-spacing-md;
   }
 
   &-inline-text {
@@ -22,28 +22,28 @@
     }
   
     &-quick-filters {
-      margin-right: $fusion-ui-spacing-sm;
+      margin-right: $f-spacing-sm;
   
       & > * + *  {
-        margin-left: $fusion-ui-spacing-sm;
+        margin-left: $f-spacing-sm;
       }
     }
 
     &-filter-list {
-      border-top: $fusion-ui-border-light;
-      margin-top: $fusion-ui-spacing-sm;
-      padding-top: $fusion-ui-spacing-sm;
+      border-top: $f-border-light;
+      margin-top: $f-spacing-sm;
+      padding-top: $f-spacing-sm;
 
       &-group {
-        margin-bottom: $fusion-ui-spacing-sm;
+        margin-bottom: $f-spacing-sm;
 
         &-name {
-          font-weight: $fusion-ui-font-weight-semibold;
-          margin-bottom: $fusion-ui-spacing-xxs;
+          font-weight: $f-font-weight-semibold;
+          margin-bottom: $f-spacing-xxs;
         }
 
         &-item {
-          margin-left: $fusion-ui-spacing-sm;
+          margin-left: $f-spacing-sm;
           display: flex;
           align-items: center;
 
@@ -52,8 +52,8 @@
           }
         }
 
-        & + .fusion-ui-table__filter-selector-filter-group {
-          margin-top: $fusion-ui-spacing-sm;
+        & + .f-table__filter-selector-filter-group {
+          margin-top: $f-spacing-sm;
         }
       }
     }

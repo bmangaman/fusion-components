@@ -1,25 +1,25 @@
-<h3 class="fusion-ui-h3 fusion-demo__h3">Live Demo</h3>
+<h3 class="f-h3 fusion-demo__h3">Live Demo</h3>
 <div class="fusion-demo__live">
-  <form class="fusion-ui-form" *ngIf="switchDemoForm" [formGroup]="switchDemoForm">
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__switch">
-        <label class="fusion-ui-form__switch-label" for="fusion-ui-switch-live">
+  <form class="f-form" *ngIf="switchDemoForm" [formGroup]="switchDemoForm">
+    <div class="f-form__fieldset">
+      <span class="f-form__switch">
+        <label class="f-form__switch-label" for="f-switch-live">
           <input
             formControlName="switch"
-            class="fusion-ui-form__switch-input"
-            id="fusion-ui-switch-live"
-            name="fusion-ui-switch-live"
+            class="f-form__switch-input"
+            id="f-switch-live"
+            name="f-switch-live"
             type="checkbox"
             [value]="true" />
-          <span class="fusion-ui-form__switch-visual" aria-hidden="true"></span>
-          <span class="fusion-ui-form__switch-label-text">Switch Example ({{ switchDemoForm?.get('switch')?.value ? 'ON' : 'OFF' }})</span>
+          <span class="f-form__switch-visual" aria-hidden="true"></span>
+          <span class="f-form__switch-label-text">Switch Example ({{ switchDemoForm?.get('switch')?.value ? 'ON' : 'OFF' }})</span>
         </label>
       </span>
     </div>
   </form>
 </div>
 
-<h3 class="fusion-ui-h3 fusion-demo__h3">State Examples</h3>
+<h3 class="f-h3 fusion-demo__h3">State Examples</h3>
 <div class="fusion-demo__example" *ngFor="let switchExample of switchExamples">
   <div class="fusion-demo__example--demo" [innerHtml]="switchExample | keepHtml"></div>
   <code class="fusion-demo__example--code"><pre [innerText]="switchExample"></pre></code>

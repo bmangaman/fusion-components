@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { TemplateModule } from '@fusion-ui/fusion-components/lib/directives/template';
+import { TemplateModule } from '@fusion-components/lib/directives/template';
 import { TableColumnComponent } from './table-column.component';
 
 @NgModule({

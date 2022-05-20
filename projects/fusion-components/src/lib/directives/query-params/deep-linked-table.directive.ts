@@ -13,22 +13,22 @@ import {
   TableFilterComponent,
   TableFilterConfig,
   TableView,
-} from '@fusion-ui/fusion-components/lib/components/table';
+} from '@fusion-components/lib/components/table';
 import { unsubscribeSubject } from '@hcc/app/shared/utilities/utils';
 import { TableQueryParamsParser } from './table-query-params-parser';
 import { AppliedSort, ParamData } from './table-query-params-parser.interface';
 
 /**
- * This directive should and can only be used on a fusion-ui table component.
+ * This directive should and can only be used on a f table component.
  *
  *
  * Usage:
  *
- *   <fusion-ui-table
+ *   <f-table
  *   fusionUiDeepLinkedTable
  *   ...
  *   ...>
- *   </fusion-ui-table>
+ *   </f-table>
  */
 
 @Directive({
@@ -36,7 +36,7 @@ import { AppliedSort, ParamData } from './table-query-params-parser.interface';
 })
 export class DeepLinkedTableDirective implements AfterViewInit, OnDestroy {
 
-  noTableErrorMsg = 'This directive must be placed on a fusion-ui table component.';
+  noTableErrorMsg = 'This directive must be placed on a f table component.';
   initialized: boolean = false;
 
   allColumns: TableColumnComponent[] = [];

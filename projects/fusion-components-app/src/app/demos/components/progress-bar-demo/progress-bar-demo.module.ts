@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { ProgressBarModule } from '@fusion-ui/fusion-components';
+import { ProgressBarModule } from '@fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { ProgressBarDemoComponent } from './progress-bar-demo.component';

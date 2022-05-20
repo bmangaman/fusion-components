@@ -6,9 +6,9 @@ import { cloneDeep } from 'lodash';
 
 import translations from 'projects/fusion-components-site/src/i18n/en.json';
 
-import { TranslatedComponentSpecModule } from '@fusion-ui/fusion-components/unit-test-helpers/translated-component.module.spec';
+import { TranslatedComponentSpecModule } from '@fusion-components/unit-test-helpers/translated-component.module.spec';
 import { FusionComponentsTranslationService } from '../../services/translation';
-import { FusionUiState } from '../../shared';
+import { State } from '../../shared';
 import { TableFilterConfig } from './table-filter-selector';
 import { TableFilterNumberComponent, TableFilterNumberInputComparator } from './table-filters';
 import { TABLE_PAGINATION_CONFIG, TablePaginationConfig } from './table-pagination';
@@ -26,9 +26,9 @@ import {
 import { TableModule } from './table.module';
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
-  <fusion-ui-table
+  <f-table
     *ngIf="loaded"
     [data]="data"
     [dataKey]="dataKey"
@@ -47,17 +47,17 @@ import { TableModule } from './table.module';
     [tableTitle]="tableTitle">
 
     <ng-container *ngIf="includeTableFilters">
-      <fusion-ui-table-number-filter field="id" filterName="ID"></fusion-ui-table-number-filter>
-      <fusion-ui-table-string-filter field="data0" filterName="Data0"></fusion-ui-table-string-filter>
+      <f-table-number-filter field="id" filterName="ID"></f-table-number-filter>
+      <f-table-string-filter field="data0" filterName="Data0"></f-table-string-filter>
     </ng-container>
 
-    <fusion-ui-table-column
+    <f-table-column
       *ngFor="let col of columns"
       [header]="col?.header"
       [isVisible]="col?.isVisible"
       [isHidable]="col?.isHidable"
       [field]="col?.field">
-    </fusion-ui-table-column>
+    </f-table-column>
 
     <ng-template [fusionUiTemplate]="TableTemplate.TABLE_HEADER" *ngIf="headerTemplate">
       Custom Header
@@ -71,7 +71,7 @@ import { TableModule } from './table.module';
       Custom Row Actions Content
     </ng-template>
 
-  </fusion-ui-table>
+  </f-table>
   `,
 })
 export class TableTestComponent {
@@ -88,7 +88,7 @@ export class TableTestComponent {
 
   data: any[];
   dataKey: string;
-  state: FusionUiState;
+  state: State;
   fillContainer: boolean;
   selectionMode: SelectionMode;
   type: TableType;
@@ -118,23 +118,23 @@ export class TableTestComponent {
 }
 
 @Component({
-  selector: 'fusion-ui-test-component-with-refresh',
+  selector: 'f-test-component-with-refresh',
   template: `
-  <fusion-ui-table (refresh)="refreshCallback()" [data]="data" [type]="type" [state]="state">
-    <fusion-ui-table-column
+  <f-table (refresh)="refreshCallback()" [data]="data" [type]="type" [state]="state">
+    <f-table-column
       *ngFor="let col of columns"
       [header]="col?.header"
       [isVisible]="col?.isVisible"
       [isHidable]="col?.isHidable"
       [field]="col?.field">
-    </fusion-ui-table-column>
-  </fusion-ui-table>
+    </f-table-column>
+  </f-table>
   `,
 })
 export class TableWithRefreshTestComponent {
   columns: TableColumnConfig[] = [];
   data: any[];
-  state: FusionUiState;
+  state: State;
   fillContainer: boolean;
   type: TableType;
 
@@ -188,7 +188,7 @@ describe('TableComponent', () => {
   describe('the table refresh', () => {
     describe('without refresh callback', () => {
       it('should not show a refresh button if no refresh callback is provided', () => {
-        component.state = FusionUiState.LOADED;
+        component.state = State.LOADED;
         component.type = TableType.ADVANCED;
         fixture.detectChanges();
 
@@ -209,7 +209,7 @@ describe('TableComponent', () => {
 
         generateData(1);
         componentWithRefresh.data = data;
-        componentWithRefresh.state = FusionUiState.LOADED;
+        componentWithRefresh.state = State.LOADED;
         componentWithRefresh.type = TableType.ADVANCED;
         fixtureWithRefresh.detectChanges();
       });
@@ -231,46 +231,46 @@ describe('TableComponent', () => {
 
   describe('the table state', () => {
     it('should display a loading spinner when the state is "LOADING"', () => {
-      component.state = FusionUiState.LOADING;
+      component.state = State.LOADING;
       fixture.detectChanges();
       const stateContainer: HTMLElement = page.table.stateContainer;
       expect(stateContainer).toBeTruthy();
-      expect(stateContainer.classList).toContain('fusion-ui-table__state--loading');
-      expect(stateContainer.querySelector('fusion-ui-loading-spinner')).toBeTruthy();
+      expect(stateContainer.classList).toContain('f-table__state--loading');
+      expect(stateContainer.querySelector('f-loading-spinner')).toBeTruthy();
     });
 
     it('should display an error message when the state is "ERROR"', () => {
-      component.state = FusionUiState.ERROR;
+      component.state = State.ERROR;
       fixture.detectChanges();
       const stateContainer: HTMLElement = page.table.stateContainer;
       expect(stateContainer).toBeTruthy();
-      expect(stateContainer.classList).toContain('fusion-ui-table__state--error');
+      expect(stateContainer.classList).toContain('f-table__state--error');
     });
 
     it('should display a "no results" message when the state is "LOADED" but data is either undefined or empty', () => {
       component.data = undefined;
-      component.state = FusionUiState.LOADED;
+      component.state = State.LOADED;
       fixture.detectChanges();
       let stateContainer: HTMLElement = page.table.stateContainer;
       expect(stateContainer).toBeTruthy();
-      expect(stateContainer.classList).toContain('fusion-ui-table__state--no-results');
+      expect(stateContainer.classList).toContain('f-table__state--no-results');
 
       component.data = [];
-      component.state = FusionUiState.LOADED;
+      component.state = State.LOADED;
       fixture.detectChanges();
       stateContainer = page.table.stateContainer;
       expect(stateContainer).toBeTruthy();
-      expect(stateContainer.classList).toContain('fusion-ui-table__state--no-results');
+      expect(stateContainer.classList).toContain('f-table__state--no-results');
     });
 
     it('should display the data when the state is state is "LOADED" and data is NOT empty', () => {
       generateData(1);
       component.data = data;
-      component.state = FusionUiState.LOADED;
+      component.state = State.LOADED;
       fixture.detectChanges();
       const stateContainer: HTMLElement = page.table.stateContainer;
       expect(stateContainer).toBeTruthy();
-      expect(stateContainer.classList).toContain('fusion-ui-table__state--loaded');
+      expect(stateContainer.classList).toContain('f-table__state--loaded');
       expect(page.table.table).toBeTruthy();
     });
   });
@@ -279,23 +279,23 @@ describe('TableComponent', () => {
     beforeEach(() => {
       generateData(1);
       component.data = data;
-      component.state = FusionUiState.LOADED;
+      component.state = State.LOADED;
       component.type = TableType.ADVANCED;
       fixture.detectChanges();
       expect(page.table.table).toBeTruthy();
     });
 
     it('should display the correct columns based on the tableColumnComponents', async () => {
-      // no fusion-ui-table-columns added
+      // no f-table-columns added
       expect(page.table.tableHeadColumns.length).toEqual(0);
 
-      // one (1) fusion-ui-table columns (id) added
+      // one (1) f-table columns (id) added
       generateColumns(0);
       component.columns = columns;
       await asyncDetectChanges();
       expect(page.table.tableHeadColumns.length).toEqual(1);
 
-      // three (3) fusion-ui-table-columns (id, data1, data2) added
+      // three (3) f-table-columns (id, data1, data2) added
       generateColumns(2);
       component.columns = columns;
       await asyncDetectChanges();
@@ -303,7 +303,7 @@ describe('TableComponent', () => {
     });
 
     it('should only display visible columns', async () => {
-      // three (3) fusion-ui-table-columns (id, data1, data2) added
+      // three (3) f-table-columns (id, data1, data2) added
       // one 'isVisible' attribute is false
       generateColumns(2);
       columns[0].isVisible = false;
@@ -408,31 +408,31 @@ describe('TableComponent', () => {
         generateColumns(2);
         component.data = data;
         component.columns = columns;
-        component.state = FusionUiState.LOADED;
+        component.state = State.LOADED;
 
         component.rowExpansionTemplate = false;
         component.rowExpansionMode = undefined;
         reloadTableComponent();
         await asyncDetectChanges();
         expect(page.table.tableBodyRows.length).toEqual(1);
-        expect(page.table.getTableHeadColumnAtIndex(0).classList).not.toContain('fusion-ui-table__table-cell--expansion-control');
-        expect(page.table.getTableBodyColumnAtIndex(0, 0).classList).not.toContain('fusion-ui-table__table-cell--expansion-control');
+        expect(page.table.getTableHeadColumnAtIndex(0).classList).not.toContain('f-table__table-cell--expansion-control');
+        expect(page.table.getTableBodyColumnAtIndex(0, 0).classList).not.toContain('f-table__table-cell--expansion-control');
 
         component.rowExpansionTemplate = false;
         component.rowExpansionMode = RowExpansionMode.MULTIPLE;
         reloadTableComponent();
         await asyncDetectChanges();
         expect(page.table.tableBodyRows.length).toEqual(1);
-        expect(page.table.getTableHeadColumnAtIndex(0).classList).not.toContain('fusion-ui-table__table-cell--expansion-control');
-        expect(page.table.getTableBodyColumnAtIndex(0, 0).classList).not.toContain('fusion-ui-table__table-cell--expansion-control');
+        expect(page.table.getTableHeadColumnAtIndex(0).classList).not.toContain('f-table__table-cell--expansion-control');
+        expect(page.table.getTableBodyColumnAtIndex(0, 0).classList).not.toContain('f-table__table-cell--expansion-control');
 
         component.rowExpansionTemplate = true;
         component.rowExpansionMode = RowExpansionMode.MULTIPLE;
         reloadTableComponent();
         await asyncDetectChanges();
         expect(page.table.tableBodyRows.length).toEqual(1);
-        expect(page.table.getTableHeadColumnAtIndex(0).classList).toContain('fusion-ui-table__table-cell--expansion-control');
-        expect(page.table.getTableBodyColumnAtIndex(0, 0).classList).toContain('fusion-ui-table__table-cell--expansion-control');
+        expect(page.table.getTableHeadColumnAtIndex(0).classList).toContain('f-table__table-cell--expansion-control');
+        expect(page.table.getTableBodyColumnAtIndex(0, 0).classList).toContain('f-table__table-cell--expansion-control');
       }
     );
 
@@ -443,7 +443,7 @@ describe('TableComponent', () => {
       data[0]['data0'] = undefined;
 
       component.columns = columns;
-      component.state = FusionUiState.LOADED;
+      component.state = State.LOADED;
       component.rowExpansionTemplate = true;
       component.rowExpansionMode = RowExpansionMode.MULTIPLE;
       reloadTableComponent();
@@ -453,25 +453,25 @@ describe('TableComponent', () => {
 
       // Verify row one (1) is visible, and when the (disabled) expand row button is clicked, nothing happens
       expect(page.table.tableBodyRows.length).toEqual(2);
-      expect(page.table.getTableHeadColumnAtIndex(0).classList).toContain('fusion-ui-table__table-cell--expansion-control');
-      expect(page.table.getTableBodyColumnAtIndex(0, 0).classList).toContain('fusion-ui-table__table-cell--expansion-control');
+      expect(page.table.getTableHeadColumnAtIndex(0).classList).toContain('f-table__table-cell--expansion-control');
+      expect(page.table.getTableBodyColumnAtIndex(0, 0).classList).toContain('f-table__table-cell--expansion-control');
       const expandButton0: HTMLButtonElement = page.table.getTableBodyColumnAtIndex(0, 0).querySelector('button');
       expect(expandButton0).toBeTruthy();
       expect(expandButton0.disabled).toBeTruthy();
       expandButton0.click();
       fixture.detectChanges();
       expect(page.table.getTableBodyRowAtIndex(1)).toBeTruthy();
-      expect(page.table.getTableBodyRowAtIndex(1).classList).not.toContain('fusion-ui-table__table-row--expansion');
+      expect(page.table.getTableBodyRowAtIndex(1).classList).not.toContain('f-table__table-row--expansion');
 
       // Verify row one (2) is visible, and when the expand row button is clicked, the row is expanded (and when clicked again, collapses)
-      expect(page.table.getTableBodyColumnAtIndex(1, 0).classList).toContain('fusion-ui-table__table-cell--expansion-control');
+      expect(page.table.getTableBodyColumnAtIndex(1, 0).classList).toContain('f-table__table-cell--expansion-control');
       const expandButton1: HTMLButtonElement = page.table.getTableBodyColumnAtIndex(1, 0).querySelector('button');
       expect(expandButton1).toBeTruthy();
       expect(expandButton1.disabled).toBeFalsy();
       expandButton1.click();
       fixture.detectChanges();
       expect(page.table.getTableBodyRowAtIndex(2)).toBeTruthy();
-      expect(page.table.getTableBodyRowAtIndex(2).classList).toContain('fusion-ui-table__table-row--expansion');
+      expect(page.table.getTableBodyRowAtIndex(2).classList).toContain('f-table__table-row--expansion');
       expandButton1.click();
       fixture.detectChanges();
       expect(page.table.getTableBodyRowAtIndex(2)).toBeFalsy();
@@ -482,7 +482,7 @@ describe('TableComponent', () => {
       generateColumns(2);
       component.data = data;
       component.columns = columns;
-      component.state = FusionUiState.LOADED;
+      component.state = State.LOADED;
       component.rowExpansionTemplate = true;
       reloadTableComponent();
 
@@ -490,7 +490,7 @@ describe('TableComponent', () => {
       component.rowExpansionMode = RowExpansionMode.MULTIPLE;
       fixture.detectChanges();
       expect(page.table.tableBodyRows.length).toEqual(2);
-      expect(page.table.getTableHeadColumnAtIndex(0).classList).toContain('fusion-ui-table__table-cell--expansion-control');
+      expect(page.table.getTableHeadColumnAtIndex(0).classList).toContain('f-table__table-cell--expansion-control');
       let expandButton: HTMLButtonElement = page.table.getTableHeadColumnAtIndex(0).querySelector('button');
       expect(expandButton).toBeTruthy();
       expandButton.click();
@@ -504,7 +504,7 @@ describe('TableComponent', () => {
       component.rowExpansionMode = RowExpansionMode.SINGLE;
       fixture.detectChanges();
       expect(page.table.tableBodyRows.length).toEqual(2);
-      expect(page.table.getTableHeadColumnAtIndex(0).classList).toContain('fusion-ui-table__table-cell--expansion-control');
+      expect(page.table.getTableHeadColumnAtIndex(0).classList).toContain('f-table__table-cell--expansion-control');
       expandButton = page.table.getTableHeadColumnAtIndex(0).querySelector('button');
       expect(expandButton).toBeFalsy();
     });
@@ -516,7 +516,7 @@ describe('TableComponent', () => {
       generateColumns(2);
       component.data = data;
       component.columns = columns;
-      component.state = FusionUiState.LOADED;
+      component.state = State.LOADED;
 
       component.rowActionsTemplate = false;
       reloadTableComponent();
@@ -541,7 +541,7 @@ describe('TableComponent', () => {
 
       component.columns = columns;
       component.rowActionsTemplate = true;
-      component.state = FusionUiState.LOADED;
+      component.state = State.LOADED;
       reloadTableComponent();
 
       component.data = data;
@@ -566,7 +566,7 @@ describe('TableComponent', () => {
       component.data = data;
       component.columns = columns;
       component.type = TableType.ADVANCED;
-      component.state = FusionUiState.LOADED;
+      component.state = State.LOADED;
 
       reloadTableComponent();
       await fixture.whenStable();
@@ -576,34 +576,34 @@ describe('TableComponent', () => {
     });
 
     it('should disable the pagination section if the state is anything other than loaded', async () => {
-      component.state = FusionUiState.LOADED;
+      component.state = State.LOADED;
       await fixture.whenStable();
       fixture.detectChanges();
-      expect(page.table.pagination.classList.contains('fusion-ui-table__pagination--disabled')).toBeFalsy();
+      expect(page.table.pagination.classList.contains('f-table__pagination--disabled')).toBeFalsy();
       expect(page.table.pagination.getAttribute('aria-hidden')).toEqual('false');
 
-      component.state = FusionUiState.LOADING;
+      component.state = State.LOADING;
       await fixture.whenStable();
       fixture.detectChanges();
-      expect(page.table.pagination.classList.contains('fusion-ui-table__pagination--disabled')).toBeTruthy();
+      expect(page.table.pagination.classList.contains('f-table__pagination--disabled')).toBeTruthy();
       expect(page.table.pagination.getAttribute('aria-hidden')).toBeTruthy();
 
-      component.state = FusionUiState.NOT_LOADED;
+      component.state = State.NOT_LOADED;
       await fixture.whenStable();
       fixture.detectChanges();
-      expect(page.table.pagination.classList.contains('fusion-ui-table__pagination--disabled')).toBeTruthy();
+      expect(page.table.pagination.classList.contains('f-table__pagination--disabled')).toBeTruthy();
       expect(page.table.pagination.getAttribute('aria-hidden')).toBeTruthy();
 
-      component.state = FusionUiState.NO_RESULTS;
+      component.state = State.NO_RESULTS;
       await fixture.whenStable();
       fixture.detectChanges();
-      expect(page.table.pagination.classList.contains('fusion-ui-table__pagination--disabled')).toBeTruthy();
+      expect(page.table.pagination.classList.contains('f-table__pagination--disabled')).toBeTruthy();
       expect(page.table.pagination.getAttribute('aria-hidden')).toBeTruthy();
 
-      component.state = FusionUiState.ERROR;
+      component.state = State.ERROR;
       await fixture.whenStable();
       fixture.detectChanges();
-      expect(page.table.pagination.classList.contains('fusion-ui-table__pagination--disabled')).toBeTruthy();
+      expect(page.table.pagination.classList.contains('f-table__pagination--disabled')).toBeTruthy();
       expect(page.table.pagination.getAttribute('aria-hidden')).toBeTruthy();
     });
 
@@ -750,7 +750,7 @@ describe('TableComponent', () => {
       generateColumns(2);
       component.data = data;
       component.columns = columns;
-      component.state = FusionUiState.LOADED;
+      component.state = State.LOADED;
 
       // SelectionMode is undefined
       component.selectionMode = undefined;
@@ -798,7 +798,7 @@ describe('TableComponent', () => {
         // eslint-disable-next-line @typescript-eslint/dot-notation
         data[0]['data0'] = undefined;
         component.columns = columns;
-        component.state = FusionUiState.LOADED;
+        component.state = State.LOADED;
         reloadTableComponent();
         await asyncDetectChanges();
 
@@ -853,7 +853,7 @@ describe('TableComponent', () => {
         generateColumns(2);
         component.data = data;
         component.columns = columns;
-        component.state = FusionUiState.LOADED;
+        component.state = State.LOADED;
         reloadTableComponent();
         await asyncDetectChanges();
 
@@ -901,7 +901,7 @@ describe('TableComponent', () => {
         generateColumns(2);
         component.data = data;
         component.columns = columns;
-        component.state = FusionUiState.LOADED;
+        component.state = State.LOADED;
         reloadTableComponent();
         await asyncDetectChanges();
 
@@ -961,7 +961,7 @@ describe('TableComponent', () => {
       generateColumns(2);
       component.data = data;
       component.columns = columns;
-      component.state = FusionUiState.LOADED;
+      component.state = State.LOADED;
       component.type = TableType.ADVANCED;
 
       reloadTableComponent();
@@ -999,16 +999,16 @@ describe('TableComponent', () => {
       await asyncDetectChanges();
 
       expect(page.table.tableBodyRows.length).toEqual(10);
-      expect(page.table.quickFilters.item(0).classList).not.toContain('fusion-ui-button--selected');
+      expect(page.table.quickFilters.item(0).classList).not.toContain('f-button--selected');
 
       page.table.quickFilters.item(0).click();
       await asyncDetectChanges();
-      expect(page.table.quickFilters.item(0).classList).toContain('fusion-ui-button--selected');
+      expect(page.table.quickFilters.item(0).classList).toContain('f-button--selected');
       expect(page.table.tableBodyRows.length).toEqual(5);
 
       page.table.quickFilters.item(0).click();
       await asyncDetectChanges();
-      expect(page.table.quickFilters.item(0).classList).not.toContain('fusion-ui-button--selected');
+      expect(page.table.quickFilters.item(0).classList).not.toContain('f-button--selected');
       expect(page.table.tableBodyRows.length).toEqual(10);
     });
   });

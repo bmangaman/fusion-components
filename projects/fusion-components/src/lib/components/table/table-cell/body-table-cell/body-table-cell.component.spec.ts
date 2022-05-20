@@ -1,7 +1,7 @@
 import { ChangeDetectorRef } from '@angular/core';
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
 
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import {
   TableCellContentAlignment,
   TableCellContentVerticalAlignment,
@@ -78,7 +78,7 @@ describe('BodyTableCellComponent', () => {
   });
 
   describe('generateTableCellClasses()', () => {
-    const stylePrefix = 'fusion-ui-table__table-cell';
+    const stylePrefix = 'f-table__table-cell';
     const defaultClasses: string[] = [stylePrefix, `${stylePrefix}--body`];
     let expectedResult: string[];
 
@@ -89,12 +89,12 @@ describe('BodyTableCellComponent', () => {
       component.spacing = undefined;
     });
 
-    it('should append the "fusion-ui-table__table-cell" class by default', () => {
+    it('should append the "f-table__table-cell" class by default', () => {
       expectedResult = defaultClasses;
       expect(component.generateTableCellClasses()).toEqual(expectedResult);
     });
 
-    it('should append the "fusion-ui-table__table-cell--grey" class if the input is odd', () => {
+    it('should append the "f-table__table-cell--grey" class if the input is odd', () => {
       component.index = 2;
       expectedResult = defaultClasses;
       expect(component.generateTableCellClasses()).toEqual(expectedResult);
@@ -104,7 +104,7 @@ describe('BodyTableCellComponent', () => {
       expect(component.generateTableCellClasses()).toEqual(expectedResult);
     });
 
-    it('should append the "fusion-ui-table__table-cell--overflow-visible" class if the isOverflowVisible col config is true', () => {
+    it('should append the "f-table__table-cell--overflow-visible" class if the isOverflowVisible col config is true', () => {
       component.col = {} as TableColumnConfig;
 
       component.col.isOverflowVisible = false;
@@ -116,7 +116,7 @@ describe('BodyTableCellComponent', () => {
       expect(component.generateTableCellClasses()).toEqual(expectedResult);
     });
 
-    it('should append the "fusion-ui-table__table-cell--truncated" class if the isTruncated col config is true', () => {
+    it('should append the "f-table__table-cell--truncated" class if the isTruncated col config is true', () => {
       component.col = {} as TableColumnConfig;
 
       component.col.isTruncated = false;

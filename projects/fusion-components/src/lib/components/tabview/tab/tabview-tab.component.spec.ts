@@ -1,7 +1,7 @@
 import { QueryList } from '@angular/core';
 
-import { TemplateDirective } from '@fusion-ui/fusion-components/lib/directives/template';
-import { MockTemplateDirective } from '@fusion-ui/fusion-components/unit-test-helpers/mock-utils.spec';
+import { TemplateDirective } from '@fusion-components/lib/directives/template';
+import { MockTemplateDirective } from '@fusion-components/unit-test-helpers/mock-utils.spec';
 
 import { TabviewTabComponent } from './tabview-tab.component';
 

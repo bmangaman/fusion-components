@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing';
 
-import { CheckboxPageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/checkbox.spec.po';
+import { CheckboxPageObject } from '@fusion-components/unit-test-helpers/page-objects/checkbox.spec.po';
 
 import { CheckboxTestComponent } from './checkbox.component.dom.spec';
 

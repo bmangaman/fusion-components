@@ -1,14 +1,14 @@
-.fusion-ui-menu {
+.f-menu {
   display: inline-block;
   position: relative;
 
   &__dialog {
     animation: fadeIn ease 0.25s;
-    background-color: $fusion-ui-color-background-white;
-    border: $fusion-ui-border-light;
-    border-radius: $fusion-ui-border-radius-md;
-    box-shadow: $fusion-ui-box-shadow-elevation-level-2;
-    padding: $fusion-ui-spacing-sm;
+    background-color: $f-color-background-white;
+    border: $f-border-light;
+    border-radius: $f-border-radius-md;
+    box-shadow: $f-box-shadow-elevation-level-2;
+    padding: $f-spacing-sm;
     position: absolute;
 
     &--header {
@@ -16,7 +16,7 @@
       align-content: center;
       display: flex;
       justify-content: space-between;
-      margin-bottom: $fusion-ui-spacing-sm;
+      margin-bottom: $f-spacing-sm;
     }
 
     &--content {

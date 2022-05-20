@@ -7,6 +7,7 @@ export enum NotificationType {
   ERROR = 'error',
   INFO = 'info',
   WARNING = 'warning',
+  UNKNOWN = 'unknown',
 }
 
 export interface NotificationTranslations {
@@ -17,6 +18,7 @@ export interface NotificationTranslations {
     warning?: string;
     info?: string;
     error?: string;
+    unknown?: string;
   };
   ariaCloseLabel?: string;
 }

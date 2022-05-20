@@ -1,9 +1,9 @@
-.fusion-ui-note {
-  border: 2px solid $fusion-ui-color-note-border;
-  padding: $fusion-ui-spacing-sm;
+.f-note {
+  border: 2px solid $f-color-note-border;
+  padding: $f-spacing-sm;
 
   &__label {
-    font-weight: $fusion-ui-font-weight-semibold;
+    font-weight: $f-font-weight-semibold;
   }
 
   &__content {

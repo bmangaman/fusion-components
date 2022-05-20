@@ -1,7 +1,7 @@
 import { ChangeDetectorRef } from '@angular/core';
 
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services';
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import {
   TableCellContentAlignment,
   TableCellContentVerticalAlignment,
@@ -140,7 +140,7 @@ describe('HeaderTableCellComponent', () => {
   });
 
   describe('generateTableCellClasses()', () => {
-    const stylePrefix = 'fusion-ui-table__table-cell';
+    const stylePrefix = 'f-table__table-cell';
     const defaultClasses: string[] = [stylePrefix, `${stylePrefix}--header`];
     let expectedResult: string[];
 
@@ -151,12 +151,12 @@ describe('HeaderTableCellComponent', () => {
       component.spacing = undefined;
     });
 
-    it('should append the "fusion-ui-table__table-cell" class by default', () => {
+    it('should append the "f-table__table-cell" class by default', () => {
       expectedResult = defaultClasses;
       expect(component.generateTableCellClasses()).toEqual(expectedResult);
     });
 
-    it('should append the "fusion-ui-table__table-cell--sticky" class if the input is set to true', () => {
+    it('should append the "f-table__table-cell--sticky" class if the input is set to true', () => {
       component.isSticky = false;
       expectedResult = defaultClasses;
       expect(component.generateTableCellClasses()).toEqual(expectedResult);
@@ -166,7 +166,7 @@ describe('HeaderTableCellComponent', () => {
       expect(component.generateTableCellClasses()).toEqual(expectedResult);
     });
 
-    it('should append the "fusion-ui-table__table-cell--overflow-visible" class if the isOverflowVisible col config is true', () => {
+    it('should append the "f-table__table-cell--overflow-visible" class if the isOverflowVisible col config is true', () => {
       component.col = {} as TableColumnConfig;
 
       component.col.isOverflowVisible = false;
@@ -178,7 +178,7 @@ describe('HeaderTableCellComponent', () => {
       expect(component.generateTableCellClasses()).toEqual(expectedResult);
     });
 
-    it('should append the "fusion-ui-table__table-cell--sortable" class if the input is set to true', () => {
+    it('should append the "f-table__table-cell--sortable" class if the input is set to true', () => {
       component.col = {} as TableColumnConfig;
 
       component.col.isSortable = false;
@@ -190,7 +190,7 @@ describe('HeaderTableCellComponent', () => {
       expect(component.generateTableCellClasses()).toEqual(expectedResult);
     });
 
-    it('should append the "fusion-ui-table__table-cell--filtered" class if the input is set to true', () => {
+    it('should append the "f-table__table-cell--filtered" class if the input is set to true', () => {
       component.col = {} as TableColumnConfig;
 
       component.col.isFiltered = false;
@@ -202,7 +202,7 @@ describe('HeaderTableCellComponent', () => {
       expect(component.generateTableCellClasses()).toEqual(expectedResult);
     });
 
-    it('should append the "fusion-ui-table__table-cell--sorted" class if the input is defined', () => {
+    it('should append the "f-table__table-cell--sorted" class if the input is defined', () => {
       component.col = {} as TableColumnConfig;
 
       component.col.sorted = null;
@@ -248,7 +248,7 @@ describe('HeaderTableCellComponent', () => {
       expect(component.generateTableCellClasses()).toEqual(expectedResult);
     });
 
-    it('should append the "fusion-ui-table__table-cell--resizable" class if the input is defined', () => {
+    it('should append the "f-table__table-cell--resizable" class if the input is defined', () => {
       component.col = {} as TableColumnConfig;
 
       component.col.isResizable = true;

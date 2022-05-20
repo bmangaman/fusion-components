@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { KeyValueTableData } from '@fusion-ui/fusion-components';
+import { KeyValueTableData } from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-key-value-table',

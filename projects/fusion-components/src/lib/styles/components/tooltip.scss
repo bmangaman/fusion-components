@@ -1,21 +1,21 @@
-.fusion-ui-tooltip {
-  background-color: $fusion-ui-color-blue-lightest;
-  border: 1px solid $fusion-ui-color-blue-light;
-  border-radius: $fusion-ui-border-size-md;
-  color: $fusion-ui-color-primary-text-on-light;
+.f-tooltip {
+  background-color: $f-color-blue-lightest;
+  border: 1px solid $f-color-blue-light;
+  border-radius: $f-border-size-md;
+  color: $f-color-primary-text-on-light;
   display: block;
   position: absolute;
   max-width: 400px;
 
   &__content {
-    margin: $fusion-ui-spacing-md;
+    margin: $f-spacing-md;
   }
 
   &:after {
     clear: both;
     content: '';
-    background: $fusion-ui-color-blue-lightest;
-    border: 1px solid $fusion-ui-color-blue-light;
+    background: $f-color-blue-lightest;
+    border: 1px solid $f-color-blue-light;
     height: 10px;
     position: absolute;
     transform-origin: center;

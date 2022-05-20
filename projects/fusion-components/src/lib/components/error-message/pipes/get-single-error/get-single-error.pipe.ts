@@ -31,12 +31,12 @@ export class GetSingleErrorPipe implements PipeTransform {
     if (!!errors?.length && !!validationErrors) {
       const foundPriorityError: ErrorMessage = errors
         .filter((e: ErrorMessage) => e.priority)
-        .sort((a, b) => a.priority - b.priority)
-        .find((e: ErrorMessage) => validationErrors.hasOwnProperty(e.error));
+        .sort((a: ErrorMessage, b: ErrorMessage) => a.priority! - b.priority!)
+        .find((e: ErrorMessage) => validationErrors.hasOwnProperty(e.error))!;
 
       const foundNonPriorityError: ErrorMessage = errors
         .filter((e: ErrorMessage) => !e.priority)
-        .find((e: ErrorMessage) => validationErrors.hasOwnProperty(e.error));
+        .find((e: ErrorMessage) => validationErrors.hasOwnProperty(e.error))!;
 
       return foundPriorityError ? foundPriorityError.translation : foundNonPriorityError.translation;
     }

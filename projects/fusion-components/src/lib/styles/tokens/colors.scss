@@ -5,112 +5,112 @@
  */
 
 // blue
-$fusion-ui-color-blue-netapp: #0067C5;
+$f-color-blue-netapp: #0067C5;
 
-$fusion-ui-color-blue-lightest: #EFF4FF;
-$fusion-ui-color-blue-light: #A5BFED;
-$fusion-ui-color-blue-medium-light: #6C9CEF;
-$fusion-ui-color-blue-medium: #2D6DDE;
-$fusion-ui-color-blue-medium-dark: #1E4A93;
-$fusion-ui-color-blue-dark: #0A2D6C;
-$fusion-ui-color-blue-darkest: #08214B;
-$fusion-ui-color-blue-nav: #001D36;
+$f-color-blue-lightest: #EFF4FF;
+$f-color-blue-light: #A5BFED;
+$f-color-blue-medium-light: #6C9CEF;
+$f-color-blue-medium: #2D6DDE;
+$f-color-blue-medium-dark: #1E4A93;
+$f-color-blue-dark: #0A2D6C;
+$f-color-blue-darkest: #08214B;
+$f-color-blue-nav: #001D36;
 
 // state indication
-$fusion-ui-color-error-primary: #DA1E21;
-$fusion-ui-color-error-chart: #FF4548;
-$fusion-ui-color-error-background: #FCCDCE;
-$fusion-ui-color-error-text: $fusion-ui-color-error-primary;
+$f-color-error-primary: #DA1E21;
+$f-color-error-chart: #FF4548;
+$f-color-error-background: #FCCDCE;
+$f-color-error-text: $f-color-error-primary;
 
-$fusion-ui-color-warning-primary: #F88402;
-$fusion-ui-color-warning-chart: #FFAC00;
-$fusion-ui-color-warning-background: #FFE1A1;
+$f-color-warning-primary: #F88402;
+$f-color-warning-chart: #FFAC00;
+$f-color-warning-background: #FFE1A1;
 
-$fusion-ui-color-success-primary: #498128;
-$fusion-ui-color-success-chart: #90C44B;
-$fusion-ui-color-success-background: #B4E697;
+$f-color-success-primary: #498128;
+$f-color-success-chart: #90C44B;
+$f-color-success-background: #B4E697;
 
-$fusion-ui-color-info-primary: $fusion-ui-color-blue-netapp;
-$fusion-ui-color-info-chart: $fusion-ui-color-blue-light;
-$fusion-ui-color-info-background: $fusion-ui-color-blue-lightest;
+$f-color-info-primary: $f-color-blue-netapp;
+$f-color-info-chart: $f-color-blue-light;
+$f-color-info-background: $f-color-blue-lightest;
 
 // opaque greyscale
-$fusion-ui-color-black: #000000;
-$fusion-ui-color-greyscale-7: #131313;
-$fusion-ui-color-greyscale-15: #252525;
-$fusion-ui-color-greyscale-27: #454545;
-$fusion-ui-color-greyscale-34: #565656;
-$fusion-ui-color-greyscale-53: #888888;
-$fusion-ui-color-greyscale-61: #9c9c9c;
-$fusion-ui-color-greyscale-76: #C2C2C2;
-$fusion-ui-color-greyscale-84: #D7D7D7;
-$fusion-ui-color-greyscale-85: #F2F2F2;
-$fusion-ui-color-greyscale-96: #F6F6F6;
-$fusion-ui-color-white: #FFFFFF;
+$f-color-black: #000000;
+$f-color-greyscale-7: #131313;
+$f-color-greyscale-15: #252525;
+$f-color-greyscale-27: #454545;
+$f-color-greyscale-34: #565656;
+$f-color-greyscale-53: #888888;
+$f-color-greyscale-61: #9c9c9c;
+$f-color-greyscale-76: #C2C2C2;
+$f-color-greyscale-84: #D7D7D7;
+$f-color-greyscale-85: #F2F2F2;
+$f-color-greyscale-96: #F6F6F6;
+$f-color-white: #FFFFFF;
 
 // alpha greyscale
-$fusion-ui-color-alpha-greyscale-7: rgba($fusion-ui-color-black, .93);
-$fusion-ui-color-alpha-greyscale-15: rgba($fusion-ui-color-black, .85);
-$fusion-ui-color-alpha-greyscale-27: rgba($fusion-ui-color-black, .73);
-$fusion-ui-color-alpha-greyscale-34: rgba($fusion-ui-color-black, .66);
-$fusion-ui-color-alpha-greyscale-53: rgba($fusion-ui-color-black, .47);
-$fusion-ui-color-alpha-greyscale-61: rgba($fusion-ui-color-black, .39);
-$fusion-ui-color-alpha-greyscale-76: rgba($fusion-ui-color-black, .24);
-$fusion-ui-color-alpha-greyscale-84: rgba($fusion-ui-color-black, .16);
-$fusion-ui-color-alpha-greyscale-85: rgba($fusion-ui-color-black, .15);
-$fusion-ui-color-alpha-greyscale-96: rgba($fusion-ui-color-black, .04);
+$f-color-alpha-greyscale-7: rgba($f-color-black, .93);
+$f-color-alpha-greyscale-15: rgba($f-color-black, .85);
+$f-color-alpha-greyscale-27: rgba($f-color-black, .73);
+$f-color-alpha-greyscale-34: rgba($f-color-black, .66);
+$f-color-alpha-greyscale-53: rgba($f-color-black, .47);
+$f-color-alpha-greyscale-61: rgba($f-color-black, .39);
+$f-color-alpha-greyscale-76: rgba($f-color-black, .24);
+$f-color-alpha-greyscale-84: rgba($f-color-black, .16);
+$f-color-alpha-greyscale-85: rgba($f-color-black, .15);
+$f-color-alpha-greyscale-96: rgba($f-color-black, .04);
 
 // chart
-$fusion-ui-color-chart-1: #61DCE8;
-$fusion-ui-color-chart-2: #01ADBD;
-$fusion-ui-color-chart-3: $fusion-ui-color-blue-medium-dark;
-$fusion-ui-color-chart-4: #0072D9;
-$fusion-ui-color-chart-5: #88C5FF;
-$fusion-ui-color-chart-6: #B1B3BE;
-$fusion-ui-color-chart-7: #FFAC00;
-$fusion-ui-color-chart-8: #C66900;
-$fusion-ui-color-chart-9: #D71ECD;
-$fusion-ui-color-chart-10: #9F82F1;
+$f-color-chart-1: #61DCE8;
+$f-color-chart-2: #01ADBD;
+$f-color-chart-3: $f-color-blue-medium-dark;
+$f-color-chart-4: #0072D9;
+$f-color-chart-5: #88C5FF;
+$f-color-chart-6: #B1B3BE;
+$f-color-chart-7: #FFAC00;
+$f-color-chart-8: #C66900;
+$f-color-chart-9: #D71ECD;
+$f-color-chart-10: #9F82F1;
 
 // interactive (buttons)
-$fusion-ui-color-interactive-default: $fusion-ui-color-blue-medium;
-$fusion-ui-color-interactive-hover: $fusion-ui-color-blue-medium-dark;
-$fusion-ui-color-interactive-active: $fusion-ui-color-blue-dark;
-$fusion-ui-color-interactive-focus: $fusion-ui-color-blue-medium-light;
+$f-color-interactive-default: $f-color-blue-medium;
+$f-color-interactive-hover: $f-color-blue-medium-dark;
+$f-color-interactive-active: $f-color-blue-dark;
+$f-color-interactive-focus: $f-color-blue-medium-light;
 
 // background
-$fusion-ui-color-background-white: $fusion-ui-color-white;
-$fusion-ui-color-background-light: $fusion-ui-color-greyscale-96;
-$fusion-ui-color-background-dark: $fusion-ui-color-greyscale-27;
-$fusion-ui-color-background-lightest-blue: $fusion-ui-color-blue-lightest;
-$fusion-ui-color-background-light-blue: $fusion-ui-color-blue-light;
-$fusion-ui-color-background-medium-blue: $fusion-ui-color-blue-medium;
-$fusion-ui-color-background-dark-blue: $fusion-ui-color-blue-dark;
-$fusion-ui-color-background-darkest-blue: $fusion-ui-color-blue-darkest;
+$f-color-background-white: $f-color-white;
+$f-color-background-light: $f-color-greyscale-96;
+$f-color-background-dark: $f-color-greyscale-27;
+$f-color-background-lightest-blue: $f-color-blue-lightest;
+$f-color-background-light-blue: $f-color-blue-light;
+$f-color-background-medium-blue: $f-color-blue-medium;
+$f-color-background-dark-blue: $f-color-blue-dark;
+$f-color-background-darkest-blue: $f-color-blue-darkest;
 
 // border
-$fusion-ui-color-border-light: $fusion-ui-color-greyscale-76;
-$fusion-ui-color-note-border: #B4DF24;
+$f-color-border-light: $f-color-greyscale-76;
+$f-color-note-border: #B4DF24;
 
 // text
-$fusion-ui-color-primary-text-on-light: $fusion-ui-color-greyscale-27;
-$fusion-ui-color-primary-text-on-dark: $fusion-ui-color-white;
+$f-color-primary-text-on-light: $f-color-greyscale-27;
+$f-color-primary-text-on-dark: $f-color-white;
 
-$fusion-ui-color-secondary-text-on-light: $fusion-ui-color-greyscale-34;
-$fusion-ui-color-secondary-text-on-dark: $fusion-ui-color-greyscale-84;
+$f-color-secondary-text-on-light: $f-color-greyscale-34;
+$f-color-secondary-text-on-dark: $f-color-greyscale-84;
 
-$fusion-ui-color-selected-text-on-light: $fusion-ui-color-greyscale-15;
-$fusion-ui-color-selected-text-on-dark: $fusion-ui-color-white;
+$f-color-selected-text-on-light: $f-color-greyscale-15;
+$f-color-selected-text-on-dark: $f-color-white;
 
-$fusion-ui-color-text-disabled-on-light: $fusion-ui-color-alpha-greyscale-76;
-$fusion-ui-color-text-disabled-on-dark: $fusion-ui-color-alpha-greyscale-34;
+$f-color-text-disabled-on-light: $f-color-alpha-greyscale-76;
+$f-color-text-disabled-on-dark: $f-color-alpha-greyscale-34;
 
-$fusion-ui-color-link-text-on-light: $fusion-ui-color-blue-medium-light;
-$fusion-ui-color-link-text-on-light-hover: $fusion-ui-color-blue-medium-dark;
-$fusion-ui-color-link-text-on-light-active: $fusion-ui-color-blue-dark;
-$fusion-ui-color-link-text-on-light-visited: $fusion-ui-color-blue-medium-dark;
+$f-color-link-text-on-light: $f-color-blue-medium-light;
+$f-color-link-text-on-light-hover: $f-color-blue-medium-dark;
+$f-color-link-text-on-light-active: $f-color-blue-dark;
+$f-color-link-text-on-light-visited: $f-color-blue-medium-dark;
 
-$fusion-ui-color-link-text-on-dark: $fusion-ui-color-white;
-$fusion-ui-color-link-text-on-dark-hover: $fusion-ui-color-greyscale-85;
-$fusion-ui-color-link-text-on-dark-active: $fusion-ui-color-greyscale-85;
-$fusion-ui-color-link-text-on-dark-visited: $fusion-ui-color-greyscale-85;
+$f-color-link-text-on-dark: $f-color-white;
+$f-color-link-text-on-dark-hover: $f-color-greyscale-85;
+$f-color-link-text-on-dark-active: $f-color-greyscale-85;
+$f-color-link-text-on-dark-visited: $f-color-greyscale-85;

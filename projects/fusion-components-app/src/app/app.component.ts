@@ -3,9 +3,9 @@ import { Router, NavigationEnd, RouterEvent, ActivatedRoute, NavigationError, Ro
 
 import { filter, map, tap } from 'rxjs/operators';
 
-import { NavItem } from '@fusion-ui/fusion-components/lib/components/sidenav/sidenav.interface';
+import { NavItem } from 'fusion-components/lib/components/sidenav/sidenav.interface';
 import { TranslateService } from '@ngx-translate/core';
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components';
+import { FusionComponentsTranslationService } from 'fusion-components';
 
 @Component({
   selector: 'fusion-demo-root',

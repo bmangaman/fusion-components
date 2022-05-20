@@ -1,6 +1,6 @@
 export * from './bytes';
 export * from './enum-to-array';
-export * from './get-fusion-ui-status-level-text';
+export * from './get-status-level-text';
 export * from './instance-of';
 export * from './meta';
 export * from './object-keys';

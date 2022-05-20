@@ -16,9 +16,9 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { TemplateDirective } from '@fusion-ui/fusion-components/lib/directives/template';
-import { DocumentClickService } from '@fusion-ui/fusion-components/lib/services/document-click';
-import { FusionUiLocation, FusionUiSize } from '@fusion-ui/fusion-components/lib/shared';
+import { TemplateDirective } from '@fusion-components/lib/directives/template';
+import { DocumentClickService } from '@fusion-components/lib/services/document-click';
+import { Location, Size } from '@fusion-components/lib/shared';
 
 import { MenuAria, MenuTemplate } from './menu.interface';
 
@@ -34,13 +34,13 @@ interface WidthAndHeightAttributes {
  * component, but should be used for any menu-like dialogs/ popups.
  */
 @Component({
-  selector: 'fusion-ui-menu',
+  selector: 'f-menu',
   templateUrl: 'menu.component.html',
   styleUrls: ['menu.component.scss'],
 })
 export class MenuComponent implements OnInit, AfterContentInit, OnChanges, OnDestroy {
-  readonly FusionUiLocation = FusionUiLocation;
-  readonly FusionUiSize = FusionUiSize;
+  readonly Location = Location;
+  readonly Size = Size;
 
   readonly SPACING_FROM_BUTTON: number = 4;
 
@@ -97,7 +97,7 @@ export class MenuComponent implements OnInit, AfterContentInit, OnChanges, OnDes
   /**
    * Determines the location of the dialog element in reference to the button element.
    */
-  @Input() dialogLocation: FusionUiLocation = FusionUiLocation.TOP;
+  @Input() dialogLocation: Location = Location.TOP;
 
   /**
    * Sets a min width on the dialog element.
@@ -212,11 +212,11 @@ export class MenuComponent implements OnInit, AfterContentInit, OnChanges, OnDes
    * @param c input changes
    */
   ngOnChanges(c: SimpleChanges): void {
-    if (c.dialogClasses) {
+    if (c['dialogClasses']) {
       this.menuDialogClasses = this.generateDialogClasses();
     }
 
-    if (c.dialogLocation && this._fusionUiMenuDialog) {
+    if (c['dialogLocation'] && this._fusionUiMenuDialog) {
       this.setDialogPositioning();
     }
   }
@@ -241,7 +241,7 @@ export class MenuComponent implements OnInit, AfterContentInit, OnChanges, OnDes
           this.isMenuDialogOpen &&
           !!this.fusionUiMenu &&
           !(this.fusionUiMenu.nativeElement.contains(target) ||
-          !!target.closest('.fusion-ui-menu__dialog') ||
+          !!target.closest('.f-menu__dialog') ||
           customLogicResult);
 
         if (isElementOutsideDialogOrNotRemoveFilterButton) {
@@ -276,90 +276,90 @@ export class MenuComponent implements OnInit, AfterContentInit, OnChanges, OnDes
     };
 
     switch (this.dialogLocation) {
-      case FusionUiLocation.TOP:
+      case Location.TOP:
         setStyling({
-          bottom: `${this.buttonSizes.height + this.SPACING_FROM_BUTTON}px`,
-          left: `${this.buttonSizes.width / 2}px`,
+          bottom: `${this.buttonSizes.height! + this.SPACING_FROM_BUTTON}px`,
+          left: `${this.buttonSizes.width! / 2}px`,
           transform: 'translateX(-50%)',
         });
         break;
-      case FusionUiLocation.TOP_LEFT:
+      case Location.TOP_LEFT:
         setStyling({
-          bottom: `${this.buttonSizes.height + this.SPACING_FROM_BUTTON}px`,
+          bottom: `${this.buttonSizes.height! + this.SPACING_FROM_BUTTON}px`,
           left: '0px',
         });
         break;
-      case FusionUiLocation.TOP_RIGHT:
+      case Location.TOP_RIGHT:
         setStyling({
-          bottom: `${this.buttonSizes.height + this.SPACING_FROM_BUTTON}px`,
+          bottom: `${this.buttonSizes.height! + this.SPACING_FROM_BUTTON}px`,
           right: '0px',
         });
         break;
 
-      case FusionUiLocation.BOTTOM:
+      case Location.BOTTOM:
         setStyling({
-          top: `${this.buttonSizes.height + this.SPACING_FROM_BUTTON}px`,
-          left: `${this.buttonSizes.width / 2}px`,
+          top: `${this.buttonSizes.height! + this.SPACING_FROM_BUTTON}px`,
+          left: `${this.buttonSizes.width! / 2}px`,
           transform: 'translateX(-50%)',
         });
         break;
-      case FusionUiLocation.BOTTOM_LEFT:
+      case Location.BOTTOM_LEFT:
         setStyling({
-          top: `${this.buttonSizes.height + this.SPACING_FROM_BUTTON}px`,
+          top: `${this.buttonSizes.height! + this.SPACING_FROM_BUTTON}px`,
           left: '0px',
         });
         break;
-      case FusionUiLocation.BOTTOM_RIGHT:
+      case Location.BOTTOM_RIGHT:
         setStyling({
-          top: `${this.buttonSizes.height + this.SPACING_FROM_BUTTON}px`,
+          top: `${this.buttonSizes.height! + this.SPACING_FROM_BUTTON}px`,
           right: '0px',
         });
         break;
 
-      case FusionUiLocation.LEFT:
+      case Location.LEFT:
         setStyling({
-          top: `${this.buttonSizes.height / 2}px`,
-          right: `${this.buttonSizes.width + this.SPACING_FROM_BUTTON}px`,
+          top: `${this.buttonSizes.height! / 2}px`,
+          right: `${this.buttonSizes.width! + this.SPACING_FROM_BUTTON}px`,
           transform: 'translateY(-50%)',
         });
         break;
-      case FusionUiLocation.LEFT_TOP:
+      case Location.LEFT_TOP:
         setStyling({
           top: '0px',
-          right: `${this.buttonSizes.width + this.SPACING_FROM_BUTTON}px`,
+          right: `${this.buttonSizes.width! + this.SPACING_FROM_BUTTON}px`,
         });
         break;
-      case FusionUiLocation.LEFT_BOTTOM:
+      case Location.LEFT_BOTTOM:
         setStyling({
           bottom: '0px',
-          right: `${this.buttonSizes.width + this.SPACING_FROM_BUTTON}px`,
+          right: `${this.buttonSizes.width! + this.SPACING_FROM_BUTTON}px`,
         });
         break;
 
-      case FusionUiLocation.RIGHT:
+      case Location.RIGHT:
         setStyling({
-          top: `${this.buttonSizes.height / 2}px`,
-          left:  `${this.buttonSizes.width + this.SPACING_FROM_BUTTON}px`,
+          top: `${this.buttonSizes.height! / 2}px`,
+          left:  `${this.buttonSizes.width! + this.SPACING_FROM_BUTTON}px`,
           transform: 'translateY(-50%)',
         });
         break;
-      case FusionUiLocation.RIGHT_TOP:
+      case Location.RIGHT_TOP:
         setStyling({
           top: '0px',
-          left: `${this.buttonSizes.width + this.SPACING_FROM_BUTTON}px`,
+          left: `${this.buttonSizes.width! + this.SPACING_FROM_BUTTON}px`,
         });
         break;
-      case FusionUiLocation.RIGHT_BOTTOM:
+      case Location.RIGHT_BOTTOM:
         setStyling({
           bottom: '0px',
-          left: `${this.buttonSizes.width + this.SPACING_FROM_BUTTON}px`,
+          left: `${this.buttonSizes.width! + this.SPACING_FROM_BUTTON}px`,
         });
         break;
 
-      case FusionUiLocation.CENTER:
+      case Location.CENTER:
         setStyling({
-          top: `${this.buttonSizes.height / 2}px`,
-          left: `${this.buttonSizes.width / 2}px`,
+          top: `${this.buttonSizes.height! / 2}px`,
+          left: `${this.buttonSizes.width! / 2}px`,
           transform: 'translate(-50%, -50%)',
         });
         break;
@@ -383,7 +383,7 @@ export class MenuComponent implements OnInit, AfterContentInit, OnChanges, OnDes
     const classes: string[] = [];
 
     if (!!this.dialogLocation) {
-      classes.push(`fusion-ui-menu__dialog--location-${this.dialogLocation}`);
+      classes.push(`f-menu__dialog--location-${this.dialogLocation}`);
     }
 
     classes.push(...this.dialogClasses);

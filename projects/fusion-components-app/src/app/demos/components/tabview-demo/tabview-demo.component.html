@@ -1,57 +1,57 @@
 <fusion-demo titleText="Tabview">
 
-  <form form class="fusion-components-demo__form fusion-ui-form" *ngIf="tabviewForm" [formGroup]="tabviewForm">
+  <form form class="fusion-components-demo__form f-form" *ngIf="tabviewForm" [formGroup]="tabviewForm">
     <!-- START: type select -->
-    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
-      <label class="fusion-ui-form__input-label">Tabview Type</label>
-      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
-        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="type">
+    <div class="f-form__fieldset f-table__filter-input-field-selector">
+      <label class="f-form__input-label">Tabview Type</label>
+      <div class="f-form__input-wrapper f-form__select-wrapper">
+        <select class="f-form__input f-form__select" formControlName="type">
           <option [value]="TabviewType.CONTENT">{{ TabviewType.CONTENT }}</option>
           <option [value]="TabviewType.TOP">{{ TabviewType.TOP }}</option>
           <option [value]="TabviewType.INNER_CONTENT">{{ TabviewType.INNER_CONTENT }}</option>
         </select>
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: type select -->
   </form>
 
   <ng-container result>
-    <fusion-ui-tabview [type]="tabviewForm?.get('type')?.value">
+    <f-tabview [type]="tabviewForm?.get('type')?.value">
 
       <!-- START: test first tab -->
-      <fusion-ui-tabview-tab route="tabview">
+      <f-tabview-tab route="tabview">
         <ng-template fusionUiTemplate="tabHeader">
           <h3>Test Tab 1</h3>
         </ng-template>
         <ng-template fusionUiTemplate="tabContent">
           Test Tab Content 1
         </ng-template>
-      </fusion-ui-tabview-tab>
+      </f-tabview-tab>
       <!-- END: test first tab -->
   
       <!-- START: test second tab -->
-      <fusion-ui-tabview-tab route="tabview">
+      <f-tabview-tab route="tabview">
         <ng-template fusionUiTemplate="tabHeader">
           <h3>Test Tab 2</h3>
         </ng-template>
         <ng-template fusionUiTemplate="tabContent">
           Test Tab Content 2
         </ng-template>
-      </fusion-ui-tabview-tab>
+      </f-tabview-tab>
       <!-- END: test second tab -->
   
       <!-- START: test third tab -->
-      <fusion-ui-tabview-tab [isDisabled]="true">
+      <f-tabview-tab [isDisabled]="true">
         <ng-template fusionUiTemplate="tabHeader">
           <h3>Test Disabled Tab</h3>
         </ng-template>
         <ng-template fusionUiTemplate="tabContent">
           Test Disabled Tab Content
         </ng-template>
-      </fusion-ui-tabview-tab>
+      </f-tabview-tab>
       <!-- END: test thrid tab -->
   
-    </fusion-ui-tabview>
+    </f-tabview>
   </ng-container>
 </fusion-demo>

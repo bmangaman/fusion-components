@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { FusionUiLocation } from '../../shared';
+import { Location } from '../../shared';
 
 import { MenuComponentPageObject } from './menu.component.spec.po';
 import { MenuAria } from './menu.interface';
 import { MenuModule } from './menu.module';
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
     <div style="width: 500px; height: 500px; position: relative; display: flex; align-items: center; justify-content: center;">
-      <fusion-ui-menu
+      <f-menu
         [isMenuDialogOpen]="isMenuDialogOpen"
         [dialogLocation]="dialogLocation"
         [dialogClasses]="dialogClasses"
@@ -26,13 +26,13 @@ import { MenuModule } from './menu.module';
         </ng-template>
         <ng-template fusionUiTemplate="menuDialogHeader">Menu Dialog Header</ng-template>
         <ng-template fusionUiTemplate="menuDialogContent">Menu Dialog Content</ng-template>
-      </fusion-ui-menu>
+      </f-menu>
     </div>
   `,
 })
 export class MenuTestComponent {
   isMenuDialogOpen: boolean = false;
-  dialogLocation: FusionUiLocation = FusionUiLocation.TOP;
+  dialogLocation: Location = Location.TOP;
   dialogClasses: string[] = [];
   dialogMinWidth: string = '100px';
   dialogContentMaxHeight: string = '300px';

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
-import { PanelContentVisibilityChangedEmit, AccordionPanelComponent } from '@fusion-ui/fusion-components';
+import { PanelContentVisibilityChangedEmit, AccordionPanelComponent } from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-accordion',
@@ -10,9 +10,10 @@ import { PanelContentVisibilityChangedEmit, AccordionPanelComponent } from '@fus
 })
 export class AccordionDemoComponent {
   private numberOfPanels: number = 0;
-  isAllExpanded: boolean;
+
+  isAllExpanded: boolean = false;
   triggerExpandAll: any;
-  accordionForm: FormGroup;
+  accordionForm: FormGroup = new FormGroup({});
 
   constructor(
     private fb: FormBuilder,
@@ -57,9 +58,9 @@ export class AccordionDemoComponent {
       setTimeout(() => {
         event.panels.forEach((panel: AccordionPanelComponent, index: number) => {
           const panelFormGroup: FormGroup = (this.accordionForm.get('panels') as FormArray).at(index) as FormGroup;
-          panelFormGroup.get('id').setValue(panel.id);
-          panelFormGroup.get('isDisabled').setValue(panel.isDisabled);
-          panelFormGroup.get('isExpanded').setValue(panel.isExpanded);
+          panelFormGroup.get('id')?.setValue(panel.id);
+          panelFormGroup.get('isDisabled')?.setValue(panel.isDisabled);
+          panelFormGroup.get('isExpanded')?.setValue(panel.isExpanded);
         });
         this.isAllExpanded = event.areAllPanelsExpanded;
       });

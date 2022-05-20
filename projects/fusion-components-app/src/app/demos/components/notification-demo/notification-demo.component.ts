@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationTemplate, NotificationType } from '@fusion-ui/fusion-components/lib/components/notification';
+import { NotificationTemplate, NotificationType } from '@fusion-components/lib/components/notification';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({

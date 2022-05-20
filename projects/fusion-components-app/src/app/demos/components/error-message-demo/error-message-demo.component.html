@@ -1,32 +1,32 @@
 <fusion-demo titleText="Select">
 
-  <form form class="fusion-components-demo__form fusion-ui-form" *ngIf="errorMessageForm" [formGroup]="errorMessageForm">
+  <form form class="fusion-components-demo__form f-form" *ngIf="errorMessageForm" [formGroup]="errorMessageForm">
   
     <!-- START: has errors checkbox -->
-    <fusion-ui-checkbox formControlName="hasErrors">Has Errors</fusion-ui-checkbox>
+    <f-checkbox formControlName="hasErrors">Has Errors</f-checkbox>
     <!-- END: has errors checkbox -->
 
     <!-- START: display multiple checkbox -->
-    <fusion-ui-checkbox formControlName="displayMultiple">Display Multiple</fusion-ui-checkbox>
+    <f-checkbox formControlName="displayMultiple">Display Multiple</f-checkbox>
     <!-- END: display multiple checkbox -->
 
   </form>
 
   <ng-container result>
 
-    <form class="fusion-ui-form">
-      <div class="fusion-ui-form__fieldset">
-        <label class="fusion-ui-form__label" for="test-input">Test Input Label</label>
-        <input [formControl]="errorMessageFormControl" class="fusion-ui-form__input" type="text" fusionUiValidationStyling />
-        <fusion-ui-error-message
+    <form class="f-form">
+      <div class="f-form__fieldset">
+        <label class="f-form__label" for="test-input">Test Input Label</label>
+        <input [formControl]="errorMessageFormControl" class="f-form__input" type="text" fusionUiValidationStyling />
+        <f-error-message
           [control]="errorMessageFormControl"
           [errors]="errorMessageForm?.get('hasErrors')?.value ? errorMessages : undefined"
           [displayMultiple]="errorMessageForm?.get('displayMultiple')?.value">
-        </fusion-ui-error-message>
+        </f-error-message>
       </div>
     </form>
 
-    <h3 class="fusion-ui-h3">Possible Error Messages</h3>
+    <h3 class="f-h3">Possible Error Messages</h3>
     <ng-container *ngIf="errorMessageForm?.get('hasErrors')?.value">
       <div *ngFor="let message of errorMessages">{{ message?.priority }} : {{ message?.error }}</div>
     </ng-container>

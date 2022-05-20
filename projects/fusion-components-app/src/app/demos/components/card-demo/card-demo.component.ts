@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { FusionUiSize, FusionUiStatusLevel, CardTemplate, CardStatus } from '@fusion-ui/fusion-components';
+import { Size, StatusLevel, CardTemplate, CardStatus } from '@fusion-components';
 import { FormGroup, FormBuilder, FormArray, AbstractControl } from '@angular/forms';
 import { merge } from 'rxjs';
 
@@ -10,8 +10,8 @@ import { merge } from 'rxjs';
   styleUrls: ['./card-demo.component.scss']
 })
 export class CardDemoComponent {
-  readonly FusionUiStatusLevel = FusionUiStatusLevel;
-  readonly FusionUiSize = FusionUiSize;
+  readonly StatusLevel = StatusLevel;
+  readonly Size = Size;
   readonly CardTemplate = CardTemplate;
 
   cardForm: FormGroup;
@@ -34,7 +34,7 @@ export class CardDemoComponent {
       useDetailsTemplate: [false],
       footer: ['Card Footer'],
       useFooterTemplate: [false],
-      size: [FusionUiSize.MEDIUM],
+      size: [Size.MEDIUM],
       hideStatusBarStyling: [false],
       statuses: this.fb.array([]),
     });
@@ -55,7 +55,7 @@ export class CardDemoComponent {
 
   createStatusFormGroup(): FormGroup {
     return this.fb.group({
-      status: [FusionUiStatusLevel.BASE],
+      status: [StatusLevel.BASE],
       count: [0],
       text: [''],
       isHidden: [false],

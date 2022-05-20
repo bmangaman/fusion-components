@@ -1,27 +1,27 @@
-<form class="fusion-ui-form" *ngIf="isLoaded" [formGroup]="filterForm">
+<form class="f-form" *ngIf="isLoaded" [formGroup]="filterForm">
 
-  <fusion-ui-table-filter-comparator
+  <f-table-filter-comparator
     [comparators]="filterComparators"
     (comparatorChange)="selectedFilterComparator.next($event)"
     [translations]="translations?.comparator">
-  </fusion-ui-table-filter-comparator>
+  </f-table-filter-comparator>
 
-  <div class="fusion-ui-form__group fusion-ui-form__field-group--inline">
-    <div class="fusion-ui-form__fieldset fusion-ui-form__fieldset--inline fusion-ui-table__filter-input">
-      <div class="fusion-ui-input__input-wrapper">
+  <div class="f-form__group f-form__field-group--inline">
+    <div class="f-form__fieldset f-form__fieldset--inline f-table__filter-input">
+      <div class="f-input__input-wrapper">
         <input
           type="number"
           formControlName="bytes"
-          class="fusion-ui-form__input"
+          class="f-form__input"
           [attr.aria-label]="translations?.fields?.bytes || ( baseTranslationKey + '.table.filters.bytes.fields.bytes' | translate )" />
       </div>
     </div>
 
-    <div class="fusion-ui-form__fieldset fusion-ui-form__fieldset--inline fusion-ui-table__filter-input">
-      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
+    <div class="f-form__fieldset f-form__fieldset--inline f-table__filter-input">
+      <div class="f-form__input-wrapper f-form__select-wrapper">
         <select
           formControlName="unit"
-          class="fusion-ui-form__input fusion-ui-form__select"
+          class="f-form__input f-form__select"
           [attr.aria-label]="translations?.fields?.unit || ( baseTranslationKey + '.table.filters.bytes.fields.unit' | translate )">
           <option *ngFor="let unit of bytesOptions" [ngValue]="unit">
             {{ unit }}

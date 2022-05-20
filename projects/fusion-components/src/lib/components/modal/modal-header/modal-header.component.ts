@@ -2,7 +2,7 @@ import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/co
 import { ModalType } from '../modal.interface';
 
 @Component({
-  selector: 'fusion-ui-modal-header',
+  selector: 'f-modal-header',
   templateUrl: './modal-header.component.html',
 })
 export class ModalHeaderComponent {
@@ -29,11 +29,11 @@ export class ModalHeaderComponent {
   /**
    * Emits an event when the close (x) button is clicked.
    */
-  @Output() modalClosed: EventEmitter<any> = new EventEmitter<any>(null);
+  @Output() modalClosed: EventEmitter<any> = new EventEmitter<any>(undefined);
 
   @HostBinding('attr.class')
   get hostClasses(): string {
-    return this.isFullModal ? 'fusion-ui-modal__full-header' : 'fusion-ui-modal__header';
+    return this.isFullModal ? 'f-modal__full-header' : 'f-modal__header';
   }
 
   /**

@@ -1,6 +1,6 @@
 import { ApplicationRef, ComponentFactoryResolver, ComponentRef, Injector, RendererFactory2 } from '@angular/core';
 
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { DomService } from '../';
 import { TooltipConfig } from './tooltip.interface';
 import { TooltipService } from './tooltip.service';

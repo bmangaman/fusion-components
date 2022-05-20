@@ -1,4 +1,4 @@
-.fusion-ui-form {
+.f-form {
   &__radio {
     display: inline-block;
     overflow: visible;
@@ -20,13 +20,13 @@
       &:checked,
       &--checked,
       &--selected {
-        & + .fusion-ui-form__radio-button {
-          border: solid 2px $fusion-ui-color-blue-medium;
+        & + .f-form__radio-button {
+          border: solid 2px $f-color-blue-medium;
 
           &:after {
             @include centered-with-position-absolute;
 
-            background: $fusion-ui-color-blue-medium;
+            background: $f-color-blue-medium;
             border-radius: 50%;
             display: block;
             height: 11px;
@@ -35,12 +35,12 @@
           }
         }
 
-        &.fusion-ui-form__radio-input--readonly {
-          & + .fusion-ui-form__radio-button {
-            border: solid 2px $fusion-ui-color-greyscale-76;
+        &.f-form__radio-input--readonly {
+          & + .f-form__radio-button {
+            border: solid 2px $f-color-greyscale-76;
 
             &:after {
-              background: $fusion-ui-color-greyscale-76;
+              background: $f-color-greyscale-76;
             }
           }
         }
@@ -48,62 +48,62 @@
 
       &:disabled,
       &--disabled {
-        & + .fusion-ui-form__radio-button {
-          background: $fusion-ui-color-background-light;
-          border: solid 2px $fusion-ui-color-greyscale-53;
+        & + .f-form__radio-button {
+          background: $f-color-background-light;
+          border: solid 2px $f-color-greyscale-53;
           cursor: not-allowed;
 
           &:after {
-            background: $fusion-ui-color-greyscale-53;
+            background: $f-color-greyscale-53;
           }
 
-          & + .fusion-ui-form__radio-label-text {
-            color: $fusion-ui-color-greyscale-53;
+          & + .f-form__radio-label-text {
+            color: $f-color-greyscale-53;
             cursor: not-allowed;
           }
         }
       }
 
       &--readonly {
-        & + .fusion-ui-form__radio-button {
-          background: $fusion-ui-color-background-light;
+        & + .f-form__radio-button {
+          background: $f-color-background-light;
           cursor: not-allowed;
 
-          & + .fusion-ui-form__radio-label-text {
+          & + .f-form__radio-label-text {
             cursor: not-allowed;
           }
         }
       }
 
-      &:hover:not(:disabled):not(.fusion-ui-form__radio-input--disabled):not(:checked):not(.fusion-ui-form__radio-input--checked):not(.fusion-ui-form__radio-input--readonly),
+      &:hover:not(:disabled):not(.f-form__radio-input--disabled):not(:checked):not(.f-form__radio-input--checked):not(.f-form__radio-input--readonly),
       &--hover {
-        & + .fusion-ui-form__radio-button {
-          border-color: $fusion-ui-color-greyscale-61;
+        & + .f-form__radio-button {
+          border-color: $f-color-greyscale-61;
         }
       }
 
       &:focus,
       &--focus {
-        & + .fusion-ui-form__radio-button {
+        & + .f-form__radio-button {
           outline: none;
-          box-shadow: 0 0 0 2px $fusion-ui-color-blue-medium-light;
+          box-shadow: 0 0 0 2px $f-color-blue-medium-light;
         }
       }
 
       &--warning {
-        box-shadow: 0 0 0 2px $fusion-ui-color-warning-primary
+        box-shadow: 0 0 0 2px $f-color-warning-primary
       }
 
       &--error,
       &--invalid,
       &.ng-touched.ng-invalid {
-        box-shadow: 0 0 0 2px $fusion-ui-color-error-primary
+        box-shadow: 0 0 0 2px $f-color-error-primary
       }
     }
 
     &-button {
-      background: $fusion-ui-color-background-white;
-      border: solid 2px $fusion-ui-color-greyscale-76;
+      background: $f-color-background-white;
+      border: solid 2px $f-color-greyscale-76;
       border-radius: 50%;
       cursor: pointer;
       display: inline-block;
@@ -116,12 +116,12 @@
     }
 
     &-label-text {
-      @include fusion-ui-label-radio;
+      @include f-label-radio;
 
       cursor: pointer;
       letter-spacing: 0;
-      color: $fusion-ui-color-primary-text-on-light;
-      padding: 0 0 0 $fusion-ui-spacing-sm;
+      color: $f-color-primary-text-on-light;
+      padding: 0 0 0 $f-spacing-sm;
       margin: 0 auto 0 0;
     }
   }

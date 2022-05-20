@@ -8,7 +8,7 @@
   }
 
   ::ng-deep {
-    .fusion-ui-button:not(.fusion-ui-button__radio):not(.fusion-ui-button__checkbox) + .fusion-ui-button:not(.fusion-ui-button__radio):not(.fusion-ui-button__checkbox) {
+    .f-button:not(.f-button__radio):not(.f-button__checkbox) + .f-button:not(.f-button__radio):not(.f-button__checkbox) {
       margin-left: 12px;
     }
   }

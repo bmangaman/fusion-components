@@ -17,7 +17,7 @@ import { DomService } from './dom.service';
 import Spy = jasmine.Spy;
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: '',
 })
 class TestComponent {

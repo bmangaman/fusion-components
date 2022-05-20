@@ -14,16 +14,16 @@ import {
   TemplateRef,
 } from '@angular/core';
 
-import { TemplateDirective } from '@fusion-ui/fusion-components/lib/directives';
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services';
-import { TranslatedComponent } from '@fusion-ui/fusion-components/lib/shared';
+import { TemplateDirective } from '@fusion-components/lib/directives';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
+import { TranslatedComponent } from '@fusion-components/lib/shared';
 
-import { WINDOW } from '@fusion-ui/fusion-components/lib/providers';
+import { WINDOW } from '@fusion-components/lib/providers';
 import { v4 as uuidv4 } from 'uuid';
 import { NotificationTemplate, NotificationTranslations, NotificationType } from './notification.interface';
 
 @Component({
-  selector: 'fusion-ui-notification',
+  selector: 'f-notification',
   templateUrl: './notification.component.html',
   animations: [
     trigger('fadeOut', [
@@ -79,7 +79,7 @@ export class NotificationComponent extends TranslatedComponent implements OnInit
   @Input() disableAnimations: boolean;
 
   /**
-   * (Optional.) Additional css classes to put on the fusion-ui-notification element. Note that this is the only way to
+   * (Optional.) Additional css classes to put on the f-notification element. Note that this is the only way to
    * append classes; anything added in the DOM will be overwritten by the host binding on attr.class.
    */
   @Input() classList: string[] = [];
@@ -87,7 +87,7 @@ export class NotificationComponent extends TranslatedComponent implements OnInit
   /**
    * Apply fade out animation to host element.
    */
-  @HostBinding('@fadeOut') fadeOut;
+  @HostBinding('@fadeOut') fadeOut: string;
 
   /**
    * Applied the disabled animation attribute to the host element.
@@ -118,14 +118,14 @@ export class NotificationComponent extends TranslatedComponent implements OnInit
    */
   @HostBinding('attr.class')
   get hostClasses(): string {
-    const classes: string[] = ['fusion-ui-notification', ...this.classList];
+    const classes: string[] = ['f-notification', ...this.classList];
 
     if (this.sticky) {
       classes.push('sticky-msg-position');
     }
 
     if (this._notificationType) {
-      classes.push(`fusion-ui-notification__${this._notificationType}`);
+      classes.push(`f-notification__${this._notificationType}`);
     }
 
     if (this._dismissed) {
@@ -153,7 +153,7 @@ export class NotificationComponent extends TranslatedComponent implements OnInit
    * Returns the aria type label if provided otherwise null.
    */
   get ariaTypeLabel(): string {
-    return this.translations?.ariaTypeLabel ? this.translations.ariaTypeLabel[this.notificationType] : null;
+    return this.translations?.ariaTypeLabel?.[this.notificationType] || '';
   }
 
   /**
@@ -206,7 +206,7 @@ export class NotificationComponent extends TranslatedComponent implements OnInit
     return this._notificationType;
   }
 
-  private _timeoutId: number;
+  private _timeoutId: number | undefined;
 
   /**
    * If set, the notification will be automatically dismissed after this many milliseconds.

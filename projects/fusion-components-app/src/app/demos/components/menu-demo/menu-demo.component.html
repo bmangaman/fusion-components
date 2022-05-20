@@ -1,43 +1,43 @@
 <fusion-demo titleText="Menu" [isResultCentered]="true">
 
-  <form form class="fusion-components-demo__form fusion-ui-form" *ngIf="menuForm" [formGroup]="menuForm">
+  <form form class="fusion-components-demo__form f-form" *ngIf="menuForm" [formGroup]="menuForm">
     <!-- START: location select -->
-    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
-      <label class="fusion-ui-form__input-label" for="location-select">Location</label>
-      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
-        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="dialogLocation" id="location-select">
-          <ng-container *ngFor="let location of FusionUiLocation | enumToArray">
+    <div class="f-form__fieldset f-table__filter-input-field-selector">
+      <label class="f-form__input-label" for="location-select">Location</label>
+      <div class="f-form__input-wrapper f-form__select-wrapper">
+        <select class="f-form__input f-form__select" formControlName="dialogLocation" id="location-select">
+          <ng-container *ngFor="let location of Location | enumToArray">
             <option [value]="location">{{ location }}</option>
           </ng-container>
         </select>
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: location select -->
 
     <!-- START: minWidth input -->
-    <div class="fusion-ui-form__fieldset">
-      <label class="fusion-ui-form__input-label" for="minWidth-input">Min Width (in px)</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input class="fusion-ui-form__input" type="number" formControlName="minWidth" id="minWidth-input" />
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+    <div class="f-form__fieldset">
+      <label class="f-form__input-label" for="minWidth-input">Min Width (in px)</label>
+      <div class="f-form__input-wrapper">
+        <input class="f-form__input" type="number" formControlName="minWidth" id="minWidth-input" />
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: minWidth input -->
 
     <!-- START: maxHeight input -->
-    <div class="fusion-ui-form__fieldset">
-      <label class="fusion-ui-form__input-label" for="maxHeight-input">Max Height (in px)</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input class="fusion-ui-form__input" type="number" formControlName="maxHeight" id="maxHeight-input" />
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+    <div class="f-form__fieldset">
+      <label class="f-form__input-label" for="maxHeight-input">Max Height (in px)</label>
+      <div class="f-form__input-wrapper">
+        <input class="f-form__input" type="number" formControlName="maxHeight" id="maxHeight-input" />
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: maxHeight input -->
   </form>
 
   <ng-container result>
-    <fusion-ui-menu
+    <f-menu
       [isMenuDialogOpen]="isMenuDialogOpen"
       [aria]="{ closeButtonLabel: 'Close Demo Menu Dialog', menuDialogLabelledBy: 'demo-menu' }"
       [dialogMinWidth]="menuForm?.get('minWidth')?.value + 'px'"
@@ -45,14 +45,14 @@
       [dialogLocation]="menuForm?.get('dialogLocation')?.value"
       (menuClosed)="isMenuDialogOpen = false">
       <ng-template fusionUiTemplate="menuButton">
-        <fusion-ui-button
+        <f-button
           type="primary"
           [opensMenu]="true"
           text="Click to Display Menu Dialog"
           [isAutofocused]="isMenuDialogOpen !== undefined && !isMenuDialogOpen"
           [aria]="{ haspopup: true, controls: 'demo-menu', expanded: isMenuDialogOpen }"
           (buttonClick)="isMenuDialogOpen = !isMenuDialogOpen">
-        </fusion-ui-button>
+        </f-button>
       </ng-template>
       <ng-template fusionUiTemplate="menuDialogHeader">
         Menu Dialog Header
@@ -63,7 +63,7 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mus mauris vitae ultricies leo integer. Eget gravida cum sociis natoque penatibus. Tortor condimentum lacinia quis vel eros donec ac odio tempor. Quis lectus nulla at volutpat diam ut. Dignissim diam quis enim lobortis. Nibh sed pulvinar proin gravida hendrerit lectus. In ornare quam viverra orci sagittis eu volutpat odio facilisis. Gravida dictum fusce ut placerat orci nulla pellentesque dignissim. Commodo sed egestas egestas fringilla phasellus. Consequat nisl vel pretium lectus. Lectus magna fringilla urna porttitor. Pellentesque habitant morbi tristique senectus et netus et. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Diam quam nulla porttitor massa id neque aliquam vestibulum morbi. Velit ut tortor pretium viverra suspendisse. Condimentum lacinia quis vel eros donec ac. Molestie a iaculis at erat pellentesque adipiscing.</p>
         <p>Enim sit amet venenatis urna. Porta nibh venenatis cras sed. Nunc id cursus metus aliquam eleifend mi in. Viverra vitae congue eu consequat ac felis. Ipsum dolor sit amet consectetur adipiscing elit ut. Id consectetur purus ut faucibus pulvinar elementum integer enim neque. Consectetur lorem donec massa sapien faucibus et molestie. Quisque id diam vel quam elementum. Dolor purus non enim praesent elementum facilisis. Ipsum nunc aliquet bibendum enim facilisis gravida. Pellentesque diam volutpat commodo sed. Arcu dictum varius duis at consectetur lorem donec massa sapien. Facilisi nullam vehicula ipsum a arcu. Sagittis purus sit amet volutpat consequat mauris nunc congue.</p>
       </ng-template>
-    </fusion-ui-menu>
+    </f-menu>
   </ng-container>
 
 </fusion-demo>

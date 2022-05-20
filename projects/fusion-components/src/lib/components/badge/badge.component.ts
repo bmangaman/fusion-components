@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 
-import { FusionUiSize, FusionUiStatusLevel } from '../../shared';
+import { Size, StatusLevel } from '../../shared';
 import { BadgeStyling } from './badge.interface';
 
 /**
@@ -9,16 +9,16 @@ import { BadgeStyling } from './badge.interface';
  * The Badge Component provides the structure and styling for a badge.
  *
  * @example
- * <fusion-ui-badge
+ * <f-badge
  *   [fillContainer]="false"
- *   [type]="FusionUiStatusLevel.SUCCESS"
- *   [size]="FusionUiSize.LARGE"
+ *   [type]="StatusLevel.SUCCESS"
+ *   [size]="Size.LARGE"
  *   text="Badge Text"
  *   subText="Badge Subtext">
- * </fusion-ui-badge>
+ * </f-badge>
  */
 @Component({
-  selector: 'fusion-ui-badge',
+  selector: 'f-badge',
   templateUrl: 'badge.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -38,13 +38,13 @@ export class BadgeComponent {
    * Determines the type of the badge (usually related to a status or level).
    * By default is BASE.
    */
-  @Input() type: FusionUiStatusLevel = FusionUiStatusLevel.BASE;
+  @Input() type: StatusLevel = StatusLevel.BASE;
 
   /**
    * Determines the size of the badge.
    * By default is MEDIUM.
    */
-  @Input() size: FusionUiSize = FusionUiSize.MEDIUM;
+  @Input() size: Size = Size.MEDIUM;
 
   /**
    * Determines the main text of the badge.
@@ -73,7 +73,7 @@ export class BadgeComponent {
    * the badge fills its container.
    */
   @HostBinding('class') get cssClasses(): string {
-    const wrapper = 'fusion-ui-badge__wrapper';
+    const wrapper = 'f-badge__wrapper';
     const classes: string[] = [wrapper];
 
     if (this.fillContainer) {

@@ -1,11 +1,11 @@
-<div class="fusion-ui-form__fieldset fusion-ui-select" #selectInput>
-  <label class="fusion-ui-form__input-label fusion-ui-select__label" *ngIf="!!label">{{ (label | instanceOf:Observable) ? (label | async) : label }}</label>
+<div class="f-form__fieldset f-select" #selectInput>
+  <label class="f-form__input-label f-select__label" *ngIf="!!label">{{ (label | instanceOf:Observable) ? (label | async) : label }}</label>
   <div [ngClass]="selectClasses">
 
     <!-- START: Button to display of the list of options -->
     <button
       *ngIf="!isSearchable"
-      class="fusion-ui-form__input-button-wrapper fusion-ui-select__button"
+      class="f-form__input-button-wrapper f-select__button"
       aria-haspopup="listbox"
       [attr.aria-expanded]="isDropdownOpen"
       [attr.aria-controls]="isDropdownOpen ? uuid : null"
@@ -16,23 +16,23 @@
       (blur)="onBlur()">
 
       <div
-        class="fusion-ui-form__input fusion-ui-form__select fusion-ui-select__button-inner"
+        class="f-form__input f-form__select f-select__button-inner"
         [ngClass]="{
-          'fusion-ui-form__input--error': control?.touched && control?.invalid,
-          'fusion-ui-form__input--valid': control?.valid,
-          'fusion-ui-form__input--disabled': isDisabled
+          'f-form__input--error': control?.touched && control?.invalid,
+          'f-form__input--valid': control?.valid,
+          'f-form__input--disabled': isDisabled
         }">
         {{ control?.value?.label || defaultLabel }}
       </div>
 
-      <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+      <span class="f-form__input-wrapper-status-icon"></span>
     </button>
     <!-- END: Button to display of the list of options -->
 
     <!-- START: Input to search the list of options -->
-    <div *ngIf="isSearchable" class="fusion-ui-form__input-wrapper">
+    <div *ngIf="isSearchable" class="f-form__input-wrapper">
       <input
-        class="fusion-ui-form__input fusion-ui-select__input"
+        class="f-form__input f-select__input"
         type="text"
         autocomplete="off"
         aria-haspopup="listbox"
@@ -46,18 +46,18 @@
         (keyup.enter)="onEnter()"
         (blur)="onBlur()"
         [ngClass]="{
-          'fusion-ui-form__input--error': control?.touched && control?.invalid,
-          'fusion-ui-form__input--valid': control?.valid,
-          'fusion-ui-form__input--disabled': isDisabled
+          'f-form__input--error': control?.touched && control?.invalid,
+          'f-form__input--valid': control?.valid,
+          'f-form__input--disabled': isDisabled
         }">
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+        <span class="f-form__input-wrapper-status-icon"></span>
     </div>
     <!-- END: Input to search the list of options -->
 
     <!-- START: The list of options -->
     <ul
       role="listbox"
-      class="fusion-ui-form__select-dropdown fusion-ui-select__dropdown-menu"
+      class="f-form__select-dropdown f-select__dropdown-menu"
       *ngIf="isDropdownOpen"
       [style.minHeight.px]="menuMinHeight"
       [attr.aria-activedescendant]="uuid"
@@ -65,7 +65,7 @@
 
       <cdk-virtual-scroll-viewport
         [style.minHeight.px]="menuMinHeight"
-        class="fusion-ui-form__select-dropdown-scroll-viewport"
+        class="f-form__select-dropdown-scroll-viewport"
         [itemSize]="optionHeight"
         [maxBufferPx]="optionHeight * 20"
         [minBufferPx]="optionHeight * 20">
@@ -73,8 +73,8 @@
         <li
           role="option"
           *cdkVirtualFor="let option of ( isSearchable ? filteredOptions : options ); index as i; trackBy: trackByFn"
-          class="fusion-ui-form__select-option fusion-ui-select__dropdown-menu-option fusion-ui-select__dropdown-menu-option--{{ i }}"
-          [ngClass]="{ 'fusion-ui-form__select-option--active' : option === value, 'fusion-ui-form__select-option--disabled' : option?.isDisabled }"
+          class="f-form__select-option f-select__dropdown-menu-option f-select__dropdown-menu-option--{{ i }}"
+          [ngClass]="{ 'f-form__select-option--active' : option === value, 'f-form__select-option--disabled' : option?.isDisabled }"
           [fusionUiAutofocus]="!isSearchable ? (value?.value ? value === option : i === 0) : false"
           [attr.tabIndex]="option?.isDisabled ? -1 : 0"
           [attr.value]="option"
@@ -90,7 +90,7 @@
         </li>
 
         <div
-          class="fusion-ui-form__select-no-results fusion-ui-form__select-option"
+          class="f-form__select-no-results f-form__select-option"
           *ngIf="!(isSearchable ? filteredOptions?.length : options?.length)">
           {{ translations?.noResults || ((baseTranslationKey + '.select.noResults') | translate) }}
         </div>

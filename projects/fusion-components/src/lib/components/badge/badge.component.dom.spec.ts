@@ -2,33 +2,33 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { EnumToArrayPipe } from '../../pipes/enum-to-array';
-import { GetFusionUiStatusLevelTextPipe } from '../../pipes/get-fusion-ui-status-level-text';
-import { FusionUiSize, FusionUiStatusLevel } from '../../shared/interfaces';
+import { GetStatusLevelTextPipe } from '../../pipes/get-status-level-text';
+import { Size, StatusLevel } from '../../shared/interfaces';
 import { BadgeComponentPageObject } from './badge.component.spec.po';
 import { BadgeModule } from './badge.module';
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
-  <fusion-ui-badge
+  <f-badge
     [fillContainer]="fillContainer"
     [type]="type"
     [size]="size"
     [text]="text"
     [subText]="subText">
-  </fusion-ui-badge>
+  </f-badge>
   `,
 })
 export class BadgeTestComponent {
-  type: FusionUiStatusLevel;
-  size: FusionUiSize;
+  type: StatusLevel;
+  size: Size;
   text: string;
   subText: string;
   fillContainer: boolean;
 }
 
 describe('BadgeComponent', () => {
-  const getFusionUiStatusLevelTextPipe: GetFusionUiStatusLevelTextPipe = new GetFusionUiStatusLevelTextPipe();
+  const getStatusLevelTextPipe: GetStatusLevelTextPipe = new GetStatusLevelTextPipe();
   const enumToArrayPipe: EnumToArrayPipe = new EnumToArrayPipe();
 
   let component: BadgeTestComponent;
@@ -60,17 +60,17 @@ describe('BadgeComponent', () => {
 
   describe('the badge text and subtext', () => {
     it('should be displayed if provided', () => {
-      component.size = FusionUiSize.MEDIUM;
-      component.type = FusionUiStatusLevel.BASE;
+      component.size = Size.MEDIUM;
+      component.type = StatusLevel.BASE;
 
-      component.text = null;
-      component.subText = null;
+      component.text = null!;
+      component.subText = null!;
       fixture.detectChanges();
       expect(page.badge.badgeText).toEqual('-');
       expect(page.badge.badgeSubtext).toBeFalsy();
 
       component.text = 'text';
-      component.subText = null;
+      component.subText = null!;
       fixture.detectChanges();
       expect(page.badge.badgeText).toEqual('text');
       expect(page.badge.badgeSubtext).toBeFalsy();
@@ -85,45 +85,45 @@ describe('BadgeComponent', () => {
 
   describe('the badge styling (size and type)', () => {
     it('should update the badge styling based on the provided type and size inputs', () => {
-      const baseClass = 'fusion-ui-badge';
+      const baseClass = 'f-badge';
 
-      component.type = null;
-      component.size = null;
+      component.type = null!;
+      component.size = null!;
       fixture.detectChanges();
       expect(page.badge.badge.classList).toContain(baseClass);
       expect(page.badge.badge.classList).toContain(`${baseClass}--`);
 
-      enumToArrayPipe.transform(FusionUiStatusLevel).forEach((value: number) => {
-        const levelString: string = getFusionUiStatusLevelTextPipe.transform(value, null, true);
-        component.type = value;
-        component.size = null;
+      enumToArrayPipe.transform(StatusLevel).forEach((value: string | number) => {
+        const levelString: string = getStatusLevelTextPipe.transform(Number(value), undefined, true);
+        component.type = Number(value);
+        component.size = null!;
         fixture.detectChanges();
         expect(page.badge.badge.classList).toContain(baseClass);
         expect(page.badge.badge.classList).toContain(`${baseClass}--${levelString}`);
         expect(page.badge.badge.classList).toContain(`${baseClass}--`);
       });
 
-      enumToArrayPipe.transform(FusionUiSize).forEach((value: string) => {
-        component.type = null;
-        component.size = value as FusionUiSize;
+      enumToArrayPipe.transform(Size).forEach((value: string | number) => {
+        component.type = null!;
+        component.size = value as Size;
         fixture.detectChanges();
         expect(page.badge.badge.classList).toContain(baseClass);
         expect(page.badge.badge.classList).toContain(`${baseClass}--${value}`);
         expect(page.badge.badge.classList).toContain(`${baseClass}--`);
       });
 
-      component.type = FusionUiStatusLevel.BASE;
-      component.size = FusionUiSize.SMALL;
+      component.type = StatusLevel.BASE;
+      component.size = Size.SMALL;
       fixture.detectChanges();
       expect(page.badge.badge.classList).toContain(baseClass);
       expect(page.badge.badge.classList).toContain(`${baseClass}--base`);
       expect(page.badge.badge.classList).toContain(`${baseClass}--small`);
     });
 
-    it('should append fusion-ui-badge__wrapper classes to the host element', () => {
-      const baseClass = 'fusion-ui-badge__wrapper';
+    it('should append f-badge__wrapper classes to the host element', () => {
+      const baseClass = 'f-badge__wrapper';
 
-      component.fillContainer = null;
+      component.fillContainer = null!;
       fixture.detectChanges();
       expect(page.badge.host.classList).toContain(baseClass);
       expect(page.badge.host.classList).not.toContain(`${baseClass}-fill-container`);

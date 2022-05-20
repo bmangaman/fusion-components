@@ -66,12 +66,12 @@ export class DomService {
     this.appRef.attachView(componentRef.hostView);
     const domElem: HTMLElement = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0];
 
-    const body: Element = this.document.querySelector('body');
+    const body: Element | null = this.document.querySelector('body');
 
     if (!appendTo) {
       this.renderer.appendChild(body, domElem);
     } else if (typeof appendTo === 'string') {
-      const element: Element = document.querySelector(appendTo);
+      const element: Element | null = document.querySelector(appendTo);
       this.renderer.appendChild(!!element ? element : body, domElem);
     } else {
       this.renderer.appendChild(appendTo, domElem);

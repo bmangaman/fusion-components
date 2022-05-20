@@ -1,7 +1,7 @@
 @import '../../tokens/tokens.scss';
 @import '../../mixins/mixins.scss';
 
-.fusion-ui-form {
+.f-form {
   &__input-wrapper {
     display: block;
     position: relative;
@@ -9,74 +9,74 @@
     &-status-icon {
       display: none;
       position: absolute;
-      right: $fusion-ui-spacing-xs;
+      right: $f-spacing-xs;
       top: 50%;
       pointer-events: none;
       transform: translateY(-50%);
 
       &:after {
         font-family: 'Material Design Icons';
-        font-size: $fusion-ui-font-size-icon-md;
+        font-size: $f-font-size-icon-md;
       }
     }
 
-    .fusion-ui-form__input {
+    .f-form__input {
       &:focus,
       &--focus {
         outline: none;
-        box-shadow: 0 0 0 2px $fusion-ui-color-blue-medium-light;
+        box-shadow: 0 0 0 2px $f-color-blue-medium-light;
       }
 
-      &:not(.fusion-ui-form__input--no-validation-styling) {
-        &.fusion-ui-form__input--valid {
+      &:not(.f-form__input--no-validation-styling) {
+        &.f-form__input--valid {
           &[type="number"] {
-            padding-right: $fusion-ui-spacing-xl;
+            padding-right: $f-spacing-xl;
           }
-          border-color: $fusion-ui-color-success-primary;
-          box-shadow:inset 0px 0px 0px 1px $fusion-ui-color-success-primary;
+          border-color: $f-color-success-primary;
+          box-shadow:inset 0px 0px 0px 1px $f-color-success-primary;
 
-          & + .fusion-ui-form__input-wrapper-status-icon {
+          & + .f-form__input-wrapper-status-icon {
             display: block;
 
             &:after {
-              color: $fusion-ui-color-success-primary;
+              color: $f-color-success-primary;
               content: '\F5E0';
             }
           }
         }
 
-        &.fusion-ui-form__input--warning {
+        &.f-form__input--warning {
           &[type="number"] {
-            padding-right: $fusion-ui-spacing-xl;
+            padding-right: $f-spacing-xl;
           }
 
-          border-color: $fusion-ui-color-warning-primary;
-          box-shadow:inset 0px 0px 0px 1px $fusion-ui-color-warning-primary;
+          border-color: $f-color-warning-primary;
+          box-shadow:inset 0px 0px 0px 1px $f-color-warning-primary;
 
-          & + .fusion-ui-form__input-wrapper-status-icon {
+          & + .f-form__input-wrapper-status-icon {
             display: block;
 
             &:after {
-              color: $fusion-ui-color-warning-primary;
+              color: $f-color-warning-primary;
               content: '\F026';
             }
           }
         }
 
-        &.fusion-ui-form__input--error,
-        &.fusion-ui-form__input--invalid {
+        &.f-form__input--error,
+        &.f-form__input--invalid {
           &[type="number"] {
-            padding-right: $fusion-ui-spacing-xl;
+            padding-right: $f-spacing-xl;
           }
 
-          border-color: $fusion-ui-color-error-primary;
-          box-shadow:inset 0px 0px 0px 1px $fusion-ui-color-warning-primary;
+          border-color: $f-color-error-primary;
+          box-shadow:inset 0px 0px 0px 1px $f-color-warning-primary;
           
-          & + .fusion-ui-form__input-wrapper-status-icon {
+          & + .f-form__input-wrapper-status-icon {
             display: block;
 
             &:after {
-              color: $fusion-ui-color-error-primary;
+              color: $f-color-error-primary;
               content: '\F159';
             }
           }
@@ -85,14 +85,14 @@
 
       &:disabled,
       &--disabled {
-        background: $fusion-ui-color-background-light;
-        border: solid 2px $fusion-ui-color-greyscale-76;
+        background: $f-color-background-light;
+        border: solid 2px $f-color-greyscale-76;
         cursor: not-allowed;
       }
 
-      &:read-only:not(.fusion-ui-form__select),
-      &--readonly:not(.fusion-ui-form__select) {
-        background: $fusion-ui-color-background-light;
+      &:read-only:not(.f-form__select),
+      &--readonly:not(.f-form__select) {
+        background: $f-color-background-light;
         opacity: 1;
         cursor: not-allowed;
       }
@@ -100,18 +100,18 @@
   }
 
   &__input {
-    border: solid 1px $fusion-ui-color-greyscale-76;
-    border-radius: $fusion-ui-border-size-md;
-    font-size: $fusion-ui-font-size-sm;
+    border: solid 1px $f-color-greyscale-76;
+    border-radius: $f-border-size-md;
+    font-size: $f-font-size-sm;
     display: block;
-    padding: $fusion-ui-spacing-xs $fusion-ui-spacing-sm;
+    padding: $f-spacing-xs $f-spacing-sm;
     width: 100%;
 
     &-label {
-      @include fusion-ui-label-sm;
+      @include f-label-sm;
 
       display: inline-block;
-      margin-bottom: $fusion-ui-spacing-xs;
+      margin-bottom: $f-spacing-xs;
     }
 
     &-password-visibility-toggle {
@@ -137,11 +137,11 @@
       }
 
       &-button {
-        background: $fusion-ui-color-background-light;
-        border: $fusion-ui-border-light;
-        border-radius: 0 $fusion-ui-border-radius-sm $fusion-ui-border-radius-sm 0;
+        background: $f-color-background-light;
+        border: $f-border-light;
+        border-radius: 0 $f-border-radius-sm $f-border-radius-sm 0;
         cursor: pointer;
-        font-weight: $fusion-ui-font-size-icon-lg;
+        font-weight: $f-font-size-icon-lg;
         margin: 0;
         padding: 0;
         text-align: center;
@@ -157,24 +157,24 @@
     &:after {
       position: absolute;
       font-family: 'Material Design Icons';
-      font-size: $fusion-ui-font-size-icon-md;
+      font-size: $f-font-size-icon-md;
       content: '\F140';
-      right: $fusion-ui-spacing-xs;
+      right: $f-spacing-xs;
       top: 50%;
       pointer-events: none;
       transform: translateY(-50%);
     }
 
-    .fusion-ui-form__input-wrapper-status-icon {
-      right: calc(#{$fusion-ui-spacing-xl} - #{$fusion-ui-spacing-xxs});
+    .f-form__input-wrapper-status-icon {
+      right: calc(#{$f-spacing-xl} - #{$f-spacing-xxs});
     }
   }
 
   &__select {
     appearance: none;
-    background: $fusion-ui-color-background-white;
+    background: $f-color-background-white;
     cursor: pointer;
-    padding: $fusion-ui-spacing-xs $fusion-ui-spacing-md $fusion-ui-spacing-xs $fusion-ui-spacing-sm;
+    padding: $f-spacing-xs $f-spacing-md $f-spacing-xs $f-spacing-sm;
   }
 
   // STYLES FOR THE SELECT COMPONENT
@@ -199,10 +199,10 @@
     }
 
     &-dropdown {
-      background-color: $fusion-ui-color-background-white;
-      border: $fusion-ui-border-light;
-      border-radius: 0 0 $fusion-ui-border-radius-md $fusion-ui-border-radius-md;
-      box-shadow: $fusion-ui-box-shadow-elevation-level-2;
+      background-color: $f-color-background-white;
+      border: $f-border-light;
+      border-radius: 0 0 $f-border-radius-md $f-border-radius-md;
+      box-shadow: $f-box-shadow-elevation-level-2;
       display: block;
       height: 100%;
       left: 0;
@@ -226,19 +226,19 @@
     &-option {
       cursor: pointer;
       display: block;
-      font-size: $fusion-ui-font-size-md;
+      font-size: $f-font-size-md;
       height: 36px;
       margin: 0;
-      padding: $fusion-ui-spacing-xs $fusion-ui-spacing-md;
+      padding: $f-spacing-xs $f-spacing-md;
 
-      &:hover:not(.fusion-ui-form__select-option--active):not(.fusion-ui-form__select-option--disabled),
-      &:focus:not(.fusion-ui-form__select-option--active):not(.fusion-ui-form__select-option--disabled) {
-        background-color: $fusion-ui-color-background-light;
+      &:hover:not(.f-form__select-option--active):not(.f-form__select-option--disabled),
+      &:focus:not(.f-form__select-option--active):not(.f-form__select-option--disabled) {
+        background-color: $f-color-background-light;
       }
 
       &--active {
-        color: $fusion-ui-color-primary-text-on-dark;
-        background-color: $fusion-ui-color-blue-medium;
+        color: $f-color-primary-text-on-dark;
+        background-color: $f-color-blue-medium;
       }
 
       &--disabled {

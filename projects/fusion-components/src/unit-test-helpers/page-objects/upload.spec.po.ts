@@ -17,18 +17,18 @@ export interface UploadFilePageObject {
 /**
  * UPLOAD PAGE OBJECT
  *
- * Page object for the fusion-ui-upload component.
- * Makes it easier to find and select certain fusion-ui-upload attributes and elements.
+ * Page object for the f-upload component.
+ * Makes it easier to find and select certain f-upload attributes and elements.
  */
 export class UploadPageObject {
   private fixture: ComponentFixture<any>;
   private uploadClass: string;
 
   get upload(): HTMLElement {
-    // first try to get the fusion-ui-upload element by a provided class
+    // first try to get the f-upload element by a provided class
     const uploadClass: HTMLElement = this.uploadClass ? this.fixture.nativeElement.querySelector(this.uploadClass) : null;
-    // if no provided class or element not found, try to find the fusion-ui-upload element by the fusion-ui-upload tag
-    const fusionUpload: HTMLElement = (uploadClass || this.fixture.nativeElement).querySelector('fusion-ui-upload');
+    // if no provided class or element not found, try to find the f-upload element by the f-upload tag
+    const fusionUpload: HTMLElement = (uploadClass || this.fixture.nativeElement).querySelector('f-upload');
 
     return fusionUpload;
   }
@@ -40,7 +40,7 @@ export class UploadPageObject {
    */
   get instructions(): string {
     const upload: HTMLElement = this.upload;
-    const instructionsContainer: HTMLDivElement = upload ? upload.querySelector('.fusion-ui-upload__instructions') : null;
+    const instructionsContainer: HTMLDivElement = upload ? upload.querySelector('.f-upload__instructions') : null;
     return instructionsContainer ? instructionsContainer.innerText : null;
   }
 
@@ -51,8 +51,8 @@ export class UploadPageObject {
    */
   get browseButton(): HTMLInputElement {
     const upload: HTMLElement = this.upload;
-    const browseContainer: HTMLDivElement = upload ? upload.querySelector('.fusion-ui-upload__browse') : null;
-    return browseContainer ? browseContainer.querySelector('.fusion-ui-upload__browse-input') : null;
+    const browseContainer: HTMLDivElement = upload ? upload.querySelector('.f-upload__browse') : null;
+    return browseContainer ? browseContainer.querySelector('.f-upload__browse-input') : null;
   }
 
   /**
@@ -62,7 +62,7 @@ export class UploadPageObject {
    */
   get filesContainer(): HTMLDivElement {
     const upload: HTMLElement = this.upload;
-    return upload ? upload.querySelector('.fusion-ui-upload__files') : null;
+    return upload ? upload.querySelector('.f-upload__files') : null;
   }
 
   /**
@@ -72,7 +72,7 @@ export class UploadPageObject {
    */
   get files(): NodeListOf<HTMLDivElement> {
     const container: HTMLDivElement = this.filesContainer;
-    return container ? container.querySelectorAll('.fusion-ui-upload__file') : null;
+    return container ? container.querySelectorAll('.f-upload__file') : null;
   }
 
   /**
@@ -85,22 +85,22 @@ export class UploadPageObject {
     const files: NodeListOf<HTMLDivElement> = this.files;
     const file: HTMLDivElement = files ? files.item(index) : null;
     return {
-      fileName: (file.querySelector('.fusion-ui-upload__file-info-name') as HTMLDivElement).innerText,
-      fileSize: (file.querySelector('.fusion-ui-upload__file-info-size') as HTMLDivElement).innerText,
-      uploadButton: new ButtonPageObject(this.fixture, '.fusion-ui-upload__file-upload-button'),
-      cancelButton: new ButtonPageObject(this.fixture, '.fusion-ui-upload__file-cancel-button'),
-      removeButton: new ButtonPageObject(this.fixture, '.fusion-ui-upload__file-remove-button'),
-      dismissButton: new ButtonPageObject(this.fixture, '.fusion-ui-upload__file-dismiss-button'),
-      progressBar: new ProgressBarPageObject(this.fixture, `.fusion-ui-upload__file--${ index }`),
-      status: (file.querySelector('.fusion-ui-upload__file-status') as HTMLDivElement).innerText,
+      fileName: (file.querySelector('.f-upload__file-info-name') as HTMLDivElement).innerText,
+      fileSize: (file.querySelector('.f-upload__file-info-size') as HTMLDivElement).innerText,
+      uploadButton: new ButtonPageObject(this.fixture, '.f-upload__file-upload-button'),
+      cancelButton: new ButtonPageObject(this.fixture, '.f-upload__file-cancel-button'),
+      removeButton: new ButtonPageObject(this.fixture, '.f-upload__file-remove-button'),
+      dismissButton: new ButtonPageObject(this.fixture, '.f-upload__file-dismiss-button'),
+      progressBar: new ProgressBarPageObject(this.fixture, `.f-upload__file--${ index }`),
+      status: (file.querySelector('.f-upload__file-status') as HTMLDivElement).innerText,
     };
   }
 
   /**
-   * Creates a page object for a fusion-ui-upload DOM element based on the provided fixture and optional uploadClass.
+   * Creates a page object for a f-upload DOM element based on the provided fixture and optional uploadClass.
    *
-   * @param fixture The parent DOM fixture/ element that houses the fusion-ui-upload.
-   * @param uploadClass Optional, providing a css class appended to a fusion-ui-upload will help make sure the correct one is selected.
+   * @param fixture The parent DOM fixture/ element that houses the f-upload.
+   * @param uploadClass Optional, providing a css class appended to a f-upload will help make sure the correct one is selected.
    */
   constructor(fixture: ComponentFixture<any>, uploadClass?: string) {
     this.fixture = fixture;

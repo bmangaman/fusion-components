@@ -1,15 +1,15 @@
-<div class="fusion-ui-wizard">
-  <div class="fusion-ui-wizard__step-navigation">
-    <ng-content select="img.fusion-ui-wizard__brand-image"></ng-content>
+<div class="f-wizard">
+  <div class="f-wizard__step-navigation">
+    <ng-content select="img.f-wizard__brand-image"></ng-content>
 
-    <div class="fusion-ui-wizard__step-navigation-buttons">
+    <div class="f-wizard__step-navigation-buttons">
       <ng-container *ngFor="let step of steps">
         <button
-          class="fusion-ui-wizard__step-navigation-button"
+          class="f-wizard__step-navigation-button"
           [ngClass]="{
-            'fusion-ui-wizard__step-navigation-button--current' : step?.isCurrent,
-            'fusion-ui-wizard__step-navigation-button--disabled' : step?.isDisabled,
-            'fusion-ui-wizard__step-navigation-button--completed' : step?.isCompleted
+            'f-wizard__step-navigation-button--current' : step?.isCurrent,
+            'f-wizard__step-navigation-button--disabled' : step?.isDisabled,
+            'f-wizard__step-navigation-button--completed' : step?.isCompleted
           }"
           *ngIf="!step?.isHidden"
           [disabled]="step?.isDisabled"
@@ -17,20 +17,20 @@
           [attr.title]="step?.title"
           (click)="setCurrentStep(step)">
           <i
-            class="mdi fusion-ui-wizard__step-navigation-button-icon"
+            class="mdi f-wizard__step-navigation-button-icon"
             [ngClass]="{
               'mdi-check-circle-outline' : step?.isCompleted,
               'mdi-circle' : step?.isCurrent,
               'mdi-circle-outline' : !step?.isCompleted && !step?.isCurrent
             }"
             aria-hidden="true"></i>
-          <span class="fusion-ui-wizard__step-navigation-button-title">{{ step?.title }}</span>
+          <span class="f-wizard__step-navigation-button-title">{{ step?.title }}</span>
         </button>
       </ng-container>
     </div>
   </div>
 
-  <div class="fusion-ui-wizard__step-content">
+  <div class="f-wizard__step-content">
     <ng-content></ng-content> 
   </div>
 </div>

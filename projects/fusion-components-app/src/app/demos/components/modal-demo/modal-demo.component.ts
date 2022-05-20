@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { BaseModalComponent, FusionUiSize, ModalConfig, ModalService, ModalType, OpenModalConfig } from '@fusion-ui/fusion-components';
+import { BaseModalComponent, Size, ModalConfig, ModalService, ModalType, OpenModalConfig } from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-modal',
@@ -8,7 +8,7 @@ import { BaseModalComponent, FusionUiSize, ModalConfig, ModalService, ModalType,
   styleUrls: ['./modal-demo.component.scss']
 })
 export class ModalDemoComponent {
-  readonly FusionUiSize = FusionUiSize;
+  readonly Size = Size;
   readonly ModalType = ModalType;
 
   modalForm: FormGroup;
@@ -25,7 +25,7 @@ export class ModalDemoComponent {
     this.modalForm = this.fb.group({
       type: [ModalType.ALERT],
       container: ['body'],
-      size: [FusionUiSize.MEDIUM],
+      size: [Size.MEDIUM],
       heightAdjustmentElements: [''],
       widthAdjustmentElements: [''],
     });
@@ -69,9 +69,9 @@ export class ModalDemoComponent {
   selector: 'fusion-demo-inner-content',
   styleUrls: ['./modal-demo.component.scss'],
   template: `
-    <fusion-ui-modal-header [isFullModal]="modalConfig?.type === 'full'" (modalClosed)="modalClosed.emit('header (x) button')">Header</fusion-ui-modal-header>
-    <fusion-ui-modal-content>
-      <h2 *ngIf="modalConfig?.type === 'full'" class="fusion-ui-modal__full-header-content">Header</h2>
+    <f-modal-header [isFullModal]="modalConfig?.type === 'full'" (modalClosed)="modalClosed.emit('header (x) button')">Header</f-modal-header>
+    <f-modal-content>
+      <h2 *ngIf="modalConfig?.type === 'full'" class="f-modal__full-header-content">Header</h2>
       Content
       <br>
       Show Long content <input type="checkbox" [ngModel]="longContent.show" (ngModelChange)="change($event)">
@@ -79,17 +79,17 @@ export class ModalDemoComponent {
         <span *ngFor="let x of paragraphs">{{longContent.text}} <br></span>
       </div>
       <br>
-      <fusion-ui-button (buttonClick)="openModal()" text="Open Modal"></fusion-ui-button>
-    </fusion-ui-modal-content>
-    <fusion-ui-modal-footer>
+      <f-button (buttonClick)="openModal()" text="Open Modal"></f-button>
+    </f-modal-content>
+    <f-modal-footer>
       <div
-        [ngClass]="{'fusion-ui-modal__footer-buttons-left': modalConfig?.type === ModalType.FULL}"
-        class="fusion-ui-modal__footer-buttons"
+        [ngClass]="{'f-modal__footer-buttons-left': modalConfig?.type === ModalType.FULL}"
+        class="f-modal__footer-buttons"
       >
-        <fusion-ui-button text="Submit" (buttonClick)="modalClosed.emit('submit button')"></fusion-ui-button>
-        <fusion-ui-button text="Cancel" type="secondary" (buttonClick)="modalClosed.emit('cancel button')"></fusion-ui-button>
+        <f-button text="Submit" (buttonClick)="modalClosed.emit('submit button')"></f-button>
+        <f-button text="Cancel" type="secondary" (buttonClick)="modalClosed.emit('cancel button')"></f-button>
       </div>
-    </fusion-ui-modal-footer>
+    </f-modal-footer>
   `
 })
 export class InnerModalComponent extends BaseModalComponent {

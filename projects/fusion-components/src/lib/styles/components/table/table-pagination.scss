@@ -1,10 +1,10 @@
-.fusion-ui-table__pagination {
+.f-table__pagination {
   @include flex-centered-nowrap;
 
-  border-top: $fusion-ui-border-light;
-  color: $fusion-ui-color-primary-text-on-light;
+  border-top: $f-border-light;
+  color: $f-color-primary-text-on-light;
   min-height: 50px;
-  padding-left: $fusion-ui-spacing-sm;
+  padding-left: $f-spacing-sm;
 
   &--disabled {
     cursor: not-allowed;
@@ -16,33 +16,33 @@
     display: flex;
 
     & > * + * {
-      margin-left: $fusion-ui-spacing-sm;
+      margin-left: $f-spacing-sm;
     }
   }
 
   &-num-selected {
     align-items: center;
-    border-right: $fusion-ui-border-light;
+    border-right: $f-border-light;
     display: flex;
-    padding-right:  $fusion-ui-spacing-sm;
+    padding-right:  $f-spacing-sm;
 
-    & > fusion-ui-button {
-      margin-left: $fusion-ui-spacing-xs;
+    & > f-button {
+      margin-left: $f-spacing-xs;
     }
   }
 
   &-controls {
     @include flex-centered-nowrap;
     flex: 1;
-    padding-right: $fusion-ui-spacing-sm;
+    padding-right: $f-spacing-sm;
 
     &-button {
       @include flex-centered;
 
       background: none;
       border: none;
-      border-radius: $fusion-ui-border-radius-sm;
-      color: $fusion-ui-color-interactive-default;
+      border-radius: $f-border-radius-sm;
+      color: $f-color-interactive-default;
       cursor: pointer;
       height: 24px;
       margin: 0;
@@ -50,26 +50,26 @@
       padding: 0;
 
       &:disabled {
-        color: $fusion-ui-color-primary-text-on-light;
+        color: $f-color-primary-text-on-light;
         cursor: not-allowed;
         opacity: 0.5;
 
-        &.fusion-ui-table__pagination-controls-button-page--selected {
-          font-weight: $fusion-ui-font-weight-semibold;
+        &.f-table__pagination-controls-button-page--selected {
+          font-weight: $f-font-weight-semibold;
           opacity: 1;
         }
       }
 
       & > i {
-        font-size: $fusion-ui-font-size-md;
+        font-size: $f-font-size-md;
       }
 
       &:hover:not(:disabled) {
-        background-color: $fusion-ui-color-background-light;
+        background-color: $f-color-background-light;
       }
 
       & + * {
-        margin-left: $fusion-ui-spacing-xxs;
+        margin-left: $f-spacing-xxs;
       }
     }
   }
@@ -77,7 +77,7 @@
   &-num-per-page {
     text-align: right;
 
-    .fusion-ui-form__fieldset {
+    .f-form__fieldset {
       margin: 0 0 0 auto;
       width: 90px;
     }

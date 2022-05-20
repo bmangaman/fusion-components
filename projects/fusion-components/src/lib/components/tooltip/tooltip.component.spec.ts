@@ -1,8 +1,8 @@
 import { ElementRef, SimpleChange } from '@angular/core';
 import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
-import { FusionUiPosition, FusionUiPositionConfig } from '../../shared';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { Position, PositionConfig } from '../../shared';
 import * as Utilities from '../../shared/utilities';
 import { TooltipComponent } from './tooltip.component';
 
@@ -146,7 +146,7 @@ describe('TooltipComponent', () => {
       expect(component.generateCssClasses).not.toHaveBeenCalled();
       expect(component.updateTooltipPosition).not.toHaveBeenCalled();
 
-      component.position = FusionUiPosition.LEFT;
+      component.position = Position.LEFT;
       component.ngOnChanges({
         position: new SimpleChange(null, component.position, false),
       });
@@ -163,7 +163,7 @@ describe('TooltipComponent', () => {
   });
 
   describe('updateTooltipPosition()', () => {
-    let positionConfig: FusionUiPositionConfig;
+    let positionConfig: PositionConfig;
 
     beforeEach(() => {
       positionConfig = {
@@ -196,7 +196,7 @@ describe('TooltipComponent', () => {
 
   describe('generateCssClasses()', () => {
     it('should append the correct CSS classes', () => {
-      const base = 'fusion-ui-tooltip';
+      const base = 'f-tooltip';
       let expectedResult: string[];
 
       expectedResult = [base];
@@ -206,25 +206,25 @@ describe('TooltipComponent', () => {
       expect(component.cssClasses).toEqual(expectedResult);
 
       expectedResult = [base, `${base}--left`];
-      component.position = FusionUiPosition.LEFT;
+      component.position = Position.LEFT;
       component.classes = null;
       component.generateCssClasses();
       expect(component.cssClasses).toEqual(expectedResult);
 
       expectedResult = [base, `${base}--right`];
-      component.position = FusionUiPosition.RIGHT;
+      component.position = Position.RIGHT;
       component.classes = null;
       component.generateCssClasses();
       expect(component.cssClasses).toEqual(expectedResult);
 
       expectedResult = [base, `${base}--top`];
-      component.position = FusionUiPosition.TOP;
+      component.position = Position.TOP;
       component.classes = null;
       component.generateCssClasses();
       expect(component.cssClasses).toEqual(expectedResult);
 
       expectedResult = [base, `${base}--bottom`];
-      component.position = FusionUiPosition.BOTTOM;
+      component.position = Position.BOTTOM;
       component.classes = null;
       component.generateCssClasses();
       expect(component.cssClasses).toEqual(expectedResult);

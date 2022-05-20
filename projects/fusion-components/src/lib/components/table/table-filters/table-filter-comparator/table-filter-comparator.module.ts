@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { InstanceOfModule } from '@fusion-ui/fusion-components/lib/pipes/instance-of';
+import { InstanceOfModule } from '@fusion-components/lib/pipes/instance-of';
 import { TableFilterComparatorComponent } from './table-filter-comparator.component';
 
 @NgModule({

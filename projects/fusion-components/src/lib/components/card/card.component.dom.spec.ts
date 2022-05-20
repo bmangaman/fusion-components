@@ -2,15 +2,15 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { of } from 'rxjs';
 
-import { FusionUiSize, FusionUiStatusLevel } from '../../shared';
+import { Size, StatusLevel } from '../../shared';
 import { CardComponentPageObject } from './card.component.spec.po';
 import { CardStatus, CardTemplate, CardTranslations } from './card.interface';
 import { CardModule } from './card.module';
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
-  <fusion-ui-card
+  <f-card
     *ngIf="isLoaded"
     [title]="title"
     [content]="content"
@@ -23,7 +23,7 @@ import { CardModule } from './card.module';
     <ng-template *ngIf="useContentTemplate" [fusionUiTemplate]="CardTemplate.CONTENT">Template Content</ng-template>
     <ng-template *ngIf="useDetailsTemplate" [fusionUiTemplate]="CardTemplate.DETAILS">Template Details</ng-template>
     <ng-template *ngIf="useFooterTemplate" [fusionUiTemplate]="CardTemplate.FOOTER">Template Footer</ng-template>
-  </fusion-ui-card>
+  </f-card>
   `,
 })
 export class CardTestComponent {
@@ -33,7 +33,7 @@ export class CardTestComponent {
   content: string;
   details: string;
   footer: string;
-  size: FusionUiSize;
+  size: Size;
   cssClasses: string[];
   statuses: CardStatus[];
   hideStatusBarStyling: boolean;
@@ -82,7 +82,7 @@ describe('CardComponent', () => {
     });
 
     it('should not display the title text if not provided', () => {
-      component.title = undefined;
+      component.title = undefined!
       component.useTitleTemplate = false;
       reloadComponent();
       expect(page.card.titleText).toBeFalsy();
@@ -93,7 +93,7 @@ describe('CardComponent', () => {
       component.useTitleTemplate = false;
       reloadComponent();
       expect(page.card.titleText).toBeTruthy();
-      expect(page.card.titleText.innerText).toContain('TITLE');
+      expect(page.card.titleText?.innerText).toContain('TITLE');
     });
 
     it('should use the cardTitle template if provided', () => {
@@ -101,55 +101,55 @@ describe('CardComponent', () => {
       component.useTitleTemplate = true;
       reloadComponent();
       expect(page.card.titleText).toBeTruthy();
-      expect(page.card.titleText.innerText).toContain('Template Title');
+      expect(page.card.titleText?.innerText).toContain('Template Title');
     });
 
     it('should display the the provided statuses', () => {
-      component.statuses = undefined;
+      component.statuses = undefined!
       reloadComponent();
       expect(page.card.statuses).toBeTruthy();
-      expect(page.card.statuses.length).toEqual(0);
+      expect(page.card.statuses?.length).toEqual(0);
 
       component.statuses = [];
       reloadComponent();
       expect(page.card.statuses).toBeTruthy();
-      expect(page.card.statuses.length).toEqual(0);
+      expect(page.card.statuses?.length).toEqual(0);
 
       component.statuses = [
-        { status: FusionUiStatusLevel.SUCCESS },
-        { status: FusionUiStatusLevel.ERROR },
+        { status: StatusLevel.SUCCESS },
+        { status: StatusLevel.ERROR },
       ];
       reloadComponent();
       expect(page.card.statuses).toBeTruthy();
-      expect(page.card.statuses.length).toEqual(2);
-      expect(page.card.getStatusByType(FusionUiStatusLevel.SUCCESS)).toBeTruthy();
-      expect(page.card.getStatusByType(FusionUiStatusLevel.ERROR)).toBeTruthy();
-      expect(page.card.getStatusByType(FusionUiStatusLevel.CRITICAL)).toBeFalsy();
+      expect(page.card.statuses?.length).toEqual(2);
+      expect(page.card.getStatusByType(StatusLevel.SUCCESS)).toBeTruthy();
+      expect(page.card.getStatusByType(StatusLevel.ERROR)).toBeTruthy();
+      expect(page.card.getStatusByType(StatusLevel.CRITICAL)).toBeFalsy();
     });
 
     it('should display the provided status text', () => {
       let expectedText = 'NORMAL TEXT';
       component.statuses = [
-        { status: FusionUiStatusLevel.SUCCESS, text: expectedText },
+        { status: StatusLevel.SUCCESS, text: expectedText },
       ];
       reloadComponent();
       expect(page.card.statuses).toBeTruthy();
-      expect(page.card.statuses.length).toEqual(1);
-      let success = page.card.getStatusByType(FusionUiStatusLevel.SUCCESS);
+      expect(page.card.statuses?.length).toEqual(1);
+      let success = page.card.getStatusByType(StatusLevel.SUCCESS);
       expect(success).toBeTruthy();
-      expect(success.innerText).toEqual(expectedText);
+      expect(success?.innerText).toEqual(expectedText);
 
       expectedText = 'ASYNC TEXT';
       component.statuses = [
-        { status: FusionUiStatusLevel.SUCCESS, text: of(expectedText) },
+        { status: StatusLevel.SUCCESS, text: of(expectedText) },
       ];
       reloadComponent();
       expect(page.card.statuses).toBeTruthy();
-      expect(page.card.statuses.length).toEqual(1);
-      expect(page.card.getStatusByType(FusionUiStatusLevel.SUCCESS)).toBeTruthy();
-      success = page.card.getStatusByType(FusionUiStatusLevel.SUCCESS);
+      expect(page.card.statuses?.length).toEqual(1);
+      expect(page.card.getStatusByType(StatusLevel.SUCCESS)).toBeTruthy();
+      success = page.card.getStatusByType(StatusLevel.SUCCESS);
       expect(success).toBeTruthy();
-      expect(success.innerText).toEqual(expectedText);
+      expect(success?.innerText).toEqual(expectedText);
     });
   });
 
@@ -159,7 +159,7 @@ describe('CardComponent', () => {
       component.useContentTemplate = false;
       reloadComponent();
       expect(page.card.content).toBeTruthy();
-      expect(page.card.content.innerText).toContain('CONTENT');
+      expect(page.card.content?.innerText).toContain('CONTENT');
     });
 
     it('should use the cardContent template if provided', () => {
@@ -167,13 +167,13 @@ describe('CardComponent', () => {
       component.useContentTemplate = true;
       reloadComponent();
       expect(page.card.content).toBeTruthy();
-      expect(page.card.content.innerText).toContain('Template Content');
+      expect(page.card.content?.innerText).toContain('Template Content');
     });
   });
 
   describe('the details', () => {
     it('should not be visible if not provided', () => {
-      component.details = undefined;
+      component.details = undefined!
       component.useDetailsTemplate = false;
       reloadComponent();
       expect(page.card.details).toBeFalsy();
@@ -186,10 +186,10 @@ describe('CardComponent', () => {
       expect(page.card.details).toBeTruthy();
       expect(page.card.detailsButton).toBeTruthy();
       expect(page.card.detailsContent).toBeFalsy();
-      page.card.detailsButton.click();
+      page.card.detailsButton?.click();
       fixture.detectChanges();
       expect(page.card.detailsContent).toBeTruthy();
-      expect(page.card.detailsContent.innerText).toContain('DETAILS');
+      expect(page.card.detailsContent?.innerText).toContain('DETAILS');
     });
 
     it('should display the content input text if no cardContent template found', () => {
@@ -199,10 +199,10 @@ describe('CardComponent', () => {
       expect(page.card.details).toBeTruthy();
       expect(page.card.detailsButton).toBeTruthy();
       expect(page.card.detailsContent).toBeFalsy();
-      page.card.detailsButton.click();
+      page.card.detailsButton?.click();
       fixture.detectChanges();
       expect(page.card.detailsContent).toBeTruthy();
-      expect(page.card.detailsContent.innerText).toContain('DETAILS');
+      expect(page.card.detailsContent?.innerText).toContain('DETAILS');
     });
 
     it('should use the cardContent template if provided', () => {
@@ -212,10 +212,10 @@ describe('CardComponent', () => {
       expect(page.card.details).toBeTruthy();
       expect(page.card.detailsButton).toBeTruthy();
       expect(page.card.detailsContent).toBeFalsy();
-      page.card.detailsButton.click();
+      page.card.detailsButton?.click();
       fixture.detectChanges();
       expect(page.card.detailsContent).toBeTruthy();
-      expect(page.card.detailsContent.innerText).toContain('Template Details');
+      expect(page.card.detailsContent?.innerText).toContain('Template Details');
     });
   });
 
@@ -225,7 +225,7 @@ describe('CardComponent', () => {
       component.useFooterTemplate = false;
       reloadComponent();
       expect(page.card.footer).toBeTruthy();
-      expect(page.card.footer.innerText).toContain('FOOTER');
+      expect(page.card.footer?.innerText).toContain('FOOTER');
     });
 
     it('should use the cardFooter template if provided', () => {
@@ -233,7 +233,7 @@ describe('CardComponent', () => {
       component.useFooterTemplate = true;
       reloadComponent();
       expect(page.card.footer).toBeTruthy();
-      expect(page.card.footer.innerText).toContain('Template Footer');
+      expect(page.card.footer?.innerText).toContain('Template Footer');
     });
   });
 

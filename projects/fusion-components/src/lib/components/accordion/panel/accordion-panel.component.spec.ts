@@ -1,8 +1,8 @@
 import { AnimationEvent } from '@angular/animations';
 import { ElementRef, QueryList } from '@angular/core';
 
-import { TemplateDirective } from '@fusion-ui/fusion-components/lib/directives/template';
-import { MockTemplateDirective } from '@fusion-ui/fusion-components/unit-test-helpers/mock-utils.spec';
+import { TemplateDirective } from '@fusion-components/lib/directives/template';
+import { MockTemplateDirective } from '@fusion-components/unit-test-helpers/mock-utils.spec';
 
 import { AccordionPanelComponent } from './accordion-panel.component';
 
@@ -30,24 +30,24 @@ describe('AccordianPanelComponent', () => {
 
       it('should set the panelContentContainer overflow styling', () => {
         // everything is undefined
-        component.panelContentContainer = undefined;
-        component['_maxContentHeight'] = undefined;
+        component.panelContentContainer = undefined!;
+        component['_maxContentHeight'] = undefined!;
         component.isExpanded = false;
 
-        component.maxContentHeight = undefined;
+        component.maxContentHeight = undefined!;
         expect(component.panelContentContainer).toBeFalsy();
 
         // container is undefined and isExpanded is false
-        component.panelContentContainer = undefined;
-        component['_maxContentHeight'] = undefined;
+        component.panelContentContainer = undefined!;
+        component['_maxContentHeight'] = undefined!;
         component.isExpanded = false;
 
         component.maxContentHeight = '100px';
         expect(component.panelContentContainer).toBeFalsy();
 
         // container is undefined
-        component.panelContentContainer = undefined;
-        component['_maxContentHeight'] = undefined;
+        component.panelContentContainer = undefined!;
+        component['_maxContentHeight'] = undefined!;
         component.isExpanded = true;
 
         component.maxContentHeight = '100px';
@@ -55,7 +55,7 @@ describe('AccordianPanelComponent', () => {
 
         // all needed parts are true
         component.panelContentContainer = new ElementRef(document.createElement('div'));
-        component['_maxContentHeight'] = undefined;
+        component['_maxContentHeight'] = undefined!;
         component.isExpanded = true;
 
         component.maxContentHeight = '100px';
@@ -119,7 +119,7 @@ describe('AccordianPanelComponent', () => {
     describe('id', () => {
       it('should set _id if the provided id is defined', () => {
         component['_id'] = 'mock-id';
-        component.id = undefined;
+        component.id = undefined!;
         expect(component['_id']).toEqual('mock-id');
         expect(component.id).toEqual('mock-id');
 
@@ -159,28 +159,28 @@ describe('AccordianPanelComponent', () => {
   describe('toggleOverflow()', () => {
     it('should set the overflow to auto if the fromState is void and maxContentHeight is defined', () => {
       // panelContentContainer and event is undefined
-      component.panelContentContainer = undefined;
-      component.toggleOverflow(undefined);
+      component.panelContentContainer = undefined!;
+      component.toggleOverflow(undefined!);
       expect(component.panelContentContainer).toBeFalsy();
 
       // panelContentContainer is undefined
-      component.panelContentContainer = undefined;
-      component.toggleOverflow({ fromState: undefined } as AnimationEvent);
+      component.panelContentContainer = undefined!;
+      component.toggleOverflow({ fromState: undefined } as unknown as AnimationEvent);
       expect(component.panelContentContainer).toBeFalsy();
 
       // event is undefined
       component.panelContentContainer = new ElementRef(document.createElement('div'));
-      component.toggleOverflow(undefined);
+      component.toggleOverflow(undefined!);
       expect(component.panelContentContainer.nativeElement.style.overflow).toEqual('');
 
       // event fromState is wrong
       component.maxContentHeight = '100px';
       component.panelContentContainer = new ElementRef(document.createElement('div'));
-      component.toggleOverflow({ fromState: undefined } as AnimationEvent);
+      component.toggleOverflow({ fromState: undefined } as unknown as AnimationEvent);
       expect(component.panelContentContainer.nativeElement.style.overflow).toEqual('hidden');
 
       // max content height is not set
-      component.maxContentHeight = undefined;
+      component.maxContentHeight = undefined!;
       component.panelContentContainer = new ElementRef(document.createElement('div'));
       component.toggleOverflow({ fromState: 'void' } as AnimationEvent);
       expect(component.panelContentContainer.nativeElement.style.overflow).toEqual('hidden');

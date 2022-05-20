@@ -1,4 +1,4 @@
-.fusion-ui-notification {
+.f-notification {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -8,7 +8,7 @@
   padding: 0;
 
   &:not(:last-of-type) {
-    margin-bottom: $fusion-ui-spacing-xs;
+    margin-bottom: $f-spacing-xs;
   }
 
   &--break {
@@ -23,60 +23,60 @@
     transition: all 0.5s ease-out;
   }
 
-  &.fusion-ui-notification__error {
-    .fusion-ui-notification__inner, .fusion-ui-notification__details-button-wrapper {
-      background-color: $fusion-ui-color-error-background;
+  &.f-notification__error {
+    .f-notification__inner, .f-notification__details-button-wrapper {
+      background-color: $f-color-error-background;
 
-      .fusion-ui-notification__icon {
-        color: $fusion-ui-color-error-primary;
+      .f-notification__icon {
+        color: $f-color-error-primary;
       }
     }
 
-    .fusion-ui-notification__details-content {
-      border: solid 3px $fusion-ui-color-error-background;
+    .f-notification__details-content {
+      border: solid 3px $f-color-error-background;
     }
   }
 
-  &.fusion-ui-notification__success {
-    .fusion-ui-notification__inner, .fusion-ui-notification__details-button-wrapper {
-      background-color: $fusion-ui-color-success-background;
+  &.f-notification__success {
+    .f-notification__inner, .f-notification__details-button-wrapper {
+      background-color: $f-color-success-background;
 
-      .fusion-ui-notification__icon {
-        color: $fusion-ui-color-success-primary;
+      .f-notification__icon {
+        color: $f-color-success-primary;
       }
     }
 
-    .fusion-ui-notification__details-content {
-      border: solid 3px $fusion-ui-color-success-background;
+    .f-notification__details-content {
+      border: solid 3px $f-color-success-background;
     }
   }
 
-  &.fusion-ui-notification__info {
-    .fusion-ui-notification__inner, .fusion-ui-notification__details-button-wrapper {
+  &.f-notification__info {
+    .f-notification__inner, .f-notification__details-button-wrapper {
       // May change as we figure out how we’re aligning with ONTAP, but for now use this yellow.
       background-color: #fff7c0;
 
-      .fusion-ui-notification__icon {
-        color: $fusion-ui-color-greyscale-27;
+      .f-notification__icon {
+        color: $f-color-greyscale-27;
       }
     }
 
-    .fusion-ui-notification__details-content {
+    .f-notification__details-content {
       border: solid 3px #fff7c0;
     }
   }
 
-  &.fusion-ui-notification__warning {
-    .fusion-ui-notification__inner, .fusion-ui-notification__details-button-wrapper {
-      background-color: $fusion-ui-color-warning-background;
+  &.f-notification__warning {
+    .f-notification__inner, .f-notification__details-button-wrapper {
+      background-color: $f-color-warning-background;
 
-      .fusion-ui-notification__icon {
-        color: $fusion-ui-color-warning-primary;
+      .f-notification__icon {
+        color: $f-color-warning-primary;
       }
     }
 
-    .fusion-ui-notification__details-content {
-      border: solid 3px $fusion-ui-color-warning-background;
+    .f-notification__details-content {
+      border: solid 3px $f-color-warning-background;
     }
   }
 
@@ -98,7 +98,7 @@
     display: inline-flex;
     align-items: flex-start;
     justify-content: flex-start;
-    padding-right: $fusion-ui-spacing-sm;
+    padding-right: $f-spacing-sm;
     padding-top: 10px;
     padding-bottom: 10px;
   }
@@ -106,13 +106,13 @@
   &__details {
     display: flex;
     flex-direction: column;
-    border-top: 1px solid $fusion-ui-border-light;
+    border-top: 1px solid $f-border-light;
 
     &-button-wrapper {
       margin-top: -8px;
       text-align: left;
       padding-left: 36px;
-      padding-bottom: $fusion-ui-spacing-md;
+      padding-bottom: $f-spacing-md;
       width: 100%
     }
 
@@ -125,37 +125,37 @@
 
       &-icon {
         line-height: 20px;
-        font-size: $fusion-ui-font-size-icon-md;
+        font-size: $f-font-size-icon-md;
       }
     }
 
     &-content {
       flex-basis: 100%;
       height: auto;
-      font-size: $fusion-ui-font-size-sm;
-      padding: $fusion-ui-spacing-md 42px;
+      font-size: $f-font-size-sm;
+      padding: $f-spacing-md 42px;
       overflow-y: auto;
     }
   }
 
   &__icon {
-    padding: 0 $fusion-ui-spacing-sm;
-    font-size: $fusion-ui-font-size-icon-md;
+    padding: 0 $f-spacing-sm;
+    font-size: $f-font-size-icon-md;
   }
 
   &__text {
     min-height: 22px;
-    top: $fusion-ui-spacing-xxxs;
-    font-size: $fusion-ui-font-size-sm;
-    color: $fusion-ui-color-primary-text-on-light;
+    top: $f-spacing-xxxs;
+    font-size: $f-font-size-sm;
+    color: $f-color-primary-text-on-light;
     margin: 0;
   }
 
   &__close-button {
-    font-size: $fusion-ui-font-size-md;
+    font-size: $f-font-size-md;
     opacity: 0.5;
     cursor: pointer;
-    color: $fusion-ui-color-primary-text-on-light;
+    color: $f-color-primary-text-on-light;
     background: none;
     min-height: 20px;
     padding: 0;
@@ -164,7 +164,7 @@
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.50);
-      color: $fusion-ui-color-primary-text-on-dark;
+      color: $f-color-primary-text-on-dark;
     }
 
     &-icon {

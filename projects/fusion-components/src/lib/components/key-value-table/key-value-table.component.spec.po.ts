@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing';
 
-import { KeyValueTablePageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/key-value-table.spec.po';
+import { KeyValueTablePageObject } from '@fusion-components/unit-test-helpers/page-objects/key-value-table.spec.po';
 
 import { KeyValueTableTestComponent } from './key-value-table.component.dom.spec';
 

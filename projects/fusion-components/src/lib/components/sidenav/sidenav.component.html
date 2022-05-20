@@ -1,22 +1,22 @@
-<div class="fusion-ui-sidenav">
+<div class="f-sidenav">
   <nav
-    class="fusion-ui-sidenav__outer-container"
+    class="f-sidenav__outer-container"
     [ngClass]="{
-      'fusion-ui-sidenav__outer-container--expanded' : isMenuExpanded,
-      'fusion-ui-sidenav__outer-container--collapsed' : !isMenuExpanded,
-      'fusion-ui-sidenav__outer-container--floating' : !isWindowWidthGreaterThan768px
+      'f-sidenav__outer-container--expanded' : isMenuExpanded,
+      'f-sidenav__outer-container--collapsed' : !isMenuExpanded,
+      'f-sidenav__outer-container--floating' : !isWindowWidthGreaterThan768px
     }"
     [style.width]="isMenuExpanded ? (isWindowWidthGreaterThan768px ? 'auto' : minWidth) : '25px'"
     [style.minWidth]="isMenuExpanded ? minWidth : '25px'">
 
     <ng-container *ngIf="isMenuExpanded">
 
-      <div class="fusion-ui-sidenav__top">
+      <div class="f-sidenav__top">
         <ng-container *ngTemplateOutlet="sidenavTopTemplate"></ng-container>
       </div>
 
-      <ul class="fusion-ui-sidenav__items fusion-ui-sidenav__container">
-        <fusion-ui-nav-item
+      <ul class="f-sidenav__items f-sidenav__container">
+        <f-nav-item
           *ngFor="let navItem of navItems"
           (itemSelected)="setCurrentSelectedNavItem($event)"
           [id]="navItem?.id"
@@ -30,10 +30,10 @@
           [href]="navItem?.href"
           [target]="navItem?.target"
           [children]="navItem?.children">
-        </fusion-ui-nav-item>
+        </f-nav-item>
       </ul>
 
-      <div class="fusion-ui-sidenav__bottom">
+      <div class="f-sidenav__bottom">
         <ng-container *ngTemplateOutlet="sidenavBottomTemplate"></ng-container>
       </div>
 
@@ -42,11 +42,11 @@
 </div>
 
 <button
-  class="fusion-ui-sidenav__expand-collapse-button"
+  class="f-sidenav__expand-collapse-button"
   [style.left]="isMenuExpanded ? minWidth : '25px'"
   *ngIf="!isWindowWidthGreaterThan768px" (click)="isMenuExpanded = !isMenuExpanded">
   <i
-    class="fusion-ui-sidenav__expand-collapse-button-icon mdi"
+    class="f-sidenav__expand-collapse-button-icon mdi"
     [ngClass]="isMenuExpanded ? 'mdi-chevron-left' : 'mdi-chevron-right'">
   </i>
 </button>

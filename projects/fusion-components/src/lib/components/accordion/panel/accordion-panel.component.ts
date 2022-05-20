@@ -3,7 +3,7 @@ import { AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter,
 
 import { v4 as uuidv4 } from 'uuid';
 
-import { TemplateDirective } from '@fusion-ui/fusion-components/lib/directives/template';
+import { TemplateDirective } from '@fusion-components/lib/directives/template';
 
 /**
  * ACCORDION PANEL COMPONENT
@@ -12,7 +12,7 @@ import { TemplateDirective } from '@fusion-ui/fusion-components/lib/directives/t
  * content.
  */
 @Component({
-  selector: 'fusion-ui-accordion-panel',
+  selector: 'f-accordion-panel',
   templateUrl: './accordion-panel.component.html',
   animations: [
     trigger(

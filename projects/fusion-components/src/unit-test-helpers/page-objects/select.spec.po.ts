@@ -3,8 +3,8 @@ import { ComponentFixture } from '@angular/core/testing';
 /**
  * SELECT PAGE OBJECT
  *
- * Page object for the fusion-ui-select component.
- * Makes it easier to find and select certain fusion-ui-select attributes and elements.
+ * Page object for the f-select component.
+ * Makes it easier to find and select certain f-select attributes and elements.
  */
 export class SelectPageObject {
   private fixture: ComponentFixture<any>;
@@ -14,12 +14,12 @@ export class SelectPageObject {
    * Gets the wrapping div container element.
    */
   get select(): HTMLDivElement {
-    // first try to get the fusion-ui-select element by a provided class
+    // first try to get the f-select element by a provided class
     const selectClass: HTMLElement = this.selectClass ? this.fixture.nativeElement.querySelector(this.selectClass) : null;
-    // if no provided class or element not found, try to find the fusion-ui-select element by the fusion-ui-select tag
-    const fusionSelect: HTMLElement = selectClass || this.fixture.nativeElement.querySelector('fusion-ui-select');
-    // if fusion-ui-select found, find the actual <select> element by the .fusion-ui-select class
-    const select: HTMLDivElement = fusionSelect ? fusionSelect.querySelector('.fusion-ui-select') : null;
+    // if no provided class or element not found, try to find the f-select element by the f-select tag
+    const fusionSelect: HTMLElement = selectClass || this.fixture.nativeElement.querySelector('f-select');
+    // if f-select found, find the actual <select> element by the .f-select class
+    const select: HTMLDivElement = fusionSelect ? fusionSelect.querySelector('.f-select') : null;
 
     return select;
   }
@@ -31,7 +31,7 @@ export class SelectPageObject {
    */
   get classes(): DOMTokenList {
     const select: HTMLDivElement = this.select;
-    const buttonWrapper: HTMLDivElement = select ? select.querySelector('.fusion-ui-select__classes-wrapper') : null;
+    const buttonWrapper: HTMLDivElement = select ? select.querySelector('.f-select__classes-wrapper') : null;
     return buttonWrapper ? buttonWrapper.classList : null;
   }
 
@@ -42,7 +42,7 @@ export class SelectPageObject {
    */
   get label(): HTMLLabelElement {
     const select: HTMLDivElement = this.select;
-    return select ? select.querySelector('.fusion-ui-select__label') : null;
+    return select ? select.querySelector('.f-select__label') : null;
   }
 
   /**
@@ -52,7 +52,7 @@ export class SelectPageObject {
    */
   get inputButton(): HTMLButtonElement {
     const select: HTMLDivElement = this.select;
-    return select ? select.querySelector('.fusion-ui-select__button') : null;
+    return select ? select.querySelector('.f-select__button') : null;
   }
 
   /**
@@ -62,7 +62,7 @@ export class SelectPageObject {
    */
   get inputSearch(): HTMLInputElement {
     const select: HTMLDivElement = this.select;
-    return select ? select.querySelector('.fusion-ui-select__input') : null;
+    return select ? select.querySelector('.f-select__input') : null;
   }
 
   /**
@@ -72,7 +72,7 @@ export class SelectPageObject {
    */
   get dropdownMenu(): HTMLUListElement {
     const select: HTMLDivElement = this.select;
-    return select ? select.querySelector('.fusion-ui-select__dropdown-menu') : null;
+    return select ? select.querySelector('.f-select__dropdown-menu') : null;
   }
 
   /**
@@ -82,7 +82,7 @@ export class SelectPageObject {
    */
   get options(): NodeListOf<HTMLLIElement> {
     const dropdownMenu: HTMLUListElement = this.dropdownMenu;
-    return dropdownMenu ? dropdownMenu.querySelectorAll('.fusion-ui-select__dropdown-menu-option') : null;
+    return dropdownMenu ? dropdownMenu.querySelectorAll('.f-select__dropdown-menu-option') : null;
   }
 
   /**
@@ -97,10 +97,10 @@ export class SelectPageObject {
   }
 
   /**
-   * Creates a page object for a fusion-ui-select DOM element based on the provided fixture and optional selectClass.
+   * Creates a page object for a f-select DOM element based on the provided fixture and optional selectClass.
    *
-   * @param fixture The parent DOM fixture/ element that houses the fusion-ui-select.
-   * @param selectClass Optional, providing a css class appended to a fusion-ui-select will help make sure the correct one is selected.
+   * @param fixture The parent DOM fixture/ element that houses the f-select.
+   * @param selectClass Optional, providing a css class appended to a f-select will help make sure the correct one is selected.
    */
   constructor(fixture: ComponentFixture<any>, selectClass?: string) {
     this.fixture = fixture;

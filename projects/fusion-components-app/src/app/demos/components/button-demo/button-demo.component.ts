@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ButtonType, FusionUiSize, FusionUiState, ButtonInputType } from '@fusion-ui/fusion-components';
+import { ButtonType, Size, State, ButtonInputType } from '@fusion-components';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -11,8 +11,8 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 export class ButtonDemoComponent {
   readonly ButtonType = ButtonType;
   readonly ButtonInputType = ButtonInputType;
-  readonly FusionUiSize = FusionUiSize;
-  readonly FusionUiState = FusionUiState;
+  readonly Size = Size;
+  readonly State = State;
 
   buttonForm: FormGroup;
 
@@ -26,10 +26,10 @@ export class ButtonDemoComponent {
     this.buttonForm = this.fb.group({
       type: [ButtonType.PRIMARY, [Validators.required]],
       inputType: [ButtonInputType.BUTTON, [Validators.required]],
-      size: [FusionUiSize.MEDIUM, [Validators.required]],
+      size: [Size.MEDIUM, [Validators.required]],
       text: ['Default Button Text', [Validators.required]],
       icon: ['mdi-content-copy', [Validators.required]],
-      state: [FusionUiState.LOADED, [Validators.required]],
+      state: [State.LOADED, [Validators.required]],
       isDisabled: [false],
       isAutofocused: [false],
       isSelected: [false],

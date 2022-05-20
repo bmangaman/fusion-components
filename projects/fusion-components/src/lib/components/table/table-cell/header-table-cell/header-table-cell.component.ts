@@ -15,7 +15,7 @@ export interface ResizeCoordinates {
  * It has logic to allow both ascending and descending sorting of the column, if sorting is enabled.
  */
 @Component({
-  selector: 'fusion-ui-table-cell-header',
+  selector: 'f-table-cell-header',
   templateUrl: './header-table-cell.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -26,7 +26,7 @@ export class HeaderTableCellComponent extends TableCellComponent implements DoCh
   get isResizing(): boolean {
     return this._isResizing;
   }
-  private _resizeCoordinates: ResizeCoordinates = { start: undefined, stop: undefined };
+  private _resizeCoordinates: ResizeCoordinates = { start: undefined!, stop: undefined! };
 
   /**
    * Determines whether or not the table cell will stick to the top (position: sticky).
@@ -54,10 +54,10 @@ export class HeaderTableCellComponent extends TableCellComponent implements DoCh
    * Checks to see if the provided inputs (rowData and index) have actually changed. If so, mark the component
    * to be checked and re-rendered.
    */
-  ngDoCheck(): void {
+  override ngDoCheck(): void {
     super.ngDoCheck();
 
-    let didAnythingChange: boolean;
+    let didAnythingChange: boolean = false;
 
     if (this.isSticky !== this._prevIsSticky) {
       this._prevIsSticky = this.isSticky;
@@ -97,7 +97,7 @@ export class HeaderTableCellComponent extends TableCellComponent implements DoCh
     if (this.isResizing) {
       this._resizeCoordinates.stop = event.pageX;
       const difference: number = this._resizeCoordinates.stop - this._resizeCoordinates.start;
-      const updatedWidth = `${parseInt(this.col.updatedWidth || this.col.width, 10) + difference}px`;
+      const updatedWidth = `${parseInt(this.col.updatedWidth || this.col.width || '0', 10) + difference}px`;
       this.stopResize.emit(updatedWidth);
       this._isResizing = false;
     }
@@ -121,43 +121,43 @@ export class HeaderTableCellComponent extends TableCellComponent implements DoCh
    * @returns the generate css classes
    */
   // eslint-disable-next-line complexity
-  generateTableCellClasses(): string[] {
-    const classes: string[] = ['fusion-ui-table__table-cell', 'fusion-ui-table__table-cell--header'];
+  override generateTableCellClasses(): string[] {
+    const classes: string[] = ['f-table__table-cell', 'f-table__table-cell--header'];
 
     if (!!this.col?.cellContentAlignment) {
-      classes.push(`fusion-ui-table__table-cell--${this.col.cellContentAlignment}-aligned`);
+      classes.push(`f-table__table-cell--${this.col.cellContentAlignment}-aligned`);
     }
 
     if (!!this.col?.cellContentVerticalAlignment) {
-      classes.push(`fusion-ui-table__table-cell--${this.col.cellContentVerticalAlignment}-aligned`);
+      classes.push(`f-table__table-cell--${this.col.cellContentVerticalAlignment}-aligned`);
     }
 
     if (!!this.col?.isOverflowVisible || !!this.col?.isResizable) {
-      classes.push('fusion-ui-table__table-cell--overflow-visible');
+      classes.push('f-table__table-cell--overflow-visible');
     }
 
     if (this.col?.isSortable) {
-      classes.push('fusion-ui-table__table-cell--sortable');
+      classes.push('f-table__table-cell--sortable');
     }
 
     if (!!this.col?.sorted) {
-      classes.push('fusion-ui-table__table-cell--sorted');
+      classes.push('f-table__table-cell--sorted');
     }
 
     if (!!this.col?.isFiltered) {
-      classes.push('fusion-ui-table__table-cell--filtered');
+      classes.push('f-table__table-cell--filtered');
     }
 
     if (!!this.col?.isResizable) {
-      classes.push('fusion-ui-table__table-cell--resizable');
+      classes.push('f-table__table-cell--resizable');
     }
 
     if (this.isSticky) {
-      classes.push('fusion-ui-table__table-cell--sticky');
+      classes.push('f-table__table-cell--sticky');
     }
 
     if (!!this.spacing) {
-      classes.push(`fusion-ui-table__table-cell--${this.spacing}`);
+      classes.push(`f-table__table-cell--${this.spacing}`);
     }
 
     classes.push(...this.cssClasses);

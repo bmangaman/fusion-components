@@ -1,4 +1,4 @@
-.fusion-ui-tabview {
+.f-tabview {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -18,7 +18,7 @@
       line-height: 14px;
       margin: 0;
       top: 0;
-      color: $fusion-ui-color-secondary-text-on-light;
+      color: $f-color-secondary-text-on-light;
     
       &:disabled {
         opacity: 0.5;
@@ -27,13 +27,13 @@
 
       &:focus {
         outline: none;
-        border-bottom-color: $fusion-ui-color-greyscale-85;
+        border-bottom-color: $f-color-greyscale-85;
       }
     
       & > h3 {
-        @include fusion-ui-h5;
+        @include f-h5;
         display: block;
-        font-size: $fusion-ui-font-size-sm;
+        font-size: $f-font-size-sm;
         margin: 0;
         padding: 0;
         text-transform: uppercase;
@@ -57,64 +57,64 @@
 
   &-type {
     &-content {
-      .fusion-ui-tabview {
+      .f-tabview {
         &__nav {
-          margin-bottom: $fusion-ui-spacing-md;
+          margin-bottom: $f-spacing-md;
         }
 
         &-tab__button {
-          border-bottom: 6px solid $fusion-ui-color-greyscale-85;
-          padding: $fusion-ui-spacing-sm $fusion-ui-spacing-sm $fusion-ui-spacing-xs;
+          border-bottom: 6px solid $f-color-greyscale-85;
+          padding: $f-spacing-sm $f-spacing-sm $f-spacing-xs;
 
           &:not(:disabled):not(.selected):hover,
           &:not(:disabled):not(.selected):active,
           &:not(:disabled):not(.selected):focus {
-            background-color: $fusion-ui-color-greyscale-85;
-            border-bottom-color: $fusion-ui-color-greyscale-85;
+            background-color: $f-color-greyscale-85;
+            border-bottom-color: $f-color-greyscale-85;
           }
 
           &:not(:disabled).selected {
-            background-color: $fusion-ui-color-blue-medium-dark;
-            color: $fusion-ui-color-primary-text-on-dark;
-            border-bottom-color: $fusion-ui-color-blue-medium-dark;
+            background-color: $f-color-blue-medium-dark;
+            color: $f-color-primary-text-on-dark;
+            border-bottom-color: $f-color-blue-medium-dark;
           }
         }
       }
     }
 
     &-top {
-      .fusion-ui-tabview {
+      .f-tabview {
         &__nav {
-          background-color: $fusion-ui-color-background-light;
-          border-top: $fusion-ui-border-light;
-          border-bottom: $fusion-ui-border-light;
+          background-color: $f-color-background-light;
+          border-top: $f-border-light;
+          border-bottom: $f-border-light;
           box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-          padding-left: $fusion-ui-spacing-md;
+          padding-left: $f-spacing-md;
         }
 
         &-tab__button {
           border-bottom: 3px solid transparent;
-          padding: $fusion-ui-spacing-sm $fusion-ui-spacing-sm $fusion-ui-spacing-xs;
+          padding: $f-spacing-sm $f-spacing-sm $f-spacing-xs;
 
           &:not(:disabled):not(.selected):hover,
           &:not(:disabled):not(.selected):active,
           &:not(:disabled):not(.selected):focus {
-            border-bottom-color: $fusion-ui-color-greyscale-76;
+            border-bottom-color: $f-color-greyscale-76;
           }
 
           &:not(:disabled).selected {
-            border-bottom-color: $fusion-ui-color-interactive-default;
+            border-bottom-color: $f-color-interactive-default;
           }
         }
 
         &__panels {
-          padding: $fusion-ui-spacing-xl $fusion-ui-spacing-xxl;
+          padding: $f-spacing-xl $f-spacing-xxl;
         }
       }
     }
 
     &-inner-content {
-      .fusion-ui-tabview {
+      .f-tabview {
         &__nav {
           // some styles have been added here to prevent unwanted cascading of the
           // of the 'top'-type nav styles.  a card has been created to restructure
@@ -122,7 +122,7 @@
           // to prevent these sorts of issues.
           // https://jira.ngage.netapp.com/browse/HCI-17778
           box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
-          padding-left: $fusion-ui-spacing-md;
+          padding-left: $f-spacing-md;
           background-color: transparent;
           border-top: none;
           border-bottom: none;
@@ -130,21 +130,21 @@
 
         &-tab__button {
           border-bottom: 3px solid transparent;
-          padding: $fusion-ui-spacing-sm $fusion-ui-spacing-sm $fusion-ui-spacing-xs;
+          padding: $f-spacing-sm $f-spacing-sm $f-spacing-xs;
 
           &:not(:disabled):not(.selected):hover,
           &:not(:disabled):not(.selected):active,
           &:not(:disabled):not(.selected):focus {
-            border-bottom-color: $fusion-ui-color-greyscale-76;
+            border-bottom-color: $f-color-greyscale-76;
           }
 
           &:not(:disabled).selected {
-            border-bottom-color: $fusion-ui-color-interactive-default;
+            border-bottom-color: $f-color-interactive-default;
           }
         }
 
         &__panels {
-          padding: $fusion-ui-spacing-xl $fusion-ui-spacing-xxl;
+          padding: $f-spacing-xl $f-spacing-xxl;
         }
       }
     }

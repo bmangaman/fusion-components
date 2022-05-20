@@ -5,7 +5,7 @@ import { cloneDeep } from 'lodash';
 import { interval } from 'rxjs';
 import { debounce } from 'rxjs/operators';
 
-import { SelectOption, SelectComponentUtils } from '@fusion-ui/fusion-components';
+import { SelectOption, SelectComponentUtils } from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-select',

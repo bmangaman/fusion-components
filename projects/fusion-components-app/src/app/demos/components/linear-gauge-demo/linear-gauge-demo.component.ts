@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, AbstractControl } from '@angular/forms';
 
-import { FusionUiStatusLevel, LinearGaugeThreshold, PipeItem, BytesPipe, BytesPipeBase } from '@fusion-ui/fusion-components';
+import { StatusLevel, LinearGaugeThreshold, PipeItem, BytesPipe, BytesPipeBase } from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-linear-gauge',
@@ -9,7 +9,7 @@ import { FusionUiStatusLevel, LinearGaugeThreshold, PipeItem, BytesPipe, BytesPi
   styleUrls: ['./linear-gauge-demo.component.scss']
 })
 export class LinearGaugeDemoComponent {
-  readonly FusionUiStatusLevel = FusionUiStatusLevel;
+  readonly StatusLevel = StatusLevel;
   readonly bytesPipe: BytesPipe = new BytesPipe();
 
   dataFormatPipeItem: PipeItem = { pipe: this.bytesPipe, values: [true, BytesPipeBase.TWO, 3] };
@@ -61,7 +61,7 @@ export class LinearGaugeDemoComponent {
   createThresholdFormGroup(): FormGroup {
     let generatedValue = 0;
     let previousThresholdValue: number;
-    let previousThresholdLevel: FusionUiStatusLevel = FusionUiStatusLevel.WARNING;
+    let previousThresholdLevel: StatusLevel = StatusLevel.WARNING;
 
     const thresholdsFormArray: FormArray = (this.linearGaugeForm.get('thresholds') as FormArray);
     const maxValue: number = this.linearGaugeForm.get('maxValue').value;
@@ -72,8 +72,8 @@ export class LinearGaugeDemoComponent {
       const thresholdFormGroup: AbstractControl = thresholdsFormArray.at(this.numOfThresholds - 1);
       previousThresholdValue = !!thresholdFormGroup ? thresholdFormGroup.get('value').value : undefined;
       previousThresholdLevel = !!thresholdFormGroup ?
-        FusionUiStatusLevel[FusionUiStatusLevel[Math.min(parseInt(thresholdFormGroup.get('level').value, 10) + 1, 6)]] :
-        FusionUiStatusLevel.WARNING;
+        StatusLevel[StatusLevel[Math.min(parseInt(thresholdFormGroup.get('level').value, 10) + 1, 6)]] :
+        StatusLevel.WARNING;
     }
 
     // If there is a previous threshold, use the value of that treshold as the lower bounds of the newly generated threshold.

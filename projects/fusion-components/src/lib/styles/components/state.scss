@@ -1,4 +1,4 @@
-.fusion-ui {
+.f {
   &-state {
     align-content: center;
     align-items: center;
@@ -14,18 +14,18 @@
     }
 
     &__inner {
-      font-size: $fusion-ui-font-size-md;
+      font-size: $f-font-size-md;
       text-align: center;
       width: 100%;
 
       &-graphic {
         display: block;
-        font-size: $fusion-ui-font-size-icon-xl;
-        margin-bottom: $fusion-ui-spacing-md;
+        font-size: $f-font-size-icon-xl;
+        margin-bottom: $f-spacing-md;
 
         &--error {
           display: block;
-          margin-bottom: $fusion-ui-spacing-md;
+          margin-bottom: $f-spacing-md;
 
           &:after {
             background-position: center center;
@@ -38,7 +38,7 @@
             width: auto;
           }
 
-          &.fusion-ui-state__inner-graphic {
+          &.f-state__inner-graphic {
             &--generic {
               &:after {
                 background-image: url('../../assets/graphics/state/error.svg');
@@ -54,7 +54,7 @@
 
         &--no-results {
           display: block;
-          margin-bottom: $fusion-ui-spacing-md;
+          margin-bottom: $f-spacing-md;
 
           &:after {
             background-position: center center;
@@ -68,7 +68,7 @@
             width: auto;
           }
 
-          &.fusion-ui-state__inner-graphic {
+          &.f-state__inner-graphic {
             &--generic {
               &:after {
                 background-image: url('../../assets/graphics/state/no-results.svg');
@@ -84,7 +84,7 @@
 
         &--not-loaded {
           display: block;
-          margin-bottom: $fusion-ui-spacing-md;
+          margin-bottom: $f-spacing-md;
 
           &:after {
             background-position: center center;
@@ -97,7 +97,7 @@
             width: auto;
           }
 
-          &.fusion-ui-state__inner-graphic {
+          &.f-state__inner-graphic {
             &--generic {
               &:after {
                 background-image: url('../../assets/graphics/state/not-loaded.svg');

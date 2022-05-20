@@ -1,12 +1,12 @@
 import { Observable } from 'rxjs';
 import {
-  DEFAULT_FUSION_UI_STATUS_LEVEL_TRANSLATIONS,
-  FusionUiStatusLevel,
+  DEFAULT_STATUS_LEVEL_TRANSLATIONS,
+  StatusLevel,
   FusionUIStatusLevelTranslations,
 } from '../../shared';
 
 export interface CardStatus {
-  status: FusionUiStatusLevel;
+  status: StatusLevel;
   count?: number;
   text?: Observable<string> | string;
   isHidden?: boolean;
@@ -23,7 +23,7 @@ export interface CardTranslations {
 export const DEFAULT_CARD_TRANSLATIONS: CardTranslations = {
   showDetails: 'Show Details',
   hideDetails: 'Hide Details',
-  statuses: DEFAULT_FUSION_UI_STATUS_LEVEL_TRANSLATIONS,
+  statuses: DEFAULT_STATUS_LEVEL_TRANSLATIONS,
 };
 
 export enum CardTemplate {

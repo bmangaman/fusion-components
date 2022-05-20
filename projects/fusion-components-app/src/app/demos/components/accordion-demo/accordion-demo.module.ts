@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { AccordionModule } from '@fusion-ui/fusion-components';
+import { AccordionModule } from '@fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { AccordionDemoComponent } from './accordion-demo.component';

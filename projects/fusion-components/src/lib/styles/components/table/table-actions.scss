@@ -1,19 +1,19 @@
-.fusion-ui-table__actions {
+.f-table__actions {
   min-width: 30px;
   margin: 0 auto;
 
-  &-dialog.fusion-ui-menu__dialog {
-    padding: $fusion-ui-spacing-sm 0;
+  &-dialog.f-menu__dialog {
+    padding: $f-spacing-sm 0;
     margin: 0;
   }
 
   &-dialog-button {
     background: transparent;
     border: none;
-    color: $fusion-ui-color-primary-text-on-light;
+    color: $f-color-primary-text-on-light;
     cursor: pointer;
     display: block;
-    padding: $fusion-ui-spacing-sm $fusion-ui-spacing-lg;
+    padding: $f-spacing-sm $f-spacing-lg;
     text-align: left;
     white-space: nowrap;
     width: 100%;
@@ -22,7 +22,7 @@
       &:hover,
       &:focus,
       &:active {
-        background-color: $fusion-ui-color-blue-lightest;
+        background-color: $f-color-blue-lightest;
       }
     }
 

@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing';
 
-import { WidgetPageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/widget.spec.po';
+import { WidgetPageObject } from '@fusion-components/unit-test-helpers/page-objects/widget.spec.po';
 
 import { WidgetTestComponent } from './widget.component.dom.spec';
 

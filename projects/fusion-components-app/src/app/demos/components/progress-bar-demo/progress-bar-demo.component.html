@@ -1,84 +1,84 @@
 <fusion-demo titleText="Progress Bar">
 
-  <form form class="fusion-components-demo__form fusion-ui-form" *ngIf="progressBarForm" [formGroup]="progressBarForm">
+  <form form class="fusion-components-demo__form f-form" *ngIf="progressBarForm" [formGroup]="progressBarForm">
 
     <!-- START: value input -->
-    <div class="fusion-ui-form__fieldset">
-      <label class="fusion-ui-form__input-label">Value</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input class="fusion-ui-form__input" type="number" formControlName="value" />
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+    <div class="f-form__fieldset">
+      <label class="f-form__input-label">Value</label>
+      <div class="f-form__input-wrapper">
+        <input class="f-form__input" type="number" formControlName="value" />
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: value input -->
 
     <!-- START: minimum value input -->
-    <div class="fusion-ui-form__fieldset">
-      <label class="fusion-ui-form__input-label">Minimum Value</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input class="fusion-ui-form__input" type="number" formControlName="minValue" />
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+    <div class="f-form__fieldset">
+      <label class="f-form__input-label">Minimum Value</label>
+      <div class="f-form__input-wrapper">
+        <input class="f-form__input" type="number" formControlName="minValue" />
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: minimum value input -->
 
     <!-- START: maximum value input -->
-    <div class="fusion-ui-form__fieldset">
-      <label class="fusion-ui-form__input-label">Maximum Value</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input class="fusion-ui-form__input" type="number" formControlName="maxValue" />
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+    <div class="f-form__fieldset">
+      <label class="f-form__input-label">Maximum Value</label>
+      <div class="f-form__input-wrapper">
+        <input class="f-form__input" type="number" formControlName="maxValue" />
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: maximum value input -->
 
     <!-- START: is value displayed checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-1" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-1" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
-            name="fusion-ui-checkbox-1"
-            id="fusion-ui-checkbox-1"
+            name="f-checkbox-1"
+            id="f-checkbox-1"
             formControlName="isValueDisplayed">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Is Value Displayed</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Is Value Displayed</span>
         </label>
       </span>
     </div>
     <!-- END: is value displayed checkbox -->
 
     <!-- START: minimum displayed percent input -->
-    <div class="fusion-ui-form__fieldset">
-      <label class="fusion-ui-form__input-label">Minimum Displayed Percent</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input class="fusion-ui-form__input" type="number" formControlName="minDisplayedPercent" />
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+    <div class="f-form__fieldset">
+      <label class="f-form__input-label">Minimum Displayed Percent</label>
+      <div class="f-form__input-wrapper">
+        <input class="f-form__input" type="number" formControlName="minDisplayedPercent" />
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: minimum displayed percent input -->
 
     <!-- START: size select -->
-    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
-      <label class="fusion-ui-form__input-label">Size</label>
-      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
-        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="size">
-          <option [value]="FusionUiSize.SMALL">{{ FusionUiSize.SMALL }}</option>
-          <option [value]="FusionUiSize.MEDIUM">{{ FusionUiSize.MEDIUM }}</option>
-          <option [value]="FusionUiSize.LARGE">{{ FusionUiSize.LARGE }}</option>
+    <div class="f-form__fieldset f-table__filter-input-field-selector">
+      <label class="f-form__input-label">Size</label>
+      <div class="f-form__input-wrapper f-form__select-wrapper">
+        <select class="f-form__input f-form__select" formControlName="size">
+          <option [value]="Size.SMALL">{{ Size.SMALL }}</option>
+          <option [value]="Size.MEDIUM">{{ Size.MEDIUM }}</option>
+          <option [value]="Size.LARGE">{{ Size.LARGE }}</option>
         </select>
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: size select -->
 
     <!-- START: status select -->
-    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
-      <label class="fusion-ui-form__input-label">Status</label>
-      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
-        <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="status">
+    <div class="f-form__fieldset f-table__filter-input-field-selector">
+      <label class="f-form__input-label">Status</label>
+      <div class="f-form__input-wrapper f-form__select-wrapper">
+        <select class="f-form__input f-form__select" formControlName="status">
           <option value="">- None -</option>
           <option [value]="ProgressBarStatus.ERROR">{{ ProgressBarStatus.ERROR }}</option>
           <option [value]="ProgressBarStatus.IN_PROGRESS">{{ ProgressBarStatus.IN_PROGRESS }}</option>
@@ -86,27 +86,27 @@
           <option [value]="ProgressBarStatus.PAUSED">{{ ProgressBarStatus.PAUSED }}</option>
           <option [value]="ProgressBarStatus.WARNING">{{ ProgressBarStatus.WARNING }}</option>
         </select>
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: status select -->
 
     <!-- START: display text input -->
-    <div class="fusion-ui-form__fieldset">
-      <label class="fusion-ui-form__input-label">Display Text</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input class="fusion-ui-form__input" formControlName="displayText" />
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+    <div class="f-form__fieldset">
+      <label class="f-form__input-label">Display Text</label>
+      <div class="f-form__input-wrapper">
+        <input class="f-form__input" formControlName="displayText" />
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: display text input -->
 
     <!-- START: display text input -->
-    <div class="fusion-ui-form__fieldset">
-      <label class="fusion-ui-form__input-label">Aria Value Text</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input class="fusion-ui-form__input" formControlName="ariaValueText" />
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+    <div class="f-form__fieldset">
+      <label class="f-form__input-label">Aria Value Text</label>
+      <div class="f-form__input-wrapper">
+        <input class="f-form__input" formControlName="ariaValueText" />
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: display text input -->
@@ -114,7 +114,7 @@
   </form>
 
   <ng-container result>
-    <fusion-ui-progress-bar
+    <f-progress-bar
       [value]="progressBarForm?.get('value')?.value"
       [minValue]="progressBarForm?.get('minValue')?.value"
       [maxValue]="progressBarForm?.get('maxValue')?.value"
@@ -124,7 +124,7 @@
       [status]="progressBarForm?.get('status')?.value"
       [displayText]="progressBarForm?.get('displayText')?.value"
       [ariaValueText]="progressBarForm?.get('ariaValueText')?.value">
-    </fusion-ui-progress-bar>
+    </f-progress-bar>
   </ng-container>
 
 </fusion-demo>

@@ -12,7 +12,7 @@ import {
   ModalType,
   OpenModalConfig,
 } from '../../components/modal';
-import { FusionUiSize } from '../../shared/interfaces';
+import { Size } from '../../shared/interfaces';
 import { DomService } from '../dom';
 
 
@@ -46,7 +46,7 @@ export class ModalService {
   private readonly BASE_CONFIG: ModalConfig = {
     type: ModalType.ALERT,
     container: 'body',
-    size: FusionUiSize.MEDIUM,
+    size: Size.MEDIUM,
     windowClasses: [],
     backdropClasses: [],
     heightAdjustmentElements: [],

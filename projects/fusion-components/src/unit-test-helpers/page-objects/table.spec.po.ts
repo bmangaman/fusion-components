@@ -4,34 +4,34 @@ import { MenuPageObject } from './menu.spec.po';
 /**
  * TABLE PAGE OBJECT
  *
- * Page object for the fusion-ui-table component.
- * Makes it easier to find and select certain fusion-ui-table attributes and elements.
+ * Page object for the f-table component.
+ * Makes it easier to find and select certain f-table attributes and elements.
  */
 export class TablePageObject {
   private fixture: ComponentFixture<any>;
   private containerClass: string;
 
   /**
-   * Get the "fusion-ui-table" tag
+   * Get the "f-table" tag
    */
   get fusionUiTable(): HTMLElement {
     // first, if a containerClass was provided, try to find the element that has that class
     const container: HTMLElement = this.containerClass ? this.fixture.nativeElement.querySelector(this.containerClass) : null;
-    // if the container element was found, use that to query for the fusion-ui-tablear,
-    // otherwise, just use the fusion-ui-progress-bar tag
-    const table: HTMLElement = (this.containerClass && container ? container : this.fixture.nativeElement).querySelector('fusion-ui-table');
+    // if the container element was found, use that to query for the f-tablear,
+    // otherwise, just use the f-progress-bar tag
+    const table: HTMLElement = (this.containerClass && container ? container : this.fixture.nativeElement).querySelector('f-table');
 
     return table;
   }
 
   /**
-   * Gets the top-level container that contains all of the fusion-ui-table elements.
+   * Gets the top-level container that contains all of the f-table elements.
    *
    * @returns The outermost div element.
    */
   get container(): HTMLElement {
     const table: HTMLElement = this.fusionUiTable;
-    return table ? table.querySelector('.fusion-ui-table') : null;
+    return table ? table.querySelector('.f-table') : null;
   }
 
   /**
@@ -41,7 +41,7 @@ export class TablePageObject {
    */
   get header(): HTMLDivElement {
     const table: HTMLElement = this.fusionUiTable;
-    return table ? table.querySelector('.fusion-ui-table__header') : null;
+    return table ? table.querySelector('.f-table__header') : null;
   }
 
   /**
@@ -51,7 +51,7 @@ export class TablePageObject {
    */
   get controls(): HTMLDivElement {
     const table: HTMLElement = this.fusionUiTable;
-    return table ? table.querySelector('.fusion-ui-table__controls') : null;
+    return table ? table.querySelector('.f-table__controls') : null;
   }
 
   /**
@@ -61,7 +61,7 @@ export class TablePageObject {
    */
   get filterControls(): HTMLElement {
     const controls: HTMLDivElement = this.controls;
-    return controls ? controls.querySelector('.fusion-ui-table__filter-selector') : null;
+    return controls ? controls.querySelector('.f-table__filter-selector') : null;
   }
 
   /**
@@ -71,8 +71,8 @@ export class TablePageObject {
    */
   get filterSelectorMenu(): MenuPageObject {
     const controls: HTMLDivElement = this.controls;
-    const filterSelectorComponent: HTMLElement = controls ? controls.querySelector('fusion-ui-table-filter-selector') : null;
-    return filterSelectorComponent ? new MenuPageObject(this.fixture, '.fusion-ui-table__filter-selector') : null;
+    const filterSelectorComponent: HTMLElement = controls ? controls.querySelector('f-table-filter-selector') : null;
+    return filterSelectorComponent ? new MenuPageObject(this.fixture, '.f-table__filter-selector') : null;
   }
 
   /**
@@ -82,7 +82,7 @@ export class TablePageObject {
    */
   get quickFilters(): NodeListOf<HTMLButtonElement> {
     const filterControls: HTMLElement = this.filterControls;
-    return filterControls ? filterControls.querySelectorAll('.fusion-ui-table__filter-selector-quick-filter-button') : null;
+    return filterControls ? filterControls.querySelectorAll('.f-table__filter-selector-quick-filter-button') : null;
   }
 
   /**
@@ -92,8 +92,8 @@ export class TablePageObject {
    */
   get columnSelectorMenu(): MenuPageObject {
     const controls: HTMLDivElement = this.controls;
-    const columnSelectorComponent: HTMLElement = controls ? controls.querySelector('fusion-ui-table-column-selector') : null;
-    return columnSelectorComponent ? new MenuPageObject(this.fixture, '.fusion-ui-table__column-selector') : null;
+    const columnSelectorComponent: HTMLElement = controls ? controls.querySelector('f-table-column-selector') : null;
+    return columnSelectorComponent ? new MenuPageObject(this.fixture, '.f-table__column-selector') : null;
   }
 
   /**
@@ -104,7 +104,7 @@ export class TablePageObject {
   get columnSelectorMenuInputs(): NodeListOf<HTMLInputElement> {
     const menu: MenuPageObject = this.columnSelectorMenu;
     const menuContent: HTMLElement = menu ? menu.menuDialogContent : null;
-    return menuContent ? menuContent.querySelectorAll('.fusion-ui-table__column-selector-checkbox') : null;
+    return menuContent ? menuContent.querySelectorAll('.f-table__column-selector-checkbox') : null;
   }
 
   /**
@@ -116,7 +116,7 @@ export class TablePageObject {
   getColumnSelectorMenuInputByColumnHeader(header: string): HTMLInputElement {
     const menu: MenuPageObject = this.columnSelectorMenu;
     const menuContent: HTMLElement = menu ? menu.menuDialogContent : null;
-    return menuContent ? menuContent.querySelector(`#fusion-ui-column-selector-checkbox--${header}`) : null;
+    return menuContent ? menuContent.querySelector(`#f-column-selector-checkbox--${header}`) : null;
   }
 
   /**
@@ -126,7 +126,7 @@ export class TablePageObject {
    */
   get refreshButton(): HTMLButtonElement {
     const controls: HTMLDivElement = this.controls;
-    return controls ? controls.querySelector('.fusion-ui-table__controls--button--refresh') : null;
+    return controls ? controls.querySelector('.f-table__controls--button--refresh') : null;
   }
 
   /**
@@ -136,7 +136,7 @@ export class TablePageObject {
    */
   get downloadButton(): HTMLButtonElement {
     const controls: HTMLDivElement = this.controls;
-    return controls ? controls.querySelector('.fusion-ui-table__controls--button--download') : null;
+    return controls ? controls.querySelector('.f-table__controls--button--download') : null;
   }
 
   /**
@@ -146,7 +146,7 @@ export class TablePageObject {
    */
   get tableContainer(): HTMLDivElement {
     const table: HTMLElement = this.fusionUiTable;
-    return table ? table.querySelector('.fusion-ui-table__container') : null;
+    return table ? table.querySelector('.f-table__container') : null;
   }
 
   /**
@@ -156,7 +156,7 @@ export class TablePageObject {
    */
   get stateContainer(): HTMLDivElement {
     const table: HTMLElement = this.fusionUiTable;
-    return table ? table.querySelector('.fusion-ui-table__state') : null;
+    return table ? table.querySelector('.f-table__state') : null;
   }
 
   /**
@@ -166,7 +166,7 @@ export class TablePageObject {
    */
   get table(): HTMLTableElement {
     const table: HTMLElement = this.fusionUiTable;
-    return table ? table.querySelector('.fusion-ui-table__table') : null;
+    return table ? table.querySelector('.f-table__table') : null;
   }
 
   /**
@@ -176,7 +176,7 @@ export class TablePageObject {
    */
   get tableHead(): HTMLElement {
     const table: HTMLElement = this.table;
-    return table ? table.querySelector('.fusion-ui-table__table-thead') : null;
+    return table ? table.querySelector('.f-table__table-thead') : null;
   }
 
   /**
@@ -186,7 +186,7 @@ export class TablePageObject {
    */
   get tableHeadRow(): HTMLTableRowElement {
     const tableHead: HTMLElement = this.tableHead;
-    return tableHead ? tableHead.querySelector('.fusion-ui-table__table-row') : null;
+    return tableHead ? tableHead.querySelector('.f-table__table-row') : null;
   }
 
   /**
@@ -196,7 +196,7 @@ export class TablePageObject {
    */
   get tableHeadColumns(): NodeListOf<HTMLTableHeaderCellElement> {
     const tableHeadRow: HTMLElement = this.tableHeadRow;
-    return tableHeadRow ? tableHeadRow.querySelectorAll('.fusion-ui-table__table-cell') : null;
+    return tableHeadRow ? tableHeadRow.querySelectorAll('.f-table__table-cell') : null;
   }
 
   /**
@@ -217,7 +217,7 @@ export class TablePageObject {
    */
   get tableBody(): HTMLElement {
     const table: HTMLElement = this.table;
-    return table ? table.querySelector('.fusion-ui-table__table-tbody') : null;
+    return table ? table.querySelector('.f-table__table-tbody') : null;
   }
 
   /**
@@ -227,7 +227,7 @@ export class TablePageObject {
    */
   get tableBodyRows(): NodeListOf<HTMLTableRowElement> {
     const tableBody: HTMLElement = this.tableBody;
-    return tableBody ? tableBody.querySelectorAll('.fusion-ui-table__table-row') : null;
+    return tableBody ? tableBody.querySelectorAll('.f-table__table-row') : null;
   }
 
   /**
@@ -249,7 +249,7 @@ export class TablePageObject {
    */
   getTableBodyColumnsAtRowIndex(index: number): NodeListOf<HTMLTableCellElement> {
     const tableBodyRow: HTMLTableRowElement = this.getTableBodyRowAtIndex(index);
-    return tableBodyRow ? tableBodyRow.querySelectorAll('.fusion-ui-table__table-cell') : null;
+    return tableBodyRow ? tableBodyRow.querySelectorAll('.f-table__table-cell') : null;
   }
 
 /**
@@ -284,7 +284,7 @@ export class TablePageObject {
    */
   getTableBodyActionsColumnAtRowIndex(index: number): HTMLTableCellElement {
     const tableBodyRow: HTMLTableRowElement = this.getTableBodyRowAtIndex(index);
-    return tableBodyRow ? tableBodyRow.querySelector('.fusion-ui-table__table-cell--actions') : null;
+    return tableBodyRow ? tableBodyRow.querySelector('.f-table__table-cell--actions') : null;
   }
 
   /**
@@ -295,7 +295,7 @@ export class TablePageObject {
    */
   getTableBodyActionsButtonAtRowIndex(index: number): MenuPageObject {
     const tableActionsColumnAtIndex: HTMLTableCellElement = this.getTableBodyActionsColumnAtRowIndex(index);
-    return tableActionsColumnAtIndex ? new MenuPageObject(this.fixture, `.fusion-ui-table__table-row--${index}`) : null;
+    return tableActionsColumnAtIndex ? new MenuPageObject(this.fixture, `.f-table__table-row--${index}`) : null;
   }
 
   /**
@@ -316,7 +316,7 @@ export class TablePageObject {
    */
   getTableBodySelectionColumnAtRowIndex(index: number): HTMLTableCellElement {
     const tableBodyRow: HTMLTableRowElement = this.getTableBodyRowAtIndex(index);
-    return tableBodyRow ? tableBodyRow.querySelector('.fusion-ui-table__table-cell--selection-control') : null;
+    return tableBodyRow ? tableBodyRow.querySelector('.f-table__table-cell--selection-control') : null;
   }
 
   /**
@@ -338,7 +338,7 @@ export class TablePageObject {
    */
   getTableBodyRowExpanderAtRowIndex(index: number): HTMLButtonElement {
     const tableBodyRow: HTMLTableRowElement = this.getTableBodyRowAtIndex(index);
-    return tableBodyRow ? tableBodyRow.querySelector('.fusion-ui-table__table-cell-expansion-button') : null;
+    return tableBodyRow ? tableBodyRow.querySelector('.f-table__table-cell-expansion-button') : null;
   }
 
   async clickExpansionLinkAtRowIndex(index: number): Promise<void> {
@@ -353,7 +353,7 @@ export class TablePageObject {
    */
   get pagination(): HTMLDivElement {
     const table: HTMLElement = this.fusionUiTable;
-    return table ? table.querySelector('.fusion-ui-table__pagination') : null;
+    return table ? table.querySelector('.f-table__pagination') : null;
   }
 
   /**
@@ -363,7 +363,7 @@ export class TablePageObject {
    */
   get paginationNumOfResults(): string {
     const pagination: HTMLDivElement = this.pagination;
-    return pagination ? pagination.querySelector('.fusion-ui-table__pagination-num-of-results').textContent : null;
+    return pagination ? pagination.querySelector('.f-table__pagination-num-of-results').textContent : null;
   }
 
   /**
@@ -373,8 +373,8 @@ export class TablePageObject {
    */
   get paginationControlButtons(): NodeListOf<HTMLButtonElement> {
     const pagination: HTMLDivElement = this.pagination;
-    const controls: HTMLDivElement = pagination ? pagination.querySelector('.fusion-ui-table__pagination-controls') : null;
-    return controls ? controls.querySelectorAll('.fusion-ui-table__pagination-controls-button') : null;
+    const controls: HTMLDivElement = pagination ? pagination.querySelector('.f-table__pagination-controls') : null;
+    return controls ? controls.querySelectorAll('.f-table__pagination-controls-button') : null;
   }
 
   /**
@@ -384,7 +384,7 @@ export class TablePageObject {
    */
   get paginationNumPerPage(): HTMLSelectElement {
     const pagination: HTMLDivElement = this.pagination;
-    return pagination ? pagination.querySelector('.fusion-ui-table__pagination-num-per-page-select') : null;
+    return pagination ? pagination.querySelector('.f-table__pagination-num-per-page-select') : null;
   }
 
   /**
@@ -395,7 +395,7 @@ export class TablePageObject {
     const selectedRows: HTMLTableRowElement[] = [];
 
     rows.forEach(row => {
-      const selectedInput = row.querySelector('.fusion-ui-table__table-cell-inner .fusion-ui-form__radio-input--checked');
+      const selectedInput = row.querySelector('.f-table__table-cell-inner .f-form__radio-input--checked');
 
       if (selectedInput) {
         selectedRows.push(row);
@@ -414,7 +414,7 @@ export class TablePageObject {
     const rows = this.tableBodyRows;
 
     rows.forEach(row => {
-      const checkbox: HTMLInputElement = row.querySelector('.fusion-ui-table__table-cell-inner .fusion-ui-form__checkbox-input');
+      const checkbox: HTMLInputElement = row.querySelector('.f-table__table-cell-inner .f-form__checkbox-input');
       checkbox.checked = selected;
     });
 
@@ -429,10 +429,10 @@ export class TablePageObject {
   }
 
   /**
-   * Creates a page object for a fusion-ui-table DOM element based on the provided fixture and optional containerClass.
+   * Creates a page object for a f-table DOM element based on the provided fixture and optional containerClass.
    *
-   * @param fixture The parent DOM fixture/ element that houses the fusion-ui-table.
-   * @param containerClass Optional, providing a css class of a parent element of the fusion-ui-table
+   * @param fixture The parent DOM fixture/ element that houses the f-table.
+   * @param containerClass Optional, providing a css class of a parent element of the f-table
    * will help make sure the correct one is selected.
    */
   constructor(fixture: ComponentFixture<any>, containerClass?: string) {

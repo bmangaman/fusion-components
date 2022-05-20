@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { FusionUiSize, FusionUiState } from '@fusion-ui/fusion-components/lib/shared';
+import { Size, State } from '@fusion-components/lib/shared';
 
 import { ButtonComponentPageObject } from './button.component.spec.po';
 import { ButtonAria, ButtonInputType, ButtonType } from './button.interface';
 import { ButtonModule } from './button.module';
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
-    <fusion-ui-button
+    <f-button
       [type]="type"
       [inputType]="inputType"
       [size]="size"
@@ -26,15 +26,15 @@ import { ButtonModule } from './button.module';
       [fullWidth]="fullWidth"
       [text]="text"
       (buttonClick)="buttonClick()">
-    </fusion-ui-button>
+    </f-button>
   `,
 })
 export class ButtonTestComponent {
   type: ButtonType;
   inputType: ButtonInputType;
-  size: FusionUiSize;
+  size: Size;
   icon: string;
-  state: FusionUiState;
+  state: State;
   isDisabled: boolean;
   isAutofocused: boolean;
   isSelected: boolean;
@@ -49,7 +49,7 @@ export class ButtonTestComponent {
 }
 
 describe('ButtonComponent', () => {
-  const fusionUiPrefix = 'fusion-ui-button';
+  const fusionUiPrefix = 'f-button';
 
   let component: ButtonTestComponent;
   let fixture: ComponentFixture<ButtonTestComponent>;
@@ -84,7 +84,7 @@ describe('ButtonComponent', () => {
     });
 
     it('should append classes based on the provided type', () => {
-      component.size = null;
+      component.size = null!;
       fixture.detectChanges();
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--primary`);
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--secondary`);
@@ -99,25 +99,25 @@ describe('ButtonComponent', () => {
     });
 
     it('should append classes based on the provided size', () => {
-      component.size = null;
+      component.size = null!;
       fixture.detectChanges();
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--xSmall`);
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--small`);
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--large`);
 
-      component.size = FusionUiSize.X_SMALL;
+      component.size = Size.X_SMALL;
       fixture.detectChanges();
       expect(page.button.classes).toContain(`${fusionUiPrefix}--xSmall`);
 
-      component.size = FusionUiSize.SMALL;
+      component.size = Size.SMALL;
       fixture.detectChanges();
       expect(page.button.classes).toContain(`${fusionUiPrefix}--small`);
 
-      component.size = FusionUiSize.LARGE;
+      component.size = Size.LARGE;
       fixture.detectChanges();
       expect(page.button.classes).toContain(`${fusionUiPrefix}--large`);
 
-      component.size = FusionUiSize.MEDIUM;
+      component.size = Size.MEDIUM;
       fixture.detectChanges();
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--xSmll`);
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--small`);
@@ -125,23 +125,23 @@ describe('ButtonComponent', () => {
     });
 
     it('should append classes based on the provided state', () => {
-      component.state = null;
+      component.state = null!;
       fixture.detectChanges();
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--loaded`);
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--loading`);
 
-      component.state = FusionUiState.LOADED;
+      component.state = State.LOADED;
       fixture.detectChanges();
       expect(page.button.classes).toContain(`${fusionUiPrefix}--loaded`);
 
-      component.state = FusionUiState.LOADING;
+      component.state = State.LOADING;
       fixture.detectChanges();
       expect(page.button.classes).toContain(`${fusionUiPrefix}--loading`);
       expect(page.button.classes).toContain(`${fusionUiPrefix}--disabled`);
     });
 
     it('should append classes if the button isSelected', () => {
-      component.isSelected = null;
+      component.isSelected = null!;
       fixture.detectChanges();
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--selected`);
 
@@ -155,7 +155,7 @@ describe('ButtonComponent', () => {
     });
 
     it('should append classes if the button isDisabled', () => {
-      component.isDisabled = null;
+      component.isDisabled = null!;
       fixture.detectChanges();
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--disabled`);
 
@@ -169,7 +169,7 @@ describe('ButtonComponent', () => {
     });
 
     it('should append classes if the button has noBorder', () => {
-      component.noBorder = null;
+      component.noBorder = null!;
       fixture.detectChanges();
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--noBorder`);
 
@@ -183,7 +183,7 @@ describe('ButtonComponent', () => {
     });
 
     it('should append classes if the button has fullWidth', () => {
-      component.fullWidth = null;
+      component.fullWidth = null!;
       fixture.detectChanges();
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--full-width`);
 
@@ -197,14 +197,14 @@ describe('ButtonComponent', () => {
     });
 
     it('should append classes if text or icon is provided', () => {
-      component.icon = null;
-      component.text = null;
+      component.icon = null!;
+      component.text = null!;
       fixture.detectChanges();
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--icon`);
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--text`);
 
       component.icon = 'mdi-content-copy';
-      component.text = null;
+      component.text = null!;
       fixture.detectChanges();
       expect(page.button.classes).toContain(`${fusionUiPrefix}--icon`);
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--text`);
@@ -215,7 +215,7 @@ describe('ButtonComponent', () => {
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--icon`);
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--text`);
 
-      component.icon = null;
+      component.icon = null!;
       component.text = 'button text';
       fixture.detectChanges();
       expect(page.button.classes).not.toContain(`${fusionUiPrefix}--icon`);
@@ -223,7 +223,7 @@ describe('ButtonComponent', () => {
     });
 
     it('should append all classes provided', () => {
-      component.classes = null;
+      component.classes = null!;
       fixture.detectChanges();
       expect(page.button.classes.length).toEqual(1);
 
@@ -241,7 +241,7 @@ describe('ButtonComponent', () => {
 
   describe('button state', () => {
     it('should be disabled if isDisabled is true', () => {
-      component.isDisabled = null;
+      component.isDisabled = null!;
       fixture.detectChanges();
       expect(page.button.button.disabled).toBeFalsy();
       expect(page.button.button.getAttribute('aria-disabled')).toEqual('false');
@@ -260,7 +260,7 @@ describe('ButtonComponent', () => {
     it('should display the button content if state === LOADED', () => {
       component.text = 'button text';
       component.icon = 'mdi-content-copy';
-      component.state = FusionUiState.LOADED;
+      component.state = State.LOADED;
       fixture.detectChanges();
       expect(page.button.textContainer).toBeTruthy();
       expect(page.button.text).toBeTruthy();
@@ -272,7 +272,7 @@ describe('ButtonComponent', () => {
     it('should display a loading spinner and disable the button if state === LOADING', () => {
       component.text = 'button text';
       component.icon = 'mdi-content-copy';
-      component.state = FusionUiState.LOADING;
+      component.state = State.LOADING;
       fixture.detectChanges();
       expect(page.button.textContainer).toBeFalsy();
       expect(page.button.text).toBeFalsy();
@@ -305,7 +305,7 @@ describe('ButtonComponent', () => {
     });
 
     it('should append aria attibutes if provided', () => {
-      component.aria = null;
+      component.aria = null!;
       fixture.detectChanges();
       expect(page.button.button.getAttribute('aria-label')).toBeFalsy();
       expect(page.button.button.getAttribute('aria-controls')).toBeFalsy();
@@ -338,7 +338,7 @@ describe('ButtonComponent', () => {
     });
 
     it('should add a down-chevron icon if opensMenu is true', () => {
-      component.state = FusionUiState.LOADED;
+      component.state = State.LOADED;
 
       component.opensMenu = false;
       fixture.detectChanges();

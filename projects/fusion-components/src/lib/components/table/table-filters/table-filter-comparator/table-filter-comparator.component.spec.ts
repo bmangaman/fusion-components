@@ -1,4 +1,4 @@
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
 import { TableFilterComparatorComponent } from './table-filter-comparator.component';
 import { FilterComparator } from './table-filter-comparator.interface';
 

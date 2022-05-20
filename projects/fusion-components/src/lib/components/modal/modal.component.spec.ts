@@ -1,8 +1,8 @@
 import { ElementRef } from '@angular/core';
 import { OtherStubFactory } from '@hcc/app/shared/unit-test-helpers';
 
-import { BaseModalComponent } from '@fusion-ui/fusion-components';
-import { FusionUiSize } from '../../shared';
+import { BaseModalComponent } from '@fusion-components';
+import { Size } from '../../shared';
 
 import { ModalConfig, ModalType } from './modal.interface';
 import { ModalComponent } from './modal.component';
@@ -27,7 +27,7 @@ describe('ModalComponent', () => {
   describe('@Input()', () => {
     describe('config', () => {
       it('should set the config by combining the current config with the set config', () => {
-        const newConfig: ModalConfig = { size: FusionUiSize.SMALL };
+        const newConfig: ModalConfig = { size: Size.SMALL };
         component.config = newConfig;
         expect(component.config).toEqual(newConfig);
       });
@@ -37,7 +37,7 @@ describe('ModalComponent', () => {
   describe('@HostBinding()', () => {
     describe('attr.class', () => {
       it('should return "visible" always', () => {
-        expect(component.hostClasses).toEqual('fusion-ui-modal--visible');
+        expect(component.hostClasses).toEqual('f-modal--visible');
       });
     });
   });
@@ -370,28 +370,28 @@ describe('ModalComponent', () => {
 
       // non-string container, no windowClasses
       component.config.type = ModalType.ALERT;
-      component.config.size = FusionUiSize.MEDIUM;
+      component.config.size = Size.MEDIUM;
       component.config.container = documentStub.createElement('div');
       component.config.windowClasses = [];
-      expectedClasses = ['fusion-ui-modal__window--alert', 'fusion-ui-modal__window--alert--medium'];
+      expectedClasses = ['f-modal__window--alert', 'f-modal__window--alert--medium'];
       classes = (component as any).getModalWindowClasses();
       expect(classes).toEqual(expectedClasses);
 
       // string container
       component.config.type = ModalType.ALERT;
-      component.config.size = FusionUiSize.MEDIUM;
+      component.config.size = Size.MEDIUM;
       component.config.container = 'body';
       component.config.windowClasses = [];
-      expectedClasses = ['fusion-ui-modal__window--alert', 'fusion-ui-modal__window--alert--medium', 'fusion-ui-modal__window--alert--container-body'];
+      expectedClasses = ['f-modal__window--alert', 'f-modal__window--alert--medium', 'f-modal__window--alert--container-body'];
       classes = (component as any).getModalWindowClasses();
       expect(classes).toEqual(expectedClasses);
 
       // string container AND windowClasses
       component.config.type = ModalType.ALERT;
-      component.config.size = FusionUiSize.MEDIUM;
+      component.config.size = Size.MEDIUM;
       component.config.container = 'body';
       component.config.windowClasses = ['fake-class'];
-      expectedClasses = ['fusion-ui-modal__window--alert', 'fusion-ui-modal__window--alert--medium', 'fusion-ui-modal__window--alert--container-body', 'fake-class'];
+      expectedClasses = ['f-modal__window--alert', 'f-modal__window--alert--medium', 'f-modal__window--alert--container-body', 'fake-class'];
       classes = (component as any).getModalWindowClasses();
       expect(classes).toEqual(expectedClasses);
     });
@@ -404,20 +404,20 @@ describe('ModalComponent', () => {
       component.config = {};
 
       component.config.type = ModalType.ALERT;
-      component.config.size = FusionUiSize.MEDIUM;
-      expectedClasses = ['fusion-ui-modal__container', 'fusion-ui-modal__container--medium', 'fusion-ui-modal__container--alert'];
+      component.config.size = Size.MEDIUM;
+      expectedClasses = ['f-modal__container', 'f-modal__container--medium', 'f-modal__container--alert'];
       classes = (component as any).getModalContainerClasses();
       expect(classes).toEqual(expectedClasses);
 
       component.config.type = ModalType.FULL;
-      component.config.size = FusionUiSize.SMALL;
-      expectedClasses = ['fusion-ui-modal__container', 'fusion-ui-modal__container--small', 'fusion-ui-modal__container--full'];
+      component.config.size = Size.SMALL;
+      expectedClasses = ['f-modal__container', 'f-modal__container--small', 'f-modal__container--full'];
       classes = (component as any).getModalContainerClasses();
       expect(classes).toEqual(expectedClasses);
 
       component.config.type = ModalType.SIDE;
-      component.config.size = FusionUiSize.LARGE;
-      expectedClasses = ['fusion-ui-modal__container', 'fusion-ui-modal__container--large', 'fusion-ui-modal__container--side'];
+      component.config.size = Size.LARGE;
+      expectedClasses = ['f-modal__container', 'f-modal__container--large', 'f-modal__container--side'];
       classes = (component as any).getModalContainerClasses();
       expect(classes).toEqual(expectedClasses);
     });

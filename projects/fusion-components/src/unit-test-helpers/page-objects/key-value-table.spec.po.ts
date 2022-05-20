@@ -3,20 +3,20 @@ import { ComponentFixture } from '@angular/core/testing';
 /**
  * KEY VALUE TABLE PAGE OBJECT
  *
- * Page object for the fusion-ui-key-value-table component
- * Makes it easier to find and select certain fusion-ui-key-value-table attributes and elements
+ * Page object for the f-key-value-table component
+ * Makes it easier to find and select certain f-key-value-table attributes and elements
  */
 export class KeyValueTablePageObject {
   private fixture: ComponentFixture<any>;
   private tableClass: string;
 
   get table(): HTMLTableElement {
-    // first try to get the fusion-ui-key-value-table element by a provided class
+    // first try to get the f-key-value-table element by a provided class
     const tableClass: HTMLElement = this.tableClass ? this.fixture.nativeElement.querySelector(this.tableClass) : null;
-    // if no provided class or element not found, try to find the fusion-ui-key-value-table element by the fusion-ui-key-value-table tag
-    const keyValueTable: HTMLElement = tableClass || this.fixture.nativeElement.querySelector('fusion-ui-key-value-table');
-    // if fusion-ui-key-value-table found, find the actual <button> element by the .fusion-ui-key-value-table class
-    const table: HTMLTableElement = keyValueTable ? keyValueTable.querySelector('.fusion-ui-key-value-table') : null;
+    // if no provided class or element not found, try to find the f-key-value-table element by the f-key-value-table tag
+    const keyValueTable: HTMLElement = tableClass || this.fixture.nativeElement.querySelector('f-key-value-table');
+    // if f-key-value-table found, find the actual <button> element by the .f-key-value-table class
+    const table: HTMLTableElement = keyValueTable ? keyValueTable.querySelector('.f-key-value-table') : null;
 
     return table;
   }
@@ -28,7 +28,7 @@ export class KeyValueTablePageObject {
    */
   get tableRows(): NodeListOf<HTMLTableRowElement> {
     const table: HTMLTableElement = this.table;
-    return table ? table.querySelectorAll('.fusion-ui-key-value-table__row') : null;
+    return table ? table.querySelectorAll('.f-key-value-table__row') : null;
   }
 
   /**
@@ -38,7 +38,7 @@ export class KeyValueTablePageObject {
    */
   get tableKeyCells(): NodeListOf<HTMLTableHeaderCellElement> {
     const table: HTMLTableElement = this.table;
-    return table ? table.querySelectorAll('.fusion-ui-key-value-table__cell--header') : null;
+    return table ? table.querySelectorAll('.f-key-value-table__cell--header') : null;
   }
 
   /**
@@ -48,7 +48,7 @@ export class KeyValueTablePageObject {
    */
   get tableValueCells(): NodeListOf<HTMLTableCellElement> {
     const table: HTMLTableElement = this.table;
-    return table ? table.querySelectorAll('.fusion-ui-key-value-table__cell--body') : null;
+    return table ? table.querySelectorAll('.f-key-value-table__cell--body') : null;
   }
 
   /**
@@ -70,7 +70,7 @@ export class KeyValueTablePageObject {
    */
   getTableKeyCellAtRowIndex(index: number): HTMLTableHeaderCellElement {
     const tableRow: HTMLTableRowElement = this.getTableRowAtIndex(index);
-    return tableRow ? tableRow.querySelector('.fusion-ui-key-value-table__cell--header') : null;
+    return tableRow ? tableRow.querySelector('.f-key-value-table__cell--header') : null;
   }
 
   /**
@@ -81,14 +81,14 @@ export class KeyValueTablePageObject {
    */
   getTableValueCellAtRowIndex(index: number): HTMLTableCellElement {
     const tableRow: HTMLTableRowElement = this.getTableRowAtIndex(index);
-    return tableRow ? tableRow.querySelector('.fusion-ui-key-value-table__cell--body') : null;
+    return tableRow ? tableRow.querySelector('.f-key-value-table__cell--body') : null;
   }
 
   /**
-   * Creates a page object for a fusion-ui-key-value-table DOM element based on the provided fixture and optional tableClass.
+   * Creates a page object for a f-key-value-table DOM element based on the provided fixture and optional tableClass.
    *
-   * @param fixture The parent DOM fixture/ element that houses the fusion-ui-key-value-table.
-   * @param tableClass Optional, providing a css class appended to a fusion-ui-key-value-table will help make sure the correct
+   * @param fixture The parent DOM fixture/ element that houses the f-key-value-table.
+   * @param tableClass Optional, providing a css class appended to a f-key-value-table will help make sure the correct
    * one is selected.
    */
   constructor(fixture: ComponentFixture<any>, tableClass?: string) {

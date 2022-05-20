@@ -1,7 +1,7 @@
 import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList, TemplateRef } from '@angular/core';
 
 import { TemplateDirective } from '../../directives/template';
-import { FusionUiSize } from '../../shared';
+import { Size } from '../../shared';
 import { ButtonType } from '../button';
 import { DEFAULT_WIDGET_TRANSLATIONS, InfoBoxDetail, WidgetTemplate, WidgetTranslations } from './widget.interface';
 
@@ -9,7 +9,7 @@ import { DEFAULT_WIDGET_TRANSLATIONS, InfoBoxDetail, WidgetTemplate, WidgetTrans
  * WIDGET COMPONENT
  *
  * @example
- * <fusion-ui-widget
+ * <f-widget
  *   [isTimestampDisplayed]="true"
  *   [isRefreshButtonDisplayed]="true"
  *   [infoDetailsData]="infoDetailsData"
@@ -37,15 +37,15 @@ import { DEFAULT_WIDGET_TRANSLATIONS, InfoBoxDetail, WidgetTemplate, WidgetTrans
  *   </ng-template>
  *   <!-- END: info details -->
  *
- * </fusion-ui-widget>
+ * </f-widget>
  */
 @Component({
-  selector: 'fusion-ui-widget',
+  selector: 'f-widget',
   templateUrl: 'widget.component.html',
 })
 export class WidgetComponent implements AfterContentInit {
   readonly ButtonType =  ButtonType;
-  readonly FusionUiSize = FusionUiSize;
+  readonly Size = Size;
 
   private _timestamp: Date = new Date();
   get timeStamp(): Date {

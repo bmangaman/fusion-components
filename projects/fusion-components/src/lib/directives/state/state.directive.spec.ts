@@ -1,10 +1,10 @@
 import { ComponentFactoryResolver, ComponentRef, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
 
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
-import { MockTemplateRef } from '@fusion-ui/fusion-components/unit-test-helpers/mock-utils.spec';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { MockTemplateRef } from '@fusion-components/unit-test-helpers/mock-utils.spec';
 
 import { StateComponent, StateLocation } from '../../components/state';
-import { FusionUiState } from '../../shared';
+import { State } from '../../shared';
 import { StateDirective } from './state.directive';
 
 import Spy = jasmine.Spy;
@@ -43,8 +43,8 @@ describe('StateDirective', () => {
 
     describe('state', () => {
       it('should set the state and call generateView()', () => {
-        directive.state = FusionUiState.LOADED;
-        expect(directive['_state']).toEqual(FusionUiState.LOADED);
+        directive.state = State.LOADED;
+        expect(directive['_state']).toEqual(State.LOADED);
         expect(directive.generateView).toHaveBeenCalled();
       });
     });
@@ -153,7 +153,7 @@ describe('StateDirective', () => {
 
     describe('loading state', () => {
       it('should call generateViewHelper with the correct state template', () => {
-        directive.state = FusionUiState.LOADING;
+        directive.state = State.LOADING;
 
         directive.fusionUiStateLoading = null;
         directive.generateView();
@@ -167,7 +167,7 @@ describe('StateDirective', () => {
 
     describe('no results state', () => {
       it('should call generateViewHelper with the correct state template', () => {
-        directive.state = FusionUiState.NO_RESULTS;
+        directive.state = State.NO_RESULTS;
 
         directive.fusionUiStateNoResults = null;
         directive.generateView();
@@ -181,7 +181,7 @@ describe('StateDirective', () => {
 
     describe('error state', () => {
       it('should call generateViewHelper with the correct state template', () => {
-        directive.state = FusionUiState.ERROR;
+        directive.state = State.ERROR;
 
         directive.fusionUiStateError = null;
         directive.generateView();
@@ -195,7 +195,7 @@ describe('StateDirective', () => {
 
     describe('not loaded state', () => {
       it('should call generateViewHelper with the correct state template', () => {
-        directive.state = FusionUiState.NOT_LOADED;
+        directive.state = State.NOT_LOADED;
 
         directive.fusionUiStateNotLoaded = null;
         directive.generateView();
@@ -209,7 +209,7 @@ describe('StateDirective', () => {
 
     describe('loaded and default states', () => {
       it('should create an embedded view of the templateRef', () => {
-        directive.state = FusionUiState.LOADED;
+        directive.state = State.LOADED;
         directive.generateView();
         expect(viewContainerRef.createEmbeddedView).toHaveBeenCalledWith(templateRef);
 
@@ -250,7 +250,7 @@ describe('StateDirective', () => {
       expect(stateComponentRef.instance.messageTemplates).toEqual(null);
       expect(stateComponentRef.instance.loadingAriaLabel).toEqual(null);
 
-      directive.state = FusionUiState.LOADING;
+      directive.state = State.LOADING;
       directive.location = StateLocation.GENERIC;
       directive.headlines = {};
       directive.messages = {};
@@ -260,7 +260,7 @@ describe('StateDirective', () => {
       directive.generateViewHelper(null);
       expect(viewContainerRef.createComponent).toHaveBeenCalled();
       expect(componentFactoryResolver.resolveComponentFactory).toHaveBeenCalledWith(StateComponent);
-      expect(stateComponentRef.instance.state).toEqual(FusionUiState.LOADING);
+      expect(stateComponentRef.instance.state).toEqual(State.LOADING);
       expect(stateComponentRef.instance.location).toEqual(StateLocation.GENERIC);
       expect(stateComponentRef.instance.headlines).toEqual({});
       expect(stateComponentRef.instance.messages).toEqual({});

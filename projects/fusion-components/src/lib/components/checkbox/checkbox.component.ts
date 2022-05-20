@@ -7,11 +7,11 @@ import { v4 as uuidv4 } from 'uuid';
  * CHECKBOX COMPONENT
  */
 @Component({
-  selector: 'fusion-ui-checkbox',
+  selector: 'f-checkbox',
   templateUrl: './checkbox.component.html',
 })
 export class CheckboxComponent implements ControlValueAccessor {
-  private onChange: (...args) => void;
+  private onChange: (...args: unknown[]) => void;
   private onTouched: () => void;
 
   private _isDisabled: boolean;
@@ -51,7 +51,7 @@ export class CheckboxComponent implements ControlValueAccessor {
     return this._uuid;
   }
 
-  @HostBinding('class.fusion-ui-form__fieldset') hostCssClasses = true;
+  @HostBinding('class.f-form__fieldset') hostCssClasses = true;
 
   constructor(
     private _control: NgControl,

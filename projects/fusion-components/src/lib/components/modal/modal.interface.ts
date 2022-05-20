@@ -1,6 +1,6 @@
 import { ComponentRef, EventEmitter, Type } from '@angular/core';
 
-import { FusionUiSize } from '../../shared';
+import { Size } from '../../shared';
 import { ModalComponent } from './modal.component';
 
 
@@ -25,7 +25,7 @@ export interface ModalConfig {
   // If nothing is provided the service will use 'body'
   container?: string | HTMLElement;
   // Determines the size of the modal. Doesn't matter for type FULL.
-  size?: FusionUiSize;
+  size?: Size;
   // Additional classes to add to the modal window element.
   windowClasses?: string[];
   // Additional classes to add to the backdrop.

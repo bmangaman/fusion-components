@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { WidgetModule } from '@fusion-ui/fusion-components';
+import { WidgetModule } from '@fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { WidgetDemoComponent } from './widget-demo.component';

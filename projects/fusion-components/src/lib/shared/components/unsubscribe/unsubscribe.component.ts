@@ -8,7 +8,7 @@ import { unsubscribeSubject } from '../../utilities';
  * The Unsubscribe Component provides a consistent way unsubscribe from any active subscriptions.
  */
 @Component({
-  selector: 'fusion-ui-unsubscribe',
+  selector: 'f-unsubscribe',
   template: '',
 })
 export class UnsubscribeComponent implements OnDestroy {

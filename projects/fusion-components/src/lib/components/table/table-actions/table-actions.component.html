@@ -1,5 +1,5 @@
-<div class="fusion-ui-table__actions">
-  <fusion-ui-menu
+<div class="f-table__actions">
+  <f-menu
     [aria]="{ menuDialogLabelledBy: translations?.menuDialogLabelledBy || ( baseTranslationKey + '.table.actions.menuDialogLabelledBy' | translate ) }"
     [dialogClasses]="cssClasses"
     [isMenuDialogOpen]="isMenuDialogOpen"
@@ -8,8 +8,8 @@
     [dialogZIndex]="2"
     [dialogLocation]="dialogPosition">
     <ng-template fusionUiTemplate="menuButton">
-      <fusion-ui-button
-        [classes]="['fusion-ui-table__actions-button']"
+      <f-button
+        [classes]="['f-table__actions-button']"
         [aria]="{
           label: translations?.buttonAria || ( baseTranslationKey + '.table.actions.buttonAria' | translate ),
           hasPopup: true,
@@ -19,13 +19,13 @@
         [isDisabled]="isDisabled"
         [noBorder]="true"
         [type]="ButtonType.SECONDARY"
-        [size]="FusionUiSize.SMALL"
+        [size]="Size.SMALL"
         icon="mdi-dots-vertical"
         (buttonClick)="isMenuDialogOpen = !isMenuDialogOpen">
-      </fusion-ui-button>
+      </f-button>
     </ng-template>
     <ng-template fusionUiTemplate="menuDialogContent">
       <ng-container *ngTemplateOutlet="templateRef; context: { $implicit: rowData }"></ng-container>
     </ng-template>
-  </fusion-ui-menu>
+  </f-menu>
 </div>

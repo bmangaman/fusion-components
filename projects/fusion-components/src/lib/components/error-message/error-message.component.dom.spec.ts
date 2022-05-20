@@ -9,23 +9,23 @@ import { ErrorMessage } from './error-message.interface';
 import { ErrorMessageModule } from './error-message.module';
 
 @Component({
-  selector: 'fusion-ui-error-test-component',
+  selector: 'f-error-test-component',
   template: `
-    <form [formGroup]="testForm" class="fusion-ui-form">
-      <div class="fusion-ui-form__fieldset">
-        <label class="fusion-ui-form__label" for="test-input">Test Input Label</label>
-        <input formControlName="testInput" class="fusion-ui-form__input" id="test-input" type="text" />
-          <fusion-ui-error-message
+    <form [formGroup]="testForm" class="f-form">
+      <div class="f-form__fieldset">
+        <label class="f-form__label" for="test-input">Test Input Label</label>
+        <input formControlName="testInput" class="f-form__input" id="test-input" type="text" />
+          <f-error-message
             [control]="testForm.get('testInput')"
             [errors]="testInputErrors"
             id="single-error-message">
-          </fusion-ui-error-message>
-          <fusion-ui-error-message
+          </f-error-message>
+          <f-error-message
             [control]="testForm.get('testInput')"
             [errors]="testInputErrors"
             [displayMultiple]="true"
             id="multiple-error-messages">
-          </fusion-ui-error-message>
+          </f-error-message>
       </div>
     </form>`
 })
@@ -97,13 +97,13 @@ describe('ErrorMessageComponent', () => {
   });
 
   function getSingleErrorMessage(): DebugElement {
-    return fixture.debugElement.query(By.css('#single-error-message .fusion-ui-error-message'));
+    return fixture.debugElement.query(By.css('#single-error-message .f-error-message'));
   }
 
   function getMultipleErrorMessages(): {el: DebugElement, messages: DebugElement[]} {
     return {
-      el: fixture.debugElement.query(By.css('#multiple-error-messages .fusion-ui-error-messages')),
-      messages: fixture.debugElement.queryAll(By.css('#multiple-error-messages .fusion-ui-error-messages .fusion-ui-error-message')),
+      el: fixture.debugElement.query(By.css('#multiple-error-messages .f-error-messages')),
+      messages: fixture.debugElement.queryAll(By.css('#multiple-error-messages .f-error-messages .f-error-message')),
     };
   }
 

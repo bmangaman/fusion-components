@@ -11,12 +11,12 @@ import { WizardStep } from './wizard.interface';
  * that keep track of the state of the wizard navigation.
  *
  * @example
- * <fusion-ui-wizard [(steps)]="steps" (stepsChanged)="stepsChanged($event)">
+ * <f-wizard [(steps)]="steps" (stepsChanged)="stepsChanged($event)">
  *   Content Goes Here
- * </fusion-ui-wizard>
+ * </f-wizard>
  */
 @Component({
-  selector: 'fusion-ui-wizard',
+  selector: 'f-wizard',
   templateUrl: 'wizard.component.html',
 })
 export class WizardComponent implements OnChanges {
@@ -57,7 +57,7 @@ export class WizardComponent implements OnChanges {
    * @param c Input changes.
    */
   ngOnChanges(c: SimpleChanges): void {
-    if (c.disableNextSteps || c.disablePreviousSteps) {
+    if (c['disableNextSteps'] || c['disablePreviousSteps']) {
       this.setCurrentStepByIndex(this.getCurrentStepIndex());
     }
   }

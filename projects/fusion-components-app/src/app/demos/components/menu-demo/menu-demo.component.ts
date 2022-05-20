@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { FusionUiLocation, FusionUiSize } from '@fusion-ui/fusion-components';
+import { Location, Size } from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-menu',
@@ -9,8 +9,8 @@ import { FusionUiLocation, FusionUiSize } from '@fusion-ui/fusion-components';
   styleUrls: ['./menu-demo.component.scss']
 })
 export class MenuDemoComponent {
-  readonly FusionUiLocation = FusionUiLocation;
-  readonly FusionUiSize = FusionUiSize;
+  readonly Location = Location;
+  readonly Size = Size;
 
   menuForm: FormGroup;
   isMenuDialogOpen: boolean;
@@ -23,7 +23,7 @@ export class MenuDemoComponent {
 
   buildMenuForm(): void {
     this.menuForm = this.fb.group({
-      dialogLocation: [FusionUiLocation.TOP],
+      dialogLocation: [Location.TOP],
       minWidth: [200, []],
       maxHeight: [200, []],
     })

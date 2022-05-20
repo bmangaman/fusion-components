@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Validators } from '@angular/forms';
 
-import { BytesPipe, BytesPipeBase, EnumToArrayPipe } from '@fusion-ui/fusion-components/lib/pipes';
-import { BiBytesUnit, BytesUnit } from '@fusion-ui/fusion-components/lib/shared';
+import { BytesPipe, BytesPipeBase, EnumToArrayPipe } from '@fusion-components/lib/pipes';
+import { BiBytesUnit, BytesUnit } from '@fusion-components/lib/shared';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -17,7 +17,7 @@ import { TableFilterBytesInputComparator, TableFilterBytesTranslations } from '.
  * with bytes. It allows two inputs: the unit (B, MB, TB, etc.) and the value of that unit.
  */
 @Component({
-  selector: 'fusion-ui-table-bytes-filter',
+  selector: 'f-table-bytes-filter',
   templateUrl: './table-filter-bytes.component.html',
   providers: [{ provide: TableFilterComponent, useExisting: TableFilterBytesComponent }],
   changeDetection: ChangeDetectionStrategy.OnPush,

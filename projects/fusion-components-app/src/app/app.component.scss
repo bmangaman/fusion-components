@@ -13,11 +13,11 @@
   .fusion-demo {
     &__header {
       align-items: center;
-      background-color: $fusion-ui-color-blue-darkest;
-      color: $fusion-ui-color-primary-text-on-dark;
+      background-color: $f-color-blue-darkest;
+      color: $f-color-primary-text-on-dark;
       display: flex;
       grid-area: header;
-      padding: 0 $fusion-ui-spacing-md;
+      padding: 0 $f-spacing-md;
     }
 
     &__nav {
@@ -26,7 +26,7 @@
     }
 
     &__main {
-      background-color: $fusion-ui-color-background-white;
+      background-color: $f-color-background-white;
       grid-area: main;
       overflow: hidden;
     }

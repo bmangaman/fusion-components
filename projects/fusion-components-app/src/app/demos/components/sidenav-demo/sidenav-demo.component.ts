@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { of } from 'rxjs';
 
-import { NavItem } from '@fusion-ui/fusion-components/lib/components/sidenav/sidenav.interface';
+import { NavItem } from '@fusion-components/lib/components/sidenav/sidenav.interface';
 
 @Component({
   selector: 'fusion-demo-sidenav',

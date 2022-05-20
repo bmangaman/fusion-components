@@ -10,114 +10,114 @@ export class FormsRadioDemoComponent {
   readonly radioExamples: string[] = [
 
 // DEFAULT
-`<div class="fusion-ui-form__fieldset">
-  <span class="fusion-ui-form__radio">
-    <label for="fusion-ui-radio-1" class="fusion-ui-form__radio-label">
+`<div class="f-form__fieldset">
+  <span class="f-form__radio">
+    <label for="f-radio-1" class="f-form__radio-label">
       <input
-        class="fusion-ui-form__radio-input"
+        class="f-form__radio-input"
         type="radio"
-        name="fusion-ui-radio-1"
-        id="fusion-ui-radio-1">
-      <span class="fusion-ui-form__radio-button"></span>
-      <span class="fusion-ui-form__radio-label-text">Default</span>
+        name="f-radio-1"
+        id="f-radio-1">
+      <span class="f-form__radio-button"></span>
+      <span class="f-form__radio-label-text">Default</span>
     </label>
   </span>
 </div>`,
 
 // SELECTED
-`<div class="fusion-ui-form__fieldset">
-  <span class="fusion-ui-form__radio">
-    <label for="fusion-ui-radio-2" class="fusion-ui-form__radio-label">
+`<div class="f-form__fieldset">
+  <span class="f-form__radio">
+    <label for="f-radio-2" class="f-form__radio-label">
       <input
         checked="true"
-        class="fusion-ui-form__radio-input fusion-ui-form__radio-input--selected"
+        class="f-form__radio-input f-form__radio-input--selected"
         type="radio"
-        name="fusion-ui-radio-2"
-        id="fusion-ui-radio-2">
-      <span class="fusion-ui-form__radio-button"></span>
-      <span class="fusion-ui-form__radio-label-text">Selected</span>
+        name="f-radio-2"
+        id="f-radio-2">
+      <span class="f-form__radio-button"></span>
+      <span class="f-form__radio-label-text">Selected</span>
     </label>
   </span>
 </div>`,
 
 // HOVER
-`<div class="fusion-ui-form__fieldset">
-  <span class="fusion-ui-form__radio">
-    <label for="fusion-ui-radio-3" class="fusion-ui-form__radio-label">
+`<div class="f-form__fieldset">
+  <span class="f-form__radio">
+    <label for="f-radio-3" class="f-form__radio-label">
       <input
-        class="fusion-ui-form__radio-input fusion-ui-form__radio-input--hover"
+        class="f-form__radio-input f-form__radio-input--hover"
         type="radio"
-        name="fusion-ui-radio-3"
-        id="fusion-ui-radio-3">
-      <span class="fusion-ui-form__radio-button"></span>
-      <span class="fusion-ui-form__radio-label-text">Hover</span>
+        name="f-radio-3"
+        id="f-radio-3">
+      <span class="f-form__radio-button"></span>
+      <span class="f-form__radio-label-text">Hover</span>
     </label>
   </span>
 </div>`,
 
 // FOCUS
-`<div class="fusion-ui-form__fieldset">
-  <span class="fusion-ui-form__radio">
-    <label for="fusion-ui-radio-4" class="fusion-ui-form__radio-label">
+`<div class="f-form__fieldset">
+  <span class="f-form__radio">
+    <label for="f-radio-4" class="f-form__radio-label">
       <input
-        class="fusion-ui-form__radio-input fusion-ui-form__radio-input--focus"
+        class="f-form__radio-input f-form__radio-input--focus"
         type="radio"
-        name="fusion-ui-radio-4"
-        id="fusion-ui-radio-4">
-      <span class="fusion-ui-form__radio-button"></span>
-      <span class="fusion-ui-form__radio-label-text">Focus</span>
+        name="f-radio-4"
+        id="f-radio-4">
+      <span class="f-form__radio-button"></span>
+      <span class="f-form__radio-label-text">Focus</span>
     </label>
   </span>
 </div>`,
 
 // READONLY (UNSELECTED)
-`<div class="fusion-ui-form__fieldset">
-  <span class="fusion-ui-form__radio">
-    <label for="fusion-ui-radio-6-a" class="fusion-ui-form__radio-label">
+`<div class="f-form__fieldset">
+  <span class="f-form__radio">
+    <label for="f-radio-6-a" class="f-form__radio-label">
       <input
-        class="fusion-ui-form__radio-input fusion-ui-form__radio-input--readonly"
+        class="f-form__radio-input f-form__radio-input--readonly"
         readonly
         (click)="false"
         type="radio"
-        name="fusion-ui-radio-6-a"
-        id="fusion-ui-radio-6-a">
-      <span class="fusion-ui-form__radio-button"></span>
-      <span class="fusion-ui-form__radio-label-text">Readonly (Unselected)</span>
+        name="f-radio-6-a"
+        id="f-radio-6-a">
+      <span class="f-form__radio-button"></span>
+      <span class="f-form__radio-label-text">Readonly (Unselected)</span>
     </label>
   </span>
 </div>`,
 
 // READONLY (SELECTED)
-`<div class="fusion-ui-form__fieldset">
-  <span class="fusion-ui-form__radio">
-    <label for="fusion-ui-radio-6-b" class="fusion-ui-form__radio-label">
+`<div class="f-form__fieldset">
+  <span class="f-form__radio">
+    <label for="f-radio-6-b" class="f-form__radio-label">
       <input
-        class="fusion-ui-form__radio-input fusion-ui-form__radio-input--selected fusion-ui-form__radio-input--readonly"
+        class="f-form__radio-input f-form__radio-input--selected f-form__radio-input--readonly"
         checked="true"
         readonly
         (click)="false"
         type="radio"
-        name="fusion-ui-radio-6-b"
-        id="fusion-ui-radio-6-b">
-      <span class="fusion-ui-form__radio-button"></span>
-      <span class="fusion-ui-form__radio-label-text">Readonly (Selected)</span>
+        name="f-radio-6-b"
+        id="f-radio-6-b">
+      <span class="f-form__radio-button"></span>
+      <span class="f-form__radio-label-text">Readonly (Selected)</span>
     </label>
   </span>
 </div>`,
 
 // DISABLED
-`<div class="fusion-ui-form__fieldset">
-  <span class="fusion-ui-form__radio">
-    <label for="fusion-ui-radio-7" class="fusion-ui-form__radio-label">
+`<div class="f-form__fieldset">
+  <span class="f-form__radio">
+    <label for="f-radio-7" class="f-form__radio-label">
       <input
-        class="fusion-ui-form__radio-input fusion-ui-form__radio-input--disabled"
+        class="f-form__radio-input f-form__radio-input--disabled"
         disabled="true"
         aria-disabled="true"
         type="radio"
-        name="fusion-ui-radio-7"
-        id="fusion-ui-radio-7">
-      <span class="fusion-ui-form__radio-button"></span>
-      <span class="fusion-ui-form__radio-label-text">Disabled</span>
+        name="f-radio-7"
+        id="f-radio-7">
+      <span class="f-form__radio-button"></span>
+      <span class="f-form__radio-label-text">Disabled</span>
     </label>
   </span>
 </div>`,

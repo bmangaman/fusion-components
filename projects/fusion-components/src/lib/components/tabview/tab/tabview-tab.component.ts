@@ -2,10 +2,10 @@ import { AfterContentInit, Component, ContentChildren, Input, QueryList, Templat
 
 import { v4 as uuidv4 } from 'uuid';
 
-import { TemplateDirective } from '@fusion-ui/fusion-components/lib/directives/template';
+import { TemplateDirective } from '@fusion-components/lib/directives/template';
 
 @Component({
-  selector: 'fusion-ui-tabview-tab',
+  selector: 'f-tabview-tab',
   template: '',
 })
 export class TabviewTabComponent implements AfterContentInit {

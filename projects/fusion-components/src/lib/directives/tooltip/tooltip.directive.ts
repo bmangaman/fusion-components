@@ -3,7 +3,7 @@ import { Directive, ElementRef, HostBinding, HostListener, Input, OnDestroy, Tem
 import { v4 as uuidv4 } from 'uuid';
 
 import { TooltipService } from '../../services/tooltip';
-import { FusionUiPosition, MouseInteraction } from '../../shared';
+import { Position, MouseInteraction } from '../../shared';
 
 /**
  * TOOLTIP DIRECTIVE
@@ -36,7 +36,7 @@ export class TooltipDirective implements OnDestroy {
   /**
    * Determines the position of the tooltip.
    */
-  @Input() position: FusionUiPosition = FusionUiPosition.TOP;
+  @Input() position: Position = Position.TOP;
 
   /**
    * Determines whether or not any custom CSS classes are to be appended to the tooltip.

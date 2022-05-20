@@ -36,10 +36,10 @@ describe('TabviewComponent', () => {
         expect(component.expandIconClasses).toEqual('mdi mdi-chevron-down');
         expect(component.setPanelsIcon).toHaveBeenCalledWith(HccAccordionIcontype.EXPAND);
 
-        component.expandIconClasses = undefined;
+        component.expandIconClasses = undefined!;
         // eslint-disable-next-line @typescript-eslint/dot-notation
-        expect(component['expandIconClasses']).toEqual(undefined);
-        expect(component.expandIconClasses).toEqual(undefined);
+        expect(component['expandIconClasses']).toEqual(undefined!);
+        expect(component.expandIconClasses).toEqual(undefined!);
         expect(component.setPanelsIcon).toHaveBeenCalledWith(HccAccordionIcontype.EXPAND);
       });
     });
@@ -53,18 +53,18 @@ describe('TabviewComponent', () => {
         expect(component.collapseIconClasses).toEqual('mdi mdi-chevron-down');
         expect(component.setPanelsIcon).toHaveBeenCalledWith(HccAccordionIcontype.COLLAPSE);
 
-        component.collapseIconClasses = undefined;
+        component.collapseIconClasses = undefined!;
         // eslint-disable-next-line @typescript-eslint/dot-notation
-        expect(component['collapseIconClasses']).toEqual(undefined);
-        expect(component.collapseIconClasses).toEqual(undefined);
+        expect(component['collapseIconClasses']).toEqual(undefined!);
+        expect(component.collapseIconClasses).toEqual(undefined!);
         expect(component.setPanelsIcon).toHaveBeenCalledWith(HccAccordionIcontype.COLLAPSE);
       });
     });
 
     describe('toggleAllPanels()', () => {
       it('should do nothing if either panels is undefined or is of length zero', () => {
-        component.areAllPanelsExpanded = undefined;
-        component.panels = undefined;
+        component.areAllPanelsExpanded = undefined!;
+        component.panels = undefined!;
         component.toggleAllPanels = {};
         expect(component.areAllPanelsExpanded).toBeFalsy();
 
@@ -119,7 +119,7 @@ describe('TabviewComponent', () => {
 
   describe('setPanelsIcon()', () => {
     it('should loop through the panels and set the appropriate icon', () => {
-      component.panels = undefined;
+      component.panels = undefined!;
       component.setPanelsIcon(HccAccordionIcontype.EXPAND);
       expect(component.panels).toBeFalsy();
 
@@ -157,7 +157,7 @@ describe('TabviewComponent', () => {
       spyOn(component, 'createAndEmitPanelContentVisibilityChangedEmitObject').and.stub();
       spyOn(component, 'togglePanelContentVisibility').and.callThrough();
 
-      component.areAllPanelsExpanded = undefined;
+      component.areAllPanelsExpanded = undefined!;
       component.subscriptions = [];
       setPanels(2);
       component.subscribeToPanelChanges();
@@ -191,7 +191,7 @@ describe('TabviewComponent', () => {
 
   describe('togglePanelContentVisibility()', () => {
     it ('should not do anything if the provided panel is undefined', () => {
-      const panel: AccordionPanelComponent = undefined;
+      const panel: AccordionPanelComponent = undefined!;
       component.togglePanelContentVisibility(panel);
       expect(panel).toBeFalsy();
     });
@@ -220,7 +220,7 @@ describe('TabviewComponent', () => {
       expect(component.panels.toArray()[1].isExpanded).toBeTruthy();
 
       component.onePanelLimit = true;
-      component.panels = undefined;
+      component.panels = undefined!;
       const panel: AccordionPanelComponent = new AccordionPanelComponent();
       panel.isExpanded = false;
       component.togglePanelContentVisibility(panel);
@@ -246,13 +246,13 @@ describe('TabviewComponent', () => {
 
   describe('updatePanelsMaxContentHeight()', () => {
     it('should update the max heights of the all the child panels', () => {
-      component.panels = undefined;
+      component.panels = undefined!;
       component.updatePanelsMaxContentHeight();
       expect(component.panels).toBeFalsy();
 
       setPanels(2);
 
-      component.maxContentHeight = undefined;
+      component.maxContentHeight = undefined!;
       component.updatePanelsMaxContentHeight();
       expect(component.panels.toArray()[0].maxContentHeight).toBeFalsy();
       expect(component.panels.toArray()[1].maxContentHeight).toBeFalsy();

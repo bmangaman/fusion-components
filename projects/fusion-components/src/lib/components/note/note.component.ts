@@ -6,13 +6,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
  * The Note Component provides a consistent way to create a text area with the "note" styling.
  *
  * @example
- * <fusion-ui-note>
+ * <f-note>
  *   <div class="projected-content">Projected Text</div>
- * </fusion-ui-note>
+ * </f-note>
  */
 @Component({
-  selector: 'fusion-ui-note',
-  template: '<div class="fusion-ui-note"><ng-content></ng-content></div>',
+  selector: 'f-note',
+  template: '<div class="f-note"><ng-content></ng-content></div>',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoteComponent {}

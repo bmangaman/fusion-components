@@ -25,158 +25,158 @@ export class FormsSwitchDemoComponent implements OnInit {
 
   readonly switchExamples: string[] = [
 // CHECKED, DEFAULT
-`<div class="fusion-ui-form__fieldset">
-  <span class="fusion-ui-form__switch">
-    <label class="fusion-ui-form__switch-label" for="fusion-ui-form-switch">
+`<div class="f-form__fieldset">
+  <span class="f-form__switch">
+    <label class="f-form__switch-label" for="f-form-switch">
       <input
-        class="fusion-ui-form__switch-input"
-        id="fusion-ui-switch"
-        name="fusion-ui-switch"
+        class="f-form__switch-input"
+        id="f-switch"
+        name="f-switch"
         type="checkbox"
         checked="true" />
-      <span class="fusion-ui-form__switch-visual" aria-hidden="true"></span>
-      <span class="fusion-ui-form__switch-label-text">Default (On)</span>
+      <span class="f-form__switch-visual" aria-hidden="true"></span>
+      <span class="f-form__switch-label-text">Default (On)</span>
     </label>
   </span>
 </div>`,
 
 // CHECKED, HOVER
-`<div class="fusion-ui-form__fieldset">
-  <span class="fusion-ui-form__switch">
-    <label class="fusion-ui-form__switch-label" for="fusion-ui-form-switch">
+`<div class="f-form__fieldset">
+  <span class="f-form__switch">
+    <label class="f-form__switch-label" for="f-form-switch">
       <input
-        class="fusion-ui-form__switch-input fusion-ui-form__switch-input--hover"
-        id="fusion-ui-switch"
-        name="fusion-ui-switch"
+        class="f-form__switch-input f-form__switch-input--hover"
+        id="f-switch"
+        name="f-switch"
         type="checkbox"
         checked="true" />
-      <span class="fusion-ui-form__switch-visual" aria-hidden="true"></span>
-      <span class="fusion-ui-form__switch-label-text">Hover (On)</span>
+      <span class="f-form__switch-visual" aria-hidden="true"></span>
+      <span class="f-form__switch-label-text">Hover (On)</span>
     </label>
   </span>
 </div>`,
 
 // CHECKED, FOCUSED
-`<div class="fusion-ui-form__fieldset">
-  <span class="fusion-ui-form__switch">
-    <label class="fusion-ui-form__switch-label" for="fusion-ui-form-switch">
+`<div class="f-form__fieldset">
+  <span class="f-form__switch">
+    <label class="f-form__switch-label" for="f-form-switch">
       <input
-        class="fusion-ui-form__switch-input fusion-ui-form__switch-input--focus"
-        id="fusion-ui-switch"
-        name="fusion-ui-switch"
+        class="f-form__switch-input f-form__switch-input--focus"
+        id="f-switch"
+        name="f-switch"
         type="checkbox"
         checked="true" />
-      <span class="fusion-ui-form__switch-visual" aria-hidden="true"></span>
-      <span class="fusion-ui-form__switch-label-text">Focus (On)</span>
+      <span class="f-form__switch-visual" aria-hidden="true"></span>
+      <span class="f-form__switch-label-text">Focus (On)</span>
     </label>
   </span>
 </div>`,
 
 // CHECKED, DISABLED
-`<div class="fusion-ui-form__fieldset">
-  <span class="fusion-ui-form__switch">
-    <label class="fusion-ui-form__switch-label" for="fusion-ui-form-switch">
+`<div class="f-form__fieldset">
+  <span class="f-form__switch">
+    <label class="f-form__switch-label" for="f-form-switch">
       <input
-        class="fusion-ui-form__switch-input"
-        id="fusion-ui-switch"
-        name="fusion-ui-switch"
+        class="f-form__switch-input"
+        id="f-switch"
+        name="f-switch"
         type="checkbox"
         disabled="true"
         checked="true" />
-      <span class="fusion-ui-form__switch-visual" aria-hidden="true"></span>
-      <span class="fusion-ui-form__switch-label-text">Disabled (On)</span>
+      <span class="f-form__switch-visual" aria-hidden="true"></span>
+      <span class="f-form__switch-label-text">Disabled (On)</span>
     </label>
   </span>
 </div>`,
 
 // UNCHECKED, DEFAULT
-`<div class="fusion-ui-form__fieldset">
-  <span class="fusion-ui-form__switch">
-    <label class="fusion-ui-form__switch-label" for="fusion-ui-form-switch">
+`<div class="f-form__fieldset">
+  <span class="f-form__switch">
+    <label class="f-form__switch-label" for="f-form-switch">
       <input
-        class="fusion-ui-form__switch-input"
-        id="fusion-ui-switch"
-        name="fusion-ui-switch"
+        class="f-form__switch-input"
+        id="f-switch"
+        name="f-switch"
         type="checkbox" />
-      <span class="fusion-ui-form__switch-visual" aria-hidden="true"></span>
-      <span class="fusion-ui-form__switch-label-text">Default (Off)</span>
+      <span class="f-form__switch-visual" aria-hidden="true"></span>
+      <span class="f-form__switch-label-text">Default (Off)</span>
     </label>
   </span>
 </div>`,
 
 // UNCHECKED, HOVER
-`<div class="fusion-ui-form__fieldset">
-  <span class="fusion-ui-form__switch">
-    <label class="fusion-ui-form__switch-label" for="fusion-ui-form-switch">
+`<div class="f-form__fieldset">
+  <span class="f-form__switch">
+    <label class="f-form__switch-label" for="f-form-switch">
       <input
-        class="fusion-ui-form__switch-input fusion-ui-form__switch-input--hover"
-        id="fusion-ui-switch"
-        name="fusion-ui-switch"
+        class="f-form__switch-input f-form__switch-input--hover"
+        id="f-switch"
+        name="f-switch"
         type="checkbox" />
-      <span class="fusion-ui-form__switch-visual" aria-hidden="true"></span>
-      <span class="fusion-ui-form__switch-label-text">Hover (Off)</span>
+      <span class="f-form__switch-visual" aria-hidden="true"></span>
+      <span class="f-form__switch-label-text">Hover (Off)</span>
     </label>
   </span>
 </div>`,
 
 // UNCHECKED, FOCUSED
-`<div class="fusion-ui-form__fieldset">
-  <span class="fusion-ui-form__switch">
-    <label class="fusion-ui-form__switch-label" for="fusion-ui-form-switch">
+`<div class="f-form__fieldset">
+  <span class="f-form__switch">
+    <label class="f-form__switch-label" for="f-form-switch">
       <input
-        class="fusion-ui-form__switch-input fusion-ui-form__switch-input--focus"
-        id="fusion-ui-switch"
-        name="fusion-ui-switch"
+        class="f-form__switch-input f-form__switch-input--focus"
+        id="f-switch"
+        name="f-switch"
         type="checkbox" />
-      <span class="fusion-ui-form__switch-visual" aria-hidden="true"></span>
-      <span class="fusion-ui-form__switch-label-text">Focus (Off)</span>
+      <span class="f-form__switch-visual" aria-hidden="true"></span>
+      <span class="f-form__switch-label-text">Focus (Off)</span>
     </label>
   </span>
 </div>`,
 
 // UNCHECKED, DISABLED
-`<div class="fusion-ui-form__fieldset">
-  <span class="fusion-ui-form__switch">
-    <label class="fusion-ui-form__switch-label" for="fusion-ui-form-switch">
+`<div class="f-form__fieldset">
+  <span class="f-form__switch">
+    <label class="f-form__switch-label" for="f-form-switch">
       <input
-        class="fusion-ui-form__switch-input"
-        id="fusion-ui-switch"
-        name="fusion-ui-switch"
+        class="f-form__switch-input"
+        id="f-switch"
+        name="f-switch"
         type="checkbox"
         disabled="true" />
-      <span class="fusion-ui-form__switch-visual" aria-hidden="true"></span>
-      <span class="fusion-ui-form__switch-label-text">Disabled (Off)</span>
+      <span class="f-form__switch-visual" aria-hidden="true"></span>
+      <span class="f-form__switch-label-text">Disabled (Off)</span>
     </label>
   </span>
 </div>`,
 
 // CHECKED, DEFAULT, SMALL
-`<div class="fusion-ui-form__fieldset">
-  <span class="fusion-ui-form__switch fusion-ui-form__switch--small">
-    <label class="fusion-ui-form__switch-label" for="fusion-ui-form-switch">
+`<div class="f-form__fieldset">
+  <span class="f-form__switch f-form__switch--small">
+    <label class="f-form__switch-label" for="f-form-switch">
       <input
-        class="fusion-ui-form__switch-input"
-        id="fusion-ui-switch"
-        name="fusion-ui-switch"
+        class="f-form__switch-input"
+        id="f-switch"
+        name="f-switch"
         type="checkbox"
         checked="true" />
-      <span class="fusion-ui-form__switch-visual" aria-hidden="true"></span>
-      <span class="fusion-ui-form__switch-label-text">Default (On)</span>
+      <span class="f-form__switch-visual" aria-hidden="true"></span>
+      <span class="f-form__switch-label-text">Default (On)</span>
     </label>
   </span>
 </div>`,
 
 // UNCHECKED, DEFAULT, SMALL
-`<div class="fusion-ui-form__fieldset">
-  <span class="fusion-ui-form__switch fusion-ui-form__switch--small">
-    <label class="fusion-ui-form__switch-label" for="fusion-ui-form-switch">
+`<div class="f-form__fieldset">
+  <span class="f-form__switch f-form__switch--small">
+    <label class="f-form__switch-label" for="f-form-switch">
       <input
-        class="fusion-ui-form__switch-input"
-        id="fusion-ui-switch"
-        name="fusion-ui-switch"
+        class="f-form__switch-input"
+        id="f-switch"
+        name="f-switch"
         type="checkbox" />
-      <span class="fusion-ui-form__switch-visual" aria-hidden="true"></span>
-      <span class="fusion-ui-form__switch-label-text">Default (On)</span>
+      <span class="f-form__switch-visual" aria-hidden="true"></span>
+      <span class="f-form__switch-label-text">Default (On)</span>
     </label>
   </span>
 </div>`,

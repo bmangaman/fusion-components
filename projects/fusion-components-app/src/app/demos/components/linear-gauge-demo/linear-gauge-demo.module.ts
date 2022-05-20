@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { DomService, LinearGaugeModule, TooltipService } from '@fusion-ui/fusion-components';
+import { DomService, LinearGaugeModule, TooltipService } from '@fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { LinearGaugeDemoComponent } from './linear-gauge-demo.component';

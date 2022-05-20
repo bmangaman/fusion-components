@@ -2,8 +2,8 @@ import { SafeHtml } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services/translation';
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { ErrorMessage } from '../../components/error-message/error-message.interface';
 import { ErrorMessageGeneratorService } from './error-message-generator.service';
 import {

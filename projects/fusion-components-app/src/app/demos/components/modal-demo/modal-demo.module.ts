@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { ModalModule, ButtonModule, MenuModule, DomService, ModalService } from '@fusion-ui/fusion-components';
+import { ModalModule, ButtonModule, MenuModule, DomService, ModalService } from '@fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { InnerModalComponent, ModalDemoComponent } from './modal-demo.component';

@@ -108,7 +108,7 @@ describe('SidenavComponent', () => {
 
     it('should include just the base class by default', () => {
       expectedResult = [
-        'fusion-ui-navItem__link',
+        'f-navItem__link',
       ];
       component.generateLinkCssClasses();
       expect(component.linkCssClasses).toEqual(expectedResult);
@@ -117,22 +117,22 @@ describe('SidenavComponent', () => {
     it('should append "expandable" if the nav item has children', () => {
       component.children = null;
       expectedResult = [
-        'fusion-ui-navItem__link',
+        'f-navItem__link',
       ];
       component.generateLinkCssClasses();
       expect(component.linkCssClasses).toEqual(expectedResult);
 
       component.children = [];
       expectedResult = [
-        'fusion-ui-navItem__link',
+        'f-navItem__link',
       ];
       component.generateLinkCssClasses();
       expect(component.linkCssClasses).toEqual(expectedResult);
 
       component.children = [{}];
       expectedResult = [
-        'fusion-ui-navItem__link',
-        'fusion-ui-navItem__link--expandable',
+        'f-navItem__link',
+        'f-navItem__link--expandable',
       ];
       component.generateLinkCssClasses();
       expect(component.linkCssClasses).toEqual(expectedResult);
@@ -141,15 +141,15 @@ describe('SidenavComponent', () => {
     it('should append "expanded" if the nav item is expanded', () => {
       component.isExpanded = false;
       expectedResult = [
-        'fusion-ui-navItem__link',
+        'f-navItem__link',
       ];
       component.generateLinkCssClasses();
       expect(component.linkCssClasses).toEqual(expectedResult);
 
       component.isExpanded = true;
       expectedResult = [
-        'fusion-ui-navItem__link',
-        'fusion-ui-navItem__link--expanded',
+        'f-navItem__link',
+        'f-navItem__link--expanded',
       ];
       component.generateLinkCssClasses();
       expect(component.linkCssClasses).toEqual(expectedResult);
@@ -158,15 +158,15 @@ describe('SidenavComponent', () => {
     it('should append "expanded" if the nav item is expanded', () => {
       component.isDisabled = false;
       expectedResult = [
-        'fusion-ui-navItem__link',
+        'f-navItem__link',
       ];
       component.generateLinkCssClasses();
       expect(component.linkCssClasses).toEqual(expectedResult);
 
       component.isDisabled = true;
       expectedResult = [
-        'fusion-ui-navItem__link',
-        'fusion-ui-navItem__link--disabled',
+        'f-navItem__link',
+        'f-navItem__link--disabled',
       ];
       component.generateLinkCssClasses();
       expect(component.linkCssClasses).toEqual(expectedResult);
@@ -177,17 +177,17 @@ describe('SidenavComponent', () => {
     it('should generate with the base class', () => {
       component.icon = undefined;
       component.generateIconCssClasses();
-      expect(component.iconCssClasses).toEqual(['fusion-ui-navItem__icon']);
+      expect(component.iconCssClasses).toEqual(['f-navItem__icon']);
     });
 
     it('shoudl append the custom icon classes', () => {
       component.icon = 'icon-class';
       component.generateIconCssClasses();
-      expect(component.iconCssClasses).toEqual(['fusion-ui-navItem__icon', 'icon-class']);
+      expect(component.iconCssClasses).toEqual(['f-navItem__icon', 'icon-class']);
 
       component.icon = 'mdi-chevron-down';
       component.generateIconCssClasses();
-      expect(component.iconCssClasses).toEqual(['fusion-ui-navItem__icon', 'mdi', 'mdi-chevron-down']);
+      expect(component.iconCssClasses).toEqual(['f-navItem__icon', 'mdi', 'mdi-chevron-down']);
     });
   });
 

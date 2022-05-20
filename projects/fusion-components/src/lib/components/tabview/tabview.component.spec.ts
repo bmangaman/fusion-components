@@ -1,7 +1,7 @@
 import { QueryList } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
 import { TabviewTabComponent } from './tab/tabview-tab.component';
 import { TabviewComponent } from './tabview.component';
@@ -29,43 +29,43 @@ describe('TabviewComponent', () => {
 
         component.type = null;
         component.classes = null;
-        expectedResult = 'fusion-ui-tabview';
+        expectedResult = 'f-tabview';
         actualResult = component.hostClasses;
         expect(actualResult).toEqual(expectedResult);
 
         component.type = TabviewType.CONTENT;
         component.classes = null;
-        expectedResult = 'fusion-ui-tabview fusion-ui-tabview-type-content';
+        expectedResult = 'f-tabview f-tabview-type-content';
         actualResult = component.hostClasses;
         expect(actualResult).toEqual(expectedResult);
 
         component.type = TabviewType.TOP;
         component.classes = null;
-        expectedResult = 'fusion-ui-tabview fusion-ui-tabview-type-top';
+        expectedResult = 'f-tabview f-tabview-type-top';
         actualResult = component.hostClasses;
         expect(actualResult).toEqual(expectedResult);
 
         component.type = TabviewType.INNER_CONTENT;
         component.classes = null;
-        expectedResult = 'fusion-ui-tabview fusion-ui-tabview-type-inner-content';
+        expectedResult = 'f-tabview f-tabview-type-inner-content';
         actualResult = component.hostClasses;
         expect(actualResult).toEqual(expectedResult);
 
         component.type = null;
         component.classes = ['custom-class-1'];
-        expectedResult = 'fusion-ui-tabview custom-class-1';
+        expectedResult = 'f-tabview custom-class-1';
         actualResult = component.hostClasses;
         expect(actualResult).toEqual(expectedResult);
 
         component.type = null;
         component.classes = ['custom-class-1', 'custom-class-2'];
-        expectedResult = 'fusion-ui-tabview custom-class-1 custom-class-2';
+        expectedResult = 'f-tabview custom-class-1 custom-class-2';
         actualResult = component.hostClasses;
         expect(actualResult).toEqual(expectedResult);
 
         component.type = TabviewType.CONTENT;
         component.classes = ['custom-class-1', 'custom-class-2'];
-        expectedResult = 'fusion-ui-tabview fusion-ui-tabview-type-content custom-class-1 custom-class-2';
+        expectedResult = 'f-tabview f-tabview-type-content custom-class-1 custom-class-2';
         actualResult = component.hostClasses;
         expect(actualResult).toEqual(expectedResult);
       });

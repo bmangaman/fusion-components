@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing';
 
-import { TabviewPageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/tabview.spec.po';
+import { TabviewPageObject } from '@fusion-components/unit-test-helpers/page-objects/tabview.spec.po';
 
 import { TabviewTestComponent } from './tabview.component.dom.spec';
 

@@ -1,5 +1,5 @@
 import { ComponentFixture } from '@angular/core/testing';
-import { LinearGaugePageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/linear-gauge.spec.po';
+import { LinearGaugePageObject } from '@fusion-components/unit-test-helpers/page-objects/linear-gauge.spec.po';
 
 import { LinearGaugeTestComponent } from './linear-gauge.component.dom.spec';
 

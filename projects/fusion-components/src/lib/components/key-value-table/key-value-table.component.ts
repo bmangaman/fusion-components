@@ -10,7 +10,7 @@ import { KeyValueTableData, KeyValueTableType } from './key-value-table.interfac
  * The Key Value Table Component creates a consistent way to display simple kay-value data.
  */
 @Component({
-  selector: 'fusion-ui-key-value-table',
+  selector: 'f-key-value-table',
   templateUrl: 'key-value-table.component.html',
 })
 export class KeyValueTableComponent implements AfterContentInit {
@@ -34,7 +34,7 @@ export class KeyValueTableComponent implements AfterContentInit {
    * Loops through the provided data to match the custom templates to the data keys.
    *
    * @example
-   * <fusion-ui-key-value-table [data]="generatedData">
+   * <f-key-value-table [data]="generatedData">
    *   <ng-template fusionUiTemplate="hostname" [type]="KeyValueTable.KEY" let-data>
    *     <i class="mdi mdi-home"></i>{{ data?.key }}
    *   </ng-template>
@@ -42,7 +42,7 @@ export class KeyValueTableComponent implements AfterContentInit {
    *   <ng-template fusionUiTemplate="numOfDrives" [type]="KeyValueTableType.VALUE" let-data>
    *     <i class="mdi mdi-database"></i>{{ data?.value }}
    *   </ng-template>
-   * </fusion-ui-key-value-table>
+   * </f-key-value-table>
    */
   ngAfterContentInit(): void {
     this.templates.forEach((item: TemplateDirective) => {

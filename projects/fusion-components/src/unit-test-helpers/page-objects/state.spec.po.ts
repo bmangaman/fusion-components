@@ -3,8 +3,8 @@ import { ComponentFixture } from '@angular/core/testing';
 /**
  * STATE PAGE OBJECT
  *
- * Page object for the fusion-ui-state component.
- * Makes it easier to find and select certain fusion-ui-state attributes and elements.
+ * Page object for the f-state component.
+ * Makes it easier to find and select certain f-state attributes and elements.
  */
 export class StatePageObject {
   private fixture: ComponentFixture<any>;
@@ -13,10 +13,10 @@ export class StatePageObject {
   get state(): HTMLElement {
     // first, if a containerClass was provided, try to find the element that has that class
     const container: HTMLElement = this.containerClass ? this.fixture.nativeElement.querySelector(this.containerClass) : null;
-    // if the container element was found, use that to query for the fusion-ui-state,
-    // otherwise, just use the fusion-ui-state tag
+    // if the container element was found, use that to query for the f-state,
+    // otherwise, just use the f-state tag
     const state: HTMLElement =
-      (this.containerClass && container ? container : this.fixture.nativeElement).querySelector('fusion-ui-state');
+      (this.containerClass && container ? container : this.fixture.nativeElement).querySelector('f-state');
 
     return state;
   }
@@ -28,7 +28,7 @@ export class StatePageObject {
    */
   get container(): HTMLElement {
     const state: HTMLElement = this.state;
-    return state ? state.querySelector('.fusion-ui-state') : null;
+    return state ? state.querySelector('.f-state') : null;
   }
 
   /**
@@ -38,7 +38,7 @@ export class StatePageObject {
    */
   get inner(): HTMLElement {
     const container: HTMLElement = this.container;
-    return container ? container.querySelector('.fusion-ui-state__inner') : null;
+    return container ? container.querySelector('.f-state__inner') : null;
   }
 
   /**
@@ -48,7 +48,7 @@ export class StatePageObject {
    */
   get graphic(): HTMLElement {
     const container: HTMLElement = this.container;
-    return container ? container.querySelector('.fusion-ui-state__inner-graphic') : null;
+    return container ? container.querySelector('.f-state__inner-graphic') : null;
   }
 
   /**
@@ -58,7 +58,7 @@ export class StatePageObject {
    */
   get content(): HTMLElement {
     const container: HTMLElement = this.container;
-    return container ? container.querySelector('.fusion-ui-state__inner-content') : null;
+    return container ? container.querySelector('.f-state__inner-content') : null;
   }
 
   /**
@@ -68,7 +68,7 @@ export class StatePageObject {
    */
   get headline(): HTMLElement {
     const content: HTMLElement = this.content;
-    return content ? content.querySelector('.fusion-ui-state__inner-content-headline') : null;
+    return content ? content.querySelector('.f-state__inner-content-headline') : null;
   }
 
   /**
@@ -78,7 +78,7 @@ export class StatePageObject {
    */
   get message(): HTMLElement {
     const content: HTMLElement = this.content;
-    return content ? content.querySelector('.fusion-ui-state__inner-content-message') : null;
+    return content ? content.querySelector('.f-state__inner-content-message') : null;
   }
 
   /**
@@ -88,14 +88,14 @@ export class StatePageObject {
    */
   get loadingSpinner(): HTMLElement {
     const container: HTMLElement = this.container;
-    return container ? container.querySelector('fusion-ui-loading-spinner') : null;
+    return container ? container.querySelector('f-loading-spinner') : null;
   }
 
   /**
-   * Creates a page object for a fusion-ui-state DOM element based on the provided fixture and optional containerClass.
+   * Creates a page object for a f-state DOM element based on the provided fixture and optional containerClass.
    *
-   * @param fixture The parent DOM fixture/ element that houses the fusion-ui-state.
-   * @param containerClass Optional, providing a css class of a parent element of the fusion-ui-state
+   * @param fixture The parent DOM fixture/ element that houses the f-state.
+   * @param containerClass Optional, providing a css class of a parent element of the f-state
    * will help make sure the correct one is selected.
    */
   constructor(fixture: ComponentFixture<any>, containerClass?: string) {

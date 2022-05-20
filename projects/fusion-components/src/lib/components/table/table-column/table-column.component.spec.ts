@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, QueryList } from '@angular/core';
 
-import { TemplateDirective } from '@fusion-ui/fusion-components/lib/directives/template';
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { TemplateDirective } from '@fusion-components/lib/directives/template';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
 import { TableCellContentAlignment, TableColumnConfig } from '../table.interface';
 import { TableColumnComponent } from './table-column.component';

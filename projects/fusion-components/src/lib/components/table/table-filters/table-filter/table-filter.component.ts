@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services';
-import { TranslatedComponent } from '@fusion-ui/fusion-components/lib/shared';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
+import { TranslatedComponent } from '@fusion-components/lib/shared';
 
 import { TableFilterConfig } from '../../table-filter-selector';
 import { FilterComparator } from '../table-filter-comparator';
@@ -16,7 +16,7 @@ import { TableFilterTranslations } from './table-filter.interface';
  * The base class on which all other table filters should be based.
  */
 @Component({
-  selector: 'fusion-ui-table-filter',
+  selector: 'f-table-filter',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -35,7 +35,7 @@ export class TableFilterComponent extends TranslatedComponent {
   /**
    * The currently selected filter comparator. Is a BehaviorSubject to make it easier to react/ update the DOM when/ if it changes.
    */
-  selectedFilterComparator: BehaviorSubject<FilterComparator> = new BehaviorSubject<FilterComparator>(null);
+  selectedFilterComparator: BehaviorSubject<FilterComparator> = new BehaviorSubject<FilterComparator>(undefined as unknown as FilterComparator);
 
   /**
    * The uuid of the filter. Helps keep track of and compare applied filters.
@@ -98,7 +98,7 @@ export class TableFilterComponent extends TranslatedComponent {
    */
   constructor(
     private _fb: FormBuilder,
-    protected translationService: FusionComponentsTranslationService,
+    protected override translationService: FusionComponentsTranslationService,
     protected translateService: TranslateService,
   ) {
     super(translationService);

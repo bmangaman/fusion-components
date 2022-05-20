@@ -1,4 +1,4 @@
-import { TableColumnConfig, TableFilterConfig, TableView } from '@fusion-ui/fusion-components/lib/components/table';
+import { TableColumnConfig, TableFilterConfig, TableView } from '@fusion-components/lib/components/table';
 
 export interface AppliedSort {
   field: string;

@@ -1,28 +1,28 @@
 <ng-container *ngIf="!isFullModal; else fullHeader">
-  <h1 class="fusion-ui-modal__header-content">
+  <h1 class="f-modal__header-content">
     <ng-container *ngTemplateOutlet="headerText"></ng-container>
   </h1>
   <button
     type="button"
-    class="fusion-ui-modal__header-close-button"
+    class="f-modal__header-close-button"
     (click)="close()"
     *ngIf="!hideCloseButton"
     [disabled]="disableCloseButton"
     [attr.aria-disabled]="disableCloseButton">
-    <i class="mdi mdi-close fusion-ui-modal__header-close-button-icon"></i>
+    <i class="mdi mdi-close f-modal__header-close-button-icon"></i>
   </button>
 </ng-container>
 
 <ng-template #fullHeader>
-  <div class="fusion-ui-modal__full-header-top-bar">
+  <div class="f-modal__full-header-top-bar">
     <button
       type="button"
-      class="fusion-ui-modal__full-header-close-button"
+      class="f-modal__full-header-close-button"
       (click)="close()"
       *ngIf="!hideCloseButton"
       [disabled]="disableCloseButton"
       [attr.aria-disabled]="disableCloseButton">
-      <i class="mdi mdi-close fusion-ui-modal__full-header-close-button-icon"></i>
+      <i class="mdi mdi-close f-modal__full-header-close-button-icon"></i>
     </button>
   </div>
 </ng-template>

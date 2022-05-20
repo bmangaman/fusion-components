@@ -1,20 +1,20 @@
 <div [ngClass]="cssClasses?.wrapper">
   <div [ngClass]="cssClasses?.inner">
 
-    <ng-container *ngIf="state !== FusionUiState.LOADING; else loading">
+    <ng-container *ngIf="state !== State.LOADING; else loading">
       <i [ngClass]="cssClasses?.graphic"></i>
       <div [ngClass]="cssClasses?.content">
 
-        <h3 class="fusion-ui-state__inner-content-headline" *ngIf="!!headlines">
+        <h3 class="f-state__inner-content-headline" *ngIf="!!headlines">
           {{ headlines[state] }}
         </h3>
 
-        <div class="fusion-ui-state__inner-content-message" *ngIf="!!messageTemplates && !!messageTemplates[state]; else messageText">
+        <div class="f-state__inner-content-message" *ngIf="!!messageTemplates && !!messageTemplates[state]; else messageText">
           <ng-container *ngTemplateOutlet="messageTemplates[state]"></ng-container>
         </div>
 
         <ng-template #messageText>
-          <p class="fusion-ui-state__inner-content-message" *ngIf="!!messages && !!messages[state]">
+          <p class="f-state__inner-content-message" *ngIf="!!messages && !!messages[state]">
             {{ messages[state] }}
           </p>
         </ng-template>
@@ -23,7 +23,7 @@
     </ng-container>
 
     <ng-template #loading>
-      <fusion-ui-loading-spinner [size]="FusionUiSize.MEDIUM" [ariaLabel]="loadingAriaLabel"></fusion-ui-loading-spinner>
+      <f-loading-spinner [size]="Size.MEDIUM" [ariaLabel]="loadingAriaLabel"></f-loading-spinner>
     </ng-template>
 
   </div>

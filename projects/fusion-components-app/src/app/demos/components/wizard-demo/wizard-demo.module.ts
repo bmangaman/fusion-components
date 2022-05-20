@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { WizardModule } from '@fusion-ui/fusion-components';
+import { WizardModule } from '@fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { WizardDemoComponent } from './wizard-demo.component';

@@ -1,56 +1,56 @@
 <fusion-demo titleText="Wizard">
 
-  <form form class="fusion-components-demo__form fusion-ui-form" *ngIf="wizardForm" [formGroup]="wizardForm">
+  <form form class="fusion-components-demo__form f-form" *ngIf="wizardForm" [formGroup]="wizardForm">
 
     <!-- START: disableNextSteps checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="disable-next-steps" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="disable-next-steps" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
             name="disable-next-steps"
             id="disable-next-steps"
             formControlName="disableNextSteps">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Disable Next Steps</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Disable Next Steps</span>
         </label>
       </span>
     </div>
     <!-- END: is disableNextSteps checkbox -->
 
     <!-- START: disablePreviousSteps checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="disable-previous-steps" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="disable-previous-steps" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
             name="disable-previous-steps"
             id="disable-previous-steps"
             formControlName="disablePreviousSteps">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Disable Previous Steps</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Disable Previous Steps</span>
         </label>
       </span>
     </div>
     <!-- END: is disablePreviousSteps checkbox -->
 
     <!-- START: hideSteps2And6 checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="hide-steps" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="hide-steps" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
             name="hide-steps"
             id="hide-steps"
             formControlName="hideSteps2And6">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Hide Steps 2 and 6</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Hide Steps 2 and 6</span>
         </label>
       </span>
     </div>
@@ -58,19 +58,19 @@
   </form>
 
   <ng-container result>
-    <fusion-ui-wizard
+    <f-wizard
       [(steps)]="steps"
       [disableNextSteps]="wizardForm?.get('disableNextSteps')?.value"
       [disablePreviousSteps]="wizardForm?.get('disablePreviousSteps')?.value"
       (stepsChanged)="stepsChanged($event)">
-      <img class="fusion-ui-wizard__brand-image" src="assets/images/na_logo_hrz_1c-rev_rgb_sm.png" style="height: 30px"/>
+      <img class="f-wizard__brand-image" src="assets/images/na_logo_hrz_1c-rev_rgb_sm.png" style="height: 30px"/>
 
-      <h2 class="fusion-ui-h2">{{ getCurrentStep()?.title }}</h2>
+      <h2 class="f-h2">{{ getCurrentStep()?.title }}</h2>
       <div>
         <button (click)="prevStep()">Prev</button>
         <button (click)="nextStep()">Next</button>
       </div>
-    </fusion-ui-wizard>
+    </f-wizard>
   </ng-container>
 
 </fusion-demo>

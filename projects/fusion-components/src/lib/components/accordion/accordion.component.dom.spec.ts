@@ -2,27 +2,27 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { TemplateModule } from '@fusion-ui/fusion-components/lib/directives/template';
+import { TemplateModule } from '@fusion-components/lib/directives/template';
 
 import { AccordionComponentPageObject } from './accordion.component.spec.po';
 import { AccordionModule } from './accordion.module';
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
-  <fusion-ui-accordion
+  <f-accordion
     [onePanelLimit]="onePanelLimit"
     [maxContentHeight]="maxContentHeight"
     [toggleAllPanels]="toggleAllPanels">
-    <fusion-ui-accordion-panel
+    <f-accordion-panel
       *ngFor="let panel of panels"
       [isExpanded]="panel?.isExpanded"
       [isDisabled]="panel?.isDisabled"
       [id]="panel?.id">
       <ng-template fusionUiTemplate="panelTitle">{{ panel?.title }}</ng-template>
       <ng-template fusionUiTemplate="panelContent">{{ panel?.content }}</ng-template>
-    </fusion-ui-accordion-panel>
-  </fusion-ui-accordion>
+    </f-accordion-panel>
+  </f-accordion>
   `,
 })
 export class AccordionTestComponent {

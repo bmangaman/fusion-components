@@ -1,44 +1,44 @@
 import { ComponentFixture } from '@angular/core/testing';
-import { FusionUiStatusLevel } from '@fusion-ui/fusion-components/lib/shared';
+import { StatusLevel } from '@fusion-components/lib/shared';
 
-import { GetFusionUiStatusLevelTextPipe } from '@fusion-ui/fusion-components/lib/pipes/get-fusion-ui-status-level-text';
+import { GetStatusLevelTextPipe } from '@fusion-components/lib/pipes/get-status-level-text';
 
 /**
  * CARD PAGE OBJECT
  *
- * Page object for the fusion-ui-card component.
- * Makes it easier to find and select certain fusion-ui-card attributes and elements.
+ * Page object for the f-card component.
+ * Makes it easier to find and select certain f-card attributes and elements.
  */
 export class CardPageObject {
   private fixture: ComponentFixture<any>;
   private cardClass: string;
 
-  private _getFusionUiStatusLevelTextPipe: GetFusionUiStatusLevelTextPipe = new GetFusionUiStatusLevelTextPipe();
+  private _getStatusLevelTextPipe: GetStatusLevelTextPipe = new GetStatusLevelTextPipe();
 
   /**
-   * Gets the "fusion-ui-card" element.
+   * Gets the "f-card" element.
    *
-   * @returns The "fusion-ui-card" element.
+   * @returns The "f-card" element.
    */
-  get card(): HTMLElement {
-    // first try to get the fusion-ui-card element by a provided class
+  get card(): HTMLElement | null {
+    // first try to get the f-card element by a provided class
     const cardClass: HTMLElement = this.cardClass ? this.fixture.nativeElement.querySelector(this.cardClass) : null;
-    // if no provided class or element not found, try to find the fusion-ui-card element by the fusion-ui-card tag
-    const fusionCard: HTMLElement = cardClass || this.fixture.nativeElement.querySelector('fusion-ui-card');
-    // if fusion-ui-card found, find the actual <card> element by the .fusion-ui-card class
-    const card: HTMLElement = fusionCard ? fusionCard.querySelector('.fusion-ui-card') : null;
+    // if no provided class or element not found, try to find the f-card element by the f-card tag
+    const fusionCard: HTMLElement = cardClass || this.fixture.nativeElement.querySelector('f-card');
+    // if f-card found, find the actual <card> element by the .f-card class
+    const card: HTMLElement | null = fusionCard.querySelector('.f-card');
 
     return card;
   }
 
   /**
-   * Gets the list of CSS classes on the "fusion-ui-card" element.
+   * Gets the list of CSS classes on the "f-card" element.
    *
-   * @returns The list of the CSS classes on the "fusion-ui-card" element.
+   * @returns The list of the CSS classes on the "f-card" element.
    */
-  get classes(): DOMTokenList {
-    const card: HTMLElement = this.card;
-    return card ? card.classList : null;
+  get classes(): DOMTokenList | undefined {
+    const card: HTMLElement | null = this.card;
+    return card?.classList;
   }
 
   /**
@@ -46,9 +46,9 @@ export class CardPageObject {
    *
    * @returns The title container element.
    */
-  get title(): HTMLElement {
-    const card: HTMLElement = this.card;
-    return card ? card.querySelector('.fusion-ui-card__title') : null;
+  get title(): HTMLElement | null {
+    const card: HTMLElement | null = this.card;
+    return card ? card.querySelector('.f-card__title') : null;
   }
 
   /**
@@ -56,9 +56,9 @@ export class CardPageObject {
    *
    * @returns The title text element.
    */
-  get titleText(): HTMLElement {
-    const title: HTMLElement = this.title;
-    return title ? title.querySelector('.fusion-ui-card__title-text') : null;
+  get titleText(): HTMLElement | null {
+    const title: HTMLElement | null = this.title;
+    return title ? title.querySelector('.f-card__title-text') : null;
   }
 
   /**
@@ -66,21 +66,21 @@ export class CardPageObject {
    *
    * @reutrns The list of the status elements in the title.
    */
-  get statuses(): NodeListOf<HTMLElement> {
-    const title: HTMLElement = this.title;
-    return title ? title.querySelectorAll('.fusion-ui-card__title-status') : null;
+  get statuses(): NodeListOf<HTMLElement> | null {
+    const title: HTMLElement | null = this.title;
+    return title ? title.querySelectorAll('.f-card__title-status') : null;
   }
 
   /**
    * Gets a status of the provided type.
    *
    * @param type The type of the status (e.g. ERROR, WARNING, SUCCESS).
-   * @param returns The status element for the provided type.
+   * @returns The status element for the provided type.
    */
-  getStatusByType(type: FusionUiStatusLevel): HTMLElement {
-    const title: HTMLElement = this.title;
-    const FusionUiStatusLevelText: string = this._getFusionUiStatusLevelTextPipe.transform(type, null, true);
-    return title ? title.querySelector(`.fusion-ui-card__title-status--${FusionUiStatusLevelText}`) : null;
+  getStatusByType(type: StatusLevel): HTMLElement | null {
+    const title: HTMLElement | null = this.title;
+    const statusLevelText: string = this._getStatusLevelTextPipe.transform(type, undefined, true);
+    return title ? title.querySelector(`.f-card__title-status--${statusLevelText}`) : null;
   }
 
   /**
@@ -88,9 +88,9 @@ export class CardPageObject {
    *
    * @returns The content element.
    */
-  get content(): HTMLElement {
-    const card: HTMLElement = this.card;
-    return card ? card.querySelector('.fusion-ui-card__content') : null;
+  get content(): HTMLElement | null {
+    const card: HTMLElement | null = this.card;
+    return card ? card.querySelector('.f-card__content') : null;
   }
 
   /**
@@ -98,17 +98,17 @@ export class CardPageObject {
    *
    * @returns The details element.
    */
-  get details(): HTMLElement {
-    const card: HTMLElement = this.card;
-    return card ? card.querySelector('.fusion-ui-card__details') : null;
+  get details(): HTMLElement | null {
+    const card: HTMLElement | null = this.card;
+    return card ? card.querySelector('.f-card__details') : null;
   }
 
   /**
    * @returns the card footer
    */
-  get footer(): HTMLElement {
-    const card: HTMLElement = this.card;
-    return card ? card.querySelector('.fusion-ui-card__footer') : null;
+  get footer(): HTMLElement | null {
+    const card: HTMLElement | null = this.card;
+    return card ? card.querySelector('.f-card__footer') : null;
   }
 
   /**
@@ -116,9 +116,9 @@ export class CardPageObject {
    *
    * @returns The details button.
    */
-  get detailsButton(): HTMLButtonElement {
-    const card: HTMLElement = this.card;
-    return card ? card.querySelector('.fusion-ui-card__details-button') : null;
+  get detailsButton(): HTMLButtonElement | null {
+    const card: HTMLElement | null = this.card;
+    return card ? card.querySelector('.f-card__details-button') : null;
   }
 
   /**
@@ -126,19 +126,19 @@ export class CardPageObject {
    *
    * @returns The details content element.
    */
-  get detailsContent(): HTMLElement {
-    const card: HTMLElement = this.card;
-    return card ? card.querySelector('.fusion-ui-card__details-content') : null;
+  get detailsContent(): HTMLElement | null {
+    const card: HTMLElement | null = this.card;
+    return card ? card.querySelector('.f-card__details-content') : null;
   }
 
   /**
-   * Creates a page object for a fusion-ui-card DOM element based on the provided fixture and optional cardClass.
+   * Creates a page object for a f-card DOM element based on the provided fixture and optional cardClass.
    *
-   * @param fixture the parent DOM fixture/ element that houses the fusion-ui-card.
-   * @param cardClass optional, providing a css class appended to a fusion-ui-card will help make sure the correct one is selected.
+   * @param fixture the parent DOM fixture/ element that houses the f-card.
+   * @param cardClass optional, providing a css class appended to a f-card will help make sure the correct one is selected.
    */
   constructor(fixture: ComponentFixture<any>, cardClass?: string) {
     this.fixture = fixture;
-    this.cardClass = cardClass;
+    this.cardClass = cardClass || '';
   }
 }

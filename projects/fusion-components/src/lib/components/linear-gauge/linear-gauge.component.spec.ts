@@ -1,4 +1,4 @@
-import { FusionUiStatusLevel } from '@fusion-ui/fusion-components/lib/shared';
+import { StatusLevel } from '@fusion-components/lib/shared';
 
 import { LinearGaugeComponent } from './linear-gauge.component';
 import { LinearGaugeState, LinearGaugeThreshold } from './linear-gauge.interface';
@@ -9,12 +9,12 @@ describe('LinearGaugeComponent', () => {
     {
       title: 'warning',
       value: 2,
-      level: FusionUiStatusLevel.WARNING,
+      level: StatusLevel.WARNING,
     },
     {
       title: 'error',
       value: 4,
-      level: FusionUiStatusLevel.ERROR,
+      level: StatusLevel.ERROR,
     },
   ];
 
@@ -28,10 +28,10 @@ describe('LinearGaugeComponent', () => {
 
   describe('ngOnChanges()', () => {
     it('should call calculateLevel() and set level to the result', () => {
-      spyOn(component, 'calculateLevel').and.returnValue(FusionUiStatusLevel.BASE);
+      spyOn(component, 'calculateLevel').and.returnValue(StatusLevel.BASE);
       component.ngOnChanges();
       expect(component.calculateLevel).toHaveBeenCalled();
-      expect(component.level).toEqual(FusionUiStatusLevel.BASE);
+      expect(component.level).toEqual(StatusLevel.BASE);
     });
 
     it('shoould emit that the linear gauge state has changed', () => {
@@ -53,10 +53,10 @@ describe('LinearGaugeComponent', () => {
   describe('calculateLevel()', () => {
     it('should return BASE if there are no thresholds', () => {
       component.thresholds = null;
-      expect(component.calculateLevel()).toEqual(FusionUiStatusLevel.BASE);
+      expect(component.calculateLevel()).toEqual(StatusLevel.BASE);
 
       component.thresholds = [];
-      expect(component.calculateLevel()).toEqual(FusionUiStatusLevel.BASE);
+      expect(component.calculateLevel()).toEqual(StatusLevel.BASE);
     });
 
     it('should return CRITICAL if the value is greater than the max value', () => {
@@ -64,11 +64,11 @@ describe('LinearGaugeComponent', () => {
 
       component.value = 10;
       component.maxValue = 10;
-      expect(component.calculateLevel()).toEqual(FusionUiStatusLevel.CRITICAL);
+      expect(component.calculateLevel()).toEqual(StatusLevel.CRITICAL);
 
       component.value = 15;
       component.maxValue = 10;
-      expect(component.calculateLevel()).toEqual(FusionUiStatusLevel.CRITICAL);
+      expect(component.calculateLevel()).toEqual(StatusLevel.CRITICAL);
     });
 
     it('should return the level of the highest passed threshold', () => {
@@ -77,22 +77,22 @@ describe('LinearGaugeComponent', () => {
       component.minValue = 0;
 
       component.value = 0;
-      expect(component.calculateLevel()).toEqual(FusionUiStatusLevel.NORMAL);
+      expect(component.calculateLevel()).toEqual(StatusLevel.NORMAL);
 
       component.value = 1;
-      expect(component.calculateLevel()).toEqual(FusionUiStatusLevel.NORMAL);
+      expect(component.calculateLevel()).toEqual(StatusLevel.NORMAL);
 
       component.value = 2;
-      expect(component.calculateLevel()).toEqual(FusionUiStatusLevel.WARNING);
+      expect(component.calculateLevel()).toEqual(StatusLevel.WARNING);
 
       component.value = 3;
-      expect(component.calculateLevel()).toEqual(FusionUiStatusLevel.WARNING);
+      expect(component.calculateLevel()).toEqual(StatusLevel.WARNING);
 
       component.value = 4;
-      expect(component.calculateLevel()).toEqual(FusionUiStatusLevel.ERROR);
+      expect(component.calculateLevel()).toEqual(StatusLevel.ERROR);
 
       component.value = 5;
-      expect(component.calculateLevel()).toEqual(FusionUiStatusLevel.CRITICAL);
+      expect(component.calculateLevel()).toEqual(StatusLevel.CRITICAL);
     });
   });
 

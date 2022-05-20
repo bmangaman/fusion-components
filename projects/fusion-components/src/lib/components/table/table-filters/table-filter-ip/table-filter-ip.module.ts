@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { EnumToArrayModule } from '@fusion-ui/fusion-components/lib/pipes';
+import { EnumToArrayModule } from '@fusion-components/lib/pipes';
 import { TableFilterModule } from '../table-filter';
 import { TableFilterComparatorModule } from '../table-filter-comparator';
 import { TableFilterIpComponent } from './table-filter-ip.component';

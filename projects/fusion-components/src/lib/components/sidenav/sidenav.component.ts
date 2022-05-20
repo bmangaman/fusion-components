@@ -12,7 +12,7 @@ import { NavItem, SidenavTemplate } from './sidenav.interface';
  * SIDENAV COMPONENT
  */
 @Component({
-  selector: 'fusion-ui-sidenav',
+  selector: 'f-sidenav',
   templateUrl: './sidenav.component.html',
 })
 export class SidenavComponent implements AfterContentInit {
@@ -124,8 +124,8 @@ export class SidenavComponent implements AfterContentInit {
   findMatchingNavItem(navItems: NavItem[], segments: string[], index: number): NavItem[] {
     if (!!navItems?.length && !!segments?.length) {
       const matchingIndex: number = navItems.findIndex((item: NavItem) => {
-        const doesRouteMatch: boolean = item?.route?.includes(segments[index]);
-        const doesIdMatch: boolean = item?.id?.includes(segments[index]);
+        const doesRouteMatch: boolean = !!item?.route?.includes(segments[index]);
+        const doesIdMatch: boolean = !!item?.id?.includes(segments[index]);
 
         // If the title is an Observable, do not check if it matches the route segment
         // If the title is an Observable, HIGHLY recommend setting the id value of the NavItem to include the route segment
@@ -146,7 +146,7 @@ export class SidenavComponent implements AfterContentInit {
         navItems[matchingIndex].isExpanded = true;
 
         if (!!navItems[matchingIndex].children?.length) {
-          navItems[matchingIndex].children = this.findMatchingNavItem(navItems[matchingIndex].children, segments, index + 1);
+          navItems[matchingIndex].children = this.findMatchingNavItem(navItems[matchingIndex].children!, segments, index + 1);
         }
       }
     }

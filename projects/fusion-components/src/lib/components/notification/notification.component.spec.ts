@@ -1,6 +1,6 @@
 import { QueryList } from '@angular/core';
 
-import { FusionComponentsTranslationService, TemplateDirective } from '@fusion-ui/fusion-components';
+import { FusionComponentsTranslationService, TemplateDirective } from '@fusion-components';
 
 import { NotificationComponent } from './notification.component';
 import { NotificationType } from './notification.interface';
@@ -42,19 +42,19 @@ describe('NotificationComponent', () => {
     });
 
     it('should return the correct classes', () => {
-      expect(component.hostClasses).toBe('fusion-ui-notification');
+      expect(component.hostClasses).toBe('f-notification');
 
       (component as any)._dismissed = true;
 
-      expect(component.hostClasses).toBe('fusion-ui-notification dismissed');
+      expect(component.hostClasses).toBe('f-notification dismissed');
 
       component.sticky = true;
 
-      expect(component.hostClasses).toBe('fusion-ui-notification sticky-msg-position dismissed');
+      expect(component.hostClasses).toBe('f-notification sticky-msg-position dismissed');
 
       component.setNotificationType();
 
-      expect(component.hostClasses).toBe('fusion-ui-notification sticky-msg-position fusion-ui-notification__info dismissed');
+      expect(component.hostClasses).toBe('f-notification sticky-msg-position f-notification__info dismissed');
     });
 
     it('should return the correct id', () => {

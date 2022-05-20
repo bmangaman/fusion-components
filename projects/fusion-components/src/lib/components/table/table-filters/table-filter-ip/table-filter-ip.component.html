@@ -1,67 +1,67 @@
 <form
-  class="fusion-ui-form"
+  class="f-form"
   *ngIf="isLoaded"
   [formGroup]="filterForm"
   [ngStyle]="{ 'min-width' : isContainsOrDoesNotContainSelector ? '300px' : 'auto' }">
 
-  <fusion-ui-table-filter-comparator
+  <f-table-filter-comparator
     [comparators]="filterComparators"
     (comparatorChange)="selectedFilterComparator.next($event)"
     [translations]="translations?.comparator">
-  </fusion-ui-table-filter-comparator>
+  </f-table-filter-comparator>
 
-  <div class="fusion-ui-form__field-group fusion-ui-form__field-group--inline" *ngIf="isContainsOrDoesNotContainSelector; else equalsInput">
+  <div class="f-form__field-group f-form__field-group--inline" *ngIf="isContainsOrDoesNotContainSelector; else equalsInput">
 
-    <div class="fusion-ui-table__filter-input fusion-ui-form__fieldset">
-      <div class="fusion-ui-form__input-wrapper">
+    <div class="f-table__filter-input f-form__fieldset">
+      <div class="f-form__input-wrapper">
         <input
           type="number"
           min="0"
           max="999"
           formControlName="octet1"
-          class="fusion-ui-form__input"
+          class="f-form__input"
           [attr.aria-label]="translations?.fields?.octet1 || ( baseTranslationKey + '.table.filters.ip.fields.octet1' | translate )" />
       </div>
     </div>
 
-    <span class="fusion-ui-table__filter-inline-text">.</span>
+    <span class="f-table__filter-inline-text">.</span>
 
-    <div class="fusion-ui-table__filter-input fusion-ui-form__fieldset">
-      <div class="fusion-ui-form__input-wrapper">
+    <div class="f-table__filter-input f-form__fieldset">
+      <div class="f-form__input-wrapper">
         <input
         type="number"
         min="0"
         max="999" 
         formControlName="octet2" 
-        class="fusion-ui-form__input"
+        class="f-form__input"
         [attr.aria-label]="translations?.fields?.octet2 || ( baseTranslationKey + '.table.filters.ip.fields.octet2' | translate )" />
       </div>
     </div>
 
-    <span class="fusion-ui-table__filter-inline-text">.</span>
+    <span class="f-table__filter-inline-text">.</span>
 
-    <div class="fusion-ui-table__filter-input fusion-ui-form__fieldset">
-      <div class="fusion-ui-form__input-wrapper">
+    <div class="f-table__filter-input f-form__fieldset">
+      <div class="f-form__input-wrapper">
         <input
           type="number"
           min="0"
           max="999" 
           formControlName="octet3"
-          class="fusion-ui-form__input"
+          class="f-form__input"
           [attr.aria-label]="translations?.fields?.octet3 || ( baseTranslationKey + '.table.filters.ip.fields.octet3' | translate )" />
       </div>
     </div>
 
-    <span class="fusion-ui-table__filter-inline-text">.</span>
+    <span class="f-table__filter-inline-text">.</span>
 
-    <div class="fusion-ui-table__filter-input fusion-ui-form__fieldset">
-      <div class="fusion-ui-form__input-wrapper">
+    <div class="f-table__filter-input f-form__fieldset">
+      <div class="f-form__input-wrapper">
         <input
           type="number"
           min="0" 
           max="999"
           formControlName="octet4"
-          class="fusion-ui-form__input"
+          class="f-form__input"
           [attr.aria-label]="translations?.fields?.octet4 || ( baseTranslationKey + '.table.filters.ip.fields.octet4' | translate )" />
       </div>
     </div>
@@ -69,12 +69,12 @@
   </div>
 
   <ng-template #equalsInput>
-    <div class="fusion-ui-table__filter-input fusion-ui-form__fieldset">
-      <div class="fusion-ui-form__input-wrapper">
+    <div class="f-table__filter-input f-form__fieldset">
+      <div class="f-form__input-wrapper">
         <input
           type="string"
           formControlName="ip"
-          class="fusion-ui-form__input"
+          class="f-form__input"
           [attr.aria-label]="translations?.fields?.ip || ( baseTranslationKey + '.table.filters.bytes.fields.ip' | translate )" />
       </div>
     </div>

@@ -3,10 +3,10 @@ import { FormBuilder } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
-import { BytesPipeBase, EnumToArrayPipe } from '@fusion-ui/fusion-components/lib/pipes';
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services/translation';
-import { BiBytesUnit, BytesUnit } from '@fusion-ui/fusion-components/lib/shared';
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { BytesPipeBase, EnumToArrayPipe } from '@fusion-components/lib/pipes';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
+import { BiBytesUnit, BytesUnit } from '@fusion-components/lib/shared';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
 import { FilterComparator } from '../table-filter-comparator';
 import { TableFilterBytesComponent } from './table-filter-bytes.component';

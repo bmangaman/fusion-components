@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FusionUiSize } from '../../shared';
+import { Size } from '../../shared';
 
 import { ModalComponentPageObject } from './modal.component.spec.po';
 import { ModalComponent } from './modal.component';
@@ -10,7 +10,7 @@ import { ModalModule } from './modal.module';
 import { ModalConfig, ModalType } from './modal.interface';
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
     <body>
       <div class="height-adjustment-element" style="display: block; height: 50px;"></div>
@@ -18,18 +18,18 @@ import { ModalConfig, ModalType } from './modal.interface';
 
       <div class="container-element"></div>
 
-      <fusion-ui-modal>
+      <f-modal>
 
-        <fusion-ui-modal-header>Header Text</fusion-ui-modal-header>
+        <f-modal-header>Header Text</f-modal-header>
 
-        <fusion-ui-modal-content>Content</fusion-ui-modal-content>
+        <f-modal-content>Content</f-modal-content>
 
-        <fusion-ui-modal-footer>
-          <div class="fusion-ui-modal__footer-buttons">
-            <button type="button" class="fusion-ui-button fusion-ui-button--secondary cancel-button">Cancel</button>
+        <f-modal-footer>
+          <div class="f-modal__footer-buttons">
+            <button type="button" class="f-button f-button--secondary cancel-button">Cancel</button>
           </div>
-        </fusion-ui-modal-footer>
-      </fusion-ui-modal>
+        </f-modal-footer>
+      </f-modal>
     </body>
   `
 })
@@ -61,7 +61,7 @@ describe('ModalComponent', () => {
     component.config = {
       type: ModalType.ALERT,
       container: 'body',
-      size: FusionUiSize.MEDIUM,
+      size: Size.MEDIUM,
       windowClasses: [],
       backdropClasses: [],
       heightAdjustmentElements: [],
@@ -100,42 +100,42 @@ describe('ModalComponent', () => {
         component.modalComponent.config = { ...component.config, type };
         component.init();
         fixture.detectChanges();
-        expect(page.modalWindow.classList).toContain(`fusion-ui-modal__window--${type}`);
+        expect(page.modalWindow.classList).toContain(`f-modal__window--${type}`);
 
         type = ModalType.FULL;
         component.config = { ...component.config, type };
         component.init();
         fixture.detectChanges();
-        expect(page.modalWindow.classList).toContain(`fusion-ui-modal__window--${type}`);
+        expect(page.modalWindow.classList).toContain(`f-modal__window--${type}`);
 
         type = ModalType.SIDE;
         component.config = { ...component.config, type };
         component.init();
         fixture.detectChanges();
-        expect(page.modalWindow.classList).toContain(`fusion-ui-modal__window--${type}`);
+        expect(page.modalWindow.classList).toContain(`f-modal__window--${type}`);
       });
     });
 
     describe('size', () => {
       it('should append the appropriate class based on the provided size', () => {
-        let size: FusionUiSize;
-        size = FusionUiSize.SMALL;
+        let size: Size;
+        size = Size.SMALL;
         component.config = { ...component.config, size };
         component.init();
         fixture.detectChanges();
-        expect(page.modalWindow.classList).toContain(`fusion-ui-modal__window--alert--${size}`);
+        expect(page.modalWindow.classList).toContain(`f-modal__window--alert--${size}`);
 
-        size = FusionUiSize.MEDIUM;
+        size = Size.MEDIUM;
         component.config = { ...component.config, size };
         component.init();
         fixture.detectChanges();
-        expect(page.modalWindow.classList).toContain(`fusion-ui-modal__window--alert--${size}`);
+        expect(page.modalWindow.classList).toContain(`f-modal__window--alert--${size}`);
 
-        size = FusionUiSize.LARGE;
+        size = Size.LARGE;
         component.config = { ...component.config, size };
         component.init();
         fixture.detectChanges();
-        expect(page.modalWindow.classList).toContain(`fusion-ui-modal__window--alert--${size}`);
+        expect(page.modalWindow.classList).toContain(`f-modal__window--alert--${size}`);
       });
     });
 

@@ -23,7 +23,7 @@ import { takeUntil } from 'rxjs/operators';
 import { cloneDeep, intersection, isEqual } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
 
-import { FusionUiLocation, FusionUiSize, FusionUiState, TranslatedComponent } from '@fusion-ui/fusion-components/lib/shared';
+import { Location, Size, State, TranslatedComponent } from '@fusion-components/lib/shared';
 
 import { TemplateDirective } from '../../directives/template';
 import { ButtonType } from '../button';
@@ -64,7 +64,7 @@ import {
  *  2. ADVANCED - same as basic, but by default displays controls and pagination
  */
 @Component({
-  selector: 'fusion-ui-table',
+  selector: 'f-table',
   templateUrl: 'table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -72,9 +72,9 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
   readonly ButtonType = ButtonType;
   readonly DownloadDirectiveFileType = DownloadDirectiveFileType;
   readonly TableCellContentAlignment = TableCellContentAlignment;
-  readonly FusionUiLocation = FusionUiLocation;
-  readonly FusionUiSize = FusionUiSize;
-  readonly FusionUiState = FusionUiState;
+  readonly Location = Location;
+  readonly Size = Size;
+  readonly State = State;
   readonly RowExpansionMode = RowExpansionMode;
   readonly SelectionMode = SelectionMode;
   readonly StateLocation = StateLocation;
@@ -247,7 +247,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
    *  - If there was an issue getting the data, should be ERROR
    * By default is LOADED.
    */
-  @Input() state: FusionUiState = FusionUiState.LOADED;
+  @Input() state: State = State.LOADED;
 
   /**
    * Determines whether the table component will stretch to fill the height of its parent container.
@@ -470,7 +470,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
 
   /**
    * The filters of the table.
-   * Determined by the number of TableFilter components nested within the <fusion-ui-table> tag.
+   * Determined by the number of TableFilter components nested within the <f-table> tag.
    */
   private _filters: QueryList<TableFilterComponent>;
   @ContentChildren(TableFilterComponent)
@@ -484,7 +484,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
 
   /**
    * The columns of the table.
-   * Determined by the number of TableColumnComponents nested within the <fusion-ui-table> tag.
+   * Determined by the number of TableColumnComponents nested within the <f-table> tag.
    */
   private _columns: QueryList<TableColumnComponent>;
   @ContentChildren(TableColumnComponent)
@@ -910,22 +910,22 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
    * Generates the CSS classes to be appended to the outermost div within table.component.html.
    */
   generateTableCssClasses(): void {
-    const classes: string[] = ['fusion-ui-table'];
+    const classes: string[] = ['f-table'];
 
     if (!!this.fillContainer) {
-      classes.push('fusion-ui-table--fillContainer');
+      classes.push('f-table--fillContainer');
     }
 
     if (!!this.type) {
-      classes.push(`fusion-ui-table--${this.type}`);
+      classes.push(`f-table--${this.type}`);
     }
 
     if (!!this.spacing) {
-      classes.push(`fusion-ui-table--spacing-${this.spacing}`);
+      classes.push(`f-table--spacing-${this.spacing}`);
     }
 
     if (!!this.state) {
-      classes.push(`fusion-ui-table--${this.state}`);
+      classes.push(`f-table--${this.state}`);
     }
 
     this.tableCssClasses = classes;
@@ -1090,7 +1090,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
   startResize(): void {
     this.flags.resizeIndicatorVisibleListener = this.renderer.listen(window, 'mousemove', (event: MouseEvent) => {
       const relativeLeft: number = this.elementRef.nativeElement.getBoundingClientRect().left;
-      const scrollLeft: number = this.elementRef.nativeElement.querySelector('.fusion-ui-table__container').scrollLeft;
+      const scrollLeft: number = this.elementRef.nativeElement.querySelector('.f-table__container').scrollLeft;
       this.resizeXCoordinate = event.pageX - relativeLeft + scrollLeft;
       this.cdr.detectChanges();
     });

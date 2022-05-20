@@ -7,8 +7,8 @@ import { Subscription } from 'rxjs';
 
 import { cloneDeep } from 'lodash';
 
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services/translation';
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
 import {
   TableFilterComponent,
@@ -683,7 +683,7 @@ describe('TableFilterSelectorComponent', () => {
   describe('menuLogic()', () => {
     it('returns true if the target element grandparent element contains the remove filters button class', () => {
       const grandparent: HTMLElement = document.createElement('div');
-      grandparent.setAttribute('class', 'fusion-ui-table__filter-selector-remove-filter-button');
+      grandparent.setAttribute('class', 'f-table__filter-selector-remove-filter-button');
       const parent: HTMLElement = document.createElement('div');
       const element: HTMLElement = document.createElement('div');
 

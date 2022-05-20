@@ -3,20 +3,20 @@ import { ComponentFixture } from '@angular/core/testing';
 /**
  * WIZARD PAGE OBJECT
  *
- * Page object for the fusion-ui-wizard component.
- * Makes it easier to find and select certain fusion-ui-wizard attributes and elements.
+ * Page object for the f-wizard component.
+ * Makes it easier to find and select certain f-wizard attributes and elements.
  */
 export class WizardPageObject {
   private fixture: ComponentFixture<any>;
   private wizardClass: string;
 
   get wizard(): HTMLDivElement {
-    // first try to get the fusion-ui-wizard element by a provided class
+    // first try to get the f-wizard element by a provided class
     const wizardClass: HTMLElement = this.wizardClass ? this.fixture.nativeElement.querySelector(this.wizardClass) : null;
-    // if no provided class or element not found, try to find the fusion-ui-wizard element by the fusion-ui-wizard tag
-    const fusionWizard: HTMLElement = wizardClass || this.fixture.nativeElement.querySelector('fusion-ui-wizard');
-    // if fusion-ui-wizard found, find the actual <wizard> element by the .fusion-ui-wizard class
-    const wizard: HTMLDivElement = fusionWizard ? fusionWizard.querySelector('.fusion-ui-wizard') : null;
+    // if no provided class or element not found, try to find the f-wizard element by the f-wizard tag
+    const fusionWizard: HTMLElement = wizardClass || this.fixture.nativeElement.querySelector('f-wizard');
+    // if f-wizard found, find the actual <wizard> element by the .f-wizard class
+    const wizard: HTMLDivElement = fusionWizard ? fusionWizard.querySelector('.f-wizard') : null;
 
     return wizard;
   }
@@ -28,7 +28,7 @@ export class WizardPageObject {
    */
   get stepNavigation(): HTMLDivElement {
     const wizard: HTMLDivElement = this.wizard;
-    return wizard ? wizard.querySelector('.fusion-ui-wizard__step-navigation') : null;
+    return wizard ? wizard.querySelector('.f-wizard__step-navigation') : null;
   }
 
   /**
@@ -38,7 +38,7 @@ export class WizardPageObject {
    */
   get brandImage(): HTMLDivElement {
     const stepNavigation: HTMLDivElement = this.stepNavigation;
-    return stepNavigation ? stepNavigation.querySelector('.fusion-ui-wizard__brand-image') : null;
+    return stepNavigation ? stepNavigation.querySelector('.f-wizard__brand-image') : null;
   }
 
   /**
@@ -48,7 +48,7 @@ export class WizardPageObject {
    */
   get stepNavigationButtons(): NodeListOf<HTMLButtonElement> {
     const stepNavigation: HTMLDivElement = this.stepNavigation;
-    return stepNavigation ? stepNavigation.querySelectorAll('.fusion-ui-wizard__step-navigation-button') : null;
+    return stepNavigation ? stepNavigation.querySelectorAll('.f-wizard__step-navigation-button') : null;
   }
 
   /**
@@ -58,14 +58,14 @@ export class WizardPageObject {
    */
   get stepContent(): HTMLDivElement {
     const wizard: HTMLDivElement = this.wizard;
-    return wizard ? wizard.querySelector('.fusion-ui-wizard__step-content') : null;
+    return wizard ? wizard.querySelector('.f-wizard__step-content') : null;
   }
 
   /**
-   * Creates a page object for a fusion-ui-wizard DOM element based on the provided fixture and optional wizardClass.
+   * Creates a page object for a f-wizard DOM element based on the provided fixture and optional wizardClass.
    *
-   * @param fixture The parent DOM fixture/ element that houses the fusion-ui-wizard.
-   * @param wizardClass Pptional, providing a css class appended to a fusion-ui-wizard will help make sure the correct one is selected.
+   * @param fixture The parent DOM fixture/ element that houses the f-wizard.
+   * @param wizardClass Pptional, providing a css class appended to a f-wizard will help make sure the correct one is selected.
    */
   constructor(fixture: ComponentFixture<any>, wizardClass?: string) {
     this.fixture = fixture;

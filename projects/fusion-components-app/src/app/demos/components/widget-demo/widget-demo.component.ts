@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { InfoBoxDetail, WidgetTemplate, FusionUiStatusLevel } from '@fusion-ui/fusion-components';
+import { InfoBoxDetail, WidgetTemplate, StatusLevel } from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-widget',
@@ -27,7 +27,7 @@ export class WidgetDemoComponent {
       badges: [
         {
           text: 1807,
-          type: FusionUiStatusLevel.WARNING,
+          type: StatusLevel.WARNING,
         },
       ],
     },
@@ -37,12 +37,12 @@ export class WidgetDemoComponent {
         {
           text: 44,
           subText: 'Yes',
-          type: FusionUiStatusLevel.SUCCESS,
+          type: StatusLevel.SUCCESS,
         },
         {
           text: 93,
           subText: 'No',
-          type: FusionUiStatusLevel.CRITICAL,
+          type: StatusLevel.CRITICAL,
         },
       ],
     },

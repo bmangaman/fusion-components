@@ -3,7 +3,7 @@ import { ComponentFactory, ComponentFactoryResolver, ComponentRef, Directive, In
 import { get } from 'lodash';
 
 import { StateComponent, StateHeadlines, StateLocation, StateMessages, StateMessageTemplates } from '../../components/state';
-import { FusionUiState } from '../../shared';
+import { State } from '../../shared';
 
 /**
  * FUSION UI STATE DIRECTIVE
@@ -49,9 +49,9 @@ export class StateDirective {
   /**
    * Determines the state of the content. When changed, generates the view.
    */
-  private _state: FusionUiState;
+  private _state: State;
   @Input('fusionUiState')
-  set state(state: FusionUiState) {
+  set state(state: State) {
     this._state = state;
     this.generateView();
   }
@@ -177,19 +177,19 @@ export class StateDirective {
     this.viewContainer.clear();
 
     switch (this._state) {
-      case FusionUiState.LOADING:
+      case State.LOADING:
         this.generateViewHelper(this._loadingState);
         break;
-      case FusionUiState.NO_RESULTS:
+      case State.NO_RESULTS:
         this.generateViewHelper(this._noResultsState);
         break;
-      case FusionUiState.ERROR:
+      case State.ERROR:
         this.generateViewHelper(this._errorState);
         break;
-      case FusionUiState.NOT_LOADED:
+      case State.NOT_LOADED:
         this.generateViewHelper(this._notLoadedState);
         break;
-      case FusionUiState.LOADED:
+      case State.LOADED:
       default:
         this.viewContainer.createEmbeddedView(this.templateRef);
         break;

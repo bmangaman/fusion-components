@@ -1,13 +1,13 @@
 <ng-container *ngIf="displayError()">
 
-  <div class="fusion-ui-error-messages" *ngIf="displayMultiple; else displaySingle">
-    <div *ngFor="let errorMessage of errors | getAllErrors:control?.errors" class="fusion-ui-error-message">
+  <div class="f-error-messages" *ngIf="displayMultiple; else displaySingle">
+    <div *ngFor="let errorMessage of errors | getAllErrors:control?.errors" class="f-error-message">
       {{ errorMessage | async }}
     </div>
   </div>
 
   <ng-template #displaySingle>
-    <div class="fusion-ui-error-message">
+    <div class="f-error-message">
       {{ (errors | getSingleError:control?.errors) | async }}
     </div>
   </ng-template>

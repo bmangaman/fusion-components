@@ -3,11 +3,11 @@
 @import './table-filter-selector.scss';
 @import './table-pagination.scss';
 
-.fusion-ui-table {
-  color: $fusion-ui-color-primary-text-on-light;
+.f-table {
+  color: $f-color-primary-text-on-light;
   display: flex;
   flex-direction: column;
-  font-size: $fusion-ui-font-size-sm;
+  font-size: $f-font-size-sm;
   text-align: left;
 
   &--fillContainer {
@@ -16,7 +16,7 @@
   }
 
   &__header {
-    margin-bottom: $fusion-ui-spacing-xs;
+    margin-bottom: $f-spacing-xs;
   }
 
   &__controls {
@@ -38,7 +38,7 @@
     &-button-separator {
       display: block;
       width: 1px;
-      background-color: $fusion-ui-color-greyscale-76;
+      background-color: $f-color-greyscale-76;
       height: 20px;
     }
 
@@ -49,7 +49,7 @@
       flex-direction: row;
       flex-wrap: wrap;
       display: flex;
-      column-gap: $fusion-ui-spacing-xs;
+      column-gap: $f-spacing-xs;
     }
 
     &-left {
@@ -58,15 +58,15 @@
 
     &-right {
       justify-content: flex-end;
-      margin-right: $fusion-ui-spacing-xxxs;
+      margin-right: $f-spacing-xxxs;
     }
 
     &-table-views {
       &:not(empty) {
-        margin-right: $fusion-ui-spacing-md;
+        margin-right: $f-spacing-md;
       }
       &:empty {
-        margin-right: (-1 * $fusion-ui-spacing-xs);
+        margin-right: (-1 * $f-spacing-xs);
       }
     }
   }
@@ -89,7 +89,7 @@
     justify-content: center;
 
     &-wrapper {
-      margin-top: $fusion-ui-spacing-md;
+      margin-top: $f-spacing-md;
       flex: 1;
     }
 
@@ -100,20 +100,20 @@
   }
 
   &__table {
-    background-color: $fusion-ui-color-background-white;
+    background-color: $f-color-background-white;
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
 
     &-row {
-      background-color: $fusion-ui-color-background-white;
+      background-color: $f-color-background-white;
 
       &--head {
-        background-color: $fusion-ui-color-background-light;
+        background-color: $f-color-background-light;
       }
 
       &--gray {
-        background-color: $fusion-ui-color-background-light;
+        background-color: $f-color-background-light;
       }
     }
   }

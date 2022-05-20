@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { CheckboxModule, ErrorMessageGeneratorService, ErrorMessageModule, ValidationStylingModule } from '@fusion-ui/fusion-components';
+import { CheckboxModule, ErrorMessageGeneratorService, ErrorMessageModule, ValidationStylingModule } from '@fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { ErrorMessageDemoComponent } from './error-message-demo.component';

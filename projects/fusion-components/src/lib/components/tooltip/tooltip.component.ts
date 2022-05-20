@@ -9,7 +9,7 @@ import {
   SimpleChanges,
   TemplateRef,
 } from '@angular/core';
-import { FusionUiLocation, FusionUiPosition, FusionUiPositionConfig } from '../../shared';
+import { Location, Position, PositionConfig } from '../../shared';
 import * as Utilities from '../../shared/utilities';
 
 /**
@@ -20,9 +20,9 @@ import * as Utilities from '../../shared/utilities';
  * Tooltip Directive applied.
  */
 @Component({
-  selector: 'fusion-ui-tooltip',
+  selector: 'f-tooltip',
   template: `
-    <div class="fusion-ui-tooltip__content">
+    <div class="f-tooltip__content">
       <ng-container *ngIf="templateWithContext; else justTemplate">
         <ng-container *ngTemplateOutlet="templateWithContext?.template; context: templateWithContext?.context"></ng-container>
       </ng-container>
@@ -34,11 +34,11 @@ import * as Utilities from '../../shared/utilities';
       <ng-template #justText>{{ text }}</ng-template>
     </div>
   `,
-  styles: [':host:not(.fusion-ui-tooltip) { display: none; }']
+  styles: [':host:not(.f-tooltip) { display: none; }']
 })
 export class TooltipComponent implements AfterViewInit, OnChanges {
   cssClasses: string[] = [];
-  elementPosition: FusionUiPositionConfig = {};
+  elementPosition: PositionConfig = {};
 
   /**
    * Determines the id of the tooltip. Used for accssibility purposes.
@@ -72,7 +72,7 @@ export class TooltipComponent implements AfterViewInit, OnChanges {
    * Determines the position of the tooltip in relation to the provided element.
    * By default is set to TOP (above center).
    */
-  @Input() position: FusionUiPosition | FusionUiLocation = FusionUiLocation.TOP;
+  @Input() position: Position | Location = Location.TOP;
 
   /**
    * Determines any additional CSS classes to be appended to the host element.
@@ -83,32 +83,32 @@ export class TooltipComponent implements AfterViewInit, OnChanges {
 
   @HostBinding('class')
   get setHostClasses(): string {
-    return !!this.cssClasses ? this.cssClasses.join(' ') : null;
+    return !!this.cssClasses ? this.cssClasses.join(' ') : '';
   }
 
   @HostBinding('style.left')
   get setHostLeft(): string {
-    return this.elementPosition.left;
+    return this.elementPosition.left || '';
   }
 
   @HostBinding('style.right')
   get setHostRight(): string {
-    return this.elementPosition.right;
+    return this.elementPosition.right || '';
   }
 
   @HostBinding('style.top')
   get setHostTop(): string {
-    return this.elementPosition.top;
+    return this.elementPosition.top || '';
   }
 
   @HostBinding('style.bottom')
   get setHostBottom(): string {
-    return this.elementPosition.bottom;
+    return this.elementPosition.bottom || '';
   }
 
   @HostBinding('style.transform')
   get setHostTransform(): string {
-    return this.elementPosition.transform;
+    return this.elementPosition.transform || '';
   }
 
   @HostBinding('style.z-index')
@@ -152,7 +152,7 @@ export class TooltipComponent implements AfterViewInit, OnChanges {
    * @param c The input changes.
    */
   ngOnChanges(c: SimpleChanges): void {
-    if (c.position || c.classes) {
+    if (c['position'] || c['classes']) {
       this.generateCssClasses();
       this.updateTooltipPosition();
     }
@@ -163,7 +163,7 @@ export class TooltipComponent implements AfterViewInit, OnChanges {
    */
   updateTooltipPosition(): void {
     if (!!this.element && !!this.elementRef) {
-      const positioning: FusionUiPositionConfig = Utilities.getElementAbsolutePositioning(this.elementRef, this.element, this.position, 15);
+      const positioning: PositionConfig = Utilities.getElementAbsolutePositioning(this.elementRef, this.element, this.position, 15);
       this.elementPosition.left = positioning.left;
       this.elementPosition.right = positioning.right;
       this.elementPosition.top = positioning.top;
@@ -176,10 +176,10 @@ export class TooltipComponent implements AfterViewInit, OnChanges {
    * Generates the CSS classes to be appended to the host element.
    */
   generateCssClasses(): void {
-    const classes: string[] = ['fusion-ui-tooltip'];
+    const classes: string[] = ['f-tooltip'];
 
     if (this.position) {
-      classes.push(`fusion-ui-tooltip--${this.position}`);
+      classes.push(`f-tooltip--${this.position}`);
     }
 
     classes.push(...this.classes);

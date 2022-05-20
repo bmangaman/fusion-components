@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { CardModule } from '@fusion-ui/fusion-components';
+import { CardModule } from '@fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { CardDemoComponent } from './card-demo.component';

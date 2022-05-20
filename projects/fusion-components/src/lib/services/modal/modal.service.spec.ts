@@ -8,13 +8,13 @@ import {
   ModalComponent,
   ModalService,
   ModalType,
-} from '@fusion-ui/fusion-components';
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+} from '@fusion-components';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { Subject } from 'rxjs';
 import Spy = jasmine.Spy;
 
 @Component({
-  selector: 'fusion-ui-modal-service-test',
+  selector: 'f-modal-service-test',
   template: ''
 })
 export class ModalServiceTestComponent extends BaseModalComponent {

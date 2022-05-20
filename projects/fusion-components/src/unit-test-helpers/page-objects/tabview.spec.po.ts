@@ -15,8 +15,8 @@ export interface TabviewPageObjectType {
 /**
  * TABVIEW PAGE OBJECT
  *
- * Page object for the fusion-ui-tabview component
- * Makes it easier to find and select certain fusion-ui-tabview attributes and elements
+ * Page object for the f-tabview component
+ * Makes it easier to find and select certain f-tabview attributes and elements
  */
 export class TabviewPageObject {
   private fixture: ComponentFixture<any>;
@@ -25,15 +25,15 @@ export class TabviewPageObject {
   get tabview(): TabviewPageObjectType {
     // first, if a containerClass was provided, try to find the element that has that class
     const container: HTMLElement = this.containerClass ? this.fixture.nativeElement.querySelector(this.containerClass) : null;
-    // if the container element was found, use that to query for the fusion-ui-tabview, otherwise, just use the fusion-ui-tabview tag
-    const tabview: HTMLElement = (this.containerClass && container ? container : this.fixture.nativeElement).querySelector('fusion-ui-tabview');
+    // if the container element was found, use that to query for the f-tabview, otherwise, just use the f-tabview tag
+    const tabview: HTMLElement = (this.containerClass && container ? container : this.fixture.nativeElement).querySelector('f-tabview');
 
     if (tabview) {
       return {
         container,
         el: tabview,
-        navContainer: tabview.querySelector('.fusion-ui-tabview__nav'),
-        panelsContainer: tabview.querySelector('.fusion-ui-tabview__panels'),
+        navContainer: tabview.querySelector('.f-tabview__nav'),
+        panelsContainer: tabview.querySelector('.f-tabview__panels'),
       };
     } else {
       return undefined;
@@ -48,7 +48,7 @@ export class TabviewPageObject {
   get tabs(): TabPageObject[] {
     if (this.tabview) {
       const tabs: TabPageObject[] = [];
-      const navButtons: NodeListOf<HTMLButtonElement> = this.tabview.navContainer.querySelectorAll('button.fusion-ui-tabview-tab__button');
+      const navButtons: NodeListOf<HTMLButtonElement> = this.tabview.navContainer.querySelectorAll('button.f-tabview-tab__button');
 
       navButtons.forEach((navButton: HTMLButtonElement) => {
         const navButtonId: string = navButton.getAttribute('id').toString();
@@ -69,10 +69,10 @@ export class TabviewPageObject {
   }
 
   /**
-   * Creates a page object for a fusion-ui-tabview DOM element based on the provided fixture and optional containerClass
+   * Creates a page object for a f-tabview DOM element based on the provided fixture and optional containerClass
    *
-   * @param fixture the parent DOM fixture/ element that houses the fusion-ui-tabview
-   * @param containerClass optional, providing a css class of a parent element of the fusion-ui-tabview
+   * @param fixture the parent DOM fixture/ element that houses the f-tabview
+   * @param containerClass optional, providing a css class of a parent element of the f-tabview
    * will help make sure the correct one is selected
    */
   constructor(fixture: ComponentFixture<any>, containerClass?: string) {

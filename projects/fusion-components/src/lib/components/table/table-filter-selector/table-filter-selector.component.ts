@@ -23,8 +23,8 @@ import { Observable, Subscription } from 'rxjs';
 import { cloneDeep, get, isEqual } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
 
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services/translation';
-import { FusionUiLocation, FusionUiSize, TranslatedComponent } from '@fusion-ui/fusion-components/lib/shared';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
+import { Location, Size, TranslatedComponent } from '@fusion-components/lib/shared';
 
 import { ButtonType } from '../../button';
 import { FilterComparator, TableFilterComponent } from '../table-filters';
@@ -42,14 +42,14 @@ import { TableFilterConfig, TableFilterSelectorTranslations } from './table-filt
  *  - regular filters (that are applied and removed via the table filter selector menu dialog)
  */
 @Component({
-  selector: 'fusion-ui-table-filter-selector',
+  selector: 'f-table-filter-selector',
   templateUrl: './table-filter-selector.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableFilterSelectorComponent extends TranslatedComponent implements OnInit, OnDestroy {
   readonly ButtonType = ButtonType;
-  readonly FusionUiSize = FusionUiSize;
-  readonly FusionUiLocation = FusionUiLocation;
+  readonly Size = Size;
+  readonly Location = Location;
   readonly Observable = Observable;
 
   readonly titleCasePipe: TitleCasePipe = new TitleCasePipe();
@@ -189,7 +189,7 @@ export class TableFilterSelectorComponent extends TranslatedComponent implements
   /**
    * On component teardown, unsubscribe from all active subscriptions.
    */
-  ngOnDestroy(): void {
+  override ngOnDestroy(): void {
     this.subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
   }
 
@@ -225,7 +225,7 @@ export class TableFilterSelectorComponent extends TranslatedComponent implements
     viewContainerRef.clear();
 
     const componentRef: ComponentRef<TableFilterComponent> = viewContainerRef.createComponent(componentFactory);
-    Object.keys(newFilter).forEach((key: string) => componentRef.instance[key] = newFilter[key]);
+    Object.keys(newFilter).forEach((key: string) => (componentRef as any).instance[key] = (newFilter as any)[key]);
     componentRef.instance.filterForm.reset();
     componentRef.instance.isLoaded = true;
     this.tableFilter = componentRef.instance;
@@ -254,7 +254,7 @@ export class TableFilterSelectorComponent extends TranslatedComponent implements
     } else {
       quickFilter.isApplied = !quickFilter.isApplied;
       const matchingFilter: TableFilterComponent =
-        this.appliedFilters.find((filter: TableFilterComponent) => filter.uuid === quickFilter.uuid);
+        this.appliedFilters.find((filter: TableFilterComponent) => filter.uuid === quickFilter.uuid)!;
       this.removeFilter(matchingFilter);
     }
   }
@@ -306,7 +306,7 @@ export class TableFilterSelectorComponent extends TranslatedComponent implements
         this.updateAppliedFilters(this.tableFilter);
       }
 
-      this.tableFilter = undefined;
+      this.tableFilter = undefined!;
       this.filterField.setValue(this.filters.toArray()[0]);
     }
 
@@ -395,13 +395,13 @@ export class TableFilterSelectorComponent extends TranslatedComponent implements
     const filter: TableFilterComponent = new config.filter(new FormBuilder(), this.translationService, this.translateService);
 
     // Loops through all the config keys and sets the filter keys to the same values
-    Object.keys(config).forEach((key: string) => filter[key] = config[key]);
+    Object.keys(config).forEach((key: string) => (filter as any)[key] = (config as any)[key]);
 
     // Sets the filter uuid if it exists, otherwise, generates a new uuid
     filter.uuid = config.uuid || uuidv4();
 
     // Sets the filter isViewFilter flag to true if the config is true, otherwise, uses the provided isViewFilter param
-    filter.isViewFilter = config.isViewFilter || isViewFilter;
+    filter.isViewFilter = !!(config.isViewFilter || isViewFilter);
 
     // First checks to see if isVisible is set; if so, use it; if not, if view filter, set to false; otherwise, set to true
     filter.isVisible = config.isVisible !== undefined ? config.isVisible : !filter.isViewFilter;
@@ -422,7 +422,7 @@ export class TableFilterSelectorComponent extends TranslatedComponent implements
 
     // Sets the selected filter comparator based on the comparatorName from the config
     filter.selectedFilterComparator.next(
-      filter.filterComparators.find((comparator: FilterComparator) => comparator.name === config.comparatorName)
+      filter.filterComparators.find((comparator: FilterComparator) => comparator.name === config.comparatorName)!
     );
 
     // Updates the filter form value based on the form values of the config
@@ -441,8 +441,8 @@ export class TableFilterSelectorComponent extends TranslatedComponent implements
    */
   menuLogic(target: HTMLElement): boolean {
     const classList: DOMTokenList = get(target, 'parentElement.parentElement.classList');
-    const containsButtonClass: boolean = classList ? classList.contains('fusion-ui-table__filter-selector-remove-filter-button') : false;
-    const containsItemClass: boolean = classList ? classList.contains('fusion-ui-table__filter-selector-filter-list-group-item') : false;
+    const containsButtonClass: boolean = classList ? classList.contains('f-table__filter-selector-remove-filter-button') : false;
+    const containsItemClass: boolean = classList ? classList.contains('f-table__filter-selector-filter-list-group-item') : false;
     return containsButtonClass || containsItemClass;
   }
 
@@ -461,6 +461,6 @@ export class TableFilterSelectorComponent extends TranslatedComponent implements
         qf.field === tableFilter.field &&
         isEqual(qf.formValues, tableFilter.filterForm.value)
       )
-    );
+    )!;
   }
 }

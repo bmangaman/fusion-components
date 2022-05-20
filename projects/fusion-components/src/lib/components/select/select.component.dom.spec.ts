@@ -2,21 +2,21 @@ import { Component } from '@angular/core';
 import { ComponentFixture, discardPeriodicTasks, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormControl } from '@angular/forms';
 
-import { TranslatedComponentSpecModule } from '@fusion-ui/fusion-components/unit-test-helpers/translated-component.module.spec';
+import { TranslatedComponentSpecModule } from '@fusion-components/unit-test-helpers/translated-component.module.spec';
 import { SelectComponentPageObject } from './select.component.spec.po';
 import { SelectOption } from './select.interface';
 import { SelectModule } from './select.module';
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
-    <fusion-ui-select
+    <f-select
       [formControl]="control"
       [label]="label"
       [options]="options"
       [isSearchable]="isSearchable"
       [cssClasses]="cssClasses">
-    </fusion-ui-select>
+    </f-select>
     <button class="outside-element">Outside Element</button>
   `,
 })
@@ -68,7 +68,7 @@ describe('SelectComponent', () => {
 
     it('should append the css classes based on the isDisabled and cssClass inputs', () => {
       let expectedResult: string[];
-      const defaultClasses: string[] = ['fusion-ui-select__classes-wrapper', 'fusion-ui-form__input-wrapper', 'fusion-ui-form__select-wrapper'];
+      const defaultClasses: string[] = ['f-select__classes-wrapper', 'f-form__input-wrapper', 'f-form__select-wrapper'];
 
       expectedResult = defaultClasses;
       expectedResult.forEach((cssClass: string) => expect(page.select.classes).toContain(cssClass));
@@ -79,7 +79,7 @@ describe('SelectComponent', () => {
       expectedResult.forEach((cssClass: string) => expect(page.select.classes).toContain(cssClass));
 
       component.control.disable();
-      expectedResult = [...defaultClasses, 'fusion-ui-form__input--disabled', 'custom1', 'custom2'];
+      expectedResult = [...defaultClasses, 'f-form__input--disabled', 'custom1', 'custom2'];
       fixture.detectChanges();
       expectedResult.forEach((cssClass: string) => expect(page.select.classes).toContain(cssClass));
     });

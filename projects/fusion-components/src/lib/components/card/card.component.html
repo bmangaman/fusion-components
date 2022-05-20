@@ -1,43 +1,43 @@
 <div [ngClass]="containerCssClasses">
 
   <!-- START: Title -->
-  <div class="fusion-ui-card__title fusion-ui-card__title--{{ size }}">
+  <div class="f-card__title f-card__title--{{ size }}">
 
     <!-- START: Title Text -->
-    <div class="fusion-ui-card__title-text" *ngIf="!!cardTitle; else isCardTitle">
+    <div class="f-card__title-text" *ngIf="!!cardTitle; else isCardTitle">
       <ng-container *ngTemplateOutlet="cardTitle"></ng-container>
     </div>
     <ng-template #isCardTitle>
       <ng-container *ngIf="title">
-        <h4 *ngIf="size === FusionUiSize.SMALL; else notSmallTitle" class="fusion-ui-h4 fusion-ui-card__title-text">{{ title }}</h4>
+        <h4 *ngIf="size === Size.SMALL; else notSmallTitle" class="f-h4 f-card__title-text">{{ title }}</h4>
         <ng-template #notSmallTitle>
-          <h3 class="fusion-ui-h3 fusion-ui-card__title-text">{{ title }}</h3>
+          <h3 class="f-h3 f-card__title-text">{{ title }}</h3>
         </ng-template>
       </ng-container>
     </ng-template>
     <!-- END: Title Text -->
 
     <!-- START: Statuses -->
-    <div *ngIf="!!statuses && !!statuses?.length" class="fusion-ui-card__title-statuses">
+    <div *ngIf="!!statuses && !!statuses?.length" class="f-card__title-statuses">
       <ng-container *ngFor="let status of statuses">
-        <div *ngIf="!status?.isHidden" class="fusion-ui-card__title-status fusion-ui-card__title-status--{{ status?.status | getFusionUiStatusLevelText:null:true }}">
+        <div *ngIf="!status?.isHidden" class="f-card__title-status f-card__title-status--{{ status?.status | getStatusLevelText:null:true }}">
           <i
             *ngIf="!status?.isIconHidden"
             aria-hidden="true"
-            class="mdi fusion-ui-card__title-status-icon fusion-ui-card__title-status-icon--{{ status?.status | getFusionUiStatusLevelText:null:true }}"
+            class="mdi f-card__title-status-icon f-card__title-status-icon--{{ status?.status | getStatusLevelText:null:true }}"
             [ngClass]="{
-              'mdi-help-circle' : status?.status === FusionUiStatusLevel.UNKNOWN,
-              'mdi-circle' : status?.status === FusionUiStatusLevel.BASE || status?.status === FusionUiStatusLevel.NORMAL,
-              'mdi-check-circle' : status?.status === FusionUiStatusLevel.SUCCESS,
-              'mdi-alert' : status?.status === FusionUiStatusLevel.WARNING,
-              'mdi-alert-circle' : status?.status === FusionUiStatusLevel.ERROR,
-              'mdi-close-circle' : status?.status === FusionUiStatusLevel.CRITICAL
+              'mdi-help-circle' : status?.status === StatusLevel.UNKNOWN,
+              'mdi-circle' : status?.status === StatusLevel.BASE || status?.status === StatusLevel.NORMAL,
+              'mdi-check-circle' : status?.status === StatusLevel.SUCCESS,
+              'mdi-alert' : status?.status === StatusLevel.WARNING,
+              'mdi-alert-circle' : status?.status === StatusLevel.ERROR,
+              'mdi-close-circle' : status?.status === StatusLevel.CRITICAL
             }">
           </i>
-          <div *ngIf="status?.count" class="fusion-ui-card__title-status-count">{{ status?.count }}</div>
-          <div *ngIf="!status?.isTextHidden" class="fusion-ui-card__title-status-text">
+          <div *ngIf="status?.count" class="f-card__title-status-count">{{ status?.count }}</div>
+          <div *ngIf="!status?.isTextHidden" class="f-card__title-status-text">
             <ng-container *ngIf="!!status?.text; else defaultStatus">{{ (status.text | instanceOf:Observable) ? (status.text | async) : status.text }}</ng-container>
-            <ng-template #defaultStatus>{{ status?.status | getFusionUiStatusLevelText:translations?.statuses }}</ng-template>
+            <ng-template #defaultStatus>{{ status?.status | getStatusLevelText:translations?.statuses }}</ng-template>
           </div>
         </div>
       </ng-container>
@@ -48,43 +48,43 @@
   <!-- END: title -->
 
   <!-- START: Content -->
-  <div *ngIf="!!cardContent; else isCardContent" class="fusion-ui-card__content">
+  <div *ngIf="!!cardContent; else isCardContent" class="f-card__content">
     <ng-container *ngTemplateOutlet="cardContent"></ng-container>
   </div>
   <ng-template #isCardContent>
     <ng-container *ngIf="content">
-      <p class="fusion-ui-card__content" [ngClass]="size === FusionUiSize.SMALL ? 'fusion-ui-p-md' : 'fusion-ui-p-lg'">{{ content }}</p>
+      <p class="f-card__content" [ngClass]="size === Size.SMALL ? 'f-p-md' : 'f-p-lg'">{{ content }}</p>
     </ng-container>
   </ng-template>
   <!-- END: Content -->
 
   <!-- START: Details -->
-  <div *ngIf="!!cardDetails || !!details" class="fusion-ui-card__details fusion-ui-card__details--{{ size }}">
+  <div *ngIf="!!cardDetails || !!details" class="f-card__details f-card__details--{{ size }}">
     <button
-      class="fusion-ui-card__details-button fusion-ui-button__link"
-      [ngClass]="isDetailsSectionExpanded ? 'fusion-ui-card__details-button--expanded' : 'fusion-ui-card__details-button--collapsed'"
+      class="f-card__details-button f-button__link"
+      [ngClass]="isDetailsSectionExpanded ? 'f-card__details-button--expanded' : 'f-card__details-button--collapsed'"
       (click)="toggleDetailsSectionExpansion()">
-      <i class="fusion-ui-card__details-button-icon mdi" [ngClass]="isDetailsSectionExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
+      <i class="f-card__details-button-icon mdi" [ngClass]="isDetailsSectionExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
       {{ isDetailsSectionExpanded ? translations?.hideDetails : translations?.showDetails }}
     </button>
-    <div *ngIf="isDetailsSectionExpanded" class="fusion-ui-card__details-content">
+    <div *ngIf="isDetailsSectionExpanded" class="f-card__details-content">
       <ng-container *ngIf="!!cardDetails; else isCardDetails">
         <ng-container *ngTemplateOutlet="cardDetails"></ng-container>
       </ng-container>
       <ng-template #isCardDetails>
-        <p [ngClass]="size === FusionUiSize.SMALL ? 'fusion-ui-p-md' : 'fusion-ui-p-lg'">{{ details }}</p>
+        <p [ngClass]="size === Size.SMALL ? 'f-p-md' : 'f-p-lg'">{{ details }}</p>
       </ng-template>
     </div>
   </div>
   <!-- END: Details -->
 
   <!-- START: Footer -->
-  <div *ngIf="!!cardFooter; else isCardFooter" class="fusion-ui-card__footer">
+  <div *ngIf="!!cardFooter; else isCardFooter" class="f-card__footer">
     <ng-container *ngTemplateOutlet="cardFooter"></ng-container>
   </div>
   <ng-template #isCardFooter>
     <ng-container *ngIf="footer">
-      <p class="fusion-ui-card__footer" [ngClass]="size === FusionUiSize.SMALL ? 'fusion-ui-p-sm' : 'fusion-ui-p-md'">{{ footer }}</p>
+      <p class="f-card__footer" [ngClass]="size === Size.SMALL ? 'f-p-sm' : 'f-p-md'">{{ footer }}</p>
     </ng-container>
   </ng-template>
   <!-- END: Footer -->

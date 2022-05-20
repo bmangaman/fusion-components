@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { TabviewType } from '@fusion-ui/fusion-components';
+import { TabviewType } from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-tabview',

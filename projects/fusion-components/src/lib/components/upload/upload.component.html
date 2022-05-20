@@ -1,9 +1,9 @@
-<div class="fusion-ui-upload__container">
-  <div class="fusion-ui-upload__instructions">{{ translations?.instructions || ( baseTranslationKey + '.upload.instructions' | translate ) }}</div>
-  <div *ngIf="!isBrowseHidden" class="fusion-ui-upload__browse">
+<div class="f-upload__container">
+  <div class="f-upload__instructions">{{ translations?.instructions || ( baseTranslationKey + '.upload.instructions' | translate ) }}</div>
+  <div *ngIf="!isBrowseHidden" class="f-upload__browse">
     <input
       #uploadInput
-      class="fusion-ui-upload__browse-input"
+      class="f-upload__browse-input"
       type="file"
       [disabled]="isBrowseDisabled || isUploadInProgress"
       [attr.aria-disabled]="isBrowseDisabled || isUploadInProgress"
@@ -13,72 +13,72 @@
       [name]="uploadId"
       [id]="uploadId" />
     <label
-      class="fusion-ui-button fusion-ui-button--secondary fusion-ui-button--small fusion-ui-upload__browse-label"
-      [ngClass]="{ 'fusion-ui-button--disabled': (isBrowseDisabled || isUploadInProgress) }"
+      class="f-button f-button--secondary f-button--small f-upload__browse-label"
+      [ngClass]="{ 'f-button--disabled': (isBrowseDisabled || isUploadInProgress) }"
       [for]="uploadId">
       {{ translations?.buttons?.browse || ( baseTranslationKey + '.upload.buttons.browse' | translate ) }}
     </label>
   </div>
 </div>
 
-<div *ngIf="!!fileList?.length && !isProgressSectionHidden" class="fusion-ui-upload__files">
+<div *ngIf="!!fileList?.length && !isProgressSectionHidden" class="f-upload__files">
 
-  <div *ngFor="let fileInfo of fileList; index as i;" class="fusion-ui-upload__file fusion-ui-upload__file--{{ i }}">
+  <div *ngFor="let fileInfo of fileList; index as i;" class="f-upload__file f-upload__file--{{ i }}">
 
-    <div class="fusion-ui-upload__file-info">
-      <div class="fusion-ui-upload__file-info-name-and-size">
-        <span class="fusion-ui-upload__file-info-name">{{ fileInfo | uploadFileName }}</span>
-        <span *ngIf="!isSizeHidden" class="fusion-ui-upload__file-info-size">({{ fileInfo?.totalBytes | bytes: BytesPipeBase.TEN }})</span>
+    <div class="f-upload__file-info">
+      <div class="f-upload__file-info-name-and-size">
+        <span class="f-upload__file-info-name">{{ fileInfo | uploadFileName }}</span>
+        <span *ngIf="!isSizeHidden" class="f-upload__file-info-size">({{ fileInfo?.totalBytes | bytes: BytesPipeBase.TEN }})</span>
       </div>
-      <div class="fusion-ui-upload__file-info-buttons">
-        <fusion-ui-button
+      <div class="f-upload__file-info-buttons">
+        <f-button
           *ngIf="isUploadManual && !fileInfo?.subscription"
-          [size]="FusionUiSize.SMALL"
+          [size]="Size.SMALL"
           [text]="translations?.buttons?.upload  || ( baseTranslationKey + '.upload.buttons.upload' | translate )"
-          [classes]="['fusion-ui-upload__file-info-button', 'fusion-ui-upload__file-upload-button']"
+          [classes]="['f-upload__file-info-button', 'f-upload__file-upload-button']"
           [type]="ButtonType.PRIMARY"
           (buttonClick)="uploadFile(fileInfo)">
-        </fusion-ui-button>
-        <fusion-ui-button
+        </f-button>
+        <f-button
           *ngIf="fileInfo?.subscription && !fileInfo?.isComplete"
-          [size]="FusionUiSize.X_SMALL"
+          [size]="Size.X_SMALL"
           [text]="translations?.buttons?.cancel  || ( baseTranslationKey + '.upload.buttons.cancel' | translate )"
-          [classes]="['fusion-ui-upload__file-info-button', 'fusion-ui-upload__file-cancel-button']"
+          [classes]="['f-upload__file-info-button', 'f-upload__file-cancel-button']"
           [type]="ButtonType.SECONDARY"
           (buttonClick)="cancelFile(fileInfo)">
-        </fusion-ui-button>
-        <fusion-ui-button
+        </f-button>
+        <f-button
           *ngIf="removeFileFunction && fileInfo?.isComplete"
-          [size]="FusionUiSize.SMALL"
+          [size]="Size.SMALL"
           [text]="translations?.buttons?.remove  || ( baseTranslationKey + '.upload.buttons.remove' | translate )"
-          [classes]="['fusion-ui-upload__file-info-button', 'fusion-ui-upload__file-remove-button']"
+          [classes]="['f-upload__file-info-button', 'f-upload__file-remove-button']"
           [type]="ButtonType.SECONDARY"
           (buttonClick)="removeFile(fileInfo)">
-        </fusion-ui-button>
-        <fusion-ui-button
+        </f-button>
+        <f-button
           *ngIf="!isDismissButtonHidden && (!fileInfo?.subscription || fileInfo?.isComplete)"
-          [size]="FusionUiSize.SMALL"
+          [size]="Size.SMALL"
           [aria]="{ label: translations?.buttons?.dismiss  || ( baseTranslationKey + '.upload.buttons.dismiss' | translate ) }"
           icon="mdi-close"
-          [classes]="['fusion-ui-upload__file-info-button', 'fusion-ui-upload__file-dismiss-button']"
+          [classes]="['f-upload__file-info-button', 'f-upload__file-dismiss-button']"
           [type]="ButtonType.SECONDARY"
           (buttonClick)="cancelFile(fileInfo)">
-        </fusion-ui-button>
+        </f-button>
       </div>
     </div>
   
-    <div class="fusion-ui-upload__progress-bar">
-      <fusion-ui-progress-bar
+    <div class="f-upload__progress-bar">
+      <f-progress-bar
         [status]="fileInfo | uploadStatus"
-        [size]="FusionUiSize.SMALL"
+        [size]="Size.SMALL"
         [value]="fileInfo?.progressBytes"
         [maxValue]="fileInfo?.totalBytes"
         [displayText]="isProgressInBytes ? (fileInfo?.progressBytes | bytes: BytesPipeBase.TEN) : null"
         [isValueDisplayed]="!fileInfo?.error">
-      </fusion-ui-progress-bar>
+      </f-progress-bar>
     </div>
 
-    <div class="fusion-ui-upload__file-status">
+    <div class="f-upload__file-status">
       {{ fileInfo | uploadFileStatus:translations | async }}
     </div>
 

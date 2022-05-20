@@ -5,8 +5,8 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 
 import { cloneDeep } from 'lodash';
 
-import { FusionUiSize, TranslatedComponent } from '@fusion-ui/fusion-components/lib/shared';
-import * as Utils from '@fusion-ui/fusion-components/lib/shared/utilities';
+import { Size, TranslatedComponent } from '@fusion-components/lib/shared';
+import * as Utils from '@fusion-components/lib/shared/utilities';
 import { ButtonType } from '../../button/button.interface';
 import { TableRowData } from '../table.interface';
 import {
@@ -18,13 +18,13 @@ import {
 } from './table-pagination.interface';
 
 @Component({
-  selector: 'fusion-ui-table-pagination',
+  selector: 'f-table-pagination',
   templateUrl: './table-pagination.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TablePaginationComponent extends TranslatedComponent implements OnInit, OnDestroy {
   readonly ButtonType = ButtonType;
-  readonly FusionUiSize = FusionUiSize;
+  readonly Size = Size;
 
   numOfPages: number = 1;
   oldNumResultsPerPage: number;

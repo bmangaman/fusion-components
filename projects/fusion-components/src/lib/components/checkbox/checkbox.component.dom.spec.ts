@@ -6,9 +6,9 @@ import { CheckboxComponentPageObject } from './checkbox.component.spec.po';
 import { CheckboxModule } from './checkbox.module';
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
-    <fusion-ui-checkbox [formControl]="control">{{ label }}</fusion-ui-checkbox>
+    <f-checkbox [formControl]="control">{{ label }}</f-checkbox>
   `,
 })
 export class CheckboxTestComponent {

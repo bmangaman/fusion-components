@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, HostBin
 
 import { isEqual } from 'lodash';
 
-import { FusionComponentsTranslationService } from '@fusion-ui/fusion-components/lib/services';
-import { TranslatedComponent } from '@fusion-ui/fusion-components/lib/shared';
+import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
+import { TranslatedComponent } from '@fusion-components/lib/shared';
 import { TableCellTranslations, TableColumnConfig, TableSpacing } from '../../table.interface';
 
 /**
@@ -62,12 +62,12 @@ export class TableCellComponent extends TranslatedComponent implements DoCheck {
 
   @HostBinding('style.width')
   get hostWidth(): string {
-    return this.col?.updatedWidth || this.col?.width;
+    return this.col?.updatedWidth || this.col?.width || '';
   }
 
   @HostBinding('style.minWidth')
   get hostMinWidth(): string {
-    return this.col ? this.col.minWidth : null;
+    return this.col?.minWidth || '';
   }
 
   @HostBinding('attr.role')
@@ -87,7 +87,7 @@ export class TableCellComponent extends TranslatedComponent implements DoCheck {
    * to be checked and re-rendered.
    */
   ngDoCheck(): void {
-    let didAnythingChange: boolean;
+    let didAnythingChange: boolean = false;
 
     if (!isEqual(this.cssClasses, this.prevCssClasses)) {
       this.prevCssClasses = this.cssClasses;

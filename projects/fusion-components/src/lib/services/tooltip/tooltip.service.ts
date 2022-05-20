@@ -43,7 +43,12 @@ export class TooltipService {
     const index: number = this._components.findIndex((component: TooltipConfig) => component.id === id);
 
     if (index > -1) {
-      this.domService.removeComponent(this.components[index].appendedElement);
+      const appendedComponent: HTMLElement | undefined = this._components[index].appendedElement;
+
+      if (appendedComponent) {
+        this.domService.removeComponent(appendedComponent);
+      }
+
       this._components.splice(index, 1);
     }
   }

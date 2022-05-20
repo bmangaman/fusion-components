@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing';
 
-import { NotePageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/note.spec.po';
+import { NotePageObject } from '@fusion-components/unit-test-helpers/page-objects/note.spec.po';
 
 import { NoteTestComponent } from './note.component.dom.spec';
 

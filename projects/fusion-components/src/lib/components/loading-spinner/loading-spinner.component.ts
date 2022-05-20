@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { FusionUiSize } from '@fusion-ui/fusion-components/lib/shared/interfaces';
+import { Size } from '@fusion-components/lib/shared/interfaces';
 
 /**
  * LOADING SPINNER COMPONENT
@@ -12,38 +12,38 @@ import { FusionUiSize } from '@fusion-ui/fusion-components/lib/shared/interfaces
  * <example-url>../../loading-spinner?embedded</example-url>
  *
  * @example
- * <fusion-ui-loading-spinner
- *              [size]="FusionUiSize.MEDIUM"
+ * <f-loading-spinner
+ *              [size]="Size.MEDIUM"
  *              [opacity]="1"
  *              [minWidth]="100"
  *              [ariaLabel]="'Loading'">
- * </fusion-ui-loading-spinner>
+ * </f-loading-spinner>
  *
  */
 @Component({
-  selector: 'fusion-ui-loading-spinner',
+  selector: 'f-loading-spinner',
   styleUrls: ['./loading-spinner.component.scss'],
   template: `
     <div
-      class="fusion-ui-loading-spinner__spinner fusion-ui-loading-spinner__spinner--{{ size }}"
+      class="f-loading-spinner__spinner f-loading-spinner__spinner--{{ size }}"
       [style.minWidth]="minWidth"
       aria-hidden="false"
       [attr.aria-label]="ariaLabel">
       <div *ngFor="let dot of dots"
-        class="fusion-ui-loading-spinner__bounce fusion-ui-loading-spinner__bounce--{{ size }} fusion-ui-loading-spinner__bounce--{{ dot }}"
+        class="f-loading-spinner__bounce f-loading-spinner__bounce--{{ size }} f-loading-spinner__bounce--{{ dot }}"
         [style.opacity]="opacity">
       </div>
     </div>
   `
 })
 export class LoadingSpinnerComponent {
-  readonly FusionUiSize = FusionUiSize;
+  readonly Size = Size;
   readonly dots: string[] = ['one', 'two', 'three'];
 
   /**
    * Dictates the size of the dots.
    */
-  @Input() size: FusionUiSize = FusionUiSize.MEDIUM;
+  @Input() size: Size = Size.MEDIUM;
 
   /**
    * Dictates the opacity of the dots.
@@ -51,7 +51,7 @@ export class LoadingSpinnerComponent {
   @Input() opacity: number = 1;
 
   /**
-   * Dictates the minimum width of the div.fusion-ui-loading-spinner__spinner element to make it automatically
+   * Dictates the minimum width of the div.f-loading-spinner__spinner element to make it automatically
    * fill certain containers correctly. This was primarily developed to be used with the button component.
    */
   @Input() minWidth: string;

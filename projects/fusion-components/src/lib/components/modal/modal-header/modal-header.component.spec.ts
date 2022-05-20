@@ -22,10 +22,10 @@ describe('ModalHeaderComponent', () => {
   describe('hostClasses', () => {
     it('should return the right classes based on type', () => {
       component.isFullModal = false;
-      expect(component.hostClasses).toBe('fusion-ui-modal__header');
+      expect(component.hostClasses).toBe('f-modal__header');
 
       component.isFullModal = true;
-      expect(component.hostClasses).toBe('fusion-ui-modal__full-header');
+      expect(component.hostClasses).toBe('f-modal__full-header');
     });
   });
 });

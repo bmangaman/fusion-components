@@ -1,6 +1,6 @@
 import { StringKeyObject } from './utilities';
 
-export enum FusionUiState {
+export enum State {
   LOADING = 'loading',
   LOADED = 'loaded',
   NOT_LOADED = 'not-loaded',
@@ -8,14 +8,14 @@ export enum FusionUiState {
   ERROR = 'error',
 }
 
-export enum FusionUiSize {
+export enum Size {
   LARGE = 'large',
   MEDIUM = 'medium',
   SMALL = 'small',
   X_SMALL = 'xSmall',
 }
 
-export enum FusionUiLocation {
+export enum Location {
   TOP = 'top',
   TOP_LEFT = 'topLeft',
   TOP_RIGHT = 'topRight',
@@ -59,7 +59,7 @@ export enum BiBytesUnit {
   YIB = 'YiB',
 }
 
-export enum FusionUiPosition {
+export enum Position {
   TOP = 'top',
   BOTTOM = 'bottom',
   LEFT = 'left',
@@ -67,7 +67,7 @@ export enum FusionUiPosition {
   CENTER = 'center',
 }
 
-export interface FusionUiPositionConfig {
+export interface PositionConfig {
   top?: string;
   bottom?: string;
   left?: string;
@@ -85,7 +85,7 @@ export enum MouseInteraction {
   BLUR = 'blur',
 }
 
-export enum FusionUiStatusLevel {
+export enum StatusLevel {
   UNKNOWN = 0,
   BASE = 1,
   NORMAL = 2,
@@ -96,17 +96,17 @@ export enum FusionUiStatusLevel {
 }
 
 export type FusionUIStatusLevelTranslations = {
-  [key in FusionUiStatusLevel]?: string;
+  [key in StatusLevel]?: string;
 };
 
-export const DEFAULT_FUSION_UI_STATUS_LEVEL_TRANSLATIONS: FusionUIStatusLevelTranslations = {
-  [FusionUiStatusLevel.UNKNOWN]: 'Unknown',
-  [FusionUiStatusLevel.BASE]: 'Base',
-  [FusionUiStatusLevel.NORMAL]: 'Normal',
-  [FusionUiStatusLevel.SUCCESS]: 'Success',
-  [FusionUiStatusLevel.WARNING]: 'Warning',
-  [FusionUiStatusLevel.ERROR]: 'Error',
-  [FusionUiStatusLevel.CRITICAL]: 'Critical',
+export const DEFAULT_STATUS_LEVEL_TRANSLATIONS: FusionUIStatusLevelTranslations = {
+  [StatusLevel.UNKNOWN]: 'Unknown',
+  [StatusLevel.BASE]: 'Base',
+  [StatusLevel.NORMAL]: 'Normal',
+  [StatusLevel.SUCCESS]: 'Success',
+  [StatusLevel.WARNING]: 'Warning',
+  [StatusLevel.ERROR]: 'Error',
+  [StatusLevel.CRITICAL]: 'Critical',
 };
 
 export enum FormInputStatus {
@@ -116,14 +116,14 @@ export enum FormInputStatus {
   DISABLED = 'DISABLED'
 }
 
-export const FusionUiEnums: StringKeyObject = {
+export const Enums: StringKeyObject = {
   BiBytesUnit,
   BytesUnit,
   FormInputStatus,
-  FusionUiLocation,
-  FusionUiPosition,
-  FusionUiSize,
-  FusionUiState,
-  FusionUiStatusLevel,
+  Location,
+  Position,
+  Size,
+  State,
+  StatusLevel,
   MouseInteraction,
 };

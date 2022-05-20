@@ -1,4 +1,4 @@
-import { FusionUiSize, FusionUiState } from '@fusion-ui/fusion-components/lib/shared';
+import { Size, State } from '@fusion-components/lib/shared';
 
 export enum ButtonType {
   PRIMARY = 'primary',
@@ -14,7 +14,7 @@ export enum ButtonInputType {
 
 export interface GenerateButtonClassesPipeConfig {
   type: ButtonType;
-  size: FusionUiSize;
+  size: Size;
   isSelected: boolean;
   noBorder: boolean;
   icon: string;
@@ -24,7 +24,7 @@ export interface GenerateButtonClassesPipeConfig {
 
 export interface IsButtonDisabledPipeConfig {
   isDisabled: boolean;
-  state: FusionUiState;
+  state: State;
 }
 
 export interface ButtonAria {

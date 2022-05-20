@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { FusionUiState } from '@fusion-ui/fusion-components/lib/shared';
+import { State } from '@fusion-components/lib/shared';
 
 /**
  * GET TABLE STATE PIPE
@@ -18,7 +18,7 @@ export class GetTableStatePipe implements PipeTransform {
    * @param state The state of the table (the input value).
    * @param noResults The noResults flag of the table.
    */
-  transform(state: FusionUiState, noResults: boolean): FusionUiState {
-    return state === FusionUiState.LOADED && noResults ? FusionUiState.NO_RESULTS : state;
+  transform(state: State, noResults: boolean): State {
+    return state === State.LOADED && noResults ? State.NO_RESULTS : state;
   }
 }

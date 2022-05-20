@@ -9,7 +9,7 @@ import { TableFilterComponent } from '../table-filter/table-filter.component';
 import { TableFilterIpInputComparator, TableFilterIpTranslations } from './table-filter-ip.interface';
 
 @Component({
-  selector: 'fusion-ui-table-ip-filter',
+  selector: 'f-table-ip-filter',
   templateUrl: './table-filter-ip.component.html',
   providers: [{ provide: TableFilterComponent, useExisting: TableFilterIpComponent }],
   changeDetection: ChangeDetectionStrategy.OnPush,

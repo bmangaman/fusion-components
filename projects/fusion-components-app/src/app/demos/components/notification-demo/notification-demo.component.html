@@ -1,186 +1,186 @@
 <fusion-demo titleText="Notification">
 
-  <form form class="fusion-components-demo__form fusion-ui-form" *ngIf="notificationForm" [formGroup]="notificationForm">
+  <form form class="fusion-components-demo__form f-form" *ngIf="notificationForm" [formGroup]="notificationForm">
     <!-- START: type select -->
-    <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
-      <label for="typeSelect" class="fusion-ui-form__input-label">Type</label>
-      <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
+    <div class="f-form__fieldset f-table__filter-input-field-selector">
+      <label for="typeSelect" class="f-form__input-label">Type</label>
+      <div class="f-form__input-wrapper f-form__select-wrapper">
         <select id="typeSelect"
-                class="fusion-ui-form__input fusion-ui-form__select" formControlName="notificationType">
+                class="f-form__input f-form__select" formControlName="notificationType">
           <option [value]="NotificationBannerType.SUCCESS">Success</option>
           <option [value]="NotificationBannerType.INFO">Info</option>
           <option [value]="NotificationBannerType.WARNING">Warning</option>
           <option [value]="NotificationBannerType.ERROR">Error</option>
         </select>
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: type select -->
 
     <!-- START: displayed checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-1" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-1" class="f-form__checkbox-label">
           <input
             formControlName="displayed"
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
-            name="fusion-ui-checkbox-1"
-            id="fusion-ui-checkbox-1">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Displayed</span>
+            name="f-checkbox-1"
+            id="f-checkbox-1">
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Displayed</span>
         </label>
       </span>
     </div>
     <!-- END: displayed checkbox -->
 
     <!-- START: dismissible checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-2" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-2" class="f-form__checkbox-label">
           <input
             formControlName="dismissible"
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
-            name="fusion-ui-checkbox-2"
-            id="fusion-ui-checkbox-2">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Dismissible</span>
+            name="f-checkbox-2"
+            id="f-checkbox-2">
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Dismissible</span>
         </label>
       </span>
     </div>
     <!-- END: dismissible checkbox -->
 
     <!-- START: sticky checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-3" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-3" class="f-form__checkbox-label">
           <input
             formControlName="sticky"
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
-            name="fusion-ui-checkbox-3"
-            id="fusion-ui-checkbox-3">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Sticky</span>
+            name="f-checkbox-3"
+            id="f-checkbox-3">
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Sticky</span>
         </label>
       </span>
     </div>
     <!-- END: sticky checkbox -->
 
     <!-- START: disable animations checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-4" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-4" class="f-form__checkbox-label">
           <input
             formControlName="animationsDisabled"
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
-            name="fusion-ui-checkbox-4"
-            id="fusion-ui-checkbox-4">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Disable Animations</span>
+            name="f-checkbox-4"
+            id="f-checkbox-4">
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Disable Animations</span>
         </label>
       </span>
     </div>
     <!-- END: disable animations checkbox -->
 
     <!-- START: details checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-5" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-5" class="f-form__checkbox-label">
           <input
             formControlName="details"
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
-            name="fusion-ui-checkbox-5"
-            id="fusion-ui-checkbox-5">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Details (Component will be re-rendered)</span>
+            name="f-checkbox-5"
+            id="f-checkbox-5">
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Details (Component will be re-rendered)</span>
         </label>
       </span>
     </div>
     <!-- END: details checkbox -->
 
     <!-- START: message input -->
-    <div class="fusion-ui-form__fieldset">
-      <label for="messageInput" class="fusion-ui-form__input-label">Message</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input id="messageInput" class="fusion-ui-form__input" formControlName="message"/>
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+    <div class="f-form__fieldset">
+      <label for="messageInput" class="f-form__input-label">Message</label>
+      <div class="f-form__input-wrapper">
+        <input id="messageInput" class="f-form__input" formControlName="message"/>
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: message input -->
 
     <!-- START: details max height input -->
-    <div class="fusion-ui-form__fieldset">
-      <label for="detailsMaxHeight" class="fusion-ui-form__input-label">Details Max Height (defaults to 240px)</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input id="detailsMaxHeight" class="fusion-ui-form__input" formControlName="detailsMaxHeight"/>
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+    <div class="f-form__fieldset">
+      <label for="detailsMaxHeight" class="f-form__input-label">Details Max Height (defaults to 240px)</label>
+      <div class="f-form__input-wrapper">
+        <input id="detailsMaxHeight" class="f-form__input" formControlName="detailsMaxHeight"/>
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: details max height input -->
 
     <!-- START: id input -->
-    <div class="fusion-ui-form__fieldset">
-      <label for="marginInput" class="fusion-ui-form__input-label">ID</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input id="marginInput" class="fusion-ui-form__input" formControlName="id"/>
+    <div class="f-form__fieldset">
+      <label for="marginInput" class="f-form__input-label">ID</label>
+      <div class="f-form__input-wrapper">
+        <input id="marginInput" class="f-form__input" formControlName="id"/>
       </div>
     </div>
     <!-- END: id input -->
 
     <!-- START: icon input -->
-    <div class="fusion-ui-form__fieldset">
-      <label for="iconInput" class="fusion-ui-form__input-label">Icon type
+    <div class="f-form__fieldset">
+      <label for="iconInput" class="f-form__input-label">Icon type
         (<a target="_blank" href="https://cdn.materialdesignicons.com/5.1.45/">Reference icons</a>) 'mdi-' automatically prepended.
       </label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input id="iconInput" class="fusion-ui-form__input" formControlName="notificationIcon"/>
+      <div class="f-form__input-wrapper">
+        <input id="iconInput" class="f-form__input" formControlName="notificationIcon"/>
       </div>
     </div>
     <!-- END: icon input -->
 
     <!-- START: disappear delay input -->
-    <div class="fusion-ui-form__fieldset">
-      <label class="fusion-ui-form__input-label">Disappear Delay</label>
+    <div class="f-form__fieldset">
+      <label class="f-form__input-label">Disappear Delay</label>
 
       <div class="disappear-delay-selection">
-        <span class="fusion-ui-form__radio">
-          <label for="disappearDelay-none" class="fusion-ui-form__radio-label">
+        <span class="f-form__radio">
+          <label for="disappearDelay-none" class="f-form__radio-label">
             <input
-              class="fusion-ui-form__radio-input"
+              class="f-form__radio-input"
               type="radio"
               formControlName="disappearDelay"
               [value]="null"
               id="disappearDelay-none">
-            <span class="fusion-ui-form__radio-button"></span>
-            <span class="fusion-ui-form__radio-label-text">None</span>
+            <span class="f-form__radio-button"></span>
+            <span class="f-form__radio-label-text">None</span>
           </label>
         </span>
-        <span *ngFor="let delay of delays" class="fusion-ui-form__radio">
-          <label for="disappearDelay-{{delay}}s" class="fusion-ui-form__radio-label">
+        <span *ngFor="let delay of delays" class="f-form__radio">
+          <label for="disappearDelay-{{delay}}s" class="f-form__radio-label">
             <input
-              class="fusion-ui-form__radio-input"
+              class="f-form__radio-input"
               type="radio"
               formControlName="disappearDelay"
               value="{{delay * 1000}}"
               id="disappearDelay-{{delay}}s">
-            <span class="fusion-ui-form__radio-button"></span>
-            <span class="fusion-ui-form__radio-label-text">{{delay}} seconds</span>
+            <span class="f-form__radio-button"></span>
+            <span class="f-form__radio-label-text">{{delay}} seconds</span>
           </label>
         </span>
       </div>
     </div>
     <!-- END: disappear delay input -->
 
-    <button (click)="buildForm()" class="fusion-ui-button fusion-ui-button--primary">Reset</button>
+    <button (click)="buildForm()" class="f-button f-button--primary">Reset</button>
   </form>
 
   <ng-container result>
     <div [ngClass]="{'sticky-scroll': notificationForm?.get('sticky')?.value}">
-      <fusion-ui-notification
+      <f-notification
         (bannerDismissed)="notificationForm?.get('displayed').patchValue(false)"
         *ngIf="notificationForm?.get('displayed').value"
         [dismissible]="notificationForm?.get('dismissible').value"
@@ -194,11 +194,11 @@
         {{ notificationForm?.get('message').value }}
         <ng-container *ngIf="notificationForm?.get('details').value">
           <ng-template [fusionUiTemplate]="NotificationTemplate.DETAILS">
-            <h5 class="fusion-ui-h5">Error Details:</h5>
+            <h5 class="f-h5">Error Details:</h5>
             <pre>{{ notificationForm.value | json }}</pre>
           </ng-template>
         </ng-container>
-      </fusion-ui-notification>
+      </f-notification>
     </div>
 
   </ng-container>

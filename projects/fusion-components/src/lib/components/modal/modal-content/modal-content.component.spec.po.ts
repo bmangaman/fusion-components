@@ -10,6 +10,6 @@ export class ModalContentComponentPageObject {
   }
 
   get content(): HTMLElement {
-    return this.fixture.nativeElement.querySelector('.fusion-ui-modal__content');
+    return this.fixture.nativeElement.querySelector('.f-modal__content');
   }
 }

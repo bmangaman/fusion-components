@@ -2,12 +2,12 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { NotificationType } from '@fusion-ui/fusion-components/lib/components/notification/notification.interface';
+import { NotificationType } from '@fusion-components/lib/components/notification/notification.interface';
 /**
  * NOTIFICATION PAGE OBJECT
  *
- * Page object for a single fusion-ui-notification component
- * Makes it easier to find certain fusion-ui-notification attributes and elements
+ * Page object for a single f-notification component
+ * Makes it easier to find certain f-notification attributes and elements
  */
 export class NotificationPageObject {
 
@@ -15,33 +15,33 @@ export class NotificationPageObject {
     if (this.selector) {
       return this.fixture.debugElement.query(By.css(this.selector));
     } else {
-      return this.fixture.debugElement.query(By.css('fusion-ui-notification'));
+      return this.fixture.debugElement.query(By.css('f-notification'));
     }
   }
 
   get text(): string {
-    const innerNotification = this.notification.query(By.css('.fusion-ui-notification__inner'));
+    const innerNotification = this.notification.query(By.css('.f-notification__inner'));
     return innerNotification?.nativeElement.innerText.trim() ?? '';
   }
 
   get type(): NotificationType {
-    if (this.classList.contains('fusion-ui-notification__info')) {
+    if (this.classList.contains('f-notification__info')) {
       return NotificationType.INFO;
     }
 
-    if (this.classList.contains('fusion-ui-notification__success')) {
+    if (this.classList.contains('f-notification__success')) {
       return NotificationType.SUCCESS;
     }
 
-    if (this.classList.contains('fusion-ui-notification__warning')) {
+    if (this.classList.contains('f-notification__warning')) {
       return NotificationType.WARNING;
     }
 
-    if (this.classList.contains('fusion-ui-notification__error')) {
+    if (this.classList.contains('f-notification__error')) {
       return NotificationType.ERROR;
     }
 
-    return null;
+    return NotificationType.UNKNOWN;
   }
 
   get role(): string {
@@ -57,29 +57,29 @@ export class NotificationPageObject {
   }
 
   get closeButton(): HTMLButtonElement {
-    return this.notification.nativeElement.querySelector('.fusion-ui-notification__close-button');
+    return this.notification.nativeElement.querySelector('.f-notification__close-button');
   }
 
   get closeButtonIcon(): HTMLElement {
-    return this.notification.query(By.css('.fusion-ui-notification__close-button-icon'))?.nativeElement;
+    return this.notification.query(By.css('.f-notification__close-button-icon'))?.nativeElement;
   }
 
   get notificationIcon(): HTMLElement {
-    return this.notification.query(By.css('.fusion-ui-notification__icon'))?.nativeElement;
+    return this.notification.query(By.css('.f-notification__icon'))?.nativeElement;
   }
 
   get detailsButton(): HTMLButtonElement {
-    return this.notification.query(By.css('.fusion-ui-notification__details-button'))?.nativeElement;
+    return this.notification.query(By.css('.f-notification__details-button'))?.nativeElement;
   }
 
   get detailsContent(): HTMLElement {
-    return this.notification.query(By.css('.fusion-ui-notification__details-content'))?.nativeElement;
+    return this.notification.query(By.css('.f-notification__details-content'))?.nativeElement;
   }
 
   /**
-   * Creates a page object for a fusion-ui-notification DOM element based on the provided fixture
+   * Creates a page object for a f-notification DOM element based on the provided fixture
    *
-   * @param fixture the parent DOM fixture/element that houses the fusion-ui-notification
+   * @param fixture the parent DOM fixture/element that houses the f-notification
    * @param selector The selector to use in which to find the banner
    */
   constructor(fixture: ComponentFixture<any>, private selector?: string) {
@@ -105,7 +105,7 @@ export class NotificationPageObject {
    * @returns the DebugElement of the notification or null if it can't be found.
    */
   isType(type: NotificationType): boolean {
-    return this.notification.nativeElement.classList.contains(`fusion-ui-notification__${type}`);
+    return this.notification.nativeElement.classList.contains(`f-notification__${type}`);
   }
 
   /**

@@ -1,114 +1,114 @@
 <fusion-demo titleText="Linear Gauge">
 
-  <form form class="fusion-components-demo__form fusion-ui-form" *ngIf="linearGaugeForm" [formGroup]="linearGaugeForm">
+  <form form class="fusion-components-demo__form f-form" *ngIf="linearGaugeForm" [formGroup]="linearGaugeForm">
 
     <!-- START: value input -->
-    <div class="fusion-ui-form__fieldset">
-      <label class="fusion-ui-form__input-label">Value</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input class="fusion-ui-form__input" type="number" formControlName="value" />
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+    <div class="f-form__fieldset">
+      <label class="f-form__input-label">Value</label>
+      <div class="f-form__input-wrapper">
+        <input class="f-form__input" type="number" formControlName="value" />
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: value input -->
 
     <!-- START: max value input -->
-    <div class="fusion-ui-form__fieldset">
-      <label class="fusion-ui-form__input-label">Max Value</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input class="fusion-ui-form__input" type="number" formControlName="maxValue" />
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+    <div class="f-form__fieldset">
+      <label class="f-form__input-label">Max Value</label>
+      <div class="f-form__input-wrapper">
+        <input class="f-form__input" type="number" formControlName="maxValue" />
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: max value input -->
 
     <!-- START: min value input -->
-    <div class="fusion-ui-form__fieldset">
-      <label class="fusion-ui-form__input-label">Min Value</label>
-      <div class="fusion-ui-form__input-wrapper">
-        <input class="fusion-ui-form__input" type="number" formControlName="minValue" />
-        <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+    <div class="f-form__fieldset">
+      <label class="f-form__input-label">Min Value</label>
+      <div class="f-form__input-wrapper">
+        <input class="f-form__input" type="number" formControlName="minValue" />
+        <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
     <!-- END: min value input -->
 
     <!-- START: useDataFormatPipe checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-useDataFormatPipe" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-useDataFormatPipe" class="f-form__checkbox-label">
           <input
             formControlName="useDataFormatPipe"
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
-            name="fusion-ui-checkbox-useDataFormatPipe"
-            id="fusion-ui-checkbox-useDataFormatPipe">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Use Data Format Pipe (Bytes Pipe, 3 Decimal Points)</span>
+            name="f-checkbox-useDataFormatPipe"
+            id="f-checkbox-useDataFormatPipe">
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Use Data Format Pipe (Bytes Pipe, 3 Decimal Points)</span>
         </label>
       </span>
     </div>
     <!-- END: useDataFormatPipe checkbox -->
 
     <!-- START: useValueFormatPipe checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-useValueFormatPipe" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-useValueFormatPipe" class="f-form__checkbox-label">
           <input
             formControlName="useValueFormatPipe"
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
-            name="fusion-ui-checkbox-useValueFormatPipe"
-            id="fusion-ui-checkbox-useValueFormatPipe">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Use Value Format Pipe (Bytes Pipe, 2 Decimal Points)</span>
+            name="f-checkbox-useValueFormatPipe"
+            id="f-checkbox-useValueFormatPipe">
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Use Value Format Pipe (Bytes Pipe, 2 Decimal Points)</span>
         </label>
       </span>
     </div>
     <!-- END: useValueFormatPipe checkbox -->
 
-    <h3 class="fusion-components-demo__form-array-header fusion-ui-h3">Thresholds</h3>
+    <h3 class="fusion-components-demo__form-array-header f-h3">Thresholds</h3>
     <div class="fusion-components-demo__form-array">
       <ng-container formArrayName="thresholds" *ngFor="let threshold of linearGaugeForm?.get('thresholds')?.controls; let i = index;">
         <div class="fusion-components-demo__form-array-item" [formGroupName]="i">
 
-          <h3 class="fusion-components-demo__form-array-item-header fusion-ui-h3">
+          <h3 class="fusion-components-demo__form-array-item-header f-h3">
             Threshold {{ i }}
-            <button class="fusion-components-demo__form-array-remove-button fusion-ui-button fusion-ui-button--secondary fusion-ui-button--xSmall" (click)="removeThreshold(i)">
+            <button class="fusion-components-demo__form-array-remove-button f-button f-button--secondary f-button--xSmall" (click)="removeThreshold(i)">
               Remove Threshold
             </button>
           </h3>
 
           <!-- START: title input -->
-          <div class="fusion-ui-form__fieldset">
-            <label class="fusion-ui-form__input-label">Title</label>
-            <div class="fusion-ui-form__input-wrapper">
-              <input class="fusion-ui-form__input" formControlName="title" />
-              <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+          <div class="f-form__fieldset">
+            <label class="f-form__input-label">Title</label>
+            <div class="f-form__input-wrapper">
+              <input class="f-form__input" formControlName="title" />
+              <span class="f-form__input-wrapper-status-icon"></span>
             </div>
           </div>
           <!-- END: title input -->
 
           <!-- START: value input -->
-          <div class="fusion-ui-form__fieldset">
-            <label class="fusion-ui-form__input-label">Value</label>
-            <div class="fusion-ui-form__input-wrapper">
-              <input class="fusion-ui-form__input" type="number" formControlName="value" />
-              <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+          <div class="f-form__fieldset">
+            <label class="f-form__input-label">Value</label>
+            <div class="f-form__input-wrapper">
+              <input class="f-form__input" type="number" formControlName="value" />
+              <span class="f-form__input-wrapper-status-icon"></span>
             </div>
           </div>
           <!-- END: value input -->
 
           <!-- START: level select -->
-          <div class="fusion-ui-form__fieldset fusion-ui-table__filter-input-field-selector">
-            <label class="fusion-ui-form__input-label">Level</label>
-            <div class="fusion-ui-form__input-wrapper fusion-ui-form__select-wrapper">
-              <select class="fusion-ui-form__input fusion-ui-form__select" formControlName="level">
-                <option [value]="FusionUiStatusLevel.NORMAL">NORMAL (2)</option>
-                <option [value]="FusionUiStatusLevel.WARNING">WARNING (4)</option>
-                <option [value]="FusionUiStatusLevel.ERROR">ERROR (5)</option>
-                <option [value]="FusionUiStatusLevel.CRITICAL">CRITICAL (6)</option>
+          <div class="f-form__fieldset f-table__filter-input-field-selector">
+            <label class="f-form__input-label">Level</label>
+            <div class="f-form__input-wrapper f-form__select-wrapper">
+              <select class="f-form__input f-form__select" formControlName="level">
+                <option [value]="StatusLevel.NORMAL">NORMAL (2)</option>
+                <option [value]="StatusLevel.WARNING">WARNING (4)</option>
+                <option [value]="StatusLevel.ERROR">ERROR (5)</option>
+                <option [value]="StatusLevel.CRITICAL">CRITICAL (6)</option>
               </select>
-              <span class="fusion-ui-form__input-wrapper-status-icon"></span>
+              <span class="f-form__input-wrapper-status-icon"></span>
             </div>
           </div>
           <!-- END: level select -->
@@ -116,19 +116,19 @@
       </ng-container>
     </div>
 
-    <button class="fusion-components-demo__form-array-add-button fusion-ui-button fusion-ui-button--primary fusion-ui-button--small" (click)="addNewThreshold()">
+    <button class="fusion-components-demo__form-array-add-button f-button f-button--primary f-button--small" (click)="addNewThreshold()">
       Add New Threshold
     </button>
   </form>
 
   <ng-container result>
-    <fusion-ui-linear-gauge
+    <f-linear-gauge
       [value]="linearGaugeForm?.get('value')?.value"
       [maxValue]="linearGaugeForm?.get('maxValue')?.value"
       [minValue]="linearGaugeForm?.get('minValue')?.value"
       [dataFormatPipeItem]="linearGaugeForm?.get('useDataFormatPipe')?.value ? dataFormatPipeItem : null"
       [valueFormatPipeItem]="linearGaugeForm?.get('useValueFormatPipe')?.value ? valueFormatPipeItem : null"
       [thresholds]="thresholds">
-    </fusion-ui-linear-gauge>
+    </f-linear-gauge>
   </ng-container>
 </fusion-demo>

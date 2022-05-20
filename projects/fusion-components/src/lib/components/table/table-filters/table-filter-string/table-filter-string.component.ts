@@ -14,7 +14,7 @@ import { TableFilterStringInputComparator, TableFilterStringTranslations } from 
  * It has one input for the text value.
  */
 @Component({
-  selector: 'fusion-ui-table-string-filter',
+  selector: 'f-table-string-filter',
   templateUrl: './table-filter-string.component.html',
   providers: [{ provide: TableFilterComponent, useExisting: TableFilterStringComponent }],
   changeDetection: ChangeDetectionStrategy.OnPush,

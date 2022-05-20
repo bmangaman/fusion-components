@@ -62,17 +62,17 @@ describe('ValidationStylingDirective', () => {
 
     it('wrapper should not be created if already present', () => {
       expect(inputWrapperEl).toBeDefined();
-      expect(fixture.debugElement.nativeElement.querySelectorAll('.fusion-ui-form__input-wrapper').length).toBe(1);
+      expect(fixture.debugElement.nativeElement.querySelectorAll('.f-form__input-wrapper').length).toBe(1);
       directiveEl.ngOnInit();
       fixture.detectChanges();
 
-      expect(fixture.debugElement.nativeElement.querySelectorAll('.fusion-ui-form__input-wrapper').length).toBe(1);
+      expect(fixture.debugElement.nativeElement.querySelectorAll('.f-form__input-wrapper').length).toBe(1);
     });
 
     it('should move the input element and create an icon span inside of it', () => {
       expect(inputWrapperEl.children.length).toEqual(2);
       expect(inputWrapperEl.querySelector('input')).toBeDefined();
-      expect(inputWrapperEl.querySelector('.fusion-ui-form__input-wrapper-status-icon')).toBeDefined();
+      expect(inputWrapperEl.querySelector('.f-form__input-wrapper-status-icon')).toBeDefined();
     });
   });
 
@@ -80,24 +80,24 @@ describe('ValidationStylingDirective', () => {
     it('should add no styling if it has no value and not dirty', () => {
       expect(inputEl.nativeElement.classList).not.toContain('ng-dirty');
       expect(inputEl.nativeElement.value).toEqual('');
-      expect(inputEl.nativeElement.classList).not.toContain('fusion-ui-form__input--valid');
-      expect(inputEl.nativeElement.classList).not.toContain('fusion-ui-form__input--invalid');
+      expect(inputEl.nativeElement.classList).not.toContain('f-form__input--valid');
+      expect(inputEl.nativeElement.classList).not.toContain('f-form__input--invalid');
     });
 
-    it('should have fusion-ui-form__input--invalid class if input is invalid', () => {
+    it('should have f-form__input--invalid class if input is invalid', () => {
       spyOn(directiveEl, 'setStyling').and.callThrough();
       component.validationStylingDemoForm.controls.basicInput.setValue('v');
       fixture.detectChanges();
       expect(directiveEl.setStyling).toHaveBeenCalledWith('INVALID');
-      expect(inputEl.nativeElement.classList).toContain('fusion-ui-form__input--invalid');
+      expect(inputEl.nativeElement.classList).toContain('f-form__input--invalid');
     });
 
-    it('should have fusion-ui-form__input--valid class if input is valid', () => {
+    it('should have f-form__input--valid class if input is valid', () => {
       spyOn(directiveEl, 'setStyling').and.callThrough();
       component.validationStylingDemoForm.controls.basicInput.setValue('value');
       fixture.detectChanges();
       expect(directiveEl.setStyling).toHaveBeenCalledWith('VALID');
-      expect(inputEl.nativeElement.classList).toContain('fusion-ui-form__input--valid');
+      expect(inputEl.nativeElement.classList).toContain('f-form__input--valid');
     });
   });
 

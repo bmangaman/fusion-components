@@ -1,6 +1,6 @@
 
 import { TemplateRef } from '@angular/core';
-import { FusionUiState, StringKeyObject } from '../../shared';
+import { State, StringKeyObject } from '../../shared';
 
 import { TableActionsTranslations } from './table-actions/';
 import { TableColumnSelectorTranslations } from './table-column-selector';
@@ -37,7 +37,7 @@ export interface TableConfig {
   defaultColumns?: TableColumnConfig[];
   appliedFilters?: TableFilterConfig[];
   translations?: TableTranslations;
-  state?: FusionUiState;
+  state?: State;
   fillContainer?: boolean;
   type?: TableType;
   spacing?: TableSpacing;

@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing';
 
-import { WizardPageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/wizard.spec.po';
+import { WizardPageObject } from '@fusion-components/unit-test-helpers/page-objects/wizard.spec.po';
 
 import { WizardTestComponent } from './wizard.component.dom.spec';
 

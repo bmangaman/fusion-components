@@ -14,9 +14,9 @@ describe('BadgeComponent', () => {
   describe('@HostBinding', () => {
     describe('get cssClasses', () => {
       it('should return the CSS classes to appended to the host element based on the fillContainer flag', () => {
-        const wrapper = 'fusion-ui-badge__wrapper';
+        const wrapper = 'f-badge__wrapper';
 
-        component.hostCssClasses = null;
+        component.hostCssClasses = [];
 
         component.fillContainer = false;
         expect(component.cssClasses).toEqual(wrapper);
@@ -26,7 +26,7 @@ describe('BadgeComponent', () => {
       });
 
       it('should return the CSS classes to append the host element based on if any custom host classes were provided', () => {
-        const wrapper = 'fusion-ui-badge__wrapper';
+        const wrapper = 'f-badge__wrapper';
         const hostCssClasses = ['custom1', 'custom2'];
 
         component.fillContainer = false;

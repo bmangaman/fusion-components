@@ -17,25 +17,25 @@ import { ModalHeaderComponent } from './modal-header';
 import { ModalAnimationSpeeds, ModalConfig, ModalStyling, ModalType } from './modal.interface';
 
 @Component({
-  selector: 'fusion-ui-modal',
+  selector: 'f-modal',
   template: `
-    <div class="fusion-ui-modal">
+    <div class="f-modal">
       <div
-        class="fusion-ui-modal__backdrop"
+        class="f-modal__backdrop"
         [ngClass]="config?.backdropClasses"
         [@alertFadeAnimation]="config?.type === ModalType.ALERT ? currentState : null"
         [@sideFadeAnimation]="config?.type === ModalType.SIDE ? currentState : null"
         [@fullFadeAnimation]="config?.type === ModalType.FULL ? currentState : null">
       </div>
       <div
-        class="fusion-ui-modal__window"
+        class="f-modal__window"
         [ngStyle]="config?.type === ModalType.FULL ? modalStyling : undefined"
         [ngClass]="windowClasses"
         [@fadeAndScaleAnimation]="config?.type === ModalType.ALERT ? currentState : null"
         [@sideSlideAnimation]="config?.type === ModalType.SIDE ? currentState : null"
         [@fullSlideAnimation]="config?.type === ModalType.FULL ? currentState : null">
         <div [ngClass]="containerClasses">
-          <div class="fusion-ui-modal__content-wrapper">
+          <div class="f-modal__content-wrapper">
             <ng-content></ng-content>
           </div>
         </div>
@@ -83,8 +83,8 @@ export class ModalComponent implements OnDestroy {
     return this._focusableElements;
   }
 
-  private _currentState: ModalType;
-  get currentState(): ModalType {
+  private _currentState: ModalType | undefined;
+  get currentState(): ModalType | undefined {
     return this._currentState;
   }
 
@@ -109,13 +109,13 @@ export class ModalComponent implements OnDestroy {
 
   @HostBinding('attr.class')
   get hostClasses(): string {
-    return 'fusion-ui-modal--visible';
+    return 'f-modal--visible';
   }
 
   /**
    * Emits when the modal is closed.
    */
-  @Output() modalClosed: EventEmitter<any> = new EventEmitter<any>(null);
+  @Output() modalClosed: EventEmitter<any> = new EventEmitter<any>(undefined);
 
   @ContentChild(ModalHeaderComponent) modalHeader !: ModalHeaderComponent;
   @ContentChild(ModalFooterComponent) modalFooter !: ModalFooterComponent;
@@ -202,13 +202,12 @@ export class ModalComponent implements OnDestroy {
   adjustModalHeight(): void {
     const canAdjustHeight: boolean =
       this.config.type === ModalType.FULL &&
-      this.config.heightAdjustmentElements &&
-      !!this.config.heightAdjustmentElements.length;
+      !!this.config.heightAdjustmentElements?.length;
 
     if (canAdjustHeight) {
       let adjustedHeightAmount = 0;
 
-      this.config.heightAdjustmentElements.forEach((element: string | HTMLElement) => {
+      this.config.heightAdjustmentElements?.forEach((element: string | HTMLElement) => {
         const el: HTMLElement = typeof element !== 'string' ? element : this.elemRef.nativeElement.closest('body').querySelector(element);
         if (!!el) {
           adjustedHeightAmount += el.offsetHeight;
@@ -231,13 +230,12 @@ export class ModalComponent implements OnDestroy {
   adjustModalWidth(): void {
     const canAdjustWidth: boolean =
       this.config.type === ModalType.FULL &&
-      this.config.widthAdjustmentElements &&
-      !!this.config.widthAdjustmentElements.length;
+      !!this.config.widthAdjustmentElements?.length;
 
     if (canAdjustWidth) {
       let adjustedWidthAmount = 0;
 
-      this.config.widthAdjustmentElements.forEach((element: string | HTMLElement) => {
+      this.config.widthAdjustmentElements?.forEach((element: string | HTMLElement) => {
         const el: HTMLElement = typeof element !== 'string' ? element : this.elemRef.nativeElement.closest('body').querySelector(element);
         if (!!el) {
           adjustedWidthAmount += el.offsetWidth;
@@ -261,9 +259,9 @@ export class ModalComponent implements OnDestroy {
    */
   changeState(): void {
     if (!this.currentState) {
-      this._currentState = this.config.type;
+      this._currentState = this.config.type!;
     } else {
-      this._currentState = null;
+      this._currentState = undefined;
     }
   }
 
@@ -288,12 +286,15 @@ export class ModalComponent implements OnDestroy {
   private getModalWindowClasses(): string[] {
     const classes: string[] = [];
 
-    classes.push(`fusion-ui-modal__window--${this.config.type}`);
-    classes.push(`fusion-ui-modal__window--${this.config.type}--${this.config.size}`);
+    classes.push(`f-modal__window--${this.config.type}`);
+    classes.push(`f-modal__window--${this.config.type}--${this.config.size}`);
     if (typeof this.config.container === 'string') {
-      classes.push(`fusion-ui-modal__window--${this.config.type}--container-${this.config.container}`);
+      classes.push(`f-modal__window--${this.config.type}--container-${this.config.container}`);
     }
-    classes.push(...this.config.windowClasses);
+
+    if (this.config.windowClasses) {
+      classes.push(...this.config.windowClasses);
+    }
 
     return classes;
   }
@@ -305,9 +306,9 @@ export class ModalComponent implements OnDestroy {
    */
   private getModalContainerClasses(): string[] {
     return [
-      'fusion-ui-modal__container',
-      `fusion-ui-modal__container--${this.config.size}`,
-      `fusion-ui-modal__container--${this.config.type}`,
+      'f-modal__container',
+      `f-modal__container--${this.config.size}`,
+      `f-modal__container--${this.config.type}`,
     ];
   }
 }

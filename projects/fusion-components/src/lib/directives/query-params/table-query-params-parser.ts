@@ -7,7 +7,7 @@ import {
   TableFilterComponent,
   TableFilterConfig,
   TableView,
-} from '@fusion-ui/fusion-components/lib/components/table';
+} from '@fusion-components/lib/components/table';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { AppliedSort, ParamData } from './table-query-params-parser.interface';

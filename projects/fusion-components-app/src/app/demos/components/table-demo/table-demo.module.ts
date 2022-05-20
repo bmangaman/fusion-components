@@ -7,7 +7,7 @@ import {
   TableModule,
   TooltipDirectiveModule,
   TooltipService,
-} from '@fusion-ui/fusion-components';
+} from '@fusion-components';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';

@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing';
 
-import { StatePageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/state.spec.po';
+import { StatePageObject } from '@fusion-components/unit-test-helpers/page-objects/state.spec.po';
 
 import { StateTestComponent } from './state.component.dom.spec';
 

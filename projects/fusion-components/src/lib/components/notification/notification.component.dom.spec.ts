@@ -3,9 +3,9 @@ import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angul
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { TemplateModule, WINDOW } from '@fusion-ui/fusion-components';
-import { NotificationPageObject } from '@fusion-ui/fusion-components/unit-test-helpers';
-import { TranslatedComponentSpecModule } from '@fusion-ui/fusion-components/unit-test-helpers/translated-component.module.spec';
+import { TemplateModule, WINDOW } from '@fusion-components';
+import { NotificationPageObject } from '@fusion-components/unit-test-helpers';
+import { TranslatedComponentSpecModule } from '@fusion-components/unit-test-helpers/translated-component.module.spec';
 import { NotificationComponent } from './notification.component';
 import { NotificationTranslations, NotificationType } from './notification.interface';
 
@@ -13,9 +13,9 @@ import { NotificationTranslations, NotificationType } from './notification.inter
 import createSpy = jasmine.createSpy;
 
 @Component({
-  selector: 'fusion-ui-test-component',
+  selector: 'f-test-component',
   template: `
-    <fusion-ui-notification
+    <f-notification
       *ngIf="show"
       [id]="id"
       [dismissible]="dismissible"
@@ -30,7 +30,7 @@ import createSpy = jasmine.createSpy;
       <ng-container *ngIf="hasDetails">
         <ng-template [fusionUiTemplate]="'details'">Details Template</ng-template>
       </ng-container>
-    </fusion-ui-notification>
+    </f-notification>
   `,
 })
 class TestComponent {
@@ -109,19 +109,19 @@ describe('NotificationComponent', () => {
     it('should set the correct notification banner class based on the provided message type', () => {
       component.notificationType = NotificationType.SUCCESS;
       fixture.detectChanges();
-      expect(fusionUiNotification.classList).toContain('fusion-ui-notification__success');
+      expect(fusionUiNotification.classList).toContain('f-notification__success');
 
       component.notificationType = NotificationType.WARNING;
       fixture.detectChanges();
-      expect(fusionUiNotification.classList).toContain('fusion-ui-notification__warning');
+      expect(fusionUiNotification.classList).toContain('f-notification__warning');
 
       component.notificationType = NotificationType.ERROR;
       fixture.detectChanges();
-      expect(fusionUiNotification.classList).toContain('fusion-ui-notification__error');
+      expect(fusionUiNotification.classList).toContain('f-notification__error');
 
       component.notificationType = NotificationType.INFO;
       fixture.detectChanges();
-      expect(fusionUiNotification.classList).toContain('fusion-ui-notification__info');
+      expect(fusionUiNotification.classList).toContain('f-notification__info');
     });
   });
 
@@ -131,12 +131,12 @@ describe('NotificationComponent', () => {
 
       component.notificationType = NotificationType.INFO;
       fixture.detectChanges();
-      messageIcon = fixture.debugElement.query(By.css('.fusion-ui-notification__icon'));
+      messageIcon = fixture.debugElement.query(By.css('.f-notification__icon'));
       expect(messageIcon.nativeElement.classList).toContain('mdi-information');
 
       component.notificationIcon = 'power-plug';
       fixture.detectChanges();
-      messageIcon = fixture.debugElement.query(By.css('.fusion-ui-notification__icon'));
+      messageIcon = fixture.debugElement.query(By.css('.f-notification__icon'));
       expect(messageIcon.nativeElement.classList).toContain('mdi-power-plug');
     });
   });
@@ -148,19 +148,19 @@ describe('NotificationComponent', () => {
       component.notificationType = NotificationType.SUCCESS;
       component.dismissible = true;
       fixture.detectChanges();
-      closeButton = fixture.debugElement.query(By.css('.fusion-ui-notification__close-button'));
+      closeButton = fixture.debugElement.query(By.css('.f-notification__close-button'));
       expect(!!closeButton).toBeTruthy();
 
       component.notificationType = NotificationType.ERROR;
       component.dismissible = undefined;
       fixture.detectChanges();
-      closeButton = fixture.debugElement.query(By.css('.fusion-ui-notification__close-button'));
+      closeButton = fixture.debugElement.query(By.css('.f-notification__close-button'));
       expect(component.dismissible).toBeFalsy();
       expect(!!closeButton).toBeFalsy();
 
       component.notificationType = NotificationType.SUCCESS;
       fixture.detectChanges();
-      closeButton = fixture.debugElement.query(By.css('.fusion-ui-notification__close-button'));
+      closeButton = fixture.debugElement.query(By.css('.f-notification__close-button'));
       expect(component.dismissible).toBeFalsy();
       expect(!!closeButton).toBeFalsy();
     });
@@ -171,17 +171,17 @@ describe('NotificationComponent', () => {
 
       component.dismissible = false;
       fixture.detectChanges();
-      closeButton = fixture.debugElement.query(By.css('.fusion-ui-notification__close-button'));
+      closeButton = fixture.debugElement.query(By.css('.f-notification__close-button'));
       expect(!!closeButton).toBeFalsy();
 
       component.dismissible = true;
       fixture.detectChanges();
-      closeButton = fixture.debugElement.query(By.css('.fusion-ui-notification__close-button'));
+      closeButton = fixture.debugElement.query(By.css('.f-notification__close-button'));
       expect(!!closeButton).toBeTruthy();
 
       component.dismissible = undefined;
       fixture.detectChanges();
-      closeButton = fixture.debugElement.query(By.css('.fusion-ui-notification__close-button'));
+      closeButton = fixture.debugElement.query(By.css('.f-notification__close-button'));
       expect(!!closeButton).toBeFalsy();
     });
   });
@@ -191,7 +191,7 @@ describe('NotificationComponent', () => {
       component.notificationType = NotificationType.INFO;
       component.dismissible = true;
       fixture.detectChanges();
-      const closeButton = fixture.debugElement.query(By.css('.fusion-ui-notification__close-button'));
+      const closeButton = fixture.debugElement.query(By.css('.f-notification__close-button'));
 
       closeButton.nativeElement.click();
       fixture.detectChanges();

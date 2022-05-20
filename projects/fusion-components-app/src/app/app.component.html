@@ -1,14 +1,14 @@
 <ng-container *ngIf="!isEmbeddedView">
   <header class="fusion-demo__header">
-    <h1 class="fusion-ui-h1">Fusion Components Demo Site</h1>
+    <h1 class="f-h1">Fusion Components Demo Site</h1>
   </header>
 
-  <fusion-ui-sidenav
+  <f-sidenav
     class="fusion-demo__nav"
     [navItems]="navItems"
     [rootRoute]="rootRoute"
     (itemSelected)="itemSelected($event)">
-  </fusion-ui-sidenav>
+  </f-sidenav>
 </ng-container>
 
 <main class="fusion-demo__main">

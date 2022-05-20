@@ -1,4 +1,4 @@
-.fusion-ui-form {
+.f-form {
   &__checkbox {
     display: inline-block;
     overflow: visible;
@@ -20,29 +20,29 @@
       &:checked,
       &--checked,
       &--selected {
-        & + .fusion-ui-form__checkbox-button {
-          background: $fusion-ui-color-blue-medium;
-          border: solid 2px $fusion-ui-color-blue-medium;
+        & + .f-form__checkbox-button {
+          background: $f-color-blue-medium;
+          border: solid 2px $f-color-blue-medium;
 
           &:after {
             @include centered-with-position-absolute;
 
             font-family: 'Material Design Icons';
-            font-size: $fusion-ui-font-size-icon-sm;
-            color: $fusion-ui-color-white;
+            font-size: $f-font-size-icon-sm;
+            color: $f-color-white;
             content: '\F12C';
           }
         }
 
         &:disabled,
-        &.fusion-ui-form__checkbox-input--readonly,
-        &.fusion-ui-form__checkbox-input--disabled {
-          & + .fusion-ui-form__checkbox-button {
-            background: $fusion-ui-color-greyscale-76;
-            border: solid 2px $fusion-ui-color-greyscale-76;
+        &.f-form__checkbox-input--readonly,
+        &.f-form__checkbox-input--disabled {
+          & + .f-form__checkbox-button {
+            background: $f-color-greyscale-76;
+            border: solid 2px $f-color-greyscale-76;
 
             &:after {
-              color: $fusion-ui-color-white;
+              color: $f-color-white;
             }
           }
         }
@@ -50,12 +50,12 @@
 
       &:indeterminate,
       &--indeterminate {
-        & + .fusion-ui-form__checkbox-button {
+        & + .f-form__checkbox-button {
           &:after {
             @include centered-with-position-absolute;
 
             content: '';
-            background-color: $fusion-ui-color-blue-medium;
+            background-color: $f-color-blue-medium;
             display: block;
             height: 8px;
             width: 8px;
@@ -65,62 +65,62 @@
 
       &:disabled,
       &--disabled {
-        & + .fusion-ui-form__checkbox-button {
-          background: $fusion-ui-color-background-light;
-          border: solid 2px $fusion-ui-color-greyscale-84;
+        & + .f-form__checkbox-button {
+          background: $f-color-background-light;
+          border: solid 2px $f-color-greyscale-84;
           cursor: not-allowed;
 
-          & + .fusion-ui-form__checkbox-label-text {
-            color: $fusion-ui-color-text-disabled-on-light;
+          & + .f-form__checkbox-label-text {
+            color: $f-color-text-disabled-on-light;
             cursor: not-allowed;
           }
         }
       }
 
       &--readonly {
-        & + .fusion-ui-form__checkbox-button {
-          background: $fusion-ui-color-background-light;
+        & + .f-form__checkbox-button {
+          background: $f-color-background-light;
           cursor: not-allowed;
 
-          & + .fusion-ui-form__checkbox-label-text {
+          & + .f-form__checkbox-label-text {
             cursor: not-allowed;
           }
         }
       }
 
-      &:hover:not(:disabled):not(.fusion-ui-form__checkbox-input--disabled):not(:checked):not(.fusion-ui-form__checkbox-input--checked):not(.fusion-ui-form__checkbox-input--readonly),
+      &:hover:not(:disabled):not(.f-form__checkbox-input--disabled):not(:checked):not(.f-form__checkbox-input--checked):not(.f-form__checkbox-input--readonly),
       &--hover {
-        & + .fusion-ui-form__checkbox-button {
-          border-color: $fusion-ui-color-greyscale-61;
+        & + .f-form__checkbox-button {
+          border-color: $f-color-greyscale-61;
         }
       }
 
       &:focus,
       &--focus {
-        & + .fusion-ui-form__checkbox-button {
+        & + .f-form__checkbox-button {
           outline: none;
-          box-shadow: 0 0 0 2px $fusion-ui-color-blue-medium-light;
+          box-shadow: 0 0 0 2px $f-color-blue-medium-light;
         }
       }
 
       &--warning {
-        & + .fusion-ui-form__checkbox-button {
-          box-shadow: 0 0 0 2px $fusion-ui-color-warning-primary
+        & + .f-form__checkbox-button {
+          box-shadow: 0 0 0 2px $f-color-warning-primary
         }
       }
 
       &--error,
       &--invalid,
       &.ng-touched.ng-invalid {
-        & + .fusion-ui-form__checkbox-button {
-          box-shadow: 0 0 0 2px $fusion-ui-color-error-primary
+        & + .f-form__checkbox-button {
+          box-shadow: 0 0 0 2px $f-color-error-primary
         }
       }
     }
 
     &-button {
-      background: $fusion-ui-color-background-white;
-      border: solid 2px $fusion-ui-color-greyscale-76;
+      background: $f-color-background-white;
+      border: solid 2px $f-color-greyscale-76;
       border-radius: 2px;
       cursor: pointer;
       display: inline-block;
@@ -133,12 +133,12 @@
     }
 
     &-label-text {
-      @include fusion-ui-label-radio;
-      line-height: $fusion-ui-line-height-md;
+      @include f-label-radio;
+      line-height: $f-line-height-md;
       cursor: pointer;
       letter-spacing: 0;
-      color: $fusion-ui-color-primary-text-on-light;
-      padding: 0 0 0 $fusion-ui-spacing-sm;
+      color: $f-color-primary-text-on-light;
+      padding: 0 0 0 $f-spacing-sm;
       margin: 0 auto 0 0;
     }
   }

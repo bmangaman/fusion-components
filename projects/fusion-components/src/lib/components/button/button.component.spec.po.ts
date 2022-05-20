@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing';
 
-import { ButtonPageObject } from '@fusion-ui/fusion-components/unit-test-helpers/page-objects/button.spec.po';
+import { ButtonPageObject } from '@fusion-components/unit-test-helpers/page-objects/button.spec.po';
 
 import { ButtonTestComponent } from './button.component.dom.spec';
 

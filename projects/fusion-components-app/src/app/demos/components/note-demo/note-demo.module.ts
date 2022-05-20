@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { NoteModule } from '@fusion-ui/fusion-components';
+import { NoteModule } from '@fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { NoteDemoComponent } from './note-demo.component';

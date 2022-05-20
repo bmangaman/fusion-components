@@ -1,10 +1,10 @@
 import { ApplicationRef, ComponentFactoryResolver, ElementRef, Injector, RendererFactory2 } from '@angular/core';
 import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 
-import { ComponentStubFactory } from '@fusion-ui/fusion-components/unit-test-helpers/component-stub-factory.spec';
+import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
 import { DomService, TooltipService } from '../../services';
-import { FusionUiPosition, MouseInteraction } from '../../shared';
+import { Position, MouseInteraction } from '../../shared';
 import { TooltipDirective } from './tooltip.directive';
 
 import Spy = jasmine.Spy;
@@ -239,7 +239,7 @@ describe('TooltipDirective', () => {
       directive.id = 'id';
       directive.text = 'text';
       directive.template = null;
-      directive.position = FusionUiPosition.LEFT;
+      directive.position = Position.LEFT;
       directive.classes = [];
 
       directive.addTooltip();
@@ -249,7 +249,7 @@ describe('TooltipDirective', () => {
         text: 'text',
         template: null,
         templateWithContext: undefined,
-        position: FusionUiPosition.LEFT,
+        position: Position.LEFT,
         element: elementRef,
         classes: [],
         zIndex: 1,

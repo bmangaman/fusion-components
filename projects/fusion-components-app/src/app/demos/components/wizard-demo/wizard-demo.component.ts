@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { WizardStep, WizardComponent } from '@fusion-ui/fusion-components';
+import { WizardStep, WizardComponent } from '@fusion-components';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({

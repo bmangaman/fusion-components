@@ -1,201 +1,201 @@
 <fusion-demo titleText="Upload">
 
-  <form form class="fusion-components-demo__form fusion-ui-form" *ngIf="uploadForm" [formGroup]="uploadForm">
+  <form form class="fusion-components-demo__form f-form" *ngIf="uploadForm" [formGroup]="uploadForm">
     <h3>Configuration Options:</h3>
 
     <!-- START: is browse hidden checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-isBrowseHidden" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-isBrowseHidden" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
-            name="fusion-ui-checkbox-isBrowseHidden"
-            id="fusion-ui-checkbox-isBrowseHidden"
+            name="f-checkbox-isBrowseHidden"
+            id="f-checkbox-isBrowseHidden"
             formControlName="isBrowseHidden">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Is Browse Hidden</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Is Browse Hidden</span>
         </label>
       </span>
     </div>
     <!-- END: is browse hidden checkbox -->
 
     <!-- START: is browse disabled checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-isBrowseDisabled" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-isBrowseDisabled" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
-            name="fusion-ui-checkbox-isBrowseDisabled"
-            id="fusion-ui-checkbox-isBrowseDisabled"
+            name="f-checkbox-isBrowseDisabled"
+            id="f-checkbox-isBrowseDisabled"
             formControlName="isBrowseDisabled">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Is Browse Disabled</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Is Browse Disabled</span>
         </label>
       </span>
     </div>
     <!-- END: is browse disabled checkbox -->
 
     <!-- START: are multiple files allowed checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-areMultipleFilesAllowed" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-areMultipleFilesAllowed" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
-            name="fusion-ui-checkbox-areMultipleFilesAllowed"
-            id="fusion-ui-checkbox-areMultipleFilesAllowed"
+            name="f-checkbox-areMultipleFilesAllowed"
+            id="f-checkbox-areMultipleFilesAllowed"
             formControlName="areMultipleFilesAllowed">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Are Multiple Files Allowed</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Are Multiple Files Allowed</span>
         </label>
       </span>
     </div>
     <!-- END: are multiple files allowed checkbox -->
 
     <!-- START: are files uploaded together checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-areFilesUploadedTogether" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-areFilesUploadedTogether" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
-            name="fusion-ui-checkbox-areFilesUploadedTogether"
-            id="fusion-ui-checkbox-areFilesUploadedTogether"
+            name="f-checkbox-areFilesUploadedTogether"
+            id="f-checkbox-areFilesUploadedTogether"
             formControlName="areFilesUploadedTogether">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Are Files Uploaded Together</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Are Files Uploaded Together</span>
         </label>
       </span>
     </div>
     <!-- END: are files uploaded together checkbox -->
 
     <!-- START: is upload manual checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-isUploadManual" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-isUploadManual" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
-            name="fusion-ui-checkbox-isUploadManual"
-            id="fusion-ui-checkbox-isUploadManual"
+            name="f-checkbox-isUploadManual"
+            id="f-checkbox-isUploadManual"
             formControlName="isUploadManual">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Is Upload Manual</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Is Upload Manual</span>
         </label>
       </span>
     </div>
     <!-- END: is upload manual checkbox -->
 
     <!-- START: is size hidden checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-isSizeHidden" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-isSizeHidden" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
-            name="fusion-ui-checkbox-isSizeHidden"
-            id="fusion-ui-checkbox-isSizeHidden"
+            name="f-checkbox-isSizeHidden"
+            id="f-checkbox-isSizeHidden"
             formControlName="isSizeHidden">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Is Size Hidden</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Is Size Hidden</span>
         </label>
       </span>
     </div>
     <!-- END: is size hidden checkbox -->
 
     <!-- START: is dismiss button hidden checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-isDismissButtonHidden" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-isDismissButtonHidden" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
-            name="fusion-ui-checkbox-isDismissButtonHidden"
-            id="fusion-ui-checkbox-isDismissButtonHidden"
+            name="f-checkbox-isDismissButtonHidden"
+            id="f-checkbox-isDismissButtonHidden"
             formControlName="isDismissButtonHidden">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Is Dismiss Button Hidden</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Is Dismiss Button Hidden</span>
         </label>
       </span>
     </div>
     <!-- END: is dismiss button hidden checkbox -->
 
     <!-- START: is cancel button hidden checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-isCancelButtonHidden" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-isCancelButtonHidden" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
-            name="fusion-ui-checkbox-isCancelButtonHidden"
-            id="fusion-ui-checkbox-isCancelButtonHidden"
+            name="f-checkbox-isCancelButtonHidden"
+            id="f-checkbox-isCancelButtonHidden"
             formControlName="isCancelButtonHidden">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Is Cancel Button Hidden</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Is Cancel Button Hidden</span>
         </label>
       </span>
     </div>
     <!-- END: is cancel button hidden checkbox -->
 
     <!-- START: is progress section checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-isProgressSectionHidden" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-isProgressSectionHidden" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
-            name="fusion-ui-checkbox-isProgressSectionHidden"
-            id="fusion-ui-checkbox-isProgressSectionHidden"
+            name="f-checkbox-isProgressSectionHidden"
+            id="f-checkbox-isProgressSectionHidden"
             formControlName="isProgressSectionHidden">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Is Progress Section Hidden</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Is Progress Section Hidden</span>
         </label>
       </span>
     </div>
     <!-- END: is progress section checkbox -->
 
     <!-- START: is progress in bytes checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-isProgressInBytes" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-isProgressInBytes" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
-            name="fusion-ui-checkbox-isProgressInBytes"
-            id="fusion-ui-checkbox-isProgressInBytes"
+            name="f-checkbox-isProgressInBytes"
+            id="f-checkbox-isProgressInBytes"
             formControlName="isProgressInBytes">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Is Progress In Bytes</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Is Progress In Bytes</span>
         </label>
       </span>
     </div>
     <!-- END: is progress in bytes checkbox -->
 
     <!-- START: make upload error checkbox -->
-    <div class="fusion-ui-form__fieldset">
-      <span class="fusion-ui-form__checkbox">
-        <label for="fusion-ui-checkbox-makeUploadError" class="fusion-ui-form__checkbox-label">
+    <div class="f-form__fieldset">
+      <span class="f-form__checkbox">
+        <label for="f-checkbox-makeUploadError" class="f-form__checkbox-label">
           <input
-            class="fusion-ui-form__checkbox-input"
+            class="f-form__checkbox-input"
             type="checkbox"
             value="true"
-            name="fusion-ui-checkbox-makeUploadError"
-            id="fusion-ui-checkbox-makeUploadError"
+            name="f-checkbox-makeUploadError"
+            id="f-checkbox-makeUploadError"
             formControlName="makeUploadError">
-          <span class="fusion-ui-form__checkbox-button"></span>
-          <span class="fusion-ui-form__checkbox-label-text">Simulate Upload Error</span>
+          <span class="f-form__checkbox-button"></span>
+          <span class="f-form__checkbox-label-text">Simulate Upload Error</span>
         </label>
       </span>
     </div>
@@ -204,7 +204,7 @@
   </form>
 
   <ng-container result>
-    <fusion-ui-upload
+    <f-upload
       [uploadFilesFunction]="uploadFilesFunction.bind(this)"
       [removeFilesFunction]="removeFilesFunction.bind(this)"
 
@@ -223,14 +223,14 @@
       (uploadUpdated)="uploadUpdated($event)"
       (uploadFinished)="uploadFinished($event)"
       (uploadCancelled)="uploadCancelled($event)">
-    </fusion-ui-upload>
+    </f-upload>
 
     <div class="fusion-components-demo__result-events">
       <div class="fusion-components-demo__result-event" [ngClass]="{ 'fusion-components-demo__result-event--emitted' : fileSelectionCount }">File Selection ({{ fileSelectionCount }})</div>
       <div class="fusion-components-demo__result-event" [ngClass]="{ 'fusion-components-demo__result-event--emitted' : uploadUpdatedCount }">Upload Updated ({{ uploadUpdatedCount }})</div>
       <div class="fusion-components-demo__result-event" [ngClass]="{ 'fusion-components-demo__result-event--emitted' : uploadFinishedCount }">Upload Finished ({{ uploadFinishedCount }})</div>
       <div class="fusion-components-demo__result-event" [ngClass]="{ 'fusion-components-demo__result-event--emitted' : uploadCancelledCount }">Upload Cancelled ({{ uploadCancelledCount }})</div>
-      <fusion-ui-button text="Reset State" (buttonClick)="resetState()"></fusion-ui-button>
+      <f-button text="Reset State" (buttonClick)="resetState()"></f-button>
     </div>
   </ng-container>
 
