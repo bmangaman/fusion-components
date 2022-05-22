@@ -14,7 +14,7 @@ import {
   TableFilterConfig,
   TableView,
 } from '@fusion-components/lib/components/table';
-import { unsubscribeSubject } from '@hcc/app/shared/utilities/utils';
+import { unsubscribeSubject } from '@fusion-components/lib/shared/utilities';
 import { TableQueryParamsParser } from './table-query-params-parser';
 import { AppliedSort, ParamData } from './table-query-params-parser.interface';
 
@@ -49,9 +49,9 @@ export class DeepLinkedTableDirective implements AfterViewInit, OnDestroy {
 
   paramData: ParamData = {
     filters: [],
-    sort: null,
+    sort: undefined,
     columns: [],
-    view: null
+    view: undefined
   };
 
   private _destroy$: Subject<void> = new Subject<void>();
@@ -90,35 +90,35 @@ export class DeepLinkedTableDirective implements AfterViewInit, OnDestroy {
     this.route.queryParams.pipe(take(1)).subscribe((qParams: Params) => {
       let hasChanges = false;
 
-      if (qParams.view) {
-        this.paramData.view = TableQueryParamsParser.getViewFromQueryParams(qParams.view, this.allViews);
+      if (qParams['view']) {
+        this.paramData.view = TableQueryParamsParser.getViewFromQueryParams(qParams['view'], this.allViews);
         if (this.paramData.view) {
           // If no valid filters were parsed then don't update.
-          this.table.appliedTableView = this.paramData.view;
+          this.table!.appliedTableView = this.paramData.view;
         }
         hasChanges = true;
       }
 
-      if (qParams.filters) {
-        this.paramData.filters = TableQueryParamsParser.getFiltersFromQueryParams(qParams.filters, this.allFilters);
+      if (qParams['filters']) {
+        this.paramData.filters = TableQueryParamsParser.getFiltersFromQueryParams(qParams['filters'], this.allFilters);
         if (this.paramData.filters.length) {
           // If no valid filters were parsed then don't update.
-          this.table.appliedFilters = this.paramData.filters;
+          this.table!.appliedFilters = this.paramData.filters;
         }
         hasChanges = true;
       }
 
-      if (qParams.sort) {
-        this.paramData.sort = TableQueryParamsParser.getSortFromQueryParams(qParams.sort, this.allColumns);
+      if (qParams['sort']) {
+        this.paramData.sort = TableQueryParamsParser.getSortFromQueryParams(qParams['sort'], this.allColumns);
         hasChanges = true;
       }
 
       // Since the sort is stored in the column configs we must update the columns if either the sort or the columns have been provided.
-      if (qParams.columns || this.paramData.sort) {
+      if (qParams['columns'] || this.paramData.sort) {
         const columns = TableQueryParamsParser.getColumnsFromQueryParams(
-          qParams.columns, this.allColumns, this.paramData.sort ?? this.defaultSort);
+          qParams['columns'], this.allColumns, this.paramData.sort ?? this.defaultSort);
 
-        this.table.defaultColumns = columns;
+        this.table!.defaultColumns = columns;
 
         if (!this.isDefaultColumns(columns)) {
           // If the parsed columns are different than the default columns then update the param data.
@@ -141,10 +141,10 @@ export class DeepLinkedTableDirective implements AfterViewInit, OnDestroy {
    * Method that subscribes to all the relevant event emitters on the table and uses their outputs to update the query params.
    */
   setupChangeListeners(): void {
-    this.table.filterChange.pipe(takeUntil(this._destroy$)).subscribe(filters => this.handleFiltersChange(filters));
-    this.table.columnVisibilityChange.pipe(takeUntil(this._destroy$)).subscribe(columns => this.handleColumnsChange(columns));
-    this.table.sortChange.pipe(takeUntil(this._destroy$)).subscribe(sort => this.handleSortChange(sort));
-    this.table.viewChange.pipe(takeUntil(this._destroy$)).subscribe(view => this.handleViewChange(view));
+    this.table!.filterChange.pipe(takeUntil(this._destroy$)).subscribe(filters => this.handleFiltersChange(filters));
+    this.table!.columnVisibilityChange.pipe(takeUntil(this._destroy$)).subscribe(columns => this.handleColumnsChange(columns));
+    this.table!.sortChange.pipe(takeUntil(this._destroy$)).subscribe(sort => this.handleSortChange(sort));
+    this.table!.viewChange.pipe(takeUntil(this._destroy$)).subscribe(view => this.handleViewChange(view));
   }
 
   /**
@@ -173,12 +173,12 @@ export class DeepLinkedTableDirective implements AfterViewInit, OnDestroy {
    */
   handleSortChange(sort: TableColumnConfig): void {
     const newSort: AppliedSort = {
-      field: sort.field,
+      field: sort.field!,
       order: sort.sorted === TableColumnSorted.ASCENDING ? -1 : 1
     };
 
     if (isEqual(this.defaultSort, newSort)) {
-      this.paramData.sort = null;
+      this.paramData.sort = undefined;
     } else {
       this.paramData.sort = newSort;
     }
@@ -206,7 +206,7 @@ export class DeepLinkedTableDirective implements AfterViewInit, OnDestroy {
    */
   handleViewChange(view: TableView): void {
     if (isEqual(this.defaultView, view)) {
-      this.paramData.view = null;
+      this.paramData.view = undefined;
     } else {
       this.paramData.view = view;
     }
@@ -233,16 +233,16 @@ export class DeepLinkedTableDirective implements AfterViewInit, OnDestroy {
    * @private
    */
   private init(): void {
-    this.allColumns = this.table.columns.toArray();
-    this.allFilters = this.table.filters.toArray();
-    this.allViews = this.table.tableViews;
+    this.allColumns = this.table!.columns.toArray();
+    this.allFilters = this.table!.filters.toArray();
+    this.allViews = this.table!.tableViews;
     this.allColumnVisibleFields = this.allColumns.filter(c => c.isVisible).map(c => c.field);
     // Grab all the visible columns.
-    this.defaultView = this.table.appliedTableView;
+    this.defaultView = this.table!.appliedTableView;
     // Grab any default applied quick filters and any other filters that were applied.
     this.defaultFilters = [
-      ...(this.table.quickFilters?.filter(qf => qf.isApplied) ?? []),
-      ...(this.table.appliedFilters?.filter(af => af.isApplied) ?? []),
+      ...(this.table!.quickFilters?.filter(qf => qf.isApplied) ?? []),
+      ...(this.table!.appliedFilters?.filter(af => af.isApplied) ?? []),
     ];
     this.defaultSort = this.getDefaultSort();
   }
@@ -254,9 +254,9 @@ export class DeepLinkedTableDirective implements AfterViewInit, OnDestroy {
    * @private
    */
   private getDefaultSort(): AppliedSort {
-    const sortColumn: TableColumnComponent = this.allColumns.find(column => column.sorted !== undefined);
+    const sortColumn: TableColumnComponent | undefined = this.allColumns.find(column => column.sorted !== undefined);
     return {
-      field: sortColumn?.field,
+      field: sortColumn?.field || '',
       order: sortColumn?.sorted === TableColumnSorted.ASCENDING ? -1 : 1
     };
   }
@@ -272,8 +272,8 @@ export class DeepLinkedTableDirective implements AfterViewInit, OnDestroy {
     const filteredColumns = columns.filter(c => c.isVisible);
     let defaultColumnFields: string [];
 
-    if (this.table.appliedTableView?.columns) {
-      defaultColumnFields = this.table.appliedTableView.columns.filter(c => c.isVisible).map(c => c.field);
+    if (this.table!.appliedTableView?.columns) {
+      defaultColumnFields = this.table!.appliedTableView.columns.filter(c => c.isVisible).map(c => c.field!) || [];
     } else {
       defaultColumnFields = this.allColumnVisibleFields;
     }

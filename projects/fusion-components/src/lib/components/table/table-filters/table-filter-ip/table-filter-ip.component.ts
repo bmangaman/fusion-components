@@ -6,7 +6,7 @@ import { map, takeUntil } from 'rxjs/operators';
 
 import { FilterComparator } from '../table-filter-comparator';
 import { TableFilterComponent } from '../table-filter/table-filter.component';
-import { TableFilterIpInputComparator, TableFilterIpTranslations } from './table-filter-ip.interface';
+import { TableFilterIpForm, TableFilterIpInputComparator, TableFilterIpTranslations } from './table-filter-ip.interface';
 
 @Component({
   selector: 'f-table-ip-filter',
@@ -15,13 +15,13 @@ import { TableFilterIpInputComparator, TableFilterIpTranslations } from './table
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableFilterIpComponent extends TableFilterComponent implements OnInit {
-  TableFilter = TableFilterIpComponent;
+  override TableFilter = TableFilterIpComponent;
 
   isContainsOrDoesNotContainSelector: boolean;
 
-  @Input() translations: TableFilterIpTranslations;
+  @Input() override translations: TableFilterIpTranslations;
 
-  filterComparators: FilterComparator[] = [
+  override filterComparators: FilterComparator[] = [
     {
       name: TableFilterIpInputComparator.IS,
       label: this.generateComparatorLabel(TableFilterIpInputComparator.IS),
@@ -80,9 +80,9 @@ export class TableFilterIpComponent extends TableFilterComponent implements OnIn
    * @param comparator The filter comparator enum.
    * @returns Either the string provided by the translations input or the translated value.
    */
-  generateComparatorLabel(comparator: TableFilterIpInputComparator): string | Observable<string> {
+  override generateComparatorLabel(comparator: TableFilterIpInputComparator): string | Observable<string> {
     if (this.translations?.comparators && this.translations.comparators[comparator]) {
-      return this.translations.comparators[comparator];
+      return this.translations.comparators[comparator]!;
     }
     return this.translateService.get(`${this.translationService.baseTranslationKey}.table.filters.ip.comparators.${comparator}`);
   }
@@ -94,9 +94,9 @@ export class TableFilterIpComponent extends TableFilterComponent implements OnIn
    * @param form Optional. Form to get input values.
    * @returns Either a string or observable string, depending on what the type of selected filter comparator label.
    */
-  generateDisplayString(comparator?: Partial<FilterComparator>, form?: any): string | Observable<string> {
+  override generateDisplayString(comparator?: Partial<FilterComparator>, form?: any): string | Observable<string> {
     const currentComparator: Partial<FilterComparator> = comparator || this.selectedFilterComparator?.value;
-    const label: string | Observable<string> = currentComparator?.label;
+    const label: string | Observable<string> = currentComparator?.label || '';
 
     if (currentComparator?.name === TableFilterIpInputComparator.IS || currentComparator?.name === TableFilterIpInputComparator.IS_NOT) {
       const value: any = form?.ip || this.getFormValue();
@@ -120,7 +120,7 @@ export class TableFilterIpComponent extends TableFilterComponent implements OnIn
    * Builds the filterForm.
    * Automatically called in the constructor (inherited from the tableFilter class).
    */
-  buildForm(): void {
+  override buildForm(): void {
     this.filterForm = this.fb.group({
       ip: [null, Validators.required],
       octet1: [null],
@@ -136,9 +136,9 @@ export class TableFilterIpComponent extends TableFilterComponent implements OnIn
    *
    * @returns Either the ip string or the octet number.
    */
-  getFormValue(): string | number[] {
+  override getFormValue(): string | number[] {
     this.isContainsOrDoesNotContainSelector = this.testIfIsContainsOrDoesNotContainSelector();
-    return this.isContainsOrDoesNotContainSelector ? this.getOctetsValues() : this.filterForm.get('ip').value;
+    return this.isContainsOrDoesNotContainSelector ? this.getOctetsValues() : this.filterForm.get('ip')!.value;
   }
 
   /**
@@ -161,18 +161,12 @@ export class TableFilterIpComponent extends TableFilterComponent implements OnIn
    * @private
    */
   private getOctetsValues(formObj?: Record<string, any>): number[] {
-    const formValue: {
-      ip: string,
-      octet1: number,
-      octet2: number,
-      octet3: number,
-      octet4: number,
-    } = formObj ?? this.filterForm.getRawValue();
+    const formValue: TableFilterIpForm = formObj ?? this.filterForm.getRawValue();
     const octets: number[] = [];
 
     for (let i = 1; i < 5; i++) {
-      const value: number = formValue[`octet${i}`];
-      octets.push(!!value || value === 0 ? value : null);
+      const value: number = formValue[`octet${i}` as keyof TableFilterIpForm] as unknown as number;
+      octets.push((!!value || value === 0 ? value : null) as number);
     }
 
     return octets;
@@ -188,10 +182,10 @@ export class TableFilterIpComponent extends TableFilterComponent implements OnIn
     const octets: string[] = dataAsString.split('.');
     if (octets.length === 4) {
       if (octets.some(o => o !== 'x')) {
-        const form = { ip: null };
+        const form: TableFilterIpForm = { ip: null } as unknown as TableFilterIpForm;
         const parsedOctets = dataAsString.split('.').map(octet => octet === 'x' ? null : octet);
         parsedOctets.forEach((octet, idx) => {
-          form[`octet${idx + 1}`] = !!octet ? Number(octet) : null;
+          form[`octet${idx + 1}` as keyof TableFilterIpForm] = (!!octet ? octet : null) as string;
         });
 
         this.filterForm.setValue(form);
@@ -207,9 +201,9 @@ export class TableFilterIpComponent extends TableFilterComponent implements OnIn
    *
    * @returns True if the input(s) is/are invalid (do NOT have values), false otherwise.
    */
-  isFormInvalid(): boolean {
+  override isFormInvalid(): boolean {
     return this.isContainsOrDoesNotContainSelector
       ? !(this.getFormValue() as number[]).some((octet: number) => !!octet || octet === 0)
-      : !this.filterForm.get('ip').value;
+      : !this.filterForm.get('ip')!.value;
   }
 }

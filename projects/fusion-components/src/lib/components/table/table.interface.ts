@@ -53,13 +53,13 @@ export interface TableConfig {
   tableViews?: TableView[];
   appliedTableViewName?: string;
   refresh?: () => void;
-  sortChange?: (...args) => void;
-  expansionChange?: (...args) => void;
-  selectChange?: (...args) => void;
-  columnVisibilityChange?: (...args) => void;
-  filterChange?: (...args) => void;
-  viewChange?: (...args) => void;
-  finalTableDataChange?: (...args) => void;
+  sortChange?: (...args: unknown[]) => void;
+  expansionChange?: (...args: unknown[]) => void;
+  selectChange?: (...args: unknown[]) => void;
+  columnVisibilityChange?: (...args: unknown[]) => void;
+  filterChange?: (...args: unknown[]) => void;
+  viewChange?: (...args: unknown[]) => void;
+  finalTableDataChange?: (...args: unknown[]) => void;
 }
 
 /**

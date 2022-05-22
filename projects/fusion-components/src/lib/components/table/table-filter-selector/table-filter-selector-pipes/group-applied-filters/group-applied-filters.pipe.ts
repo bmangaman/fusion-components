@@ -16,7 +16,7 @@ export class GroupAppliedFiltersPipe implements PipeTransform {
    * Groups the provided applied filters by their names.
    *
    * @param appliedFilters The applied filters to be grouped.
-   * @param filters All of the available filters.
+   * @param filtersList All of the available filters.
    * @returns The filters grouped together to be displayed in the filter selector component.
    */
   transform(appliedFilters: TableFilterComponent[], filtersList: QueryList<TableFilterComponent>): AppliedFilterGroup[] {
@@ -32,8 +32,8 @@ export class GroupAppliedFiltersPipe implements PipeTransform {
       const filterGroup: AppliedFilterGroup = {
         filterName: filter.filterName,
         applications: appliedFilters.filter((appliedFilter: TableFilterComponent) => {
-          const filterNameEqual: boolean = appliedFilter.filterName && filter.filterName && appliedFilter.filterName === filter.filterName;
-          const filterFieldEqual: boolean = appliedFilter.field && filter.field && appliedFilter.field === filter.field;
+          const filterNameEqual: boolean = !!(appliedFilter.filterName && filter.filterName) && appliedFilter.filterName === filter.filterName;
+          const filterFieldEqual: boolean = !!(appliedFilter.field && filter.field) && appliedFilter.field === filter.field;
           return filterNameEqual || filterFieldEqual;
         })
       };

@@ -58,9 +58,9 @@ export class ValidationStylingDirective implements OnInit, OnDestroy {
 
     this.createParentWrapper();
     this.buildIconSpan();
-    this.setStyling(this.control.control.status);
+    this.setStyling(this.control.control!.status);
 
-    this.control.statusChanges.pipe(takeUntil(this.unsubscribe$)).subscribe(status => {
+    this.control.statusChanges!.pipe(takeUntil(this.unsubscribe$)).subscribe(status => {
       this.setStyling(status);
     });
   }

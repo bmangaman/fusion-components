@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SafeHtml } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { ErrorMessage } from '../../components/error-message/error-message.interface';
 import { FusionComponentsTranslationService } from '../translation';
@@ -31,7 +31,7 @@ export class ErrorMessageGeneratorService {
    * @param config Optional configuration to update the priority, error, or text.
    * @returns The generated error message.
    */
-  required(config?: ErrorMessageGeneratorConfig): ErrorMessage {
+  required(config: ErrorMessageGeneratorConfig): ErrorMessage {
     return this.generateError(config, 'required');
   }
 
@@ -41,7 +41,7 @@ export class ErrorMessageGeneratorService {
    * @param config Optional configuration to update the priority, error, or text.
    * @returns The generated error message.
    */
-  minLength(config?: ErrorMessageMinlengthGeneratorConfig): ErrorMessage {
+  minLength(config: ErrorMessageMinlengthGeneratorConfig): ErrorMessage {
     return this.generateError(config, 'minlength');
   }
 
@@ -51,7 +51,7 @@ export class ErrorMessageGeneratorService {
    * @param config Optional configuration to update the priority, error, or text.
    * @returns The generated error message.
    */
-  maxLength(config?: ErrorMessageMaxlengthGeneratorConfig): ErrorMessage {
+  maxLength(config: ErrorMessageMaxlengthGeneratorConfig): ErrorMessage {
     return this.generateError(config, 'maxlength');
   }
 
@@ -62,10 +62,12 @@ export class ErrorMessageGeneratorService {
    * @param defaultError Optional. The default error (associated with react validator).
    * @returns The generated error message.
    */
-  generateError(config?: ErrorMessageGeneratorConfig, defaultError?: string): ErrorMessage {
-    const priority: number = config?.priority;
-    const error: string = config?.error || defaultError;
-    const translation: Observable<string | SafeHtml> = config?.translation || this.getTranslation(config?.translationConfig, error);
+  generateError(config: ErrorMessageGeneratorConfig, defaultError?: string): ErrorMessage {
+    const priority: number | undefined = config.priority;
+    const error: string = config.error || defaultError || '';
+    const translation: Observable<string | SafeHtml> =
+      config.translation ||
+      (config.translationConfig ? this.getTranslation(config.translationConfig, error) : of(''));
 
     return { priority, translation, error };
   }

@@ -79,7 +79,7 @@ export class TableColumnComponent implements AfterContentInit {
   /**
    * Determines whether or not the column is sorted, and if so, how (ascending vs descending).
    */
-  @Input() sorted: TableColumnSorted;
+  @Input() sorted: TableColumnSorted | undefined;
 
   /**
    * Determines whether or not the column is sortable; by default true.

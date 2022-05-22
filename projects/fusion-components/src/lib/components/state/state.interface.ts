@@ -34,7 +34,7 @@ export interface StateMessages {
 export const DEFAULT_STATE_MESSAGES: StateMessages = {
   [State.ERROR]: 'Refresh the page to try again. If the problem persists, contact your technical support engineer.',
   [State.NOT_LOADED]: 'There was a problem generating this view. Check your permissions and try again.',
-  [State.NO_RESULTS]: null,
+  [State.NO_RESULTS]: '',
 };
 
 export interface StateMessageTemplates {

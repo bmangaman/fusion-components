@@ -162,7 +162,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
     return this._tableUuid;
   }
 
-  private _previousData: TableRowData;
+  private _previousData: TableRowData[];
   /**
    * Determines the data to be displayed in the table.
    *
@@ -182,7 +182,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
 
     if (!!data?.length) {
       this.data.forEach((d: TableRowData) => {
-        const sameData: TableRowData = this._previousData ?
+        const sameData: TableRowData | null | undefined = this._previousData ?
           this._previousData.find((td: TableRowData) => this.isRowTableDataEqual(td, d)) :
           null;
 
@@ -362,7 +362,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
   @Input()
   set tableViews(views: TableView[]) {
     this._tableViews = views;
-    const seletedTableView: TableView = this.tableViews.find((view: TableView) => view.isSelected);
+    const seletedTableView: TableView | undefined = this.tableViews.find((view: TableView) => view.isSelected);
     this.appliedTableView = this.appliedTableView || seletedTableView;
   }
   get tableViews(): TableView[] {
@@ -377,7 +377,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
   set appliedTableViewName(name: string) {
     this._appliedTableViewName = name;
 
-    const matchingView: TableView = this.tableViews?.find((view: TableView) => view.name === name);
+    const matchingView: TableView | undefined = this.tableViews?.find((view: TableView) => view.name === name);
     if (matchingView) {
       this.appliedTableView = matchingView;
     }
@@ -500,7 +500,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
   constructor(
     private elementRef: ElementRef,
     private renderer: Renderer2,
-    protected translationService: FusionComponentsTranslationService,
+    protected override translationService: FusionComponentsTranslationService,
     private cdr: ChangeDetectorRef,
   ) {
     super(translationService);
@@ -582,7 +582,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
    *  - unsubscribes for any active subscriptions (super.ngOnDestroy())
    *  - unlistens and clears the resizeIndicatorVisibleListener
    */
-  ngOnDestroy(): void {
+  override ngOnDestroy(): void {
     super.ngOnDestroy();
     this.unlistenToResizeIndicatorVisibleMouseMove();
   }
@@ -620,7 +620,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
         case TableTemplate.ROW_ACTIONS:
           this._rowActions = {
             template: item.template,
-            dialogCssClasses: item.attributes?.dialogCssClasses,
+            dialogCssClasses: item.attributes?.['dialogCssClasses'],
           };
           this.enabledFunctionality.rowActions = !!this.rowActions;
           break;
@@ -640,7 +640,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
    */
   // eslint-disable-next-line complexity
   ngOnChanges(c: SimpleChanges): void {
-    if (c.type) {
+    if (c['type']) {
       const isTableTypeAdvanced: boolean = this.type === TableType.ADVANCED;
       this.enabledFunctionality.controls = isTableTypeAdvanced;
       this.enabledFunctionality.pagination = isTableTypeAdvanced;
@@ -650,19 +650,19 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
       this.updateSortingOnDataChange();
     }
 
-    if (c.selectionMode) {
+    if (c['selectionMode']) {
       this.enabledFunctionality.rowSelection = !!this.selectionMode;
     }
 
-    if (c.tableTitle) {
+    if (c['tableTitle']) {
       this.enabledFunctionality.header = !!this.tableTitle || !!this.tableHeader;
     }
 
-    if (c.fillContainer || c.spacing || c.state || c.type ) {
+    if (c['fillContainer'] || c['spacing'] || c['state'] || c['type'] ) {
       this.generateTableCssClasses();
     }
 
-    if (c.rowExpansionMode) {
+    if (c['rowExpansionMode']) {
       this.enabledFunctionality.rowExpansion = !!this.rowExpansionMode && !!this.rowExpansion;
     }
   }
@@ -683,7 +683,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
     if (config) {
       // Set the sort input of the column with the field indicated in the provided config
       this.visibleColumns?.forEach((col: TableColumnComponent) => {
-        col.sorted = config.field === col.field ? config.sorted : null;
+        col.sorted = config.field === col.field ? config.sorted : undefined;
       });
 
       if (!!startingData?.length) {
@@ -693,10 +693,10 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
         let sortedData: TableRowData[];
         if (!!config.sortFunction) {
           sortedData = startingData.sort(
-          (a: TableRowData, b: TableRowData) =>  config.sortFunction(a, b, config.field, config.sorted));
+          (a: TableRowData, b: TableRowData) =>  config.sortFunction!(a, b, config.field!, config.sorted));
         } else {
           sortedData = startingData.sort(
-            (a: TableRowData, b: TableRowData) => CaseSensitiveSort(a, b, config.field, config.sorted));
+            (a: TableRowData, b: TableRowData) => CaseSensitiveSort(a, b, config.field!, config.sorted));
         }
         this.sortedTableData$.next(sortedData);
       } else {
@@ -788,7 +788,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
         this.sortTableData(this.visibleColumns[alreadySortColIndex].config, isNewData);
       }
     } else {
-      this.sortTableData(null, isNewData);
+      this.sortTableData(undefined, isNewData);
     }
   }
 
@@ -828,8 +828,10 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
         // Either select or deselect the desired row
         } else {
           if (!!row) {
-            const matchingData: TableRowData = finalTableData.find(d => d.tableRowUuid === row.tableRowUuid);
-            matchingData.isSelected = !matchingData.isSelected;
+            const matchingData: TableRowData | undefined = finalTableData.find(d => d.tableRowUuid === row.tableRowUuid);
+            if (matchingData) {
+              matchingData.isSelected = !matchingData.isSelected;
+            }
           }
         }
       }
@@ -837,13 +839,15 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
       // If SelectionMode is SINGLE (radio buttons)
       if (this.selectionMode === SelectionMode.SINGLE) {
         if (!!row) {
-          const matchingData: TableRowData = finalTableData.find(d => d.tableRowUuid === row.tableRowUuid);
+          const matchingData: TableRowData | undefined = finalTableData.find(d => d.tableRowUuid === row.tableRowUuid);
 
           finalTableData
             .filter((d: TableRowData) => d.isSelected && d.isSelectable)
             .forEach((d: TableRowData) => d.isSelected = false);
 
-          matchingData.isSelected = !row.isSelected;
+          if (matchingData) {
+            matchingData.isSelected = !row.isSelected;
+          }
         }
       }
     }
@@ -1062,16 +1066,16 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
             col.sorted = undefined;
           }
 
-          const matchingColViewConfig: TableColumnConfig =
+          const matchingColViewConfig: TableColumnConfig | undefined =
             this.appliedTableView?.columns?.find((viewCol: TableColumnConfig) => col.field === viewCol.field);
-          Object.keys(matchingColViewConfig || {}).forEach((key: string) => col[key] = matchingColViewConfig[key]);
+          Object.keys(matchingColViewConfig || {}).forEach((key: string) => (col as any)[key] = (matchingColViewConfig as any)[key]);
         }
 
         // Only use the default column configs when a new set of columns are found (on table load)
         if (columns || viewChangeOrDefaultCols === ViewChangeOrDefaultCols.DEFAULT_COLS) {
-          const matchingDefaultColConfig: TableColumnConfig =
+          const matchingDefaultColConfig: TableColumnConfig | undefined =
             this.defaultColumns?.find((config: TableColumnConfig) => config.field === col.field);
-          Object.keys(matchingDefaultColConfig || {}).forEach((key: string) => col[key] = matchingDefaultColConfig[key]);
+          Object.keys(matchingDefaultColConfig || {}).forEach((key: string) => (col as any)[key] = (matchingDefaultColConfig as any)[key]);
         }
       });
 
@@ -1105,8 +1109,10 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
    */
   stopResize(colField: string, updatedWidth: string): void {
     this.unlistenToResizeIndicatorVisibleMouseMove();
-    const matchingColumn: TableColumnComponent = this.columns.toArray().find((col: TableColumnComponent) => col.field === colField);
-    matchingColumn.updatedWidth = updatedWidth;
+    const matchingColumn: TableColumnComponent | undefined = this.columns.toArray().find((col: TableColumnComponent) => col.field === colField);
+    if (matchingColumn) {
+      matchingColumn.updatedWidth = updatedWidth;
+    }
   }
 
   /**

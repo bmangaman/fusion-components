@@ -120,7 +120,7 @@ export class TablePaginationComponent extends TranslatedComponent implements OnI
   /**
    * On component unload, unsubscribe from all active subscriptions.
    */
-  ngOnDestroy(): void {
+  override ngOnDestroy(): void {
     Utils.unsubscribeAll(this.subscriptions);
   }
 
@@ -129,7 +129,7 @@ export class TablePaginationComponent extends TranslatedComponent implements OnI
    * If a default option is set via the provided config, use that option, otherwise, just use the first option.
    */
   setDefaultResultsPerPage(): void {
-    const defaultOption: ResultsPerPageOption = this.config.resultsPerPageOptions.find((option: ResultsPerPageOption) => option.isDefault);
+    const defaultOption: ResultsPerPageOption | undefined = this.config.resultsPerPageOptions.find((option: ResultsPerPageOption) => option.isDefault);
     this.numResultsPerPage.setValue((defaultOption ? defaultOption.value : this.config.resultsPerPageOptions[0].value));
   }
 

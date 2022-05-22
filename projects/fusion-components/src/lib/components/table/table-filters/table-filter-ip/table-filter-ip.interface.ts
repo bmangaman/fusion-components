@@ -19,3 +19,11 @@ export interface TableFilterIpTranslations extends TableFilterTranslations {
     ip?: string;
   };
 }
+
+export interface TableFilterIpForm {
+  octet1: string;
+  octet2: string;
+  octet3: string;
+  octet4: string;
+  ip: string;
+}

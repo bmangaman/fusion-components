@@ -20,24 +20,24 @@
     <!-- START: Statuses -->
     <div *ngIf="!!statuses && !!statuses?.length" class="f-card__title-statuses">
       <ng-container *ngFor="let status of statuses">
-        <div *ngIf="!status?.isHidden" class="f-card__title-status f-card__title-status--{{ status?.status | getStatusLevelText:null:true }}">
+        <div *ngIf="!!status && !status.isHidden" class="f-card__title-status f-card__title-status--{{ status.status | getStatusLevelText:undefined:true }}">
           <i
-            *ngIf="!status?.isIconHidden"
+            *ngIf="!status.isIconHidden"
             aria-hidden="true"
-            class="mdi f-card__title-status-icon f-card__title-status-icon--{{ status?.status | getStatusLevelText:null:true }}"
+            class="mdi f-card__title-status-icon f-card__title-status-icon--{{ status.status | getStatusLevelText:undefined:true }}"
             [ngClass]="{
-              'mdi-help-circle' : status?.status === StatusLevel.UNKNOWN,
-              'mdi-circle' : status?.status === StatusLevel.BASE || status?.status === StatusLevel.NORMAL,
-              'mdi-check-circle' : status?.status === StatusLevel.SUCCESS,
-              'mdi-alert' : status?.status === StatusLevel.WARNING,
-              'mdi-alert-circle' : status?.status === StatusLevel.ERROR,
-              'mdi-close-circle' : status?.status === StatusLevel.CRITICAL
+              'mdi-help-circle' : status.status === StatusLevel.UNKNOWN,
+              'mdi-circle' : status.status === StatusLevel.BASE || status?.status === StatusLevel.NORMAL,
+              'mdi-check-circle' : status.status === StatusLevel.SUCCESS,
+              'mdi-alert' : status.status === StatusLevel.WARNING,
+              'mdi-alert-circle' : status.status === StatusLevel.ERROR,
+              'mdi-close-circle' : status.status === StatusLevel.CRITICAL
             }">
           </i>
-          <div *ngIf="status?.count" class="f-card__title-status-count">{{ status?.count }}</div>
-          <div *ngIf="!status?.isTextHidden" class="f-card__title-status-text">
-            <ng-container *ngIf="!!status?.text; else defaultStatus">{{ (status.text | instanceOf:Observable) ? (status.text | async) : status.text }}</ng-container>
-            <ng-template #defaultStatus>{{ status?.status | getStatusLevelText:translations?.statuses }}</ng-template>
+          <div *ngIf="status.count" class="f-card__title-status-count">{{ status?.count }}</div>
+          <div *ngIf="!status.isTextHidden" class="f-card__title-status-text">
+            <ng-container *ngIf="!!status.text; else defaultStatus">{{ (status.text | instanceOf:Observable) ? (status.text | async) : status.text }}</ng-container>
+            <ng-template #defaultStatus>{{ status.status | getStatusLevelText:translations?.statuses }}</ng-template>
           </div>
         </div>
       </ng-container>

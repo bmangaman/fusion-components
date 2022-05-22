@@ -55,7 +55,7 @@ export class ModalService {
 
   private _modals: ActiveModal<any>[] = [];
   get modals(): ActiveModal<any>[] {
-    return [].concat(this._modals);
+    return [ ...this._modals ];
   }
 
   constructor(
@@ -91,7 +91,7 @@ export class ModalService {
 
     // If opening a FULL modal on top of another FULL modal then offset it.
     if (config.modalConfig.type === ModalType.FULL) {
-      const existingFullModals: ActiveModal<any>[] = this._modals.filter(x => x.modalConfig.type === ModalType.FULL);
+      const existingFullModals: ActiveModal<any>[] = this._modals.filter(x => x.modalConfig?.type === ModalType.FULL);
 
       if (existingFullModals.length) {
         config.modalConfig.addOffSetWidth = `${this.FULL_MODAL_OFFSET * existingFullModals.length}px`;
@@ -122,12 +122,13 @@ export class ModalService {
       .pipe(tap(() => {
         // Set the state so that the modal can animate out.
         modalComponent.changeState();
+        const modalConfigType = config.modalConfig!.type!.toUpperCase() as keyof typeof ModalAnimationSpeeds;
         setTimeout(
           () => {
             // After the modal has animated out remove it from the DOM.
-            this.closeModal(config.id);
+            this.closeModal(config.id!);
           },
-          ModalAnimationSpeeds[config.modalConfig.type.toUpperCase()] + 100);
+          ModalAnimationSpeeds[modalConfigType] + 100);
       }));
   }
 
@@ -143,9 +144,9 @@ export class ModalService {
       // Clean up modal component and content component by calling destroy(). This will trigger the
       // ngOnDestroy lifecycle hook before the elements are removed from the DOM.
       const openModal: ActiveModal<any> = this.modals[index];
-      openModal.componentRef.destroy();
-      openModal.contentComponentRef.destroy();
-      this.domService.removeComponent(openModal.appendedElement);
+      openModal.componentRef!.destroy();
+      openModal.contentComponentRef!.destroy();
+      this.domService.removeComponent(openModal.appendedElement!);
       this._modals.splice(index, 1);
     }
   }
@@ -155,7 +156,7 @@ export class ModalService {
    */
   closeAllModals(): void {
     while(this._modals.length > 0) {
-      this.closeModal(this._modals[0].id);
+      this.closeModal(this._modals[0].id!);
     }
   }
 }

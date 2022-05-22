@@ -223,7 +223,9 @@ function localeCompareSupportsLocales(): boolean {
   try {
     'foo'.localeCompare('bar', 'i');
   } catch (e) {
-    return e.name === 'RangeError';
+    if (e instanceof Error) {
+      return e.name === 'RangeError';
+    }
   }
   return false;
 }

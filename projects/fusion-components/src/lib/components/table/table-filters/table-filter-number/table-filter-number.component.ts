@@ -20,11 +20,11 @@ import { TableFilterNumberInputComparator, TableFilterNumberTranslations } from 
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableFilterNumberComponent extends TableFilterComponent {
-  TableFilter = TableFilterNumberComponent;
+  override TableFilter = TableFilterNumberComponent;
 
-  @Input() translations: TableFilterNumberTranslations;
+  @Input() override translations: TableFilterNumberTranslations;
 
-  filterComparators: FilterComparator[] = [
+  override filterComparators: FilterComparator[] = [
     {
       name: TableFilterNumberInputComparator.EQUAL_TO,
       label: this.generateComparatorLabel(TableFilterNumberInputComparator.EQUAL_TO),
@@ -59,9 +59,9 @@ export class TableFilterNumberComponent extends TableFilterComponent {
    * @param comparator The filter comparator enum.
    * @returns Either the string provided by the translations input or the translated value.
    */
-  generateComparatorLabel(comparator: TableFilterNumberInputComparator): string | Observable<string> {
+  override generateComparatorLabel(comparator: TableFilterNumberInputComparator): string | Observable<string> {
     if (this.translations?.comparators && this.translations.comparators[comparator]) {
-      return this.translations.comparators[comparator];
+      return this.translations.comparators[comparator]!;
     }
     return this.translateService.get(`${this.translationService.baseTranslationKey}.table.filters.number.comparators.${comparator}`);
   }
@@ -73,7 +73,7 @@ export class TableFilterNumberComponent extends TableFilterComponent {
    * @param form Optional. Form to get input values.
    * @returns Either a string or observable string, depending on what the type of selected filter comparator label.
    */
-  generateDisplayString(comparator?: Partial<FilterComparator>, form?: any): string | Observable<string> {
+  override generateDisplayString(comparator?: Partial<FilterComparator>, form?: any): string | Observable<string> {
     const label: string | Observable<string> = comparator?.label || this.selectedFilterComparator?.value?.label;
     const value: any = form?.number || this.getFormValue();
 
@@ -87,7 +87,7 @@ export class TableFilterNumberComponent extends TableFilterComponent {
    * Builds the filterForm.
    * Automatically called in the constructor (inherited from the tableFilter class).
    */
-  buildForm(): void {
+  override buildForm(): void {
     this.filterForm = this.fb.group({
       number: [null, Validators.required],
     });
@@ -98,8 +98,8 @@ export class TableFilterNumberComponent extends TableFilterComponent {
    *
    * @returns The number input value.
    */
-  getFormValue(): number {
-    return this.filterForm.get('number').value;
+  override getFormValue(): number {
+    return this.filterForm.get('number')!.value;
   }
 
   /**
@@ -108,7 +108,7 @@ export class TableFilterNumberComponent extends TableFilterComponent {
    *
    * @returns True if the form is invalid, false otherwise,
    */
-  isFormInvalid(): boolean {
+  override isFormInvalid(): boolean {
     return this.filterForm.invalid;
   }
 }

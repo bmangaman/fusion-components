@@ -8,6 +8,6 @@ export interface AppliedSort {
 export interface ParamData {
   filters: TableFilterConfig[];
   columns: TableColumnConfig[];
-  sort: AppliedSort;
-  view: TableView;
+  sort?: AppliedSort;
+  view?: TableView;
 }

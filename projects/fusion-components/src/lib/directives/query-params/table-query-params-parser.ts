@@ -37,13 +37,13 @@ export class TableQueryParamsParser {
       const field: string = filterParts[0];
       const comparatorName: string = filterParts[1];
       // There must be a filter directive for the field name
-      const foundFilter: TableFilterComponent = allFilters.find(f => f.field === field);
+      const foundFilter: TableFilterComponent | undefined = allFilters.find(f => f.field === field);
       if (!foundFilter) {
         return;
       }
 
       // There must be a comparator that matches the comparatorName
-      const foundComparator: FilterComparator = foundFilter.filterComparators.find(c => c.name === comparatorName);
+      const foundComparator: FilterComparator | undefined = foundFilter.filterComparators.find(c => c.name === comparatorName);
 
       if (!foundComparator) {
         return;
@@ -84,12 +84,12 @@ export class TableQueryParamsParser {
   /**
    * Sorts are in a structure of 'field:order' where order is always a number.
    */
-  static getSortFromQueryParams(sortParamString: string, allColumns: TableColumnComponent[]): AppliedSort {
+  static getSortFromQueryParams(sortParamString: string, allColumns: TableColumnComponent[]): AppliedSort | undefined {
     const values = /^([^:]+):(-?1)$/.exec(sortParamString);
 
     // A valid sort string must contain 2 parts separated by a ':' and have it's field match some column's field.
     if (values?.length !== 3 || !allColumns.map(c => c.field).includes(values[1])) {
-      return;
+      return undefined;
     }
     return { field: values[1], order: Number(values[2]) };
   }
@@ -132,7 +132,7 @@ export class TableQueryParamsParser {
     return allColumns.map(column =>
       ({
         ...column,
-        sorted: column.field === sort.field ? getSortedType(sort.order) : null,
+        sorted: column.field === sort.field ? getSortedType(sort.order) : undefined,
         isVisible: getIsVisible(column, validColumns)
       }));
   }
@@ -144,7 +144,7 @@ export class TableQueryParamsParser {
    * @param allViews
    */
   static getViewFromQueryParams(viewParamString: string, allViews: TableView[]): TableView {
-    return allViews.find(view => view.name === viewParamString);
+    return allViews.find(view => view.name === viewParamString)!;
   }
 
   /**
@@ -180,24 +180,24 @@ export class TableQueryParamsParser {
       return params;
     }
     const filtersString: string = parsedData.filters.map(f => TableQueryParamsParser.filterToParam(f, allFilters)).join(',');
-    const sortString: string = TableQueryParamsParser.sortToParam(parsedData.sort);
+    const sortString: string = TableQueryParamsParser.sortToParam(parsedData.sort!);
     const columnsString: string = parsedData.columns.filter(c => c.isVisible).map(c => c.field).join(',');
-    const viewString: string = parsedData.view?.name;
+    const viewString: string = parsedData.view?.name || '';
 
     if (filtersString) {
-      params.filters = filtersString;
+      params['filters'] = filtersString;
     }
 
     if (columnsString) {
-      params.columns = columnsString;
+      params['columns'] = columnsString;
     }
 
     if (sortString) {
-      params.sort = sortString;
+      params['sort'] = sortString;
     }
 
     if (viewString) {
-      params.view = viewString;
+      params['view'] = viewString;
     }
 
     return params;
@@ -212,9 +212,9 @@ export class TableQueryParamsParser {
    */
   private static filterToParam(filter: TableFilterConfig, allFilters: TableFilterComponent[]): string {
     const foundFilter = allFilters.find(f => f.field === filter.field);
-    const comparator: FilterComparator = foundFilter?.filterComparators.find(c => c.name === filter.comparatorName);
+    const comparator: FilterComparator | undefined = foundFilter?.filterComparators.find(c => c.name === filter.comparatorName);
     let param = `${filter.field}:${filter.comparatorName}`;
-    const encodeData: string = comparator.encodeQueryParam(filter.formValues);
+    const encodeData: string = comparator ? comparator.encodeQueryParam(filter.formValues) : '';
     if (encodeData) {
       param = `${param}:${encodeData}`;
     }
@@ -266,7 +266,7 @@ export class TableQueryParamsParser {
 
     const regex = RegExp(/,/g);
     const indices: number[] = [];
-    let val: RegExpExecArray = regex.exec(filtersParamString);
+    let val: RegExpExecArray | null = regex.exec(filtersParamString);
 
     while (val !== null) {
       if (val.index === 0) { return []; }
@@ -319,7 +319,7 @@ export class TableQueryParamsParser {
 
     const regex = RegExp(/:/g);
     const indices: number[] = [];
-    let val: RegExpExecArray = regex.exec(filterString);
+    let val: RegExpExecArray | null = regex.exec(filterString);
 
     while (val !== null) {
       if (val.index === 0) { return []; }
