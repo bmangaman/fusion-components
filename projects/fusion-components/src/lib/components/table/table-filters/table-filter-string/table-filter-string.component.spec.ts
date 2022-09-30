@@ -1,4 +1,4 @@
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
@@ -17,7 +17,7 @@ describe('TableFilterStringComponent', () => {
   beforeEach(() => {
     translationService = new FusionComponentsTranslationService();
     translateService = ComponentStubFactory.getTranslateServiceStub();
-    component = new TableFilterStringComponent(new FormBuilder(), translationService, translateService);
+    component = new TableFilterStringComponent(new UntypedFormBuilder(), translationService, translateService);
   });
 
   it('should create', () => {

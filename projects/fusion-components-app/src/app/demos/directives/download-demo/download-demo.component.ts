@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'fusion-demo-download',
@@ -7,11 +7,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./download-demo.component.scss']
 })
 export class DownloadDemoComponent {
-  downloadForm: FormGroup;
+  downloadForm: UntypedFormGroup;
   downloadContent = ['example', 'download', 'content'];
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.buildDownloadform();
   }

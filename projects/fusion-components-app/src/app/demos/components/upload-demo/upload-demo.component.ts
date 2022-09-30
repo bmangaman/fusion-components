@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { UploadInfo } from '@fusion-components';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./upload-demo.component.scss']
 })
 export class UploadDemoComponent {
-  uploadForm: FormGroup;
+  uploadForm: UntypedFormGroup;
 
   fileSelectionCount: number = 0;
   uploadUpdatedCount: number = 0;
@@ -18,7 +18,7 @@ export class UploadDemoComponent {
   uploadCancelledCount: number = 0;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private http: HttpClient,
   ) {
     this.buildUploadForm();

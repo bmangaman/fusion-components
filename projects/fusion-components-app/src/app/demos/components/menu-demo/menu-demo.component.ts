@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 import { Location, Size } from '@fusion-components';
 
@@ -12,11 +12,11 @@ export class MenuDemoComponent {
   readonly Location = Location;
   readonly Size = Size;
 
-  menuForm: FormGroup;
+  menuForm: UntypedFormGroup;
   isMenuDialogOpen: boolean;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.buildMenuForm();
   }

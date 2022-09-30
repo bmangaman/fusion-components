@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 
 import { of } from 'rxjs';
 
@@ -11,8 +11,8 @@ import { ErrorMessage, ErrorMessageGeneratorService } from '@fusion-components';
   styleUrls: ['./error-message-demo.component.scss'],
 })
 export class ErrorMessageDemoComponent {
-  errorMessageForm: FormGroup;
-  errorMessageFormControl: FormControl = new FormControl(
+  errorMessageForm: UntypedFormGroup;
+  errorMessageFormControl: UntypedFormControl = new UntypedFormControl(
       '',
     [
       Validators.required,
@@ -34,7 +34,7 @@ export class ErrorMessageDemoComponent {
   ];
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private errorMessageGenerator: ErrorMessageGeneratorService,
   ) {
     this.buildErrorMessageForm();

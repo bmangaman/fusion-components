@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Size, ProgressBarStatus } from '@fusion-components';
 
 @Component({
@@ -11,10 +11,10 @@ export class ProgressBarDemoComponent {
   readonly Size = Size;
   readonly ProgressBarStatus = ProgressBarStatus;
 
-  progressBarForm: FormGroup;
+  progressBarForm: UntypedFormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.buildProgressBarForm();
   }

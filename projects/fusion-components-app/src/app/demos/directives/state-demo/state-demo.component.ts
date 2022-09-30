@@ -1,5 +1,5 @@
 import { Component, ViewChild, TemplateRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import {
   DEFAULT_STATE_HEADLINES,
   DEFAULT_STATE_MESSAGES,
@@ -23,14 +23,14 @@ export class StateDemoComponent {
   messages: StateMessages;
   messageTemplates: StateMessageTemplates;
 
-  stateForm: FormGroup;
+  stateForm: UntypedFormGroup;
 
   @ViewChild('customErrorMessage') customErrorMessage: TemplateRef<any>;
   @ViewChild('customNotLoadedMessage') customNotLoadedMessage: TemplateRef<any>;
   @ViewChild('customNoResultsMessage') customNoResultsMessage: TemplateRef<any>;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.buildStateForm();
   }
@@ -59,7 +59,7 @@ export class StateDemoComponent {
     });
 
     this.stateForm.valueChanges.subscribe(() => {
-      const form: FormGroup = this.stateForm;
+      const form: UntypedFormGroup = this.stateForm;
 
       this.headlines = {
         [State.NOT_LOADED]: form.get('notLoadedHeadline').value,

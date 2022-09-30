@@ -1,4 +1,4 @@
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 
 import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
@@ -35,17 +35,17 @@ describe('VisibleAppliedFiltersPipe', () => {
    */
   function generateFilters(): void {
     const stringFilter: TableFilterStringComponent =
-      new TableFilterStringComponent(new FormBuilder(), translationService, translateService);
+      new TableFilterStringComponent(new UntypedFormBuilder(), translationService, translateService);
     stringFilter.filterName = 'name';
     stringFilter.isVisible = true;
 
     const stringFilter2: TableFilterStringComponent =
-      new TableFilterStringComponent(new FormBuilder(), translationService, translateService);
+      new TableFilterStringComponent(new UntypedFormBuilder(), translationService, translateService);
     stringFilter2.filterName = 'name2';
     stringFilter2.isVisible = true;
 
     const stringFilter3: TableFilterStringComponent =
-      new TableFilterStringComponent(new FormBuilder(), translationService, translateService);
+      new TableFilterStringComponent(new UntypedFormBuilder(), translationService, translateService);
     stringFilter3.filterName = 'name3';
     stringFilter3.isVisible = false;
 

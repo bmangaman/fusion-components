@@ -1,6 +1,6 @@
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormControl, NgControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
@@ -33,7 +33,7 @@ export class SelectComponent extends TranslatedComponent implements ControlValue
   isDropdownOpen: boolean;
   menuMinHeight: number = 36;
 
-  searchInputControl: FormControl;
+  searchInputControl: UntypedFormControl;
   filteredOptions: SelectOption[] = [];
 
   /**
@@ -169,7 +169,7 @@ export class SelectComponent extends TranslatedComponent implements ControlValue
     super(_translationService);
 
     this._control.valueAccessor = this;
-    this.searchInputControl = new FormControl();
+    this.searchInputControl = new UntypedFormControl();
   }
 
   /**

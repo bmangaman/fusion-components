@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { WizardStep, WizardComponent } from '@fusion-components';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'fusion-demo-wizard',
@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./wizard-demo.component.scss']
 })
 export class WizardDemoComponent {
-  wizardForm: FormGroup;
+  wizardForm: UntypedFormGroup;
 
   steps: WizardStep[] = [
     {
@@ -37,7 +37,7 @@ export class WizardDemoComponent {
   @ViewChild(WizardComponent, { static: false }) wizard: WizardComponent;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.buildWizardForm();
   }

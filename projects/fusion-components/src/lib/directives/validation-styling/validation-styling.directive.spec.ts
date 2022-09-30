@@ -1,5 +1,5 @@
 import { ElementRef, Renderer2 } from '@angular/core';
-import { FormControl, NgControl } from '@angular/forms';
+import { UntypedFormControl, NgControl } from '@angular/forms';
 import { FormInputStatus } from '@fusion-components';
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { Subject } from 'rxjs';
@@ -34,7 +34,7 @@ describe('ValidationStylingDirective', () => {
 
   describe('ngOnInit', () => {
     beforeEach(() => {
-      (directive as any).control.control = new FormControl();
+      (directive as any).control.control = new UntypedFormControl();
     });
 
     it('should set setup everything and call the necessary functions', () => {

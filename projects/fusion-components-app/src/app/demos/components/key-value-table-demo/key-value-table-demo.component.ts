@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { KeyValueTableData } from '@fusion-components';
 
 @Component({
@@ -9,11 +9,11 @@ import { KeyValueTableData } from '@fusion-components';
   styleUrls: ['./key-value-table-demo.component.scss']
 })
 export class KeyValueTableDemoComponent {
-  keyValueTableForm: FormGroup;
+  keyValueTableForm: UntypedFormGroup;
   generatedData: KeyValueTableData[] = [];
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.buildButtonForm();
     this.generateData();

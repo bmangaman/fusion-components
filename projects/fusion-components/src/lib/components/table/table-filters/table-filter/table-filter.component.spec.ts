@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
@@ -18,7 +18,7 @@ describe('TableFilter', () => {
   beforeEach(() => {
     translationService = new FusionComponentsTranslationService();
     translateService = ComponentStubFactory.getTranslateServiceStub();
-    component = new TableFilterComponent(new FormBuilder(), translationService, translateService);
+    component = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
   });
 
   it('should create', () => {
@@ -44,7 +44,7 @@ describe('TableFilter', () => {
 
   describe('getFormValue()', () => {
     it('should return filterForm by default', () => {
-      const form: FormGroup = component.fb.group({});
+      const form: UntypedFormGroup = component.fb.group({});
       component.filterForm = form;
       expect(component.getFormValue()).toEqual(form);
     });
@@ -85,7 +85,7 @@ describe('TableFilter', () => {
 
   describe('isFormInvalid()', () => {
     it('should return false if filterForm is defined, true otherwise', () => {
-      let form: FormGroup = component.fb.group({});
+      let form: UntypedFormGroup = component.fb.group({});
 
       component.filterForm = undefined;
       expect(component.isFormInvalid()).toBeTrue();

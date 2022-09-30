@@ -1,4 +1,4 @@
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 import { ErrorMessageComponent } from './error-message.component';
 
@@ -17,14 +17,14 @@ describe('ErrorMessageComponent', () => {
 
   describe('displayError()', () => {
     it('should return true when the control has errors and is dirty', () => {
-      component.control = new FormControl();
+      component.control = new UntypedFormControl();
       component.control.markAsDirty();
       component.control.setErrors(errors);
       expect(component.displayError()).toBeTruthy();
     });
 
     it('should return true when the control has errors and is touched', () => {
-      component.control = new FormControl();
+      component.control = new UntypedFormControl();
       component.control.markAsTouched();
       component.control.setErrors(errors);
       expect(component.displayError()).toBeTruthy();
@@ -34,11 +34,11 @@ describe('ErrorMessageComponent', () => {
       component.control = undefined;
       expect(component.displayError()).toBeFalsy();
 
-      component.control = new FormControl();
+      component.control = new UntypedFormControl();
       component.control.markAsPristine();
       expect(component.displayError()).toBeFalsy();
 
-      component.control = new FormControl();
+      component.control = new UntypedFormControl();
       component.control.markAsDirty();
       component.control.setErrors(null);
       expect(component.displayError()).toBeFalsy();

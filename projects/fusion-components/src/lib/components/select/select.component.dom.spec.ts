@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, discardPeriodicTasks, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 import { TranslatedComponentSpecModule } from '@fusion-components/unit-test-helpers/translated-component.module.spec';
 import { SelectComponentPageObject } from './select.component.spec.po';
@@ -21,7 +21,7 @@ import { SelectModule } from './select.module';
   `,
 })
 export class SelectTestComponent {
-  control: FormControl = new FormControl();
+  control: UntypedFormControl = new UntypedFormControl();
   label: string;
   options: SelectOption[] = [];
   isSearchable: boolean;

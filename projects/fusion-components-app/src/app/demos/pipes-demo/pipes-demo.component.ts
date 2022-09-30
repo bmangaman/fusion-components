@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { BytesPipeBase, BytesPipe } from 'fusion-components';
 
 @Component({
@@ -11,10 +11,10 @@ export class PipesDemoComponent {
   readonly BytesPipeBase = BytesPipeBase;
   readonly bytesPipe: BytesPipe = new BytesPipe();
   bytesPipeResult: string | number;
-  bytesPipeForm: FormGroup;
+  bytesPipeForm: UntypedFormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.buildAndSubscribeToBytesPipeForm();
   }

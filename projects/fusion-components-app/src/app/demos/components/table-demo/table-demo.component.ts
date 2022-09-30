@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 
 import { BehaviorSubject, interval, Observable, of } from 'rxjs';
 import { debounce, delay } from 'rxjs/operators';
@@ -46,7 +46,7 @@ export class TableDemoComponent implements OnInit {
   generatedData: any[] = [];
   data: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(null);
   tableViews: TableView[] = [];
-  tableDemoForm: FormGroup;
+  tableDemoForm: UntypedFormGroup;
 
   quickFilters: TableFilterConfig[] = [
     {
@@ -107,7 +107,7 @@ export class TableDemoComponent implements OnInit {
   ];
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {}
 
   ngOnInit(): void {

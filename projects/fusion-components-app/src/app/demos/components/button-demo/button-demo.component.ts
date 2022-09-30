@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { ButtonType, Size, State, ButtonInputType } from '@fusion-components';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, Validators, UntypedFormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'fusion-demo-button',
@@ -14,10 +14,10 @@ export class ButtonDemoComponent {
   readonly Size = Size;
   readonly State = State;
 
-  buttonForm: FormGroup;
+  buttonForm: UntypedFormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.buildButtonForm();
   }

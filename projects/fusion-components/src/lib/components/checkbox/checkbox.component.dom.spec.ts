@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 import { CheckboxComponentPageObject } from './checkbox.component.spec.po';
 import { CheckboxModule } from './checkbox.module';
@@ -12,7 +12,7 @@ import { CheckboxModule } from './checkbox.module';
   `,
 })
 export class CheckboxTestComponent {
-  control: FormControl = new FormControl();
+  control: UntypedFormControl = new UntypedFormControl();
   label: string;
 }
 

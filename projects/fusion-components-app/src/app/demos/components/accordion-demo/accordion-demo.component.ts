@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, UntypedFormArray } from '@angular/forms';
 
 import { PanelContentVisibilityChangedEmit, AccordionPanelComponent } from '@fusion-components';
 
@@ -13,10 +13,10 @@ export class AccordionDemoComponent {
 
   isAllExpanded: boolean = false;
   triggerExpandAll: any;
-  accordionForm: FormGroup = new FormGroup({});
+  accordionForm: UntypedFormGroup = new UntypedFormGroup({});
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.buildAccordionForm();
   }
@@ -34,7 +34,7 @@ export class AccordionDemoComponent {
     this.addNewPanel();
   }
 
-  createPanelFormGroup(): FormGroup {
+  createPanelFormGroup(): UntypedFormGroup {
     return this.fb.group({
       id: [''],
       isDisabled: [false],
@@ -45,19 +45,19 @@ export class AccordionDemoComponent {
   }
 
   addNewPanel(): void {
-    (this.accordionForm.get('panels') as FormArray).push(this.createPanelFormGroup());
+    (this.accordionForm.get('panels') as UntypedFormArray).push(this.createPanelFormGroup());
     this.numberOfPanels++;
   }
 
   removePanel(index: number): void {
-    (this.accordionForm.get('panels') as FormArray).removeAt(index);
+    (this.accordionForm.get('panels') as UntypedFormArray).removeAt(index);
   }
 
   updateAccordionForm(event: PanelContentVisibilityChangedEmit): void {
     if (event && event.panels && !!event.panels.length) {
       setTimeout(() => {
         event.panels.forEach((panel: AccordionPanelComponent, index: number) => {
-          const panelFormGroup: FormGroup = (this.accordionForm.get('panels') as FormArray).at(index) as FormGroup;
+          const panelFormGroup: UntypedFormGroup = (this.accordionForm.get('panels') as UntypedFormArray).at(index) as UntypedFormGroup;
           panelFormGroup.get('id')?.setValue(panel.id);
           panelFormGroup.get('isDisabled')?.setValue(panel.isDisabled);
           panelFormGroup.get('isExpanded')?.setValue(panel.isExpanded);

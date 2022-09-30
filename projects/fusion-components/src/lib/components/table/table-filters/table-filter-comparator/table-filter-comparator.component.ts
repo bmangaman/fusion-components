@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { TranslatedComponent } from '@fusion-components/lib/shared';
@@ -20,7 +20,7 @@ import { FilterComparator, FilterComparatorTranslations } from './table-filter-c
 export class TableFilterComparatorComponent extends TranslatedComponent implements OnInit {
   readonly Observable = Observable;
 
-  selectedComparator: FormControl = new FormControl(null, Validators.required);
+  selectedComparator: UntypedFormControl = new UntypedFormControl(null, Validators.required);
 
   /**
    * Determines the comparators to use with a filter.

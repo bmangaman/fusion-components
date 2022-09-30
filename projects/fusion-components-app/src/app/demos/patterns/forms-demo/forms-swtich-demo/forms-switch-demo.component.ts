@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'fusion-demo-forms-switch',
@@ -7,10 +7,10 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['../forms-demo-shared.scss'],
 })
 export class FormsSwitchDemoComponent implements OnInit {
-  switchDemoForm: FormGroup;
+  switchDemoForm: UntypedFormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {}
 
   ngOnInit(): void {

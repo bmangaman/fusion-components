@@ -6,21 +6,17 @@ import { LoadingSpinnerModule } from '../loading-spinner';
 import { StateComponent } from './state.component';
 
 @NgModule({
-  declarations: [
-    StateComponent,
-  ],
-  imports: [
-    CommonModule,
-    LoadingSpinnerModule,
-  ],
-  entryComponents: [
-    StateComponent,
-  ],
-  exports: [
-    CommonModule,
-    LoadingSpinnerModule,
-
-    StateComponent,
-  ],
+    declarations: [
+        StateComponent,
+    ],
+    imports: [
+        CommonModule,
+        LoadingSpinnerModule,
+    ],
+    exports: [
+        CommonModule,
+        LoadingSpinnerModule,
+        StateComponent,
+    ]
 })
 export class StateComponentsModule { }

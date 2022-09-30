@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { BaseModalComponent, Size, ModalConfig, ModalService, ModalType, OpenModalConfig } from '@fusion-components';
 
 @Component({
@@ -11,11 +11,11 @@ export class ModalDemoComponent {
   readonly Size = Size;
   readonly ModalType = ModalType;
 
-  modalForm: FormGroup;
+  modalForm: UntypedFormGroup;
   modalConfig: ModalConfig;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private modalService: ModalService
   ) {
     this.buildModalForm();
@@ -38,7 +38,7 @@ export class ModalDemoComponent {
   }
 
   setModalConfig(): void {
-    const modalForm: FormGroup = this.modalForm;
+    const modalForm: UntypedFormGroup = this.modalForm;
 
     this.modalConfig = {
       type: modalForm.get('type').value,
@@ -94,7 +94,7 @@ export class ModalDemoComponent {
 })
 export class InnerModalComponent extends BaseModalComponent {
   modalConfig: ModalConfig;
-  modalForm: FormGroup;
+  modalForm: UntypedFormGroup;
   readonly ModalType = ModalType;
   longContent = {
     show: false,

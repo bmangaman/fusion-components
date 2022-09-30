@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 import { BehaviorSubject, Subscription } from 'rxjs';
 
@@ -28,7 +28,7 @@ export class TablePaginationComponent extends TranslatedComponent implements OnI
 
   numOfPages: number = 1;
   oldNumResultsPerPage: number;
-  numResultsPerPage: FormControl = new FormControl();
+  numResultsPerPage: UntypedFormControl = new UntypedFormControl();
   currentPageIndex: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   numSelectedRows: number;
   numDeselectableSelectedRows: number;

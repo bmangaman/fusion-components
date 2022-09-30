@@ -1,5 +1,5 @@
 import { ChangeDetectorRef } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Params } from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -26,23 +26,23 @@ function generateFilterComponents(): TableFilterComponent[] {
   const translateService: TranslateService = ComponentStubFactory.getTranslateServiceStub();
 
   const filterComponents: TableFilterComponent[] = [];
-  const stringFilterComponent = new TableFilterStringComponent(new FormBuilder(), translationService, translateService);
+  const stringFilterComponent = new TableFilterStringComponent(new UntypedFormBuilder(), translationService, translateService);
   stringFilterComponent.field = 'stringField';
   filterComponents.push(stringFilterComponent);
 
-  const numberFilterComponent = new TableFilterNumberComponent(new FormBuilder(), translationService, translateService);
+  const numberFilterComponent = new TableFilterNumberComponent(new UntypedFormBuilder(), translationService, translateService);
   numberFilterComponent.field = 'numberField';
   filterComponents.push(numberFilterComponent);
 
-  const ipAddressFilterDirective = new TableFilterIpComponent(new FormBuilder(), translationService, translateService);
+  const ipAddressFilterDirective = new TableFilterIpComponent(new UntypedFormBuilder(), translationService, translateService);
   ipAddressFilterDirective.field = 'ipField';
   filterComponents.push(ipAddressFilterDirective);
 
-  const filterComponent = new TableFilterComponent(new FormBuilder(), translationService, translateService);
+  const filterComponent = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
   filterComponent.field = 'field';
   filterComponents.push(filterComponent);
 
-  const bytesFilterComponent = new TableFilterBytesComponent(new FormBuilder(), translationService, translateService);
+  const bytesFilterComponent = new TableFilterBytesComponent(new UntypedFormBuilder(), translationService, translateService);
   bytesFilterComponent.field = 'bytesField';
   filterComponents.push(bytesFilterComponent);
 

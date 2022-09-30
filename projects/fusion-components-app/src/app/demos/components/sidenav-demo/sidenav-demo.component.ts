@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 import { of } from 'rxjs';
 
@@ -11,11 +11,11 @@ import { NavItem } from '@fusion-components/lib/components/sidenav/sidenav.inter
   styleUrls: ['./sidenav-demo.component.scss']
 })
 export class SidenavDemoComponent {
-  sidenavForm: FormGroup;
+  sidenavForm: UntypedFormGroup;
   navItems: NavItem[];
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.buildSidenavForm();
     this.buildNavItems();

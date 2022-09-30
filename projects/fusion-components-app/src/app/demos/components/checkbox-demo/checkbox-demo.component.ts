@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'fusion-demo-checkbox',
@@ -7,12 +7,12 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./checkbox-demo.component.scss']
 })
 export class CheckboxDemoComponent {
-  checkboxForm: FormGroup;
+  checkboxForm: UntypedFormGroup;
 
-  checkboxFormControl: FormControl = new FormControl(null);
+  checkboxFormControl: UntypedFormControl = new UntypedFormControl(null);
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.buildSelectForm();
   }

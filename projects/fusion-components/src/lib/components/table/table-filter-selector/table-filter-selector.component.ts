@@ -15,7 +15,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, Subscription } from 'rxjs';
@@ -56,7 +56,7 @@ export class TableFilterSelectorComponent extends TranslatedComponent implements
 
   subscriptions: Subscription[] = [];
   isMenuDialogOpen = false;
-  filterField: FormControl = new FormControl(null, Validators.required);
+  filterField: UntypedFormControl = new UntypedFormControl(null, Validators.required);
   tableFilter: TableFilterComponent;
   appliedFilters: TableFilterComponent[] = [];
 
@@ -392,7 +392,7 @@ export class TableFilterSelectorComponent extends TranslatedComponent implements
    * @returns The generated table filter component.
    */
   generateFilter(config: TableFilterConfig, isViewFilter?: boolean): TableFilterComponent {
-    const filter: TableFilterComponent = new config.filter(new FormBuilder(), this.translationService, this.translateService);
+    const filter: TableFilterComponent = new config.filter(new UntypedFormBuilder(), this.translationService, this.translateService);
 
     // Loops through all the config keys and sets the filter keys to the same values
     Object.keys(config).forEach((key: string) => (filter as any)[key] = (config as any)[key]);

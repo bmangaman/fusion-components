@@ -1,5 +1,5 @@
 import { QueryList } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 
 import { cloneDeep } from 'lodash';
@@ -64,23 +64,23 @@ describe('GroupAppliedFiltersPipe', () => {
    */
   function generateFilters(): void {
     const stringFilter: TableFilterStringComponent =
-      new TableFilterStringComponent(new FormBuilder(), translationService, translateService);
+      new TableFilterStringComponent(new UntypedFormBuilder(), translationService, translateService);
     stringFilter.filterName = 'name';
     stringFilter.field = 'name';
     stringFilter.isVisible = true;
 
     const numberFilter: TableFilterNumberComponent =
-      new TableFilterNumberComponent(new FormBuilder(), translationService, translateService);
+      new TableFilterNumberComponent(new UntypedFormBuilder(), translationService, translateService);
     numberFilter.filterName = 'count';
     numberFilter.field = 'count';
     numberFilter.isVisible = true;
 
-    const bytesFilter: TableFilterBytesComponent = new TableFilterBytesComponent(new FormBuilder(), translationService, translateService);
+    const bytesFilter: TableFilterBytesComponent = new TableFilterBytesComponent(new UntypedFormBuilder(), translationService, translateService);
     bytesFilter.filterName = 'size';
     bytesFilter.field = 'size';
     bytesFilter.isVisible = false;
 
-    const ipFilter: TableFilterIpComponent = new TableFilterIpComponent(new FormBuilder(), translationService, translateService);
+    const ipFilter: TableFilterIpComponent = new TableFilterIpComponent(new UntypedFormBuilder(), translationService, translateService);
     ipFilter.filterName = 'ip';
     ipFilter.field = 'ip';
     ipFilter.isVisible = true;

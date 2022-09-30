@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { StatusLevel, Size } from '@fusion-components';
 
 @Component({
@@ -11,10 +11,10 @@ export class BadgeDemoComponent {
   readonly Size = Size;
   readonly StatusLevel = StatusLevel;
 
-  badgeForm: FormGroup;
+  badgeForm: UntypedFormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.buildBadgeForm();
   }

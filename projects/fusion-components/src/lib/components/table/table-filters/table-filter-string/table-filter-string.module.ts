@@ -8,28 +8,24 @@ import { TableFilterComparatorModule } from '../table-filter-comparator';
 import { TableFilterStringComponent } from './table-filter-string.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    TableFilterComparatorModule,
-    TableFilterModule,
-    TranslateModule,
-  ],
-  declarations: [
-    TableFilterStringComponent,
-  ],
-  exports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    TableFilterComparatorModule,
-    TableFilterModule,
-
-    TableFilterStringComponent,
-  ],
-  entryComponents: [
-    TableFilterStringComponent,
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        TableFilterComparatorModule,
+        TableFilterModule,
+        TranslateModule,
+    ],
+    declarations: [
+        TableFilterStringComponent,
+    ],
+    exports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        TableFilterComparatorModule,
+        TableFilterModule,
+        TableFilterStringComponent,
+    ]
 })
 export class TableFilterStringModule {}

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -23,14 +23,14 @@ import { TableFilterTranslations } from './table-filter.interface';
 export class TableFilterComponent extends TranslatedComponent {
   TableFilter = TableFilterComponent;
 
-  get fb(): FormBuilder {
+  get fb(): UntypedFormBuilder {
     return this._fb;
   }
 
   /**
    * The reactive form to be used to take in the inputs used to filter the table data.
    */
-  filterForm: FormGroup;
+  filterForm: UntypedFormGroup;
 
   /**
    * The currently selected filter comparator. Is a BehaviorSubject to make it easier to react/ update the DOM when/ if it changes.
@@ -97,7 +97,7 @@ export class TableFilterComponent extends TranslatedComponent {
    * @param _fb Reactive Forms FormBuilder.
    */
   constructor(
-    private _fb: FormBuilder,
+    private _fb: UntypedFormBuilder,
     protected override translationService: FusionComponentsTranslationService,
     protected translateService: TranslateService,
   ) {

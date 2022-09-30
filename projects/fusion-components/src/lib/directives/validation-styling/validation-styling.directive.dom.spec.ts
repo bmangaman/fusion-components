@@ -1,6 +1,6 @@
 import { Component, DebugElement, OnInit } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { ValidationStylingDirective } from './validation-styling.directive';
 
@@ -12,10 +12,10 @@ import { ValidationStylingDirective } from './validation-styling.directive';
   `
 })
 class TestComponent implements OnInit {
-  public validationStylingDemoForm: FormGroup;
+  public validationStylingDemoForm: UntypedFormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
   ) {}
 
   ngOnInit(): void {

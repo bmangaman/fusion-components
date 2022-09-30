@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { InfoBoxDetail, WidgetTemplate, StatusLevel } from '@fusion-components';
 
 @Component({
@@ -57,10 +57,10 @@ export class WidgetDemoComponent {
     key6: WidgetTemplate.INFO_BOX,
   }
 
-  widgetForm: FormGroup;
+  widgetForm: UntypedFormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.buildWidgetdForm();
   }

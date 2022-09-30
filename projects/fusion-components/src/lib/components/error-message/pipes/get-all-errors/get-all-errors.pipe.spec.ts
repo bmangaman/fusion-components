@@ -1,4 +1,4 @@
-import { AbstractControl, FormControl } from '@angular/forms';
+import { AbstractControl, UntypedFormControl } from '@angular/forms';
 import { SafeHtml } from '@angular/platform-browser';
 import { cloneDeep } from 'lodash';
 import { of, zip } from 'rxjs';
@@ -45,7 +45,7 @@ describe('GetAllErrorsPipe', () => {
     beforeEach(() => {
       testErrorMessages = cloneDeep(errorMessages);
       testErrors = cloneDeep(errors);
-      testControl = new FormControl();
+      testControl = new UntypedFormControl();
       testControl.setErrors(testErrors);
     });
 

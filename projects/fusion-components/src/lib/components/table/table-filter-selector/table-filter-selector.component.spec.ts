@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, ComponentFactoryResolver, QueryList, ViewContainerRef } from '@angular/core';
 import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -72,8 +72,8 @@ describe('TableFilterSelectorComponent', () => {
         const filters: QueryList<TableFilterComponent> = new QueryList<TableFilterComponent>();
         // eslint-disable-next-line @typescript-eslint/dot-notation
         filters['_results'] = [
-          new TableFilterComponent(new FormBuilder(), translationService, translateService),
-          new TableFilterComponent(new FormBuilder(), translationService, translateService),
+          new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService),
+          new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService),
         ];
         component.filters = filters;
         expect(component.filters).toEqual(filters);
@@ -106,9 +106,9 @@ describe('TableFilterSelectorComponent', () => {
       it('should remove all applied view table filters', () => {
         spyOn(component, 'removeFilter').and.stub();
 
-        const appliedFilter1: TableFilterComponent = new TableFilterComponent(new FormBuilder(), translationService, translateService);
+        const appliedFilter1: TableFilterComponent = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
         appliedFilter1.isViewFilter = false;
-        const appliedFilter2: TableFilterComponent = new TableFilterComponent(new FormBuilder(), translationService, translateService);
+        const appliedFilter2: TableFilterComponent = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
         appliedFilter2.isViewFilter = true;
         const appliedFilter3: TableFilterComponent = undefined;
 
@@ -256,7 +256,7 @@ describe('TableFilterSelectorComponent', () => {
     it('should update the tableFilter', () => {
       component.tableFilter = undefined;
       component.tableFilterTemplate = new TableFilterHostDirective(viewContainerRef);
-      component.loadComponent(new TableFilterComponent(new FormBuilder(), translationService, translateService));
+      component.loadComponent(new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService));
       expect(component.tableFilter).toBeDefined();
     });
   });
@@ -266,7 +266,7 @@ describe('TableFilterSelectorComponent', () => {
       component.tableFilter = undefined;
       expect(component.isFormInvalid()).toBeTrue();
 
-      component.tableFilter = new TableFilterComponent(new FormBuilder(), translationService, translateService);
+      component.tableFilter = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
 
       const tableFilterIsFormInvalidSpy: jasmine.Spy = spyOn(component.tableFilter, 'isFormInvalid');
       const filterFieldInvalidSpy: jasmine.Spy = spyOnProperty(component.filterField, 'invalid');
@@ -361,8 +361,8 @@ describe('TableFilterSelectorComponent', () => {
     let addedTableFilter: TableFilterComponent;
 
     beforeEach(() => {
-      tableFilter = new TableFilterComponent(new FormBuilder(), translationService, translateService);
-      addedTableFilter = new TableFilterComponent(new FormBuilder(), translationService, translateService);
+      tableFilter = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
+      addedTableFilter = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
 
       component.appliedFilters = [tableFilter];
     });
@@ -386,7 +386,7 @@ describe('TableFilterSelectorComponent', () => {
     beforeEach(() => {
       spyOn(component, 'filterData').and.stub();
 
-      filter = new TableFilterStringComponent(new FormBuilder(), translationService, translateService);
+      filter = new TableFilterStringComponent(new UntypedFormBuilder(), translationService, translateService);
       filter.TableFilter = TableFilterStringComponent;
       filter.selectedFilterComparator.next(filter.filterComparators[0]); // IS
       filter.filterForm.patchValue({ string: 'data' });
@@ -461,7 +461,7 @@ describe('TableFilterSelectorComponent', () => {
       spyOn(component.filteredData, 'emit').and.stub();
       spyOn(component.appliedFiltersChange, 'emit').and.stub();
 
-      appliedFilter = new TableFilterStringComponent(new FormBuilder(), translationService, translateService);
+      appliedFilter = new TableFilterStringComponent(new UntypedFormBuilder(), translationService, translateService);
       appliedFilter.uuid = '1';
       appliedFilter.TableFilter = TableFilterStringComponent;
       appliedFilter.selectedFilterComparator.next(appliedFilter.filterComparators[0]); // IS
@@ -543,7 +543,7 @@ describe('TableFilterSelectorComponent', () => {
 
   describe('removeFilter()', () => {
     beforeEach(() => {
-      const appliedFilter: TableFilterComponent = new TableFilterStringComponent(new FormBuilder(), translationService, translateService);
+      const appliedFilter: TableFilterComponent = new TableFilterStringComponent(new UntypedFormBuilder(), translationService, translateService);
       appliedFilter.uuid = '1';
       appliedFilter.filterName = 'ID';
       appliedFilter.field = 'id';
@@ -568,7 +568,7 @@ describe('TableFilterSelectorComponent', () => {
       expect(component.appliedFilters.length).toEqual(2);
       expect(component.quickFilters[0].isApplied).toBeTrue();
 
-      component.removeFilter(new TableFilterComponent(new FormBuilder(), translationService, translateService));
+      component.removeFilter(new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService));
       expect(component.appliedFilters.length).toEqual(2);
       expect(component.quickFilters[0].isApplied).toBeTrue();
 
@@ -584,7 +584,7 @@ describe('TableFilterSelectorComponent', () => {
     it('should call filterData() if the filterData flag is true and the filter was found', () => {
       spyOn(component, 'filterData').and.callThrough();
 
-      component.removeFilter(new TableFilterComponent(new FormBuilder(), translationService, translateService), true);
+      component.removeFilter(new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService), true);
       expect(component.filterData).not.toHaveBeenCalled();
 
       component.removeFilter(component.appliedFilters[0], false);
@@ -599,11 +599,11 @@ describe('TableFilterSelectorComponent', () => {
     it('should call removeFilter on all visible applied filters', () => {
       spyOn(component, 'removeFilter').and.callThrough();
 
-      const visibleFilter: TableFilterComponent = new TableFilterComponent(new FormBuilder(), translationService, translateService);
+      const visibleFilter: TableFilterComponent = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
       visibleFilter.uuid = '1';
       visibleFilter.isVisible = true;
 
-      const notVisibleFilter: TableFilterComponent = new TableFilterComponent(new FormBuilder(), translationService, translateService);
+      const notVisibleFilter: TableFilterComponent = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
       notVisibleFilter.uuid = '2';
       notVisibleFilter.isVisible = false;
 
@@ -666,13 +666,13 @@ describe('TableFilterSelectorComponent', () => {
     it('should use the valueTransformFunction of an existing filter', () => {
       config.valueTransformFunction = undefined;
 
-      const filter: TableFilterComponent = new TableFilterComponent(new FormBuilder(), translationService, translateService);
+      const filter: TableFilterComponent = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
       filter.valueTransformFunction = (val: any) => val * 2;
       filter.field = 'field';
 
       const filters: QueryList<TableFilterComponent> = new QueryList<TableFilterComponent>();
       // eslint-disable-next-line @typescript-eslint/dot-notation
-      filters['_results'] = [filter, new TableFilterComponent(new FormBuilder(), translationService, translateService)];
+      filters['_results'] = [filter, new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService)];
       component.filters = filters;
 
       const generatedFilter: TableFilterComponent = component.generateFilter(config);
@@ -704,7 +704,7 @@ describe('TableFilterSelectorComponent', () => {
     it('should return the matching quick filter for the provided filter', () => {
       const quickFilter: TableFilterConfig = {} as TableFilterConfig;
 
-      const filter: TableFilterComponent = new TableFilterNumberComponent(new FormBuilder(), translationService, translateService);
+      const filter: TableFilterComponent = new TableFilterNumberComponent(new UntypedFormBuilder(), translationService, translateService);
       filter.uuid = 'uuid';
       filter.field = 'id';
       filter.filterForm.get('number').setValue(1);

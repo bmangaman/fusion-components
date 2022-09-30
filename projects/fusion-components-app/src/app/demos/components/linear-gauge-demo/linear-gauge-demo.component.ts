@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators, AbstractControl } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, UntypedFormArray, Validators, AbstractControl } from '@angular/forms';
 
 import { StatusLevel, LinearGaugeThreshold, PipeItem, BytesPipe, BytesPipeBase } from '@fusion-components';
 
@@ -15,12 +15,12 @@ export class LinearGaugeDemoComponent {
   dataFormatPipeItem: PipeItem = { pipe: this.bytesPipe, values: [true, BytesPipeBase.TWO, 3] };
   valueFormatPipeItem: PipeItem = { pipe: this.bytesPipe, values: [true, BytesPipeBase.TWO, 2] };
 
-  linearGaugeForm: FormGroup;
+  linearGaugeForm: UntypedFormGroup;
   numOfThresholds: number = 0;
   thresholds: LinearGaugeThreshold[];
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.buildLinearGaugeForm();
   }
@@ -43,11 +43,11 @@ export class LinearGaugeDemoComponent {
   }
 
   updateThresholds(): void {
-    const thresholdsArrayLength: number = (this.linearGaugeForm.get('thresholds') as FormArray).length;
+    const thresholdsArrayLength: number = (this.linearGaugeForm.get('thresholds') as UntypedFormArray).length;
     const thresholds: LinearGaugeThreshold[] = [];
 
     for (let i = 0; i < thresholdsArrayLength; i++) {
-      const threshold: AbstractControl = (this.linearGaugeForm.get('thresholds') as FormArray).at(i);
+      const threshold: AbstractControl = (this.linearGaugeForm.get('thresholds') as UntypedFormArray).at(i);
       thresholds.push({
         title: threshold.get('title').value,
         value: threshold.get('value').value,
@@ -58,12 +58,12 @@ export class LinearGaugeDemoComponent {
     this.thresholds = thresholds;
   }
 
-  createThresholdFormGroup(): FormGroup {
+  createThresholdFormGroup(): UntypedFormGroup {
     let generatedValue = 0;
     let previousThresholdValue: number;
     let previousThresholdLevel: StatusLevel = StatusLevel.WARNING;
 
-    const thresholdsFormArray: FormArray = (this.linearGaugeForm.get('thresholds') as FormArray);
+    const thresholdsFormArray: UntypedFormArray = (this.linearGaugeForm.get('thresholds') as UntypedFormArray);
     const maxValue: number = this.linearGaugeForm.get('maxValue').value;
     const minValue: number = this.linearGaugeForm.get('minValue').value;
 
@@ -91,12 +91,12 @@ export class LinearGaugeDemoComponent {
   }
 
   removeThreshold(index: number): void {
-    (this.linearGaugeForm.get('thresholds') as FormArray).removeAt(index);
+    (this.linearGaugeForm.get('thresholds') as UntypedFormArray).removeAt(index);
     this.numOfThresholds--;
   }
 
   addNewThreshold(): void {
-    (this.linearGaugeForm.get('thresholds') as FormArray).push(this.createThresholdFormGroup());
+    (this.linearGaugeForm.get('thresholds') as UntypedFormArray).push(this.createThresholdFormGroup());
     this.numOfThresholds++;
   }
 }

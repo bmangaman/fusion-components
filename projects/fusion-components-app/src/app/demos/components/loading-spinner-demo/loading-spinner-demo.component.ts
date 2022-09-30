@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Size } from '@fusion-components';
 
 @Component({
@@ -9,10 +9,10 @@ import { Size } from '@fusion-components';
 })
 export class LoadingSpinnerDemoComponent {
   readonly Size = Size;
-  loadingSpinnerForm: FormGroup;
+  loadingSpinnerForm: UntypedFormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.buildLoadingSpinnerForm();
   }

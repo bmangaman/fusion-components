@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationTemplate, NotificationType } from '@fusion-components/lib/components/notification';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'fusion-demo-notification-demo',
@@ -12,13 +12,13 @@ export class NotificationDemoComponent implements OnInit {
   readonly delays = [5, 10, 15];
   readonly NotificationTemplate = NotificationTemplate;
 
-  notificationForm: FormGroup;
+  notificationForm: UntypedFormGroup;
 
   get NotificationBannerType() {
     return NotificationType;
   }
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: UntypedFormBuilder) {
 
   }
 

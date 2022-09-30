@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'fusion-demo-forms-textarea',
@@ -8,9 +8,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class FormsTextareaDemoComponent {
 
-  demoForm = new FormGroup({
-    input: new FormControl('', [Validators.maxLength(8), Validators.required]),
-    input2: new FormControl('', [Validators.maxLength(8), Validators.required])
+  demoForm = new UntypedFormGroup({
+    input: new UntypedFormControl('', [Validators.maxLength(8), Validators.required]),
+    input2: new UntypedFormControl('', [Validators.maxLength(8), Validators.required])
   });
 
   readonly inputExamples: string[] = [

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
 
 import { cloneDeep } from 'lodash';
 import { interval } from 'rxjs';
@@ -13,13 +13,13 @@ import { SelectOption, SelectComponentUtils } from '@fusion-components';
   styleUrls: ['./select-demo.component.scss']
 })
 export class SelectDemoComponent {
-  selectForm: FormGroup;
+  selectForm: UntypedFormGroup;
   selectOptions: SelectOption[] = [];
 
-  selectFormControl: FormControl = new FormControl(null, SelectComponentUtils.selectRequiredValidator);
+  selectFormControl: UntypedFormControl = new UntypedFormControl(null, SelectComponentUtils.selectRequiredValidator);
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.generateSelectOptions(100);
     this.buildSelectForm();

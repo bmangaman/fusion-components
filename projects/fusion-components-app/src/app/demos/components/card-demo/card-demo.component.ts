@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Size, StatusLevel, CardTemplate, CardStatus } from '@fusion-components';
-import { FormGroup, FormBuilder, FormArray, AbstractControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormArray, AbstractControl } from '@angular/forms';
 import { merge } from 'rxjs';
 
 @Component({
@@ -14,12 +14,12 @@ export class CardDemoComponent {
   readonly Size = Size;
   readonly CardTemplate = CardTemplate;
 
-  cardForm: FormGroup;
+  cardForm: UntypedFormGroup;
   statuses: CardStatus[] = [];
   isLoaded: boolean = true;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.buildCardForm();
   }
@@ -53,7 +53,7 @@ export class CardDemoComponent {
     })
   }
 
-  createStatusFormGroup(): FormGroup {
+  createStatusFormGroup(): UntypedFormGroup {
     return this.fb.group({
       status: [StatusLevel.BASE],
       count: [0],
@@ -65,11 +65,11 @@ export class CardDemoComponent {
   }
 
   updateStatuses(): void {
-    const statusesArrayLength: number = (this.cardForm.get('statuses') as FormArray).length;
+    const statusesArrayLength: number = (this.cardForm.get('statuses') as UntypedFormArray).length;
     const statuses: CardStatus[] = [];
 
     for (let i = 0; i < statusesArrayLength; i++) {
-      const status: AbstractControl = (this.cardForm.get('statuses') as FormArray).at(i);
+      const status: AbstractControl = (this.cardForm.get('statuses') as UntypedFormArray).at(i);
       statuses.push({
         status: parseInt(status.get('status').value, 10),
         count: status.get('count').value,
@@ -84,10 +84,10 @@ export class CardDemoComponent {
   }
 
   addNewStatus(): void {
-    (this.cardForm.get('statuses') as FormArray).push(this.createStatusFormGroup());
+    (this.cardForm.get('statuses') as UntypedFormArray).push(this.createStatusFormGroup());
   }
 
   removeStatus(index: number): void {
-    (this.cardForm.get('statuses') as FormArray).removeAt(index);
+    (this.cardForm.get('statuses') as UntypedFormArray).removeAt(index);
   }
 }

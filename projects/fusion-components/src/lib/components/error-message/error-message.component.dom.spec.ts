@@ -1,6 +1,6 @@
 import { Component, DebugElement, OnInit } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { of } from 'rxjs';
@@ -30,7 +30,7 @@ import { ErrorMessageModule } from './error-message.module';
     </form>`
 })
 class TestComponent implements OnInit {
-  testForm: FormGroup;
+  testForm: UntypedFormGroup;
   testInputErrors: ErrorMessage[] = [
     {
       priority: 1,
@@ -55,7 +55,7 @@ class TestComponent implements OnInit {
   ];
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
   ) {}
 
   ngOnInit(): void {

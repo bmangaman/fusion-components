@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { Position, MouseInteraction } from '@fusion-components';
 
@@ -11,10 +11,10 @@ import { Position, MouseInteraction } from '@fusion-components';
 export class TooltipDemoComponent {
   readonly Position = Position;
   readonly MouseInteraction = MouseInteraction;
-  tooltipForm: FormGroup;
+  tooltipForm: UntypedFormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {
     this.buildTooltipForm();
   }

@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, ElementRef, QueryList, Renderer2, SimpleChange, TemplateRef } from '@angular/core';
 import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -67,9 +67,9 @@ describe('TableComponent', () => {
         colC = new TableColumnComponent(changeDetectorRef);
         colC.field = 'c';
 
-        filterA = new TableFilterComponent(new FormBuilder(), translationService, translateService);
+        filterA = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
         filterA.field = 'a';
-        filterC = new TableFilterComponent(new FormBuilder(), translationService, translateService);
+        filterC = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
         filterC.field = 'c';
       });
 
@@ -474,8 +474,8 @@ describe('TableComponent', () => {
 
         filters = new QueryList<TableFilterComponent>();
         filters['_results'] = [
-          new TableFilterComponent(new FormBuilder(), translationService, translateService),
-          new TableFilterComponent(new FormBuilder(), translationService, translateService),
+          new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService),
+          new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService),
         ];
         component.filters = filters;
         expect(component['_filters']).toEqual(filters);
@@ -485,8 +485,8 @@ describe('TableComponent', () => {
         component.type = TableType.BASIC;
         filters = new QueryList<TableFilterComponent>();
         filters['_results'] = [
-          new TableFilterComponent(new FormBuilder(), translationService, translateService),
-          new TableFilterComponent(new FormBuilder(), translationService, translateService),
+          new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService),
+          new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService),
         ];
         component.filters = filters;
         expect(component['_filters']).toEqual(filters);
@@ -759,7 +759,7 @@ describe('TableComponent', () => {
 
       filters = new QueryList<TableFilterComponent>();
       // eslint-disable-next-line @typescript-eslint/dot-notation
-      filters['_results'] = [new TableFilterComponent(new FormBuilder(), translationService, translateService)];
+      filters['_results'] = [new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService)];
       component.filters = filters;
       component.type = TableType.BASIC;
       component.ngOnChanges({
@@ -769,7 +769,7 @@ describe('TableComponent', () => {
 
       filters = new QueryList<TableFilterComponent>();
       // eslint-disable-next-line @typescript-eslint/dot-notation
-      filters['_results'] = [new TableFilterComponent(new FormBuilder(), translationService, translateService)];
+      filters['_results'] = [new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService)];
       component.filters = filters;
       component.type = TableType.ADVANCED;
       component.ngOnChanges({
@@ -1331,7 +1331,7 @@ describe('TableComponent', () => {
   describe('appliedFiltersChange()', () => {
     it('should call filterChange.emit and save the filters if the filters have changed', () => {
       spyOn(component.filterChange, 'emit').and.stub();
-      const filters: TableFilterComponent[] = [new TableFilterComponent(new FormBuilder(), translationService, translateService)];
+      const filters: TableFilterComponent[] = [new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService)];
 
       // New filters
       component.appliedFiltersChange(filters);
@@ -1346,7 +1346,7 @@ describe('TableComponent', () => {
       const column2: TableColumnComponent = new TableColumnComponent(changeDetectorRef);
       column2.field = 'field2';
 
-      const filter1: TableFilterComponent = new TableFilterComponent(new FormBuilder(), translationService, translateService);
+      const filter1: TableFilterComponent = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
       filter1.field = 'field1';
 
       // visibleColumns is undefined, do not update the isFiltered flag

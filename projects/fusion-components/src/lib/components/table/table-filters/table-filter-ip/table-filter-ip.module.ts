@@ -9,30 +9,26 @@ import { TableFilterComparatorModule } from '../table-filter-comparator';
 import { TableFilterIpComponent } from './table-filter-ip.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    EnumToArrayModule,
-    FormsModule,
-    ReactiveFormsModule,
-    TableFilterComparatorModule,
-    TableFilterModule,
-    TranslateModule,
-  ],
-  declarations: [
-    TableFilterIpComponent,
-  ],
-  exports: [
-    CommonModule,
-    EnumToArrayModule,
-    FormsModule,
-    ReactiveFormsModule,
-    TableFilterComparatorModule,
-    TableFilterModule,
-
-    TableFilterIpComponent,
-  ],
-  entryComponents: [
-    TableFilterIpComponent,
-  ],
+    imports: [
+        CommonModule,
+        EnumToArrayModule,
+        FormsModule,
+        ReactiveFormsModule,
+        TableFilterComparatorModule,
+        TableFilterModule,
+        TranslateModule,
+    ],
+    declarations: [
+        TableFilterIpComponent,
+    ],
+    exports: [
+        CommonModule,
+        EnumToArrayModule,
+        FormsModule,
+        ReactiveFormsModule,
+        TableFilterComparatorModule,
+        TableFilterModule,
+        TableFilterIpComponent,
+    ]
 })
 export class TableFilterIpModule {}

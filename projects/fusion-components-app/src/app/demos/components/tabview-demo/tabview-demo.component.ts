@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { TabviewType } from '@fusion-components';
 
 @Component({
@@ -10,10 +10,10 @@ import { TabviewType } from '@fusion-components';
 export class TabviewDemoComponent implements OnInit {
   readonly TabviewType = TabviewType;
 
-  tabviewForm: FormGroup;
+  tabviewForm: UntypedFormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {}
 
   ngOnInit(): void {

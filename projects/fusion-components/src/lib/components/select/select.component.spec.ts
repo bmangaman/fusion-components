@@ -1,5 +1,5 @@
 import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
-import { FormControl, NgControl } from '@angular/forms';
+import { UntypedFormControl, NgControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 
 import { cloneDeep } from 'lodash';
@@ -124,7 +124,7 @@ describe('SelectComponent', () => {
         component.isSearchable = true;
         expect(component.searchInputControl).toBeFalsy();
 
-        component.searchInputControl = new FormControl();
+        component.searchInputControl = new UntypedFormControl();
         component['_value'] = undefined;
         component.isSearchable = true;
         expect(component.searchInputControl.value).toEqual(undefined);
