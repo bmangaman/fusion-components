@@ -17,7 +17,7 @@
       <ng-container *ngTemplateOutlet="menuDialogHeader"></ng-container>
       <f-button
         [classes]="['f-menu__dialog--close-button']"
-        type="secondary"
+        [type]="ButtonType.SECONDARY"
         [size]="Size.X_SMALL"
         [isAutofocused]="isCloseButtonAutofocused"
         [noBorder]="true"

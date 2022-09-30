@@ -5,10 +5,10 @@
     <ng-container *ngFor="let quickFilter of quickFilters">
       <f-button
         [classes]="['f-table__filter-selector-quick-filter-button']"
-        type="secondary"
+        [type]="ButtonType.SECONDARY"
         [size]="Size.X_SMALL"
         [text]="quickFilter.label"
-        [isSelected]="quickFilter.isApplied"
+        [isSelected]="!!quickFilter.isApplied"
         icon="mdi-filter"
         (buttonClick)="toggleQuickFilter(quickFilter)">
       </f-button>
@@ -38,10 +38,10 @@
           *ngIf="(appliedFilters | visibleAppliedFilters)?.length"
           [classes]="['f-table__filter-selector-clear-button']"
           [noBorder]="true"
-          type="secondary"
+          [type]="ButtonType.SECONDARY"
           [size]="Size.SMALL"
-          [isSelected]="(appliedFilters | visibleAppliedFilters)?.length"
-          [text]="(appliedFilters | visibleAppliedFilters)?.length + ' ' + ((appliedFilters | visibleAppliedFilters)?.length > 1
+          [isSelected]="!!(appliedFilters | visibleAppliedFilters)?.length"
+          [text]="(appliedFilters | visibleAppliedFilters)?.length + ' ' + (((appliedFilters | visibleAppliedFilters)?.length || 0) > 1
             ? translations?.filtersApplied || ( baseTranslationKey + '.table.filterSelector.filtersApplied' | translate )
             : translations?.filterApplied || ( baseTranslationKey + '.table.filterSelector.filterApplied' | translate ))"
           icon="mdi-close"
@@ -52,14 +52,14 @@
           class="f-table__filter-selector-open-button-wrapper"
           [classes]="['f-table__filter-selector-open-button']"
           [noBorder]="true"
-          type="secondary"
+          [type]="ButtonType.SECONDARY"
           [size]="Size.SMALL"
-          [isSelected]="(appliedFilters | visibleAppliedFilters)?.length"
+          [isSelected]="!!(appliedFilters | visibleAppliedFilters)?.length"
           icon="mdi-filter"
           [opensMenu]="true"
           [aria]="{
             label: translations?.buttonAria || ( baseTranslationKey + '.table.filterSelector.buttonAria' | translate ),
-            hasPopup: true,
+            haspopup: true,
             controls: translations?.menuDialogLabelledBy || ( baseTranslationKey + '.table.filterSelector.menuDialogLabelledBy' | translate ),
             expanded: isMenuDialogOpen
           }"
@@ -104,7 +104,7 @@
       </f-button>
 
       <!-- START: List of applied filters -->
-      <div class="f-table__filter-selector-filter-list" *ngIf="(appliedFilters | visibleAppliedFilters)?.length > 0">
+      <div class="f-table__filter-selector-filter-list" *ngIf="((appliedFilters | visibleAppliedFilters)?.length || 0) > 0">
         <div class="f-table__filter-selector-filter-list-group" *ngFor="let group of appliedFilters | groupAppliedFilters:filters">
           <div class="f-table__filter-selector-filter-list-group-name">{{ group?.filterName }}</div>
           <div class="f-table__filter-selector-filter-list-group-item" *ngFor="let application of group?.applications">

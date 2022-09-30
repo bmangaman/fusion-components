@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { BaseModalComponent, Size, ModalConfig, ModalService, ModalType, OpenModalConfig } from '@fusion-components';
+import { BaseModalComponent, Size, ModalConfig, ModalService, ModalType, OpenModalConfig, ButtonType } from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-modal',
@@ -8,6 +8,7 @@ import { BaseModalComponent, Size, ModalConfig, ModalService, ModalType, OpenMod
   styleUrls: ['./modal-demo.component.scss']
 })
 export class ModalDemoComponent {
+  readonly ButtonType = ButtonType
   readonly Size = Size;
   readonly ModalType = ModalType;
 
@@ -41,11 +42,11 @@ export class ModalDemoComponent {
     const modalForm: UntypedFormGroup = this.modalForm;
 
     this.modalConfig = {
-      type: modalForm.get('type').value,
-      container: modalForm.get('container').value,
-      size: modalForm.get('size').value,
-      heightAdjustmentElements: modalForm.get('heightAdjustmentElements').value,
-      widthAdjustmentElements: modalForm.get('widthAdjustmentElements').value,
+      type: modalForm.get('type')?.value,
+      container: modalForm.get('container')?.value,
+      size: modalForm.get('size')?.value,
+      heightAdjustmentElements: modalForm.get('heightAdjustmentElements')?.value,
+      widthAdjustmentElements: modalForm.get('widthAdjustmentElements')?.value,
     }
   }
 
@@ -87,7 +88,7 @@ export class ModalDemoComponent {
         class="f-modal__footer-buttons"
       >
         <f-button text="Submit" (buttonClick)="modalClosed.emit('submit button')"></f-button>
-        <f-button text="Cancel" type="secondary" (buttonClick)="modalClosed.emit('cancel button')"></f-button>
+        <f-button text="Cancel" [type]="ButtonType.SECONDARY" (buttonClick)="modalClosed.emit('cancel button')"></f-button>
       </div>
     </f-modal-footer>
   `
@@ -111,7 +112,7 @@ export class InnerModalComponent extends BaseModalComponent {
     super();
   }
 
-  change(x): void {
+  change(x: boolean): void {
     this.longContent.show = x;
     this.cdr.detectChanges();
   }

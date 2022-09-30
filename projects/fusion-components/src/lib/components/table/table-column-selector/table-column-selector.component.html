@@ -16,11 +16,11 @@
       <f-button
         [classes]="['f-table__column-selector-button']"
         [noBorder]="true"
-        type="secondary"
+        [type]="ButtonType.SECONDARY"
         [opensMenu]="true"
         [aria]="{
           label: translations?.buttonAria || ( baseTranslationKey + '.table.columnSelector.buttonAria' | translate ),
-          hasPopup: true,
+          haspopup: true,
           controls: translations?.menuDialogLabelledBy || ( baseTranslationKey + '.table.columnSelector.menuDialogLabelledBy' | translate ),
           expanded: isMenuDialogOpen
         }"

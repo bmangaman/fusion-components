@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { from, Observable } from 'rxjs';
 
-import { SidenavModule, FusionComponentsTranslationService, WindowProvider } from 'fusion-components';
+import { SidenavModule, FusionComponentsTranslationService, WindowProvider } from '@fusion-components';
 
 import { UploadDemoInterceptor } from './demos/components/upload-demo/upload-demo.interceptor';
 

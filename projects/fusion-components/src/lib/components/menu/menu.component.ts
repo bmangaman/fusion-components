@@ -20,6 +20,7 @@ import { TemplateDirective } from '@fusion-components/lib/directives/template';
 import { DocumentClickService } from '@fusion-components/lib/services/document-click';
 import { Location, Size } from '@fusion-components/lib/shared';
 
+import { ButtonType } from '../button';
 import { MenuAria, MenuTemplate } from './menu.interface';
 
 interface WidthAndHeightAttributes {
@@ -39,6 +40,7 @@ interface WidthAndHeightAttributes {
   styleUrls: ['menu.component.scss'],
 })
 export class MenuComponent implements OnInit, AfterContentInit, OnChanges, OnDestroy {
+  readonly ButtonType = ButtonType;
   readonly Location = Location;
   readonly Size = Size;
 

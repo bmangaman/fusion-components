@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { TableModule } from 'fusion-components';
+import { TableModule } from '@fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { TypographyPatternComponent } from './typography-pattern.component';

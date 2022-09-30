@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { BytesPipeBase, BytesPipe } from 'fusion-components';
+import { BytesPipeBase, BytesPipe } from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-pipes',
@@ -22,10 +22,10 @@ export class PipesDemoComponent {
   buildAndSubscribeToBytesPipeForm(): void {
     const setPipeResults = () => {
       this.bytesPipeResult = this.bytesPipe.transform(
-        this.bytesPipeForm.get('bytes').value,
-        this.bytesPipeForm.get('base').value,
-        this.bytesPipeForm.get('includeUnit').value,
-        this.bytesPipeForm.get('precision').value,
+        this.bytesPipeForm.get('bytes')?.value,
+        this.bytesPipeForm.get('base')?.value,
+        this.bytesPipeForm.get('includeUnit')?.value,
+        this.bytesPipeForm.get('precision')?.value,
       );
     }
 

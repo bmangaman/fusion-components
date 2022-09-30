@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, QueryList } from '@angular/core';
 
 import { Location, Size, TranslatedComponent } from '../../../shared';
+import { ButtonType } from '../../button';
 import { TableColumnComponent } from '../table-column/table-column.component';
 import { TableColumnSelectorTranslations } from './table-column-selector.interface';
 
@@ -16,6 +17,7 @@ import { TableColumnSelectorTranslations } from './table-column-selector.interfa
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableColumnSelectorComponent extends TranslatedComponent {
+  readonly ButtonType = ButtonType;
   readonly Location = Location;
   readonly Size = Size;
 

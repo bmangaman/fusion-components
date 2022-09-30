@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { TabviewModule, PipesModule } from 'fusion-components';
+import { TabviewModule, PipesModule } from '@fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { TokensPatternComponent } from './tokens-pattern.component';

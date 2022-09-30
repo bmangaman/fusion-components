@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 
-import { State, TableTemplate, TableType, TableColumnSorted } from 'fusion-components';
+import { State, TableTemplate, TableType, TableColumnSorted } from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-typography',

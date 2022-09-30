@@ -8,7 +8,7 @@ import {
   StateHeadlines,
   StateMessages,
   StateMessageTemplates,
-} from 'fusion-components';
+} from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-state',
