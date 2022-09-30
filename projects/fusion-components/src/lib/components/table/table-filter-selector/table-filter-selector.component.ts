@@ -63,7 +63,7 @@ export class TableFilterSelectorComponent extends TranslatedComponent implements
   /**
    * Determines the translations used for any static text.
    */
-  @Input() translations: TableFilterSelectorTranslations;
+  @Input() translations: TableFilterSelectorTranslations | undefined;
 
   /**
    * Determines the quick filters to be displayed to the left of the filter selector menu button.
@@ -143,8 +143,8 @@ export class TableFilterSelectorComponent extends TranslatedComponent implements
    */
   private _data: TableRowData[] = [];
   @Input()
-  set data(data: TableRowData[]) {
-    this._data = cloneDeep(data);
+  set data(data: TableRowData[] | null) {
+    this._data = data ? cloneDeep(data) : [];
     this.filterData();
   }
   get data(): TableRowData[] {

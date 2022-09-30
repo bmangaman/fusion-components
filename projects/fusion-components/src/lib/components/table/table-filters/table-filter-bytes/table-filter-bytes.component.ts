@@ -33,7 +33,7 @@ export class TableFilterBytesComponent extends TableFilterComponent {
 
   bytesOptions: (BiBytesUnit | BytesUnit)[] = this.enumToArrayPipe.transform(BiBytesUnit) as (BiBytesUnit | BytesUnit)[];
 
-  @Input() override translations: TableFilterBytesTranslations;
+  @Input() override translations: TableFilterBytesTranslations | undefined;
 
   override filterComparators: FilterComparator[] = [
     {

@@ -110,10 +110,10 @@
       [ngStyle]="{left: resizeXCoordinate + 'px'}">
     </span>
 
-    <div class="f-table__state f-table__state--{{ state | getTableState: flags?.noResults }}">
+    <div class="f-table__state f-table__state--{{ state | getTableState: !!flags?.noResults }}">
       <ng-container
         *fusionUiState="
-          state | getTableState: flags?.noResults; location: StateLocation.TABLE;
+          state | getTableState: !!flags?.noResults; location: StateLocation.TABLE;
           error:tableError;
           loading:tableLoading;
           noResults:tableNoResults;">
@@ -127,7 +127,7 @@
   <!-- START: pagination -->
   <f-table-pagination
     *ngIf="enabledFunctionality?.pagination"
-    [isDisabled]="(state | getTableState: flags?.noResults) !== State.LOADED"
+    [isDisabled]="(state | getTableState: !!flags?.noResults) !== State.LOADED"
     [data]="filteredTableData$ | async"
     [config]="paginationConfig"
     [translations]="translations?.pagination"
@@ -158,7 +158,7 @@
                 <input
                   class="f-form__checkbox-input"
                   type="checkbox"
-                  (change)="updateSelectedData(null, true)"
+                  (change)="updateSelectedData(undefined, true)"
                   name="f-table-{{ tableUuid }}-checkbox-toggle-all"
                   id="f-table-{{ tableUuid }}-checkbox-toggle-all"
                   [attr.aria-label]="translations?.selection?.selectAll || ( baseTranslationKey + '.table.selection.selectAll' | translate )"
@@ -217,7 +217,7 @@
       </tr>
     </thead>
 
-    <tbody class="f-table__table-tbody" *ngIf="(state | getTableState: flags?.noResults) === State.LOADED">
+    <tbody class="f-table__table-tbody" *ngIf="(state | getTableState: !!flags?.noResults) === State.LOADED">
       <ng-container *ngFor="let rowData of finalTableData | visibleTableRows ; index as i; trackBy: rowTrackByFn">
         <tr
           class="f-table__table-row f-table__table-row--body f-table__table-row--{{ i }} f-table__table-row--{{ rowData?.tableRowUuid }}"
@@ -333,7 +333,7 @@
           *ngIf="enabledFunctionality?.rowExpansion && rowData?.isExpanded"
           class="f-table__table-row f-table__table-row--body f-table__table-row--expansion"
           [ngClass]="{ 'f-table__table-row--gray' : i % 2 !== 0 }">
-          <td [attr.colspan]="visibleColumns?.length + (!!rowExpansion ? 1 : 0) + (!!rowActions ? 1 : 0) + (!!selectionMode ? 1 : 0)">
+          <td [attr.colspan]="(visibleColumns?.length || 0) + (!!rowExpansion ? 1 : 0) + (!!rowActions ? 1 : 0) + (!!selectionMode ? 1 : 0)">
             <ng-container *ngTemplateOutlet="rowExpansion; context: { $implicit: rowData }"></ng-container>
           </td>
         </tr>

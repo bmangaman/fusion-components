@@ -113,7 +113,7 @@
                 {{ (displayString() | instanceOf: Observable) ? (displayString() | async) : displayString() }}
               </ng-container>
               <ng-template #standardText>
-                {{ (application?.selectedFilterComparator?.value?.label | instanceOf: Observable) ? (application?.selectedFilterComparator?.value?.label | async) : application?.selectedFilterComparator?.value?.label }} {{ application?.getFormValue() }}
+                {{ application?.selectedFilterComparator?.value ? (application.selectedFilterComparator.value | getComparatorLabel | async) : '' }} {{ application?.getFormValue() }}
               </ng-template>
             </div>
             <f-button

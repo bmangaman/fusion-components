@@ -24,7 +24,7 @@ export class TableFilterStringComponent extends TableFilterComponent implements 
 
   hideInput: boolean;
 
-  @Input() override translations: TableFilterStringTranslations;
+  @Input() override translations: TableFilterStringTranslations | undefined;
 
   override filterComparators: FilterComparator[] = [
     {

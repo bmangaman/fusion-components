@@ -48,7 +48,7 @@ export class TablePaginationComponent extends TranslatedComponent implements OnI
    *  - page navigation labels
    *  - view all for number of results per page
    */
-  @Input() translations: TablePaginationTranslations;
+  @Input() translations: TablePaginationTranslations | undefined;
 
   /**
    * Determines the configuration of the pagination area. Provides control over the results per page select dropdown.
@@ -72,7 +72,7 @@ export class TablePaginationComponent extends TranslatedComponent implements OnI
    */
   private _data: TableRowData[] = [];
   @Input()
-  set data(data: TableRowData[]) {
+  set data(data: TableRowData[] | null) {
     this._data = data || [];
     this.updateTableData();
   }

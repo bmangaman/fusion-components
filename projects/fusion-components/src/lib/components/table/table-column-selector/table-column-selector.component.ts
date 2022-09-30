@@ -29,7 +29,7 @@ export class TableColumnSelectorComponent extends TranslatedComponent {
   /**
    * Determines the translations for the static text and aria attributes.
    */
-  @Input() translations: TableColumnSelectorTranslations;
+  @Input() translations: TableColumnSelectorTranslations | undefined;
 
   /**
    * Emits the list of visible columns.

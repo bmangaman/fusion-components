@@ -38,7 +38,14 @@ export class BadgeComponent {
    * Determines the type of the badge (usually related to a status or level).
    * By default is BASE.
    */
-  @Input() type: StatusLevel = StatusLevel.BASE;
+  private _type: StatusLevel = StatusLevel.BASE;
+  @Input()
+  set type(type: StatusLevel | undefined) {
+    this._type = type || StatusLevel.BASE;
+  }
+  get type(): StatusLevel {
+    return this._type;
+  }
 
   /**
    * Determines the size of the badge.
@@ -49,13 +56,13 @@ export class BadgeComponent {
   /**
    * Determines the main text of the badge.
    */
-  @Input() text: string | number;
+  @Input() text: string | number | undefined;
 
   /**
    * Determines the sub text of the badge.
    * Do NOT use with a XSMALL badge (will not show up).
    */
-  @Input() subText: string | number;
+  @Input() subText: string | number | undefined;
 
   /**
    * Determines whether or not the badge should be the size of its container.

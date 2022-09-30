@@ -10,7 +10,7 @@
     (click)="selectTab(tab)"
     [disabled]="tab?.isDisabled"
     [fusionUiAutofocus]="tab?.isSelected">
-    <ng-container *ngTemplateOutlet="tab?.headerTemplate"></ng-container>
+    <ng-container *ngTemplateOutlet="tab?.headerTemplate || null"></ng-container>
   </button>
 </div>
 <div class="f-tabview__panels">
@@ -23,7 +23,7 @@
       class="f-tabview-tab__content"
       *ngIf="tab.isLoaded"
       [ngClass]="{ 'selected' : tab?.isSelected }">
-      <ng-container *ngTemplateOutlet="tab?.contentTemplate"></ng-container>
+      <ng-container *ngTemplateOutlet="tab?.contentTemplate || null"></ng-container>
     </div>
   </ng-container>
 </div>

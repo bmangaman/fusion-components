@@ -1,3 +1,4 @@
+import { TablePipesModule } from './../table-pipes/table-pipes.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,6 +23,7 @@ import { TableFilterSelectorComponent } from './table-filter-selector.component'
     MenuModule,
     ReactiveFormsModule,
     TableFilterSelectorPipesModule,
+    TablePipesModule,
     TranslateModule,
   ],
   declarations: [

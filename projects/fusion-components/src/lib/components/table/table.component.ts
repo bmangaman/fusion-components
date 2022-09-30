@@ -35,7 +35,7 @@ import { TableColumnComponent } from './table-column';
 import { CaseSensitiveSort } from './table-column-sorts';
 import { TableFilterConfig } from './table-filter-selector/table-filter-selector.interface';
 import { TableFilterComponent } from './table-filters';
-import { TablePaginationConfig } from './table-pagination';
+import { TablePaginationConfig, TablePaginationEmit } from './table-pagination';
 import { AreAllVisibleRowsSelectedPipe, RemoveTableRowFormattingPipe } from './table-pipes';
 import {
   EnabledTableFunctionality,
@@ -418,7 +418,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
   /**
    * When updating the table pagination, emit and event ot let the parent component know what the new configuration is.
    */
-  @Output() paginationChange: EventEmitter<TablePaginationConfig> = new EventEmitter<TablePaginationConfig>();
+  @Output() paginationChange: EventEmitter<TablePaginationEmit> = new EventEmitter<TablePaginationEmit>();
 
   /**
    * When applying or removing a table filter, emit an event to let the parent component know which
@@ -1107,7 +1107,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
    * @param colField The field of the column to update.
    * @param updatedWidth The new width of the column.
    */
-  stopResize(colField: string, updatedWidth: string): void {
+  stopResize(colField: string | undefined, updatedWidth: string): void {
     this.unlistenToResizeIndicatorVisibleMouseMove();
     const matchingColumn: TableColumnComponent | undefined = this.columns.toArray().find((col: TableColumnComponent) => col.field === colField);
     if (matchingColumn) {

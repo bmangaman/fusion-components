@@ -66,7 +66,7 @@ export class TableFilterComponent extends TranslatedComponent {
   /**
    * Determines the translations for any static text.
    */
-  @Input() translations: TableFilterTranslations;
+  @Input() translations: TableFilterTranslations | undefined;
 
   /**
    * Determines whether or not the filter should be visible in the the applied filters list.

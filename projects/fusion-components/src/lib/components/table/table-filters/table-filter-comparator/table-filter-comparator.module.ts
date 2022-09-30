@@ -3,15 +3,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { InstanceOfModule } from '@fusion-components/lib/pipes/instance-of';
+import { TablePipesModule } from '../../table-pipes';
 import { TableFilterComparatorComponent } from './table-filter-comparator.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    InstanceOfModule,
     ReactiveFormsModule,
+    TablePipesModule,
     TranslateModule,
   ],
   declarations: [

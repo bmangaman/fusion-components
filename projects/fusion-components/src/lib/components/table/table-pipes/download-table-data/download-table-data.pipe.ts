@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, QueryList } from '@angular/core';
 
 import { TableColumnComponent } from '../../table-column';
 import { TableRowData } from '../../table.interface';
@@ -29,8 +29,8 @@ export class DownloadTableDataPipe implements PipeTransform {
    * @param downloadTransformationFunction The function to transform the table data.
    * @returns The table data without any table-related attributes and with the provided data formatting.
    */
-  transform(data: TableRowData[], columns: TableColumnComponent[], downloadTransformationFunction: (...args: any[]) => any[]): any[] {
-    let coreData: any[] = this.removeTableRowFormattingPipe.transform(data?.filter((d: any) => !d.isFiltered));
+  transform(data: TableRowData[] | null, columns: QueryList<TableColumnComponent>, downloadTransformationFunction: (...args: any[]) => any[]): any[] {
+    let coreData: any[] = data ? this.removeTableRowFormattingPipe.transform(data?.filter((d: any) => !d.isFiltered)) : [];
 
     // Apply the downloadTransformationFunction if it is provided
     if (downloadTransformationFunction) {
@@ -39,7 +39,7 @@ export class DownloadTableDataPipe implements PipeTransform {
 
     // Update the data based on the provided columns (header, field, and downloadTransformationFunction)
     if (!!columns?.length) {
-      columns.forEach((column: TableColumnComponent) => {
+      columns.toArray().forEach((column: TableColumnComponent) => {
         coreData.forEach((d: any) => {
 
           // If the column is visible, add it to the downloaded data; delete it otherwise

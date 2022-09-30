@@ -109,7 +109,7 @@ export class ButtonComponent implements AfterViewInit, OnChanges {
   /**
    * Determines the text to be displayed in the button.
    */
-  @Input() text: string;
+  @Input() text: string | undefined;
 
   @Output() buttonClick: EventEmitter<void> = new EventEmitter<void>();
 

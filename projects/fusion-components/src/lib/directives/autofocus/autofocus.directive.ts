@@ -17,7 +17,7 @@ export class AutofocusDirective implements AfterViewInit {
    * directive is applied.
    */
   @Input()
-  set fusionUiAutofocus(condition: boolean) {
+  set fusionUiAutofocus(condition: boolean | undefined) {
     this._focus = !!condition;
     this.setAutofocus();
   }

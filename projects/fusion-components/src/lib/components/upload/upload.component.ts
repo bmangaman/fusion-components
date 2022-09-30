@@ -24,6 +24,10 @@ import { Size } from '../../shared/interfaces';
 import { ButtonType } from '../button';
 import { HTMLInputEvent, UploadInfo, UploadTranslations } from './upload.interface';
 
+interface HtmlInputEvent extends Event {
+  target: HTMLInputElement | EventTarget | null;
+}
+
 /**
  * UPLOAD COMPONENT
  *
@@ -226,15 +230,17 @@ export class UploadComponent extends TranslatedComponent implements OnDestroy {
    *
    * @param uploadEvent The event from file input with list of files
    */
-  updateFileList(uploadEvent: HTMLInputEvent): void {
+  updateFileList(uploadEvent: HtmlInputEvent): void {
     this.fileList = [];
 
     const newFiles: File[] = [];
     let totalSize = 0;
 
-    if (uploadEvent.target.files) {
-      for (let i = 0; i < uploadEvent.target.files.length; i++) {
-        const file: File = uploadEvent.target.files[i];
+    const event = uploadEvent as HTMLInputEvent;
+
+    if (event?.target?.files) {
+      for (let i = 0; i < event.target.files.length; i++) {
+        const file: File = event.target.files[i];
   
         if (this.areFilesUploadedTogether) {
           newFiles.push(file);

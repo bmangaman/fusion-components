@@ -19,7 +19,7 @@ export class TableFilterIpComponent extends TableFilterComponent implements OnIn
 
   isContainsOrDoesNotContainSelector: boolean;
 
-  @Input() override translations: TableFilterIpTranslations;
+  @Input() override translations: TableFilterIpTranslations | undefined;
 
   override filterComparators: FilterComparator[] = [
     {

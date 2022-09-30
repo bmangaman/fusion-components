@@ -22,7 +22,7 @@ import { TableFilterArrayInputComparator, TableFilterArrayTranslations } from '.
 export class TableFilterArrayComponent extends TableFilterComponent {
   override TableFilter = TableFilterArrayComponent;
 
-  @Input() override translations: TableFilterArrayTranslations;
+  @Input() override translations: TableFilterArrayTranslations | undefined;
 
   override filterComparators: FilterComparator[] = [
     {

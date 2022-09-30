@@ -33,8 +33,8 @@ export class TableActionsComponent extends TranslatedComponent implements DoChec
   /**
    * The custom content to be displayed within the menu dialog.
    */
-  private _prevTemplateRef: TemplateRef<any>;
-  @Input() templateRef: TemplateRef<any>;
+  private _prevTemplateRef: TemplateRef<any> | unknown;
+  @Input() templateRef: TemplateRef<any> | unknown;
 
   /**
    * Determines whether or not the whole button is disabled.
@@ -52,7 +52,14 @@ export class TableActionsComponent extends TranslatedComponent implements DoChec
    * Determines any custom css classes to be appended to menu dialog/ popup.
    */
   private _prevDialogCssClasses: string[];
-  @Input() dialogCssClasses: string[];
+  private _dialogCssClasses: string[];
+  @Input() 
+  set dialogCssClasses(classes: string[] | undefined) {
+    this._dialogCssClasses = classes || [];
+  }
+  get dialogCssClasses(): string[] {
+    return this._dialogCssClasses;
+  }
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,

@@ -1,11 +1,11 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
-import { Router, NavigationEnd, RouterEvent, ActivatedRoute, NavigationError, RoutesRecognized, Data } from '@angular/router';
+import { ActivatedRoute, Data, Event, NavigationEnd, NavigationError, Router, RoutesRecognized } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 import { filter, map, tap } from 'rxjs/operators';
 
-import { NavItem } from 'fusion-components/lib/components/sidenav/sidenav.interface';
-import { TranslateService } from '@ngx-translate/core';
-import { FusionComponentsTranslationService } from 'fusion-components';
+import { FusionComponentsTranslationService } from '@fusion-components';
+import { NavItem } from '@fusion-components/lib/components/sidenav/sidenav.interface';
 
 @Component({
   selector: 'fusion-demo-root',
@@ -181,7 +181,7 @@ export class AppComponent implements OnInit {
     // this language will be used as a fallback when a translation isn't found in the current language
     this.translate.addLangs([ 'en' ]);
     this.translate.setDefaultLang('en');
-    const browserLang: string = this.translate.getBrowserLang();
+    const browserLang: string = this.translate.getBrowserLang() || 'en';
 
     // the lang to use, if the lang isn't available, it will use the current loader to get them
     this.translate.use(this.translate.getLangs().includes(browserLang) ? browserLang : this.translate.getDefaultLang());
@@ -195,13 +195,7 @@ export class AppComponent implements OnInit {
     this.router.events.pipe(
       map((data: Data) => !!data && data instanceof RoutesRecognized ? data.url.split('/') : [])
     ).subscribe((segments: string[]) => {
-      let matchingSegment: string = segments.find((segment: string) => segment.includes('$'));
-
-      if (!matchingSegment) {
-        matchingSegment = segments.find((segment: string) => segment === 'fusion-components.activeiq.io');
-      }
-
-      this.rootRoute = matchingSegment;
+      this.rootRoute = segments.find((segment: string) => segment.includes('$')) || '';
     });
   }
 
@@ -211,7 +205,7 @@ export class AppComponent implements OnInit {
   handleEmbeds(): void {
     this.router.events
       .pipe(
-        filter((event: RouterEvent) => event instanceof NavigationEnd),
+        filter((event: Event) => event instanceof NavigationEnd),
         tap(() => this.isEmbeddedView = 'embedded' in this.route.snapshot.queryParams),
       ).subscribe();
   }
@@ -220,15 +214,15 @@ export class AppComponent implements OnInit {
    * Handles rogue links from within the generated documentation.
    */
   handleRedirects(): void {
-    const redirectMap = {
+    const redirectMap: Record<string, string> = {
       '/wiki/FUSION-COMPONENTS.md': '/doc/additional-documentation/fusion-components-wiki.html'
     };
 
     this.router.events
       .pipe(
-        filter((event: RouterEvent) => event instanceof NavigationError),
+        filter((event: Event) => event instanceof NavigationError),
         tap((event: NavigationError) => {
-          const redirect = redirectMap[event.url];
+          const redirect: string | undefined = redirectMap[event.url];
           if (redirect) {
             location.href = redirect;
           }

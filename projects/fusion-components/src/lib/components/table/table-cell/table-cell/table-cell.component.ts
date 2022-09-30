@@ -24,7 +24,14 @@ export class TableCellComponent extends TranslatedComponent implements DoCheck {
    * Determines the column used to determines the state of the table cell.
    */
   prevCol: TableColumnConfig;
-  @Input() col: TableColumnConfig;
+  private _col: TableColumnConfig;
+  @Input()
+  set col(config: TableColumnConfig | undefined) {
+    this._col = config || {};
+  }
+  get col(): TableColumnConfig {
+    return this._col;
+  }
 
   /**
    * Determines the spacing (padding) of the table cell.
@@ -46,8 +53,8 @@ export class TableCellComponent extends TranslatedComponent implements DoCheck {
   /**
    * Determines the static text used in the table cell component.
    */
-  prevTranslations: TableCellTranslations;
-  @Input() translations: TableCellTranslations;
+  prevTranslations: TableCellTranslations | undefined;
+  @Input() translations: TableCellTranslations | undefined;
 
   /**
    * Allows for custom CSS classes to be appended to the host component element.

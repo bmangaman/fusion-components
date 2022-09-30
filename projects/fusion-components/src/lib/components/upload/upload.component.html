@@ -28,7 +28,7 @@
     <div class="f-upload__file-info">
       <div class="f-upload__file-info-name-and-size">
         <span class="f-upload__file-info-name">{{ fileInfo | uploadFileName }}</span>
-        <span *ngIf="!isSizeHidden" class="f-upload__file-info-size">({{ fileInfo?.totalBytes | bytes: BytesPipeBase.TEN }})</span>
+        <span *ngIf="!isSizeHidden" class="f-upload__file-info-size">({{ (fileInfo?.totalBytes || 0) | bytes: BytesPipeBase.TEN }})</span>
       </div>
       <div class="f-upload__file-info-buttons">
         <f-button
@@ -48,7 +48,7 @@
           (buttonClick)="cancelFile(fileInfo)">
         </f-button>
         <f-button
-          *ngIf="removeFileFunction && fileInfo?.isComplete"
+          *ngIf="removeFilesFunction && fileInfo?.isComplete"
           [size]="Size.SMALL"
           [text]="translations?.buttons?.remove  || ( baseTranslationKey + '.upload.buttons.remove' | translate )"
           [classes]="['f-upload__file-info-button', 'f-upload__file-remove-button']"
@@ -71,9 +71,9 @@
       <f-progress-bar
         [status]="fileInfo | uploadStatus"
         [size]="Size.SMALL"
-        [value]="fileInfo?.progressBytes"
-        [maxValue]="fileInfo?.totalBytes"
-        [displayText]="isProgressInBytes ? (fileInfo?.progressBytes | bytes: BytesPipeBase.TEN) : null"
+        [value]="fileInfo?.progressBytes || 0"
+        [maxValue]="fileInfo?.totalBytes || 0"
+        [displayText]="isProgressInBytes ? ((fileInfo?.progressBytes || 0) | bytes: BytesPipeBase.TEN) : undefined"
         [isValueDisplayed]="!fileInfo?.error">
       </f-progress-bar>
     </div>

@@ -18,7 +18,7 @@ export class EscapeHtmlPipe implements PipeTransform {
      * @param content the markup (html)
      * @param sanitize flag to either sanitize or bypassSecurity for the provided html content; default false
      */
-  transform(content: string, sanitize: boolean = false): SafeHtml {
+  transform(content: string, sanitize: boolean = false): SafeHtml | null {
     return sanitize ? this.sanitizer.sanitize(SecurityContext.HTML, content) : this.sanitizer.bypassSecurityTrustHtml(content);
   }
 }

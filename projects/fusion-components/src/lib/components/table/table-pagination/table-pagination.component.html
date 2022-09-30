@@ -16,7 +16,7 @@
       </f-button>
     </div>
     <div class="f-table__pagination-num-of-results">
-      {{ numVisibleData | numOfResults: numResultsPerPage?.value:currentPageIndex?.value:translations?.results | async }}
+      {{ numVisibleData | numOfResults: numResultsPerPage?.value:(currentPageIndex?.value || 0):translations?.results | async }}
     </div>
   </div>
 
@@ -31,7 +31,7 @@
       </button>
       <button
         class="f-table__pagination-controls-button f-table__pagination-controls-button--previous"
-        (click)="currentPageIndex?.next(currentPageIndex?.value - 1)"
+        (click)="currentPageIndex?.next((currentPageIndex?.value || 0) - 1)"
         [attr.aria-label]="translations?.navigateToPrevPage || ( baseTranslationKey + '.table.pagination.navigateToPrevPage' | translate )"
         [disabled]="isDisabled || currentPageIndex?.value === 0">
         <i class="mdi mdi-chevron-left" aria-hidden="true"></i>
@@ -39,7 +39,7 @@
       <button
         class="f-table__pagination-controls-button f-table__pagination-controls-button--page f-table__pagination-controls-button--page-{{ page + 1 }}"
         [ngClass]="{ 'f-table__pagination-controls-button-page--selected' : currentPageIndex?.value === page }"
-        *ngFor="let page of numOfPages | getCenterFivePages: currentPageIndex?.value"
+        *ngFor="let page of numOfPages | getCenterFivePages: (currentPageIndex?.value || 0)"
         (click)="currentPageIndex.next(page)"
         [attr.aria-label]="(translations?.navigateToPage || ( baseTranslationKey + '.table.pagination.navigateToPage' | translate ) ) + ' ' + (page + 1)"
         [disabled]="isDisabled || currentPageIndex?.value === page">
@@ -47,7 +47,7 @@
       </button>
       <button
         class="f-table__pagination-controls-button f-table__pagination-controls-button--next"
-        (click)="currentPageIndex?.next(currentPageIndex?.value + 1)"
+        (click)="currentPageIndex?.next((currentPageIndex?.value || 0) + 1)"
         [attr.aria-label]="translations?.navigateToNextPage || ( baseTranslationKey + '.table.pagination.navigateToNextPage' | translate )"
         [disabled]="isDisabled || currentPageIndex?.value === numOfPages - 1">
         <i class="mdi mdi-chevron-right" aria-hidden="true"></i>

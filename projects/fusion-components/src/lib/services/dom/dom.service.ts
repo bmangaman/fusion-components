@@ -44,7 +44,7 @@ export class DomService {
     const factory: ComponentFactory<T> = this.componentFactoryResolver.resolveComponentFactory(component);
     const componentRef: ComponentRef<T> = factory.create(this.injector, projectedContent);
 
-    if (!!componentProps && typeof componentRef.instance === 'object') {
+    if (!!componentProps && componentRef.instance instanceof Object) {
       Object.assign(componentRef.instance, componentProps);
     }
 

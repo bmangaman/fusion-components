@@ -24,7 +24,7 @@ import * as Utilities from '../../shared/utilities';
   template: `
     <div class="f-tooltip__content">
       <ng-container *ngIf="templateWithContext; else justTemplate">
-        <ng-container *ngTemplateOutlet="templateWithContext?.template; context: templateWithContext?.context"></ng-container>
+        <ng-container *ngTemplateOutlet="templateWithContext?.template || null; context: templateWithContext?.context || null"></ng-container>
       </ng-container>
       <ng-template #justTemplate>
         <ng-container *ngIf="template; else justText">

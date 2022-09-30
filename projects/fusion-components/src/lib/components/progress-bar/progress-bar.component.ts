@@ -88,7 +88,7 @@ export class ProgressBarComponent implements OnInit, OnChanges {
    * Determines the the text to display inside the progress bar.
    * If set, hides the resultingValue and displays this value in its stead.
    **/
-  @Input() displayText: string;
+  @Input() displayText: string | number | undefined;
 
   /**
    * Determines the custom CSS classes to append the 'f-progress-bar__bar' div element.
@@ -98,7 +98,7 @@ export class ProgressBarComponent implements OnInit, OnChanges {
   /**
    * Determines the 'aria-value-text' value.
    */
-  @Input() ariaValueText: string;
+  @Input() ariaValueText: string | number | undefined;
 
   /**
    * On component initialization, subscribe to the resulting value so that when it changes,

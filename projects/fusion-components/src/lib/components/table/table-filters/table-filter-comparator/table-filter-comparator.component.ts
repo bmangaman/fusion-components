@@ -42,7 +42,7 @@ export class TableFilterComparatorComponent extends TranslatedComponent implemen
   /**
    * Determines the translations used for any static text.
    */
-  @Input() translations: FilterComparatorTranslations;
+  @Input() translations: FilterComparatorTranslations | undefined;
 
   /**
    * When the comparator changes, emit which comparator was selected.

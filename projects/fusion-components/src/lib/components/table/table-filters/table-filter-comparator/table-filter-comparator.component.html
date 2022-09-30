@@ -8,7 +8,7 @@
         *ngFor="let comparator of comparators; let i = index;"
         [ngValue]="comparator"
         [selected]="i === 0">
-        {{ (comparator?.label | instanceOf: Observable) ? (comparator?.label | async) : comparator?.label }}
+        {{ comparator ? (comparator | getComparatorLabel | async) : '' }}
       </option>
     </select>
   </div>
