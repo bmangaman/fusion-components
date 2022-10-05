@@ -1,4 +1,3 @@
-import { TablePipesModule } from './../table-pipes/table-pipes.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -8,7 +7,9 @@ import { ButtonModule } from '@fusion-components/lib/components/button';
 import { MenuModule } from '@fusion-components/lib/components/menu';
 import { AutofocusModule } from '@fusion-components/lib/directives/autofocus';
 import { InstanceOfModule } from '@fusion-components/lib/pipes/instance-of';
+import { ToObsersableModule } from '@fusion-components/lib/pipes/to-observable/';
 
+import { TablePipesModule } from './../table-pipes/table-pipes.module';
 import { TableFilterHostDirective } from './table-filter-host';
 import { TableFilterSelectorPipesModule } from './table-filter-selector-pipes';
 import { TableFilterSelectorComponent } from './table-filter-selector.component';
@@ -24,6 +25,7 @@ import { TableFilterSelectorComponent } from './table-filter-selector.component'
     ReactiveFormsModule,
     TableFilterSelectorPipesModule,
     TablePipesModule,
+    ToObsersableModule,
     TranslateModule,
   ],
   declarations: [

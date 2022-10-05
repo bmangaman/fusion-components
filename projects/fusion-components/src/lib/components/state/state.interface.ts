@@ -13,11 +13,7 @@ export interface StateCssClasses {
   content: string[];
 }
 
-export interface StateHeadlines {
-  [State.ERROR]?: string;
-  [State.NOT_LOADED]?: string;
-  [State.NO_RESULTS]?: string;
-}
+export type StateHeadlines = { [key in State]?: string };
 
 export const DEFAULT_STATE_HEADLINES: StateHeadlines = {
   [State.ERROR]: "This content couldn't be loaded.",
@@ -25,11 +21,7 @@ export const DEFAULT_STATE_HEADLINES: StateHeadlines = {
   [State.NO_RESULTS]: 'No Results',
 };
 
-export interface StateMessages {
-  [State.ERROR]?: string;
-  [State.NOT_LOADED]?: string;
-  [State.NO_RESULTS]?: string;
-}
+export type StateMessages = { [key in State]?: string };
 
 export const DEFAULT_STATE_MESSAGES: StateMessages = {
   [State.ERROR]: 'Refresh the page to try again. If the problem persists, contact your technical support engineer.',
@@ -37,8 +29,4 @@ export const DEFAULT_STATE_MESSAGES: StateMessages = {
   [State.NO_RESULTS]: '',
 };
 
-export interface StateMessageTemplates {
-  [State.ERROR]?: TemplateRef<any>;
-  [State.NOT_LOADED]?: TemplateRef<any>;
-  [State.NO_RESULTS]?: TemplateRef<any>;
-}
+export type StateMessageTemplates = { [key in State]?: TemplateRef<any> };

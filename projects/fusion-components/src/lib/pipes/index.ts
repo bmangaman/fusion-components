@@ -7,5 +7,6 @@ export * from './object-keys';
 export * from './percentage';
 export * from './percent-map';
 export * from './to-css-class';
+export * from './to-observable';
 
 export * from './pipes.module';

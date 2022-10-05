@@ -51,7 +51,7 @@ export class NavItemComponent implements OnChanges {
   /**
    * Dictates whether the nav item has an icon and what it is.
    */
-  @Input() icon: string;
+  @Input() icon: string | undefined;
 
   /**
    * Dictates whether or not the nav item is expanded. This flag only does anything
@@ -73,24 +73,24 @@ export class NavItemComponent implements OnChanges {
    * Dictates whether or not the nav item links to a route external to the application.
    * Should use the href OR route attributes, but NOT both.
    */
-  @Input() href: string;
+  @Input() href: string | undefined;
 
   /**
    * Determines the target of a link (must use href and not route).
    */
-  @Input() target: string;
+  @Input() target: string | unknown;
 
   /**
    * Dictates the angular route within the application clicking the nav will bring the user to.
    * Should use the route OR href attributes, but NOT both.
    */
-  @Input() route: string;
+  @Input() route: string | undefined;
 
   /**
    * List of nested children nav items. If the nav item is expanded, the children nav items are
    * displayed as additional navigation options.
    */
-  @Input() children: NavItem[];
+  @Input() children: NavItem[] | undefined;
 
   /**
    * The index of the nav item. Represents how may layers deep (how may predecessor nav items) exist above
@@ -108,7 +108,7 @@ export class NavItemComponent implements OnChanges {
    */
   private _id: string = this.generateNavItemId();
   @Input()
-  set id(id: string) {
+  set id(id: string | undefined) {
     this._id = id || this._id;
   }
   get id(): string {

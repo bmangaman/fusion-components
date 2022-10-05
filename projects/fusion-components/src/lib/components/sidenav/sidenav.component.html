@@ -16,21 +16,23 @@
       </div>
 
       <ul class="f-sidenav__items f-sidenav__container">
-        <f-nav-item
-          *ngFor="let navItem of navItems"
-          (itemSelected)="setCurrentSelectedNavItem($event)"
-          [id]="navItem?.id"
-          [title]="(navItem?.title | instanceOf: Observable) ? (navItem?.title | async) : navItem?.title"
-          [text]="(navItem?.text | instanceOf: Observable) ? (navItem?.text | async) : navItem?.text"
-          [icon]="navItem?.icon"
-          [isExpanded]="navItem?.isExpanded"
-          [isDisabled]="navItem?.isDisabled"
-          [isPathMatchFull]="navItem?.isPathMatchFull"
-          [route]="navItem?.route"
-          [href]="navItem?.href"
-          [target]="navItem?.target"
-          [children]="navItem?.children">
-        </f-nav-item>
+        <ng-container *ngFor="let navItem of navItems">
+          <f-nav-item
+            *ngIf="navItem"
+            (itemSelected)="setCurrentSelectedNavItem($event)"
+            [id]="navItem.id"
+            [title]="navItem.title | toObservable | async"
+            [text]="navItem.text | toObservable | async"
+            [icon]="navItem.icon"
+            [isExpanded]="!!navItem.isExpanded"
+            [isDisabled]="!!navItem.isDisabled"
+            [isPathMatchFull]="!!navItem.isPathMatchFull"
+            [route]="navItem.route"
+            [href]="navItem.href"
+            [target]="navItem.target"
+            [children]="navItem.children">
+          </f-nav-item>
+        </ng-container>
       </ul>
 
       <div class="f-sidenav__bottom">

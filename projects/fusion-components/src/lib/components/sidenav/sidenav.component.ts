@@ -41,7 +41,7 @@ export class SidenavComponent implements AfterContentInit {
   }
 
   private _sidenavBottomTemplate: TemplateRef<any>;
-  get sidenavButtonTemplate(): TemplateRef<any> {
+  get sidenavBottomTemplate(): TemplateRef<any> {
     return this._sidenavBottomTemplate;
   }
 

@@ -318,7 +318,7 @@
             [index]="i"
             [spacing]="spacing">
             <f-table-actions
-              [templateRef]="rowActions?.template"
+              [templateRef]="rowActions?.template || null"
               [rowData]="rowData"
               [isDisabled]="!rowData?.isActionable"
               [dialogCssClasses]="rowActions?.dialogCssClasses">

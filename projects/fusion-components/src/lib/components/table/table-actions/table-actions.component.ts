@@ -33,8 +33,8 @@ export class TableActionsComponent extends TranslatedComponent implements DoChec
   /**
    * The custom content to be displayed within the menu dialog.
    */
-  private _prevTemplateRef: TemplateRef<any> | unknown;
-  @Input() templateRef: TemplateRef<any> | unknown;
+  private _prevTemplateRef: TemplateRef<any> | null;
+  @Input() templateRef: TemplateRef<any> | null;
 
   /**
    * Determines whether or not the whole button is disabled.

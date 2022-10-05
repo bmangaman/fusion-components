@@ -5,12 +5,12 @@
       <i [ngClass]="cssClasses?.graphic"></i>
       <div [ngClass]="cssClasses?.content">
 
-        <h3 class="f-state__inner-content-headline" *ngIf="!!headlines">
+        <h3 class="f-state__inner-content-headline" *ngIf="!!headlines && !!headlines[state]">
           {{ headlines[state] }}
         </h3>
 
         <div class="f-state__inner-content-message" *ngIf="!!messageTemplates && !!messageTemplates[state]; else messageText">
-          <ng-container *ngTemplateOutlet="messageTemplates[state]"></ng-container>
+          <ng-container *ngTemplateOutlet="messageTemplates[state] || null"></ng-container>
         </div>
 
         <ng-template #messageText>

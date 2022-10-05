@@ -54,7 +54,7 @@
 <!-- START: Shared Content Template -->
 <ng-template #cellContent>
   <ng-container *ngIf="col?.headerTemplateRef; else noTemplate">
-    <ng-container *ngTemplateOutlet="col?.headerTemplateRef; context: { $implicit: rowData }"></ng-container>
+    <ng-container *ngTemplateOutlet="col?.headerTemplateRef || null"></ng-container>
   </ng-container>
   <ng-template #noTemplate>
     {{ col?.header }}

@@ -9,7 +9,7 @@
         [routerLinkActiveOptions]="isPathMatchFull ? { exact: true } : { exact: false }"
         [ngClass]="linkCssClasses"
         [attr.id]="id"
-        [attr.title]="(title | instanceOf: Observable) ? (title | async) : title"
+        [attr.title]="title | toObservable | async"
         [attr.disabled]="isDisabled"
         [attr.aria-Disabled]="isDisabled"
         [style.paddingLeft.px]="(index * 24) + 16">
@@ -22,7 +22,7 @@
         [ngClass]="linkCssClasses"
         [attr.href]="href"
         [attr.id]="id"
-        [attr.title]="(title | instanceOf: Observable) ? (title | async) : title"
+        [attr.title]="title | toObservable | async"
         [attr.disabled]="isDisabled"
         [attr.aria-Disabled]="isDisabled"
         [attr.target]="target"
@@ -37,7 +37,7 @@
       (click)="toggleExpansion()"
       [ngClass]="linkCssClasses"
       [attr.id]="id"
-      [attr.title]="(title | instanceOf: Observable) ? (title | async) : title"
+      [attr.title]="title | toObservable | async"
       [disabled]="isDisabled"
       [attr.aria-Disabled]="isDisabled">
       <ng-container *ngTemplateOutlet="linkContent"></ng-container>
@@ -50,21 +50,23 @@
     *ngIf="isExpanded">
 
     <ul class="f-sidenav__items f-navItem__sub-items">
-      <f-nav-item
-        *ngFor="let navItem of children"
-        (itemSelected)="setCurrentSelectedNavItem($event)"
-        [id]="navItem?.id"
-        [title]="(navItem?.title | instanceOf: Observable) ? (navItem?.title | async) : navItem?.title"
-        [text]="(navItem?.text | instanceOf: Observable) ? (navItem?.text | async) : navItem?.text"
-        [icon]="navItem?.icon"
-        [isExpanded]="navItem?.isExpanded"
-        [isDisabled]="navItem?.isDisabled"
-        [route]="navItem?.route"
-        [href]="navItem?.href"
-        [children]="navItem?.children"
-        [target]="navItem?.target"
-        [index]="index + 1">
-      </f-nav-item>
+      <ng-container *ngFor="let navItem of children">
+        <f-nav-item
+          *ngIf="navItem"
+          (itemSelected)="setCurrentSelectedNavItem($event)"
+          [id]="navItem.id"
+          [title]="navItem.title | toObservable | async"
+          [text]="navItem.text | toObservable | async"
+          [icon]="navItem.icon"
+          [isExpanded]="!!navItem.isExpanded"
+          [isDisabled]="!!navItem.isDisabled"
+          [route]="navItem.route"
+          [href]="navItem.href"
+          [children]="navItem.children"
+          [target]="navItem.target"
+          [index]="index + 1">
+        </f-nav-item>
+      </ng-container>
     </ul>
 
   </div>
@@ -73,6 +75,6 @@
 
 <ng-template #linkContent>
   <i *ngIf="icon" [ngClass]="iconCssClasses"></i>
-  <span class="f-navItem__text">{{ (text | instanceOf: Observable) ? (text | async) : text }}</span>
+  <span class="f-navItem__text">{{ text | toObservable | async }}</span>
   <i *ngIf="children?.length" class="f-navItem__isExpandable-icon mdi" [ngClass]="isExpanded ? 'mdi-chevron-down' : 'mdi-chevron-right'"></i>
 </ng-template>

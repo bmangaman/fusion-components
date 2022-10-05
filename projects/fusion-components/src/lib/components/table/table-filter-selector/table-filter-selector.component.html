@@ -7,7 +7,7 @@
         [classes]="['f-table__filter-selector-quick-filter-button']"
         [type]="ButtonType.SECONDARY"
         [size]="Size.X_SMALL"
-        [text]="quickFilter.label"
+        [text]="quickFilter.label | toObservable | async"
         [isSelected]="!!quickFilter.isApplied"
         icon="mdi-filter"
         (buttonClick)="toggleQuickFilter(quickFilter)">
@@ -110,7 +110,7 @@
           <div class="f-table__filter-selector-filter-list-group-item" *ngFor="let application of group?.applications">
             <div class="f-table__filter-selector-filter-list-group-item-text">
               <ng-container *ngIf="application?.selectedFilterComparator?.value?.displayString; else standardText; let displayString;">
-                {{ (displayString() | instanceOf: Observable) ? (displayString() | async) : displayString() }}
+                {{ displayString() | toObservable | async }}
               </ng-container>
               <ng-template #standardText>
                 {{ application?.selectedFilterComparator?.value ? (application.selectedFilterComparator.value | getComparatorLabel | async) : '' }} {{ application?.getFormValue() }}
