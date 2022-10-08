@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 
 import { PercentMapPipe } from '../../pipes/percent-map';
 import { Size } from '../../shared';
@@ -27,7 +27,7 @@ import { ProgressBarStatus } from './progress-bar.interface';
     [ngClass]="generatedClasses">
     <div
       class="f-progress-bar__value"
-      *ngIf="isValueDisplayed && resultingValue$?.value >= minDisplayedPercent">
+      *ngIf="isValueDisplayed$ | async">
       {{ displayText || (resultingValue$?.value ? resultingValue$?.value + '%' : '-') }}
     </div>
   </div>
@@ -66,6 +66,7 @@ export class ProgressBarComponent implements OnInit, OnChanges {
    * By default set to true.
    **/
   @Input() isValueDisplayed: boolean = true;
+  isValueDisplayed$: Observable<boolean> = this.resultingValue$.pipe(map((value: number) => this.isValueDisplayed && value >= this.minDisplayedPercent));
 
   /**
    * Determines the minimum value needed for the resultingValue value is displayed.

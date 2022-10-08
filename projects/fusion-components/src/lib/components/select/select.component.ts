@@ -25,6 +25,9 @@ export class SelectComponent extends TranslatedComponent implements ControlValue
   private onTouched: () => void;
 
   private readonly _optionHeight = 36;
+  get optionHeight(): number {
+    return this._optionHeight;
+  }
 
   private _unsubscribe$: Subject<void> = new Subject<void>();
   private _currentOptionIndex: number;
@@ -260,7 +263,7 @@ export class SelectComponent extends TranslatedComponent implements ControlValue
    * @param event The mouse event (enter or space).
    * @param value The new value.
    */
-  templateSetValueWrapper(event: MouseEvent | KeyboardEvent, value: SelectOption, index: number): void {
+  templateSetValueWrapper(event: Event, value: SelectOption, index: number): void {
     event.preventDefault();
     this._currentOptionIndex = index;
     this.setValue(value);
@@ -366,7 +369,7 @@ export class SelectComponent extends TranslatedComponent implements ControlValue
    *
    * @param event The up or down keyboard event.
    */
-  onArrowPress(event: KeyboardEvent, arrow: 'UP' | 'DOWN'): void {
+  onArrowPress(event: Event, arrow: 'UP' | 'DOWN'): void {
     if (event) {
       event.preventDefault();
 

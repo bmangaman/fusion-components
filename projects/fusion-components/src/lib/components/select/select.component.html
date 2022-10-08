@@ -1,5 +1,5 @@
 <div class="f-form__fieldset f-select" #selectInput>
-  <label class="f-form__input-label f-select__label" *ngIf="!!label">{{ (label | instanceOf:Observable) ? (label | async) : label }}</label>
+  <label class="f-form__input-label f-select__label" *ngIf="!!label">{{ label | toObservable | async }}</label>
   <div [ngClass]="selectClasses">
 
     <!-- START: Button to display of the list of options -->
@@ -61,7 +61,7 @@
       *ngIf="isDropdownOpen"
       [style.minHeight.px]="menuMinHeight"
       [attr.aria-activedescendant]="uuid"
-      [attr.id]="id">
+      [attr.id]="uuid">
 
       <cdk-virtual-scroll-viewport
         [style.minHeight.px]="menuMinHeight"

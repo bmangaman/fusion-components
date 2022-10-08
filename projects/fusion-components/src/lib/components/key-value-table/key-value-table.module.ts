@@ -3,22 +3,24 @@ import { NgModule } from '@angular/core';
 
 import { TemplateModule } from '../../directives/template';
 import { InstanceOfModule } from '../../pipes/instance-of';
+import { ToObsersableModule } from '../../pipes/to-observable';
+
 
 import { KeyValueTableComponent } from './key-value-table.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    InstanceOfModule,
     TemplateModule,
+    ToObsersableModule,
   ],
   declarations: [
     KeyValueTableComponent,
   ],
   exports: [
     CommonModule,
-    InstanceOfModule,
     TemplateModule,
+    ToObsersableModule,
 
     KeyValueTableComponent,
   ],

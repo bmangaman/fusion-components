@@ -33,7 +33,7 @@
           [attr.aria-label]="threshold.level | getStatusLevelText: translations:true"
           [templateWithContext]="{ template: tooltipContent, context: { $implicit: threshold } }"
           [hideDelay]="2000"
-          [classes]="[ 'f-linear-gauge__threshold-tooltip', 'f-linear-gauge__threshold-tooltip--' + (threshold.level | getStatusLevelText: null:true) ]">
+          [classes]="[ 'f-linear-gauge__threshold-tooltip', 'f-linear-gauge__threshold-tooltip--' + (threshold.level | getStatusLevelText: undefined:true) ]">
         </button>
       </ng-template>
 

@@ -36,7 +36,7 @@
           </i>
           <div *ngIf="status.count" class="f-card__title-status-count">{{ status?.count }}</div>
           <div *ngIf="!status.isTextHidden" class="f-card__title-status-text">
-            <ng-container *ngIf="!!status.text; else defaultStatus">{{ (status.text | instanceOf:Observable) ? (status.text | async) : status.text }}</ng-container>
+            <ng-container *ngIf="!!status.text; else defaultStatus">{{ status.text | toObservable | async }}</ng-container>
             <ng-template #defaultStatus>{{ status.status | getStatusLevelText:translations?.statuses }}</ng-template>
           </div>
         </div>

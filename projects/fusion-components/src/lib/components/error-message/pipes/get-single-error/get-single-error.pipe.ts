@@ -27,7 +27,7 @@ export class GetSingleErrorPipe implements PipeTransform {
    * @param validationErrors The applied validation errors of an abstract control.
    * @returns The translation value.
    */
-  transform(errors: ErrorMessage[], validationErrors: ValidationErrors): Observable<string | SafeHtml> {
+  transform(errors: ErrorMessage[], validationErrors: ValidationErrors | null | undefined): Observable<string | SafeHtml> {
     if (!!errors?.length && !!validationErrors) {
       const foundPriorityError: ErrorMessage = errors
         .filter((e: ErrorMessage) => e.priority)

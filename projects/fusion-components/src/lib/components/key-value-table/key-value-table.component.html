@@ -1,22 +1,24 @@
 <table class="f-key-value-table">
-  <tr
-    *ngFor="let rowData of data; index as i;"
-    class="f-key-value-table__row f-key-value-table__row--{{ rowData?.key }}"
-    [ngClass]="{ 'f-key-value-table__row--grey': i % 2 === 0 }">
+  <ng-container *ngFor="let rowData of data; index as i;">
+    <tr
+      *ngIf="rowData"
+      class="f-key-value-table__row f-key-value-table__row--{{ rowData?.key }}"
+      [ngClass]="{ 'f-key-value-table__row--grey': i % 2 === 0 }">
 
-    <th class="f-key-value-table__cell f-key-value-table__cell--header">
-      <ng-container *ngIf="rowData?.keyTemplate; else noKeyTemplate">
-        <ng-container *ngTemplateOutlet="rowData?.keyTemplate; context: { $implicit: rowData }"></ng-container>
-      </ng-container>
-      <ng-template #noKeyTemplate>{{ (rowData?.keyText | instanceOf:Observable) ? (rowData?.keyText | async) : rowData?.keyText }}</ng-template>
-    </th>
+      <th class="f-key-value-table__cell f-key-value-table__cell--header">
+        <ng-container *ngIf="rowData?.keyTemplate; else noKeyTemplate">
+          <ng-container *ngTemplateOutlet="rowData.keyTemplate || null; context: { $implicit: rowData }"></ng-container>
+        </ng-container>
+        <ng-template #noKeyTemplate>{{ rowData?.keyText | toObservable | async }}</ng-template>
+      </th>
 
-    <td class="f-key-value-table__cell f-key-value-table__cell--body">
-      <ng-container *ngIf="rowData?.valueTemplate; else noValueTemplate">
-        <ng-container *ngTemplateOutlet="rowData?.valueTemplate; context: { $implicit: rowData }"></ng-container>
-      </ng-container>
-      <ng-template #noValueTemplate>{{ (rowData?.value | instanceOf:Observable) ? (rowData?.value | async) : rowData?.value }}</ng-template>
-    </td>
+      <td class="f-key-value-table__cell f-key-value-table__cell--body">
+        <ng-container *ngIf="rowData?.valueTemplate; else noValueTemplate">
+          <ng-container *ngTemplateOutlet="rowData.valueTemplate || null; context: { $implicit: rowData }"></ng-container>
+        </ng-container>
+        <ng-template #noValueTemplate>{{ rowData?.value | toObservable | async }}</ng-template>
+      </td>
 
-  </tr>
+    </tr>
+  </ng-container>
 </table>

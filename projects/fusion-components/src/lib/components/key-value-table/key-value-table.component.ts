@@ -19,7 +19,7 @@ export class KeyValueTableComponent implements AfterContentInit {
   /**
    * Determines the data to be diplayed in the table.
    */
-  @Input() data: KeyValueTableData[];
+  @Input() data: KeyValueTableData[] = [];
 
   /**
    * A list of all the TemplateDirectives nested within this component.

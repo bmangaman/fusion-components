@@ -4,8 +4,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
+
 import { AutofocusModule } from '../../directives/autofocus';
-import { InstanceOfModule } from '../../pipes/instance-of';
+import { ToObsersableModule } from '../../pipes/to-observable';
 import { SelectComponent } from './select.component';
 
 @NgModule({
@@ -13,9 +14,9 @@ import { SelectComponent } from './select.component';
     AutofocusModule,
     CommonModule,
     FormsModule,
-    InstanceOfModule,
     ReactiveFormsModule,
     ScrollingModule,
+    ToObsersableModule,
     TranslateModule,
   ],
   declarations: [
@@ -25,9 +26,9 @@ import { SelectComponent } from './select.component';
     AutofocusModule,
     CommonModule,
     FormsModule,
-    InstanceOfModule,
     ReactiveFormsModule,
     ScrollingModule,
+    ToObsersableModule,
 
     SelectComponent,
   ],
