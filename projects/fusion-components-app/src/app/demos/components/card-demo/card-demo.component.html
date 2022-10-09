@@ -142,7 +142,7 @@
 
     <h3 class="fusion-components-demo__form-array-header f-h3">Statuses</h3>
     <div class="fusion-components-demo__form-array">
-      <ng-container formArrayName="statuses" *ngFor="let status of cardForm?.get('statuses')?.controls; let i = index;">
+      <ng-container formArrayName="statuses" *ngFor="let status of statusesFormArray.controls; let i = index;">
         <div class="fusion-components-demo__form-array-item" [formGroupName]="i">
 
           <h3 class="fusion-components-demo__form-array-item-header f-h3">

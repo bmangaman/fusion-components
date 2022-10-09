@@ -5,6 +5,7 @@ const routes: Route[] = [
   {
     path: '',
     redirectTo: 'forms',
+    pathMatch: 'full',
   },
   {
     path: 'forms',

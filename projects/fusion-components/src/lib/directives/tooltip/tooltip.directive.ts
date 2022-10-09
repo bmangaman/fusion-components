@@ -25,13 +25,13 @@ export class TooltipDirective implements OnDestroy {
    * Determines the custom template to be displayed in the tooltip.
    * If provided, takes precedence over the text input.
    */
-  @Input() template: TemplateRef<any>;
+  @Input() template: TemplateRef<any> | null;
 
   /**
    * Determines the custom template with context to be displayed in the tooltip.
    * It takes precedence over the template and text input.
    */
-  @Input() templateWithContext: { template?: TemplateRef<any>, context?: { $implicit: any } };
+  @Input() templateWithContext: { template?: TemplateRef<any> | null, context?: { $implicit: any } };
 
   /**
    * Determines the position of the tooltip.

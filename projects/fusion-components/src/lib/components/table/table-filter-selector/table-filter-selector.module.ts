@@ -7,7 +7,7 @@ import { ButtonModule } from '@fusion-components/lib/components/button';
 import { MenuModule } from '@fusion-components/lib/components/menu';
 import { AutofocusModule } from '@fusion-components/lib/directives/autofocus';
 import { InstanceOfModule } from '@fusion-components/lib/pipes/instance-of';
-import { ToObsersableModule } from '@fusion-components/lib/pipes/to-observable/';
+import { ToObservableModule } from '@fusion-components/lib/pipes/to-observable/';
 
 import { TablePipesModule } from './../table-pipes/table-pipes.module';
 import { TableFilterHostDirective } from './table-filter-host';
@@ -25,7 +25,7 @@ import { TableFilterSelectorComponent } from './table-filter-selector.component'
     ReactiveFormsModule,
     TableFilterSelectorPipesModule,
     TablePipesModule,
-    ToObsersableModule,
+    ToObservableModule,
     TranslateModule,
   ],
   declarations: [

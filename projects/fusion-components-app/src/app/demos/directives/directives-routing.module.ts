@@ -5,6 +5,7 @@ const routes: Route[] = [
   {
     path: '',
     redirectTo: 'download',
+    pathMatch: 'full',
   },
   {
     path: 'download',

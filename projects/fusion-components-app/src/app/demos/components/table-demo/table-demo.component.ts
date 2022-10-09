@@ -25,7 +25,7 @@ import {
   TableColumnSorted,
   TableComponentEnums,
   TableRowData,
-  TablePaginationConfig,
+  TablePaginationEmit,
 } from '@fusion-components';
 
 import { VolumeState, VolumeAccess } from './table-demo.interface';
@@ -44,7 +44,7 @@ export class TableDemoComponent implements OnInit {
   readonly bytesPipe = new BytesPipe();
 
   generatedData: any[] = [];
-  data: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(null);
+  data: BehaviorSubject<any[] | null> = new BehaviorSubject<any[] | null>(null);
   tableViews: TableView[] = [];
   tableDemoForm: UntypedFormGroup;
 
@@ -141,7 +141,7 @@ export class TableDemoComponent implements OnInit {
           name: `account-${i}`
         },
         accessGroups: generateAccessGroups(i),
-        access: VolumeAccess[Object.keys(VolumeAccess)[Math.floor(Math.random() * Object.keys(VolumeAccess).length)]],
+        access: sample(Object.values(VolumeAccess)) as VolumeAccess,
         used: Number(Math.random().toFixed(2)),
         size: Math.floor(Math.random() * 100000000000),
         snapshots: Math.floor(Math.random() * 10),
@@ -188,13 +188,13 @@ export class TableDemoComponent implements OnInit {
       isConsoleLogEnabled: [true],
     });
 
-    this.tableDemoForm.get('numberOfDataItems').valueChanges.pipe(debounce(() => interval(400))).subscribe((value: number) => {
+    this.tableDemoForm.get('numberOfDataItems')?.valueChanges.pipe(debounce(() => interval(400))).subscribe((value: number) => {
 
       // if value is less than 0 (there cannot be negative # of search results), set to 0
       // if value is greather than the number of generated values, set to the length of the generated data values
       if (value < 0 || value >= this.generatedData.length) {
         const newValue: number = Math.min(Math.max(0, value), this.generatedData.length);
-        this.tableDemoForm.get('numberOfDataItems').setValue(newValue);
+        this.tableDemoForm.get('numberOfDataItems')?.setValue(newValue);
       }
 
       this.setNumberOfDataItems();
@@ -248,10 +248,10 @@ export class TableDemoComponent implements OnInit {
 
   refresh(): void {
     this.tableDemoForm.disable();
-    this.tableDemoForm.get('state').setValue(State.LOADING);
+    this.tableDemoForm.get('state')?.setValue(State.LOADING);
     this.getTableData().pipe(delay(1000)).subscribe(() => {
       this.setNumberOfDataItems();
-      this.tableDemoForm.get('state').setValue(State.LOADED);
+      this.tableDemoForm.get('state')?.setValue(State.LOADED);
       this.tableDemoForm.enable();
     });
   }
@@ -281,6 +281,8 @@ export class TableDemoComponent implements OnInit {
     if (data.access === VolumeAccess.locked) {
       return ['access-locked-color-red-highlight'];
     }
+
+    return [];
   }
 
   /**
@@ -295,13 +297,13 @@ export class TableDemoComponent implements OnInit {
 
   toggleDisableRowActionsButtonFunction(): void {
     console.log('toggle data');
-    const newData: any[] = cloneDeep(this.data.value);
+    const newData: any[] | null = cloneDeep(this.data.value);
 
-    newData.forEach((d: TableRowData) => {
-      if (d.access === VolumeAccess.locked) {
-        d.access = VolumeAccess.readWrite;
-      } else if (d.access === VolumeAccess.readWrite) {
-        d.access = VolumeAccess.locked;
+    newData?.forEach((d: TableRowData) => {
+      if (d['access'] === VolumeAccess.locked) {
+        d['access'] = VolumeAccess.readWrite;
+      } else if (d['access'] === VolumeAccess.readWrite) {
+        d['access'] = VolumeAccess.locked;
       }
     });
 
@@ -389,7 +391,7 @@ export class TableDemoComponent implements OnInit {
    *
    * @param columns The event value (table pagination config).
    */
-  paginationChange(pagination: TablePaginationConfig): void {
+  paginationChange(pagination: TablePaginationEmit): void {
     if (this.tableDemoForm?.get('isConsoleLogEnabled')?.value) {
       console.log('paginationChange', pagination);
     }
@@ -422,7 +424,7 @@ export class TableDemoComponent implements OnInit {
    *
    * @param data The final table data.
    */
-  finalTableDataChange(data: TableRowData[]): void {
+  finalTableDataChange(data: TableRowData[] | null): void {
     if (this.tableDemoForm?.get('isConsoleLogEnabled')?.value) {
       console.log('finalTableDataChange', data);
     }

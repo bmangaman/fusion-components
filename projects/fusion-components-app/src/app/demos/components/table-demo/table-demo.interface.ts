@@ -4,9 +4,9 @@ export enum VolumeState {
 }
 
 export enum VolumeAccess {
-  locked = "locked",
-  readOnly = "readOnly",
-  readWrite = "readWrite",
-  replicationTarget = "replicationTarget",
-  snapMirrorTarget = "snapMirrorTarget"
+  locked = 'locked',
+  readOnly = 'readOnly',
+  readWrite = 'readWrite',
+  replicationTarget = 'replicationTarget',
+  snapMirrorTarget = 'snapMirrorTarget'
 }

@@ -8,7 +8,7 @@ import { BaseModalComponent, Size, ModalConfig, ModalService, ModalType, OpenMod
   styleUrls: ['./modal-demo.component.scss']
 })
 export class ModalDemoComponent {
-  readonly ButtonType = ButtonType
+  readonly ButtonType = ButtonType;
   readonly Size = Size;
   readonly ModalType = ModalType;
 
@@ -94,9 +94,11 @@ export class ModalDemoComponent {
   `
 })
 export class InnerModalComponent extends BaseModalComponent {
+  readonly ButtonType = ButtonType;
+  readonly ModalType = ModalType;
+
   modalConfig: ModalConfig;
   modalForm: UntypedFormGroup;
-  readonly ModalType = ModalType;
   longContent = {
     show: false,
     text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fermentum ultricies lacus, eu fermentum turpis gravida vitae.

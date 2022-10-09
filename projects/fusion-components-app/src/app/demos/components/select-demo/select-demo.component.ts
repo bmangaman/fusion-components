@@ -39,17 +39,17 @@ export class SelectDemoComponent {
     
     this.selectFormControl.valueChanges.subscribe((value: any) => console.log('valueChanges', value));
 
-    this.selectForm.get('numOfOptions').valueChanges.pipe(debounce(() => interval(400))).subscribe((val: number) => {
-      const hasDisabledOptions: boolean = this.selectForm.get('hasDisabledOptions').value;
+    this.selectForm.get('numOfOptions')?.valueChanges.pipe(debounce(() => interval(400))).subscribe((val: number) => {
+      const hasDisabledOptions: boolean = this.selectForm.get('hasDisabledOptions')?.value;
       this.generateSelectOptions(val, hasDisabledOptions);
     });
 
-    this.selectForm.get('hasDisabledOptions').valueChanges.pipe(debounce(() => interval(400))).subscribe((val: boolean) => {
-      const numOfOptions: number = this.selectForm.get('numOfOptions').value || 0;
+    this.selectForm.get('hasDisabledOptions')?.valueChanges.pipe(debounce(() => interval(400))).subscribe((val: boolean) => {
+      const numOfOptions: number = this.selectForm.get('numOfOptions')?.value || 0;
       this.generateSelectOptions(numOfOptions, val);
     });
 
-    this.selectForm.get('isDisabled').valueChanges.subscribe((val: boolean) => {
+    this.selectForm.get('isDisabled')?.valueChanges.subscribe((val: boolean) => {
       console.log('isDisabled', val);
       val ? this.selectFormControl.disable() : this.selectFormControl.enable();
     })

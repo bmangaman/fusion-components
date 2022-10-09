@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
-import { Location, Size } from '@fusion-components';
+import { ButtonType, Location, Size } from '@fusion-components';
 
 @Component({
   selector: 'fusion-demo-menu',
@@ -9,6 +9,7 @@ import { Location, Size } from '@fusion-components';
   styleUrls: ['./menu-demo.component.scss']
 })
 export class MenuDemoComponent {
+  readonly ButtonType = ButtonType;
   readonly Location = Location;
   readonly Size = Size;
 

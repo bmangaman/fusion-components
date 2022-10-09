@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { TemplateModule } from '../../directives/template';
 import { InstanceOfModule } from '../../pipes/instance-of';
-import { ToObsersableModule } from '../../pipes/to-observable';
+import { ToObservableModule } from '../../pipes/to-observable';
 
 
 import { KeyValueTableComponent } from './key-value-table.component';
@@ -12,7 +12,7 @@ import { KeyValueTableComponent } from './key-value-table.component';
   imports: [
     CommonModule,
     TemplateModule,
-    ToObsersableModule,
+    ToObservableModule,
   ],
   declarations: [
     KeyValueTableComponent,
@@ -20,7 +20,7 @@ import { KeyValueTableComponent } from './key-value-table.component';
   exports: [
     CommonModule,
     TemplateModule,
-    ToObsersableModule,
+    ToObservableModule,
 
     KeyValueTableComponent,
   ],

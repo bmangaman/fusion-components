@@ -64,7 +64,7 @@
 
     <h3 class="fusion-components-demo__form-array-header f-h3">Panels</h3>
     <div class="fusion-components-demo__form-array">
-      <ng-container formArrayName="panels" *ngFor="let panel of accordionForm?.get('panels')?.controls; let i = index;">
+      <ng-container formArrayName="panels" *ngFor="let panel of panelsFormArray.controls; let i = index;">
         <div class="fusion-components-demo__form-array-item" [formGroupName]="i">
 
           <h3 class="fusion-components-demo__form-array-item-header f-h3">
@@ -153,14 +153,14 @@
   <ng-container result>
     <f-accordion
       [onePanelLimit]="accordionForm?.get('onePanelLimit')?.value"
-      [maxContentHeight]="accordionForm?.get('maxContentHeight')?.value ? accordionForm?.get('maxContentHeight')?.value + 'px' : null"
+      [maxContentHeight]="accordionForm?.get('maxContentHeight')?.value ? accordionForm?.get('maxContentHeight')?.value + 'px' : ''"
       [expandIconClasses]="accordionForm?.get('expandIconClasses')?.value"
       [collapseIconClasses]="accordionForm?.get('collapseIconClasses')?.value"
       [toggleAllPanels]="triggerExpandAll"
       (panelContentVisibilityChanged)="updateAccordionForm($event)">
 
       <f-accordion-panel
-        *ngFor="let panel of accordionForm?.get('panels')?.controls; let i = index;"
+        *ngFor="let panel of panelsFormArray.controls; let i = index;"
         [isDisabled]="panel?.get('isDisabled')?.value"
         [isExpanded]="panel?.get('isExpanded')?.value">
         <ng-template fusionUiTemplate="panelTitle">{{ panel?.get('title')?.value }}</ng-template>

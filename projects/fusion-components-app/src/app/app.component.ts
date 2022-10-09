@@ -1,5 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
-import { ActivatedRoute, Data, Event, NavigationEnd, NavigationError, Router, RoutesRecognized } from '@angular/router';
+import { ActivatedRoute, Data, Event, NavigationEnd, NavigationError, Router, RouterEvent, RoutesRecognized } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 import { filter, map, tap } from 'rxjs/operators';
@@ -220,7 +220,8 @@ export class AppComponent implements OnInit {
 
     this.router.events
       .pipe(
-        filter((event: Event) => event instanceof NavigationError),
+        // should be either Event_2 or NavigationEvent, but is throwing error "Type 'Observable<Event_2>' is not assignable to type 'Observable<NavigationError>'."
+        filter((event: any) => event instanceof NavigationError),
         tap((event: NavigationError) => {
           const redirect: string | undefined = redirectMap[event.url];
           if (redirect) {

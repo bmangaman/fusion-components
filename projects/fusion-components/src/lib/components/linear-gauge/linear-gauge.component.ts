@@ -60,12 +60,12 @@ export class LinearGaugeComponent implements OnChanges {
   /**
    * Determines the pipe to be used to format the data.
    */
-  @Input() dataFormatPipeItem: PipeItem;
+  @Input() dataFormatPipeItem: PipeItem | null;
 
   /**
    * Determines the pipe to be used to format the value.
    */
-  @Input() valueFormatPipeItem: PipeItem;
+  @Input() valueFormatPipeItem: PipeItem | null;
 
   /**
    * Emits the current state fo the linear gauge (values, thresholds, etc).

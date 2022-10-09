@@ -30,9 +30,9 @@ export class RemoveTableRowFormattingPipe implements PipeTransform {
    *
    * @param data the table row data to be cleaned up
    */
-  transform(data: TableRowData[]): any[] {
+  transform(data: TableRowData[] | undefined): any[] {
     if (!data || !data.length) {
-      return data;
+      return [];
     }
 
     const newData: any[] = cloneDeep(data);

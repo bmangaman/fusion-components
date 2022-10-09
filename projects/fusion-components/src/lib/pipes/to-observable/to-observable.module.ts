@@ -10,4 +10,4 @@ import { ToObservablelPipe } from './to-observable.pipe';
     ToObservablelPipe,
   ],
 })
-export class ToObsersableModule {}
+export class ToObservableModule {}

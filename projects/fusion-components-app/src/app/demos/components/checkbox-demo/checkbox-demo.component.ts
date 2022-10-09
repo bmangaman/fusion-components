@@ -27,11 +27,11 @@ export class CheckboxDemoComponent {
       isRequired: [false],
     });
 
-    this.checkboxForm.get('isDisabled').valueChanges.subscribe((val: boolean) => {
+    this.checkboxForm.get('isDisabled')?.valueChanges.subscribe((val: boolean) => {
       val ? this.checkboxFormControl.disable() : this.checkboxFormControl.enable();
     })
 
-    this.checkboxForm.get('isRequired').valueChanges.subscribe((val: boolean) => {
+    this.checkboxForm.get('isRequired')?.valueChanges.subscribe((val: boolean) => {
       val ? this.checkboxFormControl.setValidators(Validators.requiredTrue) : this.checkboxFormControl.clearValidators();
       this.checkboxFormControl.updateValueAndValidity();
     })

@@ -129,8 +129,8 @@ export class TableFilterSelectorComponent extends TranslatedComponent implements
    */
   private _externalAppliedFilters: TableFilterConfig[];
   @Input()
-  set externalAppliedFilters(filters: TableFilterConfig[]) {
-    this._externalAppliedFilters = filters;
+  set externalAppliedFilters(filters: TableFilterConfig[] | undefined) {
+    this._externalAppliedFilters = filters || [];
     this.removeAllFilters();
     filters?.forEach((filter: TableFilterConfig) => this.addGeneratedFilter(filter));
   }

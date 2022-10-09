@@ -41,10 +41,10 @@ export class NotificationDemoComponent implements OnInit {
       detailsMaxHeight: [null]
     });
 
-    this.notificationForm.get('details').valueChanges.subscribe(() => {
+    this.notificationForm.get('details')?.valueChanges.subscribe(() => {
       const displayedControl = this.notificationForm.get('displayed')
-      displayedControl.setValue(false);
-      setTimeout(() => displayedControl.setValue(true))
+      displayedControl?.setValue(false);
+      setTimeout(() => displayedControl?.setValue(true))
     });
   }
 }

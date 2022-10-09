@@ -6,7 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 
 import { AutofocusModule } from '../../directives/autofocus';
-import { ToObsersableModule } from '../../pipes/to-observable';
+import { ToObservableModule } from '../../pipes/to-observable';
 import { SelectComponent } from './select.component';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { SelectComponent } from './select.component';
     FormsModule,
     ReactiveFormsModule,
     ScrollingModule,
-    ToObsersableModule,
+    ToObservableModule,
     TranslateModule,
   ],
   declarations: [
@@ -28,7 +28,7 @@ import { SelectComponent } from './select.component';
     FormsModule,
     ReactiveFormsModule,
     ScrollingModule,
-    ToObsersableModule,
+    ToObservableModule,
 
     SelectComponent,
   ],

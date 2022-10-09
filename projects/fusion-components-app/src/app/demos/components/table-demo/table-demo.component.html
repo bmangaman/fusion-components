@@ -26,8 +26,8 @@
       <label class="f-form__input-label">Table Type</label>
       <div class="f-form__input-wrapper f-form__select-wrapper">
         <select class="f-form__input f-form__select" formControlName="type">
-          <option [value]="TableComponentEnums.TableType.ADVANCED">{{ TableComponentEnums.TableType.ADVANCED }}</option>
-          <option [value]="TableComponentEnums.TableType.BASIC">{{ TableComponentEnums.TableType.BASIC }}</option>
+          <option [value]="TableComponentEnums['TableType'].ADVANCED">{{ TableComponentEnums['TableType'].ADVANCED }}</option>
+          <option [value]="TableComponentEnums['TableType'].BASIC">{{ TableComponentEnums['TableType'].BASIC }}</option>
         </select>
         <span class="f-form__input-wrapper-status-icon"></span>
       </div>
@@ -39,9 +39,9 @@
       <label class="f-form__input-label">Table Spacing</label>
       <div class="f-form__input-wrapper f-form__select-wrapper">
         <select class="f-form__input f-form__select" formControlName="spacing">
-          <option [value]="TableComponentEnums.TableSpacing.CONDENSED">{{ TableComponentEnums.TableSpacing.CONDENSED }}</option>
-          <option [value]="TableComponentEnums.TableSpacing.NORMAL">{{ TableComponentEnums.TableSpacing.NORMAL }}</option>
-          <option [value]="TableComponentEnums.TableSpacing.SPACIOUS">{{ TableComponentEnums.TableSpacing.SPACIOUS }}</option>
+          <option [value]="TableComponentEnums['TableSpacing'].CONDENSED">{{ TableComponentEnums['TableSpacing'].CONDENSED }}</option>
+          <option [value]="TableComponentEnums['TableSpacing'].NORMAL">{{ TableComponentEnums['TableSpacing'].NORMAL }}</option>
+          <option [value]="TableComponentEnums['TableSpacing'].SPACIOUS">{{ TableComponentEnums['TableSpacing'].SPACIOUS }}</option>
         </select>
         <span class="f-form__input-wrapper-status-icon"></span>
       </div>
@@ -87,8 +87,8 @@
       <div class="f-form__input-wrapper f-form__select-wrapper">
         <select class="f-form__input f-form__select" formControlName="rowExpansionMode">
           <option [value]="''">- NONE -</option>
-          <option [value]="TableComponentEnums.RowExpansionMode.MULTIPLE">{{ TableComponentEnums.RowExpansionMode.MULTIPLE }}</option>
-          <option [value]="TableComponentEnums.RowExpansionMode.SINGLE">{{ TableComponentEnums.RowExpansionMode.SINGLE }}</option>
+          <option [value]="TableComponentEnums['RowExpansionMode'].MULTIPLE">{{ TableComponentEnums['RowExpansionMode'].MULTIPLE }}</option>
+          <option [value]="TableComponentEnums['RowExpansionMode'].SINGLE">{{ TableComponentEnums['RowExpansionMode'].SINGLE }}</option>
         </select>
         <span class="f-form__input-wrapper-status-icon"></span>
       </div>
@@ -101,8 +101,8 @@
       <div class="f-form__input-wrapper f-form__select-wrapper">
         <select class="f-form__input f-form__select" formControlName="selectionMode">
           <option [value]="''">- NONE -</option>
-          <option [value]="TableComponentEnums.SelectionMode.MULTIPLE">{{ TableComponentEnums.SelectionMode.MULTIPLE }}</option>
-          <option [value]="TableComponentEnums.SelectionMode.SINGLE">{{ TableComponentEnums.SelectionMode.SINGLE }}</option>
+          <option [value]="TableComponentEnums['SelectionMode'].MULTIPLE">{{ TableComponentEnums['SelectionMode'].MULTIPLE }}</option>
+          <option [value]="TableComponentEnums['SelectionMode'].SINGLE">{{ TableComponentEnums['SelectionMode'].SINGLE }}</option>
         </select>
         <span class="f-form__input-wrapper-status-icon"></span>
       </div>
@@ -272,7 +272,7 @@
     <f-table-column
       header="ID"
       field="id"
-      [cellContentAlignment]="TableComponentEnums.TableCellContentAlignment.RIGHT"
+      [cellContentAlignment]="TableComponentEnums['TableCellContentAlignment'].RIGHT"
       [width]="'50px'">
     </f-table-column>
     <f-table-column
@@ -285,14 +285,14 @@
       [isTruncated]="true"
       [isResizable]="true"
       [width]="'150px'">
-      <ng-template [fusionUiTemplate]="TableComponentEnums.TableTemplate.TABLE_CELL" let-volume>
+      <ng-template [fusionUiTemplate]="TableComponentEnums['TableTemplate'].TABLE_CELL" let-volume>
         <div *ngFor="let accessGroup of volume?.accessGroups; let i = index" class="overflow-hidden-table-cell">{{ accessGroup }}</div>
       </ng-template>
     </f-table-column>
     <f-table-column
       header="Account"
       field="account.name">
-      <ng-template [fusionUiTemplate]="TableComponentEnums.TableTemplate.TABLE_COLUMN_HEADER" let-volume>
+      <ng-template [fusionUiTemplate]="TableComponentEnums['TableTemplate'].TABLE_COLUMN_HEADER" let-volume>
         Account <i class="mdi mdi-account"></i>
       </ng-template>
     </f-table-column>
@@ -313,14 +313,14 @@
       header="Size"
       field="size"
       [downloadTransformationFunction]="sizeDownloadTransformationFunction.bind(this)">
-      <ng-template [fusionUiTemplate]="TableComponentEnums.TableTemplate.TABLE_CELL" let-volume>
+      <ng-template [fusionUiTemplate]="TableComponentEnums['TableTemplate'].TABLE_CELL" let-volume>
         {{ volume?.size | bytes: BytesPipeBase.TWO:true:2 }}
       </ng-template>
     </f-table-column>
     <f-table-column
       header="Snapshots"
       field="snapshots"
-      [cellContentAlignment]="TableComponentEnums.TableCellContentAlignment.RIGHT"
+      [cellContentAlignment]="TableComponentEnums['TableCellContentAlignment'].RIGHT"
       [width]="'100px'">
     </f-table-column>
     <f-table-column
@@ -332,22 +332,22 @@
     <f-table-column
       header="Min IOPS"
       field="iops.min"
-      [cellContentAlignment]="TableComponentEnums.TableCellContentAlignment.RIGHT">
+      [cellContentAlignment]="TableComponentEnums['TableCellContentAlignment'].RIGHT">
     </f-table-column>
     <f-table-column
       header="Max IOPS"
       field="iops.max"
-      [cellContentAlignment]="TableComponentEnums.TableCellContentAlignment.RIGHT">
+      [cellContentAlignment]="TableComponentEnums['TableCellContentAlignment'].RIGHT">
     </f-table-column>
     <f-table-column
       header="Burst IOPS"
       field="iops.burst"
-      [cellContentAlignment]="TableComponentEnums.TableCellContentAlignment.RIGHT">
+      [cellContentAlignment]="TableComponentEnums['TableCellContentAlignment'].RIGHT">
     </f-table-column>
     <!-- END: columns-->
 
     <!-- START: row expansion -->
-    <ng-template [fusionUiTemplate]="TableComponentEnums.TableTemplate.ROW_EXPANSION" let-volume>
+    <ng-template [fusionUiTemplate]="TableComponentEnums['TableTemplate'].ROW_EXPANSION" let-volume>
       <div class="volume-details">
         <h5 class="f-h5">Volume Details</h5>
       </div>
@@ -355,7 +355,7 @@
     <!-- END: row expansion -->
 
     <!-- START: selection column -->
-    <ng-template [fusionUiTemplate]="TableComponentEnums.TableTemplate.SELECTION_COLUMN" let-volume>
+    <ng-template [fusionUiTemplate]="TableComponentEnums['TableTemplate'].SELECTION_COLUMN" let-volume>
       <i
         aria-label="Display help tooltip"
         tabindex="0"
@@ -368,7 +368,7 @@
     <!-- END: selection column -->
 
     <!-- START: row actions -->
-    <ng-template [fusionUiTemplate]="TableComponentEnums.TableTemplate.ROW_ACTIONS" let-volume>
+    <ng-template [fusionUiTemplate]="TableComponentEnums['TableTemplate'].ROW_ACTIONS" let-volume>
       <button class="f-table__actions-dialog-button" [disabled]="!volume?.actions?.edit">Edit</button>
       <button class="f-table__actions-dialog-button" [disabled]="!volume?.actions?.clone">Clone</button>
       <button class="f-table__actions-dialog-button" [disabled]="!volume?.actions?.delete">Delete</button>

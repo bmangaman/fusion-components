@@ -5,6 +5,7 @@ const routes: Route[] = [
   {
     path: '',
     redirectTo: 'accordion',
+    pathMatch: 'full',
   },
   {
     path: 'accordion',

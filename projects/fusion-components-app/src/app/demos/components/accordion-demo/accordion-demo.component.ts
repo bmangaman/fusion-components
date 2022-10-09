@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators, UntypedFormArray } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, UntypedFormArray, FormArray } from '@angular/forms';
 
 import { PanelContentVisibilityChangedEmit, AccordionPanelComponent } from '@fusion-components';
 
@@ -69,5 +69,9 @@ export class AccordionDemoComponent {
 
   toggleAll(): void {
     this.triggerExpandAll = {};
+  }
+
+  get panelsFormArray(): FormArray {
+    return this.accordionForm.get('panels') as FormArray;
   }
 }

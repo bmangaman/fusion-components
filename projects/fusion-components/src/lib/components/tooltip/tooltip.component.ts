@@ -55,7 +55,7 @@ export class TooltipComponent implements AfterViewInit, OnChanges {
    * Determines the custom template to be displayed in the tooltip.
    * It takes precedence over the text input.
    */
-  @Input() template: TemplateRef<any>;
+  @Input() template: TemplateRef<any> | null;
 
   /**
    * Determines the custom template with context to be displayed in the tooltip.

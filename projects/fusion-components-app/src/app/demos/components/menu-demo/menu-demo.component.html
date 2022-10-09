@@ -46,7 +46,7 @@
       (menuClosed)="isMenuDialogOpen = false">
       <ng-template fusionUiTemplate="menuButton">
         <f-button
-          type="primary"
+          [type]="ButtonType.PRIMARY"
           [opensMenu]="true"
           text="Click to Display Menu Dialog"
           [isAutofocused]="isMenuDialogOpen !== undefined && !isMenuDialogOpen"

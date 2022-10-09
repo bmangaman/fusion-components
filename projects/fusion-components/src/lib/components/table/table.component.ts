@@ -94,12 +94,12 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
   flags: TableFlags = {};
   resizeXCoordinate: number;
 
-  tableData$: BehaviorSubject<TableRowData[]> = new BehaviorSubject<TableRowData[]>([]);
-  filteredTableData$: BehaviorSubject<TableRowData[]> = new BehaviorSubject<TableRowData[]>([]);
-  sortedTableData$: BehaviorSubject<TableRowData[]> = new BehaviorSubject<TableRowData[]>([]);
-  paginatedTableData$: BehaviorSubject<TableRowData[]> = new BehaviorSubject<TableRowData[]>([]);
-  selectedTableData$: BehaviorSubject<TableRowData[]> = new BehaviorSubject<TableRowData[]>([]);
-  finalTableData$: BehaviorSubject<TableRowData[]> = new BehaviorSubject<TableRowData[]>([]);
+  tableData$: BehaviorSubject<TableRowData[] | null> = new BehaviorSubject<TableRowData[] | null>([]);
+  filteredTableData$: BehaviorSubject<TableRowData[] | null> = new BehaviorSubject<TableRowData[] | null>([]);
+  sortedTableData$: BehaviorSubject<TableRowData[] | null> = new BehaviorSubject<TableRowData[] | null>([]);
+  paginatedTableData$: BehaviorSubject<TableRowData[] | null> = new BehaviorSubject<TableRowData[] | null>([]);
+  selectedTableData$: BehaviorSubject<TableRowData[] | null> = new BehaviorSubject<TableRowData[] | null>([]);
+  finalTableData$: BehaviorSubject<TableRowData[] | null> = new BehaviorSubject<TableRowData[] | null>([]);
 
   private _visibleColumns: TableColumnComponent[] = [];
   /**
@@ -162,7 +162,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
     return this._tableUuid;
   }
 
-  private _previousData: TableRowData[];
+  private _previousData: TableRowData[] | null;
   /**
    * Determines the data to be displayed in the table.
    *
@@ -174,13 +174,13 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
    *  - isActionable
    *  - isExpandable
    */
-  private _data: any[];
+  private _data: any[] | null;
   @Input()
-  set data(data: any[]) {
+  set data(data: any[] | null) {
     this._previousData = this.finalTableData$.value;
     this._data = cloneDeep(data);
 
-    if (!!data?.length) {
+    if (!!this.data?.length && !!data?.length) {
       this.data.forEach((d: TableRowData) => {
         const sameData: TableRowData | null | undefined = this._previousData ?
           this._previousData.find((td: TableRowData) => this.isRowTableDataEqual(td, d)) :
@@ -199,7 +199,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
 
     this.tableData$.next(data);
   }
-  get data(): any[] {
+  get data(): any[] | null {
     return this._data;
   }
 
@@ -226,12 +226,12 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
    * Determines the filters to be applied to the table data.
    * Primarily used for deeplinking.
    */
-  private _appliedFilters: TableFilterConfig[];
+  private _appliedFilters: TableFilterConfig[] | undefined;
   @Input()
-  set appliedFilters(filters: TableFilterConfig[]) {
+  set appliedFilters(filters: TableFilterConfig[] | undefined) {
     this._appliedFilters = filters;
   }
-  get appliedFilters(): TableFilterConfig[] {
+  get appliedFilters(): TableFilterConfig[] | undefined {
     return this._appliedFilters;
   }
 
@@ -286,16 +286,16 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
   /**
    * Logic to disable the selection input of a row.
    */
-  private _disableRowSelectionFunction: (...args: any[]) => boolean;
+  private _disableRowSelectionFunction: ((...args: any[]) => boolean) | null;
   @Input()
-  set disableRowSelectionFunction(func: (...args: any[]) => boolean) {
+  set disableRowSelectionFunction(func: ((...args: any[]) => boolean) | null) {
     this._disableRowSelectionFunction = func;
 
-    const newData: TableRowData[] = cloneDeep(this.data);
+    const newData: TableRowData[] | null = cloneDeep(this.data);
     newData?.forEach((d: TableRowData) => d.isExpandable = this.isTableDataSelectable(d));
     this.data = newData;
   }
-  get disableRowSelectionFunction(): (...args: any[]) => boolean {
+  get disableRowSelectionFunction(): ((...args: any[]) => boolean) | null {
     return this._disableRowSelectionFunction;
   }
 
@@ -310,32 +310,32 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
   /**
    * Logic to disable the expansion of a row.
    */
-  private _disableRowExpansionFunction: (...args: any[]) => boolean;
+  private _disableRowExpansionFunction: ((...args: any[]) => boolean) | null;
   @Input()
-  set disableRowExpansionFunction(func: (...args: any[]) => boolean) {
+  set disableRowExpansionFunction(func: ((...args: any[]) => boolean) | null) {
     this._disableRowExpansionFunction = func;
 
-    const newData: TableRowData[] = cloneDeep(this.data);
+    const newData: TableRowData[] | null = cloneDeep(this.data);
     newData?.forEach((d: TableRowData) => d.isExpandable = this.isTableDataExpandable(d));
     this.data = newData;
   }
-  get disableRowExpansionFunction(): (...args: any[]) => boolean {
+  get disableRowExpansionFunction(): ((...args: any[]) => boolean) | null {
     return this._disableRowExpansionFunction;
   }
 
   /**
    * Logic to disable the actions button for a row.
    */
-  private _disableRowActionsButtonFunction: (...args: any[]) => boolean;
+  private _disableRowActionsButtonFunction: ((...args: any[]) => boolean) | null;
   @Input()
-  set disableRowActionsButtonFunction(func: (...args: any[]) => boolean) {
+  set disableRowActionsButtonFunction(func: ((...args: any[]) => boolean) | null) {
     this._disableRowActionsButtonFunction = func;
 
-    const newData: TableRowData[] = cloneDeep(this.data);
+    const newData: TableRowData[] | null = cloneDeep(this.data);
     newData?.forEach((d: TableRowData) => d.isActionable = this.isTableDataActionEnabled(d));
     this.data = newData;
   }
-  get disableRowActionsButtonFunction(): (...args: any[]) => boolean {
+  get disableRowActionsButtonFunction(): ((...args: any[]) => boolean) | null {
     return this._disableRowActionsButtonFunction;
   }
 
@@ -434,7 +434,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
   /**
    * Whenever the finalTableData$ behavior subject is updated, emit the value of the finalTableData.
    */
-  @Output() finalTableDataChange: EventEmitter<TableRowData[]> = new EventEmitter<TableRowData[]>();
+  @Output() finalTableDataChange: EventEmitter<TableRowData[] | null> = new EventEmitter<TableRowData[] | null>();
 
   @ContentChildren(TemplateDirective) templates !: QueryList<TemplateDirective>;
 
@@ -524,24 +524,24 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
     });
 
     // When sorted table data is changed, update selected table data
-    this.sortedTableData$.pipe(takeUntil(this.unsubscribe$)).subscribe((data: TableRowData[]) => {
+    this.sortedTableData$.pipe(takeUntil(this.unsubscribe$)).subscribe((data: TableRowData[] | null) => {
       this.selectedTableData$.next(data);
     });
 
     // When selected table data is changed, update filtered table data
-    this.selectedTableData$.pipe(takeUntil(this.unsubscribe$)).subscribe((data: TableRowData[]) => {
+    this.selectedTableData$.pipe(takeUntil(this.unsubscribe$)).subscribe((data: TableRowData[] | null) => {
       this.filteredTableData$.next(data);
     });
 
     // If pagination is NOT enabled, when filtered table data is updated, update final table data
-    this.filteredTableData$.pipe(takeUntil(this.unsubscribe$)).subscribe((data: TableRowData[]) => {
+    this.filteredTableData$.pipe(takeUntil(this.unsubscribe$)).subscribe((data: TableRowData[] | null) => {
       if (!this.enabledFunctionality.pagination) {
         this.finalTableData$.next(data);
       }
     });
 
     // If pagination is enabled, when paginated table data is updated, update final table data
-    this.paginatedTableData$.pipe(takeUntil(this.unsubscribe$)).subscribe((data: TableRowData[]) => {
+    this.paginatedTableData$.pipe(takeUntil(this.unsubscribe$)).subscribe((data: TableRowData[] | null) => {
       if (this.enabledFunctionality.pagination) {
         this.finalTableData$.next(data);
       }
@@ -554,7 +554,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
      * - emit list of selected rows if changed
      * - emit final table data if changed
      */
-    this.finalTableData$.pipe(takeUntil(this.unsubscribe$)).subscribe((data: TableRowData[]) => {
+    this.finalTableData$.pipe(takeUntil(this.unsubscribe$)).subscribe((data: TableRowData[] | null) => {
       this.flags.noResults = !(!!data?.filter((d: TableRowData) => d.isVisible && !d.isFiltered && !d.isNotInView).length);
       this.flags.areAllVisibleRowsExpanded = this.areAllVisibleRowsExpanded(data);
 
@@ -676,9 +676,9 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
    * @param isNewData Determines was newly provided from the data input; otherwise, use finalTableData.
    */
   sortTableData(config?: TableColumnConfig, isNewData?: boolean): void {
-    const data: TableRowData[] = cloneDeep(this.data);
-    const finalTableData: TableRowData[] = cloneDeep(this.finalTableData$.value);
-    const startingData: TableRowData[] = isNewData ? data : !!finalTableData?.length ? finalTableData : data;
+    const data: TableRowData[] | null = cloneDeep(this.data);
+    const finalTableData: TableRowData[] | null = cloneDeep(this.finalTableData$.value);
+    const startingData: TableRowData[] | null = isNewData ? data : !!finalTableData?.length ? finalTableData : data;
 
     if (config) {
       // Set the sort input of the column with the field indicated in the provided config
@@ -802,7 +802,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
    * @param isAll Flag to determine if all visible data should is affected (checkbox in the table header).
    */
   updateSelectedData(row?: TableRowData, isAll?: boolean): void {
-    const finalTableData: TableRowData[] = cloneDeep(this.finalTableData$.value);
+    const finalTableData: TableRowData[] | null = cloneDeep(this.finalTableData$.value);
 
     if (!!finalTableData?.length) {
 
@@ -893,20 +893,19 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
       }
 
       if (this.rowExpansionMode === RowExpansionMode.SINGLE) {
-        this.finalTableData$.value.forEach((data: TableRowData, i: number) => {
+        this.finalTableData$.value?.forEach((data: TableRowData, i: number) => {
           const isMatchingData: boolean = this.isRowTableDataEqual(data, rowData, i, index);
           data.isExpanded = data.isExpandable && isMatchingData ? !data.isExpanded : false;
         });
       }
     } else {
       this.flags.areAllVisibleRowsExpanded = !this.flags.areAllVisibleRowsExpanded;
-      this.finalTableData$.value
-        .filter((d: TableRowData) => d.isExpandable)
+      this.finalTableData$.value?.filter((d: TableRowData) => d.isExpandable)
         .forEach((d: TableRowData) => d.isExpanded = this.flags.areAllVisibleRowsExpanded);
     }
 
     this.expansionChange.emit(
-      this.removeTableRowFormattingPipe.transform(this.finalTableData$.value.filter((d: TableRowData) => d.isExpanded))
+      this.removeTableRowFormattingPipe.transform(this.finalTableData$.value?.filter((d: TableRowData) => d.isExpanded))
     );
   }
 
@@ -1024,7 +1023,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
    * @param data The table row data.
    * @returns True if the row is actionable, false otherwise.
    */
-  isTableDataActionEnabled(data: TableRowData): boolean {
+  isTableDataActionEnabled(data: TableRowData | null): boolean {
     return this.disableRowActionsButtonFunction ? !this.disableRowActionsButtonFunction(data) : true;
   }
 
@@ -1034,7 +1033,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
    * @param data The table data.
    * @returns True if all the visible rows are expanded, false otherwise.
    */
-  areAllVisibleRowsExpanded(data: TableRowData[]): boolean {
+  areAllVisibleRowsExpanded(data: TableRowData[] | null): boolean {
     if (!data || !data.length) {
       return true;
     }

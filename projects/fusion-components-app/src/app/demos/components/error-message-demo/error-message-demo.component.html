@@ -20,7 +20,7 @@
         <input [formControl]="errorMessageFormControl" class="f-form__input" type="text" fusionUiValidationStyling />
         <f-error-message
           [control]="errorMessageFormControl"
-          [errors]="errorMessageForm?.get('hasErrors')?.value ? errorMessages : undefined"
+          [errors]="errorMessageForm?.get('hasErrors')?.value ? errorMessages : []"
           [displayMultiple]="errorMessageForm?.get('displayMultiple')?.value">
         </f-error-message>
       </div>

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { TemplateModule } from '../../directives/template';
 import { GetStatusLevelTextModule } from '../../pipes/get-status-level-text';
-import { ToObsersableModule } from '../../pipes/to-observable';
+import { ToObservableModule } from '../../pipes/to-observable';
 import { CardComponent } from './card.component';
 
 @NgModule({
@@ -11,7 +11,7 @@ import { CardComponent } from './card.component';
     CommonModule,
     GetStatusLevelTextModule,
     TemplateModule,
-    ToObsersableModule,
+    ToObservableModule,
   ],
   declarations: [
     CardComponent,
@@ -20,7 +20,7 @@ import { CardComponent } from './card.component';
     CommonModule,
     GetStatusLevelTextModule,
     TemplateModule,
-    ToObsersableModule,
+    ToObservableModule,
 
     CardComponent,
   ],
