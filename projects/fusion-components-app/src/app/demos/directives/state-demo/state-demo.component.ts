@@ -62,21 +62,21 @@ export class StateDemoComponent {
       const form: UntypedFormGroup = this.stateForm;
 
       this.headlines = {
-        [State.NOT_LOADED]: form.get('notLoadedHeadline').value,
-        [State.NO_RESULTS]: form.get('noResultsHeadline').value,
-        [State.ERROR]: form.get('errorHeadline').value,
+        [State.NOT_LOADED]: form.get('notLoadedHeadline')?.value,
+        [State.NO_RESULTS]: form.get('noResultsHeadline')?.value,
+        [State.ERROR]: form.get('errorHeadline')?.value,
       };
 
       this.messages = {
-        [State.NOT_LOADED]: form.get('notLoadedMessage').value,
-        [State.NO_RESULTS]: form.get('noResultsMessage').value,
-        [State.ERROR]: form.get('errorMessage').value,
+        [State.NOT_LOADED]: form.get('notLoadedMessage')?.value,
+        [State.NO_RESULTS]: form.get('noResultsMessage')?.value,
+        [State.ERROR]: form.get('errorMessage')?.value,
       };
 
       this.messageTemplates = {
-        [State.NOT_LOADED]: form.get('useCustomNotLoadedMessageTemplate').value ? this.customNotLoadedMessage : null,
-        [State.NO_RESULTS]:form.get('useCustomNoResultsMessageTemplate').value ? this.customNoResultsMessage : null,
-        [State.ERROR]: form.get('useCustomErrorMessageTemplate').value ? this.customErrorMessage : null,
+        [State.NOT_LOADED]: form.get('useCustomNotLoadedMessageTemplate')?.value ? this.customNotLoadedMessage : null,
+        [State.NO_RESULTS]:form.get('useCustomNoResultsMessageTemplate')?.value ? this.customNoResultsMessage : null,
+        [State.ERROR]: form.get('useCustomErrorMessageTemplate')?.value ? this.customErrorMessage : null,
       }
     });
   }

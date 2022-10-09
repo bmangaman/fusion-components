@@ -89,16 +89,16 @@ describe('GroupAppliedFiltersPipe', () => {
     filters['_results'] = [stringFilter, numberFilter, bytesFilter, ipFilter];
 
     const appliedStringFilter = cloneDeep(stringFilter);
-    appliedStringFilter.filterForm.get('string').setValue('string');
+    appliedStringFilter.filterForm.get('string')?.setValue('string');
 
     const appliedStringFilter2 = cloneDeep(stringFilter);
-    appliedStringFilter.filterForm.get('string').setValue('string2');
+    appliedStringFilter.filterForm.get('string')?.setValue('string2');
 
     const appliedNumberFilter = cloneDeep(numberFilter);
-    appliedNumberFilter.filterForm.get('number').setValue(100);
+    appliedNumberFilter.filterForm.get('number')?.setValue(100);
 
     const appliedBytesFilter = cloneDeep(bytesFilter);
-    appliedNumberFilter.filterForm.get('number').setValue(1000);
+    appliedNumberFilter.filterForm.get('number')?.setValue(1000);
 
     appliedFilters = [
       appliedStringFilter,

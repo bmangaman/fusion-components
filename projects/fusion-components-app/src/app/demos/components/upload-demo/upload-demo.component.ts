@@ -56,7 +56,7 @@ export class UploadDemoComponent {
 
     files.forEach((file: File) => formData.append('file', file, file.name));
 
-    if (this.uploadForm.get('makeUploadError').value) {
+    if (this.uploadForm.get('makeUploadError')?.value) {
       req = new HttpRequest('POST', '/upload-error', formData, { reportProgress: true });
     } else {
       req = new HttpRequest('POST', '/upload-file', formData, {reportProgress: true});

@@ -16,12 +16,12 @@ import { ErrorMessageModule } from './error-message.module';
         <label class="f-form__label" for="test-input">Test Input Label</label>
         <input formControlName="testInput" class="f-form__input" id="test-input" type="text" />
           <f-error-message
-            [control]="testForm.get('testInput')"
+            [control]="testForm.get('testInput')?"
             [errors]="testInputErrors"
             id="single-error-message">
           </f-error-message>
           <f-error-message
-            [control]="testForm.get('testInput')"
+            [control]="testForm.get('testInput')?"
             [errors]="testInputErrors"
             [displayMultiple]="true"
             id="multiple-error-messages">
@@ -108,53 +108,53 @@ describe('ErrorMessageComponent', () => {
   }
 
   beforeEach(() => {
-    testComponent.testForm.get('testInput').setValue('');
-    testComponent.testForm.get('testInput').markAsPristine();
+    testComponent.testForm.get('testInput')?.setValue('');
+    testComponent.testForm.get('testInput')?.markAsPristine();
     fixture.detectChanges();
   });
 
   describe('displaying a single error at a time', () => {
     it('should not display any errors if there are none', () => {
-      testComponent.testForm.get('testInput').setValue('valid');
-      testComponent.testForm.get('testInput').markAsDirty();
+      testComponent.testForm.get('testInput')?.setValue('valid');
+      testComponent.testForm.get('testInput')?.markAsDirty();
       fixture.detectChanges();
       expect(!!getSingleErrorMessage()).toBeFalsy('error message should NOT be visible');
     });
 
     it('should not display any errors if the input is pristine (not dirty)', () => {
       // NOTE: setValue does not mark the input as "dirty"
-      testComponent.testForm.get('testInput').setValue('');
+      testComponent.testForm.get('testInput')?.setValue('');
       fixture.detectChanges();
       expect(!!getSingleErrorMessage()).toBeFalsy('error message should NOT be visible');
 
-      testComponent.testForm.get('testInput').setValue('two');
+      testComponent.testForm.get('testInput')?.setValue('two');
       fixture.detectChanges();
       expect(!!getSingleErrorMessage()).toBeFalsy('error message should NOT be visible');
 
-      testComponent.testForm.get('testInput').setValue('more-than-ten-characters');
+      testComponent.testForm.get('testInput')?.setValue('more-than-ten-characters');
       fixture.detectChanges();
       expect(!!getSingleErrorMessage()).toBeFalsy('error message should NOT be visible');
     });
 
     it('should display the correct error', () => {
-      testComponent.testForm.get('testInput').setValue('two');
-      testComponent.testForm.get('testInput').markAsDirty();
+      testComponent.testForm.get('testInput')?.setValue('two');
+      testComponent.testForm.get('testInput')?.markAsDirty();
       fixture.detectChanges();
-      expect(testComponent.testForm.get('testInput').hasError('minlength')).toBeTruthy('should have the minlength error');
+      expect(testComponent.testForm.get('testInput')?.hasError('minlength')).toBeTruthy('should have the minlength error');
       expect(!!getSingleErrorMessage()).toBeTruthy('error message should be visible');
       expect(getSingleErrorMessage().nativeElement.innerText).toEqual('Minimum of 5 characters');
 
-      testComponent.testForm.get('testInput').setValue('more-than-ten-characters');
-      testComponent.testForm.get('testInput').markAsDirty();
+      testComponent.testForm.get('testInput')?.setValue('more-than-ten-characters');
+      testComponent.testForm.get('testInput')?.markAsDirty();
       fixture.detectChanges();
-      expect(testComponent.testForm.get('testInput').hasError('maxlength')).toBeTruthy('should have the maxlength error');
+      expect(testComponent.testForm.get('testInput')?.hasError('maxlength')).toBeTruthy('should have the maxlength error');
       expect(!!getSingleErrorMessage()).toBeTruthy('error message should be visible');
       expect(getSingleErrorMessage().nativeElement.innerText).toEqual('Maximum of 10 characters');
 
-      testComponent.testForm.get('testInput').setValue('');
-      testComponent.testForm.get('testInput').markAsDirty();
+      testComponent.testForm.get('testInput')?.setValue('');
+      testComponent.testForm.get('testInput')?.markAsDirty();
       fixture.detectChanges();
-      expect(testComponent.testForm.get('testInput').hasError('required')).toBeTruthy('should have the required error');
+      expect(testComponent.testForm.get('testInput')?.hasError('required')).toBeTruthy('should have the required error');
       expect(!!getSingleErrorMessage()).toBeTruthy('error message should be visible');
       expect(getSingleErrorMessage().nativeElement.innerText).toEqual('Required');
     });
@@ -162,47 +162,47 @@ describe('ErrorMessageComponent', () => {
 
   describe('displaying multiple errors at a time', () => {
     it('should not display any errors if there are none', () => {
-      testComponent.testForm.get('testInput').setValue('valid');
-      testComponent.testForm.get('testInput').markAsDirty();
+      testComponent.testForm.get('testInput')?.setValue('valid');
+      testComponent.testForm.get('testInput')?.markAsDirty();
       fixture.detectChanges();
       expect(!!getMultipleErrorMessages().el).toBeFalsy('error message should NOT be visible');
     });
 
     it('should not display any errors if the input is pristine (not dirty)', () => {
       // NOTE: setValue does not mark the input as "dirty"
-      testComponent.testForm.get('testInput').setValue('');
+      testComponent.testForm.get('testInput')?.setValue('');
       fixture.detectChanges();
       expect(!!getMultipleErrorMessages().el).toBeFalsy('error message should NOT be visible');
 
-      testComponent.testForm.get('testInput').setValue('two');
+      testComponent.testForm.get('testInput')?.setValue('two');
       fixture.detectChanges();
       expect(!!getMultipleErrorMessages().el).toBeFalsy('error message should NOT be visible');
 
-      testComponent.testForm.get('testInput').setValue('more-than-ten-characters');
+      testComponent.testForm.get('testInput')?.setValue('more-than-ten-characters');
       fixture.detectChanges();
       expect(!!getMultipleErrorMessages().el).toBeFalsy('error message should NOT be visible');
     });
 
     it('should display the correct errors', () => {
-      testComponent.testForm.get('testInput').setValue('');
-      testComponent.testForm.get('testInput').markAsDirty();
+      testComponent.testForm.get('testInput')?.setValue('');
+      testComponent.testForm.get('testInput')?.markAsDirty();
       fixture.detectChanges();
-      expect(testComponent.testForm.get('testInput').hasError('required')).toBeTruthy('should have the required error');
+      expect(testComponent.testForm.get('testInput')?.hasError('required')).toBeTruthy('should have the required error');
       expect(!!getMultipleErrorMessages().el).toBeTruthy('error message should be visible');
       expect(getMultipleErrorMessages().messages[0].nativeElement.innerText).toEqual('Required');
 
-      testComponent.testForm.get('testInput').setValue('two');
-      testComponent.testForm.get('testInput').markAsDirty();
+      testComponent.testForm.get('testInput')?.setValue('two');
+      testComponent.testForm.get('testInput')?.markAsDirty();
       fixture.detectChanges();
-      expect(testComponent.testForm.get('testInput').hasError('minlength')).toBeTruthy('should have the minlength error');
+      expect(testComponent.testForm.get('testInput')?.hasError('minlength')).toBeTruthy('should have the minlength error');
       expect(!!getMultipleErrorMessages().el).toBeTruthy('error message should be visible');
       expect(getMultipleErrorMessages().messages[0].nativeElement.innerText).toEqual('Minimum of 5 characters');
 
-      testComponent.testForm.get('testInput').setValue('8');
-      testComponent.testForm.get('testInput').markAsDirty();
+      testComponent.testForm.get('testInput')?.setValue('8');
+      testComponent.testForm.get('testInput')?.markAsDirty();
       fixture.detectChanges();
-      expect(testComponent.testForm.get('testInput').hasError('minlength')).toBeTruthy('should have the minlength error');
-      expect(testComponent.testForm.get('testInput').hasError('pattern')).toBeTruthy('should have the pattern error');
+      expect(testComponent.testForm.get('testInput')?.hasError('minlength')).toBeTruthy('should have the minlength error');
+      expect(testComponent.testForm.get('testInput')?.hasError('pattern')).toBeTruthy('should have the pattern error');
       expect(!!getMultipleErrorMessages().el).toBeTruthy('error message should be visible');
       expect(getMultipleErrorMessages().messages[0].nativeElement.innerText).toEqual('Minimum of 5 characters');
       expect(getMultipleErrorMessages().messages[1].nativeElement.innerText).toEqual('No numbers');

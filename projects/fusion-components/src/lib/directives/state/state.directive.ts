@@ -113,9 +113,9 @@ export class StateDirective {
    * The templae HAS to have a wrapping container element (cannot just be text). For example:
    * <ng-templae #stateLoading><div>Loading State Template Content</div></ng-template>
    */
-  private _loadingState: TemplateRef<any>;
+  private _loadingState: TemplateRef<any> | null;
   @Input()
-  set fusionUiStateLoading(state: TemplateRef<any>) {
+  set fusionUiStateLoading(state: TemplateRef<any> | null) {
     this._loadingState = state;
     this.generateView();
   }
@@ -127,9 +127,9 @@ export class StateDirective {
    * The templae HAS to have a wrapping container element (cannot just be text). For example:
    * <ng-templae #stateNoResults><div>No Results State Template Content</div></ng-template>
    */
-  private _noResultsState: TemplateRef<any>;
+  private _noResultsState: TemplateRef<any> | null;
   @Input()
-  set fusionUiStateNoResults(state: TemplateRef<any>) {
+  set fusionUiStateNoResults(state: TemplateRef<any> | null) {
     this._noResultsState = state;
     this.generateView();
   }
@@ -141,9 +141,9 @@ export class StateDirective {
    * The templae HAS to have a wrapping container element (cannot just be text). For example:
    * <ng-templae #stateError><div>Error State Template Content</div></ng-template>
    */
-  private _errorState: TemplateRef<any>;
+  private _errorState: TemplateRef<any> | null;
   @Input()
-  set fusionUiStateError(state: TemplateRef<any>) {
+  set fusionUiStateError(state: TemplateRef<any> | null) {
     this._errorState = state;
     this.generateView();
   }
@@ -155,9 +155,9 @@ export class StateDirective {
    * The templae HAS to have a wrapping container element (cannot just be text). For example:
    * <ng-templae #stateNotLoaded><div>Not Loaded State Template Content</div></ng-template>
    */
-  private _notLoadedState: TemplateRef<any>;
+  private _notLoadedState: TemplateRef<any> | null;
   @Input()
-  set fusionUiStateNotLoaded(state: TemplateRef<any>) {
+  set fusionUiStateNotLoaded(state: TemplateRef<any> | null) {
     this._notLoadedState = state;
     this.generateView();
   }
@@ -207,7 +207,7 @@ export class StateDirective {
    *
    * @param state The custom state template (e.g. _loadingState, _noResultsState, _errorState, _notLoadedState).
    */
-  generateViewHelper(state: TemplateRef<any>): void {
+  generateViewHelper(state: TemplateRef<any> | null): void {
     if (!!state) {
       this.viewContainer.createEmbeddedView(state);
     } else {

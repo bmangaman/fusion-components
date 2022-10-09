@@ -74,9 +74,9 @@ export class WidgetDemoComponent {
       isCustomInfoDetails: [false],
     });
 
-    this.widgetForm.get('isCustomHeader').valueChanges.subscribe(() => this.resetComponent());
-    this.widgetForm.get('isCustomInfoBoxes').valueChanges.subscribe(() => this.resetComponent());
-    this.widgetForm.get('isCustomInfoDetails').valueChanges.subscribe(() => this.resetComponent());
+    this.widgetForm.get('isCustomHeader')?.valueChanges.subscribe(() => this.resetComponent());
+    this.widgetForm.get('isCustomInfoBoxes')?.valueChanges.subscribe(() => this.resetComponent());
+    this.widgetForm.get('isCustomInfoDetails')?.valueChanges.subscribe(() => this.resetComponent());
   }
 
   resetComponent(): void {

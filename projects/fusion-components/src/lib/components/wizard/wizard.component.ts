@@ -45,6 +45,7 @@ export class WizardComponent implements OnChanges {
   get steps(): WizardStep[] {
     return this._steps;
   }
+  @Output() stepsChange: EventEmitter<WizardStep[]> = new EventEmitter<WizardStep[]>();
 
   /**
    * Emits the current steps of the wizard.

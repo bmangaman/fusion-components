@@ -29,4 +29,4 @@ export const DEFAULT_STATE_MESSAGES: StateMessages = {
   [State.NO_RESULTS]: '',
 };
 
-export type StateMessageTemplates = { [key in State]?: TemplateRef<any> };
+export type StateMessageTemplates = { [key in State]?: TemplateRef<any> | null };

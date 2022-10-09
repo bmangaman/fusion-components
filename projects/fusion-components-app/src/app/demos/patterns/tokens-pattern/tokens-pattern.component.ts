@@ -76,14 +76,14 @@ export class TokensPatternComponent {
     { name: 'Chart 10', token: '$f-color-chart-10', value: '#9F82F1', textColor: 'dark' },
   ];
 
-  colors = {
-    blues: this.blues,
-    error: this.error,
-    warning: this.warning,
-    success: this.success,
-    opaqueGreyscale: this.opaqueGreyscale,
-    alphaGreyscale: this.alphaGreyscale,
-    chart: this.chart,
+  colors: Record<string, { name: string, token: string, value: string, textColor: string }[]> = {
+    'blues': this.blues,
+    'error': this.error,
+    'warning': this.warning,
+    'success': this.success,
+    'opaqueGreyscale': this.opaqueGreyscale,
+    'alphaGreyscale': this.alphaGreyscale,
+    'chart': this.chart,
   };
 
   spacing = [

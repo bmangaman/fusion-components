@@ -50,13 +50,13 @@ export class WizardDemoComponent {
     });
 
     this.wizardForm.valueChanges.subscribe(() => {
-      const hideSteps2And5Value: boolean = this.wizardForm.get('hideSteps2And6').value;
+      const hideSteps2And5Value: boolean = this.wizardForm.get('hideSteps2And6')?.value;
       this.steps[1].isHidden = hideSteps2And5Value;
       this.steps[5].isHidden = hideSteps2And5Value;
     });
   }
 
-  getCurrentStep(): WizardStep {
+  getCurrentStep(): WizardStep | undefined {
     return this.steps.find((step: WizardStep) => step.isCurrent);
   }
 
