@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'projects/fusion-components/src/lib/styles/fusion-ui-styles.scss';
+@import './app/shared/styles/demo.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: 'Source Sans Pro';
+}
