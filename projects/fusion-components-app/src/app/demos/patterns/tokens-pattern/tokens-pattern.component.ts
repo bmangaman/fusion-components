@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class TokensPatternComponent {
   blues = [
-    { name: 'NetApp',       token: '$f-color-blue-netapp',       value: '#0067C5', textColor: 'light' },
+    { name: 'Fusion',       token: '$f-color-blue-fusion',       value: '#0067C5', textColor: 'light' },
     { name: 'Lightest',     token: '$f-color-blue-lightest',     value: '#EFF4FF', textColor: 'dark' },
     { name: 'Light',        token: '$f-color-blue-light',        value: '#A5BFED', textColor: 'dark' },
     { name: 'Medium Light', token: '$f-color-blue-medium-light', value: '#6C9CEF', textColor: 'light' },

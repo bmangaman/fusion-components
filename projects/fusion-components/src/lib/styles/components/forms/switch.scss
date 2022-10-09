@@ -82,10 +82,10 @@
       &--checked,
       &--selected {
         & + .f-form__switch-visual {
-          background-color: $f-color-blue-netapp;
+          background-color: $f-color-blue-fusion;
 
           &:after {
-            border: 2px solid $f-color-blue-netapp;
+            border: 2px solid $f-color-blue-fusion;
             left: calc(100% - 23px);
           }
         }

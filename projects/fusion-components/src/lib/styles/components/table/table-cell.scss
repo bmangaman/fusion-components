@@ -169,7 +169,7 @@
     z-index: 2;
 
     & > * {
-      color: $f-color-blue-netapp;
+      color: $f-color-blue-fusion;
       display: none;
       font-size: $f-font-size-icon-md;
     }
@@ -183,7 +183,7 @@
   }
 
   &-column-resize-indicator {
-    background: $f-color-blue-netapp;
+    background: $f-color-blue-fusion;
     display: block;
     position: absolute;
     height: 100%;
