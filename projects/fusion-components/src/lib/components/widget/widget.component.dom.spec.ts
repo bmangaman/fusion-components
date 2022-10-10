@@ -153,7 +153,7 @@ describe('WizardComponent', () => {
       expect(page.widget.header).toBeTruthy();
       expect(page.widget.headerRefreshButton).toBeTruthy();
 
-      page.widget.headerRefreshButton.button.click();
+      page.widget.headerRefreshButton?.button?.click();
       fixture.detectChanges();
       expect(component.refresh).toHaveBeenCalled();
     });
@@ -168,8 +168,8 @@ describe('WizardComponent', () => {
 
   describe('the info boxes', () => {
     it('should NOT be displayed if neither infoBoxes nor infoBoxesDetails are defined or have values', () => {
-      component.infoBoxesDetails = null;
-      component.isCustomInfoBoxes = null;
+      component.infoBoxesDetails = null as any;
+      component.isCustomInfoBoxes = null as any;
       reloadComponent();
       expect(page.widget.infoBoxesContainer).toBeFalsy();
 
@@ -183,25 +183,25 @@ describe('WizardComponent', () => {
       fixture.detectChanges();
 
       expect(page.widget.infoBoxesContainer).toBeTruthy();
-      expect(page.widget.infoBoxes.length).toEqual(4);
+      expect(page.widget.infoBoxes?.length).toEqual(4);
 
-      expect(page.widget.getInfoBoxHeaderAtIndex(0).innerText).toEqual(infoBoxesDetails[0].header as string);
-      expect(page.widget.getInfoBoxContentAtIndex(0).innerText).toEqual(infoBoxesDetails[0].content as string);
+      expect(page.widget.getInfoBoxHeaderAtIndex(0)?.innerText).toEqual(infoBoxesDetails[0].header as string);
+      expect(page.widget.getInfoBoxContentAtIndex(0)?.innerText).toEqual(infoBoxesDetails[0].content as string);
       expect(page.widget.getInfoBoxBadgesContainerAtIndex(0)).toBeFalsy();
       expect(page.widget.getInfoBoxFooterAtIndex(0)).toBeFalsy();
 
-      expect(page.widget.getInfoBoxHeaderAtIndex(1).innerText).toEqual(infoBoxesDetails[1].header as string);
-      expect(page.widget.getInfoBoxContentAtIndex(1).innerText).toEqual(infoBoxesDetails[1].content as string);
+      expect(page.widget.getInfoBoxHeaderAtIndex(1)?.innerText).toEqual(infoBoxesDetails[1].header as string);
+      expect(page.widget.getInfoBoxContentAtIndex(1)?.innerText).toEqual(infoBoxesDetails[1].content as string);
       expect(page.widget.getInfoBoxBadgesContainerAtIndex(1)).toBeFalsy();
-      expect(page.widget.getInfoBoxFooterAtIndex(1).innerText).toEqual(infoBoxesDetails[1].footer as string);
+      expect(page.widget.getInfoBoxFooterAtIndex(1)?.innerText).toEqual(infoBoxesDetails[1].footer as string);
 
-      expect(page.widget.getInfoBoxHeaderAtIndex(2).innerText).toEqual(infoBoxesDetails[2].header as string);
+      expect(page.widget.getInfoBoxHeaderAtIndex(2)?.innerText).toEqual(infoBoxesDetails[2].header as string);
       expect(page.widget.getInfoBoxContentAtIndex(2)).toBeFalsy();
       expect(page.widget.getInfoBoxBadgesContainerAtIndex(2)).toBeTruthy();
       expect(page.widget.getInfoBoxBadgesAtIndex(2).length).toEqual(1);
       expect(page.widget.getInfoBoxFooterAtIndex(2)).toBeFalsy();
 
-      expect(page.widget.getInfoBoxHeaderAtIndex(3).innerText).toEqual(infoBoxesDetails[3].header as string);
+      expect(page.widget.getInfoBoxHeaderAtIndex(3)?.innerText).toEqual(infoBoxesDetails[3].header as string);
       expect(page.widget.getInfoBoxContentAtIndex(3)).toBeFalsy();
       expect(page.widget.getInfoBoxBadgesContainerAtIndex(3)).toBeTruthy();
       expect(page.widget.getInfoBoxBadgesAtIndex(3).length).toEqual(2);
@@ -213,17 +213,17 @@ describe('WizardComponent', () => {
       reloadComponent();
 
       expect(page.widget.infoBoxesContainer).toBeTruthy();
-      expect(page.widget.infoBoxes.length).toEqual(2);
+      expect(page.widget.infoBoxes?.length).toEqual(2);
 
-      expect(page.widget.getInfoBoxAtIndex(0).innerText).toEqual('Custom info box');
-      expect(page.widget.getInfoBoxAtIndex(1).innerText).toEqual('Custom info box 2');
+      expect(page.widget.getInfoBoxAtIndex(0)?.innerText).toEqual('Custom info box');
+      expect(page.widget.getInfoBoxAtIndex(1)?.innerText).toEqual('Custom info box 2');
     });
   });
 
   describe('the info details', () => {
     it('should NOT be displayed if neither infoDetails or infoDetailsData are defined', () => {
-      component.infoDetailsData = null;
-      component.isCustomInfoDetails = null;
+      component.infoDetailsData = null as any;
+      component.isCustomInfoDetails = null as any;
       reloadComponent();
       expect(page.widget.infoDetailsContainer).toBeFalsy();
     });
@@ -235,7 +235,7 @@ describe('WizardComponent', () => {
       expect(page.widget.infoDetailsContainer).toBeTruthy();
       expect(page.widget.infoDetailsButton).toBeTruthy();
       expect(page.widget.infoDetailsContent).toBeFalsy();
-      page.widget.infoDetailsButton.click();
+      page.widget.infoDetailsButton?.click();
       fixture.detectChanges();
       expect(page.widget.infoDetailsContent).toBeTruthy();
     });
@@ -244,15 +244,15 @@ describe('WizardComponent', () => {
       component.infoDetailsData = infoDetailsData;
       fixture.detectChanges();
 
-      page.widget.infoDetailsButton.click();
+      page.widget.infoDetailsButton?.click();
       fixture.detectChanges();
       expect(page.widget.infoDetailsContent).toBeTruthy();
       expect(page.widget.infoDetailsTable).toBeTruthy();
-      expect(page.widget.infoDetailsTableCells.length).toEqual(6);
+      expect(page.widget.infoDetailsTableCells?.length).toEqual(6);
 
       Object.keys(infoDetailsData).forEach((key: string, i: number) => {
-        expect(page.widget.getInfoDetailsTableCellKeyAtIndex(i).innerText).toEqual(key);
-        expect(page.widget.getInfoDetailsTableCellValueAtIndex(i).innerText).toEqual(infoDetailsData[key].toString());
+        expect(page.widget.getInfoDetailsTableCellKeyAtIndex(i)?.innerText).toEqual(key);
+        expect(page.widget.getInfoDetailsTableCellValueAtIndex(i)?.innerText).toEqual(infoDetailsData[key].toString());
       });
     });
 
@@ -260,10 +260,10 @@ describe('WizardComponent', () => {
       component.isCustomInfoDetails = true;
       reloadComponent();
 
-      page.widget.infoDetailsButton.click();
+      page.widget.infoDetailsButton?.click();
       fixture.detectChanges();
       expect(page.widget.infoDetailsContent).toBeTruthy();
-      expect(page.widget.infoDetailsContent.innerText).toEqual('Custom info details');
+      expect(page.widget.infoDetailsContent?.innerText).toEqual('Custom info details');
     });
   });
 

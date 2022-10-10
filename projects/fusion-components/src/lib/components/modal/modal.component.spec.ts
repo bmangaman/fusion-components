@@ -1,7 +1,7 @@
 import { ElementRef } from '@angular/core';
-import { OtherStubFactory } from '@hcc/app/shared/unit-test-helpers';
 
 import { BaseModalComponent } from '@fusion-components';
+import { StubFactory } from '../../../unit-test-helpers/stub-factory.spec'
 import { Size } from '../../shared';
 
 import { ModalConfig, ModalType } from './modal.interface';
@@ -15,7 +15,7 @@ describe('ModalComponent', () => {
   let elemRef: ElementRef;
 
   beforeEach(() => {
-    elemRef = OtherStubFactory.getElementRefStub() as ElementRef;
+    elemRef = StubFactory.getElementRefStub() as ElementRef;
     documentStub = document;
     component = new ModalComponent(documentStub, elemRef);
   });

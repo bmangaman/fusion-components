@@ -36,9 +36,9 @@ describe('ErrorMessageGenerator', () => {
 
     beforeEach(() => {
       defaultError = '';
-      config = undefined;
-      result = undefined;
-      expectedResult = undefined;
+      config = undefined as any;
+      result = undefined as any;
+      expectedResult = undefined as any;
       getTranslationObservable = of('get translation observable');
       getTranslationSpy = spyOn((service as any), 'getTranslation').and.returnValue(getTranslationObservable);
     });
@@ -55,11 +55,11 @@ describe('ErrorMessageGenerator', () => {
           translation: getTranslationObservable,
         };
 
-        result = service.required();
+        result = service.required(null as any);
         expect(result).toEqual(expectedResult);
         expect(getTranslationSpy).toHaveBeenCalledWith(undefined, defaultError);
 
-        result = service.required(undefined);
+        result = service.required(undefined as any);
         expect(result).toEqual(expectedResult);
         expect(getTranslationSpy).toHaveBeenCalledWith(undefined, defaultError);
 
@@ -78,8 +78,8 @@ describe('ErrorMessageGenerator', () => {
 
         expectedResult = {
           priority: config.priority,
-          error: config.error,
-          translation: config.translation,
+          error: config.error as string,
+          translation: config.translation as Observable<string>,
         };
 
         result = service.required(config);
@@ -100,11 +100,11 @@ describe('ErrorMessageGenerator', () => {
           translation: getTranslationObservable,
         };
 
-        result = service.minLength();
+        result = service.minLength(null as any);
         expect(result).toEqual(expectedResult);
         expect(getTranslationSpy).toHaveBeenCalledWith(undefined, defaultError);
 
-        result = service.minLength(undefined);
+        result = service.minLength(undefined as any);
         expect(result).toEqual(expectedResult);
         expect(getTranslationSpy).toHaveBeenCalledWith(undefined, defaultError);
 
@@ -125,8 +125,8 @@ describe('ErrorMessageGenerator', () => {
 
         expectedResult = {
           priority: config.priority,
-          error: config.error,
-          translation: config.translation,
+          error: config.error as string,
+          translation: config.translation as Observable<string>,
         };
 
         result = service.minLength(config as ErrorMessageMinlengthGeneratorConfig);
@@ -147,11 +147,11 @@ describe('ErrorMessageGenerator', () => {
           translation: getTranslationObservable,
         };
 
-        result = service.maxLength();
+        result = service.maxLength(null as any);
         expect(result).toEqual(expectedResult);
         expect(getTranslationSpy).toHaveBeenCalledWith(undefined, defaultError);
 
-        result = service.maxLength(undefined);
+        result = service.maxLength(undefined as any);
         expect(result).toEqual(expectedResult);
         expect(getTranslationSpy).toHaveBeenCalledWith(undefined, defaultError);
 
@@ -172,8 +172,8 @@ describe('ErrorMessageGenerator', () => {
 
         expectedResult = {
           priority: config.priority,
-          error: config.error,
-          translation: config.translation,
+          error: config.error as string,
+          translation: config.translation as Observable<string>,
         };
 
         result = service.maxLength(config as ErrorMessageMaxlengthGeneratorConfig);
@@ -204,7 +204,7 @@ describe('ErrorMessageGenerator', () => {
         config,
       );
 
-      config = undefined;
+      config = undefined as any;
       service['getTranslation'](config, error);
       expect(translateService.get).toHaveBeenCalledWith(
         'components.errorMessage.error.singular',

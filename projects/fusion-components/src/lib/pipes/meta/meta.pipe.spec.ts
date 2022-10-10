@@ -15,13 +15,13 @@ describe('MetaPipe', () => {
   });
 
   it('should return the original value if no (valid) pipes were provided', () => {
-    pipeItems = undefined;
+    pipeItems = undefined as any;
     expect(pipe.transform('HelloWorld', pipeItems)).toBe('HelloWorld');
 
     pipeItems = [];
     expect(pipe.transform('HelloWorld', pipeItems)).toBe('HelloWorld');
 
-    pipeItems = [null];
+    pipeItems = [null as any];
     expect(pipe.transform('HelloWorld', pipeItems)).toBe('HelloWorld');
   });
 

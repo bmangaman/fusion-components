@@ -8,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { cloneDeep } from 'lodash-es';
 import { Observable } from 'rxjs';
 
-import translations from 'projects/fusion-components-site/src/i18n/en.json';
+import translations from 'projects/fusion-components-app/src/i18n/en.json';
 
 import { TranslatedComponentSpecModule } from '@fusion-components/unit-test-helpers/translated-component.module.spec';
 import { UploadFilePageObject } from '@fusion-components/unit-test-helpers/page-objects/upload.spec.po';
@@ -134,7 +134,7 @@ describe('UploadComponent', () => {
       component.isBrowseHidden = false;
       fixture.detectChanges();
       expect(page.upload.browseButton).toBeTruthy();
-      expect(page.upload.browseButton.disabled).toBeTruthy();
+      expect(page.upload.browseButton?.disabled).toBeTruthy();
     });
   });
 
@@ -154,16 +154,16 @@ describe('UploadComponent', () => {
         component.isUploadManual = true;
         fixture.detectChanges();
 
-        const browseButton: HTMLInputElement = page.upload.browseButton;
+        const browseButton: HTMLInputElement | null = page.upload.browseButton;
 
         const event: Event = generateUploadChangeEvent([cloneDeep(files[0])]);
-        browseButton.dispatchEvent(event);
+        browseButton?.dispatchEvent(event);
         tick();
         discardPeriodicTasks();
         fixture.detectChanges();
 
         expect(page.upload.filesContainer).toBeTruthy();
-        expect(browseButton.disabled).toBeFalsy();
+        expect(browseButton?.disabled).toBeFalsy();
 
         const file: UploadFilePageObject = page.upload.getFileAtIndex(0);
         expect(file).toBeTruthy();
@@ -186,16 +186,16 @@ describe('UploadComponent', () => {
         component.isUploadManual = true;
         fixture.detectChanges();
 
-        const browseButton: HTMLInputElement = page.upload.browseButton;
+        const browseButton: HTMLInputElement | null = page.upload.browseButton;
 
         const event: Event = generateUploadChangeEvent(cloneDeep(files));
-        browseButton.dispatchEvent(event);
+        browseButton?.dispatchEvent(event);
         tick();
         discardPeriodicTasks();
         fixture.detectChanges();
 
         expect(page.upload.filesContainer).toBeTruthy();
-        expect(browseButton.disabled).toBeFalsy();
+        expect(browseButton?.disabled).toBeFalsy();
 
         for (let i = 0; i < 3; i++) {
           const file: UploadFilePageObject = page.upload.getFileAtIndex(i);
@@ -233,7 +233,7 @@ describe('UploadComponent', () => {
 
     const uploadFileEvent: HTMLInputEvent = { target: { files: fileList } } as HTMLInputEvent;
     const event: Event = new Event('change', uploadFileEvent);
-    spyOnProperty(event, 'target').and.returnValue({ ...event.target, files: uploadFileEvent.target.files });
+    spyOnProperty(event, 'target').and.returnValue({ ...event.target, files: uploadFileEvent.target.files } as EventTarget);
 
     return event;
   }

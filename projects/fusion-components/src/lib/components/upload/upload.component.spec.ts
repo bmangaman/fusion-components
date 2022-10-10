@@ -139,24 +139,24 @@ describe('UploadComponent', () => {
 
     it('should set isUploadInProgress to true', () => {
       component.isUploadInProgress = false;
-      component.uploadFile(null);
+      component.uploadFile(null as any);
       expect(component.isUploadInProgress).toBeTrue();
     });
 
     it('should not do anything if fileInfo or uploadFilesFunction is undefined', fakeAsync(() => {
-      component.uploadFilesFunction = null;
-      expect(() => component.uploadFile(null)).toThrow();
+      component.uploadFilesFunction = null as any;
+      expect(() => component.uploadFile(null as any)).toThrow();
       tick(1000);
       expect(component.updateUploadProgress).not.toHaveBeenCalled();
       discardPeriodicTasks();
 
       component.uploadFilesFunction = () => of({ type: HttpEventType.Response } as HttpEvent<any>);
-      component.uploadFile(null);
+      component.uploadFile(null as any);
       tick(1000);
       expect(component.updateUploadProgress).not.toHaveBeenCalled();
       discardPeriodicTasks();
 
-      component.uploadFilesFunction = null;
+      component.uploadFilesFunction = null as any;
       expect(() => component.uploadFile(cloneDeep(uploadInfo[0]))).toThrow();
       tick(1000);
       expect(component.updateUploadProgress).not.toHaveBeenCalled();
@@ -260,7 +260,7 @@ describe('UploadComponent', () => {
   describe('updateUploadProgress()', () => {
     it('should set isUploadInProgress to false if there are no files or if all the uploads are done', () => {
       component.isUploadInProgress = true;
-      component.fileList = null;
+      component.fileList = null as any;
       component.updateUploadProgress();
       expect(component.isUploadInProgress).toBeFalse();
 
@@ -323,7 +323,7 @@ describe('UploadComponent', () => {
 
       // Does nothing because file is not found
       component.fileList = [];
-      component.cancelFile(null);
+      component.cancelFile(null as any);
       expect(component.updateUploadProgress).toHaveBeenCalled();
       expect(component.uploadCancelled.emit).toHaveBeenCalledWith([]);
 
@@ -354,17 +354,17 @@ describe('UploadComponent', () => {
     });
 
     it('should do nothing if removeFilesFunction is not defined', () => {
-      component.removeFilesFunction = null;
+      component.removeFilesFunction = null as any;
       component.removeFile({} as UploadInfo);
       expect(component.checkCompletion).not.toHaveBeenCalled();
 
-      component.removeFilesFunction = () => of(null);
-      component.removeFile(null);
+      component.removeFilesFunction = () => of(null as any);
+      component.removeFile(null as any);
       expect(component.checkCompletion).not.toHaveBeenCalled();
     });
 
     it('should handle when removeFilesFunction returns successfully', fakeAsync(() => {
-      component.removeFilesFunction = () => of(null);
+      component.removeFilesFunction = () => of(null as any);
       component.removeFile(component.fileList[0]);
       tick(2000);
       expect(component.checkCompletion).not.toHaveBeenCalled();

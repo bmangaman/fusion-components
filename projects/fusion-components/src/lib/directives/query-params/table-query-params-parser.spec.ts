@@ -108,11 +108,11 @@ describe('TableQueryParamsParser', () => {
           formValues: { string },
         })),
         columns: [],
-        sort: null,
-        view: null
+        sort: null as any,
+        view: null as any,
       };
       const queryParams: Params = TableQueryParamsParser.createQueryParams(parsedData, allFilters);
-      const parsedFilters = TableQueryParamsParser.getFiltersFromQueryParams(queryParams.filters, allFilters);
+      const parsedFilters = TableQueryParamsParser.getFiltersFromQueryParams(queryParams['filters'], allFilters);
       expect(parsedFilters).toEqual(parsedData.filters.map(filter => ({ ...filter, label: jasmine.any(Observable)})));
     });
 
@@ -372,12 +372,12 @@ describe('TableQueryParamsParser', () => {
             filterName: 'stringField',
             field: 'stringField',
             comparatorName: 'isEmpty',
-            formValues: null,
+            formValues: null as any,
           },
         ];
 
         expect(TableQueryParamsParser
-          .createQueryParams({ filters: appliedFilters, sort: null, columns: [], view: null }, allFilters).filters)
+          .createQueryParams({ filters: appliedFilters, sort: null as any, columns: [], view: null as any }, allFilters)['filters'])
           .toBe(expectedFilterString);
       });
     });
@@ -432,7 +432,7 @@ describe('TableQueryParamsParser', () => {
           order: 1
         };
 
-        expect(TableQueryParamsParser.createQueryParams({ filters: [], sort, columns: [], view: null }, allFilters).sort)
+        expect(TableQueryParamsParser.createQueryParams({ filters: [], sort, columns: [], view: null as any }, allFilters)['sort'])
           .toBe(expectedSortsString);
       });
     });
@@ -495,7 +495,7 @@ describe('TableQueryParamsParser', () => {
           { field: 'field4', isVisible: true },
         ];
 
-        expect(TableQueryParamsParser.createQueryParams({ filters: [], sort: null, columns, view: null }, allFilters).columns)
+        expect(TableQueryParamsParser.createQueryParams({ filters: [], sort: null as any, columns, view: null as any }, allFilters)['columns'])
           .toBe(expectedColumnsString);
       });
     });
@@ -519,7 +519,7 @@ describe('TableQueryParamsParser', () => {
       it('should map view to a string', () => {
         const expectedViewString = 'deleted';
 
-        expect(TableQueryParamsParser.createQueryParams({ filters: [], sort: null, columns: [], view: allViews[1] }, allFilters).view)
+        expect(TableQueryParamsParser.createQueryParams({ filters: [], sort: null as any, columns: [], view: allViews[1] }, allFilters)['view'])
           .toBe(expectedViewString);
       });
     });
@@ -572,9 +572,9 @@ describe('TableQueryParamsParser', () => {
 
     const paramData = {
       filters: [],
-      sort: null,
+      sort: null as any,
       columns: [],
-      view: null,
+      view: null as any,
     };
 
     expect(TableQueryParamsParser.createQueryParams(paramData, allFilters)).toEqual(expectedParams);

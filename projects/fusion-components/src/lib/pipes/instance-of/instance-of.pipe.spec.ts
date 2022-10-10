@@ -10,8 +10,8 @@ describe('InstanceOfPipe', () => {
   });
 
   it('should return true if the provided variable is the correct instance', () => {
-    function C(): void {}
-    function D(): void {}
+    class C { constructor() {} }
+    class D {}
 
     expect(pipe.transform(new C(), C)).toBeTrue();
     expect(pipe.transform(new D(), D)).toBeTrue();

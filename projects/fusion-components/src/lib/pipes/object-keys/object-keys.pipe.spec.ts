@@ -15,7 +15,7 @@ describe('ObjectKeysPipe', () => {
     let obj: Record<string, any>;
     let expectedResult: string[];
 
-    obj = undefined;
+    obj = undefined as any;
     expectedResult = [];
     expect(pipe.transform(obj)).toEqual(expectedResult);
 

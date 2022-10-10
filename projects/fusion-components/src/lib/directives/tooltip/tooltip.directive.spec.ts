@@ -41,7 +41,7 @@ describe('TooltipDirective', () => {
     describe('id', () => {
       it('should correctly be set', () => {
         /* eslint-disable @typescript-eslint/dot-notation */
-        directive['_id'] = null;
+        directive['_id'] = null as any;
         directive.id = 'id';
         expect(directive.id).toEqual('id');
         expect(directive['_id']).toEqual('id');
@@ -53,8 +53,8 @@ describe('TooltipDirective', () => {
   describe('@HostBinding', () => {
     describe('attr.aria-describedby', () => {
       it('should return the id', () => {
-        directive.id = null;
-        expect(directive.ariaDescribedBy).not.toEqual(null);
+        directive.id = null as any;
+        expect(directive.ariaDescribedBy).not.toEqual(null as any);
 
         directive.id = 'id';
         expect(directive.ariaDescribedBy).toEqual('id');
@@ -73,7 +73,7 @@ describe('TooltipDirective', () => {
 
     describe('mouseenter', () => {
       it('should call addTooltip() if the displayOn input is MOUSE_ENTER and the tooltip is NOT visible', () => {
-        directive.displayOn = null;
+        directive.displayOn = null as any;
         isTooltipDisplayedSpy.and.returnValue(false);
         directive.onMouseEnter();
         expect(directive.addTooltip).not.toHaveBeenCalled();
@@ -95,7 +95,7 @@ describe('TooltipDirective', () => {
       });
 
       it('should call destroy() if the hideOn input is MOUSE_ENTER and the tooltip is visible', () => {
-        directive.hideOn = null;
+        directive.hideOn = null as any;
         isTooltipDisplayedSpy.and.returnValue(true);
         directive.onMouseEnter();
         expect(directive.destroy).not.toHaveBeenCalled();
@@ -119,7 +119,7 @@ describe('TooltipDirective', () => {
 
     describe('mouseLeave', () => {
       it('should call addTooltip() if the displayOn input is MOUSE_LEAVE and the tooltip is NOT visible', () => {
-        directive.displayOn = null;
+        directive.displayOn = null as any;
         isTooltipDisplayedSpy.and.returnValue(false);
         directive.onMouseLeave();
         expect(directive.addTooltip).not.toHaveBeenCalled();
@@ -141,7 +141,7 @@ describe('TooltipDirective', () => {
       });
 
       it('should call destroy() if the hideOn input is MOUSE_LEAVE and the tooltip is visible', () => {
-        directive.hideOn = null;
+        directive.hideOn = null as any;
         isTooltipDisplayedSpy.and.returnValue(true);
         directive.onMouseLeave();
         expect(directive.destroy).not.toHaveBeenCalled();
@@ -165,8 +165,8 @@ describe('TooltipDirective', () => {
 
     describe('click', () => {
       it('should not do anything if displayOn and/ or hideOn is not CLICK', () => {
-        directive.displayOn = null;
-        directive.hideOn = null;
+        directive.displayOn = null as any;
+        directive.hideOn = null as any;
         directive.onMouseClick();
         expect(directive.destroy).not.toHaveBeenCalled();
         expect(directive.addTooltip).not.toHaveBeenCalled();
@@ -230,7 +230,7 @@ describe('TooltipDirective', () => {
     });
 
     it('shoudl generate an id if one was not provided', () => {
-      directive.id = null;
+      directive.id = null as any;
       directive.addTooltip();
       expect(directive.id).toBeTruthy();
     });

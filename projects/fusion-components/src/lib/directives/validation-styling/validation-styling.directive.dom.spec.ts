@@ -86,7 +86,7 @@ describe('ValidationStylingDirective', () => {
 
     it('should have f-form__input--invalid class if input is invalid', () => {
       spyOn(directiveEl, 'setStyling').and.callThrough();
-      component.validationStylingDemoForm.controls.basicInput.setValue('v');
+      component.validationStylingDemoForm.controls['basicInput'].setValue('v');
       fixture.detectChanges();
       expect(directiveEl.setStyling).toHaveBeenCalledWith('INVALID');
       expect(inputEl.nativeElement.classList).toContain('f-form__input--invalid');
@@ -94,7 +94,7 @@ describe('ValidationStylingDirective', () => {
 
     it('should have f-form__input--valid class if input is valid', () => {
       spyOn(directiveEl, 'setStyling').and.callThrough();
-      component.validationStylingDemoForm.controls.basicInput.setValue('value');
+      component.validationStylingDemoForm.controls['basicInput'].setValue('value');
       fixture.detectChanges();
       expect(directiveEl.setStyling).toHaveBeenCalledWith('VALID');
       expect(inputEl.nativeElement.classList).toContain('f-form__input--valid');

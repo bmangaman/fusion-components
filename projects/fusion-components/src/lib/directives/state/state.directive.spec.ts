@@ -213,7 +213,7 @@ describe('StateDirective', () => {
         directive.generateView();
         expect(viewContainerRef.createEmbeddedView).toHaveBeenCalledWith(templateRef);
 
-        directive.state = undefined;
+        directive.state = undefined as any;
         directive.generateView();
         expect(viewContainerRef.createEmbeddedView).toHaveBeenCalledWith(templateRef);
       });
@@ -233,22 +233,22 @@ describe('StateDirective', () => {
       const stateComponentRef: ComponentRef<StateComponent> = generateMockStateComponentComponentRef();
       (viewContainerRef.createComponent as Spy).and.returnValue(stateComponentRef);
 
-      directive.state = undefined;
-      directive.location = undefined;
-      directive.headlines = undefined;
-      directive.messages = undefined;
-      directive.messageTemplates = undefined;
-      directive.loadingAriaLabel = undefined;
+      directive.state = undefined as any;
+      directive.location = undefined as any;
+      directive.headlines = undefined as any;
+      directive.messages = undefined as any;
+      directive.messageTemplates = undefined as any;
+      directive.loadingAriaLabel = undefined as any;
 
       directive.generateViewHelper(null);
       expect(viewContainerRef.createComponent).toHaveBeenCalled();
       expect(componentFactoryResolver.resolveComponentFactory).toHaveBeenCalledWith(StateComponent);
-      expect(stateComponentRef.instance.state).toEqual(null);
-      expect(stateComponentRef.instance.location).toEqual(null);
-      expect(stateComponentRef.instance.headlines).toEqual(null);
-      expect(stateComponentRef.instance.messages).toEqual(null);
-      expect(stateComponentRef.instance.messageTemplates).toEqual(null);
-      expect(stateComponentRef.instance.loadingAriaLabel).toEqual(null);
+      expect(stateComponentRef.instance.state).toEqual(null as any);
+      expect(stateComponentRef.instance.location).toEqual(null as any);
+      expect(stateComponentRef.instance.headlines).toEqual(null as any);
+      expect(stateComponentRef.instance.messages).toEqual(null as any);
+      expect(stateComponentRef.instance.messageTemplates).toEqual(null as any);
+      expect(stateComponentRef.instance.loadingAriaLabel).toEqual(null as any);
 
       directive.state = State.LOADING;
       directive.location = StateLocation.GENERIC;
@@ -286,6 +286,6 @@ describe('StateDirective', () => {
         messageTemplates: null,
         loadingAriaLabel: null,
       },
-    } as ComponentRef<StateComponent>;
+    } as any as ComponentRef<StateComponent>;
   }
 });

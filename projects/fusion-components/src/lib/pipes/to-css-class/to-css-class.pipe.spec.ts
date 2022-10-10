@@ -8,7 +8,7 @@ describe('ToClassPipe', () => {
   });
 
   it('should return the string to a css class format', () => {
-    expect(pipe.transform(null)).toBe('');
+    expect(pipe.transform(null as any)).toBe('');
     expect(pipe.transform('HELLO')).toBe('hello');
     expect(pipe.transform('-hyphen')).toBe('hyphen');
     expect(pipe.transform('MyNameIsJacob')).toBe('my-name-is-jacob');

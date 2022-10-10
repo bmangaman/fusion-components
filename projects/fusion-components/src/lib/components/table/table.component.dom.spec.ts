@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { cloneDeep } from 'lodash-es';
 
-import translations from 'projects/fusion-components-site/src/i18n/en.json';
+import translations from 'projects/fusion-components-app/src/i18n/en.json';
 
 import { TranslatedComponentSpecModule } from '@fusion-components/unit-test-helpers/translated-component.module.spec';
 import { FusionComponentsTranslationService } from '../../services/translation';

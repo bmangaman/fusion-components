@@ -87,7 +87,7 @@ describe('ModalService', () => {
         component: ModalServiceTestComponent,
       });
 
-      expect(service.modals[0].modalConfig.type).toBe(ModalType.SIDE);
+      expect(service.modals[0].modalConfig?.type).toBe(ModalType.SIDE);
     });
 
     it('should create 2 components and attach the modal to the dom', () => {
@@ -127,7 +127,7 @@ describe('ModalService', () => {
         }
       });
 
-      expect(service.modals[1].modalConfig.addOffSetWidth).toBe('40px');
+      expect(service.modals[1].modalConfig?.addOffSetWidth).toBe('40px');
     });
 
     it('should not add offset width if there are other non-FULL modals', () => {
@@ -145,13 +145,13 @@ describe('ModalService', () => {
         }
       });
 
-      expect(service.modals[1].modalConfig.addOffSetWidth).toBe(undefined);
+      expect(service.modals[1].modalConfig?.addOffSetWidth).toBe(undefined);
     });
   });
 
   describe('closeModal()', () => {
-    let contentComponentRef;
-    let componentRef;
+    let contentComponentRef: any;
+    let componentRef: any;
 
     beforeEach(() => {
       contentComponentRef = { destroy: jasmine.createSpy('destroy') };
