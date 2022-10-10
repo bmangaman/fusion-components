@@ -8,7 +8,7 @@ import { ComponentFixture } from '@angular/core/testing';
  */
 export class MenuPageObject {
   private fixture: ComponentFixture<any>;
-  private containerClass: string;
+  private containerClass: string | undefined;
 
   get menu(): HTMLElement {
     // first, if a containerClass was provided, try to find the element that has that class
@@ -19,27 +19,27 @@ export class MenuPageObject {
     return menu;
   }
 
-  get menuButtonContainer(): HTMLElement {
+  get menuButtonContainer(): HTMLElement | null {
     return this.menu ? this.menu.querySelector('.f-menu__button') : null;
   }
 
-  get menuButton(): HTMLButtonElement {
+  get menuButton(): HTMLButtonElement | null {
     return this.menuButtonContainer ? this.menuButtonContainer.querySelector('button') : null;
   }
 
-  get menuDialog(): HTMLElement {
+  get menuDialog(): HTMLElement | null {
     return this.menu ? this.menu.querySelector('.f-menu__dialog') : null;
   }
 
-  get menuDialogHeader(): HTMLElement {
+  get menuDialogHeader(): HTMLElement | null {
     return this.menuDialog ? this.menu.querySelector('.f-menu__dialog--header') : null;
   }
 
-  get menuDialogHeaderCloseButton(): HTMLButtonElement {
+  get menuDialogHeaderCloseButton(): HTMLButtonElement | null {
     return this.menuDialogHeader ? this.menu.querySelector('.f-menu__dialog--close-button') : null;
   }
 
-  get menuDialogContent(): HTMLElement {
+  get menuDialogContent(): HTMLElement | null {
     return this.menuDialog ? this.menu.querySelector('.f-menu__dialog--content') : null;
   }
 

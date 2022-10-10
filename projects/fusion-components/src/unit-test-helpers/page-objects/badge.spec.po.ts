@@ -8,7 +8,7 @@ import { ComponentFixture } from '@angular/core/testing';
  */
 export class BadgePageObject {
   private fixture: ComponentFixture<any>;
-  private badgeClass: string;
+  private badgeClass: string | undefined;
 
   /**
    * Gets the host f-badge (component) HTML element based on whether or not a
@@ -28,7 +28,7 @@ export class BadgePageObject {
    *
    * @returns The inner .f-badge HTML.
    */
-  get badge(): HTMLElement {
+  get badge(): HTMLElement | null {
     const host = this.host;
     return host ? host.querySelector('.f-badge') : null;
   }
@@ -38,9 +38,9 @@ export class BadgePageObject {
    *
    * @returns The badge text.
    */
-  get badgeText(): string {
-    const badge: HTMLElement = this.badge;
-    const textContainer: HTMLElement = badge ? badge.querySelector('.f-badge__text') : null;
+  get badgeText(): string | null {
+    const badge: HTMLElement | null = this.badge;
+    const textContainer: HTMLElement | null = badge ? badge.querySelector('.f-badge__text') : null;
     return textContainer ? textContainer.innerText : null;
   }
 
@@ -49,9 +49,9 @@ export class BadgePageObject {
    *
    * @returns The badge subtext.
    */
-  get badgeSubtext(): string {
-    const badge: HTMLElement = this.badge;
-    const subtextContainer: HTMLElement = badge ? badge.querySelector('.f-badge__subtext') : null;
+  get badgeSubtext(): string | null {
+    const badge: HTMLElement | null = this.badge;
+    const subtextContainer: HTMLElement | null = badge ? badge.querySelector('.f-badge__subtext') : null;
     return subtextContainer ? subtextContainer.innerText : null;
   }
 

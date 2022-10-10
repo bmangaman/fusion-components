@@ -20,8 +20,8 @@ describe('TranslatedComponent', () => {
 
       component['translationService'].baseTranslationKey = 'components';
       expect(component.baseTranslationKey).toEqual('components');
-      component['translationService'].baseTranslationKey = undefined;
-      expect(component.baseTranslationKey).toEqual(undefined);
+      component['translationService'].baseTranslationKey = undefined as any;
+      expect(component.baseTranslationKey).toEqual(undefined as any);
 
       /* eslint-enable @typescript-eslint/dot-notation */
     });

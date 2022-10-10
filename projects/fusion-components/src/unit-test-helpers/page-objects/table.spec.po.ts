@@ -9,7 +9,7 @@ import { MenuPageObject } from './menu.spec.po';
  */
 export class TablePageObject {
   private fixture: ComponentFixture<any>;
-  private containerClass: string;
+  private containerClass: string | undefined;
 
   /**
    * Get the "f-table" tag
@@ -29,8 +29,8 @@ export class TablePageObject {
    *
    * @returns The outermost div element.
    */
-  get container(): HTMLElement {
-    const table: HTMLElement = this.fusionUiTable;
+  get container(): HTMLElement | null {
+    const table: HTMLElement | null = this.fusionUiTable;
     return table ? table.querySelector('.f-table') : null;
   }
 
@@ -39,8 +39,8 @@ export class TablePageObject {
    *
    * @returns The header container.
    */
-  get header(): HTMLDivElement {
-    const table: HTMLElement = this.fusionUiTable;
+  get header(): HTMLDivElement | null {
+    const table: HTMLElement | null = this.fusionUiTable;
     return table ? table.querySelector('.f-table__header') : null;
   }
 
@@ -49,8 +49,8 @@ export class TablePageObject {
    *
    * @returns The controls container.
    */
-  get controls(): HTMLDivElement {
-    const table: HTMLElement = this.fusionUiTable;
+  get controls(): HTMLDivElement | null {
+    const table: HTMLElement | null = this.fusionUiTable;
     return table ? table.querySelector('.f-table__controls') : null;
   }
 
@@ -59,8 +59,8 @@ export class TablePageObject {
    *
    * @returns The filter control area.
    */
-  get filterControls(): HTMLElement {
-    const controls: HTMLDivElement = this.controls;
+  get filterControls(): HTMLElement | null {
+    const controls: HTMLDivElement | null = this.controls;
     return controls ? controls.querySelector('.f-table__filter-selector') : null;
   }
 
@@ -69,9 +69,9 @@ export class TablePageObject {
    *
    * @returns The filter selector menu page object.
    */
-  get filterSelectorMenu(): MenuPageObject {
-    const controls: HTMLDivElement = this.controls;
-    const filterSelectorComponent: HTMLElement = controls ? controls.querySelector('f-table-filter-selector') : null;
+  get filterSelectorMenu(): MenuPageObject | null {
+    const controls: HTMLDivElement | null = this.controls;
+    const filterSelectorComponent: HTMLElement | null = controls ? controls.querySelector('f-table-filter-selector') : null;
     return filterSelectorComponent ? new MenuPageObject(this.fixture, '.f-table__filter-selector') : null;
   }
 
@@ -80,8 +80,8 @@ export class TablePageObject {
    *
    * @returns The list of quick filters.
    */
-  get quickFilters(): NodeListOf<HTMLButtonElement> {
-    const filterControls: HTMLElement = this.filterControls;
+  get quickFilters(): NodeListOf<HTMLButtonElement> | null {
+    const filterControls: HTMLElement | null = this.filterControls;
     return filterControls ? filterControls.querySelectorAll('.f-table__filter-selector-quick-filter-button') : null;
   }
 
@@ -90,9 +90,9 @@ export class TablePageObject {
    *
    * @returns The column selector menu page object.
    */
-  get columnSelectorMenu(): MenuPageObject {
-    const controls: HTMLDivElement = this.controls;
-    const columnSelectorComponent: HTMLElement = controls ? controls.querySelector('f-table-column-selector') : null;
+  get columnSelectorMenu(): MenuPageObject | null {
+    const controls: HTMLDivElement | null = this.controls;
+    const columnSelectorComponent: HTMLElement | null = controls ? controls.querySelector('f-table-column-selector') : null;
     return columnSelectorComponent ? new MenuPageObject(this.fixture, '.f-table__column-selector') : null;
   }
 
@@ -101,9 +101,9 @@ export class TablePageObject {
    *
    * @returns The column selector menu checkbox inputs.
    */
-  get columnSelectorMenuInputs(): NodeListOf<HTMLInputElement> {
-    const menu: MenuPageObject = this.columnSelectorMenu;
-    const menuContent: HTMLElement = menu ? menu.menuDialogContent : null;
+  get columnSelectorMenuInputs(): NodeListOf<HTMLInputElement> | null {
+    const menu: MenuPageObject | null = this.columnSelectorMenu;
+    const menuContent: HTMLElement | null = menu ? menu.menuDialogContent : null;
     return menuContent ? menuContent.querySelectorAll('.f-table__column-selector-checkbox') : null;
   }
 
@@ -113,9 +113,9 @@ export class TablePageObject {
    * @param header The column header.
    * @returns The column selector menu input.
    */
-  getColumnSelectorMenuInputByColumnHeader(header: string): HTMLInputElement {
-    const menu: MenuPageObject = this.columnSelectorMenu;
-    const menuContent: HTMLElement = menu ? menu.menuDialogContent : null;
+  getColumnSelectorMenuInputByColumnHeader(header: string): HTMLInputElement | null {
+    const menu: MenuPageObject | null = this.columnSelectorMenu;
+    const menuContent: HTMLElement | null = menu ? menu.menuDialogContent : null;
     return menuContent ? menuContent.querySelector(`#f-column-selector-checkbox--${header}`) : null;
   }
 
@@ -124,8 +124,8 @@ export class TablePageObject {
    *
    * @returns The refresh button in the controls container.
    */
-  get refreshButton(): HTMLButtonElement {
-    const controls: HTMLDivElement = this.controls;
+  get refreshButton(): HTMLButtonElement | null {
+    const controls: HTMLDivElement | null = this.controls;
     return controls ? controls.querySelector('.f-table__controls--button--refresh') : null;
   }
 
@@ -134,8 +134,8 @@ export class TablePageObject {
    *
    * @returns the download button in the controls container.
    */
-  get downloadButton(): HTMLButtonElement {
-    const controls: HTMLDivElement = this.controls;
+  get downloadButton(): HTMLButtonElement | null {
+    const controls: HTMLDivElement | null = this.controls;
     return controls ? controls.querySelector('.f-table__controls--button--download') : null;
   }
 
@@ -144,7 +144,7 @@ export class TablePageObject {
    *
    * @returns The table conainer.
    */
-  get tableContainer(): HTMLDivElement {
+  get tableContainer(): HTMLDivElement | null {
     const table: HTMLElement = this.fusionUiTable;
     return table ? table.querySelector('.f-table__container') : null;
   }
@@ -154,7 +154,7 @@ export class TablePageObject {
    *
    * @returns The visible state container.
    */
-  get stateContainer(): HTMLDivElement {
+  get stateContainer(): HTMLDivElement | null {
     const table: HTMLElement = this.fusionUiTable;
     return table ? table.querySelector('.f-table__state') : null;
   }
@@ -164,7 +164,7 @@ export class TablePageObject {
    *
    * @return The HTML table element.
    */
-  get table(): HTMLTableElement {
+  get table(): HTMLTableElement | null {
     const table: HTMLElement = this.fusionUiTable;
     return table ? table.querySelector('.f-table__table') : null;
   }
@@ -174,8 +174,8 @@ export class TablePageObject {
    *
    * @returns The thead element.
    */
-  get tableHead(): HTMLElement {
-    const table: HTMLElement = this.table;
+  get tableHead(): HTMLElement | null {
+    const table: HTMLElement | null = this.table;
     return table ? table.querySelector('.f-table__table-thead') : null;
   }
 
@@ -184,8 +184,8 @@ export class TablePageObject {
    *
    * @returns The single table row in the thead.
    */
-  get tableHeadRow(): HTMLTableRowElement {
-    const tableHead: HTMLElement = this.tableHead;
+  get tableHeadRow(): HTMLTableRowElement | null {
+    const tableHead: HTMLElement | null = this.tableHead;
     return tableHead ? tableHead.querySelector('.f-table__table-row') : null;
   }
 
@@ -194,8 +194,8 @@ export class TablePageObject {
    *
    * @returns The lable columnns (td) of the single row in the thead.
    */
-  get tableHeadColumns(): NodeListOf<HTMLTableHeaderCellElement> {
-    const tableHeadRow: HTMLElement = this.tableHeadRow;
+  get tableHeadColumns(): NodeListOf<HTMLTableHeaderCellElement> | null {
+    const tableHeadRow: HTMLElement | null = this.tableHeadRow;
     return tableHeadRow ? tableHeadRow.querySelectorAll('.f-table__table-cell') : null;
   }
 
@@ -205,8 +205,8 @@ export class TablePageObject {
    * @param index The index of the table column.
    * @retturns The table column of the row in the thead at the provided index.
    */
-  getTableHeadColumnAtIndex(index: number): HTMLElement {
-    const columns: NodeListOf<HTMLTableHeaderCellElement> = this.tableHeadColumns;
+  getTableHeadColumnAtIndex(index: number): HTMLElement | null {
+    const columns: NodeListOf<HTMLTableHeaderCellElement> | null = this.tableHeadColumns;
     return columns ? columns.item(index) : null;
   }
 
@@ -215,8 +215,8 @@ export class TablePageObject {
    *
    * @returns The tbody element.
    */
-  get tableBody(): HTMLElement {
-    const table: HTMLElement = this.table;
+  get tableBody(): HTMLElement | null {
+    const table: HTMLElement | null = this.table;
     return table ? table.querySelector('.f-table__table-tbody') : null;
   }
 
@@ -225,8 +225,8 @@ export class TablePageObject {
    *
    * @returns All the table rows in the table body.
    */
-  get tableBodyRows(): NodeListOf<HTMLTableRowElement> {
-    const tableBody: HTMLElement = this.tableBody;
+  get tableBodyRows(): NodeListOf<HTMLTableRowElement> | null {
+    const tableBody: HTMLElement | null = this.tableBody;
     return tableBody ? tableBody.querySelectorAll('.f-table__table-row') : null;
   }
 
@@ -236,8 +236,8 @@ export class TablePageObject {
    * @param index The index of the table row.
    * @returns The table row at the provied index.
    */
-  getTableBodyRowAtIndex(index: number): HTMLTableRowElement {
-    const tableBodyRows: NodeListOf<HTMLTableRowElement> = this.tableBodyRows;
+  getTableBodyRowAtIndex(index: number): HTMLTableRowElement | null {
+    const tableBodyRows: NodeListOf<HTMLTableRowElement> | null = this.tableBodyRows;
     return tableBodyRows ? tableBodyRows.item(index) : null;
   }
 
@@ -247,8 +247,8 @@ export class TablePageObject {
    * @param index The index of the table row.
    * @returns All the columns of the row at the provided index.
    */
-  getTableBodyColumnsAtRowIndex(index: number): NodeListOf<HTMLTableCellElement> {
-    const tableBodyRow: HTMLTableRowElement = this.getTableBodyRowAtIndex(index);
+  getTableBodyColumnsAtRowIndex(index: number): NodeListOf<HTMLTableCellElement> | null {
+    const tableBodyRow: HTMLTableRowElement | null = this.getTableBodyRowAtIndex(index);
     return tableBodyRow ? tableBodyRow.querySelectorAll('.f-table__table-cell') : null;
   }
 
@@ -259,7 +259,7 @@ export class TablePageObject {
  * @param selector css string selector for desired content
  * @returns The HTML element at the provided row and css seletor
  */
-  getTableBodyRowContentAtIndex(index: number, selector: string): HTMLElement {
+  getTableBodyRowContentAtIndex(index: number, selector: string): HTMLElement | null {
     const tableBodyRow = this.getTableBodyRowAtIndex(index);
     return tableBodyRow ? tableBodyRow.querySelector(selector) : null;
   }
@@ -271,8 +271,8 @@ export class TablePageObject {
    * @param colIndex The index of the column.
    * @returns The table column at the provided colIndex of the row at the provided rowIndex.
    */
-  getTableBodyColumnAtIndex(rowIndex: number, colIndex: number): HTMLTableCellElement {
-    const tableBodyColumns: NodeListOf<HTMLTableCellElement> = this.getTableBodyColumnsAtRowIndex(rowIndex);
+  getTableBodyColumnAtIndex(rowIndex: number, colIndex: number): HTMLTableCellElement | null {
+    const tableBodyColumns: NodeListOf<HTMLTableCellElement> | null = this.getTableBodyColumnsAtRowIndex(rowIndex);
     return tableBodyColumns ? tableBodyColumns.item(colIndex) : null;
   }
 
@@ -282,8 +282,8 @@ export class TablePageObject {
    * @param index The index of the table row.
    * @returns The row actions column at the provided row index.
    */
-  getTableBodyActionsColumnAtRowIndex(index: number): HTMLTableCellElement {
-    const tableBodyRow: HTMLTableRowElement = this.getTableBodyRowAtIndex(index);
+  getTableBodyActionsColumnAtRowIndex(index: number): HTMLTableCellElement | null {
+    const tableBodyRow: HTMLTableRowElement | null = this.getTableBodyRowAtIndex(index);
     return tableBodyRow ? tableBodyRow.querySelector('.f-table__table-cell--actions') : null;
   }
 
@@ -293,8 +293,8 @@ export class TablePageObject {
    * @param index The index of the table row.
    * @returns The table row actions menu page object.
    */
-  getTableBodyActionsButtonAtRowIndex(index: number): MenuPageObject {
-    const tableActionsColumnAtIndex: HTMLTableCellElement = this.getTableBodyActionsColumnAtRowIndex(index);
+  getTableBodyActionsButtonAtRowIndex(index: number): MenuPageObject | null {
+    const tableActionsColumnAtIndex: HTMLTableCellElement | null = this.getTableBodyActionsColumnAtRowIndex(index);
     return tableActionsColumnAtIndex ? new MenuPageObject(this.fixture, `.f-table__table-row--${index}`) : null;
   }
 
@@ -303,8 +303,8 @@ export class TablePageObject {
    *
    * @returns The select/deselect all input in the table header.
    */
-  get tableHeaderSelectionInput(): HTMLInputElement {
-    const tableSelectionHeaderColumn: HTMLElement = this.getTableHeadColumnAtIndex(0);
+  get tableHeaderSelectionInput(): HTMLInputElement | null {
+    const tableSelectionHeaderColumn: HTMLElement | null = this.getTableHeadColumnAtIndex(0);
     return tableSelectionHeaderColumn ? tableSelectionHeaderColumn.querySelector('input') : null;
   }
 
@@ -314,8 +314,8 @@ export class TablePageObject {
    * @param index The index of the table row.
    * @returns The row selection column at the provided row index.
    */
-  getTableBodySelectionColumnAtRowIndex(index: number): HTMLTableCellElement {
-    const tableBodyRow: HTMLTableRowElement = this.getTableBodyRowAtIndex(index);
+  getTableBodySelectionColumnAtRowIndex(index: number): HTMLTableCellElement | null {
+    const tableBodyRow: HTMLTableRowElement | null = this.getTableBodyRowAtIndex(index);
     return tableBodyRow ? tableBodyRow.querySelector('.f-table__table-cell--selection-control') : null;
   }
 
@@ -325,8 +325,8 @@ export class TablePageObject {
    * @param index The index of the table row.
    * @returns The table row selection input page object.
    */
-  getTableBodySelectionInputAtRowIndex(index: number): HTMLInputElement {
-    const tableSelectionColumnAtIndex: HTMLTableCellElement = this.getTableBodySelectionColumnAtRowIndex(index);
+  getTableBodySelectionInputAtRowIndex(index: number): HTMLInputElement | null {
+    const tableSelectionColumnAtIndex: HTMLTableCellElement | null = this.getTableBodySelectionColumnAtRowIndex(index);
     return tableSelectionColumnAtIndex ? tableSelectionColumnAtIndex.querySelector('input') : null;
   }
 
@@ -336,14 +336,17 @@ export class TablePageObject {
    * @param index The index of the table row
    * @returns The table row's expander button page object.
    */
-  getTableBodyRowExpanderAtRowIndex(index: number): HTMLButtonElement {
-    const tableBodyRow: HTMLTableRowElement = this.getTableBodyRowAtIndex(index);
+  getTableBodyRowExpanderAtRowIndex(index: number): HTMLButtonElement | null {
+    const tableBodyRow: HTMLTableRowElement | null = this.getTableBodyRowAtIndex(index);
     return tableBodyRow ? tableBodyRow.querySelector('.f-table__table-cell-expansion-button') : null;
   }
 
   async clickExpansionLinkAtRowIndex(index: number): Promise<void> {
     const expansionButton = this.getTableBodyRowExpanderAtRowIndex(index);
-    return await expansionButton.click();
+    if (expansionButton) {
+      return await expansionButton.click();
+    }
+    return;
   }
 
   /**
@@ -351,7 +354,7 @@ export class TablePageObject {
    *
    * @returns The pagination container.
    */
-  get pagination(): HTMLDivElement {
+  get pagination(): HTMLDivElement | null {
     const table: HTMLElement = this.fusionUiTable;
     return table ? table.querySelector('.f-table__pagination') : null;
   }
@@ -361,9 +364,10 @@ export class TablePageObject {
    *
    * @returns The text that describes the number of results.
    */
-  get paginationNumOfResults(): string {
-    const pagination: HTMLDivElement = this.pagination;
-    return pagination ? pagination.querySelector('.f-table__pagination-num-of-results').textContent : null;
+  get paginationNumOfResults(): string | null {
+    const pagination: HTMLDivElement | null = this.pagination;
+    const numOfResults: HTMLDivElement | null = pagination ? pagination.querySelector('.f-table__pagination-num-of-results'): null;
+    return numOfResults ? numOfResults.textContent : null;
   }
 
   /**
@@ -371,9 +375,9 @@ export class TablePageObject {
    *
    * @returns The pagination navigation buttons.
    */
-  get paginationControlButtons(): NodeListOf<HTMLButtonElement> {
-    const pagination: HTMLDivElement = this.pagination;
-    const controls: HTMLDivElement = pagination ? pagination.querySelector('.f-table__pagination-controls') : null;
+  get paginationControlButtons(): NodeListOf<HTMLButtonElement> | null {
+    const pagination: HTMLDivElement | null = this.pagination;
+    const controls: HTMLDivElement | null = pagination ? pagination.querySelector('.f-table__pagination-controls') : null;
     return controls ? controls.querySelectorAll('.f-table__pagination-controls-button') : null;
   }
 
@@ -382,8 +386,8 @@ export class TablePageObject {
    *
    * @returns The selec tinput that controls the number of results displayed per page.
    */
-  get paginationNumPerPage(): HTMLSelectElement {
-    const pagination: HTMLDivElement = this.pagination;
+  get paginationNumPerPage(): HTMLSelectElement | null {
+    const pagination: HTMLDivElement | null = this.pagination;
     return pagination ? pagination.querySelector('.f-table__pagination-num-per-page-select') : null;
   }
 
@@ -394,7 +398,7 @@ export class TablePageObject {
     const rows = this.tableBodyRows;
     const selectedRows: HTMLTableRowElement[] = [];
 
-    rows.forEach(row => {
+    rows?.forEach(row => {
       const selectedInput = row.querySelector('.f-table__table-cell-inner .f-form__radio-input--checked');
 
       if (selectedInput) {
@@ -413,9 +417,11 @@ export class TablePageObject {
   selectAll(selected: boolean = true): void {
     const rows = this.tableBodyRows;
 
-    rows.forEach(row => {
-      const checkbox: HTMLInputElement = row.querySelector('.f-table__table-cell-inner .f-form__checkbox-input');
-      checkbox.checked = selected;
+    rows?.forEach(row => {
+      const checkbox: HTMLInputElement | null = row.querySelector('.f-table__table-cell-inner .f-form__checkbox-input');
+      if (checkbox) {
+        checkbox.checked = selected;
+      }
     });
 
     this.fixture.detectChanges();

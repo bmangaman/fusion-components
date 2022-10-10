@@ -32,7 +32,7 @@ describe('Utilities', () => {
     });
 
     it('should not error on null', () => {
-      utils.unsubscribe(undefined);
+      utils.unsubscribe(undefined as any);
       // if you got here you didn't error, hurray
       expect(true).toBe(true);
     });
@@ -66,7 +66,7 @@ describe('Utilities', () => {
       utils.unsubscribeSubject(subject);
       expect(subject.next).toHaveBeenCalled();
       expect(subject.complete).toHaveBeenCalled();
-      utils.unsubscribeSubject(undefined); // just call this to make sure no errors are thrown
+      utils.unsubscribeSubject(undefined as any); // just call this to make sure no errors are thrown
     });
   });
 
@@ -77,7 +77,8 @@ describe('Utilities', () => {
     let element: ElementRef;
     let triggerElement: ElementRef;
 
-    let spacing: number;
+    let position: Position | Location;
+    let spacing: number | undefined;
 
     beforeEach(() => {
       mockWindow = window;
@@ -102,32 +103,33 @@ describe('Utilities', () => {
         bottom: 50,
       });
 
-      spacing = null;
+      spacing = undefined;
+      position = Position.TOP;
     });
 
     describe('with invalid/ undefined parameters', () => {
       it('should return an empty object if element is not valid', () => {
         element.nativeElement = undefined;
-        expect(utils.getElementAbsolutePositioning(element, triggerElement, null, spacing, mockWindow, mockDocument)).toEqual({});
-        element = null;
-        expect(utils.getElementAbsolutePositioning(element, triggerElement, null, spacing, mockWindow, mockDocument)).toEqual({});
+        expect(utils.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
+        element = null as any;
+        expect(utils.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
       });
 
       it('should return an empty object if trigger element is not valid', () => {
         triggerElement.nativeElement = undefined;
-        expect(utils.getElementAbsolutePositioning(element, triggerElement, null, spacing, mockWindow, mockDocument)).toEqual({});
-        triggerElement = null;
-        expect(utils.getElementAbsolutePositioning(element, triggerElement, null, spacing, mockWindow, mockDocument)).toEqual({});
+        expect(utils.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
+        triggerElement = null as any;
+        expect(utils.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
       });
 
       it('should return an empty object if window is not valid', () => {
-        mockWindow = null;
-        expect(utils.getElementAbsolutePositioning(element, triggerElement, null, spacing, mockWindow, mockDocument)).toEqual({});
+        mockWindow = null as any;
+        expect(utils.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
       });
 
       it('should return an empty object if document is not valid', () => {
-        mockDocument = null;
-        expect(utils.getElementAbsolutePositioning(element, triggerElement, null, spacing, mockWindow, mockDocument)).toEqual({});
+        mockDocument = null as any;
+        expect(utils.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
       });
     });
 

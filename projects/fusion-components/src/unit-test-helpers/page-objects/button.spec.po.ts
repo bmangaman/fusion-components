@@ -8,46 +8,46 @@ import { ComponentFixture } from '@angular/core/testing';
  */
 export class ButtonPageObject {
   private fixture: ComponentFixture<any>;
-  private buttonClass: string;
+  private buttonClass: string | undefined;
 
-  get button(): HTMLButtonElement {
+  get button(): HTMLButtonElement | null {
     // first try to get the f-button element by a provided class
     const buttonClass: HTMLElement = this.buttonClass ? this.fixture.nativeElement.querySelector(this.buttonClass) : null;
     // if no provided class or element not found, try to find the f-button element by the f-button tag
     const fusionButton: HTMLElement = buttonClass || this.fixture.nativeElement.querySelector('f-button');
     // if f-button found, find the actual <button> element by the .f-button class
-    const button: HTMLButtonElement = fusionButton ? fusionButton.querySelector('.f-button') : null;
+    const button: HTMLButtonElement | null = fusionButton ? fusionButton.querySelector('.f-button') : null;
 
     return button;
   }
 
-  get classes(): DOMTokenList {
-    const button: HTMLButtonElement = this.button;
+  get classes(): DOMTokenList | null {
+    const button: HTMLButtonElement | null = this.button;
     return button ? button.classList : null;
   }
 
-  get textContainer(): HTMLElement {
-    const button: HTMLButtonElement = this.button;
+  get textContainer(): HTMLElement | null {
+    const button: HTMLButtonElement | null = this.button;
     return button ? button.querySelector('.f-button__text') : null;
   }
 
-  get text(): string {
-    const textContainer: HTMLElement = this.textContainer;
+  get text(): string | null {
+    const textContainer: HTMLElement | null = this.textContainer;
     return textContainer ? textContainer.textContent : null;
   }
 
-  get icon(): HTMLElement {
-    const button: HTMLButtonElement = this.button;
+  get icon(): HTMLElement | null {
+    const button: HTMLButtonElement | null = this.button;
     return button ? button.querySelector('.f-button__icon:not(.mdi-chevron-down)') : null;
   }
 
-  get opensMenuIcon(): HTMLElement {
-    const button: HTMLButtonElement = this.button;
+  get opensMenuIcon(): HTMLElement | null {
+    const button: HTMLButtonElement | null = this.button;
     return button ? button.querySelector('.f-button__icon.mdi-chevron-down') : null;
   }
 
-  get loadingSpinner(): HTMLElement {
-    const button: HTMLButtonElement = this.button;
+  get loadingSpinner(): HTMLElement | null {
+    const button: HTMLButtonElement | null = this.button;
     return button ? button.querySelector('f-loading-spinner') : null;
   }
 

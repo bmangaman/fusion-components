@@ -22,13 +22,13 @@ export interface UploadFilePageObject {
  */
 export class UploadPageObject {
   private fixture: ComponentFixture<any>;
-  private uploadClass: string;
+  private uploadClass: string | undefined;
 
-  get upload(): HTMLElement {
+  get upload(): HTMLElement | null {
     // first try to get the f-upload element by a provided class
     const uploadClass: HTMLElement = this.uploadClass ? this.fixture.nativeElement.querySelector(this.uploadClass) : null;
     // if no provided class or element not found, try to find the f-upload element by the f-upload tag
-    const fusionUpload: HTMLElement = (uploadClass || this.fixture.nativeElement).querySelector('f-upload');
+    const fusionUpload: HTMLElement | null = (uploadClass || this.fixture.nativeElement).querySelector('f-upload');
 
     return fusionUpload;
   }
@@ -38,10 +38,10 @@ export class UploadPageObject {
    *
    * @returns The upload instructions text.
    */
-  get instructions(): string {
-    const upload: HTMLElement = this.upload;
-    const instructionsContainer: HTMLDivElement = upload ? upload.querySelector('.f-upload__instructions') : null;
-    return instructionsContainer ? instructionsContainer.innerText : null;
+  get instructions(): string | undefined {
+    const upload: HTMLElement | null = this.upload;
+    const instructionsContainer: HTMLDivElement | null = upload ? upload.querySelector('.f-upload__instructions') : null;
+    return instructionsContainer ? instructionsContainer.innerText : undefined;
   }
 
   /**
@@ -49,9 +49,9 @@ export class UploadPageObject {
    *
    * @returns The branch image of the upload.
    */
-  get browseButton(): HTMLInputElement {
-    const upload: HTMLElement = this.upload;
-    const browseContainer: HTMLDivElement = upload ? upload.querySelector('.f-upload__browse') : null;
+  get browseButton(): HTMLInputElement | null {
+    const upload: HTMLElement | null = this.upload;
+    const browseContainer: HTMLDivElement | null = upload ? upload.querySelector('.f-upload__browse') : null;
     return browseContainer ? browseContainer.querySelector('.f-upload__browse-input') : null;
   }
 
@@ -60,8 +60,8 @@ export class UploadPageObject {
    *
    * @returns The container for all the files.
    */
-  get filesContainer(): HTMLDivElement {
-    const upload: HTMLElement = this.upload;
+  get filesContainer(): HTMLDivElement | null {
+    const upload: HTMLElement | null = this.upload;
     return upload ? upload.querySelector('.f-upload__files') : null;
   }
 
@@ -70,8 +70,8 @@ export class UploadPageObject {
    *
    * @returns The inner content of the upload.
    */
-  get files(): NodeListOf<HTMLDivElement> {
-    const container: HTMLDivElement = this.filesContainer;
+  get files(): NodeListOf<HTMLDivElement> | null {
+    const container: HTMLDivElement | null = this.filesContainer;
     return container ? container.querySelectorAll('.f-upload__file') : null;
   }
 
@@ -82,17 +82,17 @@ export class UploadPageObject {
    * @returns The .
    */
   getFileAtIndex(index: number): UploadFilePageObject {
-    const files: NodeListOf<HTMLDivElement> = this.files;
-    const file: HTMLDivElement = files ? files.item(index) : null;
+    const files: NodeListOf<HTMLDivElement> | null = this.files;
+    const file: HTMLDivElement | null = files ? files.item(index) : null;
     return {
-      fileName: (file.querySelector('.f-upload__file-info-name') as HTMLDivElement).innerText,
-      fileSize: (file.querySelector('.f-upload__file-info-size') as HTMLDivElement).innerText,
+      fileName: (file?.querySelector('.f-upload__file-info-name') as HTMLDivElement)?.innerText,
+      fileSize: (file?.querySelector('.f-upload__file-info-size') as HTMLDivElement)?.innerText,
       uploadButton: new ButtonPageObject(this.fixture, '.f-upload__file-upload-button'),
       cancelButton: new ButtonPageObject(this.fixture, '.f-upload__file-cancel-button'),
       removeButton: new ButtonPageObject(this.fixture, '.f-upload__file-remove-button'),
       dismissButton: new ButtonPageObject(this.fixture, '.f-upload__file-dismiss-button'),
       progressBar: new ProgressBarPageObject(this.fixture, `.f-upload__file--${ index }`),
-      status: (file.querySelector('.f-upload__file-status') as HTMLDivElement).innerText,
+      status: (file?.querySelector('.f-upload__file-status') as HTMLDivElement)?.innerText,
     };
   }
 

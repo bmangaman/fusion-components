@@ -33,10 +33,10 @@ export class ComponentStubFactory {
         querySelector: jasmine.createSpy('querySelector').and.returnValue(document.createElement('div')),
         querySelectorAll: jasmine.createSpy('querySelectorAll').and.returnValue(null),
         scrollIntoView: jasmine.createSpy('scrollIntoView'),
-        get offsetHeight(): number {
+        get offsetHeight(): number | null {
           return null;
         },
-        get offsetWidth(): number {
+        get offsetWidth(): number | null {
           return null;
         },
         focus: jasmine.createSpy('focus'),
@@ -62,7 +62,7 @@ export class ComponentStubFactory {
   static getRouterStub(): Partial<Router> {
     return {
       get events(): Observable<Event> {
-        return of(null);
+        return of(null as any as Event);
       },
       navigate: jasmine.createSpy('navigate').and.returnValue(true),
       url: '/'
@@ -163,7 +163,7 @@ export class ComponentStubFactory {
       location: {
         href: ''
       },
-      get innerWidth(): number {
+      get innerWidth(): number | undefined {
         return undefined;
       },
       addEventListener: jasmine.createSpy('addEventListener'),
@@ -176,7 +176,7 @@ export class ComponentStubFactory {
       valueAccessor: null,
       validator: null,
       asyncValidator: null,
-      viewToModelUpdate: null,
+      viewToModelUpdate: undefined,
       valid: null,
       invalid: null,
       touched: null,

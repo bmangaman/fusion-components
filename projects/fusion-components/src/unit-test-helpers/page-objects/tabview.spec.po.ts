@@ -1,15 +1,15 @@
 import { ComponentFixture } from '@angular/core/testing';
 
 export interface TabPageObject {
-  button: HTMLButtonElement;
-  content: HTMLElement;
+  button: HTMLButtonElement | null;
+  content: HTMLElement | null;
 }
 
 export interface TabviewPageObjectType {
-  container: HTMLElement;
-  el: HTMLElement;
-  navContainer: HTMLElement;
-  panelsContainer: HTMLElement;
+  container: HTMLElement | null;
+  el: HTMLElement | null;
+  navContainer: HTMLElement | null;
+  panelsContainer: HTMLElement | null;
 }
 
 /**
@@ -20,9 +20,9 @@ export interface TabviewPageObjectType {
  */
 export class TabviewPageObject {
   private fixture: ComponentFixture<any>;
-  private containerClass: string;
+  private containerClass: string | undefined;
 
-  get tabview(): TabviewPageObjectType {
+  get tabview(): TabviewPageObjectType | undefined {
     // first, if a containerClass was provided, try to find the element that has that class
     const container: HTMLElement = this.containerClass ? this.fixture.nativeElement.querySelector(this.containerClass) : null;
     // if the container element was found, use that to query for the f-tabview, otherwise, just use the f-tabview tag
@@ -46,15 +46,17 @@ export class TabviewPageObject {
    * @returns all the tabs with their title and content elements
    */
   get tabs(): TabPageObject[] {
-    if (this.tabview) {
-      const tabs: TabPageObject[] = [];
-      const navButtons: NodeListOf<HTMLButtonElement> = this.tabview.navContainer.querySelectorAll('button.f-tabview-tab__button');
+    const tabview: TabviewPageObjectType | undefined = this.tabview;
 
-      navButtons.forEach((navButton: HTMLButtonElement) => {
-        const navButtonId: string = navButton.getAttribute('id').toString();
+    if (tabview) {
+      const tabs: TabPageObject[] = [];
+      const navButtons: NodeListOf<HTMLButtonElement> | undefined = tabview.navContainer?.querySelectorAll('button.f-tabview-tab__button');
+
+      navButtons?.forEach((navButton: HTMLButtonElement) => {
+        const navButtonId: string = navButton.getAttribute('id')?.toString() || '';
         // trim 'tab-' off the beginning of the tab ID.
         const baseId: string = navButtonId.slice(4);
-        const coorespondingPanel: HTMLElement = this.tabview.panelsContainer.querySelector(`#panel-${baseId}`);
+        const coorespondingPanel: HTMLElement | null = tabview.panelsContainer ? tabview.panelsContainer.querySelector(`#panel-${baseId}`) : null;
 
         tabs.push({
           button: navButton,
@@ -65,7 +67,7 @@ export class TabviewPageObject {
       return tabs;
     }
 
-    return null;
+    return [];
   }
 
   /**

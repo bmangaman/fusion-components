@@ -8,7 +8,7 @@ import { ComponentFixture } from '@angular/core/testing';
  */
 export class ProgressBarPageObject {
   private fixture: ComponentFixture<any>;
-  private containerClass: string;
+  private containerClass: string | undefined;
 
   get progressBar(): HTMLElement {
     // first, if a containerClass was provided, try to find the element that has that class
@@ -21,20 +21,20 @@ export class ProgressBarPageObject {
     return progressBar;
   }
 
-  get container(): HTMLElement {
+  get container(): HTMLElement | null {
     const progressBar: HTMLElement = this.progressBar;
     return progressBar ? progressBar.querySelector('.f-progress-bar') : null;
   }
 
-  get barClasses(): DOMTokenList {
+  get barClasses(): DOMTokenList | null {
     const progressBar: HTMLElement = this.progressBar;
-    const bar: HTMLElement = progressBar ? progressBar.querySelector('.f-progress-bar__bar') : null;
+    const bar: HTMLElement | null = progressBar ? progressBar.querySelector('.f-progress-bar__bar') : null;
     return bar ? bar.classList : null;
   }
 
-  get barValue(): string {
+  get barValue(): string | null {
     const progressBar: HTMLElement = this.progressBar;
-    const bar: HTMLElement = progressBar ? progressBar.querySelector('.f-progress-bar__value') : null;
+    const bar: HTMLElement | null = progressBar ? progressBar.querySelector('.f-progress-bar__value') : null;
     return bar ? bar.innerText : null;
   }
 

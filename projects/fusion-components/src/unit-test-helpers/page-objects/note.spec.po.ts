@@ -8,15 +8,15 @@ import { ComponentFixture } from '@angular/core/testing';
  */
 export class NotePageObject {
   private fixture: ComponentFixture<any>;
-  private noteClass: string;
+  private noteClass: string | undefined;
 
-  get note(): HTMLElement {
+  get note(): HTMLElement | null {
     // first try to get the f-note element by a provided class
     const noteClass: HTMLElement = this.noteClass ? this.fixture.nativeElement.querySelector(this.noteClass) : null;
     // if no provided class or element not found, try to find the f-note element by the f-note tag
     const fusionNote: HTMLElement = noteClass || this.fixture.nativeElement.querySelector('f-note');
     // if f-note found, find the actual <note> element by the .f-note class
-    const note: HTMLElement = fusionNote ? fusionNote.querySelector('.f-note') : null;
+    const note: HTMLElement | null = fusionNote ? fusionNote.querySelector('.f-note') : null;
 
     return note;
   }

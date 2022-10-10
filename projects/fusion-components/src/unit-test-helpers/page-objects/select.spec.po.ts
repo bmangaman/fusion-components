@@ -8,18 +8,18 @@ import { ComponentFixture } from '@angular/core/testing';
  */
 export class SelectPageObject {
   private fixture: ComponentFixture<any>;
-  private selectClass: string;
+  private selectClass: string | undefined;
 
   /**
    * Gets the wrapping div container element.
    */
-  get select(): HTMLDivElement {
+  get select(): HTMLDivElement | null {
     // first try to get the f-select element by a provided class
     const selectClass: HTMLElement = this.selectClass ? this.fixture.nativeElement.querySelector(this.selectClass) : null;
     // if no provided class or element not found, try to find the f-select element by the f-select tag
     const fusionSelect: HTMLElement = selectClass || this.fixture.nativeElement.querySelector('f-select');
     // if f-select found, find the actual <select> element by the .f-select class
-    const select: HTMLDivElement = fusionSelect ? fusionSelect.querySelector('.f-select') : null;
+    const select: HTMLDivElement | null = fusionSelect ? fusionSelect.querySelector('.f-select') : null;
 
     return select;
   }
@@ -29,9 +29,9 @@ export class SelectPageObject {
    *
    * @returns The CSS classes appended ot the classes-wrapper div element.
    */
-  get classes(): DOMTokenList {
-    const select: HTMLDivElement = this.select;
-    const buttonWrapper: HTMLDivElement = select ? select.querySelector('.f-select__classes-wrapper') : null;
+  get classes(): DOMTokenList | null {
+    const select: HTMLDivElement | null = this.select;
+    const buttonWrapper: HTMLDivElement | null = select ? select.querySelector('.f-select__classes-wrapper') : null;
     return buttonWrapper ? buttonWrapper.classList : null;
   }
 
@@ -40,8 +40,8 @@ export class SelectPageObject {
    *
    * @returns The label element for the input.
    */
-  get label(): HTMLLabelElement {
-    const select: HTMLDivElement = this.select;
+  get label(): HTMLLabelElement | null {
+    const select: HTMLDivElement | null = this.select;
     return select ? select.querySelector('.f-select__label') : null;
   }
 
@@ -50,8 +50,8 @@ export class SelectPageObject {
    *
    * @returns The button element used to toggle the dropdown menu.
    */
-  get inputButton(): HTMLButtonElement {
-    const select: HTMLDivElement = this.select;
+  get inputButton(): HTMLButtonElement | null {
+    const select: HTMLDivElement | null = this.select;
     return select ? select.querySelector('.f-select__button') : null;
   }
 
@@ -60,8 +60,8 @@ export class SelectPageObject {
    *
    * @returns The button element used to toggle the dropdown menu.
    */
-  get inputSearch(): HTMLInputElement {
-    const select: HTMLDivElement = this.select;
+  get inputSearch(): HTMLInputElement | null {
+    const select: HTMLDivElement | null = this.select;
     return select ? select.querySelector('.f-select__input') : null;
   }
 
@@ -70,8 +70,8 @@ export class SelectPageObject {
    *
    * @returns The dropdown menu element of options.
    */
-  get dropdownMenu(): HTMLUListElement {
-    const select: HTMLDivElement = this.select;
+  get dropdownMenu(): HTMLUListElement | null {
+    const select: HTMLDivElement | null = this.select;
     return select ? select.querySelector('.f-select__dropdown-menu') : null;
   }
 
@@ -80,8 +80,8 @@ export class SelectPageObject {
    *
    * @returns The list of all the options in the dropdown menu.
    */
-  get options(): NodeListOf<HTMLLIElement> {
-    const dropdownMenu: HTMLUListElement = this.dropdownMenu;
+  get options(): NodeListOf<HTMLLIElement> | null {
+    const dropdownMenu: HTMLUListElement | null = this.dropdownMenu;
     return dropdownMenu ? dropdownMenu.querySelectorAll('.f-select__dropdown-menu-option') : null;
   }
 
@@ -91,8 +91,8 @@ export class SelectPageObject {
    * @param index The index of the desired option.
    * @returns The desured option at the provided index.
    */
-  getOptionAtIndex(index: number): HTMLLIElement {
-    const options: NodeListOf<HTMLLIElement> = this.options;
+  getOptionAtIndex(index: number): HTMLLIElement | null {
+    const options: NodeListOf<HTMLLIElement> | null = this.options;
     return options && !!options.length ? options.item(index) : null;
   }
 

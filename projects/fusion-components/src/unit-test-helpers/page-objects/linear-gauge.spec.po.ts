@@ -11,7 +11,7 @@ export class LinearGaugePageObject {
   private readonly _baseCssClass: string = '.f-linear-gauge';
 
   private fixture: ComponentFixture<any>;
-  private containerClass: string;
+  private containerClass: string | undefined;
 
   get linearGauge(): HTMLElement {
     // first, if a containerClass was provided, try to find the element that has that class
@@ -29,7 +29,7 @@ export class LinearGaugePageObject {
    *
    * @returns The werapping div element.
    */
-  get container(): HTMLElement {
+  get container(): HTMLElement | null {
     const state: HTMLElement = this.linearGauge;
     return state ? state.querySelector(this._baseCssClass) : null;
   }
@@ -39,8 +39,8 @@ export class LinearGaugePageObject {
    *
    * @returns The title div.
    */
-  get title(): HTMLElement {
-    const container: HTMLElement = this.container;
+  get title(): HTMLElement | null {
+    const container: HTMLElement | null = this.container;
     return container ? container.querySelector(`${this._baseCssClass}__title`) : null;
   }
 
@@ -49,8 +49,8 @@ export class LinearGaugePageObject {
    *
    * @returns The title icon.
    */
-  get titleIcon(): HTMLElement {
-    const title: HTMLElement = this.title;
+  get titleIcon(): HTMLElement | null {
+    const title: HTMLElement | null = this.title;
     return title ? title.querySelector(`${this._baseCssClass}__title-icon`) : null;
   }
 
@@ -59,8 +59,8 @@ export class LinearGaugePageObject {
    *
    * @returns The title icon.
    */
-  get titleText(): HTMLElement {
-    const title: HTMLElement = this.title;
+  get titleText(): HTMLElement | null {
+    const title: HTMLElement | null = this.title;
     return title ? title.querySelector(`${this._baseCssClass}__title-text`) : null;
   }
 
@@ -69,9 +69,9 @@ export class LinearGaugePageObject {
    *
    * @returns The total text.
    */
-  get total(): string {
-    const container: HTMLElement = this.container;
-    const totalContainer: HTMLElement = container ? container.querySelector(`${this._baseCssClass}__total`) : null;
+  get total(): string | null {
+    const container: HTMLElement | null = this.container;
+    const totalContainer: HTMLElement | null = container ? container.querySelector(`${this._baseCssClass}__total`) : null;
     return totalContainer ? totalContainer.innerText : null;
   }
 
@@ -80,9 +80,9 @@ export class LinearGaugePageObject {
    *
    * @returns The percentage text.
    */
-  get percentage(): string {
-    const container: HTMLElement = this.container;
-    const percentageContainer: HTMLElement = container ? container.querySelector(`${this._baseCssClass}__percentage`) : null;
+  get percentage(): string | null {
+    const container: HTMLElement | null = this.container;
+    const percentageContainer: HTMLElement | null = container ? container.querySelector(`${this._baseCssClass}__percentage`) : null;
     return percentageContainer ? percentageContainer.innerText : null;
   }
 
@@ -91,8 +91,8 @@ export class LinearGaugePageObject {
    *
    * @returns The value bar.
    */
-  get valueBar(): HTMLElement {
-    const container: HTMLElement = this.container;
+  get valueBar(): HTMLElement | null {
+    const container: HTMLElement | null = this.container;
     return container ? container.querySelector(`${this._baseCssClass}__value-bar`) : null;
   }
 
@@ -101,8 +101,8 @@ export class LinearGaugePageObject {
    *
    * @returns The list of thresholds.
    */
-  get thresholds(): NodeListOf<HTMLButtonElement> {
-    const container: HTMLElement = this.container;
+  get thresholds(): NodeListOf<HTMLButtonElement> | null {
+    const container: HTMLElement | null = this.container;
     return container ? container.querySelectorAll(`${this._baseCssClass}__threshold`) : null;
   }
 
