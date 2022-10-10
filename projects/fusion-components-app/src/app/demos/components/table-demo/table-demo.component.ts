@@ -4,7 +4,7 @@ import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms
 import { BehaviorSubject, interval, Observable, of } from 'rxjs';
 import { debounce, delay } from 'rxjs/operators';
 
-import { cloneDeep, random, sample } from 'lodash';
+import { cloneDeep, random, sample } from 'lodash-es';
 
 import {
   State,

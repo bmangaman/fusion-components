@@ -3,7 +3,7 @@ import { ChangeDetectorRef, ElementRef } from '@angular/core';
 import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 import { concat, Observable, of, Subscription, throwError } from 'rxjs';
 
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
 import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
 

@@ -10,15 +10,15 @@ import { ButtonPageObject } from './button.spec.po';
  */
 export class WidgetPageObject {
   private fixture: ComponentFixture<any>;
-  private widgetClass: string;
+  private widgetClass: string | undefined;
 
-  get widget(): HTMLElement {
+  get widget(): HTMLElement | null {
     // first try to get the f-widget element by a provided class
     const widgetClass: HTMLElement = this.widgetClass ? this.fixture.nativeElement.querySelector(this.widgetClass) : null;
     // if no provided class or element not found, try to find the f-widget element by the f-widget tag
     const fusionWidget: HTMLElement = widgetClass || this.fixture.nativeElement.querySelector('f-widget');
     // if f-widget found, find the actual <widget> element by the .f-widget class
-    const widget: HTMLElement = fusionWidget ? fusionWidget.querySelector('.f-widget') : null;
+    const widget: HTMLElement | null = fusionWidget ? fusionWidget.querySelector('.f-widget') : null;
 
     return widget;
   }
@@ -28,8 +28,8 @@ export class WidgetPageObject {
    *
    * @returns The widget header.
    */
-  get header(): HTMLElement {
-    const widget: HTMLElement = this.widget;
+  get header(): HTMLElement | null {
+    const widget: HTMLElement | null = this.widget;
     return widget ? widget.querySelector('.f-widget__header') : null;
   }
 
@@ -38,8 +38,8 @@ export class WidgetPageObject {
    *
    * @returns The widget header timestamp.
    */
-  get headerTimestamp(): HTMLElement {
-    const header: HTMLElement = this.header;
+  get headerTimestamp(): HTMLElement | null {
+    const header: HTMLElement | null = this.header;
     return header ? header.querySelector('.f-widget__header-timestamp') : null;
   }
 
@@ -48,8 +48,8 @@ export class WidgetPageObject {
    *
    * @returns The widget header content.
    */
-  get headerContent(): HTMLElement {
-    const header: HTMLElement = this.header;
+  get headerContent(): HTMLElement | null {
+    const header: HTMLElement | null = this.header;
     return header ? header.querySelector('.f-widget__header-content') : null;
   }
 
@@ -58,8 +58,8 @@ export class WidgetPageObject {
    *
    * @returns The widget header refresh button.
    */
-  get headerRefreshButton(): ButtonPageObject {
-    const header: HTMLElement = this.header;
+  get headerRefreshButton(): ButtonPageObject | null {
+    const header: HTMLElement | null = this.header;
     return header ? new ButtonPageObject(this.fixture) : null;
   }
 
@@ -68,8 +68,8 @@ export class WidgetPageObject {
    *
    * @returns The widget info boxes container.
    */
-  get infoBoxesContainer(): HTMLElement {
-    const widget: HTMLElement = this.widget;
+  get infoBoxesContainer(): HTMLElement | null {
+    const widget: HTMLElement | null = this.widget;
     return widget ? widget.querySelector('.f-widget__info-boxes') : null;
   }
 
@@ -78,8 +78,8 @@ export class WidgetPageObject {
    *
    * @returns The widget header.
    */
-  get infoBoxes(): NodeListOf<HTMLElement> {
-    const infoBoxesContainer: HTMLElement = this.infoBoxesContainer;
+  get infoBoxes(): NodeListOf<HTMLElement> | null {
+    const infoBoxesContainer: HTMLElement | null = this.infoBoxesContainer;
     return infoBoxesContainer ? infoBoxesContainer.querySelectorAll('.f-widget__info-boxes-box') : null;
   }
 
@@ -89,8 +89,8 @@ export class WidgetPageObject {
    * @param index The index of the info box.
    * @returns The info box element at the provided index.
    */
-  getInfoBoxAtIndex(index: number): HTMLElement {
-    const infoBoxes: NodeListOf<HTMLElement> = this.infoBoxes;
+  getInfoBoxAtIndex(index: number): HTMLElement | null {
+    const infoBoxes: NodeListOf<HTMLElement> | null = this.infoBoxes;
     return infoBoxes ? infoBoxes.item(index) : null;
   }
 
@@ -100,8 +100,8 @@ export class WidgetPageObject {
    * @param index The index of the info box.
    * @returns The info box header element at the provided index.
    */
-  getInfoBoxHeaderAtIndex(index: number): HTMLElement {
-    const infoBox: HTMLElement = this.getInfoBoxAtIndex(index);
+  getInfoBoxHeaderAtIndex(index: number): HTMLElement | null {
+    const infoBox: HTMLElement | null = this.getInfoBoxAtIndex(index);
     return infoBox ? infoBox.querySelector('.f-widget__info-boxes-box-header') : null;
   }
 
@@ -111,8 +111,8 @@ export class WidgetPageObject {
    * @param index The index of the info box.
    * @returns The info box content element at the provided index.
    */
-  getInfoBoxContentAtIndex(index: number): HTMLElement {
-    const infoBox: HTMLElement = this.getInfoBoxAtIndex(index);
+  getInfoBoxContentAtIndex(index: number): HTMLElement | null {
+    const infoBox: HTMLElement | null = this.getInfoBoxAtIndex(index);
     return infoBox ? infoBox.querySelector('.f-widget__info-boxes-box-content') : null;
   }
 
@@ -122,8 +122,8 @@ export class WidgetPageObject {
    * @param index The index of the info box.
    * @returns The info box badges container element at the provided index.
    */
-  getInfoBoxBadgesContainerAtIndex(index: number): HTMLElement {
-    const infoBox: HTMLElement = this.getInfoBoxAtIndex(index);
+  getInfoBoxBadgesContainerAtIndex(index: number): HTMLElement | null {
+    const infoBox: HTMLElement | null = this.getInfoBoxAtIndex(index);
     return infoBox ? infoBox.querySelector('.f-widget__info-boxes-box-badges') : null;
   }
 
@@ -134,9 +134,9 @@ export class WidgetPageObject {
    * @returns The info box badges element at the provided index.
    */
   getInfoBoxBadgesAtIndex(index: number): BadgePageObject[] {
-    const badgesContainer: HTMLElement = this.getInfoBoxBadgesContainerAtIndex(index);
-    const badgeElements: NodeListOf<HTMLElement> =
-      badgesContainer ? badgesContainer.querySelectorAll('.f-widget__info-boxes-box-badges-badge') : null;
+    const badgesContainer: HTMLElement | null = this.getInfoBoxBadgesContainerAtIndex(index);
+    const badgeElements: NodeListOf<HTMLElement> | [] =
+      badgesContainer ? badgesContainer.querySelectorAll('.f-widget__info-boxes-box-badges-badge') : [];
 
     const badges: BadgePageObject[] = [];
     badgeElements.forEach(() => badges.push(new BadgePageObject(this.fixture, '.f-widget__info-boxes-box-badges-badge')));
@@ -149,8 +149,8 @@ export class WidgetPageObject {
    * @param index The index of the info box.
    * @returns The info box badges footer element at the provided index.
    */
-  getInfoBoxFooterAtIndex(index: number): HTMLElement {
-    const infoBox: HTMLElement = this.getInfoBoxAtIndex(index);
+  getInfoBoxFooterAtIndex(index: number): HTMLElement | null {
+    const infoBox: HTMLElement | null = this.getInfoBoxAtIndex(index);
     return infoBox ? infoBox.querySelector('.f-widget__info-boxes-box-footer') : null;
   }
 
@@ -159,8 +159,8 @@ export class WidgetPageObject {
    *
    * @returns The widget info details container.
    */
-  get infoDetailsContainer(): HTMLElement {
-    const widget: HTMLElement = this.widget;
+  get infoDetailsContainer(): HTMLElement | null {
+    const widget: HTMLElement | null = this.widget;
     return widget ? widget.querySelector('.f-widget__info-details') : null;
   }
 
@@ -169,8 +169,8 @@ export class WidgetPageObject {
    *
    * @returns The widget info details button.
    */
-  get infoDetailsButton(): HTMLButtonElement {
-    const infoDetailsContainer: HTMLElement = this.infoDetailsContainer;
+  get infoDetailsButton(): HTMLButtonElement | null {
+    const infoDetailsContainer: HTMLElement | null = this.infoDetailsContainer;
     return infoDetailsContainer ? infoDetailsContainer.querySelector('.f-widget__info-details-button') : null;
   }
 
@@ -179,8 +179,8 @@ export class WidgetPageObject {
    *
    * @returns The widget info details content.
    */
-  get infoDetailsContent(): HTMLElement {
-    const infoDetailsContainer: HTMLElement = this.infoDetailsContainer;
+  get infoDetailsContent(): HTMLElement | null {
+    const infoDetailsContainer: HTMLElement | null = this.infoDetailsContainer;
     return infoDetailsContainer ? infoDetailsContainer.querySelector('.f-widget__info-details-content') : null;
   }
 
@@ -189,8 +189,8 @@ export class WidgetPageObject {
    *
    * @returns The widget info details table.
    */
-  get infoDetailsTable(): HTMLElement {
-    const infoDetailsContainer: HTMLElement = this.infoDetailsContainer;
+  get infoDetailsTable(): HTMLElement | null {
+    const infoDetailsContainer: HTMLElement | null = this.infoDetailsContainer;
     return infoDetailsContainer ? infoDetailsContainer.querySelector('.f-widget__info-details-table') : null;
   }
 
@@ -199,8 +199,8 @@ export class WidgetPageObject {
    *
    * @returns The widget info details table cells.
    */
-  get infoDetailsTableCells(): NodeListOf<HTMLElement> {
-    const infoDetailsTable: HTMLElement = this.infoDetailsTable;
+  get infoDetailsTableCells(): NodeListOf<HTMLElement> | null {
+    const infoDetailsTable: HTMLElement | null = this.infoDetailsTable;
     return infoDetailsTable ? infoDetailsTable.querySelectorAll('.f-widget__info-details-table-cell') : null;
   }
 
@@ -210,8 +210,8 @@ export class WidgetPageObject {
    * @param index The index of the info table cell.
    * @returns The info details table cell at the provided index.
    */
-  getInfoDetailsTableCellAtIndex(index: number): HTMLElement {
-    const infoDetailsTableCells: NodeListOf<HTMLElement> = this.infoDetailsTableCells;
+  getInfoDetailsTableCellAtIndex(index: number): HTMLElement | null {
+    const infoDetailsTableCells: NodeListOf<HTMLElement> | null = this.infoDetailsTableCells;
     return infoDetailsTableCells ? infoDetailsTableCells.item(index) : null;
   }
 
@@ -221,8 +221,8 @@ export class WidgetPageObject {
    * @param index The index of the info table cell.
    * @returns The info details table cell key at the provided index.
    */
-  getInfoDetailsTableCellKeyAtIndex(index: number): HTMLElement {
-    const tableCell: HTMLElement = this.getInfoDetailsTableCellAtIndex(index);
+  getInfoDetailsTableCellKeyAtIndex(index: number): HTMLElement | null {
+    const tableCell: HTMLElement | null = this.getInfoDetailsTableCellAtIndex(index);
     return tableCell ? tableCell.querySelector('.f-widget__info-details-table-cell-key') : null;
   }
 
@@ -232,8 +232,8 @@ export class WidgetPageObject {
    * @param index The index of the info table cell.
    * @returns The info details table cell value at the provided index.
    */
-  getInfoDetailsTableCellValueAtIndex(index: number): HTMLElement {
-    const tableCell: HTMLElement = this.getInfoDetailsTableCellAtIndex(index);
+  getInfoDetailsTableCellValueAtIndex(index: number): HTMLElement | null {
+    const tableCell: HTMLElement | null = this.getInfoDetailsTableCellAtIndex(index);
     return tableCell ? tableCell.querySelector('.f-widget__info-details-table-cell-value') : null;
   }
 

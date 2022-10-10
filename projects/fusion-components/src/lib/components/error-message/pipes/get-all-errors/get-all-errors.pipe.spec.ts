@@ -1,6 +1,6 @@
 import { AbstractControl, UntypedFormControl } from '@angular/forms';
 import { SafeHtml } from '@angular/platform-browser';
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 import { of, zip } from 'rxjs';
 import { take } from 'rxjs/operators';
 

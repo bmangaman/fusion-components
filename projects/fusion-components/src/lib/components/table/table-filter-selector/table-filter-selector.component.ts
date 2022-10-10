@@ -20,7 +20,7 @@ import { UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/for
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, Subscription } from 'rxjs';
 
-import { cloneDeep, get, isEqual } from 'lodash';
+import { cloneDeep, get, isEqual } from 'lodash-es';
 import { v4 as uuidv4 } from 'uuid';
 
 import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';

@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { intersection } from 'lodash';
+import { intersection } from 'lodash-es';
 
 import { TableRowData } from '../../table.interface';
 

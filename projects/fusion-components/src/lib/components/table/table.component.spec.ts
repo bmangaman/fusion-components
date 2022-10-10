@@ -4,7 +4,7 @@ import { UntypedFormBuilder } from '@angular/forms';
 
 import { TranslateService } from '@ngx-translate/core';
 
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { MockElementRef } from '@fusion-components/unit-test-helpers/mock-utils.spec';

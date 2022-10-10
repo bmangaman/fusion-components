@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, DoCheck, Input } from '@angular/core';
 
-import { get, isEqual } from 'lodash';
+import { get, isEqual } from 'lodash-es';
 import { TableRowData } from '../../table.interface';
 import { TableCellComponent } from '../table-cell/table-cell.component';
 

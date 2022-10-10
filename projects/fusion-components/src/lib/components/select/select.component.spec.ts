@@ -2,7 +2,7 @@ import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 import { UntypedFormControl, NgControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
 import { MockElementRef } from '@fusion-components/unit-test-helpers/mock-utils.spec';
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';

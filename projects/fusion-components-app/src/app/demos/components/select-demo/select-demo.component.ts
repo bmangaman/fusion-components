@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
 
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 import { interval } from 'rxjs';
 import { debounce } from 'rxjs/operators';
 

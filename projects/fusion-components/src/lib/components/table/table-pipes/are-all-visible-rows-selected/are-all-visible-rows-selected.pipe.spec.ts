@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 import { TableRowData } from '../../table.interface';
 import { AreAllVisibleRowsSelectedPipe } from './are-all-visible-rows-selected.pipe';
 

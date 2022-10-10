@@ -20,7 +20,7 @@ import {
 import { BehaviorSubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { cloneDeep, intersection, isEqual } from 'lodash';
+import { cloneDeep, intersection, isEqual } from 'lodash-es';
 import { v4 as uuidv4 } from 'uuid';
 
 import { Location, Size, State, TranslatedComponent } from '@fusion-components/lib/shared';

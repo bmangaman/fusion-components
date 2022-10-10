@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, Input, TemplateRef } from '@angular/core';
 
-import { isEqual } from 'lodash';
+import { isEqual } from 'lodash-es';
 
 import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
 import { Location, Size, TranslatedComponent } from '@fusion-components/lib/shared';

@@ -3,7 +3,7 @@ import { UntypedFormControl } from '@angular/forms';
 
 import { BehaviorSubject, Subscription } from 'rxjs';
 
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
 import { Size, TranslatedComponent } from '@fusion-components/lib/shared';
 import * as Utils from '@fusion-components/lib/shared/utilities';

@@ -1,6 +1,6 @@
 import { SimpleChange } from '@angular/core';
 
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
 import { WizardComponent } from './wizard.component';
 import { WizardStep } from './wizard.interface';

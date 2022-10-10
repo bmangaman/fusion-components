@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Directive, forwardRef, Inject, OnDestroy, Optional } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { isEqual } from 'lodash';
+import { isEqual } from 'lodash-es';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 

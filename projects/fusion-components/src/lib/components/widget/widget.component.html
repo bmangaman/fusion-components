@@ -3,7 +3,7 @@
   <!-- START: header -->
   <div *ngIf="isTimestampDisplayed || isRefreshButtonDisplayed || header" class="f-widget__header">
     <div *ngIf="isTimestampDisplayed" class="f-widget__header-timestamp">
-      <span *ngIf="translations?.lastUpdated" class="f-widget__header-timestamp-label">{{ translations?.lastUpdated }}:</span>
+      <span *ngIf="translations.lastUpdated" class="f-widget__header-timestamp-label">{{ translations.lastUpdated }}:</span>
       <span class="f-widget__header-timestamp-time">{{ timeStamp | date:'y-MM-dd HH:mm:ss' }}</span>
     </div>
     <div *ngIf="header" class="f-widget__header-content">
@@ -54,7 +54,7 @@
   <div *ngIf="infoDetails || infoDetailsData" class="f-widget__info-details">
     <div class="f-widget__info-details-button-wrapper">
       <button class="f-widget__info-details-button f-button__link" (click)="toggleInfoDetailsSection()">
-        <span class="f-widget_info-details-button-text">{{ translations?.infoDetailsButton }}</span>
+        <span class="f-widget_info-details-button-text">{{ translations.infoDetailsButton }}</span>
         <i class="f-widget__info-details-button-icon mdi" [ngClass]="isInfoDetailsExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
       </button>
     </div>

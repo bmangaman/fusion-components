@@ -3,7 +3,7 @@ import { Router, RoutesRecognized } from '@angular/router';
 
 import { of } from 'rxjs';
 
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { MockTemplateDirective } from '@fusion-components/unit-test-helpers/mock-utils.spec';

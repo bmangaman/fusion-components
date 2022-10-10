@@ -1,7 +1,7 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { camelCase, cloneDeep } from 'lodash';
+import { camelCase, cloneDeep } from 'lodash-es';
 
 import { State } from '../../shared';
 import { StateComponentPageObject } from './state.component.spec.po';

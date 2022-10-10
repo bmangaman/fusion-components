@@ -1,6 +1,6 @@
 import { ComponentRef, Injectable } from '@angular/core';
 
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
 import { TooltipComponent } from '../../components/tooltip';
 import { DomService } from '../dom';

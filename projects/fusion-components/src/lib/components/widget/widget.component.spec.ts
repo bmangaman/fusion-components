@@ -1,7 +1,7 @@
 import { QueryList } from '@angular/core';
 import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
 import { TemplateDirective } from '../../directives/template';
 import { WidgetComponent } from './widget.component';
