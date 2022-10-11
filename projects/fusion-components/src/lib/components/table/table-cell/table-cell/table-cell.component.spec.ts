@@ -38,7 +38,7 @@ describe('TableCellComponent', () => {
     describe('style.width', () => {
       it('should return the input col.updatedWidth if col is defined', () => {
         component.col = undefined;
-        expect(component.hostWidth).toEqual(undefined);
+        expect(component.hostWidth).toEqual(undefined as any);
 
         component.col = { updatedWidth: '100px' } as TableColumnConfig;
         expect(component.hostWidth).toEqual('100px');
@@ -46,7 +46,7 @@ describe('TableCellComponent', () => {
 
       it('should return the input col.width if col is defined', () => {
         component.col = undefined;
-        expect(component.hostWidth).toEqual(undefined);
+        expect(component.hostWidth).toEqual(undefined as any);
 
         component.col = { width: '100px' } as TableColumnConfig;
         expect(component.hostWidth).toEqual('100px');
@@ -55,8 +55,8 @@ describe('TableCellComponent', () => {
 
     describe('style.minWidth', () => {
       it('should return the input col.minWidth if col is defined', () => {
-        component.col = null;
-        expect(component.hostMinWidth).toEqual(null);
+        component.col = null as any;
+        expect(component.hostMinWidth).toEqual(null as any);
 
         component.col = { minWidth: '100px' } as TableColumnConfig;
         expect(component.hostMinWidth).toEqual('100px');
@@ -75,8 +75,8 @@ describe('TableCellComponent', () => {
     /* eslint-disable @typescript-eslint/dot-notation */
 
     beforeEach(() => {
-      component.cssClasses = undefined;
-      component.prevCssClasses = undefined;
+      component.cssClasses = undefined as any;
+      component.prevCssClasses = undefined as any;
 
       component.spacing = TableSpacing.NORMAL;
       component.prevSpacing = TableSpacing.NORMAL;

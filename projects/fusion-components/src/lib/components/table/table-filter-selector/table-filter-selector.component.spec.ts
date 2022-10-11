@@ -52,7 +52,7 @@ describe('TableFilterSelectorComponent', () => {
   describe('Input()', () => {
     describe('quickFilters', () => {
       it('should set quick filters', () => {
-        component.quickFilters = null;
+        component.quickFilters = null as any;
         expect(component.quickFilters).toEqual([]);
         const quickFilters: TableFilterConfig[] = [{} as TableFilterConfig, {} as TableFilterConfig];
         component.quickFilters = quickFilters;
@@ -110,7 +110,7 @@ describe('TableFilterSelectorComponent', () => {
         appliedFilter1.isViewFilter = false;
         const appliedFilter2: TableFilterComponent = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
         appliedFilter2.isViewFilter = true;
-        const appliedFilter3: TableFilterComponent = undefined;
+        const appliedFilter3: TableFilterComponent = undefined as any;
 
         component.appliedFilters = [appliedFilter1, appliedFilter2, appliedFilter3];
 
@@ -122,13 +122,13 @@ describe('TableFilterSelectorComponent', () => {
       it('should not add and generate any view filters if there are none', () => {
         spyOn(component, 'addGeneratedFilter').and.stub();
 
-        component.tableView = undefined;
+        component.tableView = undefined as any;
         expect(component.addGeneratedFilter).not.toHaveBeenCalled();
 
         component.tableView = { filters: undefined } as TableView;
         expect(component.addGeneratedFilter).not.toHaveBeenCalled();
 
-        component.tableView = { filters: [] } as TableView;
+        component.tableView = { filters: [] } as any as TableView;
         expect(component.addGeneratedFilter).not.toHaveBeenCalled();
       });
 
@@ -174,7 +174,7 @@ describe('TableFilterSelectorComponent', () => {
     it('should call loadComponent if the filterField changes and tableFilterTemplate is defined', () => {
       spyOn(component, 'loadComponent').and.stub();
 
-      component.tableFilterTemplate = undefined;
+      component.tableFilterTemplate = undefined as any;
       component.ngOnInit();
       component.filterField.setValue({} as TableFilterComponent);
       expect(component.loadComponent).not.toHaveBeenCalled();
@@ -210,7 +210,7 @@ describe('TableFilterSelectorComponent', () => {
     });
 
     it('should set the filterField value if filters is defined and not empty', fakeAsync(() => {
-      component.filters = undefined;
+      component.filters = undefined as any;
       component.menuOpened();
       tick();
       expect(component.filterField.setValue).not.toHaveBeenCalled();
@@ -254,7 +254,7 @@ describe('TableFilterSelectorComponent', () => {
 
   describe('loadComponent()', () => {
     it('should update the tableFilter', () => {
-      component.tableFilter = undefined;
+      component.tableFilter = undefined as any;
       component.tableFilterTemplate = new TableFilterHostDirective(viewContainerRef);
       component.loadComponent(new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService));
       expect(component.tableFilter).toBeDefined();
@@ -263,7 +263,7 @@ describe('TableFilterSelectorComponent', () => {
 
   describe('isFormValid()', () => {
     it('should return true if any of the required objects or if the table filter form is invalid', () => {
-      component.tableFilter = undefined;
+      component.tableFilter = undefined as any;
       expect(component.isFormInvalid()).toBeTrue();
 
       component.tableFilter = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
@@ -350,7 +350,7 @@ describe('TableFilterSelectorComponent', () => {
       component.addGeneratedFilter(filterConfig, true);
       expect(component.filterData).not.toHaveBeenCalled();
 
-      filterConfig = undefined;
+      filterConfig = undefined as any;
       component.addGeneratedFilter(filterConfig, true);
       expect(component.filterData).not.toHaveBeenCalled();
     });
@@ -395,7 +395,7 @@ describe('TableFilterSelectorComponent', () => {
       component.filterField.setValue('data');
       component.filters = new QueryList<TableFilterComponent>();
       // eslint-disable-next-line @typescript-eslint/dot-notation
-      component.filters['_content'] = [filter];
+      component.filters['_results'] = [filter];
       component.tableFilter = cloneDeep(filter);
 
       quickFilter = {
@@ -412,7 +412,7 @@ describe('TableFilterSelectorComponent', () => {
 
       spyOn(component.filterField, 'setValue').and.stub();
 
-      component.tableFilter = undefined;
+      component.tableFilter = undefined as any;
       isFormInvalidSpy.and.returnValue(true);
       component.applyFilter();
       expect(component.filterField.setValue).not.toHaveBeenCalled();
@@ -422,7 +422,7 @@ describe('TableFilterSelectorComponent', () => {
       component.applyFilter();
       expect(component.filterField.setValue).not.toHaveBeenCalled();
 
-      component.tableFilter = undefined;
+      component.tableFilter = undefined as any;
       isFormInvalidSpy.and.returnValue(false);
       component.applyFilter();
       expect(component.filterField.setValue).not.toHaveBeenCalled();
@@ -472,25 +472,25 @@ describe('TableFilterSelectorComponent', () => {
     it('should do nothing/ just return the pass in value if it is undefined, has no length, or if there are no applied filters', () => {
       component.data = null;
       component.filterData();
-      expect(component.filteredData.emit).toHaveBeenCalledWith(null);
+      expect(component.filteredData.emit).toHaveBeenCalledWith(null as any);
       expect(component.appliedFiltersChange.emit).toHaveBeenCalledWith(component.appliedFilters);
 
       component.appliedFilters = [];
       component.data = null;
       component.filterData();
-      expect(component.filteredData.emit).toHaveBeenCalledWith(null);
+      expect(component.filteredData.emit).toHaveBeenCalledWith(null as any);
       expect(component.appliedFiltersChange.emit).toHaveBeenCalledWith(component.appliedFilters);
 
       component.appliedFilters = [cloneDeep(appliedFilter)];
       component.data = null;
       component.filterData();
-      expect(component.filteredData.emit).toHaveBeenCalledWith(null);
+      expect(component.filteredData.emit).toHaveBeenCalledWith(null as any);
       expect(component.appliedFiltersChange.emit).toHaveBeenCalledWith(component.appliedFilters);
 
       component.appliedFilters = [cloneDeep(appliedFilter)];
       component.data = [];
       component.filterData();
-      expect(component.filteredData.emit).toHaveBeenCalledWith(null);
+      expect(component.filteredData.emit).toHaveBeenCalledWith(null as any);
       expect(component.appliedFiltersChange.emit).toHaveBeenCalledWith(component.appliedFilters);
 
       component.appliedFilters = [];
@@ -564,7 +564,7 @@ describe('TableFilterSelectorComponent', () => {
     });
 
     it('should remove the filter if it is found in the list of applied filters and removed matching quick filters', () => {
-      component.removeFilter(null);
+      component.removeFilter(null as any);
       expect(component.appliedFilters.length).toEqual(2);
       expect(component.quickFilters[0].isApplied).toBeTrue();
 
@@ -638,21 +638,21 @@ describe('TableFilterSelectorComponent', () => {
     it('should generate filter based on the provided config', () => {
       let generatedFilter: TableFilterComponent = component.generateFilter(config);
       expect(generatedFilter.TableFilter).toEqual(config.filter);
-      expect(generatedFilter.uuid).toEqual(config.uuid);
+      expect(generatedFilter.uuid).toEqual(config.uuid as string);
 
       config.isVisible = undefined;
 
       generatedFilter = component.generateFilter(config);
       expect(generatedFilter.TableFilter).toEqual(config.filter);
       expect(generatedFilter.isVisible).toBeTrue();
-      expect(generatedFilter.uuid).toEqual(config.uuid);
+      expect(generatedFilter.uuid).toEqual(config.uuid as string);
 
       config.isVisibleInSelector = undefined;
 
       generatedFilter = component.generateFilter(config);
       expect(generatedFilter.TableFilter).toEqual(config.filter);
       expect(generatedFilter.isVisible).toBeTrue();
-      expect(generatedFilter.uuid).toEqual(config.uuid);
+      expect(generatedFilter.uuid).toEqual(config.uuid as string);
 
       config.uuid = undefined;
 
@@ -660,7 +660,7 @@ describe('TableFilterSelectorComponent', () => {
       expect(generatedFilter.TableFilter).toEqual(config.filter);
       expect(generatedFilter.uuid).toBeTruthy();
 
-      expect(generatedFilter.valueTransformFunction(1)).toEqual(config.valueTransformFunction(1));
+      expect(generatedFilter.valueTransformFunction(1)).toEqual(config.valueTransformFunction!(1));
     });
 
     it('should use the valueTransformFunction of an existing filter', () => {
@@ -696,7 +696,7 @@ describe('TableFilterSelectorComponent', () => {
     });
 
     it('should return false if the provided element is not valid', () => {
-      expect(component.menuLogic(null)).toEqual(false);
+      expect(component.menuLogic(null as any)).toEqual(false);
     });
   });
 
@@ -707,29 +707,29 @@ describe('TableFilterSelectorComponent', () => {
       const filter: TableFilterComponent = new TableFilterNumberComponent(new UntypedFormBuilder(), translationService, translateService);
       filter.uuid = 'uuid';
       filter.field = 'id';
-      filter.filterForm.get('number').setValue(1);
+      filter.filterForm.get('number')?.setValue(1);
 
       // quickFilters and provided filter are undefined
-      component.quickFilters = undefined;
-      expect(component.matchingQuickFilter(undefined)).toEqual(undefined);
+      component.quickFilters = undefined as any;
+      expect(component.matchingQuickFilter(undefined as any)).toEqual(undefined as any);
 
       // quickFilters are undefined
-      component.quickFilters = undefined;
-      expect(component.matchingQuickFilter(filter)).toEqual(undefined);
+      component.quickFilters = undefined as any;
+      expect(component.matchingQuickFilter(filter)).toEqual(undefined as any);
 
       // quickFilters are empty
       component.quickFilters = [];
-      expect(component.matchingQuickFilter(filter)).toEqual(undefined);
+      expect(component.matchingQuickFilter(filter)).toEqual(undefined as any);
 
       // no matches
       quickFilter.uuid = undefined;
       component.quickFilters = [quickFilter];
-      expect(component.matchingQuickFilter(filter)).toEqual(undefined);
+      expect(component.matchingQuickFilter(filter)).toEqual(undefined as any);
 
       // no selectedFilterComparator
       filter.selectedFilterComparator.next(filter.filterComparators[0]);
       component.quickFilters = [quickFilter];
-      expect(component.matchingQuickFilter(filter)).toEqual(undefined);
+      expect(component.matchingQuickFilter(filter)).toEqual(undefined as any);
 
       // uuid matches
       quickFilter.uuid = 'uuid';

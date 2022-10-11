@@ -32,15 +32,15 @@ describe('GroupAppliedFiltersPipe', () => {
   });
 
   it('should return an empty array if either the provided appliedFilters or filters are undefined or empty', () => {
-    expect(pipe.transform(undefined, undefined)).toEqual([]);
+    expect(pipe.transform(undefined as any, undefined as any)).toEqual([]);
     expect(pipe.transform([], new QueryList<TableFilterComponent>())).toEqual([]);
 
-    expect(pipe.transform(undefined, new QueryList<TableFilterComponent>())).toEqual([]);
-    expect(pipe.transform(undefined, filters)).toEqual([]);
+    expect(pipe.transform(undefined as any, new QueryList<TableFilterComponent>())).toEqual([]);
+    expect(pipe.transform(undefined as any, filters)).toEqual([]);
     expect(pipe.transform([], filters)).toEqual([]);
 
-    expect(pipe.transform([], undefined)).toEqual([]);
-    expect(pipe.transform(appliedFilters, undefined)).toEqual([]);
+    expect(pipe.transform([], undefined as any)).toEqual([]);
+    expect(pipe.transform(appliedFilters, undefined as any)).toEqual([]);
     expect(pipe.transform(appliedFilters, new QueryList<TableFilterComponent>())).toEqual([]);
   });
 

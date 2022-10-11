@@ -22,20 +22,20 @@ describe('TableActionsComponent', () => {
     /* eslint-disable @typescript-eslint/dot-notation */
 
     beforeEach(() => {
-      component.rowData = undefined;
-      component['_prevRowData'] = undefined;
+      component.rowData = undefined as any;
+      component['_prevRowData'] = undefined as any;
 
-      component.templateRef = undefined;
-      component['_prevTemplateRef'] = undefined;
+      component.templateRef = undefined as any;
+      component['_prevTemplateRef'] = undefined as any;
 
-      component.isDisabled = undefined;
-      component['_prevIsDisabled'] = undefined;
+      component.isDisabled = undefined as any;
+      component['_prevIsDisabled'] = undefined as any;
 
-      component.translations = undefined;
-      component['_prevTranslations'] = undefined;
+      component.translations = undefined as any;
+      component['_prevTranslations'] = undefined as any;
 
-      component.dialogCssClasses = undefined;
-      component['_prevDialogCssClasses'] = undefined;
+      component.dialogCssClasses = undefined as any;
+      component['_prevDialogCssClasses'] = undefined as any;
 
       (changeDetectorRef.markForCheck as jasmine.Spy).calls.reset();
     });

@@ -42,28 +42,28 @@ describe('SidenavComponent', () => {
       setTemplates([]);
       component.ngAfterContentInit();
       expect(component.sidenavTopTemplate).toBeFalsy();
-      expect(component.sidenavButtonTemplate).toBeFalsy();
+      expect(component.sidenavBottomTemplate).toBeFalsy();
     });
 
     it('should NOT set sidenavTopTemplate or sidenavButtonTemplate if the correct template types were NOT found', () => {
       setTemplates(['badTemplateName', 'anotherBadTemplateName']);
       component.ngAfterContentInit();
       expect(component.sidenavTopTemplate).toBeFalsy();
-      expect(component.sidenavButtonTemplate).toBeFalsy();
+      expect(component.sidenavBottomTemplate).toBeFalsy();
     });
 
     it('should set sidenavTopTemplate and sidenavButtonTemplate if the correct template types were found', () => {
       setTemplates(['sidenavTop', 'sidenavBottom']);
       component.ngAfterContentInit();
       expect(component.sidenavTopTemplate).toBeTruthy();
-      expect(component.sidenavButtonTemplate).toBeTruthy();
+      expect(component.sidenavBottomTemplate).toBeTruthy();
     });
   });
 
   describe('determineIfSidenavIsExpanded()', () => {
     it('should set the isWindowWidthGreaterThan768px and isMenuExpanded flags', () => {
-      component.isWindowWidthGreaterThan768px = undefined;
-      component.isMenuExpanded = undefined;
+      component.isWindowWidthGreaterThan768px = undefined as any;
+      component.isMenuExpanded = undefined as any;
 
       const mockWindowSpy: jasmine.Spy = spyOnProperty(mockWindow, 'innerWidth').and.returnValue(100);
       component.determineIfSidenavIsExpanded();
@@ -165,7 +165,7 @@ describe('SidenavComponent', () => {
       segments = ['nav-item-route', 'nav-item-child-route'];
       expectedResults = cloneDeep(navItems);
       expectedResults[0].isExpanded = true;
-      expectedResults[0].children[0].isExpanded = true;
+      expectedResults[0].children![0].isExpanded = true;
       expect(component.findMatchingNavItem(navItems, segments, index)).toEqual(expectedResults);
 
       segments = ['nav-item-id', 'unfound--child-route'];
@@ -182,7 +182,7 @@ describe('SidenavComponent', () => {
 
   describe('getCurrentUrlSegments', () => {
     it('should return an empty array if the routes is undefiend', (done: DoneFn) => {
-      spyOnProperty(router, 'events').and.returnValue(of(null));
+      spyOnProperty(router, 'events').and.returnValue(of(null as any));
 
       component.getCurrentUrlSegments().subscribe((segments: string[]) => {
         expect(segments).toEqual([]);
@@ -192,7 +192,7 @@ describe('SidenavComponent', () => {
 
     it('should return an empty array if the url is empty/ undefined', (done: DoneFn) => {
       spyOnProperty(router, 'events').and.returnValue(
-        of(new RoutesRecognized(undefined, undefined, undefined, undefined )));
+        of(new RoutesRecognized(undefined as any, undefined as any, undefined as any, undefined as any)));
 
       component.getCurrentUrlSegments().subscribe((segments: string[]) => {
         expect(segments).toEqual([]);
@@ -202,7 +202,7 @@ describe('SidenavComponent', () => {
 
     it('should return the current url segments of the current route as an array of strings', (done: DoneFn) => {
       spyOnProperty(router, 'events').and.returnValue(
-        of(new RoutesRecognized(undefined, '/segment0/segment1/segment2', undefined, undefined )));
+        of(new RoutesRecognized(undefined as any, '/segment0/segment1/segment2', undefined as any, undefined as any)));
 
       component.getCurrentUrlSegments().subscribe((segments: string[]) => {
         expect(segments).toEqual(['segment0', 'segment1', 'segment2']);
@@ -212,7 +212,7 @@ describe('SidenavComponent', () => {
 
     it('should not remove anything before the rootRoute if the routeRoute was not found', (done: DoneFn) => {
       spyOnProperty(router, 'events').and.returnValue(
-        of(new RoutesRecognized(undefined, '/segment0/segment1/segment2', undefined, undefined )));
+        of(new RoutesRecognized(undefined as any, '/segment0/segment1/segment2', undefined as any, undefined as any)));
       component.rootRoute = 'segment10';
 
       component.getCurrentUrlSegments().subscribe((segments: string[]) => {
@@ -223,7 +223,7 @@ describe('SidenavComponent', () => {
 
     it('should remove anything before the rootRoute', (done: DoneFn) => {
       spyOnProperty(router, 'events').and.returnValue(
-        of(new RoutesRecognized(undefined, '/segment0/segment1/segment2', undefined, undefined )));
+        of(new RoutesRecognized(undefined as any, '/segment0/segment1/segment2', undefined as any, undefined as any )));
       component.rootRoute = 'segment0';
 
       component.getCurrentUrlSegments().subscribe((segments: string[]) => {

@@ -46,8 +46,8 @@ describe('SidenavComponent', () => {
     it('should call generateLinkCssClasses() if the children, isExpanded, or isDisabled inputs change', () => {
       spyOn(component, 'generateLinkCssClasses').and.stub();
       component.children = undefined;
-      component.isExpanded = undefined;
-      component.isDisabled = undefined;
+      component.isExpanded = undefined as any;
+      component.isDisabled = undefined as any;
 
       component.children = [];
       component.ngOnChanges({
@@ -101,8 +101,8 @@ describe('SidenavComponent', () => {
 
     beforeEach(() => {
       component.children = undefined;
-      component.isExpanded = undefined;
-      component.isDisabled = undefined;
+      component.isExpanded = undefined as any;
+      component.isDisabled = undefined as any;
       expectedResult = [];
     });
 
@@ -115,7 +115,7 @@ describe('SidenavComponent', () => {
     });
 
     it('should append "expandable" if the nav item has children', () => {
-      component.children = null;
+      component.children = null as any;
       expectedResult = [
         'f-navItem__link',
       ];

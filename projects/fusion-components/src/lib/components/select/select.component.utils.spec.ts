@@ -12,7 +12,7 @@ describe('SelectComponentUtils', () => {
     });
 
     it('should return { required: true } if an empty Select Component option control is provided', () => {
-      control = null;
+      control = null as any;
       expect(SelectComponentUtils.selectRequiredValidator(control)).toEqual({ required: true });
 
       control = new UntypedFormControl();

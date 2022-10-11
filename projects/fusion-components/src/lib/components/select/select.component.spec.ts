@@ -58,7 +58,7 @@ describe('SelectComponent', () => {
   describe('@Input()', () => {
     describe('uuid', () => {
       it('should set the uuid if provided', () => {
-        component.uuid = null;
+        component.uuid = null as any;
         expect(component.uuid).toBeTruthy();
 
         component.uuid = 'custom-uuid';
@@ -119,13 +119,13 @@ describe('SelectComponent', () => {
       });
 
       it('should handle if the searchInputControl or value is undefined', () => {
-        component.searchInputControl = undefined;
+        component.searchInputControl = undefined as any;
         component['_value'] = option;
         component.isSearchable = true;
         expect(component.searchInputControl).toBeFalsy();
 
         component.searchInputControl = new UntypedFormControl();
-        component['_value'] = undefined;
+        component['_value'] = undefined as any;
         component.isSearchable = true;
         expect(component.searchInputControl.value).toEqual(undefined);
       });
@@ -232,12 +232,12 @@ describe('SelectComponent', () => {
 
       component.filterOptions('bad-search');
       expect(component.filteredOptions).toEqual([]);
-      expect(component.setValue).toHaveBeenCalledWith(undefined, false);
+      expect(component.setValue).toHaveBeenCalledWith(undefined as any, false);
 
-      component['_options'] = undefined;
+      component['_options'] = undefined as any;
       component.filterOptions('1');
       expect(component.filteredOptions).toEqual([]);
-      expect(component.setValue).toHaveBeenCalledWith(undefined, false);
+      expect(component.setValue).toHaveBeenCalledWith(undefined as any, false);
 
       /* eslint-enable @typescript-eslint/dot-notation */
     });
@@ -280,7 +280,7 @@ describe('SelectComponent', () => {
     it('should handle if the searchInputControl is undefined', fakeAsync(() => {
       /* eslint-disable @typescript-eslint/dot-notation */
 
-      component.searchInputControl = undefined;
+      component.searchInputControl = undefined as any;
 
       component.registerOnChange(() => {});
       expect(component['onChange']).toBeDefined();
@@ -289,7 +289,7 @@ describe('SelectComponent', () => {
       tick(1000);
       expect(component['onChange']).toHaveBeenCalledWith(option);
       expect(component.isDropdownOpen).toBeFalse();
-      expect(component.searchInputControl).toEqual(undefined);
+      expect(component.searchInputControl).toEqual(undefined as any);
       discardPeriodicTasks();
 
       /* eslint-enable @typescript-eslint/dot-notation */
@@ -301,7 +301,7 @@ describe('SelectComponent', () => {
       component.registerOnChange(() => {});
       expect(component['onChange']).toBeDefined();
       spyOn(component as any, 'onChange').and.callThrough();
-      component.setValue(undefined);
+      component.setValue(undefined as any);
       tick(1000);
       expect(component['onChange']).toHaveBeenCalledWith(undefined);
       expect(component.isDropdownOpen).toBeFalse();
@@ -560,7 +560,7 @@ describe('SelectComponent', () => {
     });
 
     it('should do nothing if the event (or the target) is undefined', () => {
-      component.onArrowPress(undefined, 'UP');
+      component.onArrowPress(undefined as any, 'UP');
       expect(event.preventDefault).not.toHaveBeenCalled();
 
       (event as any).target = undefined;

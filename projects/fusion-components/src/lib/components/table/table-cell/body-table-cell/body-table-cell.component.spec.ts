@@ -30,8 +30,8 @@ describe('BodyTableCellComponent', () => {
     /* eslint-disable @typescript-eslint/dot-notation */
 
     beforeEach(() => {
-      component.cssClasses = undefined;
-      component.prevCssClasses = undefined;
+      component.cssClasses = undefined as any;
+      component.prevCssClasses = undefined as any;
 
       component.spacing = TableSpacing.NORMAL;
       component.prevSpacing = TableSpacing.NORMAL;
@@ -83,10 +83,10 @@ describe('BodyTableCellComponent', () => {
     let expectedResult: string[];
 
     beforeEach(() => {
-      expectedResult = undefined;
-      component.col = undefined;
-      component.index = undefined;
-      component.spacing = undefined;
+      expectedResult = undefined as any;
+      component.col = undefined as any;
+      component.index = undefined as any;
+      component.spacing = undefined as any;
     });
 
     it('should append the "f-table__table-cell" class by default', () => {
@@ -132,7 +132,7 @@ describe('BodyTableCellComponent', () => {
       component.col = {} as TableColumnConfig;
 
       const cellStylingFunc: any = (d: TableRowData): string[] => {
-        if (d && d.value) {
+        if (d && d['value']) {
           return ['custom-class'];
         }
         return [];
@@ -141,13 +141,13 @@ describe('BodyTableCellComponent', () => {
         value: 'value',
       };
 
-      component.col.columnCellStyleClassesFunction = null;
-      component.rowData = null;
+      component.col.columnCellStyleClassesFunction = null as any;
+      component.rowData = null as any;
       expectedResult = defaultClasses;
       expect(component.generateTableCellClasses()).toEqual(expectedResult);
 
       component.col.columnCellStyleClassesFunction = cellStylingFunc;
-      component.rowData = null;
+      component.rowData = null as any;
       expectedResult = defaultClasses;
       expect(component.generateTableCellClasses()).toEqual(expectedResult);
 
@@ -209,7 +209,7 @@ describe('BodyTableCellComponent', () => {
     });
 
     it('should append any custom classes', () => {
-      component.cssClasses = undefined;
+      component.cssClasses = undefined as any;
       expectedResult = defaultClasses;
       expect(component.generateTableCellClasses()).toEqual(expectedResult);
 

@@ -21,7 +21,7 @@ describe('VisibleAppliedFiltersPipe', () => {
   });
 
   it('should return an empty array if either the provided filters are undefined or empty', () => {
-    expect(pipe.transform(undefined)).toEqual([]);
+    expect(pipe.transform(undefined as any)).toEqual([]);
     expect(pipe.transform([])).toEqual([]);
   });
 
