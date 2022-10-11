@@ -29,7 +29,7 @@ describe('TableFilterStringComponent', () => {
 
     describe('IS', () => {
       it('test should return true when the input equals the row value', () => {
-        component.filterForm.get('string').setValue('hello world');
+        component.filterForm.get('string')?.setValue('hello world');
 
         value = 'hello world';
         expect(component.filterComparators[0].test(value)).toEqual(true);
@@ -49,14 +49,14 @@ describe('TableFilterStringComponent', () => {
       describe('displayString', () => {
         it('should call generateDisplayString()', () => {
           spyOn(component, 'generateDisplayString').and.returnValue('is value');
-          expect(component.filterComparators[0].displayString()).toEqual('is value');
+          expect(component.filterComparators[0].displayString!()).toEqual('is value');
         });
       });
     });
 
     describe('IS_NOT', () => {
       it('test should return true when the input does not equal the row value', () => {
-        component.filterForm.get('string').setValue('hello world');
+        component.filterForm.get('string')?.setValue('hello world');
 
         value = 'not hello world';
         expect(component.filterComparators[1].test(value)).toEqual(true);
@@ -67,13 +67,13 @@ describe('TableFilterStringComponent', () => {
 
     describe('CONTAINS', () => {
       it('test should return true when the row value contains the input', () => {
-        component.filterForm.get('string').setValue('hello');
+        component.filterForm.get('string')?.setValue('hello');
 
         value = 'hello world';
         expect(component.filterComparators[2].test(value)).toEqual(true);
         value = 'world';
         expect(component.filterComparators[2].test(value)).toEqual(false);
-        value = undefined;
+        value = undefined as any;
         expect(component.filterComparators[2].test(value)).toEqual(false);
         value = '';
         expect(component.filterComparators[2].test(value)).toEqual(false);
@@ -82,9 +82,9 @@ describe('TableFilterStringComponent', () => {
 
     describe('DOES_NOT_CONTAIN', () => {
       it('test should return true when the row value does not contain the input', () => {
-        component.filterForm.get('string').setValue('hello');
+        component.filterForm.get('string')?.setValue('hello');
 
-        value = undefined;
+        value = undefined as any;
         expect(component.filterComparators[3].test(value)).toEqual(true);
         value = '';
         expect(component.filterComparators[3].test(value)).toEqual(true);
@@ -97,7 +97,7 @@ describe('TableFilterStringComponent', () => {
 
     describe('IS_EMPTY', () => {
       it('test should return true when the row value is empty', () => {
-        value = undefined;
+        value = undefined as any;
         expect(component.filterComparators[4].test(value)).toEqual(true);
         value = '';
         expect(component.filterComparators[4].test(value)).toEqual(true);
@@ -110,7 +110,7 @@ describe('TableFilterStringComponent', () => {
       it('test should return true when the row value is not empty', () => {
         value = 'hello world';
         expect(component.filterComparators[5].test(value)).toEqual(true);
-        value = undefined;
+        value = undefined as any;
         expect(component.filterComparators[5].test(value)).toEqual(false);
         value = '';
         expect(component.filterComparators[5].test(value)).toEqual(false);
@@ -209,30 +209,30 @@ describe('TableFilterStringComponent', () => {
     });
 
     it('should just return the value if the label is undefined', (done: DoneFn) => {
-      filterComparator.label = of(undefined);
+      filterComparator.label = of(undefined as any);
       (component.generateDisplayString(filterComparator) as Observable<string>).subscribe((displayString: string) => {
         expect(displayString).toEqual('undefined value');
         done();
       });
 
-      filterComparator.label = undefined;
+      filterComparator.label = undefined as any;
       expect(component.generateDisplayString(filterComparator)).toEqual('undefined value');
 
       component.selectedFilterComparator.next(filterComparator);
       expect(component.generateDisplayString()).toEqual('undefined value');
 
-      filterComparator = undefined;
+      filterComparator = undefined as any;
       component.selectedFilterComparator.next(filterComparator);
       expect(component.generateDisplayString()).toEqual('undefined value');
 
-      component.selectedFilterComparator = undefined;
+      component.selectedFilterComparator = undefined as any;
       expect(component.generateDisplayString()).toEqual('undefined value');
     });
   });
 
   describe('buildForm()', () => {
     it('should generate the filterForm', () => {
-      component.filterForm = undefined;
+      component.filterForm = undefined as any;
       component.buildForm();
       expect(component.filterForm).toBeDefined();
       expect(component.filterForm.value).toEqual({ string: null });
@@ -241,20 +241,20 @@ describe('TableFilterStringComponent', () => {
 
   describe('getFormValue()', () => {
     it('should return filterForm.number value', () => {
-      component.filterForm.get('string').setValue('hello world');
+      component.filterForm.get('string')?.setValue('hello world');
       expect(component.getFormValue()).toEqual('hello world');
     });
   });
 
   describe('isFormInvalid()', () => {
     it('should return false if filterForm is defined, true otherwise', () => {
-      component.filterForm.get('string').setValue(undefined);
+      component.filterForm.get('string')?.setValue(undefined);
       expect(component.isFormInvalid()).toBeTrue();
 
       component.hideInput = true;
       expect(component.isFormInvalid()).toBeFalse();
 
-      component.filterForm.get('string').setValue('hello world');
+      component.filterForm.get('string')?.setValue('hello world');
       expect(component.isFormInvalid()).toBeFalse();
     });
   });

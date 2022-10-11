@@ -49,7 +49,7 @@ describe('RemoveTableRowFormattingPipe', () => {
       },
     ];
 
-    expect(pipe.transform(undefined)).toEqual(undefined);
+    expect(pipe.transform(undefined)).toEqual(undefined as any);
     expect(pipe.transform([])).toEqual([]);
     expect(pipe.transform(baseData)).toEqual(baseData);
     expect(pipe.transform(tableRowData)).toEqual(baseData);

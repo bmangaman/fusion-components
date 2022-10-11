@@ -38,7 +38,7 @@ describe('AreAllVisibleRowsSelectedPipe', () => {
   });
 
   it('should return false if the data provided is undefined or empty', () => {
-    expect(pipe.transform(undefined)).toBeFalse();
+    expect(pipe.transform(undefined as any)).toBeFalse();
     expect(pipe.transform([])).toBeFalse();
   });
 

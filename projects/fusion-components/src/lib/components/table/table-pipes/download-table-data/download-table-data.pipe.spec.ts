@@ -1,4 +1,4 @@
-import { ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, QueryList } from '@angular/core';
 
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
@@ -56,8 +56,8 @@ describe('DownloadTableDataPipe', () => {
   });
 
   it('should handle if the provided data is undefined or empty', () => {
-    expect(pipe.transform(undefined, null, null)).toEqual(undefined);
-    expect(pipe.transform([], null, null)).toEqual([]);
+    expect(pipe.transform(undefined as any, null as any, null as any)).toEqual(undefined as any);
+    expect(pipe.transform([], null as any, null as any)).toEqual([]);
   });
 
   it('should return the data with all table attributes removed', () => {
@@ -66,7 +66,7 @@ describe('DownloadTableDataPipe', () => {
       { id: 1, data: 'string1' },
       { id: 2, data: 'string2' },
     ];
-    expect(pipe.transform(tableRowData, null, null)).toEqual(expectedResult);
+    expect(pipe.transform(tableRowData, null as any, null as any)).toEqual(expectedResult);
   });
 
   it('should remove filtered out data', () => {
@@ -75,11 +75,11 @@ describe('DownloadTableDataPipe', () => {
       { id: 1, data: 'string1' },
       { id: 2, data: 'string2' },
     ];
-    expect(pipe.transform(tableRowData, null, null)).toEqual(expectedResult);
+    expect(pipe.transform(tableRowData, null as any, null as any)).toEqual(expectedResult);
   });
 
   it('should remove the data if the column is NOT visible', () => {
-    const columns: TableColumnComponent[] = [];
+    const columns: QueryList<TableColumnComponent> = new QueryList<TableColumnComponent>();
 
     const idColumn: TableColumnComponent = new TableColumnComponent(changeDetectorRef);
     idColumn.field = 'id';
@@ -89,18 +89,18 @@ describe('DownloadTableDataPipe', () => {
     const fieldColumn: TableColumnComponent = new TableColumnComponent(changeDetectorRef);
     fieldColumn.field = 'data';
 
-    columns.push(idColumn, fieldColumn);
+    columns['_results'](idColumn, fieldColumn);
 
     const expectedResult: any[] = [
       { data: 'string0' },
       { data: 'string1' },
       { data: 'string2' },
     ];
-    expect(pipe.transform(tableRowData, columns, null)).toEqual(expectedResult);
+    expect(pipe.transform(tableRowData, columns, null as any)).toEqual(expectedResult);
   });
 
   it('should apply the downloadTransformationFunction if provided', () => {
-    const columns: TableColumnComponent[] = [];
+    const columns: QueryList<TableColumnComponent> = new QueryList<TableColumnComponent>();
 
     const idColumn: TableColumnComponent = new TableColumnComponent(changeDetectorRef);
     idColumn.field = 'id';
@@ -110,14 +110,14 @@ describe('DownloadTableDataPipe', () => {
     fieldColumn.field = 'data';
     fieldColumn.downloadTransformationFunction = (data: string) => data.toUpperCase();
 
-    columns.push(idColumn, fieldColumn);
+    columns['_results'](idColumn, fieldColumn);
 
     const expectedResult: any[] = [
       { 'id header': 0, data: 'STRING0' },
       { 'id header': 1, data: 'STRING1' },
       { 'id header': 2, data: 'STRING2' },
     ];
-    expect(pipe.transform(tableRowData, columns, null)).toEqual(expectedResult);
+    expect(pipe.transform(tableRowData, columns, null as any)).toEqual(expectedResult);
   });
 
   it('should apply the downloadTransformationFunction if provided', () => {
@@ -131,6 +131,6 @@ describe('DownloadTableDataPipe', () => {
       { id: 1, data: 'STRING1' },
       { id: 2, data: 'STRING2' },
     ];
-    expect(pipe.transform(tableRowData, null, downloadTransformationFunction)).toEqual(expectedResult);
+    expect(pipe.transform(tableRowData, null as any, downloadTransformationFunction)).toEqual(expectedResult);
   });
 });

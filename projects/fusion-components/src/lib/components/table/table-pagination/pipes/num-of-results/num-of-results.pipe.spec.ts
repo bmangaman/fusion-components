@@ -20,10 +20,10 @@ describe('NumOfResultsPipe', () => {
     translate = ComponentStubFactory.getTranslateServiceStub();
     pipe = new NumOfResultsPipe(translate, translationService);
 
-    expectedResult = undefined;
-    selectedDataLength = undefined;
-    numResultsPerPage = undefined;
-    currentPageIndex = undefined;
+    expectedResult = undefined as any;
+    selectedDataLength = undefined as any;
+    numResultsPerPage = undefined as any;
+    currentPageIndex = undefined as any;
   });
 
   it('should return "-" if there are no selectedDataLength and numResultsPerPage', (done: DoneFn) => {

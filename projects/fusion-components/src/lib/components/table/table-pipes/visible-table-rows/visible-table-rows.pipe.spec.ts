@@ -103,7 +103,7 @@ describe('VisibleTableRowsPipe', () => {
       },
     ];
 
-    expect(pipe.transform(undefined)).toEqual(undefined);
+    expect(pipe.transform(undefined as any)).toEqual(undefined as any);
     expect(pipe.transform([])).toEqual([]);
     // The only time data will be visible is when 'isVisible' is truthy and 'isFiltered' is falsy
     expect(pipe.transform(tableRowData)).toEqual([tableRowData[0], tableRowData[7]]);

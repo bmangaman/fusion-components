@@ -19,7 +19,7 @@ describe('UploadFileNamePipe', () => {
         { name: 'name3'} as File,
       );
 
-      expect(pipe.transform(null)).toEqual('');
+      expect(pipe.transform(null as any)).toEqual('');
       expect(pipe.transform(fileInfo)).toEqual('');
 
       fileInfo.files = [files[0]];

@@ -26,7 +26,7 @@ describe('TablePaginationComponent', () => {
         };
 
         expect(component.config).toEqual(defaultConfig);
-        component.config = null;
+        component.config = null as any;
         expect(component.config).toEqual(defaultConfig);
       });
 

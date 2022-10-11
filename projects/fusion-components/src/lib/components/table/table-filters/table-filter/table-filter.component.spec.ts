@@ -87,7 +87,7 @@ describe('TableFilter', () => {
     it('should return false if filterForm is defined, true otherwise', () => {
       let form: UntypedFormGroup = component.fb.group({});
 
-      component.filterForm = undefined;
+      component.filterForm = undefined as any;
       expect(component.isFormInvalid()).toBeTrue();
 
       form = component.fb.group({ input: [null, Validators.required]});
@@ -102,7 +102,7 @@ describe('TableFilter', () => {
 
   describe('useValueTransformFunctionIfItExists', () => {
     it('should transform the value if valueTransformFunction was provided', () => {
-      component.valueTransformFunction = undefined;
+      component.valueTransformFunction = undefined as any;
       expect(component.useValueTransformFunctionIfItExists('value')).toEqual('value');
 
       component.valueTransformFunction = (_val: any) => 'new value';

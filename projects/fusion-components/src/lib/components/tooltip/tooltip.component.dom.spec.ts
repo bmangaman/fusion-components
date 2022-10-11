@@ -102,9 +102,9 @@ describe('TooltipComponent', () => {
 
   describe('styling', () => {
     it('should apply the correct CSS classes based on the provided position', () => {
-      component.position = null;
+      component.position = null as any;
       fixture.detectChanges();
-      expect(page.tooltip.classes.length).toEqual(1);
+      expect(page.tooltip.classes?.length).toEqual(1);
       expect(page.tooltip.classes).toContain('f-tooltip');
 
       component.position = Position.LEFT;
@@ -156,9 +156,9 @@ describe('TooltipComponent', () => {
     it('should append the role, id, and tabindex attributes', () => {
       component.id = 'tooltip-id';
       fixture.detectChanges();
-      expect(page.tooltip.tooltip.getAttribute('id')).toEqual('tooltip-id');
-      expect(page.tooltip.tooltip.getAttribute('tabindex')).toEqual('0');
-      expect(page.tooltip.tooltip.getAttribute('role')).toEqual('tooltip');
+      expect(page.tooltip.tooltip?.getAttribute('id')).toEqual('tooltip-id');
+      expect(page.tooltip.tooltip?.getAttribute('tabindex')).toEqual('0');
+      expect(page.tooltip.tooltip?.getAttribute('role')).toEqual('tooltip');
     });
   });
 });
