@@ -77,7 +77,7 @@ describe('MenuComponent', () => {
     it('should display the correct button content', () => {
       expect(page.menu.menuButtonContainer).toBeTruthy();
       expect(page.menu.menuButton).toBeTruthy();
-      expect(page.menu.menuButton.innerText).toEqual('Open Menu');
+      expect(page.menu.menuButton?.innerText).toEqual('Open Menu');
     });
   });
 
@@ -97,8 +97,8 @@ describe('MenuComponent', () => {
       component.isMenuDialogOpen = true;
       fixture.detectChanges();
       expect(page.menu.menuDialog).toBeTruthy();
-      expect(page.menu.menuDialog.classList).toContain('custom-class-1');
-      expect(page.menu.menuDialog.classList).toContain('custom-class-2');
+      expect(page.menu.menuDialog?.classList).toContain('custom-class-1');
+      expect(page.menu.menuDialog?.classList).toContain('custom-class-2');
     });
 
     it('should emit menuOpened when the menu is opened, menuClosed if closed', () => {
@@ -121,7 +121,7 @@ describe('MenuComponent', () => {
       fixture.detectChanges();
       expect(page.menu.menuDialog).toBeTruthy();
       expect(page.menu.menuDialogHeader).toBeTruthy();
-      expect(page.menu.menuDialogHeader.innerText).toEqual('Menu Dialog Header');
+      expect(page.menu.menuDialogHeader?.innerText).toEqual('Menu Dialog Header');
     });
 
     it('should close the dialog when the close button in the header is clicked', () => {
@@ -129,7 +129,7 @@ describe('MenuComponent', () => {
       fixture.detectChanges();
       expect(page.menu.menuDialog).toBeTruthy();
       expect(page.menu.menuDialogHeaderCloseButton).toBeTruthy();
-      page.menu.menuDialogHeaderCloseButton.click();
+      page.menu.menuDialogHeaderCloseButton?.click();
       fixture.detectChanges();
       expect(component.isMenuDialogOpen).toBeFalsy();
       expect(page.menu.menuDialog).toBeFalsy();
@@ -140,7 +140,7 @@ describe('MenuComponent', () => {
       fixture.detectChanges();
       expect(page.menu.menuDialog).toBeTruthy();
       expect(page.menu.menuDialogContent).toBeTruthy();
-      expect(page.menu.menuDialogContent.innerText).toEqual('Menu Dialog Content');
+      expect(page.menu.menuDialogContent?.innerText).toEqual('Menu Dialog Content');
     });
   });
 });

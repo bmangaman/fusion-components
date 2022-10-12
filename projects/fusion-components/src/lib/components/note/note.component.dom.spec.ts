@@ -43,6 +43,6 @@ describe('NoteComponent', () => {
   });
 
   it('should display the projected content', () => {
-    expect(page.note.note.innerHTML).toContain('<div class="projected-content">Projected Text</div>');
+    expect(page.note.note?.innerHTML).toContain('<div class="projected-content">Projected Text</div>');
   });
 });

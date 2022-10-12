@@ -40,8 +40,8 @@ class TestComponent {
   notificationIcon: string;
   text: string;
   sticky = false;
-  translations: NotificationTranslations = null;
-  disappearDelay: number = null;
+  translations: NotificationTranslations = null as any;
+  disappearDelay: number = null as any;
 
   show: boolean = true;
   hasDetails: boolean = false;
@@ -152,7 +152,7 @@ describe('NotificationComponent', () => {
       expect(!!closeButton).toBeTruthy();
 
       component.notificationType = NotificationType.ERROR;
-      component.dismissible = undefined;
+      component.dismissible = undefined as any;
       fixture.detectChanges();
       closeButton = fixture.debugElement.query(By.css('.f-notification__close-button'));
       expect(component.dismissible).toBeFalsy();
@@ -179,7 +179,7 @@ describe('NotificationComponent', () => {
       closeButton = fixture.debugElement.query(By.css('.f-notification__close-button'));
       expect(!!closeButton).toBeTruthy();
 
-      component.dismissible = undefined;
+      component.dismissible = undefined as any;
       fixture.detectChanges();
       closeButton = fixture.debugElement.query(By.css('.f-notification__close-button'));
       expect(!!closeButton).toBeFalsy();
@@ -215,24 +215,24 @@ describe('NotificationComponent', () => {
   describe('Aria labels', () => {
     it('should use aria type label when provided', () => {
       const buttonIcon = fusionUiNotification.notificationIcon;
-      expect(buttonIcon.attributes['aria-label'].value).toEqual('.notification.type.success');
+      expect(buttonIcon.attributes.getNamedItem('aria-label')?.value).toEqual('.notification.type.success');
 
       component.translations = { ariaTypeLabel: {
         success: 'fake-success'
         }};
       fixture.detectChanges();
 
-      expect(buttonIcon.attributes['aria-label'].value).toEqual('fake-success');
+      expect(buttonIcon.attributes.getNamedItem('aria-label')?.value).toEqual('fake-success');
     });
 
     it('should use aria close label when provided', () => {
       const buttonIcon = fusionUiNotification.closeButtonIcon;
-      expect(buttonIcon.attributes['aria-label'].value).toEqual('.notification.ariaCloseLabel');
+      expect(buttonIcon.attributes.getNamedItem('aria-label')?.value).toEqual('.notification.ariaCloseLabel');
 
       component.translations = { ariaCloseLabel: 'translatedClose'};
       fixture.detectChanges();
 
-      expect(buttonIcon.attributes['aria-label'].value).toEqual('translatedClose');
+      expect(buttonIcon.attributes.getNamedItem('aria-label')?.value).toEqual('translatedClose');
     });
   });
 

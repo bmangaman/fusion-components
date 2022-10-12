@@ -92,7 +92,7 @@ describe('LinearGaugeComponent', () => {
       for (let i = 0; i < 10; i++) {
         component.value = i;
         fixture.detectChanges();
-        expect(page.linearGauge.valueBar.style.width).toEqual(`${i * 10}%`);
+        expect(page.linearGauge.valueBar?.style.width).toEqual(`${i * 10}%`);
       }
     });
 
@@ -103,27 +103,27 @@ describe('LinearGaugeComponent', () => {
       component.thresholds = [];
       component.value = 3;
       fixture.detectChanges();
-      expect(page.linearGauge.valueBar.classList).toContain('f-linear-gauge__value-bar--base');
+      expect(page.linearGauge.valueBar?.classList).toContain('f-linear-gauge__value-bar--base');
 
       component.thresholds = cloneDeep(thresholds);
       component.value = 3;
       fixture.detectChanges();
-      expect(page.linearGauge.valueBar.classList).toContain('f-linear-gauge__value-bar--normal');
+      expect(page.linearGauge.valueBar?.classList).toContain('f-linear-gauge__value-bar--normal');
 
       component.thresholds = cloneDeep(thresholds);
       component.value = 5;
       fixture.detectChanges();
-      expect(page.linearGauge.valueBar.classList).toContain('f-linear-gauge__value-bar--warning');
+      expect(page.linearGauge.valueBar?.classList).toContain('f-linear-gauge__value-bar--warning');
 
       component.thresholds = cloneDeep(thresholds);
       component.value = 7;
       fixture.detectChanges();
-      expect(page.linearGauge.valueBar.classList).toContain('f-linear-gauge__value-bar--warning');
+      expect(page.linearGauge.valueBar?.classList).toContain('f-linear-gauge__value-bar--warning');
 
       component.thresholds = cloneDeep(thresholds);
       component.value = 10;
       fixture.detectChanges();
-      expect(page.linearGauge.valueBar.classList).toContain('f-linear-gauge__value-bar--critical');
+      expect(page.linearGauge.valueBar?.classList).toContain('f-linear-gauge__value-bar--critical');
     });
   });
 
@@ -156,7 +156,7 @@ describe('LinearGaugeComponent', () => {
 
   describe('thresholds', () => {
     it('should be displayed if provided', () => {
-      let pageThresholds: NodeListOf<HTMLButtonElement>;
+      let pageThresholds: NodeListOf<HTMLButtonElement> | null;
 
       component.maxValue = 10;
       component.minValue = 0;
@@ -166,13 +166,13 @@ describe('LinearGaugeComponent', () => {
       fixture.detectChanges();
       pageThresholds = page.linearGauge.thresholds;
       expect(pageThresholds).toBeTruthy();
-      expect(pageThresholds.length).toEqual(0);
+      expect(pageThresholds?.length).toEqual(0);
 
       component.thresholds = cloneDeep(thresholds);
       fixture.detectChanges();
       pageThresholds = page.linearGauge.thresholds;
       expect(pageThresholds).toBeTruthy();
-      expect(pageThresholds.length).toEqual(2);
+      expect(pageThresholds?.length).toEqual(2);
     });
 
     xit('should display tooltips when hovered over', () => {

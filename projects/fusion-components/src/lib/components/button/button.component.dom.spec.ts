@@ -225,16 +225,16 @@ describe('ButtonComponent', () => {
     it('should append all classes provided', () => {
       component.classes = null!;
       fixture.detectChanges();
-      expect(page.button.classes.length).toEqual(1);
+      expect(page.button.classes?.length).toEqual(1);
 
       component.classes = ['custom-class-1'];
       fixture.detectChanges();
-      expect(page.button.classes.length).toEqual(2);
+      expect(page.button.classes?.length).toEqual(2);
       expect(page.button.classes).toContain('custom-class-1');
 
       component.classes = ['custom-class-1', 'custom-class-2'];
       fixture.detectChanges();
-      expect(page.button.classes.length).toEqual(3);
+      expect(page.button.classes?.length).toEqual(3);
       expect(page.button.classes).toContain('custom-class-1', 'custom-class-2');
     });
   });
@@ -243,18 +243,18 @@ describe('ButtonComponent', () => {
     it('should be disabled if isDisabled is true', () => {
       component.isDisabled = null!;
       fixture.detectChanges();
-      expect(page.button.button.disabled).toBeFalsy();
-      expect(page.button.button.getAttribute('aria-disabled')).toEqual('false');
+      expect(page.button.button?.disabled).toBeFalsy();
+      expect(page.button.button?.getAttribute('aria-disabled')).toEqual('false');
 
       component.isDisabled = false;
       fixture.detectChanges();
-      expect(page.button.button.disabled).toBeFalsy();
-      expect(page.button.button.getAttribute('aria-disabled')).toEqual('false');
+      expect(page.button.button?.disabled).toBeFalsy();
+      expect(page.button.button?.getAttribute('aria-disabled')).toEqual('false');
 
       component.isDisabled = true;
       fixture.detectChanges();
-      expect(page.button.button.disabled).toBeTruthy();
-      expect(page.button.button.getAttribute('aria-disabled')).toEqual('true');
+      expect(page.button.button?.disabled).toBeTruthy();
+      expect(page.button.button?.getAttribute('aria-disabled')).toEqual('true');
     });
 
     it('should display the button content if state === LOADED', () => {
@@ -266,7 +266,7 @@ describe('ButtonComponent', () => {
       expect(page.button.text).toBeTruthy();
       expect(page.button.icon).toBeTruthy();
       expect(page.button.loadingSpinner).toBeFalsy();
-      expect(page.button.button.disabled).toBeFalsy();
+      expect(page.button.button?.disabled).toBeFalsy();
     });
 
     it('should display a loading spinner and disable the button if state === LOADING', () => {
@@ -278,14 +278,14 @@ describe('ButtonComponent', () => {
       expect(page.button.text).toBeFalsy();
       expect(page.button.icon).toBeFalsy();
       expect(page.button.loadingSpinner).toBeTruthy();
-      expect(page.button.button.disabled).toBeTruthy();
+      expect(page.button.button?.disabled).toBeTruthy();
     });
   });
 
   describe('events', () => {
     it('should call button click when the button is clicked', () => {
       spyOn(component, 'buttonClick');
-      page.button.button.click();
+      page.button.button?.click();
       fixture.detectChanges();
       expect(component.buttonClick).toHaveBeenCalled();
     });
@@ -307,34 +307,34 @@ describe('ButtonComponent', () => {
     it('should append aria attibutes if provided', () => {
       component.aria = null!;
       fixture.detectChanges();
-      expect(page.button.button.getAttribute('aria-label')).toBeFalsy();
-      expect(page.button.button.getAttribute('aria-controls')).toBeFalsy();
-      expect(page.button.button.getAttribute('aria-haspopup')).toBeFalsy();
-      expect(page.button.button.getAttribute('aria-expanded')).toBeFalsy();
+      expect(page.button.button?.getAttribute('aria-label')).toBeFalsy();
+      expect(page.button.button?.getAttribute('aria-controls')).toBeFalsy();
+      expect(page.button.button?.getAttribute('aria-haspopup')).toBeFalsy();
+      expect(page.button.button?.getAttribute('aria-expanded')).toBeFalsy();
 
       component.aria = { label: 'label' };
       fixture.detectChanges();
-      expect(page.button.button.getAttribute('aria-label')).toEqual('label');
+      expect(page.button.button?.getAttribute('aria-label')).toEqual('label');
 
       component.aria = { controls: 'controls' };
       fixture.detectChanges();
-      expect(page.button.button.getAttribute('aria-controls')).toEqual('controls');
+      expect(page.button.button?.getAttribute('aria-controls')).toEqual('controls');
 
       component.aria = { haspopup: true };
       fixture.detectChanges();
-      expect(page.button.button.getAttribute('aria-haspopup')).toEqual('true');
+      expect(page.button.button?.getAttribute('aria-haspopup')).toEqual('true');
 
       component.aria = { haspopup: false };
       fixture.detectChanges();
-      expect(page.button.button.getAttribute('aria-haspopup')).toEqual('false');
+      expect(page.button.button?.getAttribute('aria-haspopup')).toEqual('false');
 
       component.aria = { expanded: true };
       fixture.detectChanges();
-      expect(page.button.button.getAttribute('aria-expanded')).toEqual('true');
+      expect(page.button.button?.getAttribute('aria-expanded')).toEqual('true');
 
       component.aria = { expanded: false };
       fixture.detectChanges();
-      expect(page.button.button.getAttribute('aria-expanded')).toEqual('false');
+      expect(page.button.button?.getAttribute('aria-expanded')).toEqual('false');
     });
 
     it('should add a down-chevron icon if opensMenu is true', () => {

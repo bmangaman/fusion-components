@@ -63,11 +63,11 @@ export class ErrorMessageGeneratorService {
    * @returns The generated error message.
    */
   generateError(config: ErrorMessageGeneratorConfig, defaultError?: string): ErrorMessage {
-    const priority: number | undefined = config.priority;
-    const error: string = config.error || defaultError || '';
+    const priority: number | undefined = config?.priority;
+    const error: string = config?.error || defaultError || '';
     const translation: Observable<string | SafeHtml> =
-      config.translation ||
-      (config.translationConfig ? this.getTranslation(config.translationConfig, error) : of(''));
+      config?.translation ||
+      (config?.translationConfig ? this.getTranslation(config?.translationConfig, error) : of(''));
 
     return { priority, translation, error };
   }
@@ -76,7 +76,8 @@ export class ErrorMessageGeneratorService {
    * Returns the desired text to be displayed.
    * Supports both plural and singular translations by setting isPlural in the translationConfig.
    *
-   * @param config The error message generator config.
+   * @param translationConfig The error message generator config.
+   * @param error The error message object property key.
    * @returns The generated translation based on the provided config and error.
    */
   private getTranslation(translationConfig: ErrorMessageGeneratorTranslationConfig, error: string): Observable<string | SafeHtml> {

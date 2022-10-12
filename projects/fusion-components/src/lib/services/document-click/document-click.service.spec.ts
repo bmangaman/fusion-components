@@ -1,8 +1,13 @@
+import { Subscription } from 'rxjs';
+
+import { unsubscribeAll } from './../../shared/utilities';
+
 import { DocumentClickService } from './document-click.service';
 
 describe('DocumentClickService', () => {
   let documentStub: Document;
   let service: DocumentClickService;
+  let subscriptions: Subscription[] = [];
 
   beforeEach(() => {
     documentStub = document;
@@ -18,13 +23,19 @@ describe('DocumentClickService', () => {
       const body: HTMLElement = documentStub.getElementsByTagName('body')[0];
       body.appendChild(button);
 
-      service.documentClickedTarget$.subscribe((element: HTMLElement) => {
-        expect(element).toEqual(button);
-        expect(service.documentClickedTarget$.next).toHaveBeenCalled();
-        done();
-      });
+      subscriptions.push(
+        service.documentClickedTarget$.subscribe((element: HTMLElement) => {
+          expect(element).toEqual(button);
+          expect(service.documentClickedTarget$.next).toHaveBeenCalled();
+          done();
+        })
+      );
 
       button.click();
     });
+  });
+
+  afterEach(() => {
+    unsubscribeAll(subscriptions);
   });
 });

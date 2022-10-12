@@ -47,34 +47,34 @@ describe('CheckboxComponent', () => {
   it('should display the label', () => {
     component.label = 'label';
     fixture.detectChanges();
-    expect(page.checkbox.labelText.innerText).toEqual('label');
+    expect(page.checkbox.labelText?.innerText).toEqual('label');
   });
 
   it('should update the value when the checkbox is clicked', () => {
     expect(component.control.value).toBeFalsy();
-    expect(page.checkbox.input.checked).toBeFalsy();
+    expect(page.checkbox.input?.checked).toBeFalsy();
 
-    page.checkbox.input.click();
+    page.checkbox.input?.click();
     fixture.detectChanges();
     expect(component.control.value).toBeTruthy();
-    expect(page.checkbox.input.checked).toBeTruthy();
+    expect(page.checkbox.input?.checked).toBeTruthy();
 
-    page.checkbox.input.click();
+    page.checkbox.input?.click();
     fixture.detectChanges();
     expect(component.control.value).toBeFalsy();
-    expect(page.checkbox.input.checked).toBeFalsy();
+    expect(page.checkbox.input?.checked).toBeFalsy();
   });
 
   it('should disable the input if isDisabled is true', () => {
     expect(component.control.disabled).toBeFalsy();
-    expect(page.checkbox.input.disabled).toBeFalsy();
+    expect(page.checkbox.input?.disabled).toBeFalsy();
 
     component.control.disable();
     fixture.detectChanges();
-    expect(page.checkbox.input.disabled).toBeTruthy();
+    expect(page.checkbox.input?.disabled).toBeTruthy();
 
     component.control.enable();
     fixture.detectChanges();
-    expect(page.checkbox.input.disabled).toBeFalsy();
+    expect(page.checkbox.input?.disabled).toBeFalsy();
   });
 });
