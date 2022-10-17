@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { DEFAULT_FUSION_TRANSLATIONS, FusionTranslations } from './translations.interface';
+import { DEFAULT_FUSION_TRANSLATIONS, FusionTranslations } from './translation.interface';
 
 /**
  * TRANSLATION SERVICE

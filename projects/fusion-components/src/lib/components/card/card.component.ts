@@ -1,9 +1,12 @@
 import { AfterContentInit, Component, ContentChildren, Input, OnChanges, OnInit, QueryList, TemplateRef } from '@angular/core';
 import { Observable } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
-import { TemplateDirective } from '../../directives/template';
-import { GetStatusLevelTextPipe } from '../../pipes/get-status-level-text';
-import { Size, StatusLevel } from '../../shared';
+import { TemplateDirective } from '../../directives';
+import { GetStatusLevelTextPipe } from '../../pipes';
+import { FusionTranslations, TranslationService } from '../../services';
+import { Size, StatusLevel, UnsubscribeComponent } from '../../shared';
+
 import { CardStatus, CardTemplate, CardTranslations, DEFAULT_CARD_TRANSLATIONS } from './card.interface';
 
 /**
@@ -13,7 +16,7 @@ import { CardStatus, CardTemplate, CardTranslations, DEFAULT_CARD_TRANSLATIONS }
   selector: 'f-card',
   templateUrl: 'card.component.html',
 })
-export class CardComponent implements OnInit, AfterContentInit, OnChanges {
+export class CardComponent extends UnsubscribeComponent implements OnInit, AfterContentInit, OnChanges {
   readonly StatusLevel = StatusLevel;
   readonly Size = Size;
   readonly getStatusLevelPipe: GetStatusLevelTextPipe = new GetStatusLevelTextPipe();
@@ -81,10 +84,17 @@ export class CardComponent implements OnInit, AfterContentInit, OnChanges {
    */
   @Input() hideStatusBarStyling: boolean;
 
+  _translations: CardTranslations = DEFAULT_CARD_TRANSLATIONS;
   /**
    * Determines the "static" text used in the card component.
    */
-  @Input() translations: CardTranslations = DEFAULT_CARD_TRANSLATIONS;
+  @Input() 
+  get translations(): CardTranslations {
+    return this._translations;
+  }
+  set translations(translations: CardTranslations) {
+    this._translations = translations;
+  }
 
   @ContentChildren(TemplateDirective) templates !: QueryList<TemplateDirective>;
 
@@ -106,6 +116,16 @@ export class CardComponent implements OnInit, AfterContentInit, OnChanges {
   private _cardFooter: TemplateRef<any>;
   get cardFooter(): TemplateRef<any> {
     return this._cardFooter;
+  }
+
+  constructor(
+    private translationService: TranslationService,
+  ) {
+    super();
+
+    this.translationService.translations$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((translations: FusionTranslations) => this._translations = translations.components.card);
   }
 
   /**
