@@ -10,10 +10,27 @@ export enum TableFilterStringInputComparator {
 }
 
 export interface TableFilterStringTranslations extends TableFilterTranslations {
-  comparators?: {
+  comparators: {
     [key in TableFilterStringInputComparator]?: string;
   };
-  fields?: {
+  fields: {
     string?: string;
   };
 }
+
+export const DEFAULT_TABLE_FILTER_STRING_TRANSLATIONS: TableFilterStringTranslations = {
+  comparator: {
+    comparatorLabel: 'Text',
+  },
+  comparators: {
+    contains: 'contains',
+    doesNotContain: 'does not contain',
+    is: 'is',
+    isNot: 'is not',
+    isEmpty: 'is empty',
+    isNotEmpty: 'is not empty',
+  },
+  fields: {
+    string: 'Text',
+  },
+};

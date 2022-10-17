@@ -1,6 +1,6 @@
 <div class="f-table__actions">
   <f-menu
-    [aria]="{ menuDialogLabelledBy: translations?.menuDialogLabelledBy || ( baseTranslationKey + '.table.actions.menuDialogLabelledBy' | translate ) }"
+    [aria]="{ menuDialogLabelledBy: translations.menuDialogLabelledBy }"
     [dialogClasses]="cssClasses"
     [isMenuDialogOpen]="isMenuDialogOpen"
     (menuClosed)="isMenuDialogOpen = false"
@@ -11,9 +11,9 @@
       <f-button
         [classes]="['f-table__actions-button']"
         [aria]="{
-          label: translations?.buttonAria || ( baseTranslationKey + '.table.actions.buttonAria' | translate ),
+          label: translations.buttonAria,
           haspopup: true,
-          controls: translations?.menuDialogLabelledBy || ( baseTranslationKey + '.table.actions.menuDialogLabelledBy' | translate ),
+          controls: translations.menuDialogLabelledBy,
           expanded: isMenuDialogOpen
         }"
         [isDisabled]="isDisabled"

@@ -1,12 +1,9 @@
 import { UntypedFormBuilder } from '@angular/forms';
 
-import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
 import { BytesPipeBase, EnumToArrayPipe } from '@fusion-components/lib/pipes';
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
 import { BiBytesUnit, BytesUnit } from '@fusion-components/lib/shared';
-import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
 import { FilterComparator } from '../table-filter-comparator';
 import { TableFilterBytesComponent } from './table-filter-bytes.component';
@@ -14,18 +11,14 @@ import { TableFilterBytesInputComparator } from './table-filter-bytes.interface'
 
 describe('TableFilterBytesComponent', () => {
   let component: TableFilterBytesComponent;
-  let translationService: FusionComponentsTranslationService;
   let enumToArrayPipe: EnumToArrayPipe;
-  let translateService: TranslateService;
 
   beforeAll(() => {
     enumToArrayPipe = new EnumToArrayPipe();
   });
 
   beforeEach(() => {
-    translationService = new FusionComponentsTranslationService();
-    translateService = ComponentStubFactory.getTranslateServiceStub();
-    component = new TableFilterBytesComponent(new UntypedFormBuilder(), translationService, translateService);
+    component = new TableFilterBytesComponent(new UntypedFormBuilder());
   });
 
   it('should create', () => {
@@ -158,17 +151,6 @@ describe('TableFilterBytesComponent', () => {
       };
 
       expect(component.generateComparatorLabel(TableFilterBytesInputComparator.EQUAL_TO)).toEqual('equal to');
-    });
-
-    it('should use the translateService to generate the comparator label if no translation was provided', (done: DoneFn) => {
-      (translateService.get as jasmine.Spy).calls.reset();
-      (translateService.get as jasmine.Spy).and.returnValue(of('equal to'));
-      spyOnProperty(translationService, 'baseTranslationKey').and.returnValue('components');
-      (component.generateComparatorLabel(TableFilterBytesInputComparator.EQUAL_TO) as Observable<string>).subscribe((label: string) => {
-        expect(label).toEqual('equal to');
-        expect(translateService.get).toHaveBeenCalledWith('components.table.filters.bytes.comparators.equalTo');
-        done();
-      });
     });
   });
 

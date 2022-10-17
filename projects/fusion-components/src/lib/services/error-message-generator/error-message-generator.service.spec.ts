@@ -1,29 +1,19 @@
 import { SafeHtml } from '@angular/platform-browser';
-import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
-import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { ErrorMessage } from '../../components/error-message/error-message.interface';
 import { ErrorMessageGeneratorService } from './error-message-generator.service';
 import {
   ErrorMessageGeneratorConfig,
-  ErrorMessageGeneratorTranslationConfig,
   ErrorMessageMaxlengthGeneratorConfig,
   ErrorMessageMinlengthGeneratorConfig,
 } from './error-message-generator.service.interface';
 
 describe('ErrorMessageGenerator', () => {
   let service: ErrorMessageGeneratorService;
-  let translationService: FusionComponentsTranslationService;
-  let translateService: TranslateService;
 
   beforeEach(() => {
-    translationService = new FusionComponentsTranslationService();
-    translateService = ComponentStubFactory.getTranslateServiceStub();
-    service = new ErrorMessageGeneratorService(translationService, translateService);
-
-    translationService.baseTranslationKey = 'components';
+    service = new ErrorMessageGeneratorService();
   });
 
   describe('specific error message generators', () => {
@@ -73,7 +63,6 @@ describe('ErrorMessageGenerator', () => {
           priority: 1,
           error: 'custom error',
           translation: of('custom translation'),
-          translationConfig: {},
         };
 
         expectedResult = {
@@ -118,9 +107,6 @@ describe('ErrorMessageGenerator', () => {
           priority: 1,
           error: 'custom error',
           translation: of('custom translation'),
-          translationConfig: {
-            min: 5,
-          },
         };
 
         expectedResult = {
@@ -165,9 +151,6 @@ describe('ErrorMessageGenerator', () => {
           priority: 1,
           error: 'custom error',
           translation: of('custom translation'),
-          translationConfig: {
-            max: 5,
-          },
         };
 
         expectedResult = {
@@ -180,38 +163,6 @@ describe('ErrorMessageGenerator', () => {
         expect(result).toEqual(expectedResult);
         expect(getTranslationSpy).not.toHaveBeenCalled();
       });
-    });
-  });
-
-  describe('getTranslation()', () => {
-    it('should call the translateService with a generated key based on the provided config and error', () => {
-      /* eslint-disable @typescript-eslint/dot-notation */
-
-      const error = 'error';
-      let config: ErrorMessageGeneratorTranslationConfig;
-
-      config = { isPlural: true };
-      service['getTranslation'](config, error);
-      expect(translateService.get).toHaveBeenCalledWith(
-        'components.errorMessage.error.plural',
-        config,
-      );
-
-      config.isPlural = false;
-      service['getTranslation'](config, error);
-      expect(translateService.get).toHaveBeenCalledWith(
-        'components.errorMessage.error.singular',
-        config,
-      );
-
-      config = undefined as any;
-      service['getTranslation'](config, error);
-      expect(translateService.get).toHaveBeenCalledWith(
-        'components.errorMessage.error.singular',
-        config,
-      );
-
-      /* eslint-enable @typescript-eslint/dot-notation */
     });
   });
 });

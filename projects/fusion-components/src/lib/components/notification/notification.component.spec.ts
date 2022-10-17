@@ -1,6 +1,6 @@
 import { QueryList } from '@angular/core';
 
-import { FusionComponentsTranslationService, TemplateDirective } from '@fusion-components';
+import { TemplateDirective } from '@fusion-components';
 
 import { NotificationComponent } from './notification.component';
 import { NotificationType } from './notification.interface';
@@ -8,12 +8,10 @@ import { NotificationType } from './notification.interface';
 describe('NotificationComponent', () => {
   let component: NotificationComponent;
   let window: any;
-  let translationService: FusionComponentsTranslationService;
 
   beforeEach(() => {
-    translationService = new FusionComponentsTranslationService();
     window = jasmine.createSpyObj('window', [ 'setTimeout', 'clearTimeout' ]);
-    component = new NotificationComponent(window as Window, translationService);
+    component = new NotificationComponent(window as Window);
   });
 
   it('should create', () => {

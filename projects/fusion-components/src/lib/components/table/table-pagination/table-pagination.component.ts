@@ -5,7 +5,7 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 
 import { cloneDeep } from 'lodash-es';
 
-import { Size, TranslatedComponent } from '@fusion-components/lib/shared';
+import { Size, UnsubscribeComponent} from '@fusion-components/lib/shared';
 import * as Utils from '@fusion-components/lib/shared/utilities';
 import { ButtonType } from '../../button/button.interface';
 import { TableRowData } from '../table.interface';
@@ -15,6 +15,7 @@ import {
   TablePaginationConfig,
   TablePaginationEmit,
   TablePaginationTranslations,
+  DEFAULT_TABLE_PAGINATION_TRANSLATIONS,
 } from './table-pagination.interface';
 
 @Component({
@@ -22,7 +23,7 @@ import {
   templateUrl: './table-pagination.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TablePaginationComponent extends TranslatedComponent implements OnInit, OnDestroy {
+export class TablePaginationComponent extends UnsubscribeComponent implements OnInit, OnDestroy {
   readonly ButtonType = ButtonType;
   readonly Size = Size;
 
@@ -48,7 +49,7 @@ export class TablePaginationComponent extends TranslatedComponent implements OnI
    *  - page navigation labels
    *  - view all for number of results per page
    */
-  @Input() translations: TablePaginationTranslations | undefined;
+  @Input() translations: TablePaginationTranslations = DEFAULT_TABLE_PAGINATION_TRANSLATIONS;
 
   /**
    * Determines the configuration of the pagination area. Provides control over the results per page select dropdown.

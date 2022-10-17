@@ -1,5 +1,4 @@
 import { ChangeDetectorRef } from '@angular/core';
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
 
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import {
@@ -14,12 +13,10 @@ import { BodyTableCellComponent } from './body-table-cell.component';
 describe('BodyTableCellComponent', () => {
   let component: BodyTableCellComponent;
   let changeDetectorRef: ChangeDetectorRef;
-  let translationService: FusionComponentsTranslationService;
 
   beforeEach(() => {
     changeDetectorRef = ComponentStubFactory.getChangeDetectorRefStub() as ChangeDetectorRef;
-    translationService = new FusionComponentsTranslationService();
-    component = new BodyTableCellComponent(changeDetectorRef, translationService);
+    component = new BodyTableCellComponent(changeDetectorRef);
   });
 
   it('should create', () => {

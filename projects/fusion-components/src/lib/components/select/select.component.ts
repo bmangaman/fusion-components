@@ -1,17 +1,14 @@
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ControlValueAccessor, UntypedFormControl, NgControl } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 import { v4 as uuidv4 } from 'uuid';
 
 import { DocumentClickService } from '../../services/document-click';
-import { FusionComponentsTranslationService } from '../../services/translation';
-import { TranslatedComponent } from '../../shared/components/translated';
 
-import { SelectOption, SelectTranslations } from './select.interface';
+import { DEFAULT_SELECT_TRANSLATIONS, SelectOption, SelectTranslations } from './select.interface';
 
 /**
  * SELECT COMPONENT
@@ -20,7 +17,7 @@ import { SelectOption, SelectTranslations } from './select.interface';
   selector: 'f-select',
   templateUrl: './select.component.html',
 })
-export class SelectComponent extends TranslatedComponent implements ControlValueAccessor, OnInit, OnDestroy {
+export class SelectComponent implements ControlValueAccessor, OnInit, OnDestroy {
   private onChange: (...args: unknown[]) => void;
   private onTouched: () => void;
 
@@ -55,15 +52,15 @@ export class SelectComponent extends TranslatedComponent implements ControlValue
   /**
    * Holds the current value of the select input.
    */
-  private _value: SelectOption;
-  set value(value: SelectOption) {
+  private _value: SelectOption | undefined;
+  set value(value: SelectOption | undefined) {
     this.setValue(value);
   }
-  get value(): SelectOption {
+  get value(): SelectOption | undefined {
     return this._value;
   }
 
-  get control(): NgControl {
+  get control(): NgControl | undefined {
     return this._control;
   }
 
@@ -131,16 +128,16 @@ export class SelectComponent extends TranslatedComponent implements ControlValue
   label: string | Observable<string>;
 
   /**
-   * Determines the default label for an empty/ null selection.
-   */
-  @Input()
-  defaultLabel: string = this.translateService.instant(`${this.translationService.baseTranslationKey}.select.defaultLabel`);
-
-  /**
    * Determines the "static" text used in the select component.
    */
   @Input()
-  translations: SelectTranslations;
+  translations: SelectTranslations = DEFAULT_SELECT_TRANSLATIONS;
+
+  /**
+   * Determines the default label for an empty/ null selection.
+   */
+  @Input()
+  defaultLabel: string = this.translations.defaultLabel;
 
   /**
    * If the escape key is pressed while the dropdown menu is open, close it.
@@ -166,11 +163,7 @@ export class SelectComponent extends TranslatedComponent implements ControlValue
   constructor(
     private _control: NgControl,
     private _documentClickService: DocumentClickService,
-    protected _translationService: FusionComponentsTranslationService,
-    private translateService: TranslateService,
   ) {
-    super(_translationService);
-
     this._control.valueAccessor = this;
     this.searchInputControl = new UntypedFormControl();
   }
@@ -198,7 +191,7 @@ export class SelectComponent extends TranslatedComponent implements ControlValue
    * On component teardown:
    *  - next and complete the unsubscribe Subject co clean up any active subscriptions
    */
-  override ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this._unsubscribe$.next();
     this._unsubscribe$.complete();
   }
@@ -240,7 +233,7 @@ export class SelectComponent extends TranslatedComponent implements ControlValue
    * @param value The new value.
    * @param setSearchInputControlValue By default true. If set to false, do NOT update the search input value.
    */
-  setValue(value: SelectOption, setSearchInputControlValue: boolean = true): void {
+  setValue(value: SelectOption | undefined, setSearchInputControlValue: boolean = true): void {
     this._value = value;
 
     if (this.onChange) {

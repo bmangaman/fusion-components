@@ -2,9 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, HostBin
 
 import { isEqual } from 'lodash-es';
 
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
-import { TranslatedComponent } from '@fusion-components/lib/shared';
-import { TableCellTranslations, TableColumnConfig, TableSpacing } from '../../table.interface';
+import { DEFAULT_TABLE_CELL_TRANSLATIONS, TableCellTranslations, TableColumnConfig, TableSpacing } from '../../table.interface';
 
 /**
  * TABLE CELL
@@ -17,7 +15,7 @@ import { TableCellTranslations, TableColumnConfig, TableSpacing } from '../../ta
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableCellComponent extends TranslatedComponent implements DoCheck {
+export class TableCellComponent implements DoCheck {
   tableCellClasses: string[] = [];
 
   /**
@@ -53,8 +51,8 @@ export class TableCellComponent extends TranslatedComponent implements DoCheck {
   /**
    * Determines the static text used in the table cell component.
    */
-  prevTranslations: TableCellTranslations | undefined;
-  @Input() translations: TableCellTranslations | undefined;
+  prevTranslations: TableCellTranslations;
+  @Input() translations: TableCellTranslations = DEFAULT_TABLE_CELL_TRANSLATIONS;
 
   /**
    * Allows for custom CSS classes to be appended to the host component element.
@@ -84,10 +82,7 @@ export class TableCellComponent extends TranslatedComponent implements DoCheck {
 
   constructor(
     protected changeDetectorRef: ChangeDetectorRef,
-    protected _translationService: FusionComponentsTranslationService,
-  ) {
-    super(_translationService);
-  }
+  ) {}
 
   /**
    * Checks to see if the provided inputs have actually changed. If so, mark the component

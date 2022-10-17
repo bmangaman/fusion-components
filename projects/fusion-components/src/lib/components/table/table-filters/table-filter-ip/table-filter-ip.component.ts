@@ -6,7 +6,7 @@ import { map, takeUntil } from 'rxjs/operators';
 
 import { FilterComparator } from '../table-filter-comparator';
 import { TableFilterComponent } from '../table-filter/table-filter.component';
-import { TableFilterIpForm, TableFilterIpInputComparator, TableFilterIpTranslations } from './table-filter-ip.interface';
+import { DEFAULT_TABLE_FILTER_IP_TRANSLATIONS, TableFilterIpForm, TableFilterIpInputComparator, TableFilterIpTranslations } from './table-filter-ip.interface';
 
 @Component({
   selector: 'f-table-ip-filter',
@@ -19,7 +19,7 @@ export class TableFilterIpComponent extends TableFilterComponent implements OnIn
 
   isContainsOrDoesNotContainSelector: boolean;
 
-  @Input() override translations: TableFilterIpTranslations | undefined;
+  @Input() override translations: TableFilterIpTranslations = DEFAULT_TABLE_FILTER_IP_TRANSLATIONS;
 
   override filterComparators: FilterComparator[] = [
     {
@@ -81,10 +81,11 @@ export class TableFilterIpComponent extends TableFilterComponent implements OnIn
    * @returns Either the string provided by the translations input or the translated value.
    */
   override generateComparatorLabel(comparator: TableFilterIpInputComparator): string | Observable<string> {
-    if (this.translations?.comparators && this.translations.comparators[comparator]) {
+    if (this.translations.comparators && this.translations.comparators[comparator]) {
       return this.translations.comparators[comparator]!;
     }
-    return this.translateService.get(`${this.translationService.baseTranslationKey}.table.filters.ip.comparators.${comparator}`);
+
+    return '';
   }
 
   /**

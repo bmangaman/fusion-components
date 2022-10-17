@@ -1,11 +1,7 @@
 import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 import { UntypedFormBuilder } from '@angular/forms';
 
-import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
-
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
-import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
 import { FilterComparator } from '../table-filter-comparator';
 import { TableFilterIpComponent } from './table-filter-ip.component';
@@ -13,13 +9,9 @@ import { TableFilterIpInputComparator } from './table-filter-ip.interface';
 
 describe('TableFilterIpComponent', () => {
   let component: TableFilterIpComponent;
-  let translationService: FusionComponentsTranslationService;
-  let translateService: TranslateService;
 
   beforeEach(() => {
-    translationService = new FusionComponentsTranslationService();
-    translateService = ComponentStubFactory.getTranslateServiceStub();
-    component = new TableFilterIpComponent(new UntypedFormBuilder(), translationService, translateService);
+    component = new TableFilterIpComponent(new UntypedFormBuilder());
     component.ngOnInit();
   });
 
@@ -231,17 +223,6 @@ describe('TableFilterIpComponent', () => {
       };
 
       expect(component.generateComparatorLabel(TableFilterIpInputComparator.IS)).toEqual('is');
-    });
-
-    it('should use the translateService to generate the comparator label if no translation was provided', (done: DoneFn) => {
-      (translateService.get as jasmine.Spy).calls.reset();
-      (translateService.get as jasmine.Spy).and.returnValue(of('is'));
-      spyOnProperty(translationService, 'baseTranslationKey').and.returnValue('components');
-      (component.generateComparatorLabel(TableFilterIpInputComparator.IS) as Observable<string>).subscribe((label: string) => {
-        expect(label).toEqual('is');
-        expect(translateService.get).toHaveBeenCalledWith('components.table.filters.ip.comparators.is');
-        done();
-      });
     });
   });
 

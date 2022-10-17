@@ -3,7 +3,7 @@
   <f-table-filter-comparator
     [comparators]="filterComparators"
     (comparatorChange)="selectedFilterComparator.next($event)"
-    [translations]="translations?.comparator">
+    [translations]="translations.comparator">
   </f-table-filter-comparator>
 
   <div class="f-table__filter-input f-form__fieldset" *ngIf="!hideInput">
@@ -12,7 +12,7 @@
         type="text"
         formControlName="string"
         class="f-form__input"
-        [attr.aria-label]="translations?.fields?.string || ( baseTranslationKey + '.table.filters.string.fields.string' | translate )" />
+        [attr.aria-label]="translations.fields?.string" />
     </div>
   </div>
 

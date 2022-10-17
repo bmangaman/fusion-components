@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ComponentFixture, discardPeriodicTasks, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { UntypedFormControl } from '@angular/forms';
 
-import { TranslatedComponentSpecModule } from '@fusion-components/unit-test-helpers/translated-component.module.spec';
 import { SelectComponentPageObject } from './select.component.spec.po';
 import { SelectOption } from './select.interface';
 import { SelectModule } from './select.module';
@@ -40,7 +39,6 @@ describe('SelectComponent', () => {
       ],
       imports: [
         SelectModule,
-        TranslatedComponentSpecModule,
       ],
     }).compileComponents();
   }));

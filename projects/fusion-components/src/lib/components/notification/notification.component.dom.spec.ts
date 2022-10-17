@@ -5,7 +5,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TemplateModule, WINDOW } from '@fusion-components';
 import { NotificationPageObject } from '@fusion-components/unit-test-helpers';
-import { TranslatedComponentSpecModule } from '@fusion-components/unit-test-helpers/translated-component.module.spec';
 import { NotificationComponent } from './notification.component';
 import { NotificationTranslations, NotificationType } from './notification.interface';
 
@@ -63,7 +62,6 @@ describe('NotificationComponent', () => {
       imports: [
         NoopAnimationsModule,
         TemplateModule,
-        TranslatedComponentSpecModule,
       ],
       providers: [{ provide: WINDOW, useValue: window }]
     })

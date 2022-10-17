@@ -26,8 +26,8 @@
     [fusionUiAutofocus]="isMenuDialogOpen === false"
     [clickTargetFunction]="menuLogic"
     [aria]="{
-      closeButtonLabel: translations?.closeButtonAriaLabel || ( baseTranslationKey + '.table.filterSelector.closeButtonAriaLabel' | translate ),
-      menuDialogLabelledBy: translations?.menuDialogLabelledBy || ( baseTranslationKey + '.table.filterSelector.menuDialogLabelledBy' | translate )
+      closeButtonLabel: translations.closeButtonAriaLabel,
+      menuDialogLabelledBy: translations.menuDialogLabelledBy
     }"
     [dialogLocation]="Location.BOTTOM_RIGHT">
 
@@ -42,10 +42,10 @@
           [size]="Size.SMALL"
           [isSelected]="!!(appliedFilters | visibleAppliedFilters)?.length"
           [text]="(appliedFilters | visibleAppliedFilters)?.length + ' ' + (((appliedFilters | visibleAppliedFilters)?.length || 0) > 1
-            ? translations?.filtersApplied || ( baseTranslationKey + '.table.filterSelector.filtersApplied' | translate )
-            : translations?.filterApplied || ( baseTranslationKey + '.table.filterSelector.filterApplied' | translate ))"
+            ? translations.filtersApplied
+            : translations.filterApplied)"
           icon="mdi-close"
-          [aria]="{ label: translations?.removeAll || ( baseTranslationKey + '.table.filterSelector.removeAll' | translate ) }"
+          [aria]="{ label: translations.removeAll }"
           (buttonClick)="removeAllFilters()">
         </f-button>
         <f-button
@@ -58,9 +58,9 @@
           icon="mdi-filter"
           [opensMenu]="true"
           [aria]="{
-            label: translations?.buttonAria || ( baseTranslationKey + '.table.filterSelector.buttonAria' | translate ),
+            label: translations.buttonAria,
             haspopup: true,
-            controls: translations?.menuDialogLabelledBy || ( baseTranslationKey + '.table.filterSelector.menuDialogLabelledBy' | translate ),
+            controls: translations.menuDialogLabelledBy,
             expanded: isMenuDialogOpen
           }"
           (buttonClick)="isMenuDialogOpen = !isMenuDialogOpen">
@@ -69,7 +69,7 @@
     </ng-template>
 
     <ng-template fusionUiTemplate="menuDialogHeader">
-      {{ translations?.menuTitle || ( baseTranslationKey + '.table.filterSelector.menuTitle' | translate ) }}
+      {{ translations.menuTitle }}
     </ng-template>
 
     <ng-template fusionUiTemplate="menuDialogContent">
@@ -80,8 +80,8 @@
           <select
             [formControl]="filterField"
             class="f-form__input f-form__select"
-            [attr.aria-label]="translations?.columnSelectorLabel || ( baseTranslationKey + '.table.filterSelector.columnSelectorLabel' | translate )">
-            <option *ngIf="filterField?.disabled" [ngValue]="undefined">{{ translations?.allColumnsHidden || ( baseTranslationKey + '.table.filterSelector.allColumnsHidden' | translate ) }}</option>
+            [attr.aria-label]="translations.columnSelectorLabel">
+            <option *ngIf="filterField?.disabled" [ngValue]="undefined">{{ translations.allColumnsHidden }}</option>
             <ng-container *ngFor="let filter of filters?.toArray()">
               <option *ngIf="filter?.isVisibleInSelector" [ngValue]="filter">
                 {{ filter?.filterName }}
@@ -122,7 +122,7 @@
               [noBorder]="true"
               [size]="Size.X_SMALL"
               [type]="ButtonType.SECONDARY"
-              [aria]="{ label: (translations?.removeFilter || ( baseTranslationKey + '.table.filterSelector.removeFilter' | translate ) ) + application?.field }"
+              [aria]="{ label: translations.removeFilter + application?.field }"
               (buttonClick)="removeFilter(application)">
             </f-button>
           </div>

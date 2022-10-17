@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { TranslateService } from '@ngx-translate/core';
 
 import { cloneDeep } from 'lodash-es';
 
-import translations from 'projects/fusion-components-app/src/i18n/en.json';
-
-import { TranslatedComponentSpecModule } from '@fusion-components/unit-test-helpers/translated-component.module.spec';
-import { FusionComponentsTranslationService } from '../../services/translation';
 import { State } from '../../shared';
 import { TableFilterConfig } from './table-filter-selector';
 import { TableFilterNumberComponent, TableFilterNumberInputComparator } from './table-filters';
@@ -147,8 +142,6 @@ describe('TableComponent', () => {
   let component: TableTestComponent;
   let fixture: ComponentFixture<TableTestComponent>;
   let page: TableComponentPageObject;
-  let translate: TranslateService;
-  let translationService: FusionComponentsTranslationService;
 
   let data: any[];
   let columns: TableColumnConfig[];
@@ -161,7 +154,6 @@ describe('TableComponent', () => {
       ],
       imports: [
         TableModule,
-        TranslatedComponentSpecModule,
       ],
     }).compileComponents();
   }));
@@ -170,13 +162,6 @@ describe('TableComponent', () => {
     fixture = TestBed.createComponent(TableTestComponent);
     component = fixture.componentInstance;
     page = new TableComponentPageObject(fixture);
-
-    translationService = TestBed.inject(FusionComponentsTranslationService);
-    translationService.baseTranslationKey = 'components';
-
-    translate = TestBed.inject(TranslateService);
-    translate.setTranslation('en', translations);
-    translate.setDefaultLang('en');
 
     await asyncDetectChanges();
   });

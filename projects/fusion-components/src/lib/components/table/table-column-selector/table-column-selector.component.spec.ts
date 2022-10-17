@@ -2,7 +2,6 @@ import { ChangeDetectorRef, QueryList } from '@angular/core';
 
 import { cloneDeep } from 'lodash-es';
 
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
 import { TableColumnComponent } from '../table-column/table-column.component';
@@ -11,13 +10,11 @@ import { TableColumnSelectorComponent } from './table-column-selector.component'
 describe('TableColumnSelectorComponent', () => {
   const columns: QueryList<TableColumnComponent> = new QueryList<TableColumnComponent>();
   let component: TableColumnSelectorComponent;
-  let translationService: FusionComponentsTranslationService;
   let changeDetectorRef: ChangeDetectorRef;
 
   beforeEach(() => {
-    translationService = new FusionComponentsTranslationService();
     changeDetectorRef = ComponentStubFactory.getChangeDetectorRefStub() as ChangeDetectorRef;
-    component = new TableColumnSelectorComponent(translationService);
+    component = new TableColumnSelectorComponent();
     generateColumns();
   });
 

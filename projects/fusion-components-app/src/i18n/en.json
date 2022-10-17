@@ -132,7 +132,7 @@
       "showDetails": "Show Details",
       "hideDetails": "Hide Details",
       "ariaCloseLabel": "Close",
-      "type": {
+      "ariaTypeLabel": {
         "success": "success",
         "warning": "warning",
         "info": "info",

@@ -3,16 +3,10 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Component } from '@angular/core';
 import { ComponentFixture, discardPeriodicTasks, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 
-import { TranslateService } from '@ngx-translate/core';
-
 import { cloneDeep } from 'lodash-es';
 import { Observable } from 'rxjs';
 
-import translations from 'projects/fusion-components-app/src/i18n/en.json';
-
-import { TranslatedComponentSpecModule } from '@fusion-components/unit-test-helpers/translated-component.module.spec';
 import { UploadFilePageObject } from '@fusion-components/unit-test-helpers/page-objects/upload.spec.po';
-import { FusionComponentsTranslationService } from '../../services/translation';
 
 import { UploadComponentPageObject } from './upload.component.spec.po';
 import { HTMLInputEvent, UploadInfo } from './upload.interface';
@@ -84,8 +78,6 @@ describe('UploadComponent', () => {
   let component: UploadTestComponent;
   let fixture: ComponentFixture<UploadTestComponent>;
   let page: UploadComponentPageObject;
-  let translate: TranslateService;
-  let translationService: FusionComponentsTranslationService;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -94,7 +86,6 @@ describe('UploadComponent', () => {
       ],
       imports: [
         HttpClientTestingModule,
-        TranslatedComponentSpecModule,
         UploadModule,
       ],
     }).compileComponents();
@@ -105,12 +96,6 @@ describe('UploadComponent', () => {
     component = fixture.componentInstance;
     page = new UploadComponentPageObject(fixture);
 
-    translationService = TestBed.inject(FusionComponentsTranslationService);
-    translationService.baseTranslationKey = 'components';
-
-    translate = TestBed.inject(TranslateService);
-    translate.setTranslation('en', translations);
-    translate.setDefaultLang('en');
     fixture.detectChanges();
   });
 
@@ -233,7 +218,7 @@ describe('UploadComponent', () => {
 
     const uploadFileEvent: HTMLInputEvent = { target: { files: fileList } } as HTMLInputEvent;
     const event: Event = new Event('change', uploadFileEvent);
-    spyOnProperty(event, 'target').and.returnValue({ ...event.target, files: uploadFileEvent.target.files } as EventTarget);
+    spyOnProperty(event, 'target').and.returnValue({ ...event.target, files: uploadFileEvent.target.files } as any as EventTarget);
 
     return event;
   }

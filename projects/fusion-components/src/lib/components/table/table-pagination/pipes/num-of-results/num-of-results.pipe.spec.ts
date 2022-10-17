@@ -1,14 +1,8 @@
-import { TranslateService } from '@ngx-translate/core';
-
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
-import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { NumOfResultsPipe } from './num-of-results.pipe';
 
 describe('NumOfResultsPipe', () => {
   const resultsTranslation = '$min - $max of $total results';
   let pipe: NumOfResultsPipe;
-  let translationService: FusionComponentsTranslationService;
-  let translate: TranslateService;
 
   let expectedResult: string;
   let selectedDataLength: number;
@@ -16,9 +10,7 @@ describe('NumOfResultsPipe', () => {
   let currentPageIndex: number;
 
   beforeEach(() => {
-    translationService = new FusionComponentsTranslationService();
-    translate = ComponentStubFactory.getTranslateServiceStub();
-    pipe = new NumOfResultsPipe(translate, translationService);
+    pipe = new NumOfResultsPipe();
 
     expectedResult = undefined as any;
     selectedDataLength = undefined as any;
@@ -56,18 +48,6 @@ describe('NumOfResultsPipe', () => {
     pipe.transform(selectedDataLength, numResultsPerPage, currentPageIndex, resultsTranslation).subscribe((result: string) => {
       expect(result).toEqual(expectedResult);
       done();
-    });
-  });
-
-  describe('when no translation is provided (use ngx-translate)', () => {
-    it('should call translate.get()', (done: DoneFn) => {
-      selectedDataLength = 1;
-      numResultsPerPage = 1;
-      currentPageIndex = 0;
-      pipe.transform(selectedDataLength, numResultsPerPage, currentPageIndex).subscribe(() => {
-        expect(translate.get).toHaveBeenCalled();
-        done();
-      });
     });
   });
 

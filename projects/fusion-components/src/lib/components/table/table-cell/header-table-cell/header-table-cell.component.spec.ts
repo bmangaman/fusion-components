@@ -1,6 +1,5 @@
 import { ChangeDetectorRef } from '@angular/core';
 
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import {
   TableCellContentAlignment,
@@ -14,12 +13,10 @@ import { HeaderTableCellComponent } from './header-table-cell.component';
 describe('HeaderTableCellComponent', () => {
   let component: HeaderTableCellComponent;
   let changeDetectorRef: ChangeDetectorRef;
-  let translationService: FusionComponentsTranslationService;
 
   beforeEach(() => {
     changeDetectorRef = ComponentStubFactory.getChangeDetectorRefStub() as ChangeDetectorRef;
-    translationService = new FusionComponentsTranslationService();
-    component = new HeaderTableCellComponent(changeDetectorRef, translationService);
+    component = new HeaderTableCellComponent(changeDetectorRef);
   });
 
   it('should create', () => {

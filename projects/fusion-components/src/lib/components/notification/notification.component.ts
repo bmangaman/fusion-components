@@ -15,12 +15,10 @@ import {
 } from '@angular/core';
 
 import { TemplateDirective } from '@fusion-components/lib/directives';
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
-import { TranslatedComponent } from '@fusion-components/lib/shared';
 
 import { WINDOW } from '@fusion-components/lib/providers';
 import { v4 as uuidv4 } from 'uuid';
-import { NotificationTemplate, NotificationTranslations, NotificationType } from './notification.interface';
+import { DEFAULT_NOTIFICATION_TRANSLATIONS, NotificationTemplate, NotificationTranslations, NotificationType } from './notification.interface';
 
 @Component({
   selector: 'f-notification',
@@ -34,7 +32,7 @@ import { NotificationTemplate, NotificationTranslations, NotificationType } from
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NotificationComponent extends TranslatedComponent implements OnInit, AfterContentInit {
+export class NotificationComponent implements OnInit, AfterContentInit {
   /**
    * The icon class to use for the notification. Can be any mdi icon class. EX: power-plug.
    */
@@ -153,7 +151,7 @@ export class NotificationComponent extends TranslatedComponent implements OnInit
    * Returns the aria type label if provided otherwise null.
    */
   get ariaTypeLabel(): string {
-    return this.translations?.ariaTypeLabel?.[this.notificationType] || '';
+    return this.translations.ariaTypeLabel?.[this.notificationType] || '';
   }
 
   /**
@@ -227,7 +225,7 @@ export class NotificationComponent extends TranslatedComponent implements OnInit
   /**
    * Determines the static text used in the notification component.
    */
-  @Input() translations: NotificationTranslations;
+  @Input() translations: NotificationTranslations = DEFAULT_NOTIFICATION_TRANSLATIONS;
 
   /**
    * Query for instances of fusionUiTemplate so we can know if a details template was provided.
@@ -242,10 +240,7 @@ export class NotificationComponent extends TranslatedComponent implements OnInit
 
   constructor(
     @Inject(WINDOW) private window: Window,
-    protected _translationService: FusionComponentsTranslationService,
-  ) {
-    super(_translationService);
-  }
+  ) {}
 
   /**
    * On component initialization set notification type.

@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
 
 import { TableFilterComparatorModule } from '../table-filter-comparator';
 import { TableFilterComponent } from './table-filter.component';
@@ -12,7 +11,6 @@ import { TableFilterComponent } from './table-filter.component';
         FormsModule,
         ReactiveFormsModule,
         TableFilterComparatorModule,
-        TranslateModule,
     ],
     declarations: [
         TableFilterComponent,

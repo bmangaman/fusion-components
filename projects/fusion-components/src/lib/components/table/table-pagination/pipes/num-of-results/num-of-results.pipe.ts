@@ -1,6 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
-import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
 /**
@@ -11,11 +9,6 @@ import { Observable, of } from 'rxjs';
  */
 @Pipe({ name: 'numOfResults' })
 export class NumOfResultsPipe implements PipeTransform {
-
-  constructor(
-    private translate: TranslateService,
-    private translationService: FusionComponentsTranslationService,
-  ) {}
 
   /**
    * Transform the provided config into the "x - x of x results" text.
@@ -38,11 +31,6 @@ export class NumOfResultsPipe implements PipeTransform {
         .replace('$max', endNumber.toString())
         .replace('$total', dataLength.toString()));
       }
-
-      return this.translate.get(
-        `${this.translationService.baseTranslationKey}.table.pagination.results`,
-        { min: startNumber.toString(), max: endNumber.toString(), total: dataLength.toString() },
-      );
     }
 
     return of('-');

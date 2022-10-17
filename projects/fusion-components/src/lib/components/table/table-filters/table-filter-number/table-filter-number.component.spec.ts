@@ -1,10 +1,6 @@
 import { UntypedFormBuilder } from '@angular/forms';
 
-import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
-
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
-import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
 import { FilterComparator } from '../table-filter-comparator';
 import { TableFilterNumberComponent } from './table-filter-number.component';
@@ -12,13 +8,9 @@ import { TableFilterNumberInputComparator } from './table-filter-number.interfac
 
 describe('TableFilterNumberComponent', () => {
   let component: TableFilterNumberComponent;
-  let translationService: FusionComponentsTranslationService;
-  let translateService: TranslateService;
 
   beforeEach(() => {
-    translationService = new FusionComponentsTranslationService();
-    translateService = ComponentStubFactory.getTranslateServiceStub();
-    component = new TableFilterNumberComponent(new UntypedFormBuilder(), translationService, translateService);
+    component = new TableFilterNumberComponent(new UntypedFormBuilder());
   });
 
   it('should create', () => {
@@ -98,17 +90,6 @@ describe('TableFilterNumberComponent', () => {
       };
 
       expect(component.generateComparatorLabel(TableFilterNumberInputComparator.EQUAL_TO)).toEqual('equal to');
-    });
-
-    it('should use the translateService to generate the comparator label if no translation was provided', (done: DoneFn) => {
-      (translateService.get as jasmine.Spy).calls.reset();
-      (translateService.get as jasmine.Spy).and.returnValue(of('equal to'));
-      spyOnProperty(translationService, 'baseTranslationKey').and.returnValue('components');
-      (component.generateComparatorLabel(TableFilterNumberInputComparator.EQUAL_TO) as Observable<string>).subscribe((label: string) => {
-        expect(label).toEqual('equal to');
-        expect(translateService.get).toHaveBeenCalledWith('components.table.filters.number.comparators.equalTo');
-        done();
-      });
     });
   });
 

@@ -1,17 +1,14 @@
 import { ChangeDetectorRef, TemplateRef } from '@angular/core';
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { TableActionsComponent } from './table-actions.component';
 
 describe('TableActionsComponent', () => {
   let component: TableActionsComponent;
   let changeDetectorRef: ChangeDetectorRef;
-  let translationService: FusionComponentsTranslationService;
 
   beforeEach(() => {
     changeDetectorRef = ComponentStubFactory.getChangeDetectorRefStub() as ChangeDetectorRef;
-    translationService = new FusionComponentsTranslationService();
-    component = new TableActionsComponent(changeDetectorRef, translationService);
+    component = new TableActionsComponent(changeDetectorRef);
   });
 
   it('should create', () => {

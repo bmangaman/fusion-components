@@ -5,8 +5,6 @@ import { concat, Observable, of, Subscription, throwError } from 'rxjs';
 
 import { cloneDeep } from 'lodash-es';
 
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
-
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { UploadComponent } from './upload.component';
 import { HTMLInputEvent, UploadInfo } from './upload.interface';
@@ -14,15 +12,13 @@ import { HTMLInputEvent, UploadInfo } from './upload.interface';
 describe('UploadComponent', () => {
   let component: UploadComponent;
   let changeDetectorRef: ChangeDetectorRef;
-  let translationService: FusionComponentsTranslationService;
   let uploadInfo: UploadInfo[] = [];
 
   let mockUploadFileFunction: (files: File[]) => Observable<HttpEvent<any>>;
 
   beforeEach(() => {
-    translationService = new FusionComponentsTranslationService();
     changeDetectorRef = ComponentStubFactory.getChangeDetectorRefStub() as ChangeDetectorRef;
-    component = new UploadComponent(changeDetectorRef, translationService);
+    component = new UploadComponent(changeDetectorRef);
   });
 
   beforeEach(() => {

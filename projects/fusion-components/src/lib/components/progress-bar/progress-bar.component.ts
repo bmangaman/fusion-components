@@ -18,9 +18,9 @@ import { ProgressBarStatus } from './progress-bar.interface';
 <div
   class="f-progress-bar"
   role="progressbar"
-  [attr.aria-valuenow]="resultingValue$?.value"
+  [attr.aria-valuenow]="resultingValue$.value"
   [attr.aria-valuemin]="0"
-  [attr.aria-valuetext]="ariaValueText || (resultingValue$?.value + '% : ' + resultingStatus$?.value)"
+  [attr.aria-valuetext]="ariaValueText || (resultingValue$.value + '% : ' + resultingStatus$.value)"
   [attr.aria-valuemax]="100">
   <div
     [ngStyle]="{ width: resultingValue$.value + '%' }"
@@ -28,7 +28,7 @@ import { ProgressBarStatus } from './progress-bar.interface';
     <div
       class="f-progress-bar__value"
       *ngIf="isValueDisplayed$ | async">
-      {{ displayText || (resultingValue$?.value ? resultingValue$?.value + '%' : '-') }}
+      {{ displayText || (resultingValue$.value ? resultingValue$.value + '%' : '-') }}
     </div>
   </div>
 </div>`,

@@ -1,9 +1,4 @@
 import { HttpErrorResponse } from '@angular/common/http';
-
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
-import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
-import { TranslateService } from '@ngx-translate/core';
-
 import { Subscription } from 'rxjs';
 
 import { UploadInfo, UploadTranslations } from '../../upload.interface';
@@ -11,8 +6,6 @@ import { UploadFileStatusPipe } from './upload-file-status.pipe';
 
 describe('UploadFileStatusPipe', () => {
   let pipe: UploadFileStatusPipe;
-  let translate: TranslateService;
-  let translationService: FusionComponentsTranslationService;
   const fileInfo: UploadInfo = {} as UploadInfo;
 
   const translations: Partial<UploadTranslations> = {
@@ -22,9 +15,7 @@ describe('UploadFileStatusPipe', () => {
   };
 
   beforeEach(() => {
-    translate = ComponentStubFactory.getTranslateServiceStub();
-    translationService = new FusionComponentsTranslationService();
-    pipe = new UploadFileStatusPipe(translate, translationService);
+    pipe = new UploadFileStatusPipe();
   });
 
   describe('transform()', () => {
@@ -32,13 +23,6 @@ describe('UploadFileStatusPipe', () => {
       it('should use custom translations if provided', (done: DoneFn) => {
         pipe.transform(null as any, translations).subscribe((status: string) => {
           expect(status).toBe(translations.statuses!.pending as string);
-          done();
-        });
-      });
-
-      it('should call translate service if no custom translation provided', (done: DoneFn) => {
-        pipe.transform(null as any).subscribe(() => {
-          expect(translate.get).toHaveBeenCalled();
           done();
         });
       });

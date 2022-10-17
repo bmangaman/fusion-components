@@ -13,7 +13,6 @@ import {
 import { NgControl } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Event, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 import { Observable, of, Subject } from 'rxjs';
 
 import { DeepPartial } from '../lib/shared';
@@ -194,24 +193,5 @@ export class ComponentStubFactory {
       detectChanges: jasmine.createSpy('detectChanges'),
       markForCheck: jasmine.createSpy('markForCheck'),
     };
-  }
-
-  /**
-   * Returns an instance of a stub for the TranslateService.
-   */
-  static getTranslateServiceStub(): TranslateService {
-    return {
-      addLangs: jasmine.createSpy('addLangs').and.stub(),
-      getBrowserLang: jasmine.createSpy('getBrowserLang').and.returnValue('en'),
-      setTranslation: jasmine.createSpy('setTranslation').and.stub(),
-      setDefaultLang: jasmine.createSpy('setDefaultLang').and.stub(),
-      instant: jasmine.createSpy('instant').and.returnValue(''),
-      get: jasmine.createSpy('get').and.returnValue(of('')),
-      use: jasmine.createSpy('use').and.returnValue(of('')),
-      onLangChange: new EventEmitter(),
-      onTranslationChange: new EventEmitter(),
-      onDefaultLangChange: new EventEmitter(),
-      currentLang: 'en',
-    } as any as TranslateService;
   }
 }

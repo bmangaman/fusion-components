@@ -2,21 +2,38 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 
 export interface UploadTranslations {
-  instructions?: string;
-  buttons?: {
-    browse?: string;
-    upload?: string;
-    cancel?: string;
-    remove?: string;
-    dismiss?: string;
+  instructions: string;
+  buttons: {
+    browse: string;
+    upload: string;
+    cancel: string;
+    remove: string;
+    dismiss: string;
   };
-  statuses?: {
-    pending?: string;
-    uploading?: string;
-    successful?: string;
+  statuses: {
+    pending: string;
+    uploading: string;
+    successful: string;
   };
-  errors?: { [key: string]: string; };
+  errors: { [key: string]: string; };
 }
+
+export const DEFAULT_UPLOAD_TRANSLATIONS: UploadTranslations = {
+  instructions: 'Browse to upload file.',
+  buttons: {
+    browse: 'Browse...',
+    upload: 'Upload File',
+    cancel: 'Cancel Upload',
+    remove: 'Remove File',
+    dismiss: 'Dismiss',
+  },
+  statuses: {
+    pending: 'Pending',
+    uploading: 'Uploading...',
+    successful: 'File uploaded successfully.',
+  },
+  errors: {},
+};
 
 /**
  * Status object for a file upload operation, an array of these is emitted for sf-upload onSelection, onProgress, and onFinished outputs.

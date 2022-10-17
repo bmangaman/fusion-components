@@ -8,10 +8,25 @@ export enum TableFilterNumberInputComparator {
 }
 
 export interface TableFilterNumberTranslations extends TableFilterTranslations {
-  comparators?: {
+  comparators: {
     [key in TableFilterNumberInputComparator]?: string;
   };
-  fields?: {
+  fields: {
     number?: string;
   };
 }
+
+export const DEFAULT_TABLE_FILTER_NUMBER_TRANSLATIONS: TableFilterNumberTranslations = {
+  comparator: {
+    comparatorLabel: 'Number',
+  },
+  comparators: {
+    equalTo: 'equal to',
+    notEqualTo: 'not equal to',
+    lessThan: 'less than',
+    greaterThan: 'greater than',
+  },
+  fields: {
+    number: 'Number',
+  },
+};

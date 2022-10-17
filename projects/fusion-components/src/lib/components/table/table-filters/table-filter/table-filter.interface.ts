@@ -1,11 +1,11 @@
 import { FilterComparatorTranslations } from '../table-filter-comparator';
 
 export interface TableFilterTranslations {
-  comparators?: {
+  comparators: {
     [key: string]: string;
   };
-  fields?: {
+  fields: {
     [key: string]: string;
   };
-  comparator?: FilterComparatorTranslations;
+  comparator: FilterComparatorTranslations;
 }

@@ -1,14 +1,11 @@
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
 import { TableFilterComparatorComponent } from './table-filter-comparator.component';
 import { FilterComparator } from './table-filter-comparator.interface';
 
 describe('TableFilterComparatorComponent', () => {
   let component: TableFilterComparatorComponent;
-  let translationService: FusionComponentsTranslationService;
 
   beforeEach(() => {
-    translationService = new FusionComponentsTranslationService();
-    component = new TableFilterComparatorComponent(translationService);
+    component = new TableFilterComparatorComponent();
   });
 
   it('should create', () => {

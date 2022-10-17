@@ -92,7 +92,7 @@
         <div
           class="f-form__select-no-results f-form__select-option"
           *ngIf="!(isSearchable ? filteredOptions?.length : options?.length)">
-          {{ translations?.noResults || ((baseTranslationKey + '.select.noResults') | translate) }}
+          {{ translations.noResults }}
         </div>
 
       </cdk-virtual-scroll-viewport>

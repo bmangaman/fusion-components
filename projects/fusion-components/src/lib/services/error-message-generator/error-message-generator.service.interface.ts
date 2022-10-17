@@ -9,7 +9,6 @@ export interface ErrorMessageGeneratorTranslationConfig {
 export interface ErrorMessageGeneratorConfig {
   priority?: number;
   translation?: Observable<string | SafeHtml>;
-  translationConfig?: ErrorMessageGeneratorTranslationConfig;
   error?: string;
 }
 

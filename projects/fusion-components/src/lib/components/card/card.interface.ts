@@ -15,9 +15,9 @@ export interface CardStatus {
 }
 
 export interface CardTranslations {
-  showDetails?: string;
-  hideDetails?: string;
-  statuses?: FusionUIStatusLevelTranslations;
+  showDetails: string;
+  hideDetails: string;
+  statuses: FusionUIStatusLevelTranslations;
 }
 
 export const DEFAULT_CARD_TRANSLATIONS: CardTranslations = {

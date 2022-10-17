@@ -2,7 +2,6 @@ import { ChangeDetectorRef } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { Params } from '@angular/router';
 
-import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 
 import {
@@ -18,31 +17,27 @@ import {
 } from '@fusion-components/lib/components/table';
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
-import { FusionComponentsTranslationService } from '../../services';
 import { TableQueryParamsParser } from './table-query-params-parser';
 
 function generateFilterComponents(): TableFilterComponent[] {
-  const translationService: FusionComponentsTranslationService = new FusionComponentsTranslationService();
-  const translateService: TranslateService = ComponentStubFactory.getTranslateServiceStub();
-
   const filterComponents: TableFilterComponent[] = [];
-  const stringFilterComponent = new TableFilterStringComponent(new UntypedFormBuilder(), translationService, translateService);
+  const stringFilterComponent = new TableFilterStringComponent(new UntypedFormBuilder());
   stringFilterComponent.field = 'stringField';
   filterComponents.push(stringFilterComponent);
 
-  const numberFilterComponent = new TableFilterNumberComponent(new UntypedFormBuilder(), translationService, translateService);
+  const numberFilterComponent = new TableFilterNumberComponent(new UntypedFormBuilder());
   numberFilterComponent.field = 'numberField';
   filterComponents.push(numberFilterComponent);
 
-  const ipAddressFilterDirective = new TableFilterIpComponent(new UntypedFormBuilder(), translationService, translateService);
+  const ipAddressFilterDirective = new TableFilterIpComponent(new UntypedFormBuilder());
   ipAddressFilterDirective.field = 'ipField';
   filterComponents.push(ipAddressFilterDirective);
 
-  const filterComponent = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
+  const filterComponent = new TableFilterComponent(new UntypedFormBuilder());
   filterComponent.field = 'field';
   filterComponents.push(filterComponent);
 
-  const bytesFilterComponent = new TableFilterBytesComponent(new UntypedFormBuilder(), translationService, translateService);
+  const bytesFilterComponent = new TableFilterBytesComponent(new UntypedFormBuilder());
   bytesFilterComponent.field = 'bytesField';
   filterComponents.push(bytesFilterComponent);
 

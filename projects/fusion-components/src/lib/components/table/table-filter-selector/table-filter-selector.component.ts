@@ -17,20 +17,18 @@ import {
 } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 
-import { TranslateService } from '@ngx-translate/core';
 import { Observable, Subscription } from 'rxjs';
 
 import { cloneDeep, get, isEqual } from 'lodash-es';
 import { v4 as uuidv4 } from 'uuid';
 
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
-import { Location, Size, TranslatedComponent } from '@fusion-components/lib/shared';
+import { Location, Size, UnsubscribeComponent } from '@fusion-components/lib/shared';
 
 import { ButtonType } from '../../button';
 import { FilterComparator, TableFilterComponent } from '../table-filters';
 import { TableRowData, TableView } from '../table.interface';
 import { TableFilterHostDirective } from './table-filter-host/table-filter-host.directive';
-import { TableFilterConfig, TableFilterSelectorTranslations } from './table-filter-selector.interface';
+import { DEFAULT_TABLE_FILTER_SELECTOR_TRANSLATIONS, TableFilterConfig, TableFilterSelectorTranslations } from './table-filter-selector.interface';
 
 /**
  * TABLE FILTER SELECTOR COMPONENT
@@ -46,7 +44,7 @@ import { TableFilterConfig, TableFilterSelectorTranslations } from './table-filt
   templateUrl: './table-filter-selector.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableFilterSelectorComponent extends TranslatedComponent implements OnInit, OnDestroy {
+export class TableFilterSelectorComponent extends UnsubscribeComponent implements OnInit, OnDestroy {
   readonly ButtonType = ButtonType;
   readonly Size = Size;
   readonly Location = Location;
@@ -63,7 +61,7 @@ export class TableFilterSelectorComponent extends TranslatedComponent implements
   /**
    * Determines the translations used for any static text.
    */
-  @Input() translations: TableFilterSelectorTranslations | undefined;
+  @Input() translations: TableFilterSelectorTranslations = DEFAULT_TABLE_FILTER_SELECTOR_TRANSLATIONS;
 
   /**
    * Determines the quick filters to be displayed to the left of the filter selector menu button.
@@ -166,10 +164,8 @@ export class TableFilterSelectorComponent extends TranslatedComponent implements
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private cdr: ChangeDetectorRef,
-    protected _translationService: FusionComponentsTranslationService,
-    private translateService: TranslateService,
   ) {
-    super(_translationService);
+    super();
   }
 
   /**
@@ -392,7 +388,7 @@ export class TableFilterSelectorComponent extends TranslatedComponent implements
    * @returns The generated table filter component.
    */
   generateFilter(config: TableFilterConfig, isViewFilter?: boolean): TableFilterComponent {
-    const filter: TableFilterComponent = new config.filter(new UntypedFormBuilder(), this.translationService, this.translateService);
+    const filter: TableFilterComponent = new config.filter(new UntypedFormBuilder());
 
     // Loops through all the config keys and sets the filter keys to the same values
     Object.keys(config).forEach((key: string) => (filter as any)[key] = (config as any)[key]);

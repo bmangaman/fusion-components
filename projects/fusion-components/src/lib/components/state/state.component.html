@@ -1,9 +1,9 @@
-<div [ngClass]="cssClasses?.wrapper">
-  <div [ngClass]="cssClasses?.inner">
+<div [ngClass]="cssClasses.wrapper">
+  <div [ngClass]="cssClasses.inner">
 
     <ng-container *ngIf="state !== State.LOADING; else loading">
-      <i [ngClass]="cssClasses?.graphic"></i>
-      <div [ngClass]="cssClasses?.content">
+      <i [ngClass]="cssClasses.graphic"></i>
+      <div [ngClass]="cssClasses.content">
 
         <h3 class="f-state__inner-content-headline" *ngIf="!!headlines && !!headlines[state]">
           {{ headlines[state] }}

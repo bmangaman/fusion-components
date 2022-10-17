@@ -5,5 +5,11 @@ export interface SelectOption {
 }
 
 export interface SelectTranslations {
+  defaultLabel: string;
   noResults: string;
 }
+
+export const DEFAULT_SELECT_TRANSLATIONS: SelectTranslations = {
+  defaultLabel: '- Select -',
+  noResults: 'No Results',
+};

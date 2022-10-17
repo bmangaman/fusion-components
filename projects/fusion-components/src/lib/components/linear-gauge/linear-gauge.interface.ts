@@ -1,9 +1,9 @@
 import { DEFAULT_STATUS_LEVEL_TRANSLATIONS, StatusLevel, FusionUIStatusLevelTranslations } from '../../shared';
 
 export interface LinearGaugeTranslations extends FusionUIStatusLevelTranslations {
-  title?: string;
-  total?: string;
-  used?: string;
+  title: string;
+  total: string;
+  used: string;
 }
 
 export const DEFAULT_LINEAR_GAUGE_TRANSLATIONS: LinearGaugeTranslations = {

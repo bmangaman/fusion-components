@@ -1,13 +1,11 @@
 import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 import { UntypedFormControl, NgControl } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
 
 import { cloneDeep } from 'lodash-es';
 
 import { MockElementRef } from '@fusion-components/unit-test-helpers/mock-utils.spec';
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { DocumentClickService } from '../../services/document-click';
-import { FusionComponentsTranslationService } from '../../services/translation';
 import { SelectComponent } from './select.component';
 import { SelectOption } from './select.interface';
 
@@ -15,17 +13,12 @@ describe('SelectComponent', () => {
   let component: SelectComponent;
   let ngControl: NgControl;
   let documentClickService: DocumentClickService;
-  let translationService: FusionComponentsTranslationService;
-  let translateService: TranslateService;
 
   beforeEach(() => {
     ngControl = ComponentStubFactory.getNgControlStub() as NgControl;
     documentClickService = new DocumentClickService(document);
-    translationService = new FusionComponentsTranslationService();
-    translateService = ComponentStubFactory.getTranslateServiceStub();
-    (translateService.instant as jasmine.Spy).and.returnValue('- Select -');
 
-    component = new SelectComponent(ngControl, documentClickService, translationService, translateService);
+    component = new SelectComponent(ngControl, documentClickService);
   });
 
   it('should be defined', () => {

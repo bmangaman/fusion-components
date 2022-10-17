@@ -14,10 +14,10 @@ export interface InfoBoxDetail {
 }
 
 export interface WidgetTranslations {
-  lastUpdated?: string;
-  infoDetailsButton?: string;
-  refreshAriaLabel?: string;
-  detailsToggleButtonAriaLabel?: string;
+  lastUpdated: string;
+  infoDetailsButton: string;
+  refreshAriaLabel: string;
+  detailsToggleButtonAriaLabel: string;
 }
 
 export const DEFAULT_WIDGET_TRANSLATIONS: WidgetTranslations = {

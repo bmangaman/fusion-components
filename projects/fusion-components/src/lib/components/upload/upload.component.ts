@@ -12,17 +12,14 @@ import {
   ViewChild,
 } from '@angular/core';
 
-import { TranslatedComponent } from '@fusion-components/lib/shared';
-
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { v4 as uuidv4 } from 'uuid';
 
 import { BytesPipeBase } from '../../pipes/bytes';
-import { FusionComponentsTranslationService } from '../../services';
-import { Size } from '../../shared/interfaces';
+import { Size, UnsubscribeComponent } from '../../shared';
 import { ButtonType } from '../button';
-import { HTMLInputEvent, UploadInfo, UploadTranslations } from './upload.interface';
+import { HTMLInputEvent, UploadInfo, UploadTranslations, DEFAULT_UPLOAD_TRANSLATIONS } from './upload.interface';
 
 interface HtmlInputEvent extends Event {
   target: HTMLInputElement | EventTarget | null;
@@ -66,7 +63,7 @@ interface HtmlInputEvent extends Event {
   templateUrl: 'upload.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UploadComponent extends TranslatedComponent implements OnDestroy {
+export class UploadComponent extends UnsubscribeComponent implements OnDestroy {
   readonly ButtonType = ButtonType;
   readonly BytesPipeBase = BytesPipeBase;
   readonly Size = Size;
@@ -172,7 +169,7 @@ export class UploadComponent extends TranslatedComponent implements OnDestroy {
   /**
    * Determines the static text diplayed (such as the instructions and browse button).
    */
-  @Input() translations: UploadTranslations;
+  @Input() translations: UploadTranslations = DEFAULT_UPLOAD_TRANSLATIONS;
 
   /**
    * Optional output that upon user file selection, emits a list of UploadInfo (see interface) objects, one for each file the user selected.
@@ -208,9 +205,8 @@ export class UploadComponent extends TranslatedComponent implements OnDestroy {
 
   constructor(
     private changeDetector: ChangeDetectorRef,
-    protected override translationService: FusionComponentsTranslationService,
   ) {
-    super(translationService);
+    super();
   }
 
   /**

@@ -77,7 +77,7 @@ export class TooltipComponent implements AfterViewInit, OnChanges {
   /**
    * Determines any additional CSS classes to be appended to the host element.
    */
-  @Input() classes: string[];
+  @Input() classes: string[] = [];
 
   @Input() zIndex: number = 1;
 
@@ -182,7 +182,9 @@ export class TooltipComponent implements AfterViewInit, OnChanges {
       classes.push(`f-tooltip--${this.position}`);
     }
 
-    classes.push(...this.classes);
+    if (this.classes) {
+      classes.push(...this.classes);
+    }
 
     this.cssClasses = classes;
   }
