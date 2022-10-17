@@ -1,11 +1,23 @@
-
 import { TemplateRef } from '@angular/core';
-import { State, StringKeyObject } from '../../shared';
 
+import { State, StringKeyObject } from '../../shared';
 import { DEFAULT_TABLE_ACTIONS_TRANSLATIONS, TableActionsTranslations } from './table-actions/';
 import { TableColumnSelectorTranslations, DEFAULT_TABLE_COLUMN_SELECTOR_TRANSLATIONS } from './table-column-selector';
 import { TableColumnSort } from './table-column-sorts';
 import { DEFAULT_TABLE_FILTER_SELECTOR_TRANSLATIONS, TableFilterConfig, TableFilterSelectorTranslations } from './table-filter-selector';
+import {
+  DEFAULT_TABLE_FILTER_ARRAY_TRANSLATIONS,
+  DEFAULT_TABLE_FILTER_BYTES_TRANSLATIONS,
+  DEFAULT_TABLE_FILTER_IP_TRANSLATIONS,
+  DEFAULT_TABLE_FILTER_NUMBER_TRANSLATIONS,
+  DEFAULT_TABLE_FILTER_STRING_TRANSLATIONS,
+  TableFilterArrayTranslations,
+  TableFilterBytesTranslations,
+  TableFilterIpTranslations,
+  TableFilterNumberTranslations,
+  TableFilterStringTranslations,
+  TableFilterTranslations,
+} from './table-filters';
 import { DEFAULT_TABLE_PAGINATION_TRANSLATIONS, TablePaginationConfig, TablePaginationTranslations } from './table-pagination';
 
 export enum TableSpacing {
@@ -233,6 +245,14 @@ export interface TableTranslations {
     expandAll: string;
     expand: string;
   };
+  filters: {
+    array: TableFilterArrayTranslations;
+    bytes: TableFilterBytesTranslations;
+    ip: TableFilterIpTranslations,
+    number: TableFilterNumberTranslations,
+    string: TableFilterStringTranslations,
+    [key: string]: TableFilterTranslations;
+  },
   filtering: TableFilterSelectorTranslations;
   tableCell: TableCellTranslations;
   columnSelector: TableColumnSelectorTranslations;
@@ -255,6 +275,13 @@ export const DEFAULT_TABLE_TRANSLATIONS: TableTranslations = {
     expand: 'Expand row',
   },
   filtering: DEFAULT_TABLE_FILTER_SELECTOR_TRANSLATIONS,
+  filters: {
+    array: DEFAULT_TABLE_FILTER_ARRAY_TRANSLATIONS,
+    bytes: DEFAULT_TABLE_FILTER_BYTES_TRANSLATIONS,
+    ip: DEFAULT_TABLE_FILTER_IP_TRANSLATIONS,
+    number: DEFAULT_TABLE_FILTER_NUMBER_TRANSLATIONS,
+    string: DEFAULT_TABLE_FILTER_STRING_TRANSLATIONS,
+  },
   tableCell: DEFAULT_TABLE_CELL_TRANSLATIONS,
   columnSelector: DEFAULT_TABLE_COLUMN_SELECTOR_TRANSLATIONS,
 }
