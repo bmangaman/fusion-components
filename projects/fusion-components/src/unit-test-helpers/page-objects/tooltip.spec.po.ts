@@ -9,16 +9,16 @@ import { PositionConfig } from '@fusion-components/lib/shared';
  */
 export class TooltipPageObject {
   private fixture: ComponentFixture<any>;
-  private tooltipClass: string;
+  private tooltipClass: string | undefined;
 
   /**
    * Gets the base tooltip DOM element.
    *
    * @returns The base tooltip DOM element.
    */
-  get tooltip(): HTMLElement {
+  get tooltip(): HTMLElement | null {
     // first try to get the f-button element by a provided class
-    const tooltipClass: HTMLElement = this.tooltipClass ? this.fixture.nativeElement.querySelector(this.tooltipClass) : null;
+    const tooltipClass: HTMLElement | null = this.tooltipClass ? this.fixture.nativeElement.querySelector(this.tooltipClass) : null;
     // if no provided class or element not found, try to find the f-tooltip element by the f-tooltip tag
     return  tooltipClass || this.fixture.nativeElement.querySelector('f-tooltip');
   }
@@ -28,8 +28,8 @@ export class TooltipPageObject {
    *
    * @returns The CSS classes of the tooltip.
    */
-  get classes(): DOMTokenList {
-    const tooltip: HTMLElement = this.tooltip;
+  get classes(): DOMTokenList | null {
+    const tooltip: HTMLElement | null = this.tooltip;
     return tooltip ? tooltip.classList : null;
   }
 
@@ -38,8 +38,8 @@ export class TooltipPageObject {
    *
    * @returns The innter content of the tooltip.
    */
-  get contentContainer(): HTMLElement {
-    const button: HTMLElement = this.tooltip;
+  get contentContainer(): HTMLElement | null {
+    const button: HTMLElement | null = this.tooltip;
     return button ? button.querySelector('.f-tooltip__content') : null;
   }
 
@@ -48,8 +48,8 @@ export class TooltipPageObject {
    *
    * @returns The tooltip text.
    */
-  get text(): string {
-    const contentContainer: HTMLElement = this.contentContainer;
+  get text(): string | null {
+    const contentContainer: HTMLElement | null = this.contentContainer;
     return contentContainer ? contentContainer.textContent : null;
   }
 
@@ -59,7 +59,7 @@ export class TooltipPageObject {
    * @returns The position-related attributes of the tooltip.
    */
   get position(): PositionConfig {
-    const tooltip: HTMLElement = this.tooltip;
+    const tooltip: HTMLElement | null = this.tooltip;
 
     if (tooltip) {
       return {

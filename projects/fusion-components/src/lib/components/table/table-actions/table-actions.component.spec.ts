@@ -1,17 +1,14 @@
 import { ChangeDetectorRef, TemplateRef } from '@angular/core';
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { TableActionsComponent } from './table-actions.component';
 
 describe('TableActionsComponent', () => {
   let component: TableActionsComponent;
   let changeDetectorRef: ChangeDetectorRef;
-  let translationService: FusionComponentsTranslationService;
 
   beforeEach(() => {
     changeDetectorRef = ComponentStubFactory.getChangeDetectorRefStub() as ChangeDetectorRef;
-    translationService = new FusionComponentsTranslationService();
-    component = new TableActionsComponent(changeDetectorRef, translationService);
+    component = new TableActionsComponent(changeDetectorRef);
   });
 
   it('should create', () => {
@@ -22,20 +19,20 @@ describe('TableActionsComponent', () => {
     /* eslint-disable @typescript-eslint/dot-notation */
 
     beforeEach(() => {
-      component.rowData = undefined;
-      component['_prevRowData'] = undefined;
+      component.rowData = undefined as any;
+      component['_prevRowData'] = undefined as any;
 
-      component.templateRef = undefined;
-      component['_prevTemplateRef'] = undefined;
+      component.templateRef = undefined as any;
+      component['_prevTemplateRef'] = undefined as any;
 
-      component.isDisabled = undefined;
-      component['_prevIsDisabled'] = undefined;
+      component.isDisabled = undefined as any;
+      component['_prevIsDisabled'] = undefined as any;
 
-      component.translations = undefined;
-      component['_prevTranslations'] = undefined;
+      component.translations = undefined as any;
+      component['_prevTranslations'] = undefined as any;
 
-      component.dialogCssClasses = undefined;
-      component['_prevDialogCssClasses'] = undefined;
+      component.dialogCssClasses = undefined as any;
+      component['_prevDialogCssClasses'] = undefined as any;
 
       (changeDetectorRef.markForCheck as jasmine.Spy).calls.reset();
     });

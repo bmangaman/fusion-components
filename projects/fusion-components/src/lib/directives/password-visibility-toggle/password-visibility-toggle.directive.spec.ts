@@ -65,7 +65,7 @@ describe('PasswordVisibilityToggleDirective', () => {
         directive['_isPasswordVisible'] = false;
         expect(directive.type).toEqual('password');
 
-        directive['_isPasswordVisible'] = undefined;
+        directive['_isPasswordVisible'] = undefined as any;
         expect(directive.type).toEqual('password');
       });
     });
@@ -93,9 +93,9 @@ describe('PasswordVisibilityToggleDirective', () => {
 
   describe('updatePasswordToggleButtonButton()', () => {
     it('should not do anything if passwordToggleButton is not defined', () => {
-      directive['_passwordToggleButton'] = undefined;
+      directive['_passwordToggleButton'] = undefined as any;
       directive.updatePasswordToggleButtonButton();
-      expect(directive['_passwordToggleButton']).toEqual(undefined);
+      expect(directive['_passwordToggleButton']).toEqual(undefined as any);
     });
 
     it('should add and remove the correct CSS classes from the passwordToggleButton', () => {

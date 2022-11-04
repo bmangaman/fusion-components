@@ -31,7 +31,7 @@ describe('ErrorMessageComponent', () => {
     });
 
     it('should return false when: the control is undefined, the control does not have errors, or the control is not dirty', () => {
-      component.control = undefined;
+      component.control = undefined as any;
       expect(component.displayError()).toBeFalsy();
 
       component.control = new UntypedFormControl();

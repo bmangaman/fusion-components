@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
 
-import { EnumToArrayModule } from '@fusion-components/lib/pipes';
+import { EnumToArrayModule } from '../../../../pipes';
 import { TableFilterModule } from '../table-filter';
 import { TableFilterComparatorModule } from '../table-filter-comparator';
 import { TableFilterIpComponent } from './table-filter-ip.component';
@@ -16,7 +15,6 @@ import { TableFilterIpComponent } from './table-filter-ip.component';
         ReactiveFormsModule,
         TableFilterComparatorModule,
         TableFilterModule,
-        TranslateModule,
     ],
     declarations: [
         TableFilterIpComponent,

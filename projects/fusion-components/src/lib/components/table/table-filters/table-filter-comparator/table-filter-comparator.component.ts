@@ -2,8 +2,6 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { UntypedFormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
-import { TranslatedComponent } from '@fusion-components/lib/shared';
-
 import { FilterComparator, FilterComparatorTranslations } from './table-filter-comparator.interface';
 
 /**
@@ -17,7 +15,7 @@ import { FilterComparator, FilterComparatorTranslations } from './table-filter-c
   templateUrl: './table-filter-comparator.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableFilterComparatorComponent extends TranslatedComponent implements OnInit {
+export class TableFilterComparatorComponent implements OnInit {
   readonly Observable = Observable;
 
   selectedComparator: UntypedFormControl = new UntypedFormControl(null, Validators.required);
@@ -42,7 +40,7 @@ export class TableFilterComparatorComponent extends TranslatedComponent implemen
   /**
    * Determines the translations used for any static text.
    */
-  @Input() translations: FilterComparatorTranslations | undefined;
+  @Input() translations: FilterComparatorTranslations;
 
   /**
    * When the comparator changes, emit which comparator was selected.

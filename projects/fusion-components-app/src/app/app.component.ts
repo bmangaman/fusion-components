@@ -1,10 +1,8 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
-import { ActivatedRoute, Data, Event, NavigationEnd, NavigationError, Router, RouterEvent, RoutesRecognized } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { ActivatedRoute, Data, Event, NavigationEnd, Router, RoutesRecognized } from '@angular/router';
 
 import { filter, map, tap } from 'rxjs/operators';
 
-import { FusionComponentsTranslationService } from '@fusion-components';
 import { NavItem } from '@fusion-components/lib/components/sidenav/sidenav.interface';
 
 @Component({
@@ -151,12 +149,6 @@ export class AppComponent implements OnInit {
       route: '/pipes',
       icon: 'mdi mdi-pipe'
     },
-    {
-      text: 'Documentation',
-      icon: 'mdi mdi-file-document',
-      href: './doc/index.html',
-      target: '_blank',
-    },
   ];
 
   @HostBinding('class.embedded') isEmbeddedView = false;
@@ -164,27 +156,12 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private translate: TranslateService,
-    private translationService: FusionComponentsTranslationService,
   ) {
     this.findRootRoute();
-    this.setTranslation();
-    this.translationService.baseTranslationKey = 'components';
   }
 
   ngOnInit(): void {
     this.handleEmbeds();
-    this.handleRedirects();
-  }
-
-  setTranslation(): void {
-    // this language will be used as a fallback when a translation isn't found in the current language
-    this.translate.addLangs([ 'en' ]);
-    this.translate.setDefaultLang('en');
-    const browserLang: string = this.translate.getBrowserLang() || 'en';
-
-    // the lang to use, if the lang isn't available, it will use the current loader to get them
-    this.translate.use(this.translate.getLangs().includes(browserLang) ? browserLang : this.translate.getDefaultLang());
   }
 
   itemSelected(item: NavItem): void {
@@ -207,27 +184,6 @@ export class AppComponent implements OnInit {
       .pipe(
         filter((event: Event) => event instanceof NavigationEnd),
         tap(() => this.isEmbeddedView = 'embedded' in this.route.snapshot.queryParams),
-      ).subscribe();
-  }
-
-  /**
-   * Handles rogue links from within the generated documentation.
-   */
-  handleRedirects(): void {
-    const redirectMap: Record<string, string> = {
-      '/wiki/FUSION-COMPONENTS.md': '/doc/additional-documentation/fusion-components-wiki.html'
-    };
-
-    this.router.events
-      .pipe(
-        // should be either Event_2 or NavigationEvent, but is throwing error "Type 'Observable<Event_2>' is not assignable to type 'Observable<NavigationError>'."
-        filter((event: any) => event instanceof NavigationError),
-        tap((event: NavigationError) => {
-          const redirect: string | undefined = redirectMap[event.url];
-          if (redirect) {
-            location.href = redirect;
-          }
-        })
       ).subscribe();
   }
 }

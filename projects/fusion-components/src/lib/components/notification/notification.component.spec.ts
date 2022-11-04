@@ -1,6 +1,6 @@
 import { QueryList } from '@angular/core';
 
-import { FusionComponentsTranslationService, TemplateDirective } from '@fusion-components';
+import { TemplateDirective } from '@fusion-components';
 
 import { NotificationComponent } from './notification.component';
 import { NotificationType } from './notification.interface';
@@ -8,12 +8,10 @@ import { NotificationType } from './notification.interface';
 describe('NotificationComponent', () => {
   let component: NotificationComponent;
   let window: any;
-  let translationService: FusionComponentsTranslationService;
 
   beforeEach(() => {
-    translationService = new FusionComponentsTranslationService();
     window = jasmine.createSpyObj('window', [ 'setTimeout', 'clearTimeout' ]);
-    component = new NotificationComponent(window as Window, translationService);
+    component = new NotificationComponent(window as Window);
   });
 
   it('should create', () => {
@@ -27,7 +25,7 @@ describe('NotificationComponent', () => {
 
       expect(component.ariaTypeLabel).toBe('blah');
 
-      component.translations = null;
+      component.translations = null as any;
 
       expect(component.ariaTypeLabel).toBeNull();
     });
@@ -62,7 +60,7 @@ describe('NotificationComponent', () => {
 
       expect(component._id).toBe('blah');
 
-      component.id = undefined;
+      component.id = undefined as any;
 
       // randomly generated IDs are 36 characters long.
       expect(component._id.length).toBe(36);
@@ -113,7 +111,7 @@ describe('NotificationComponent', () => {
       });
 
       it('should schedule a timeout when the delay is positive', () => {
-        window.setTimeout.and.callFake(fn => fn());
+        window.setTimeout.and.callFake((fn: any) => fn());
         spyOn(component, 'dismissBanner');
 
         const delay = 500;
@@ -125,7 +123,7 @@ describe('NotificationComponent', () => {
 
     describe('detailsMaxHeight', () => {
       it('should set/get the value', () => {
-        component.detailsMaxHeight = null;
+        component.detailsMaxHeight = null as any;
         expect(component.detailsMaxHeight).toBe('240px');
 
         component.detailsMaxHeight = '120px';
@@ -191,19 +189,19 @@ describe('NotificationComponent', () => {
     });
 
     it('should set dismissible to false by default if the type is ERROR', () => {
-      component.dismissible = undefined;
+      component.dismissible = undefined as any;
       component.setNotificationType(NotificationType.INFO);
       expect(component.dismissible).toBeTruthy();
 
-      component.dismissible = undefined;
+      component.dismissible = undefined as any;
       component.setNotificationType(NotificationType.SUCCESS);
       expect(component.dismissible).toBeTruthy();
 
-      component.dismissible = undefined;
+      component.dismissible = undefined as any;
       component.setNotificationType(NotificationType.WARNING);
       expect(component.dismissible).toBeTruthy();
 
-      component.dismissible = undefined;
+      component.dismissible = undefined as any;
       component.setNotificationType(NotificationType.ERROR);
       expect(component.dismissible).toBeFalsy();
 

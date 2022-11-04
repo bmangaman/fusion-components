@@ -7,7 +7,7 @@
   <f-table-filter-comparator
     [comparators]="filterComparators"
     (comparatorChange)="selectedFilterComparator.next($event)"
-    [translations]="translations?.comparator">
+    [translations]="translations.comparator">
   </f-table-filter-comparator>
 
   <div class="f-form__field-group f-form__field-group--inline" *ngIf="isContainsOrDoesNotContainSelector; else equalsInput">
@@ -20,7 +20,7 @@
           max="999"
           formControlName="octet1"
           class="f-form__input"
-          [attr.aria-label]="translations?.fields?.octet1 || ( baseTranslationKey + '.table.filters.ip.fields.octet1' | translate )" />
+          [attr.aria-label]="translations.fields?.octet1" />
       </div>
     </div>
 
@@ -34,7 +34,7 @@
         max="999" 
         formControlName="octet2" 
         class="f-form__input"
-        [attr.aria-label]="translations?.fields?.octet2 || ( baseTranslationKey + '.table.filters.ip.fields.octet2' | translate )" />
+        [attr.aria-label]="translations.fields?.octet2" />
       </div>
     </div>
 
@@ -48,7 +48,7 @@
           max="999" 
           formControlName="octet3"
           class="f-form__input"
-          [attr.aria-label]="translations?.fields?.octet3 || ( baseTranslationKey + '.table.filters.ip.fields.octet3' | translate )" />
+          [attr.aria-label]="translations.fields?.octet3" />
       </div>
     </div>
 
@@ -62,7 +62,7 @@
           max="999"
           formControlName="octet4"
           class="f-form__input"
-          [attr.aria-label]="translations?.fields?.octet4 || ( baseTranslationKey + '.table.filters.ip.fields.octet4' | translate )" />
+          [attr.aria-label]="translations.fields?.octet4" />
       </div>
     </div>
 
@@ -75,7 +75,7 @@
           type="string"
           formControlName="ip"
           class="f-form__input"
-          [attr.aria-label]="translations?.fields?.ip || ( baseTranslationKey + '.table.filters.bytes.fields.ip' | translate )" />
+          [attr.aria-label]="translations.fields?.ip" />
       </div>
     </div>
   </ng-template>

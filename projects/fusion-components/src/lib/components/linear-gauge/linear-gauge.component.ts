@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { takeUntil } from 'rxjs/operators';
 
-import { PipeItem } from '@fusion-components/lib/pipes';
-import { StatusLevel } from '@fusion-components/lib/shared';
+import { FusionTranslations, TranslationService } from './../../services';
+import { PipeItem } from '../../pipes';
+import { StatusLevel, UnsubscribeComponent} from '../../shared';
+
 import { DEFAULT_LINEAR_GAUGE_TRANSLATIONS, LinearGaugeState, LinearGaugeThreshold, LinearGaugeTranslations } from './linear-gauge.interface';
 
 /**
@@ -14,7 +17,7 @@ import { DEFAULT_LINEAR_GAUGE_TRANSLATIONS, LinearGaugeState, LinearGaugeThresho
   selector: 'f-linear-gauge',
   templateUrl: './linear-gauge.component.html',
 })
-export class LinearGaugeComponent implements OnChanges {
+export class LinearGaugeComponent extends UnsubscribeComponent implements OnChanges {
   readonly StatusLevel = StatusLevel;
 
   private _level: StatusLevel = StatusLevel.BASE;
@@ -44,12 +47,19 @@ export class LinearGaugeComponent implements OnChanges {
    */
   @Input() maxValue: number;
 
+  _translations: LinearGaugeTranslations = DEFAULT_LINEAR_GAUGE_TRANSLATIONS;
   /**
    * Determines the "static" text to be displayed:
    *  - for each of the threshold levels
    *  - for the linear gauge header/ title
    */
-  @Input() translations: LinearGaugeTranslations = DEFAULT_LINEAR_GAUGE_TRANSLATIONS;
+  @Input() 
+  get translations(): LinearGaugeTranslations {
+    return this._translations;
+  }
+  set translations(translations: LinearGaugeTranslations) {
+    this._translations = translations;
+  }
 
   /**
    * Determines the thresholds of the gauge. These determine the level/ color/ styling based on the value.
@@ -71,6 +81,16 @@ export class LinearGaugeComponent implements OnChanges {
    * Emits the current state fo the linear gauge (values, thresholds, etc).
    */
   @Output() linearGaugeChanged: EventEmitter<LinearGaugeState> = new EventEmitter<LinearGaugeState>();
+
+  constructor(
+    private translationService: TranslationService,
+  ) {
+    super();
+
+    this.translationService.translations$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((translations: FusionTranslations) => this._translations = translations.components.linearGauge);
+  }
 
   /**
    * When any inputs change, recalculate the level and emit an event.

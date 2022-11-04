@@ -8,8 +8,8 @@ describe('GetCenterFivePagesPipe', () => {
 
   beforeEach(() => {
     pipe = new GetCenterFivePagesPipe();
-    numOfPages = undefined;
-    currentPageIndex = undefined;
+    numOfPages = undefined as any;
+    currentPageIndex = undefined as any;
   });
 
   it('should return all the indexes if the numOfPages is less than six (6)', () => {

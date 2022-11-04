@@ -1,7 +1,7 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { camelCase, cloneDeep } from 'lodash';
+import { camelCase, cloneDeep } from 'lodash-es';
 
 import { State } from '../../shared';
 import { StateComponentPageObject } from './state.component.spec.po';
@@ -86,12 +86,12 @@ describe('StateComponent', () => {
 
     it('should append the correct classes to the wrapper and inner elements', () => {
       expect(page.state.container).toBeTruthy();
-      expect(page.state.container.classList).toContain('f-state');
-      expect(page.state.container.classList).toContain('f-state--loading');
+      expect(page.state.container?.classList).toContain('f-state');
+      expect(page.state.container?.classList).toContain('f-state--loading');
 
       expect(page.state.inner).toBeTruthy();
-      expect(page.state.inner.classList).toContain('f-state__inner');
-      expect(page.state.inner.classList).toContain('f-state__inner--loading');
+      expect(page.state.inner?.classList).toContain('f-state__inner');
+      expect(page.state.inner?.classList).toContain('f-state__inner--loading');
     });
 
     it('should display the loading spinner', () => {
@@ -124,31 +124,31 @@ describe('StateComponent', () => {
 
     it('should display the correct headline text based on the provided input', () => {
       expect(page.state.headline).toBeTruthy();
-      expect(page.state.headline.innerText).toEqual(DEFAULT_STATE_HEADLINES[State.NOT_LOADED]);
+      expect(page.state.headline?.innerText).toEqual(DEFAULT_STATE_HEADLINES[State.NOT_LOADED]);
 
       const customHeadline = 'Custom Headline';
       setComponentHeadlines(State.NOT_LOADED, customHeadline);
       fixture.detectChanges();
-      expect(page.state.headline.innerText).toEqual(customHeadline);
+      expect(page.state.headline?.innerText).toEqual(customHeadline);
     });
 
     it('should display the correct message text based on the provided input', () => {
       expect(page.state.message).toBeTruthy();
-      expect(page.state.message.innerText).toEqual(DEFAULT_STATE_MESSAGES[State.NOT_LOADED]);
+      expect(page.state.message?.innerText).toEqual(DEFAULT_STATE_MESSAGES[State.NOT_LOADED]);
 
       const customMessage = 'Custom Message';
       setComponentMessages(State.NOT_LOADED, customMessage);
       fixture.detectChanges();
-      expect(page.state.message.innerText).toEqual(customMessage);
+      expect(page.state.message?.innerText).toEqual(customMessage);
     });
 
     it('should display the correct message template based on the provided input', () => {
       expect(page.state.message).toBeTruthy();
-      expect(page.state.message.innerText).toEqual(DEFAULT_STATE_MESSAGES[State.NOT_LOADED]);
+      expect(page.state.message?.innerText).toEqual(DEFAULT_STATE_MESSAGES[State.NOT_LOADED]);
 
       setComponentMessageTemplates(State.NOT_LOADED, true);
       fixture.detectChanges();
-      expect(page.state.message.innerText).toEqual('Not Loaded');
+      expect(page.state.message?.innerText).toEqual('Not Loaded');
     });
   });
 
@@ -175,12 +175,12 @@ describe('StateComponent', () => {
 
     it('should display the correct headline text based on the provided input', () => {
       expect(page.state.headline).toBeTruthy();
-      expect(page.state.headline.innerText).toEqual(DEFAULT_STATE_HEADLINES[State.NO_RESULTS]);
+      expect(page.state.headline?.innerText).toEqual(DEFAULT_STATE_HEADLINES[State.NO_RESULTS]);
 
       const customHeadline = 'Custom Headline';
       setComponentHeadlines(State.NO_RESULTS, customHeadline);
       fixture.detectChanges();
-      expect(page.state.headline.innerText).toEqual(customHeadline);
+      expect(page.state.headline?.innerText).toEqual(customHeadline);
     });
 
     it('should display the correct message text based on the provided input', () => {
@@ -190,7 +190,7 @@ describe('StateComponent', () => {
       setComponentMessages(State.NO_RESULTS, customMessage);
       fixture.detectChanges();
       expect(page.state.message).toBeTruthy();
-      expect(page.state.message.innerText).toEqual(customMessage);
+      expect(page.state.message?.innerText).toEqual(customMessage);
     });
 
     it('should display the correct message template based on the provided input', () => {
@@ -199,7 +199,7 @@ describe('StateComponent', () => {
       setComponentMessageTemplates(State.NO_RESULTS, true);
       fixture.detectChanges();
       expect(page.state.message).toBeTruthy();
-      expect(page.state.message.innerText).toEqual('No Results');
+      expect(page.state.message?.innerText).toEqual('No Results');
     });
   });
 
@@ -226,31 +226,31 @@ describe('StateComponent', () => {
 
     it('should display the correct headline text based on the provided input', () => {
       expect(page.state.headline).toBeTruthy();
-      expect(page.state.headline.innerText).toEqual(DEFAULT_STATE_HEADLINES[State.ERROR]);
+      expect(page.state.headline?.innerText).toEqual(DEFAULT_STATE_HEADLINES[State.ERROR]);
 
       const customHeadline = 'Custom Headline';
       setComponentHeadlines(State.ERROR, customHeadline);
       fixture.detectChanges();
-      expect(page.state.headline.innerText).toEqual(customHeadline);
+      expect(page.state.headline?.innerText).toEqual(customHeadline);
     });
 
     it('should display the correct message text based on the provided input', () => {
       expect(page.state.message).toBeTruthy();
-      expect(page.state.message.innerText).toEqual(DEFAULT_STATE_MESSAGES[State.ERROR]);
+      expect(page.state.message?.innerText).toEqual(DEFAULT_STATE_MESSAGES[State.ERROR]);
 
       const customMessage = 'Custom Message';
       setComponentMessages(State.ERROR, customMessage);
       fixture.detectChanges();
-      expect(page.state.message.innerText).toEqual(customMessage);
+      expect(page.state.message?.innerText).toEqual(customMessage);
     });
 
     it('should display the correct message template based on the provided input', () => {
       expect(page.state.message).toBeTruthy();
-      expect(page.state.message.innerText).toEqual(DEFAULT_STATE_MESSAGES[State.ERROR]);
+      expect(page.state.message?.innerText).toEqual(DEFAULT_STATE_MESSAGES[State.ERROR]);
 
       setComponentMessageTemplates(State.ERROR, true);
       fixture.detectChanges();
-      expect(page.state.message.innerText).toEqual('Error');
+      expect(page.state.message?.innerText).toEqual('Error');
     });
   });
 
@@ -263,24 +263,24 @@ describe('StateComponent', () => {
    */
   function testClasses(state: State, location: StateLocation): void {
     expect(page.state.container).toBeTruthy();
-    expect(page.state.container.classList).toContain('f-state');
-    expect(page.state.container.classList).toContain(`f-state--${state}`);
-    expect(page.state.container.classList).toContain(`f-state--${location}`);
+    expect(page.state.container?.classList).toContain('f-state');
+    expect(page.state.container?.classList).toContain(`f-state--${state}`);
+    expect(page.state.container?.classList).toContain(`f-state--${location}`);
 
     expect(page.state.inner).toBeTruthy();
-    expect(page.state.inner.classList).toContain('f-state__inner');
-    expect(page.state.inner.classList).toContain(`f-state__inner--${state}`);
-    expect(page.state.inner.classList).toContain(`f-state__inner--${location}`);
+    expect(page.state.inner?.classList).toContain('f-state__inner');
+    expect(page.state.inner?.classList).toContain(`f-state__inner--${state}`);
+    expect(page.state.inner?.classList).toContain(`f-state__inner--${location}`);
 
     expect(page.state.graphic).toBeTruthy();
-    expect(page.state.graphic.classList).toContain('f-state__inner-graphic');
-    expect(page.state.graphic.classList).toContain(`f-state__inner-graphic--${state}`);
-    expect(page.state.graphic.classList).toContain(`f-state__inner-graphic--${location}`);
+    expect(page.state.graphic?.classList).toContain('f-state__inner-graphic');
+    expect(page.state.graphic?.classList).toContain(`f-state__inner-graphic--${state}`);
+    expect(page.state.graphic?.classList).toContain(`f-state__inner-graphic--${location}`);
 
     expect(page.state.content).toBeTruthy();
-    expect(page.state.content.classList).toContain('f-state__inner-content');
-    expect(page.state.content.classList).toContain(`f-state__inner-content--${state}`);
-    expect(page.state.content.classList).toContain(`f-state__inner-content--${location}`);
+    expect(page.state.content?.classList).toContain('f-state__inner-content');
+    expect(page.state.content?.classList).toContain(`f-state__inner-content--${state}`);
+    expect(page.state.content?.classList).toContain(`f-state__inner-content--${location}`);
   }
 
   /**
@@ -315,7 +315,7 @@ describe('StateComponent', () => {
    */
   function setComponentMessageTemplates(state: State, isSet: boolean): void {
     const messageTemplates: StateMessageTemplates = cloneDeep(component.messageTemplates);
-    messageTemplates[state] = isSet ? component[camelCase(state)] : null;
+    messageTemplates[state] = isSet ? (component as any)[camelCase(state)] : null;
     component.messageTemplates = cloneDeep(messageTemplates);
   }
 });

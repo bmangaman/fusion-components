@@ -1,1 +1,162 @@
-{}
+{
+  "components": {
+    "errorMessage": {
+      "required": {
+        "singular": "Required"
+      },
+      "maxlength": {
+        "singular": "Maximum of {{ max }} character",
+        "plural": "Maximum of {{ max }} characters"
+      },
+      "minlength": {
+        "singular": "Minimum of {{ min }} character",
+        "plural": "Minimum of {{ min }} characters"
+      }
+    },
+    "table": {
+      "actions": {
+        "columnTitle": "Actions",
+        "buttonAria": "Open actions menu",
+        "menuDialogLabelledBy": "Actions Menu"
+      },
+      "cell": {
+        "sortAscending": "Sort column by ascending.",
+        "sortDescending": "Sort column by descending.",
+        "isFiltered": "Column is filtered."
+      },
+      "columnSelector": {
+        "buttonAria": "Open column visibility selector menu",
+        "menuDialogLabelledBy": "Column visibility selector menu",
+        "showHideColumns": "Show / Hide Columns",
+        "closeButtonAriaLabel": "Close column visibility selector menu"
+      },
+      "filters": {
+        "comparatorLabel": "Comparator",
+        "array": {
+          "comparators": {
+            "contains": "contains",
+            "doesNotContain": "does not contain"
+          },
+          "fields": {
+            "value": "value"
+          }
+        },
+        "bytes": {
+          "comparators": {
+            "equalTo": "equal to",
+            "notEqualTo": "not equal to",
+            "less than": "less than",
+            "greater than": "greater than"
+          },
+          "fields": {
+            "bytes": "Bytes",
+            "unit": "Unit"
+          }
+        },
+        "ip": {
+          "comparators": {
+            "contains": "contains",
+            "doesNotContain": "does not contain",
+            "is": "is",
+            "isNot": "is not"
+          },
+          "fields": {
+            "octet1": "Octet 1",
+            "octet2": "Octet 2",
+            "octet3": "Octet 3",
+            "octet4": "Octet 4",
+            "ip": "IP"
+          }
+        },
+        "number": {
+          "comparators": {
+            "equalTo": "equal to",
+            "notEqualTo": "not equal to",
+            "lessThan": "less than",
+            "greaterThan": "greater than"
+          },
+          "fields": {
+            "number": "Number"
+          }
+        },
+        "string": {
+          "comparators": {
+            "contains": "contains",
+            "doesNotContain": "does not contain",
+            "is": "is",
+            "isNot": "is not",
+            "isEmpty": "is empty",
+            "isNotEmpty": "is not empty"
+          },
+          "fields": {
+            "string": "Text"
+          }
+        }
+      },
+      "filterSelector": {
+        "removeAll": "Remove all applied filters",
+        "removeFilter": "Remove filter",
+        "filterApplied": "filter applied",
+        "filtersApplied": "filters applied",
+        "menuTitle": "Add / Remove Filters",
+        "buttonAria": "Open filter selector menu",
+        "menuDialogLabelledBy": "Column filter selector menu",
+        "closeButtonAriaLabel": "Close filter selector menu",
+        "allColumnsHidden": "All columns are hidden",
+        "columnSelectorLabel": "Column"
+      },
+      "pagination": {
+        "results": "{{ min }} - {{ max }} of {{ total }} results",
+        "viewAll": "View All",
+        "navigateToPage": "Navigate to page",
+        "navigateToPrevPage": "Navigate to previous page",
+        "navigateToNextPage": "Navigate to next page",
+        "selected": "selected",
+        "deselectAll": "Deselect All"
+      },
+      "state": {
+        "loadingSpinnerAriaLabel": "Getting table data",
+        "error": "ERROR",
+        "noResults": "No Results"
+      },
+      "selection": {
+        "selectAll": "Select all visible rows",
+        "select": "Select row"
+      },
+      "expansion": {
+        "expandAll": "Expand all visible rows",
+        "expand": "Expand row"
+      }
+    },
+    "notification": {
+      "showDetails": "Show Details",
+      "hideDetails": "Hide Details",
+      "ariaCloseLabel": "Close",
+      "ariaTypeLabel": {
+        "success": "success",
+        "warning": "warning",
+        "info": "info",
+        "error": "error"
+      }
+    },
+    "select": {
+      "defaultLabel": "- Select -",
+      "noResults": "No Results"
+    },
+    "upload": {
+      "instructions": "Browse to upload file.",
+      "buttons": {
+        "browse": "Browse...",
+        "upload": "Upload File",
+        "cancel": "Cancel Upload",
+        "remove": "Remove File",
+        "dismiss": "Dismiss"
+      },
+      "statuses": {
+        "pending": "Pending",
+        "uploading": "Uploading...",
+        "successful": "File uploaded successfully."
+      }
+    }
+  }
+}

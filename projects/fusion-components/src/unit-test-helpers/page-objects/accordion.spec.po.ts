@@ -8,7 +8,7 @@ import { ComponentFixture } from '@angular/core/testing';
  */
 export class AccordionPageObject {
   private fixture: ComponentFixture<any>;
-  private containerClass: string;
+  private containerClass: string | undefined;
 
   /**
    * Gets the "f-accordion" element.
@@ -31,7 +31,7 @@ export class AccordionPageObject {
    *
    * @returns the outermost container div element
    */
-  get container(): HTMLElement {
+  get container(): HTMLElement | null {
     const accordion: HTMLElement = this.accordion;
     return accordion ? accordion.querySelector('.f-accordion') : null;
   }
@@ -41,7 +41,7 @@ export class AccordionPageObject {
    *
    * @returns all fo the panels within the accordion
    */
-  get panels(): NodeListOf<HTMLElement> {
+  get panels(): NodeListOf<HTMLElement> | null {
     const accordion: HTMLElement = this.accordion;
     return accordion ? accordion.querySelectorAll('.f-accordion-panel') : null;
   }
@@ -52,8 +52,8 @@ export class AccordionPageObject {
    * @param index the index of the panel
    * @returns the panel at the provided index
    */
-  getPanelAtIndex(index: number): HTMLElement {
-    const panels: NodeListOf<HTMLElement> = this.panels;
+  getPanelAtIndex(index: number): HTMLElement | null {
+    const panels: NodeListOf<HTMLElement> | null = this.panels;
     return panels ? panels.item(index) : null;
   }
 
@@ -63,8 +63,8 @@ export class AccordionPageObject {
    * @param index the index of the panel
    * @returns the title button element of the panel at the provided index
    */
-  getTitleOfPanelAtIndex(index: number): HTMLButtonElement {
-    const panel: HTMLElement = this.getPanelAtIndex(index);
+  getTitleOfPanelAtIndex(index: number): HTMLButtonElement | null {
+    const panel: HTMLElement | null = this.getPanelAtIndex(index);
     return panel ? panel.querySelector('.f-accordion-panel__title') : null;
   }
 
@@ -74,8 +74,8 @@ export class AccordionPageObject {
    * @param index the index of the panel
    * @returns the content element of the panel at the provided index
    */
-  getContentOfPanelAtIndex(index: number): HTMLButtonElement {
-    const panel: HTMLElement = this.getPanelAtIndex(index);
+  getContentOfPanelAtIndex(index: number): HTMLButtonElement | null {
+    const panel: HTMLElement | null = this.getPanelAtIndex(index);
     return panel ? panel.querySelector('.f-accordion-panel__content-container') : null;
   }
 

@@ -52,7 +52,7 @@ describe('LinearGaugeComponent', () => {
 
   describe('calculateLevel()', () => {
     it('should return BASE if there are no thresholds', () => {
-      component.thresholds = null;
+      component.thresholds = null as any;
       expect(component.calculateLevel()).toEqual(StatusLevel.BASE);
 
       component.thresholds = [];

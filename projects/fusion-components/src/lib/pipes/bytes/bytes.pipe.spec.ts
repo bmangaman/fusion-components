@@ -9,8 +9,8 @@ describe('BytesToSizePipe', () => {
   });
 
   it('should return "-" if the provided value is undefined', () => {
-    expect(pipe.transform(undefined)).toBe('-');
-    expect(pipe.transform(null)).toBe('-');
+    expect(pipe.transform(undefined as any)).toBe('-');
+    expect(pipe.transform(null as any)).toBe('-');
   });
 
   it('should return "0 B" or 0 if a value of 0 is provided', () => {

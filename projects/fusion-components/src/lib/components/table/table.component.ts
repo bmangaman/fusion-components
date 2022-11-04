@@ -20,16 +20,14 @@ import {
 import { BehaviorSubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { cloneDeep, intersection, isEqual } from 'lodash';
+import { cloneDeep, intersection, isEqual } from 'lodash-es';
 import { v4 as uuidv4 } from 'uuid';
 
-import { Location, Size, State, TranslatedComponent } from '@fusion-components/lib/shared';
-
+import { DownloadDirectiveFileType } from '../../directives/download';
 import { TemplateDirective } from '../../directives/template';
+import { Location, Size, State, UnsubscribeComponent } from '../../shared';
 import { ButtonType } from '../button';
 
-import { DownloadDirectiveFileType } from '../../directives/download';
-import { FusionComponentsTranslationService } from '../../services';
 import { StateLocation } from '../state';
 import { TableColumnComponent } from './table-column';
 import { CaseSensitiveSort } from './table-column-sorts';
@@ -38,6 +36,7 @@ import { TableFilterComponent } from './table-filters';
 import { TablePaginationConfig, TablePaginationEmit } from './table-pagination';
 import { AreAllVisibleRowsSelectedPipe, RemoveTableRowFormattingPipe } from './table-pipes';
 import {
+  DEFAULT_TABLE_TRANSLATIONS,
   EnabledTableFunctionality,
   RowExpansionMode,
   SelectionMode,
@@ -68,7 +67,7 @@ import {
   templateUrl: 'table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableComponent extends TranslatedComponent implements OnInit, OnDestroy, AfterContentInit, OnChanges {
+export class TableComponent extends UnsubscribeComponent implements OnInit, OnDestroy, AfterContentInit, OnChanges {
   readonly ButtonType = ButtonType;
   readonly DownloadDirectiveFileType = DownloadDirectiveFileType;
   readonly TableCellContentAlignment = TableCellContentAlignment;
@@ -238,7 +237,7 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
   /**
    * Determines the "static" text to be displayed throughout the table.
    */
-  @Input() translations: TableTranslations;
+  @Input() translations: TableTranslations = DEFAULT_TABLE_TRANSLATIONS;
 
   /**
    * Determines the state of the table.
@@ -500,10 +499,9 @@ export class TableComponent extends TranslatedComponent implements OnInit, OnDes
   constructor(
     private elementRef: ElementRef,
     private renderer: Renderer2,
-    protected override translationService: FusionComponentsTranslationService,
     private cdr: ChangeDetectorRef,
   ) {
-    super(translationService);
+    super();
   }
 
   /**

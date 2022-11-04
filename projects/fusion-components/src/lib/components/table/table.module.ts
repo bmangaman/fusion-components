@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
 
 import { DownloadModule } from '../../directives/download';
 import { StateDirectiveModule } from '../../directives/state';
@@ -29,7 +28,6 @@ import { TableComponent } from './table.component';
     ObjectKeysModule,
     StateDirectiveModule,
     TemplateModule,
-    TranslateModule,
 
     TableActionsModule,
     TableCellModule,

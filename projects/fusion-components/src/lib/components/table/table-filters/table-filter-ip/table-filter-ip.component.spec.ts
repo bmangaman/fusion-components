@@ -1,11 +1,7 @@
 import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 import { UntypedFormBuilder } from '@angular/forms';
 
-import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
-
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
-import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
 import { FilterComparator } from '../table-filter-comparator';
 import { TableFilterIpComponent } from './table-filter-ip.component';
@@ -13,13 +9,9 @@ import { TableFilterIpInputComparator } from './table-filter-ip.interface';
 
 describe('TableFilterIpComponent', () => {
   let component: TableFilterIpComponent;
-  let translationService: FusionComponentsTranslationService;
-  let translateService: TranslateService;
 
   beforeEach(() => {
-    translationService = new FusionComponentsTranslationService();
-    translateService = ComponentStubFactory.getTranslateServiceStub();
-    component = new TableFilterIpComponent(new UntypedFormBuilder(), translationService, translateService);
+    component = new TableFilterIpComponent(new UntypedFormBuilder());
     component.ngOnInit();
   });
 
@@ -34,7 +26,7 @@ describe('TableFilterIpComponent', () => {
       beforeEach(() => {
         value = '1.2.3.4';
         component.selectedFilterComparator.next(component.filterComparators[0]);
-        component.filterForm.get('ip').setValue('1.2.3.4');
+        component.filterForm.get('ip')?.setValue('1.2.3.4');
       });
 
       it('test should return true when the input equals the row value', () => {
@@ -57,7 +49,7 @@ describe('TableFilterIpComponent', () => {
       describe('displayString', () => {
         it('should call generateDisplayString()', () => {
           spyOn(component, 'generateDisplayString').and.returnValue('is value');
-          expect(component.filterComparators[0].displayString()).toEqual('is value');
+          expect(component.filterComparators[0].displayString!()).toEqual('is value');
         });
       });
     });
@@ -68,7 +60,7 @@ describe('TableFilterIpComponent', () => {
       beforeEach(() => {
         value = '1.2.3.4';
         component.selectedFilterComparator.next(component.filterComparators[1]);
-        component.filterForm.get('ip').setValue('1.2.3.4');
+        component.filterForm.get('ip')?.setValue('1.2.3.4');
       });
 
       it('test should return true when the input equals the row value', () => {
@@ -95,22 +87,22 @@ describe('TableFilterIpComponent', () => {
       beforeEach(() => {
         value = '1.2.3.4';
         component.selectedFilterComparator.next(component.filterComparators[2]);
-        component.filterForm.get('octet1').setValue(1);
+        component.filterForm.get('octet1')?.setValue(1);
       });
 
       it('test should return true when the input is equal to the octet values', () => {
         expect(component.filterComparators[2].test(value)).toEqual(true);
 
-        component.filterForm.get('octet2').setValue(2);
+        component.filterForm.get('octet2')?.setValue(2);
         expect(component.filterComparators[2].test(value)).toEqual(true);
 
-        component.filterForm.get('octet3').setValue(3);
+        component.filterForm.get('octet3')?.setValue(3);
         expect(component.filterComparators[2].test(value)).toEqual(true);
 
-        component.filterForm.get('octet4').setValue(4);
+        component.filterForm.get('octet4')?.setValue(4);
         expect(component.filterComparators[2].test(value)).toEqual(true);
 
-        component.filterForm.get('octet1').setValue(2);
+        component.filterForm.get('octet1')?.setValue(2);
         expect(component.filterComparators[2].test(value)).toEqual(false);
       });
 
@@ -146,28 +138,28 @@ describe('TableFilterIpComponent', () => {
       beforeEach(() => {
         value = '1.2.3.4';
         component.selectedFilterComparator.next(component.filterComparators[3]);
-        component.filterForm.get('octet1').setValue(1);
+        component.filterForm.get('octet1')?.setValue(1);
       });
 
       it('test should return true when the input is not equal to the selected octet value', () => {
         expect(component.filterComparators[3].test(value)).toEqual(false);
 
-        component.filterForm.get('octet2').setValue(2);
+        component.filterForm.get('octet2')?.setValue(2);
         expect(component.filterComparators[3].test(value)).toEqual(false);
 
-        component.filterForm.get('octet3').setValue(3);
+        component.filterForm.get('octet3')?.setValue(3);
         expect(component.filterComparators[3].test(value)).toEqual(false);
 
-        component.filterForm.get('octet4').setValue(4);
+        component.filterForm.get('octet4')?.setValue(4);
         expect(component.filterComparators[3].test(value)).toEqual(false);
 
-        component.filterForm.get('octet1').setValue(2);
+        component.filterForm.get('octet1')?.setValue(2);
         expect(component.filterComparators[3].test(value)).toEqual(false);
 
-        component.filterForm.get('octet1').setValue(2);
-        component.filterForm.get('octet2').setValue(null);
-        component.filterForm.get('octet3').setValue(null);
-        component.filterForm.get('octet4').setValue(null);
+        component.filterForm.get('octet1')?.setValue(2);
+        component.filterForm.get('octet2')?.setValue(null);
+        component.filterForm.get('octet3')?.setValue(null);
+        component.filterForm.get('octet4')?.setValue(null);
         expect(component.filterComparators[3].test(value)).toEqual(true);
       });
 
@@ -232,17 +224,6 @@ describe('TableFilterIpComponent', () => {
 
       expect(component.generateComparatorLabel(TableFilterIpInputComparator.IS)).toEqual('is');
     });
-
-    it('should use the translateService to generate the comparator label if no translation was provided', (done: DoneFn) => {
-      (translateService.get as jasmine.Spy).calls.reset();
-      (translateService.get as jasmine.Spy).and.returnValue(of('is'));
-      spyOnProperty(translationService, 'baseTranslationKey').and.returnValue('components');
-      (component.generateComparatorLabel(TableFilterIpInputComparator.IS) as Observable<string>).subscribe((label: string) => {
-        expect(label).toEqual('is');
-        expect(translateService.get).toHaveBeenCalledWith('components.table.filters.ip.comparators.is');
-        done();
-      });
-    });
   });
 
   describe('generateDisplayString()', () => {
@@ -284,13 +265,13 @@ describe('TableFilterIpComponent', () => {
       });
 
       it('should just return the value if the label is undefined', (done: DoneFn) => {
-        filterComparator.label = of(undefined);
+        filterComparator.label = of(undefined as any);
         (component.generateDisplayString(filterComparator) as Observable<string>).subscribe((displayString: string) => {
           expect(displayString).toEqual('undefined value');
           done();
         });
 
-        filterComparator.label = undefined;
+        filterComparator.label = undefined as any;
         expect(component.generateDisplayString(filterComparator)).toEqual('undefined value');
 
         component.selectedFilterComparator.next(filterComparator);
@@ -300,7 +281,7 @@ describe('TableFilterIpComponent', () => {
 
     describe('CONTAINS and DOES_NOT_CONTAIN', () => {
       beforeEach(() => {
-        spyOn(component, 'getFormValue').and.returnValue([10, null, null, null]);
+        spyOn(component, 'getFormValue').and.returnValue([10, null as any, null, null]);
         filterComparator = component.filterComparators[2];
         filterComparator.label = 'contains';
         component.selectedFilterComparator.next(filterComparator);
@@ -333,23 +314,23 @@ describe('TableFilterIpComponent', () => {
       });
 
       it('should just return the value if the label is undefined', (done: DoneFn) => {
-        filterComparator.label = of(undefined);
+        filterComparator.label = of(undefined as any);
         (component.generateDisplayString(filterComparator) as Observable<string>).subscribe((displayString: string) => {
           expect(displayString).toEqual('undefined 10.x.x.x');
           done();
         });
 
-        filterComparator.label = undefined;
+        filterComparator.label = undefined as any;
         expect(component.generateDisplayString(filterComparator)).toEqual('undefined 10.x.x.x');
 
         component.selectedFilterComparator.next(filterComparator);
         expect(component.generateDisplayString()).toEqual('undefined 10.x.x.x');
 
-        filterComparator = undefined;
+        filterComparator = undefined as any;
         component.selectedFilterComparator.next(filterComparator);
         expect(component.generateDisplayString()).toEqual('undefined 10.x.x.x');
 
-        component.selectedFilterComparator = undefined;
+        component.selectedFilterComparator = undefined as any;
         expect(component.generateDisplayString()).toEqual('undefined 10.x.x.x');
       });
     });
@@ -370,11 +351,11 @@ describe('TableFilterIpComponent', () => {
     it('should return octets if isContainsOrDoesNotContainSelector, ip otherwise', () => {
       const testSpy: jasmine.Spy = spyOn((component as any), 'testIfIsContainsOrDoesNotContainSelector');
 
-      component.filterForm.get('ip').setValue('1.2.3.4');
-      component.filterForm.get('octet1').setValue(1);
-      component.filterForm.get('octet2').setValue(2);
-      component.filterForm.get('octet3').setValue(3);
-      component.filterForm.get('octet4').setValue(4);
+      component.filterForm.get('ip')?.setValue('1.2.3.4');
+      component.filterForm.get('octet1')?.setValue(1);
+      component.filterForm.get('octet2')?.setValue(2);
+      component.filterForm.get('octet3')?.setValue(3);
+      component.filterForm.get('octet4')?.setValue(4);
 
       testSpy.and.returnValue(true);
       expect(component.getFormValue()).toEqual([1, 2, 3, 4]);
@@ -386,11 +367,11 @@ describe('TableFilterIpComponent', () => {
 
   describe('isFormInvalid', () => {
     it('should return true if the form is invalid, false otherwise', fakeAsync(() => {
-      component.filterForm.get('ip').setValue(null);
-      component.filterForm.get('octet1').setValue(null);
-      component.filterForm.get('octet2').setValue(null);
-      component.filterForm.get('octet3').setValue(null);
-      component.filterForm.get('octet4').setValue(null);
+      component.filterForm.get('ip')?.setValue(null);
+      component.filterForm.get('octet1')?.setValue(null);
+      component.filterForm.get('octet2')?.setValue(null);
+      component.filterForm.get('octet3')?.setValue(null);
+      component.filterForm.get('octet4')?.setValue(null);
 
       component.selectedFilterComparator.next(component.filterComparators[0]);
       tick(1000);
@@ -405,8 +386,8 @@ describe('TableFilterIpComponent', () => {
       tick(1000);
       expect(component.isFormInvalid()).toBeTrue();
 
-      component.filterForm.get('ip').setValue('1.2.3.4');
-      component.filterForm.get('octet1').setValue(1);
+      component.filterForm.get('ip')?.setValue('1.2.3.4');
+      component.filterForm.get('octet1')?.setValue(1);
 
       component.selectedFilterComparator.next(component.filterComparators[0]);
       tick(1000);

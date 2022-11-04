@@ -1,35 +1,22 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { DEFAULT_FUSION_TRANSLATIONS, FusionTranslations } from './translation.interface';
 
 /**
- * FUSION COMPONENTS TRANSLATION SERVICE
+ * TRANSLATION SERVICE
  *
- * The translation service is used to help set up the fusion components translation.
+ * The translation service is used to provide translations for the whole library.
  */
 @Injectable({ providedIn: 'root' })
-export class FusionComponentsTranslationService {
-  /**
-   * The base/ starting translation key used to make sure that ngx-translate is able to find and use
-   * the correct translation keys and values for components.
-   * It is recommended that this value is 'components', which would mean your translation json files would look like:
-   * {
-   *   components: {
-   *     table: { ... },
-   *     accordion: { ... },
-   *   },
-   *   ...
-   * }
-   */
-  private _baseTranslationKey$: BehaviorSubject<string> = new BehaviorSubject<string>('');
-
-  set baseTranslationKey(base: string) {
-    this._baseTranslationKey$.next(base);
+export class TranslationService {
+  private _translations$: BehaviorSubject<FusionTranslations> = new BehaviorSubject<FusionTranslations>(DEFAULT_FUSION_TRANSLATIONS);
+  get translations$(): Observable<FusionTranslations> {
+    return this._translations$.asObservable();
   }
-  get baseTranslationKey(): string {
-    return this._baseTranslationKey$.value;
+  get translations(): FusionTranslations {
+    return this._translations$.value;
   }
-
-  get baseTranslationKey$(): Observable<string> {
-    return this._baseTranslationKey$.asObservable();
+  set transitions(translations: FusionTranslations) {
+    this._translations$.next(translations);
   }
 }

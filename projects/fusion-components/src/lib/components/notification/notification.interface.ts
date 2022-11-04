@@ -11,14 +11,27 @@ export enum NotificationType {
 }
 
 export interface NotificationTranslations {
-  showDetails?: string;
-  hideDetails?: string;
-  ariaTypeLabel?: {
-    success?: string;
-    warning?: string;
-    info?: string;
-    error?: string;
-    unknown?: string;
+  showDetails: string;
+  hideDetails: string;
+  ariaCloseLabel: string;
+  ariaTypeLabel: {
+    success: string;
+    warning: string;
+    info: string;
+    error: string;
+    unknown: string;
   };
-  ariaCloseLabel?: string;
 }
+
+export const DEFAULT_NOTIFICATION_TRANSLATIONS: NotificationTranslations = {
+  showDetails: 'Show Details',
+  hideDetails: 'Hide Details',
+  ariaCloseLabel: 'Close',
+  ariaTypeLabel: {
+    success: 'success',
+    warning: 'warning',
+    info: 'info',
+    error: 'error',
+    unknown: 'unknown',
+  },
+};

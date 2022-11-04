@@ -1,8 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
-import { TranslateService } from '@ngx-translate/core';
-
 import { EMPTY, Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
@@ -23,11 +20,6 @@ enum UploadState {
 @Pipe({ name: 'uploadFileStatus', pure: false })
 export class UploadFileStatusPipe implements PipeTransform {
 
-  constructor(
-    private translate: TranslateService,
-    private translationService: FusionComponentsTranslationService,
-  ) {}
-
   /**
    * Gets the status of the file upload, using custom translations if provided and base translations if not.
    *
@@ -47,6 +39,7 @@ export class UploadFileStatusPipe implements PipeTransform {
     } else {
       statusKey = UploadState.ERROR;
     }
+
     // use translations from parent component, if provided
     if (translations) {
       if (statusKey === UploadState.ERROR) {
@@ -60,21 +53,13 @@ export class UploadFileStatusPipe implements PipeTransform {
       }
       return of(translations.statuses?.[statusKey]!);
     }
+
     // otherwise fall back to "base" translations for app:
     // error states do not have base translations; check network request error message
     if (statusKey === UploadState.ERROR) {
       return of(fileInfo.error!.message);
     }
-    // non-error states may have base translations; perform null-safe check
-    const statusKeyPath = `${this.translationService.baseTranslationKey}.upload.statuses.${statusKey}`;
-    return this.translate.get(statusKeyPath).pipe(
-      switchMap((translation: string) => {
-        // if the translate does not return itself, valid translation exists, use that
-        if (translation !== statusKeyPath) {
-          return of(translation);
-        }
-        return EMPTY;
-      })
-    );
+
+    return of('');
   }
 }

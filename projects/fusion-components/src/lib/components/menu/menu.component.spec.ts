@@ -26,7 +26,7 @@ describe('MenuComponent', () => {
 
       /* eslint-disable @typescript-eslint/dot-notation */
       it('should set _isMenuDiaplogOpen', () => {
-        component['_isMenuDialogOpen'] = undefined;
+        component['_isMenuDialogOpen'] = undefined as any;
         component.isMenuDialogOpen = true;
         expect(component['_isMenuDialogOpen']).toEqual(true);
         expect(component.isMenuDialogOpen).toEqual(true);
@@ -52,9 +52,9 @@ describe('MenuComponent', () => {
       /* eslint-disable @typescript-eslint/dot-notation */
 
       it('should update _buttonSizes if the element is defined', () => {
-        component['_buttonSizes'] = undefined;
+        component['_buttonSizes'] = undefined as any;
 
-        component.menuButtonSizing = null;
+        component.menuButtonSizing = null as any;
         expect(component['_buttonSizes']).toBeUndefined();
         expect(component.buttonSizes).toBeUndefined();
 
@@ -75,10 +75,10 @@ describe('MenuComponent', () => {
 
       it('should update _menuDialogSizes, set _fusionUiMeniDialog, and call setDialogPositioning() if the element is defined', () => {
         spyOn(component, 'setDialogPositioning').and.stub();
-        component['_dialogSizes'] = undefined;
-        component['_fusionUiMenuDialog'] = undefined;
+        component['_dialogSizes'] = undefined as any;
+        component['_fusionUiMenuDialog'] = undefined as any;
 
-        component.fusionUiMenuDialog = null;
+        component.fusionUiMenuDialog = null as any;
         expect(component['_dialogSizes']).toBeUndefined();
         expect(component.dialogSizes).toBeUndefined();
         expect(component['_fusionUiMenuDialog']).toBeUndefined();
@@ -113,9 +113,9 @@ describe('MenuComponent', () => {
      /* eslint-disable @typescript-eslint/dot-notation */
 
     it('should set the templates of elements it finds', () => {
-      component['_menuButton'] = undefined;
-      component['_menuDialogHeader'] = undefined;
-      component['_menuDialogContent'] = undefined;
+      component['_menuButton'] = undefined as any;
+      component['_menuDialogHeader'] = undefined as any;
+      component['_menuDialogContent'] = undefined as any;
 
       component.templates = new QueryList<TemplateDirective>();
       component.templates['_results'] = [
@@ -155,7 +155,7 @@ describe('MenuComponent', () => {
       spyOn(component, 'setDialogPositioning').and.stub();
 
       // eslint-disable-next-line @typescript-eslint/dot-notation
-      component['_fusionUiMenuDialog'] = undefined;
+      component['_fusionUiMenuDialog'] = undefined as any;
       component.dialogLocation = Location.LEFT;
       component.ngOnChanges({
         dialogLocation: new SimpleChange(null, component.dialogLocation, false),
@@ -226,7 +226,7 @@ describe('MenuComponent', () => {
       expect(component.closeMenuDialog).not.toHaveBeenCalled();
 
       // called because the menu dialog is opened AND it does NOT contain the element that was clicked
-      component.clickTargetFunction = null;
+      component.clickTargetFunction = null as any;
       component.isMenuDialogOpen = true;
       component.fusionUiMenu = new ElementRef(document.createElement('div'));
       spyOn(component.fusionUiMenu.nativeElement, 'contains').and.returnValue(false);
@@ -282,7 +282,7 @@ describe('MenuComponent', () => {
     it('should generate and return the array of classes to be set on the menu dialog', () => {
       let expectedResult: string[];
 
-      component.dialogLocation = null;
+      component.dialogLocation = null as any;
       component.dialogClasses = [];
       expectedResult = [];
       expect(component.generateDialogClasses()).toEqual(expectedResult);
@@ -292,12 +292,12 @@ describe('MenuComponent', () => {
       expectedResult = ['f-menu__dialog--location-bottom'];
       expect(component.generateDialogClasses()).toEqual(expectedResult);
 
-      component.dialogLocation = null;
+      component.dialogLocation = null as any;
       component.dialogClasses = ['custom-class-1'];
       expectedResult = ['custom-class-1'];
       expect(component.generateDialogClasses()).toEqual(expectedResult);
 
-      component.dialogLocation = null;
+      component.dialogLocation = null as any;
       component.dialogClasses = ['custom-class-1', 'custom-class-2'];
       expectedResult = ['custom-class-1', 'custom-class-2'];
       expect(component.generateDialogClasses()).toEqual(expectedResult);

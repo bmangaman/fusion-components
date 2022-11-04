@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
 
 import { NotificationComponent } from './notification.component';
 
@@ -10,7 +9,6 @@ import { NotificationComponent } from './notification.component';
   ],
   imports: [
     CommonModule,
-    TranslateModule,
   ],
   exports: [
     NotificationComponent,

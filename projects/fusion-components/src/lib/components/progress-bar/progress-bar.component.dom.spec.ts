@@ -164,13 +164,13 @@ describe('ProgressBarComponent', () => {
     component.maxValue = 100;
 
     fixture.detectChanges();
-    expect(page.progressBar.container.getAttribute('aria-valuenow')).toEqual('50');
-    expect(page.progressBar.container.getAttribute('aria-valuemin')).toEqual('0');
-    expect(page.progressBar.container.getAttribute('aria-valuemax')).toEqual('100');
-    expect(page.progressBar.container.getAttribute('aria-valuetext')).toEqual('50% : in-progress');
+    expect(page.progressBar.container?.getAttribute('aria-valuenow')).toEqual('50');
+    expect(page.progressBar.container?.getAttribute('aria-valuemin')).toEqual('0');
+    expect(page.progressBar.container?.getAttribute('aria-valuemax')).toEqual('100');
+    expect(page.progressBar.container?.getAttribute('aria-valuetext')).toEqual('50% : in-progress');
 
     component.ariaValueText = '50% of 100% completed.';
     fixture.detectChanges();
-    expect(page.progressBar.container.getAttribute('aria-valuetext')).toEqual('50% of 100% completed.');
+    expect(page.progressBar.container?.getAttribute('aria-valuetext')).toEqual('50% of 100% completed.');
   });
 });

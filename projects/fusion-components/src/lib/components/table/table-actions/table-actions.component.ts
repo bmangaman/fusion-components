@@ -1,20 +1,19 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, Input, TemplateRef } from '@angular/core';
 
-import { isEqual } from 'lodash';
+import { isEqual } from 'lodash-es';
 
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
-import { Location, Size, TranslatedComponent } from '@fusion-components/lib/shared';
+import { Location, Size } from '@fusion-components/lib/shared';
 
 import { ButtonType } from '../../button';
 import { TableRowData } from '../table.interface';
-import { TableActionsTranslations } from './table-actions.interface';
+import { DEFAULT_TABLE_ACTIONS_TRANSLATIONS, TableActionsTranslations } from './table-actions.interface';
 
 @Component({
   selector: 'f-table-actions',
   templateUrl: './table-actions.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableActionsComponent extends TranslatedComponent implements DoCheck {
+export class TableActionsComponent implements DoCheck {
   readonly Location = Location;
   readonly Size = Size;
   readonly ButtonType = ButtonType;
@@ -46,7 +45,7 @@ export class TableActionsComponent extends TranslatedComponent implements DoChec
    * Determines the default "static" text for the actions menu.
    */
   private _prevTranslations: TableActionsTranslations;
-  @Input() translations: TableActionsTranslations;
+  @Input() translations: TableActionsTranslations = DEFAULT_TABLE_ACTIONS_TRANSLATIONS;
 
   /**
    * Determines any custom css classes to be appended to menu dialog/ popup.
@@ -63,10 +62,7 @@ export class TableActionsComponent extends TranslatedComponent implements DoChec
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
-    protected _translationService: FusionComponentsTranslationService,
-  ) {
-    super(_translationService);
-  }
+  ) {}
 
   /**
    * Checks to see if the provided inputs have actually changed. If so, mark the component

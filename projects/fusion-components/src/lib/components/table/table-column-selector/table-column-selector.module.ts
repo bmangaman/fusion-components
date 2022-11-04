@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
 
 import { ButtonModule } from '@fusion-components/lib/components/button';
 import { MenuModule } from '@fusion-components/lib/components/menu';
@@ -12,7 +11,6 @@ import { TableColumnSelectorComponent } from './table-column-selector.component'
     ButtonModule,
     CommonModule,
     MenuModule,
-    TranslateModule,
   ],
   declarations: [
     TableColumnSelectorComponent,

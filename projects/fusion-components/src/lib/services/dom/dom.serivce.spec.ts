@@ -96,7 +96,7 @@ describe('DomService', () => {
 
   describe('attachComponent()', () => {
     let mockComponentRef: ComponentRef<TestComponent>;
-    let body: HTMLElement;
+    let body: HTMLElement | null;
     let element: HTMLElement;
     let appendToElement: HTMLElement;
 
@@ -110,7 +110,7 @@ describe('DomService', () => {
 
       appendToElement = documentStub.createElement('div');
       appendToElement.classList.add('appendto-element');
-      body.appendChild(appendToElement);
+      body?.appendChild(appendToElement);
 
       // eslint-disable-next-line @typescript-eslint/dot-notation
       renderer2 = service['renderer'];
@@ -122,7 +122,7 @@ describe('DomService', () => {
     });
 
     it('should append the component to the body if appendTo is undefined', () => {
-      service.attachComponent(mockComponentRef, null);
+      service.attachComponent(mockComponentRef, undefined);
       expect(renderer2.appendChild).toHaveBeenCalledWith(body, element);
     });
 
@@ -145,7 +145,7 @@ describe('DomService', () => {
       const component: HTMLElement = documentStub.createElement('div');
       spyOn(component, 'remove').and.stub();
 
-      service.removeComponent(null);
+      service.removeComponent(null as any);
       expect(component.remove).not.toHaveBeenCalled();
 
       service.removeComponent(component);

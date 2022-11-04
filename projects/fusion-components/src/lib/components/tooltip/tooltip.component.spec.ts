@@ -22,8 +22,8 @@ describe('TooltipComponent', () => {
   describe('@HostBinding()', () => {
     describe('class', () => {
       it('should return the cssClasses as a string', () => {
-        component.cssClasses = null;
-        expect(component.setHostClasses).toEqual(null);
+        component.cssClasses = null as any;
+        expect(component.setHostClasses).toEqual(null as any);
 
         component.cssClasses = [];
         expect(component.setHostClasses).toEqual('');
@@ -38,8 +38,8 @@ describe('TooltipComponent', () => {
 
     describe('style.left', () => {
       it('should return elementPosition.leff', () => {
-        component.elementPosition.left = null;
-        expect(component.setHostLeft).toEqual(null);
+        component.elementPosition.left = null as any;
+        expect(component.setHostLeft).toEqual(null as any);
 
         component.elementPosition.left = '100px';
         expect(component.setHostLeft).toEqual('100px');
@@ -48,8 +48,8 @@ describe('TooltipComponent', () => {
 
     describe('style.right', () => {
       it('should return elementPosition.right', () => {
-        component.elementPosition.right = null;
-        expect(component.setHostRight).toEqual(null);
+        component.elementPosition.right = null as any;
+        expect(component.setHostRight).toEqual(null as any);
 
         component.elementPosition.right = '100px';
         expect(component.setHostRight).toEqual('100px');
@@ -58,8 +58,8 @@ describe('TooltipComponent', () => {
 
     describe('style.top', () => {
       it('should return elementPosition.top', () => {
-        component.elementPosition.top = null;
-        expect(component.setHostTop).toEqual(null);
+        component.elementPosition.top = null as any;
+        expect(component.setHostTop).toEqual(null as any);
 
         component.elementPosition.top = '100px';
         expect(component.setHostTop).toEqual('100px');
@@ -68,8 +68,8 @@ describe('TooltipComponent', () => {
 
     describe('style.bottom', () => {
       it('should return elementPosition.bottom', () => {
-        component.elementPosition.bottom = null;
-        expect(component.setHostBottom).toEqual(null);
+        component.elementPosition.bottom = null as any;
+        expect(component.setHostBottom).toEqual(null as any);
 
         component.elementPosition.bottom = '100px';
         expect(component.setHostBottom).toEqual('100px');
@@ -78,8 +78,8 @@ describe('TooltipComponent', () => {
 
     describe('style.transform', () => {
       it('should return elementPosition.transform', () => {
-        component.elementPosition.transform = null;
-        expect(component.setHostTransform).toEqual(null);
+        component.elementPosition.transform = null as any;
+        expect(component.setHostTransform).toEqual(null as any);
 
         component.elementPosition.transform = 'translate(-50%, -50%)';
         expect(component.setHostTransform).toEqual('translate(-50%, -50%)');
@@ -88,8 +88,8 @@ describe('TooltipComponent', () => {
 
     describe('style.z-index', () => {
       it('should return zIndex', () => {
-        component.zIndex = null;
-        expect(component.setHostZIndex).toEqual(null);
+        component.zIndex = null as any;
+        expect(component.setHostZIndex).toEqual(null as any);
 
         component.zIndex = 20;
         expect(component.setHostZIndex).toEqual(20);
@@ -136,8 +136,8 @@ describe('TooltipComponent', () => {
       spyOn(component, 'generateCssClasses').and.stub();
       spyOn(component, 'updateTooltipPosition').and.stub();
 
-      component.position = undefined;
-      component.classes = undefined;
+      component.position = undefined as any;
+      component.classes = undefined as any;
 
       component.text = 'text';
       component.ngOnChanges({
@@ -179,7 +179,7 @@ describe('TooltipComponent', () => {
 
     it('should do nothing if the provided element is undefined', () => {
       component.elementPosition = {};
-      component.element = null;
+      component.element = null as any;
       component.updateTooltipPosition();
       expect(Utilities.getElementAbsolutePositioning).not.toHaveBeenCalled();
       expect(component.elementPosition).toEqual({});
@@ -200,43 +200,43 @@ describe('TooltipComponent', () => {
       let expectedResult: string[];
 
       expectedResult = [base];
-      component.position = null;
-      component.classes = null;
+      component.position = null as any;
+      component.classes = null as any;
       component.generateCssClasses();
       expect(component.cssClasses).toEqual(expectedResult);
 
       expectedResult = [base, `${base}--left`];
       component.position = Position.LEFT;
-      component.classes = null;
+      component.classes = null as any;
       component.generateCssClasses();
       expect(component.cssClasses).toEqual(expectedResult);
 
       expectedResult = [base, `${base}--right`];
       component.position = Position.RIGHT;
-      component.classes = null;
+      component.classes = null as any;
       component.generateCssClasses();
       expect(component.cssClasses).toEqual(expectedResult);
 
       expectedResult = [base, `${base}--top`];
       component.position = Position.TOP;
-      component.classes = null;
+      component.classes = null as any;
       component.generateCssClasses();
       expect(component.cssClasses).toEqual(expectedResult);
 
       expectedResult = [base, `${base}--bottom`];
       component.position = Position.BOTTOM;
-      component.classes = null;
+      component.classes = null as any;
       component.generateCssClasses();
       expect(component.cssClasses).toEqual(expectedResult);
 
       expectedResult = [base, 'class1'];
-      component.position = null;
+      component.position = null as any;
       component.classes = ['class1'];
       component.generateCssClasses();
       expect(component.cssClasses).toEqual(expectedResult);
 
       expectedResult = [base, 'class1', 'class2'];
-      component.position = null;
+      component.position = null as any;
       component.classes = ['class1', 'class2'];
       component.generateCssClasses();
       expect(component.cssClasses).toEqual(expectedResult);

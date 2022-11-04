@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
 import { TableRowData } from '../../table.interface';
 

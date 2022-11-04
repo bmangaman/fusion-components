@@ -13,7 +13,6 @@ import {
 import { NgControl } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Event, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 import { Observable, of, Subject } from 'rxjs';
 
 import { DeepPartial } from '../lib/shared';
@@ -33,10 +32,10 @@ export class ComponentStubFactory {
         querySelector: jasmine.createSpy('querySelector').and.returnValue(document.createElement('div')),
         querySelectorAll: jasmine.createSpy('querySelectorAll').and.returnValue(null),
         scrollIntoView: jasmine.createSpy('scrollIntoView'),
-        get offsetHeight(): number {
+        get offsetHeight(): number | null {
           return null;
         },
-        get offsetWidth(): number {
+        get offsetWidth(): number | null {
           return null;
         },
         focus: jasmine.createSpy('focus'),
@@ -62,7 +61,7 @@ export class ComponentStubFactory {
   static getRouterStub(): Partial<Router> {
     return {
       get events(): Observable<Event> {
-        return of(null);
+        return of(null as any as Event);
       },
       navigate: jasmine.createSpy('navigate').and.returnValue(true),
       url: '/'
@@ -163,7 +162,7 @@ export class ComponentStubFactory {
       location: {
         href: ''
       },
-      get innerWidth(): number {
+      get innerWidth(): number | undefined {
         return undefined;
       },
       addEventListener: jasmine.createSpy('addEventListener'),
@@ -176,7 +175,7 @@ export class ComponentStubFactory {
       valueAccessor: null,
       validator: null,
       asyncValidator: null,
-      viewToModelUpdate: null,
+      viewToModelUpdate: undefined,
       valid: null,
       invalid: null,
       touched: null,
@@ -194,24 +193,5 @@ export class ComponentStubFactory {
       detectChanges: jasmine.createSpy('detectChanges'),
       markForCheck: jasmine.createSpy('markForCheck'),
     };
-  }
-
-  /**
-   * Returns an instance of a stub for the TranslateService.
-   */
-  static getTranslateServiceStub(): TranslateService {
-    return {
-      addLangs: jasmine.createSpy('addLangs').and.stub(),
-      getBrowserLang: jasmine.createSpy('getBrowserLang').and.returnValue('en'),
-      setTranslation: jasmine.createSpy('setTranslation').and.stub(),
-      setDefaultLang: jasmine.createSpy('setDefaultLang').and.stub(),
-      instant: jasmine.createSpy('instant').and.returnValue(''),
-      get: jasmine.createSpy('get').and.returnValue(of('')),
-      use: jasmine.createSpy('use').and.returnValue(of('')),
-      onLangChange: new EventEmitter(),
-      onTranslationChange: new EventEmitter(),
-      onDefaultLangChange: new EventEmitter(),
-      currentLang: 'en',
-    } as any as TranslateService;
   }
 }

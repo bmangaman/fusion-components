@@ -62,24 +62,24 @@ describe('KeyValueTableComponent', () => {
 
   describe('the table data', () => {
     it('should be displayed in the correct number of rows and columns', () => {
-      expect(page.table.tableRows.length).toEqual(4);
-      expect(page.table.tableKeyCells.length).toEqual(4);
-      expect(page.table.tableValueCells.length).toEqual(4);
-      expect(page.table.getTableRowAtIndex(0).childNodes.length).toEqual(2);
+      expect(page.table.tableRows?.length).toEqual(4);
+      expect(page.table.tableKeyCells?.length).toEqual(4);
+      expect(page.table.tableValueCells?.length).toEqual(4);
+      expect(page.table.getTableRowAtIndex(0)?.childNodes.length).toEqual(2);
     });
 
     it('should display the provided key and value data', () => {
-      expect(page.table.getTableKeyCellAtRowIndex(0).innerText).toContain('IP Address');
-      expect(page.table.getTableValueCellAtRowIndex(0).innerText).toContain('192.168.1.1');
+      expect(page.table.getTableKeyCellAtRowIndex(0)?.innerText).toContain('IP Address');
+      expect(page.table.getTableValueCellAtRowIndex(0)?.innerText).toContain('192.168.1.1');
 
-      expect(page.table.getTableKeyCellAtRowIndex(1).innerText).toContain('Hostname');
-      expect(page.table.getTableValueCellAtRowIndex(1).innerText).toContain('example-hostname');
+      expect(page.table.getTableKeyCellAtRowIndex(1)?.innerText).toContain('Hostname');
+      expect(page.table.getTableValueCellAtRowIndex(1)?.innerText).toContain('example-hostname');
 
-      expect(page.table.getTableKeyCellAtRowIndex(2).innerText).toContain('Capacity');
-      expect(page.table.getTableValueCellAtRowIndex(2).innerText).toContain('1024');
+      expect(page.table.getTableKeyCellAtRowIndex(2)?.innerText).toContain('Capacity');
+      expect(page.table.getTableValueCellAtRowIndex(2)?.innerText).toContain('1024');
 
-      expect(page.table.getTableKeyCellAtRowIndex(3).innerText).toContain('Number of Drives');
-      expect(page.table.getTableValueCellAtRowIndex(3).innerText).toContain('12');
+      expect(page.table.getTableKeyCellAtRowIndex(3)?.innerText).toContain('Number of Drives');
+      expect(page.table.getTableValueCellAtRowIndex(3)?.innerText).toContain('12');
     });
   });
 
@@ -87,15 +87,15 @@ describe('KeyValueTableComponent', () => {
     it('should display the custom key template for a specific row if provided', () => {
       component.customHostnameKey = true;
       reloadTableComponent();
-      expect(page.table.getTableKeyCellAtRowIndex(1).innerText).toContain('Custom Hostname');
-      expect(page.table.getTableValueCellAtRowIndex(1).innerText).toContain('example-hostname');
+      expect(page.table.getTableKeyCellAtRowIndex(1)?.innerText).toContain('Custom Hostname');
+      expect(page.table.getTableValueCellAtRowIndex(1)?.innerText).toContain('example-hostname');
     });
 
     it('should display the custom value template for a specific row if provided', () => {
       component.customHostnameValue = true;
       reloadTableComponent();
-      expect(page.table.getTableKeyCellAtRowIndex(1).innerText).toContain('Hostname');
-      expect(page.table.getTableValueCellAtRowIndex(1).innerText).toContain('Custom Hostname example-hostname');
+      expect(page.table.getTableKeyCellAtRowIndex(1)?.innerText).toContain('Hostname');
+      expect(page.table.getTableValueCellAtRowIndex(1)?.innerText).toContain('Custom Hostname example-hostname');
     });
   });
 

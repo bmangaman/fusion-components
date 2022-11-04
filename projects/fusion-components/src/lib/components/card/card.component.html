@@ -37,7 +37,7 @@
           <div *ngIf="status.count" class="f-card__title-status-count">{{ status?.count }}</div>
           <div *ngIf="!status.isTextHidden" class="f-card__title-status-text">
             <ng-container *ngIf="!!status.text; else defaultStatus">{{ status.text | toObservable | async }}</ng-container>
-            <ng-template #defaultStatus>{{ status.status | getStatusLevelText:translations?.statuses }}</ng-template>
+            <ng-template #defaultStatus>{{ status.status | getStatusLevelText:translations.statuses }}</ng-template>
           </div>
         </div>
       </ng-container>
@@ -65,7 +65,7 @@
       [ngClass]="isDetailsSectionExpanded ? 'f-card__details-button--expanded' : 'f-card__details-button--collapsed'"
       (click)="toggleDetailsSectionExpansion()">
       <i class="f-card__details-button-icon mdi" [ngClass]="isDetailsSectionExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
-      {{ isDetailsSectionExpanded ? translations?.hideDetails : translations?.showDetails }}
+      {{ isDetailsSectionExpanded ? translations.hideDetails : translations.showDetails }}
     </button>
     <div *ngIf="isDetailsSectionExpanded" class="f-card__details-content">
       <ng-container *ngIf="!!cardDetails; else isCardDetails">

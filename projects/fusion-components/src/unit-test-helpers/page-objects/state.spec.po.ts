@@ -8,7 +8,7 @@ import { ComponentFixture } from '@angular/core/testing';
  */
 export class StatePageObject {
   private fixture: ComponentFixture<any>;
-  private containerClass: string;
+  private containerClass: string | undefined;
 
   get state(): HTMLElement {
     // first, if a containerClass was provided, try to find the element that has that class
@@ -26,7 +26,7 @@ export class StatePageObject {
    *
    * @returns The werapping div element.
    */
-  get container(): HTMLElement {
+  get container(): HTMLElement | null {
     const state: HTMLElement = this.state;
     return state ? state.querySelector('.f-state') : null;
   }
@@ -36,8 +36,8 @@ export class StatePageObject {
    *
    * @returns The inner wrapper div element.
    */
-  get inner(): HTMLElement {
-    const container: HTMLElement = this.container;
+  get inner(): HTMLElement | null {
+    const container: HTMLElement | null = this.container;
     return container ? container.querySelector('.f-state__inner') : null;
   }
 
@@ -46,8 +46,8 @@ export class StatePageObject {
    *
    * @returns The graphic icon element.
    */
-  get graphic(): HTMLElement {
-    const container: HTMLElement = this.container;
+  get graphic(): HTMLElement | null {
+    const container: HTMLElement | null = this.container;
     return container ? container.querySelector('.f-state__inner-graphic') : null;
   }
 
@@ -56,8 +56,8 @@ export class StatePageObject {
    *
    * @returns The content div element.
    */
-  get content(): HTMLElement {
-    const container: HTMLElement = this.container;
+  get content(): HTMLElement | null {
+    const container: HTMLElement | null = this.container;
     return container ? container.querySelector('.f-state__inner-content') : null;
   }
 
@@ -66,8 +66,8 @@ export class StatePageObject {
    *
    * @returns The headline h3 element.
    */
-  get headline(): HTMLElement {
-    const content: HTMLElement = this.content;
+  get headline(): HTMLElement | null {
+    const content: HTMLElement | null = this.content;
     return content ? content.querySelector('.f-state__inner-content-headline') : null;
   }
 
@@ -76,8 +76,8 @@ export class StatePageObject {
    *
    * @returns The message div element.
    */
-  get message(): HTMLElement {
-    const content: HTMLElement = this.content;
+  get message(): HTMLElement | null {
+    const content: HTMLElement | null = this.content;
     return content ? content.querySelector('.f-state__inner-content-message') : null;
   }
 
@@ -86,8 +86,8 @@ export class StatePageObject {
    *
    * @returns The loading spinner (component) element.
    */
-  get loadingSpinner(): HTMLElement {
-    const container: HTMLElement = this.container;
+  get loadingSpinner(): HTMLElement | null {
+    const container: HTMLElement | null = this.container;
     return container ? container.querySelector('f-loading-spinner') : null;
   }
 

@@ -102,14 +102,14 @@ describe('StateComponent', () => {
 
     beforeEach(() => {
       expectedResult = [];
-      component.state = null;
-      component.location = null;
+      component.state = null as any;
+      component.location = null as any;
     });
 
     describe('wrapper', () => {
       it('should only append the base class if state and location inputs are undefined', () => {
-        component.state = null;
-        component.location = null;
+        component.state = null as any;
+        component.location = null as any;
         expectedResult = ['f-state'];
         component.generateCssClasses();
         expect(component.cssClasses.wrapper).toEqual(expectedResult);
@@ -157,8 +157,8 @@ describe('StateComponent', () => {
 
     describe('inner', () => {
       it('should only append the base inner class if state and location inputs are undefined', () => {
-        component.state = null;
-        component.location = null;
+        component.state = null as any;
+        component.location = null as any;
         expectedResult = ['f-state__inner'];
         component.generateCssClasses();
         expect(component.cssClasses.inner).toEqual(expectedResult);
@@ -206,8 +206,8 @@ describe('StateComponent', () => {
 
     describe('graphic', () => {
       it('should only append the base graphic class if state and location inputs are undefined', () => {
-        component.state = null;
-        component.location = null;
+        component.state = null as any;
+        component.location = null as any;
         expectedResult = ['f-state__inner-graphic'];
         component.generateCssClasses();
         expect(component.cssClasses.graphic).toEqual(expectedResult);
@@ -255,8 +255,8 @@ describe('StateComponent', () => {
 
     describe('content', () => {
       it('should only append the base content class if state and location inputs are undefined', () => {
-        component.state = null;
-        component.location = null;
+        component.state = null as any;
+        component.location = null as any;
         expectedResult = ['f-state__inner-content'];
         component.generateCssClasses();
         expect(component.cssClasses.content).toEqual(expectedResult);

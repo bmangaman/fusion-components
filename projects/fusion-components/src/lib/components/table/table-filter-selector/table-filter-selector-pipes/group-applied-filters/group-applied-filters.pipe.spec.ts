@@ -1,10 +1,8 @@
 import { QueryList } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
 
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
 import {
@@ -21,26 +19,22 @@ describe('GroupAppliedFiltersPipe', () => {
   const filters: QueryList<TableFilterComponent> = new QueryList<TableFilterComponent>();
   let appliedFilters: TableFilterComponent[];
   let pipe: GroupAppliedFiltersPipe;
-  let translationService: FusionComponentsTranslationService;
-  let translateService: TranslateService;
 
   beforeEach(() => {
-    translationService = new FusionComponentsTranslationService();
-    translateService = ComponentStubFactory.getTranslateServiceStub();
     pipe = new GroupAppliedFiltersPipe();
     generateFilters();
   });
 
   it('should return an empty array if either the provided appliedFilters or filters are undefined or empty', () => {
-    expect(pipe.transform(undefined, undefined)).toEqual([]);
+    expect(pipe.transform(undefined as any, undefined as any)).toEqual([]);
     expect(pipe.transform([], new QueryList<TableFilterComponent>())).toEqual([]);
 
-    expect(pipe.transform(undefined, new QueryList<TableFilterComponent>())).toEqual([]);
-    expect(pipe.transform(undefined, filters)).toEqual([]);
+    expect(pipe.transform(undefined as any, new QueryList<TableFilterComponent>())).toEqual([]);
+    expect(pipe.transform(undefined as any, filters)).toEqual([]);
     expect(pipe.transform([], filters)).toEqual([]);
 
-    expect(pipe.transform([], undefined)).toEqual([]);
-    expect(pipe.transform(appliedFilters, undefined)).toEqual([]);
+    expect(pipe.transform([], undefined as any)).toEqual([]);
+    expect(pipe.transform(appliedFilters, undefined as any)).toEqual([]);
     expect(pipe.transform(appliedFilters, new QueryList<TableFilterComponent>())).toEqual([]);
   });
 
@@ -64,23 +58,23 @@ describe('GroupAppliedFiltersPipe', () => {
    */
   function generateFilters(): void {
     const stringFilter: TableFilterStringComponent =
-      new TableFilterStringComponent(new UntypedFormBuilder(), translationService, translateService);
+      new TableFilterStringComponent(new UntypedFormBuilder());
     stringFilter.filterName = 'name';
     stringFilter.field = 'name';
     stringFilter.isVisible = true;
 
     const numberFilter: TableFilterNumberComponent =
-      new TableFilterNumberComponent(new UntypedFormBuilder(), translationService, translateService);
+      new TableFilterNumberComponent(new UntypedFormBuilder());
     numberFilter.filterName = 'count';
     numberFilter.field = 'count';
     numberFilter.isVisible = true;
 
-    const bytesFilter: TableFilterBytesComponent = new TableFilterBytesComponent(new UntypedFormBuilder(), translationService, translateService);
+    const bytesFilter: TableFilterBytesComponent = new TableFilterBytesComponent(new UntypedFormBuilder());
     bytesFilter.filterName = 'size';
     bytesFilter.field = 'size';
     bytesFilter.isVisible = false;
 
-    const ipFilter: TableFilterIpComponent = new TableFilterIpComponent(new UntypedFormBuilder(), translationService, translateService);
+    const ipFilter: TableFilterIpComponent = new TableFilterIpComponent(new UntypedFormBuilder());
     ipFilter.filterName = 'ip';
     ipFilter.field = 'ip';
     ipFilter.isVisible = true;

@@ -7,8 +7,8 @@
     dialogContentMaxHeight="200px"
     [dialogZIndex]="4"
     [aria]="{
-      closeButtonLabel: translations?.closeButtonAriaLabel || ( baseTranslationKey + '.table.columnSelector.closeButtonAriaLabel' | translate ),
-      menuDialogLabelledBy: translations?.menuDialogLabelledBy || ( baseTranslationKey + '.table.columnSelector.menuDialogLabelledBy' | translate )
+      closeButtonLabel: translations.closeButtonAriaLabel,
+      menuDialogLabelledBy: translations.menuDialogLabelledBy
     }"
     [dialogLocation]="Location.BOTTOM_RIGHT">
 
@@ -19,9 +19,9 @@
         [type]="ButtonType.SECONDARY"
         [opensMenu]="true"
         [aria]="{
-          label: translations?.buttonAria || ( baseTranslationKey + '.table.columnSelector.buttonAria' | translate ),
+          label: translations.buttonAria,
           haspopup: true,
-          controls: translations?.menuDialogLabelledBy || ( baseTranslationKey + '.table.columnSelector.menuDialogLabelledBy' | translate ),
+          controls: translations.menuDialogLabelledBy,
           expanded: isMenuDialogOpen
         }"
         [size]="Size.SMALL"
@@ -31,7 +31,7 @@
     </ng-template>
 
     <ng-template fusionUiTemplate="menuDialogHeader">
-      {{ translations?.showHideColumns || ( baseTranslationKey + '.table.columnSelector.showHideColumns' | translate ) }}
+      {{ translations.showHideColumns }}
     </ng-template>
 
     <ng-template fusionUiTemplate="menuDialogContent">

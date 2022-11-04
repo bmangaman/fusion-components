@@ -101,6 +101,6 @@ export class LinearGaugeDemoComponent {
   }
 
   get thresholdFormArray(): FormArray {
-    return this.linearGaugeForm.get('threshold') as FormArray;
+    return this.linearGaugeForm.get('thresholds') as FormArray;
   }
 }

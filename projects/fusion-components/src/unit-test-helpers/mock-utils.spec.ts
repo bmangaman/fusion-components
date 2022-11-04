@@ -11,7 +11,7 @@ export class MockRendererService {
 export class MockElementRef {
   nativeElement = {
     getAttribute(_element: string): string {
-      return null;
+      return '';
     },
     getBoundingClientRect(): any {
       return {

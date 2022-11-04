@@ -76,7 +76,7 @@ describe('TooltipService', () => {
       // eslint-disable-next-line @typescript-eslint/dot-notation
       service['_components'] = components;
 
-      expect(service.isTooltipDisplayed(null)).toBeFalse();
+      expect(service.isTooltipDisplayed(null as any)).toBeFalse();
       expect(service.isTooltipDisplayed('0')).toBeFalse();
       expect(service.isTooltipDisplayed('1')).toBeTrue();
       expect(service.isTooltipDisplayed('2')).toBeTrue();

@@ -1,10 +1,6 @@
 import { UntypedFormBuilder } from '@angular/forms';
 
-import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
-
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
-import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
 import { FilterComparator } from '../table-filter-comparator';
 import { TableFilterNumberComponent } from './table-filter-number.component';
@@ -12,13 +8,9 @@ import { TableFilterNumberInputComparator } from './table-filter-number.interfac
 
 describe('TableFilterNumberComponent', () => {
   let component: TableFilterNumberComponent;
-  let translationService: FusionComponentsTranslationService;
-  let translateService: TranslateService;
 
   beforeEach(() => {
-    translationService = new FusionComponentsTranslationService();
-    translateService = ComponentStubFactory.getTranslateServiceStub();
-    component = new TableFilterNumberComponent(new UntypedFormBuilder(), translationService, translateService);
+    component = new TableFilterNumberComponent(new UntypedFormBuilder());
   });
 
   it('should create', () => {
@@ -30,7 +22,7 @@ describe('TableFilterNumberComponent', () => {
 
     describe('EQUAL_TO', () => {
       it('test should return true when the input equals the row value', () => {
-        component.filterForm.get('number').setValue(1);
+        component.filterForm.get('number')?.setValue(1);
 
         value = 1;
         expect(component.filterComparators[0].test(value)).toEqual(true);
@@ -50,14 +42,14 @@ describe('TableFilterNumberComponent', () => {
       describe('displayString', () => {
         it('should call generateDisplayString()', () => {
           spyOn(component, 'generateDisplayString').and.returnValue('is value');
-          expect(component.filterComparators[0].displayString()).toEqual('is value');
+          expect(component.filterComparators[0].displayString!()).toEqual('is value');
         });
       });
     });
 
     describe('NOT_EQUAL_TO', () => {
       it('test should return true when the input does not equal the row value', () => {
-        component.filterForm.get('number').setValue(1);
+        component.filterForm.get('number')?.setValue(1);
 
         value = 2;
         expect(component.filterComparators[1].test(value)).toEqual(true);
@@ -68,7 +60,7 @@ describe('TableFilterNumberComponent', () => {
 
     describe('GREATER_THAN', () => {
       it('test should return true when the input is greater than the row value', () => {
-        component.filterForm.get('number').setValue(1);
+        component.filterForm.get('number')?.setValue(1);
 
         value = 2;
         expect(component.filterComparators[2].test(value)).toEqual(true);
@@ -79,7 +71,7 @@ describe('TableFilterNumberComponent', () => {
 
     describe('LESS_THAN', () => {
       it('test should return true when the input is less than the row value', () => {
-        component.filterForm.get('number').setValue(1);
+        component.filterForm.get('number')?.setValue(1);
 
         value = 0;
         expect(component.filterComparators[3].test(value)).toEqual(true);
@@ -98,17 +90,6 @@ describe('TableFilterNumberComponent', () => {
       };
 
       expect(component.generateComparatorLabel(TableFilterNumberInputComparator.EQUAL_TO)).toEqual('equal to');
-    });
-
-    it('should use the translateService to generate the comparator label if no translation was provided', (done: DoneFn) => {
-      (translateService.get as jasmine.Spy).calls.reset();
-      (translateService.get as jasmine.Spy).and.returnValue(of('equal to'));
-      spyOnProperty(translationService, 'baseTranslationKey').and.returnValue('components');
-      (component.generateComparatorLabel(TableFilterNumberInputComparator.EQUAL_TO) as Observable<string>).subscribe((label: string) => {
-        expect(label).toEqual('equal to');
-        expect(translateService.get).toHaveBeenCalledWith('components.table.filters.number.comparators.equalTo');
-        done();
-      });
     });
   });
 
@@ -150,30 +131,30 @@ describe('TableFilterNumberComponent', () => {
     });
 
     it('should just return the value if the label is undefined', (done: DoneFn) => {
-      filterComparator.label = of(undefined);
+      filterComparator.label = of(undefined as any);
       (component.generateDisplayString(filterComparator) as Observable<string>).subscribe((displayString: string) => {
         expect(displayString).toEqual('undefined 1');
         done();
       });
 
-      filterComparator.label = undefined;
+      filterComparator.label = undefined as any;
       expect(component.generateDisplayString(filterComparator)).toEqual('undefined 1');
 
       component.selectedFilterComparator.next(filterComparator);
       expect(component.generateDisplayString()).toEqual('undefined 1');
 
-      filterComparator = undefined;
+      filterComparator = undefined as any;
       component.selectedFilterComparator.next(filterComparator);
       expect(component.generateDisplayString()).toEqual('undefined 1');
 
-      component.selectedFilterComparator = undefined;
+      component.selectedFilterComparator = undefined as any;
       expect(component.generateDisplayString()).toEqual('undefined 1');
     });
   });
 
   describe('buildForm()', () => {
     it('should generate the filterForm', () => {
-      component.filterForm = undefined;
+      component.filterForm = undefined as any;
       component.buildForm();
       expect(component.filterForm).toBeDefined();
       expect(component.filterForm.value).toEqual({ number: null });
@@ -182,20 +163,20 @@ describe('TableFilterNumberComponent', () => {
 
   describe('getFormValue()', () => {
     it('should return filterForm.number value', () => {
-      component.filterForm.get('number').setValue(1);
+      component.filterForm.get('number')?.setValue(1);
       expect(component.getFormValue()).toEqual(1);
     });
   });
 
   describe('isFormInvalid()', () => {
     it('should return false if filterForm is defined, true otherwise', () => {
-      component.filterForm.get('number').setValue(undefined);
+      component.filterForm.get('number')?.setValue(undefined);
       expect(component.isFormInvalid()).toBeTrue();
 
-      component.filterForm.get('number').setValue(0);
+      component.filterForm.get('number')?.setValue(0);
       expect(component.isFormInvalid()).toBeFalse();
 
-      component.filterForm.get('number').setValue(1);
+      component.filterForm.get('number')?.setValue(1);
       expect(component.isFormInvalid()).toBeFalse();
     });
   });

@@ -1,10 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
-import { TranslatedComponent } from '@fusion-components/lib/shared';
+import { UnsubscribeComponent } from './../../../../shared/components/unsubscribe/unsubscribe.component';
 
 import { TableFilterConfig } from '../../table-filter-selector';
 import { FilterComparator } from '../table-filter-comparator';
@@ -20,7 +18,7 @@ import { TableFilterTranslations } from './table-filter.interface';
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableFilterComponent extends TranslatedComponent {
+export class TableFilterComponent extends UnsubscribeComponent {
   TableFilter = TableFilterComponent;
 
   get fb(): UntypedFormBuilder {
@@ -66,7 +64,7 @@ export class TableFilterComponent extends TranslatedComponent {
   /**
    * Determines the translations for any static text.
    */
-  @Input() translations: TableFilterTranslations | undefined;
+  @Input() translations: TableFilterTranslations;
 
   /**
    * Determines whether or not the filter should be visible in the the applied filters list.
@@ -98,10 +96,8 @@ export class TableFilterComponent extends TranslatedComponent {
    */
   constructor(
     private _fb: UntypedFormBuilder,
-    protected override translationService: FusionComponentsTranslationService,
-    protected translateService: TranslateService,
   ) {
-    super(translationService);
+    super();
     this.buildForm();
   }
 
@@ -131,10 +127,11 @@ export class TableFilterComponent extends TranslatedComponent {
    * @returns Either the string provided by the translations input or the translated value.
    */
   generateComparatorLabel(comparator: any): string | Observable<string> {
-    if (this.translations?.comparators && this.translations.comparators[comparator]) {
+    if (this.translations.comparators && this.translations.comparators[comparator]) {
       return this.translations.comparators[comparator];
     }
-    return this.translateService.get(`${this.translationService.baseTranslationKey}.table.filters.base.comparators.${comparator}`);
+
+    return '';
   }
 
   /**

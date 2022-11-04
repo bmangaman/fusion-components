@@ -1,5 +1,5 @@
 <div class="f-upload__container">
-  <div class="f-upload__instructions">{{ translations?.instructions || ( baseTranslationKey + '.upload.instructions' | translate ) }}</div>
+  <div class="f-upload__instructions">{{ translations.instructions }}</div>
   <div *ngIf="!isBrowseHidden" class="f-upload__browse">
     <input
       #uploadInput
@@ -8,7 +8,7 @@
       [disabled]="isBrowseDisabled || isUploadInProgress"
       [attr.aria-disabled]="isBrowseDisabled || isUploadInProgress"
       [multiple]="areMultipleFilesAllowed"
-      [accept]="validFileTypes?.join(',')"
+      [accept]="validFileTypes.join(',')"
       (change)="updateFileList($event)"
       [name]="uploadId"
       [id]="uploadId" />
@@ -16,7 +16,7 @@
       class="f-button f-button--secondary f-button--small f-upload__browse-label"
       [ngClass]="{ 'f-button--disabled': (isBrowseDisabled || isUploadInProgress) }"
       [for]="uploadId">
-      {{ translations?.buttons?.browse || ( baseTranslationKey + '.upload.buttons.browse' | translate ) }}
+      {{ translations.buttons?.browse }}
     </label>
   </div>
 </div>
@@ -34,7 +34,7 @@
         <f-button
           *ngIf="isUploadManual && !fileInfo?.subscription"
           [size]="Size.SMALL"
-          [text]="translations?.buttons?.upload  || ( baseTranslationKey + '.upload.buttons.upload' | translate )"
+          [text]="translations.buttons?.upload"
           [classes]="['f-upload__file-info-button', 'f-upload__file-upload-button']"
           [type]="ButtonType.PRIMARY"
           (buttonClick)="uploadFile(fileInfo)">
@@ -42,7 +42,7 @@
         <f-button
           *ngIf="fileInfo?.subscription && !fileInfo?.isComplete"
           [size]="Size.X_SMALL"
-          [text]="translations?.buttons?.cancel  || ( baseTranslationKey + '.upload.buttons.cancel' | translate )"
+          [text]="translations.buttons?.cancel"
           [classes]="['f-upload__file-info-button', 'f-upload__file-cancel-button']"
           [type]="ButtonType.SECONDARY"
           (buttonClick)="cancelFile(fileInfo)">
@@ -50,7 +50,7 @@
         <f-button
           *ngIf="removeFilesFunction && fileInfo?.isComplete"
           [size]="Size.SMALL"
-          [text]="translations?.buttons?.remove  || ( baseTranslationKey + '.upload.buttons.remove' | translate )"
+          [text]="translations.buttons?.remove"
           [classes]="['f-upload__file-info-button', 'f-upload__file-remove-button']"
           [type]="ButtonType.SECONDARY"
           (buttonClick)="removeFile(fileInfo)">
@@ -58,7 +58,7 @@
         <f-button
           *ngIf="!isDismissButtonHidden && (!fileInfo?.subscription || fileInfo?.isComplete)"
           [size]="Size.SMALL"
-          [aria]="{ label: translations?.buttons?.dismiss  || ( baseTranslationKey + '.upload.buttons.dismiss' | translate ) }"
+          [aria]="{ label: translations.buttons?.dismiss }"
           icon="mdi-close"
           [classes]="['f-upload__file-info-button', 'f-upload__file-dismiss-button']"
           [type]="ButtonType.SECONDARY"

@@ -2,7 +2,7 @@
  * This file contains common sorting functionality for the Table columns.
  */
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import { get } from 'lodash';
+import { get } from 'lodash-es';
 import { TableColumnSorted, TableRowData } from './table.interface';
 
 export type TableColumnSort =

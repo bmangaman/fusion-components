@@ -8,15 +8,15 @@ import { ComponentFixture } from '@angular/core/testing';
  */
 export class KeyValueTablePageObject {
   private fixture: ComponentFixture<any>;
-  private tableClass: string;
+  private tableClass: string | undefined;
 
-  get table(): HTMLTableElement {
+  get table(): HTMLTableElement | null {
     // first try to get the f-key-value-table element by a provided class
     const tableClass: HTMLElement = this.tableClass ? this.fixture.nativeElement.querySelector(this.tableClass) : null;
     // if no provided class or element not found, try to find the f-key-value-table element by the f-key-value-table tag
     const keyValueTable: HTMLElement = tableClass || this.fixture.nativeElement.querySelector('f-key-value-table');
     // if f-key-value-table found, find the actual <button> element by the .f-key-value-table class
-    const table: HTMLTableElement = keyValueTable ? keyValueTable.querySelector('.f-key-value-table') : null;
+    const table: HTMLTableElement | null = keyValueTable ? keyValueTable.querySelector('.f-key-value-table') : null;
 
     return table;
   }
@@ -26,8 +26,8 @@ export class KeyValueTablePageObject {
    *
    * @returns The table rows.
    */
-  get tableRows(): NodeListOf<HTMLTableRowElement> {
-    const table: HTMLTableElement = this.table;
+  get tableRows(): NodeListOf<HTMLTableRowElement> | null {
+    const table: HTMLTableElement | null = this.table;
     return table ? table.querySelectorAll('.f-key-value-table__row') : null;
   }
 
@@ -36,8 +36,8 @@ export class KeyValueTablePageObject {
    *
    * @returns The table key cells.
    */
-  get tableKeyCells(): NodeListOf<HTMLTableHeaderCellElement> {
-    const table: HTMLTableElement = this.table;
+  get tableKeyCells(): NodeListOf<HTMLTableHeaderCellElement> | null {
+    const table: HTMLTableElement | null = this.table;
     return table ? table.querySelectorAll('.f-key-value-table__cell--header') : null;
   }
 
@@ -46,8 +46,8 @@ export class KeyValueTablePageObject {
    *
    * @returns The table value cells.
    */
-  get tableValueCells(): NodeListOf<HTMLTableCellElement> {
-    const table: HTMLTableElement = this.table;
+  get tableValueCells(): NodeListOf<HTMLTableCellElement> | null {
+    const table: HTMLTableElement | null = this.table;
     return table ? table.querySelectorAll('.f-key-value-table__cell--body') : null;
   }
 
@@ -57,8 +57,8 @@ export class KeyValueTablePageObject {
    * @param index The index of the row.
    * @returns The table row.
    */
-  getTableRowAtIndex(index: number): HTMLTableRowElement {
-    const tableRows: NodeListOf<HTMLTableRowElement> = this.tableRows;
+  getTableRowAtIndex(index: number): HTMLTableRowElement | null {
+    const tableRows: NodeListOf<HTMLTableRowElement> | null = this.tableRows;
     return tableRows ? tableRows.item(index) : null;
   }
 
@@ -68,8 +68,8 @@ export class KeyValueTablePageObject {
    * @param index The index of the row.
    * @returns The table key cell.
    */
-  getTableKeyCellAtRowIndex(index: number): HTMLTableHeaderCellElement {
-    const tableRow: HTMLTableRowElement = this.getTableRowAtIndex(index);
+  getTableKeyCellAtRowIndex(index: number): HTMLTableHeaderCellElement | null {
+    const tableRow: HTMLTableRowElement | null = this.getTableRowAtIndex(index);
     return tableRow ? tableRow.querySelector('.f-key-value-table__cell--header') : null;
   }
 
@@ -79,8 +79,8 @@ export class KeyValueTablePageObject {
    * @param index The index of the row.
    * @returns The table value cell.
    */
-  getTableValueCellAtRowIndex(index: number): HTMLTableCellElement {
-    const tableRow: HTMLTableRowElement = this.getTableRowAtIndex(index);
+  getTableValueCellAtRowIndex(index: number): HTMLTableCellElement | null {
+    const tableRow: HTMLTableRowElement | null = this.getTableRowAtIndex(index);
     return tableRow ? tableRow.querySelector('.f-key-value-table__cell--body') : null;
   }
 

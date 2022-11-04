@@ -3,7 +3,7 @@
   <f-table-filter-comparator
     [comparators]="filterComparators"
     (comparatorChange)="selectedFilterComparator.next($event)"
-    [translations]="translations?.comparator">
+    [translations]="translations.comparator">
   </f-table-filter-comparator>
 
   <div class="f-form__group f-form__field-group--inline">
@@ -13,7 +13,7 @@
           type="number"
           formControlName="bytes"
           class="f-form__input"
-          [attr.aria-label]="translations?.fields?.bytes || ( baseTranslationKey + '.table.filters.bytes.fields.bytes' | translate )" />
+          [attr.aria-label]="translations.fields?.bytes" />
       </div>
     </div>
 
@@ -22,7 +22,7 @@
         <select
           formControlName="unit"
           class="f-form__input f-form__select"
-          [attr.aria-label]="translations?.fields?.unit || ( baseTranslationKey + '.table.filters.bytes.fields.unit' | translate )">
+          [attr.aria-label]="translations.fields?.unit">
           <option *ngFor="let unit of bytesOptions" [ngValue]="unit">
             {{ unit }}
           </option>

@@ -19,11 +19,11 @@ describe('AutofocusDirective', () => {
       /* eslint-disable @typescript-eslint/dot-notation */
 
       it('should set _focus', () => {
-        directive['_focus'] = null;
+        directive['_focus'] = null as any;
         directive.fusionUiAutofocus = false;
         expect(directive['_focus']).toBeFalse();
 
-        directive['_focus'] = null;
+        directive['_focus'] = null as any;
         directive.fusionUiAutofocus = true;
         expect(directive['_focus']).toBeTrue();
       });

@@ -10,18 +10,18 @@ export class CheckboxPageObject {
   private readonly baseClass: string = '.f-form__checkbox';
 
   private fixture: ComponentFixture<any>;
-  private checkboxClass: string;
+  private checkboxClass: string | undefined;
 
   /**
    * Gets the wrapping div container element.
    */
-  get checkbox(): HTMLElement {
+  get checkbox(): HTMLElement | null {
     // first try to get the f-checkbox element by a provided class
     const fusionCheckboxByClass: HTMLElement = this.checkboxClass ? this.fixture.nativeElement.querySelector(this.checkboxClass) : null;
     // if no provided class or element not found, try to find the f-checkbox element by the f-checkbox tag
     const fusionCheckbox: HTMLElement = fusionCheckboxByClass || this.fixture.nativeElement.querySelector('f-checkbox');
     // if f-checkbox found, find the actual <checkbox> element by the .f-checkbox class
-    const checkbox: HTMLElement = fusionCheckbox ? fusionCheckbox.querySelector(this.baseClass) : null;
+    const checkbox: HTMLElement | null = fusionCheckbox ? fusionCheckbox.querySelector(this.baseClass) : null;
 
     return checkbox;
   }
@@ -31,8 +31,8 @@ export class CheckboxPageObject {
    *
    * @returns The label element for the input.
    */
-  get label(): HTMLLabelElement {
-    const checkbox: HTMLElement = this.checkbox;
+  get label(): HTMLLabelElement | null {
+    const checkbox: HTMLElement | null = this.checkbox;
     return checkbox ? checkbox.querySelector(`${this.baseClass}-label`) : null;
   }
 
@@ -41,8 +41,8 @@ export class CheckboxPageObject {
    *
    * @returns The label element for the input.
    */
-  get labelText(): HTMLSpanElement {
-    const checkbox: HTMLElement = this.checkbox;
+  get labelText(): HTMLSpanElement | null {
+    const checkbox: HTMLElement | null = this.checkbox;
     return checkbox ? checkbox.querySelector(`${this.baseClass}-label-text`) : null;
   }
 
@@ -51,8 +51,8 @@ export class CheckboxPageObject {
      *
      * @returns The label element for the input.
      */
-  get input(): HTMLInputElement {
-    const checkbox: HTMLElement = this.checkbox;
+  get input(): HTMLInputElement | null {
+    const checkbox: HTMLElement | null = this.checkbox;
     return checkbox ? checkbox.querySelector(`${this.baseClass}-input`) : null;
   }
 

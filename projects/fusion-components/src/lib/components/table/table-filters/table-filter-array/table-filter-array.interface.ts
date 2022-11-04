@@ -6,10 +6,23 @@ export enum TableFilterArrayInputComparator {
 }
 
 export interface TableFilterArrayTranslations extends TableFilterTranslations {
-  comparators?: {
-    [key in TableFilterArrayInputComparator]?: string;
+  comparators: {
+    [key in TableFilterArrayInputComparator]: string;
   };
-  fields?: {
-    value?: string;
+  fields: {
+    value: string;
   };
 }
+
+export const DEFAULT_TABLE_FILTER_ARRAY_TRANSLATIONS: TableFilterArrayTranslations = {
+  comparator: {
+    comparatorLabel: 'Array',
+  },
+  comparators: {
+    contains: 'contains',
+    doesNotContain: 'does not contain',
+  },
+  fields: {
+    value: 'value',
+  },
+};

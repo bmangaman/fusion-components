@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { SafeHtml } from '@angular/platform-browser';
-import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
 import { ErrorMessage } from '../../components/error-message/error-message.interface';
-import { FusionComponentsTranslationService } from '../translation';
 import {
   ErrorMessageGeneratorConfig,
   ErrorMessageGeneratorTranslationConfig,
@@ -20,11 +18,6 @@ import {
  */
 @Injectable()
 export class ErrorMessageGeneratorService {
-  constructor(
-    private translationService: FusionComponentsTranslationService,
-    private translateService: TranslateService,
-  ) {}
-
   /**
    * Uses the generateError function to generate and return a required error message based on the optional configuration provided.
    *
@@ -63,24 +56,10 @@ export class ErrorMessageGeneratorService {
    * @returns The generated error message.
    */
   generateError(config: ErrorMessageGeneratorConfig, defaultError?: string): ErrorMessage {
-    const priority: number | undefined = config.priority;
-    const error: string = config.error || defaultError || '';
-    const translation: Observable<string | SafeHtml> =
-      config.translation ||
-      (config.translationConfig ? this.getTranslation(config.translationConfig, error) : of(''));
+    const priority: number | undefined = config?.priority;
+    const error: string = config?.error || defaultError || '';
+    const translation: Observable<string | SafeHtml> = config?.translation || of('');
 
     return { priority, translation, error };
-  }
-
-  /**
-   * Returns the desired text to be displayed.
-   * Supports both plural and singular translations by setting isPlural in the translationConfig.
-   *
-   * @param config The error message generator config.
-   * @returns The generated translation based on the provided config and error.
-   */
-  private getTranslation(translationConfig: ErrorMessageGeneratorTranslationConfig, error: string): Observable<string | SafeHtml> {
-    const translationKey = `${this.translationService.baseTranslationKey}.errorMessage.${error}.${translationConfig?.isPlural ? 'plural' : 'singular'}`;
-    return this.translateService.get(translationKey, translationConfig);
   }
 }

@@ -27,37 +27,37 @@ describe('TabviewComponent', () => {
         let expectedResult: string;
         let actualResult: string;
 
-        component.type = null;
-        component.classes = null;
+        component.type = null as any;
+        component.classes = null as any;
         expectedResult = 'f-tabview';
         actualResult = component.hostClasses;
         expect(actualResult).toEqual(expectedResult);
 
         component.type = TabviewType.CONTENT;
-        component.classes = null;
+        component.classes = null as any;
         expectedResult = 'f-tabview f-tabview-type-content';
         actualResult = component.hostClasses;
         expect(actualResult).toEqual(expectedResult);
 
         component.type = TabviewType.TOP;
-        component.classes = null;
+        component.classes = null as any;
         expectedResult = 'f-tabview f-tabview-type-top';
         actualResult = component.hostClasses;
         expect(actualResult).toEqual(expectedResult);
 
         component.type = TabviewType.INNER_CONTENT;
-        component.classes = null;
+        component.classes = null as any;
         expectedResult = 'f-tabview f-tabview-type-inner-content';
         actualResult = component.hostClasses;
         expect(actualResult).toEqual(expectedResult);
 
-        component.type = null;
+        component.type = null as any;
         component.classes = ['custom-class-1'];
         expectedResult = 'f-tabview custom-class-1';
         actualResult = component.hostClasses;
         expect(actualResult).toEqual(expectedResult);
 
-        component.type = null;
+        component.type = null as any;
         component.classes = ['custom-class-1', 'custom-class-2'];
         expectedResult = 'f-tabview custom-class-1 custom-class-2';
         actualResult = component.hostClasses;
@@ -136,7 +136,7 @@ describe('TabviewComponent', () => {
 
     it('should set the first tab to be selected if no routingParent is definied', () => {
       setTabs(2);
-      component.routingParent = null;
+      component.routingParent = null as any;
       component.ngAfterContentInit();
       expect(component.tabs.toArray()[0].isSelected).toBeTruthy();
       expect(component.tabs.toArray()[0].isLoaded).toBeTruthy();
@@ -148,7 +148,7 @@ describe('TabviewComponent', () => {
     it('should set the second tab to be selected if no routingParent is definied and the first tab is disabled', () => {
       setTabs(2);
       component.tabs.toArray()[0].isDisabled = true;
-      component.routingParent = null;
+      component.routingParent = null as any;
       component.ngAfterContentInit();
       expect(component.tabs.toArray()[0].isSelected).toBeFalsy();
       expect(component.tabs.toArray()[0].isLoaded).toBeFalsy();
@@ -161,7 +161,7 @@ describe('TabviewComponent', () => {
       setTabs(2);
       component.tabs.toArray()[0].isDisabled = true;
       component.tabs.toArray()[1].isDisabled = true;
-      component.routingParent = null;
+      component.routingParent = null as any;
       component.ngAfterContentInit();
       expect(component.tabs.toArray()[0].isSelected).toBeFalsy();
       expect(component.tabs.toArray()[0].isLoaded).toBeFalsy();
@@ -172,7 +172,7 @@ describe('TabviewComponent', () => {
 
     it('should load all tabs if lazyLoading is set to false', () => {
       setTabs(2);
-      component.routingParent = null;
+      component.routingParent = null as any;
       component.lazyLoading = false;
       component.ngAfterContentInit();
       expect(component.tabs.toArray()[0].isSelected).toBeTruthy();
@@ -203,7 +203,7 @@ describe('TabviewComponent', () => {
     });
 
     it('should NOT call router.navigate if a routingParent was not provided', () => {
-      component.routingParent = null;
+      component.routingParent = null as any;
       component.selectTab(component.tabs.toArray()[0]);
       expect(router.navigate).not.toHaveBeenCalled();
     });

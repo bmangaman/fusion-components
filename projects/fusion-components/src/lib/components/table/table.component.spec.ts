@@ -2,14 +2,11 @@ import { ChangeDetectorRef, ElementRef, QueryList, Renderer2, SimpleChange, Temp
 import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 import { UntypedFormBuilder } from '@angular/forms';
 
-import { TranslateService } from '@ngx-translate/core';
-
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { MockElementRef } from '@fusion-components/unit-test-helpers/mock-utils.spec';
 import { TemplateDirective } from '../../directives/template';
-import { FusionComponentsTranslationService } from '../../services/translation';
 import { State } from '../../shared';
 import { TableColumnComponent } from './table-column';
 import { TableFilterConfig } from './table-filter-selector';
@@ -33,17 +30,13 @@ describe('TableComponent', () => {
   let component: TableComponent;
   let elementRef: ElementRef;
   let renderer: Renderer2;
-  let translationService: FusionComponentsTranslationService;
-  let translateService: TranslateService;
   let changeDetectorRef: ChangeDetectorRef;
 
   beforeEach(() => {
     elementRef = new MockElementRef;
     renderer = ComponentStubFactory.getRenderer2Stub() as Renderer2;
-    translationService = new FusionComponentsTranslationService();
-    translateService = ComponentStubFactory.getTranslateServiceStub();
     changeDetectorRef = ComponentStubFactory.getChangeDetectorRefStub() as ChangeDetectorRef;
-    component = new TableComponent(elementRef, renderer, translationService, changeDetectorRef);
+    component = new TableComponent(elementRef, renderer, changeDetectorRef);
   });
 
   it('should be defined', () => {
@@ -67,9 +60,9 @@ describe('TableComponent', () => {
         colC = new TableColumnComponent(changeDetectorRef);
         colC.field = 'c';
 
-        filterA = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
+        filterA = new TableFilterComponent(new UntypedFormBuilder());
         filterA.field = 'a';
-        filterC = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
+        filterC = new TableFilterComponent(new UntypedFormBuilder());
         filterC.field = 'c';
       });
 
@@ -77,7 +70,7 @@ describe('TableComponent', () => {
         /* eslint-disable @typescript-eslint/dot-notation */
 
         expect(component.visibleColumns).toEqual([]);
-        expect(component['_prevVisibleColumns']).toEqual(undefined);
+        expect(component['_prevVisibleColumns']).toEqual(undefined as any);
 
         component.visibleColumns = [colA, colB];
         tick();
@@ -130,8 +123,8 @@ describe('TableComponent', () => {
       it('should set the data and call tableData$.next', () => {
         /* eslint-disable @typescript-eslint/dot-notation */
         component.data = [{ data: 'data' }];
-        expect(component['_data'].length).toEqual(1);
-        expect(component['_data'][0].data).toEqual('data');
+        expect(component['_data']!.length).toEqual(1);
+        expect(component['_data']![0].data).toEqual('data');
         expect(component.data[0].data).toEqual('data');
         expect(component.tableData$.next).toHaveBeenCalled();
         /* eslint-enable @typescript-eslint/dot-notation */
@@ -312,8 +305,8 @@ describe('TableComponent', () => {
         component['_data'] = [{}, {}];
         component.disableRowSelectionFunction = () => false;
         expect(component.isTableDataSelectable).toHaveBeenCalled();
-        expect(component.data[0].isSelectable).toBeTrue();
-        expect(component.data[1].isSelectable).toBeTrue();
+        expect(component.data![0].isSelectable).toBeTrue();
+        expect(component.data![1].isSelectable).toBeTrue();
       });
 
       /* eslint-enable @typescript-eslint/dot-notation */
@@ -336,8 +329,8 @@ describe('TableComponent', () => {
         component['_data'] = [{}, {}];
         component.disableRowExpansionFunction = () => false;
         expect(component.isTableDataExpandable).toHaveBeenCalled();
-        expect(component.data[0].isExpandable).toBeTrue();
-        expect(component.data[1].isExpandable).toBeTrue();
+        expect(component.data![0].isExpandable).toBeTrue();
+        expect(component.data![1].isExpandable).toBeTrue();
       });
 
       /* eslint-enable @typescript-eslint/dot-notation */
@@ -360,8 +353,8 @@ describe('TableComponent', () => {
         component['_data'] = [{}, {}];
         component.disableRowActionsButtonFunction = () => false;
         expect(component.isTableDataActionEnabled).toHaveBeenCalled();
-        expect(component.data[0].isActionable).toBeTrue();
-        expect(component.data[1].isActionable).toBeTrue();
+        expect(component.data![0].isActionable).toBeTrue();
+        expect(component.data![1].isActionable).toBeTrue();
       });
 
       /* eslint-enable @typescript-eslint/dot-notation */
@@ -373,7 +366,7 @@ describe('TableComponent', () => {
       });
 
       it('should not allow the uuid to be set to a null/ empty value', () => {
-        component.tableUuid = null;
+        component.tableUuid = null as any;
         expect(component.tableUuid).toBeTruthy();
         component.tableUuid = '';
         expect(component.tableUuid).toBeTruthy();
@@ -394,7 +387,7 @@ describe('TableComponent', () => {
         expect(component.appliedTableViewName).toEqual('n/a');
         // eslint-disable-next-line @typescript-eslint/dot-notation
         expect(component['_appliedTableViewName']).toEqual('n/a');
-        expect(component.appliedTableView).toEqual(undefined);
+        expect(component.appliedTableView).toEqual(undefined as any);
 
         component.tableViews = [tableView, nameTableView];
         component.appliedTableViewName = 'n/a';
@@ -446,8 +439,8 @@ describe('TableComponent', () => {
       });
 
       it('should not call updateColumns() if columns are not defined', () => {
-        component['_columns'] = undefined;
-        component.columns = undefined;
+        component['_columns'] = undefined as any;
+        component.columns = undefined as any;
         expect(component.updateColumns).not.toHaveBeenCalled();
       });
 
@@ -460,7 +453,7 @@ describe('TableComponent', () => {
 
         let filters: QueryList<TableFilterComponent>;
 
-        filters = null;
+        filters = null as any;
         component.filters = filters;
         expect(component['_filters']).toEqual(filters);
         expect(component.filters).toEqual(filters);
@@ -474,8 +467,8 @@ describe('TableComponent', () => {
 
         filters = new QueryList<TableFilterComponent>();
         filters['_results'] = [
-          new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService),
-          new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService),
+          new TableFilterComponent(new UntypedFormBuilder()),
+          new TableFilterComponent(new UntypedFormBuilder()),
         ];
         component.filters = filters;
         expect(component['_filters']).toEqual(filters);
@@ -485,8 +478,8 @@ describe('TableComponent', () => {
         component.type = TableType.BASIC;
         filters = new QueryList<TableFilterComponent>();
         filters['_results'] = [
-          new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService),
-          new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService),
+          new TableFilterComponent(new UntypedFormBuilder()),
+          new TableFilterComponent(new UntypedFormBuilder()),
         ];
         component.filters = filters;
         expect(component['_filters']).toEqual(filters);
@@ -741,7 +734,7 @@ describe('TableComponent', () => {
     it('should determine whether or not filtering is enabled based on the table type and existence of filters', () => {
       let filters: QueryList<TableFilterComponent>;
 
-      filters = null;
+      filters = null as any;
       component.filters = filters;
       component.type = TableType.BASIC;
       component.ngOnChanges({
@@ -749,7 +742,7 @@ describe('TableComponent', () => {
       });
       expect(component.enabledFunctionality.filtering).toBeFalse();
 
-      filters = null;
+      filters = null as any;
       component.filters = filters;
       component.type = TableType.ADVANCED;
       component.ngOnChanges({
@@ -759,7 +752,7 @@ describe('TableComponent', () => {
 
       filters = new QueryList<TableFilterComponent>();
       // eslint-disable-next-line @typescript-eslint/dot-notation
-      filters['_results'] = [new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService)];
+      filters['_results'] = [new TableFilterComponent(new UntypedFormBuilder())];
       component.filters = filters;
       component.type = TableType.BASIC;
       component.ngOnChanges({
@@ -769,7 +762,7 @@ describe('TableComponent', () => {
 
       filters = new QueryList<TableFilterComponent>();
       // eslint-disable-next-line @typescript-eslint/dot-notation
-      filters['_results'] = [new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService)];
+      filters['_results'] = [new TableFilterComponent(new UntypedFormBuilder())];
       component.filters = filters;
       component.type = TableType.ADVANCED;
       component.ngOnChanges({
@@ -781,21 +774,21 @@ describe('TableComponent', () => {
     it('should determine whether or not the table header is enabled based tableTitle and tableHeader', () => {
       /* eslint-disable @typescript-eslint/dot-notation */
 
-      component['_tableHeader'] = undefined;
-      component.tableTitle = undefined;
+      component['_tableHeader'] = undefined as any;
+      component.tableTitle = undefined as any;
       component.ngOnChanges({
         tableTitle: new SimpleChange(null, component.tableTitle, false),
       });
       expect(component.enabledFunctionality.header).toBeFalse();
 
-      component['_tableHeader'] = undefined;
+      component['_tableHeader'] = undefined as any;
       component.tableTitle = '';
       component.ngOnChanges({
         tableTitle: new SimpleChange(null, component.tableTitle, false),
       });
       expect(component.enabledFunctionality.header).toBeFalse();
 
-      component['_tableHeader'] = undefined;
+      component['_tableHeader'] = undefined as any;
       component.tableTitle = 'Table Title';
       component.ngOnChanges({
         tableTitle: new SimpleChange(null, component.tableTitle, false),
@@ -810,7 +803,7 @@ describe('TableComponent', () => {
       expect(component.enabledFunctionality.header).toBeTruthy();
 
       component['_tableHeader'] = {} as TemplateRef<any>;
-      component.tableTitle = undefined;
+      component.tableTitle = undefined as any;
       component.ngOnChanges({
         tableTitle: new SimpleChange(null, component.tableTitle, false),
       });
@@ -820,7 +813,7 @@ describe('TableComponent', () => {
     });
 
     it('should determine whether or not rowSelection is enabled based on the selectionMnode', () => {
-      component.selectionMode = null;
+      component.selectionMode = null as any;
       component.ngOnChanges({
         selectionMode: new SimpleChange(null, component.selectionMode, false),
       });
@@ -842,9 +835,9 @@ describe('TableComponent', () => {
     it('should determine whether or rowExpansion is enabled based on the roxExpansionMode and provided template', () => {
       const mockTemplate: TemplateRef<any> = {} as TemplateRef<any>;
 
-      component.rowExpansionMode = null;
+      component.rowExpansionMode = null as any;
       // eslint-disable-next-line @typescript-eslint/dot-notation
-      component['_rowExpansion'] = null;
+      component['_rowExpansion'] = null as any;
       component.ngOnChanges({
         rowExpansionMode: new SimpleChange(null, component.rowExpansionMode, false),
       });
@@ -852,13 +845,13 @@ describe('TableComponent', () => {
 
       component.rowExpansionMode = RowExpansionMode.SINGLE;
       // eslint-disable-next-line @typescript-eslint/dot-notation
-      component['_rowExpansion'] = null;
+      component['_rowExpansion'] = null as any;
       component.ngOnChanges({
         rowExpansionMode: new SimpleChange(null, component.rowExpansionMode, false),
       });
       expect(component.enabledFunctionality.rowExpansion).toBeFalse();
 
-      component.rowExpansionMode = null;
+      component.rowExpansionMode = null as any;
       // eslint-disable-next-line @typescript-eslint/dot-notation
       component['_rowExpansion'] = mockTemplate;
       component.ngOnChanges({
@@ -917,11 +910,11 @@ describe('TableComponent', () => {
     let expectedResult: string[];
 
     beforeEach(() => {
-      expectedResult = undefined;
-      component.fillContainer = undefined;
-      component.type = undefined;
-      component.spacing = undefined;
-      component.state = undefined;
+      expectedResult = undefined as any;
+      component.fillContainer = undefined as any;
+      component.type = undefined as any;
+      component.spacing = undefined as any;
+      component.state = undefined as any;
     });
 
     it('should append the "f-table" class by default', () => {
@@ -991,8 +984,8 @@ describe('TableComponent', () => {
 
   describe('colTrackByFn()', () => {
     it('should return the item.field if defined, the index otherwise', () => {
-      expect(component.colTrackByFn(undefined, undefined)).toEqual(undefined);
-      expect(component.colTrackByFn(1, undefined)).toEqual(1);
+      expect(component.colTrackByFn(undefined as any, undefined as any)).toEqual(undefined as any);
+      expect(component.colTrackByFn(1, undefined as any)).toEqual(1);
 
       const column: TableColumnComponent = new TableColumnComponent(changeDetectorRef);
       expect(component.colTrackByFn(1, column)).toEqual(1);
@@ -1004,8 +997,8 @@ describe('TableComponent', () => {
 
   describe('rowTrackByFn()', () => {
     it('should return the item.tableRowUuid if defined, the index otherwise', () => {
-      expect(component.rowTrackByFn(undefined, undefined)).toEqual(undefined);
-      expect(component.rowTrackByFn(1, undefined)).toEqual(1);
+      expect(component.rowTrackByFn(undefined as any, undefined as any)).toEqual(undefined as any);
+      expect(component.rowTrackByFn(1, undefined as any)).toEqual(1);
 
       const data: TableRowData = {};
       expect(component.rowTrackByFn(1, data)).toEqual(1);
@@ -1068,28 +1061,28 @@ describe('TableComponent', () => {
 
     it('should NOT sort the table data if no sortConfig was provided, if there are no visible columns, if there is no data', () => {
       // no data, no visible columns, no config
-      component['_visibleColumns'] = null;
+      component['_visibleColumns'] = null as any;
       component['_data'] = null;
-      component.sortTableData(null, true);
+      component.sortTableData(null as any, true);
       expect(component.data).toEqual(null);
 
-      component['_prevSortTableColumnConfig'] = undefined;
+      component['_prevSortTableColumnConfig'] = undefined as any;
 
       // no visible columns, no config
-      component['_visibleColumns'] = null;
+      component['_visibleColumns'] = null as any;
       component['_data'] = data;
-      component.sortTableData(null, true);
+      component.sortTableData(null as any, true);
       expect(component.data).toEqual(data);
 
-      component['_prevSortTableColumnConfig'] = undefined;
+      component['_prevSortTableColumnConfig'] = undefined as any;
 
       // no visible columns
-      component['_visibleColumns'] = null;
+      component['_visibleColumns'] = null as any;
       component['_data'] = data;
       component.sortTableData(config, true);
       expect(component.data).toEqual(data);
 
-      component['_prevSortTableColumnConfig'] = undefined;
+      component['_prevSortTableColumnConfig'] = undefined as any;
 
       // no visible columns (length)
       component['_visibleColumns'] = [];
@@ -1097,15 +1090,15 @@ describe('TableComponent', () => {
       component.sortTableData(config, true);
       expect(component.data).toEqual(data);
 
-      component['_prevSortTableColumnConfig'] = undefined;
+      component['_prevSortTableColumnConfig'] = undefined as any;
 
       // no config
       component['_visibleColumns'] = visibleColumns;
       component['_data'] = data;
-      component.sortTableData(null, true);
+      component.sortTableData(null as any, true);
       expect(component.data).toEqual(data);
 
-      component['_prevSortTableColumnConfig'] = undefined;
+      component['_prevSortTableColumnConfig'] = undefined as any;
 
       // no data
       component['_visibleColumns'] = visibleColumns;
@@ -1113,7 +1106,7 @@ describe('TableComponent', () => {
       component.sortTableData(config, true);
       expect(component.data).toEqual(null);
 
-      component['_prevSortTableColumnConfig'] = undefined;
+      component['_prevSortTableColumnConfig'] = undefined as any;
 
       // no data (length)
       component['_visibleColumns'] = visibleColumns;
@@ -1128,19 +1121,19 @@ describe('TableComponent', () => {
       config.sorted = TableColumnSorted.ASCENDING;
       component.finalTableData$['_value'] = undefined;
       component.sortTableData(config, false);
-      expect(component.visibleColumns[0].sorted).toEqual(null);
+      expect(component.visibleColumns[0].sorted).toEqual(null as any);
       expect(component.visibleColumns[1].sorted).toEqual(TableColumnSorted.ASCENDING);
 
       config.sorted = TableColumnSorted.DESCENDING;
       component.finalTableData$['_value'] = [];
       component.sortTableData(config, false);
-      expect(component.visibleColumns[0].sorted).toEqual(null);
+      expect(component.visibleColumns[0].sorted).toEqual(null as any);
       expect(component.visibleColumns[1].sorted).toEqual(TableColumnSorted.DESCENDING);
 
       config.sorted = TableColumnSorted.ASCENDING;
       component.finalTableData$['_value'] = cloneDeep(data);
       component.sortTableData(config, false);
-      expect(component.visibleColumns[0].sorted).toEqual(null);
+      expect(component.visibleColumns[0].sorted).toEqual(null as any);
       expect(component.visibleColumns[1].sorted).toEqual(TableColumnSorted.ASCENDING);
     });
 
@@ -1149,13 +1142,13 @@ describe('TableComponent', () => {
       config.field = 'column2Field';
 
       component.sortTableData(config, true);
-      expect(component.visibleColumns[0].sorted).toEqual(null);
+      expect(component.visibleColumns[0].sorted).toEqual(null as any);
       expect(component.visibleColumns[1].sorted).toEqual(TableColumnSorted.ASCENDING);
     });
 
     it('should sort by the custom sort function if provided', () => {
       config.sortFunction = () => 1;
-      spyOn(config, 'sortFunction').and.callThrough();
+      spyOnProperty(config, 'sortFunction').and.callThrough();
       component.sortTableData(config, true);
       expect(config.sortFunction).toHaveBeenCalled();
     });
@@ -1172,12 +1165,12 @@ describe('TableComponent', () => {
       config.sorted = TableColumnSorted.ASCENDING;
       config.field = 'column2Field';
       component.sortTableData(config, true);
-      expect(removeTableRowFormattingPipe.transform(component.sortedTableData$.value)).toEqual(expectedTableData);
+      expect(removeTableRowFormattingPipe.transform(component.sortedTableData$.value as any)).toEqual(expectedTableData);
 
       config.sorted = TableColumnSorted.DESCENDING;
       config.field = 'column2Field';
       component.sortTableData(config, true);
-      expect(removeTableRowFormattingPipe.transform(component.sortedTableData$.value)).toEqual(data);
+      expect(removeTableRowFormattingPipe.transform(component.sortedTableData$.value as any)).toEqual(data);
 
       expectedTableData = [
         { column1Field: 'c', column2Field: 1 },
@@ -1190,12 +1183,12 @@ describe('TableComponent', () => {
       config.sorted = TableColumnSorted.ASCENDING;
       config.field = 'column1Field';
       component.sortTableData(config, true);
-      expect(removeTableRowFormattingPipe.transform(component.sortedTableData$.value)).toEqual(data);
+      expect(removeTableRowFormattingPipe.transform(component.sortedTableData$.value as any)).toEqual(data);
 
       config.sorted = TableColumnSorted.DESCENDING;
       config.field = 'column1Field';
       component.sortTableData(config, true);
-      expect(removeTableRowFormattingPipe.transform(component.sortedTableData$.value)).toEqual(expectedTableData);
+      expect(removeTableRowFormattingPipe.transform(component.sortedTableData$.value as any)).toEqual(expectedTableData);
     });
 
     it('should properly sort with nested field values', () => {
@@ -1256,15 +1249,15 @@ describe('TableComponent', () => {
     }));
 
     it('should do nothing if there are no visible columns', fakeAsync(() => {
-      component.visibleColumns = null;
+      component.visibleColumns = null as any;
       tick();
       component.updateSortingOnDataChange();
-      expect(component.sortTableData).toHaveBeenCalledWith(null, undefined);
+      expect(component.sortTableData).toHaveBeenCalledWith(null as any, undefined);
 
       component.visibleColumns = [];
       tick();
       component.updateSortingOnDataChange();
-      expect(component.sortTableData).toHaveBeenCalledWith(null, undefined);
+      expect(component.sortTableData).toHaveBeenCalledWith(null as any, undefined);
 
       discardPeriodicTasks();
     }));
@@ -1276,32 +1269,32 @@ describe('TableComponent', () => {
     });
 
     it('should sort by the default column, if the table is not already sorted', () => {
-      component.visibleColumns[0].defaultSort = undefined;
-      component.visibleColumns[0].sorted = null;
+      component.visibleColumns[0].defaultSort = undefined as any;
+      component.visibleColumns[0].sorted = null as any;
       component.visibleColumns[1].defaultSort = TableColumnSorted.ASCENDING;
-      component.visibleColumns[1].sorted = null;
+      component.visibleColumns[1].sorted = null as any;
       component.updateSortingOnDataChange();
       expect(component.sortTableData).toHaveBeenCalledWith(component.visibleColumns[1].config, undefined);
-      expect(component.visibleColumns[0].sorted).toEqual(null);
+      expect(component.visibleColumns[0].sorted).toEqual(null as any);
       expect(component.visibleColumns[1].sorted).toEqual(TableColumnSorted.ASCENDING);
     });
 
     it('should sort by the FIRST default column, if the table is not already sorted', () => {
       component.visibleColumns[0].defaultSort = TableColumnSorted.ASCENDING;
-      component.visibleColumns[0].sorted = null;
+      component.visibleColumns[0].sorted = null as any;
       component.visibleColumns[1].defaultSort = TableColumnSorted.ASCENDING;
-      component.visibleColumns[1].sorted = null;
+      component.visibleColumns[1].sorted = null as any;
       component.updateSortingOnDataChange();
       expect(component.sortTableData).toHaveBeenCalledWith(component.visibleColumns[0].config, undefined);
       expect(component.visibleColumns[0].sorted).toEqual(TableColumnSorted.ASCENDING);
-      expect(component.visibleColumns[1].sorted).toEqual(null);
+      expect(component.visibleColumns[1].sorted).toEqual(null as any);
     });
 
     it('should sort by the first column, if there are is not a default column nor if the table was not already sorted', () => {
-      component.visibleColumns[0].defaultSort = undefined;
-      component.visibleColumns[0].sorted = null;
-      component.visibleColumns[1].defaultSort = undefined;
-      component.visibleColumns[1].sorted = null;
+      component.visibleColumns[0].defaultSort = undefined as any;
+      component.visibleColumns[0].sorted = null as any;
+      component.visibleColumns[1].defaultSort = undefined as any;
+      component.visibleColumns[1].sorted = null as any;
       component.updateSortingOnDataChange();
       expect(component.sortTableData).toHaveBeenCalledWith(component.visibleColumns[0].config, undefined);
     });
@@ -1317,8 +1310,8 @@ describe('TableComponent', () => {
     });
 
     it('should update filteredTableData', () => {
-      component.filterTableData(undefined);
-      expect(component.filteredTableData$.next).toHaveBeenCalledWith(undefined);
+      component.filterTableData(undefined as any);
+      expect(component.filteredTableData$.next).toHaveBeenCalledWith(undefined as any);
 
       component.filterTableData([]);
       expect(component.filteredTableData$.next).toHaveBeenCalledWith([]);
@@ -1331,7 +1324,7 @@ describe('TableComponent', () => {
   describe('appliedFiltersChange()', () => {
     it('should call filterChange.emit and save the filters if the filters have changed', () => {
       spyOn(component.filterChange, 'emit').and.stub();
-      const filters: TableFilterComponent[] = [new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService)];
+      const filters: TableFilterComponent[] = [new TableFilterComponent(new UntypedFormBuilder())];
 
       // New filters
       component.appliedFiltersChange(filters);
@@ -1346,14 +1339,14 @@ describe('TableComponent', () => {
       const column2: TableColumnComponent = new TableColumnComponent(changeDetectorRef);
       column2.field = 'field2';
 
-      const filter1: TableFilterComponent = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
+      const filter1: TableFilterComponent = new TableFilterComponent(new UntypedFormBuilder());
       filter1.field = 'field1';
 
       // visibleColumns is undefined, do not update the isFiltered flag
-      component.visibleColumns = undefined;
+      component.visibleColumns = undefined as any;
       tick();
       component.appliedFiltersChange([filter1]);
-      expect(component.visibleColumns).toEqual(undefined);
+      expect(component.visibleColumns).toEqual(undefined as any);
 
       component.appliedFiltersChange([]); // reset
 
@@ -1405,9 +1398,9 @@ describe('TableComponent', () => {
     });
 
     it('should just use the selectedTableData with the finalTableData if undefined', () => {
-      component.finalTableData$.next(undefined);
+      component.finalTableData$.next(undefined as any);
       component.updateSelectedData();
-      expect(component.selectedTableData$.next).toHaveBeenCalledWith(undefined);
+      expect(component.selectedTableData$.next).toHaveBeenCalledWith(undefined as any);
     });
 
     describe('selectionMode === MULTIPLE', () => {
@@ -1420,7 +1413,7 @@ describe('TableComponent', () => {
         component.finalTableData$['_value'] = cloneDeep(data);
 
         // Select All
-        component.updateSelectedData(null, true);
+        component.updateSelectedData(null as any, true);
         expectedNextResult = cloneDeep(data);
         expectedNextResult[0].isSelected = true;
         expectedNextResult[3].isSelected = true;
@@ -1438,7 +1431,7 @@ describe('TableComponent', () => {
         expect(component.selectChange.emit).toHaveBeenCalledWith(expectedEmitResult);
 
         // Deselect All
-        component.updateSelectedData(null, true);
+        component.updateSelectedData(null as any, true);
         expectedNextResult[0].isSelected = false;
         expectedNextResult[3].isSelected = false;
         expect(component.selectedTableData$.next).toHaveBeenCalledWith(expectedNextResult);
@@ -1453,7 +1446,7 @@ describe('TableComponent', () => {
         component.finalTableData$['_value'] = cloneDeep(data);
 
         // Select Single Row
-        component.updateSelectedData(component.finalTableData$.value[0]);
+        component.updateSelectedData(component.finalTableData$.value![0]);
         expectedNextResult = cloneDeep(data);
         expectedNextResult[0].isSelected = true;
         expect(component.selectedTableData$.next).toHaveBeenCalledWith(expectedNextResult);
@@ -1470,7 +1463,7 @@ describe('TableComponent', () => {
         expect(component.selectChange.emit).toHaveBeenCalledWith(expectedEmitResult);
 
         // Select Another Single Row
-        component.updateSelectedData(component.finalTableData$.value[3]);
+        component.updateSelectedData(component.finalTableData$.value![3]);
         expectedNextResult[3].isSelected = true;
         expect(component.selectedTableData$.next).toHaveBeenCalledWith(expectedNextResult);
 
@@ -1486,7 +1479,7 @@ describe('TableComponent', () => {
         expect(component.selectChange.emit).toHaveBeenCalledWith(expectedEmitResult);
 
         // Deselect Another Single Row
-        component.updateSelectedData(component.finalTableData$.value[3]);
+        component.updateSelectedData(component.finalTableData$.value![3]);
         expectedNextResult[3].isSelected = false;
         expect(component.selectedTableData$.next).toHaveBeenCalledWith(expectedNextResult);
 
@@ -1502,7 +1495,7 @@ describe('TableComponent', () => {
         expect(component.selectChange.emit).toHaveBeenCalledWith(expectedEmitResult);
 
         // Could not find matching data, so does nothing
-        component.updateSelectedData(null);
+        component.updateSelectedData(null as any);
         expect(component.selectedTableData$.next).toHaveBeenCalledWith(expectedNextResult);
         expect(component.finalTableData$.next).toHaveBeenCalled();
         expect(component.selectChange.emit).toHaveBeenCalledWith(expectedEmitResult);
@@ -1519,7 +1512,7 @@ describe('TableComponent', () => {
         component.finalTableData$['_value'] = cloneDeep(data);
 
         // Select Single Row
-        component.updateSelectedData(component.finalTableData$.value[0]);
+        component.updateSelectedData(component.finalTableData$.value![0]);
         expectedNextResult = cloneDeep(data);
         expectedNextResult[0].isSelected = true;
         expect(component.selectedTableData$.next).toHaveBeenCalledWith(expectedNextResult);
@@ -1536,7 +1529,7 @@ describe('TableComponent', () => {
         expect(component.selectChange.emit).toHaveBeenCalledWith(expectedEmitResult);
 
         // Select Another Single Row
-        component.updateSelectedData(component.finalTableData$.value[3]);
+        component.updateSelectedData(component.finalTableData$.value![3]);
         expectedNextResult = cloneDeep(data);
         expectedNextResult[0].isSelected = false;
         expectedNextResult[3].isSelected = true;
@@ -1554,7 +1547,7 @@ describe('TableComponent', () => {
         expect(component.selectChange.emit).toHaveBeenCalledWith(expectedEmitResult);
 
         // Could not find matching data, so does nothing
-        component.updateSelectedData(null);
+        component.updateSelectedData(null as any);
         expect(component.selectedTableData$.next).toHaveBeenCalledWith(expectedNextResult);
         expect(component.finalTableData$.next).toHaveBeenCalled();
         expect(component.selectChange.emit).toHaveBeenCalledWith(expectedEmitResult);
@@ -1583,7 +1576,7 @@ describe('TableComponent', () => {
     });
 
     it('should handle if selectedTableData is undefined', () => {
-      component.selectedTableData$.next(undefined);
+      component.selectedTableData$.next(undefined as any);
 
       spyOn(component.selectedTableData$, 'next').and.stub();
 
@@ -1641,55 +1634,55 @@ describe('TableComponent', () => {
     it('should toggle all visible rows if no rowData is provided', () => {
       component.handleRowExpansion();
       expect(component.flags.areAllVisibleRowsExpanded).toBeTrue();
-      expect(component.finalTableData$.value[0].isExpanded).toBeTrue();
-      expect(component.finalTableData$.value[1].isExpanded).toBeTrue();
-      expect(component.finalTableData$.value[2].isExpanded).toBeFalse();
+      expect(component.finalTableData$.value![0].isExpanded).toBeTrue();
+      expect(component.finalTableData$.value![1].isExpanded).toBeTrue();
+      expect(component.finalTableData$.value![2].isExpanded).toBeFalse();
 
       component.handleRowExpansion();
       expect(component.flags.areAllVisibleRowsExpanded).toBeFalse();
-      expect(component.finalTableData$.value[0].isExpanded).toBeFalse();
-      expect(component.finalTableData$.value[1].isExpanded).toBeFalse();
-      expect(component.finalTableData$.value[2].isExpanded).toBeFalse();
+      expect(component.finalTableData$.value![0].isExpanded).toBeFalse();
+      expect(component.finalTableData$.value![1].isExpanded).toBeFalse();
+      expect(component.finalTableData$.value![2].isExpanded).toBeFalse();
     });
 
     it('should toggle the isExpanded flag of the provided rowData if rowExpansionMode === MULTIPLE', () => {
       component.rowExpansionMode = RowExpansionMode.MULTIPLE;
-      component.handleRowExpansion(component.finalTableData$.value[0]);
-      expect(component.finalTableData$.value[0].isExpanded).toBeTrue();
-      expect(component.finalTableData$.value[1].isExpanded).toBeTrue();
-      expect(component.finalTableData$.value[2].isExpanded).toBeFalse();
+      component.handleRowExpansion(component.finalTableData$.value![0]);
+      expect(component.finalTableData$.value![0].isExpanded).toBeTrue();
+      expect(component.finalTableData$.value![1].isExpanded).toBeTrue();
+      expect(component.finalTableData$.value![2].isExpanded).toBeFalse();
 
-      component.handleRowExpansion(component.finalTableData$.value[0]);
-      expect(component.finalTableData$.value[0].isExpanded).toBeFalse();
-      expect(component.finalTableData$.value[1].isExpanded).toBeTrue();
-      expect(component.finalTableData$.value[2].isExpanded).toBeFalse();
+      component.handleRowExpansion(component.finalTableData$.value![0]);
+      expect(component.finalTableData$.value![0].isExpanded).toBeFalse();
+      expect(component.finalTableData$.value![1].isExpanded).toBeTrue();
+      expect(component.finalTableData$.value![2].isExpanded).toBeFalse();
 
-      component.handleRowExpansion(component.finalTableData$.value[2]);
-      expect(component.finalTableData$.value[0].isExpanded).toBeFalse();
-      expect(component.finalTableData$.value[1].isExpanded).toBeTrue();
-      expect(component.finalTableData$.value[2].isExpanded).toBeFalse();
+      component.handleRowExpansion(component.finalTableData$.value![2]);
+      expect(component.finalTableData$.value![0].isExpanded).toBeFalse();
+      expect(component.finalTableData$.value![1].isExpanded).toBeTrue();
+      expect(component.finalTableData$.value![2].isExpanded).toBeFalse();
     });
 
     it('should only expand (or collapse) the provided rowData if rowExpansionMode === SINGLE', () => {
       component.dataKey = 'data';
 
       component.rowExpansionMode = RowExpansionMode.SINGLE;
-      component.handleRowExpansion(component.finalTableData$.value[0]);
-      expect(component.finalTableData$.value[0].isExpanded).toBeTrue();
-      expect(component.finalTableData$.value[1].isExpanded).toBeFalse();
-      expect(component.finalTableData$.value[2].isExpanded).toBeFalse();
+      component.handleRowExpansion(component.finalTableData$.value![0]);
+      expect(component.finalTableData$.value![0].isExpanded).toBeTrue();
+      expect(component.finalTableData$.value![1].isExpanded).toBeFalse();
+      expect(component.finalTableData$.value![2].isExpanded).toBeFalse();
 
       component.rowExpansionMode = RowExpansionMode.SINGLE;
-      component.handleRowExpansion(component.finalTableData$.value[0]);
-      expect(component.finalTableData$.value[0].isExpanded).toBeFalse();
-      expect(component.finalTableData$.value[1].isExpanded).toBeFalse();
-      expect(component.finalTableData$.value[2].isExpanded).toBeFalse();
+      component.handleRowExpansion(component.finalTableData$.value![0]);
+      expect(component.finalTableData$.value![0].isExpanded).toBeFalse();
+      expect(component.finalTableData$.value![1].isExpanded).toBeFalse();
+      expect(component.finalTableData$.value![2].isExpanded).toBeFalse();
 
       component.rowExpansionMode = RowExpansionMode.SINGLE;
-      component.handleRowExpansion(component.finalTableData$.value[2]);
-      expect(component.finalTableData$.value[0].isExpanded).toBeFalse();
-      expect(component.finalTableData$.value[1].isExpanded).toBeFalse();
-      expect(component.finalTableData$.value[2].isExpanded).toBeFalse();
+      component.handleRowExpansion(component.finalTableData$.value![2]);
+      expect(component.finalTableData$.value![0].isExpanded).toBeFalse();
+      expect(component.finalTableData$.value![1].isExpanded).toBeFalse();
+      expect(component.finalTableData$.value![2].isExpanded).toBeFalse();
     });
   });
 
@@ -1735,7 +1728,7 @@ describe('TableComponent', () => {
     });
 
     it('should try to compare by uuids second', () => {
-      component.dataKey = null;
+      component.dataKey = null as any;
       data1.tableRowUuid = '1';
       data2.tableRowUuid = '1';
       expect(component.isRowTableDataEqual(data1, data2)).toBeTrue();
@@ -1744,15 +1737,15 @@ describe('TableComponent', () => {
     });
 
     it('should try to compare using indexes last', () => {
-      component.dataKey = null;
+      component.dataKey = null as any;
       expect(component.isRowTableDataEqual(data1, data2, 1, 1)).toBeTrue();
       expect(component.isRowTableDataEqual(data1, data2, 1, 2)).toBeFalse();
     });
 
     it('should return false if none of the required data was provided', () => {
-      expect(component.isRowTableDataEqual(null, null, undefined, undefined)).toBeFalse();
-      component.dataKey = null;
-      expect(component.isRowTableDataEqual(null, null, undefined, undefined)).toBeFalse();
+      expect(component.isRowTableDataEqual(null as any, null as any, undefined, undefined)).toBeFalse();
+      component.dataKey = null as any;
+      expect(component.isRowTableDataEqual(null as any, null as any, undefined, undefined)).toBeFalse();
       expect(component.isRowTableDataEqual(data1, data2)).toBeFalse();
     });
   });
@@ -1829,7 +1822,7 @@ describe('TableComponent', () => {
     });
 
     it('should return true if the data provided is undefined or empty', () => {
-      expect(component.areAllVisibleRowsExpanded(undefined)).toBeTrue();
+      expect(component.areAllVisibleRowsExpanded(undefined as any)).toBeTrue();
       expect(component.areAllVisibleRowsExpanded([])).toBeTrue();
     });
 
@@ -1895,11 +1888,11 @@ describe('TableComponent', () => {
     });
 
     it('should do nothing if there are no columns', () => {
-      component['_visibleColumns'] = undefined;
+      component['_visibleColumns'] = undefined as any;
       component.updateColumns(undefined);
-      expect(component.visibleColumns).toEqual(undefined);
+      expect(component.visibleColumns).toEqual(undefined as any);
       component.updateColumns(new QueryList<TableColumnComponent>());
-      expect(component.visibleColumns).toEqual(undefined);
+      expect(component.visibleColumns).toEqual(undefined as any);
     });
 
     it('should use both the appliedTableView and defaultColumns to update the columns if new columns were provided', () => {
@@ -1929,7 +1922,7 @@ describe('TableComponent', () => {
     });
 
     it('should use the appliedTableView to update the columns (clear column sorting)', () => {
-      appliedTableView.columns[0].sorted = TableColumnSorted.ASCENDING;
+      appliedTableView.columns![0].sorted = TableColumnSorted.ASCENDING;
       component['_appliedTableView'] = appliedTableView;
       component['_columns'] = hiddenColumnsQuery;
 
@@ -1988,7 +1981,7 @@ describe('TableComponent', () => {
 
   describe('unlistenToResizeIndicatorVisibleMouseMove()', () => {
     it('should un-listen and clear resizeIndicatorVisibleListener if defined', () => {
-      component.flags = undefined;
+      component.flags = undefined as any;
       component.unlistenToResizeIndicatorVisibleMouseMove();
 
       component.flags = { resizeIndicatorVisibleListener: undefined };

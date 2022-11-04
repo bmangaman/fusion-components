@@ -2,18 +2,15 @@
 import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 import { Subscription } from 'rxjs';
 
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
 import { TableRowData } from '../table.interface';
 import { TablePaginationComponent } from './table-pagination.component';
 import { TablePaginationConfig } from './table-pagination.interface';
 
 describe('TablePaginationComponent', () => {
   let component: TablePaginationComponent;
-  let translationService: FusionComponentsTranslationService;
 
   beforeEach(() => {
-    translationService = new FusionComponentsTranslationService();
-    component = new TablePaginationComponent(translationService);
+    component = new TablePaginationComponent();
   });
 
   describe('@Input()', () => {
@@ -26,7 +23,7 @@ describe('TablePaginationComponent', () => {
         };
 
         expect(component.config).toEqual(defaultConfig);
-        component.config = null;
+        component.config = null as any;
         expect(component.config).toEqual(defaultConfig);
       });
 

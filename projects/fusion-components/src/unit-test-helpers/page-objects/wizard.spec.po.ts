@@ -8,15 +8,15 @@ import { ComponentFixture } from '@angular/core/testing';
  */
 export class WizardPageObject {
   private fixture: ComponentFixture<any>;
-  private wizardClass: string;
+  private wizardClass: string | undefined;
 
-  get wizard(): HTMLDivElement {
+  get wizard(): HTMLDivElement | null {
     // first try to get the f-wizard element by a provided class
     const wizardClass: HTMLElement = this.wizardClass ? this.fixture.nativeElement.querySelector(this.wizardClass) : null;
     // if no provided class or element not found, try to find the f-wizard element by the f-wizard tag
     const fusionWizard: HTMLElement = wizardClass || this.fixture.nativeElement.querySelector('f-wizard');
     // if f-wizard found, find the actual <wizard> element by the .f-wizard class
-    const wizard: HTMLDivElement = fusionWizard ? fusionWizard.querySelector('.f-wizard') : null;
+    const wizard: HTMLDivElement | null = fusionWizard ? fusionWizard.querySelector('.f-wizard') : null;
 
     return wizard;
   }
@@ -26,8 +26,8 @@ export class WizardPageObject {
    *
    * @returns The step navigation section of the wizard.
    */
-  get stepNavigation(): HTMLDivElement {
-    const wizard: HTMLDivElement = this.wizard;
+  get stepNavigation(): HTMLDivElement | null {
+    const wizard: HTMLDivElement | null = this.wizard;
     return wizard ? wizard.querySelector('.f-wizard__step-navigation') : null;
   }
 
@@ -36,8 +36,8 @@ export class WizardPageObject {
    *
    * @returns The branch image of the wizard.
    */
-  get brandImage(): HTMLDivElement {
-    const stepNavigation: HTMLDivElement = this.stepNavigation;
+  get brandImage(): HTMLDivElement | null {
+    const stepNavigation: HTMLDivElement | null = this.stepNavigation;
     return stepNavigation ? stepNavigation.querySelector('.f-wizard__brand-image') : null;
   }
 
@@ -46,8 +46,8 @@ export class WizardPageObject {
    *
    * @returns The array of step buttons used to navigate through the wizard.
    */
-  get stepNavigationButtons(): NodeListOf<HTMLButtonElement> {
-    const stepNavigation: HTMLDivElement = this.stepNavigation;
+  get stepNavigationButtons(): NodeListOf<HTMLButtonElement> | null {
+    const stepNavigation: HTMLDivElement | null = this.stepNavigation;
     return stepNavigation ? stepNavigation.querySelectorAll('.f-wizard__step-navigation-button') : null;
   }
 
@@ -56,8 +56,8 @@ export class WizardPageObject {
    *
    * @returns The inner content of the wizard.
    */
-  get stepContent(): HTMLDivElement {
-    const wizard: HTMLDivElement = this.wizard;
+  get stepContent(): HTMLDivElement | null {
+    const wizard: HTMLDivElement | null = this.wizard;
     return wizard ? wizard.querySelector('.f-wizard__step-content') : null;
   }
 

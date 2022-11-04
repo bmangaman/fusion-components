@@ -1,7 +1,7 @@
 import { ElementRef } from '@angular/core';
-import { OtherStubFactory } from '@hcc/app/shared/unit-test-helpers';
 
 import { BaseModalComponent } from '@fusion-components';
+import { StubFactory } from '../../../unit-test-helpers/stub-factory.spec'
 import { Size } from '../../shared';
 
 import { ModalConfig, ModalType } from './modal.interface';
@@ -15,7 +15,7 @@ describe('ModalComponent', () => {
   let elemRef: ElementRef;
 
   beforeEach(() => {
-    elemRef = OtherStubFactory.getElementRefStub() as ElementRef;
+    elemRef = StubFactory.getElementRefStub() as ElementRef;
     documentStub = document;
     component = new ModalComponent(documentStub, elemRef);
   });
@@ -74,19 +74,19 @@ describe('ModalComponent', () => {
       });
 
       it('should NOT do anything if the modal is NOT dispalyed and the key event is NOT "Tab"', () => {
-        component['_isDisplayed'] = false;
+        // component['_isDisplayed'] = false;
         keyEvent = new KeyboardEvent('keydown', { key: 'Tab' });
         expect(button1FocusSpy).not.toHaveBeenCalled();
         component.onKeyDown(keyEvent);
 
-        component['_isDisplayed'] = true;
+        // component['_isDisplayed'] = true;
         keyEvent = new KeyboardEvent('keydown', { key: 'KeyA' });
         component.onKeyDown(keyEvent);
         expect(button1FocusSpy).not.toHaveBeenCalled();
 
-        component['_isDisplayed'] = true;
+        // component['_isDisplayed'] = true;
         keyEvent = new KeyboardEvent('keydown', { key: 'Tab' });
-        component['_focusableElements'] = null;
+        component['_focusableElements'] = null as any;
         component.onKeyDown(keyEvent);
         expect(button1FocusSpy).not.toHaveBeenCalled();
       });
@@ -95,7 +95,7 @@ describe('ModalComponent', () => {
         component['_focusableElements'] = [focusableElements[0]] as any as NodeListOf<Element>;
         expect(component.focusableElements.length).toEqual(1);
 
-        component['_isDisplayed'] = true;
+        // component['_isDisplayed'] = true;
         keyEvent = new KeyboardEvent('keydown', { key: 'Tab' });
 
         component.onKeyDown(keyEvent);
@@ -104,7 +104,7 @@ describe('ModalComponent', () => {
 
       it('should move to the first element if at the last of the focusable elements', () => {
         spyOnProperty(documentStub, 'activeElement').and.returnValue(component.focusableElements[1]);
-        component['_isDisplayed'] = true;
+        // component['_isDisplayed'] = true;
         keyEvent = new KeyboardEvent('keydown', { key: 'Tab' });
 
         component.onKeyDown(keyEvent);
@@ -114,7 +114,7 @@ describe('ModalComponent', () => {
 
       it('should move to the last element if at the first of the focusable elements', () => {
         spyOnProperty(documentStub, 'activeElement').and.returnValue(component.focusableElements[0]);
-        component['_isDisplayed'] = true;
+        // component['_isDisplayed'] = true;
         keyEvent = new KeyboardEvent('keydown', { key: 'Tab', shiftKey: true });
 
         component.onKeyDown(keyEvent);
@@ -124,7 +124,7 @@ describe('ModalComponent', () => {
 
       it('should move to the previous element (via default event behavior)', () => {
         spyOnProperty(documentStub, 'activeElement').and.returnValue(component.focusableElements[1]);
-        component['_isDisplayed'] = true;
+        // component['_isDisplayed'] = true;
         keyEvent = new KeyboardEvent('keydown', { key: 'Tab', shiftKey: true });
 
         component.onKeyDown(keyEvent);
@@ -318,13 +318,13 @@ describe('ModalComponent', () => {
     /* eslint-disable @typescript-eslint/dot-notation */
     it('should set the currentState to the current modal type', () => {
       component.config = {type: ModalType.FULL};
-      component['_currentState'] = null;
+      component['_currentState'] = null as any;
 
       component.changeState();
       expect(component.currentState).toEqual(ModalType.FULL);
 
       component.config = {type: ModalType.SIDE};
-      component['_currentState'] = null;
+      component['_currentState'] = null as any;
 
       component.changeState();
       expect(component.currentState).toEqual(ModalType.SIDE);
@@ -334,7 +334,7 @@ describe('ModalComponent', () => {
       component['_currentState'] = ModalType.FULL;
 
       component.changeState();
-      expect(component.currentState).toEqual(null);
+      expect(component.currentState).toEqual(null as any);
     });
     /* eslint-enable @typescript-eslint/dot-notation */
   });

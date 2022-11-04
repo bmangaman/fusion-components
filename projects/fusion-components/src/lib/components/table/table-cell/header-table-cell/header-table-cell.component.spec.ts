@@ -1,6 +1,5 @@
 import { ChangeDetectorRef } from '@angular/core';
 
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import {
   TableCellContentAlignment,
@@ -14,12 +13,10 @@ import { HeaderTableCellComponent } from './header-table-cell.component';
 describe('HeaderTableCellComponent', () => {
   let component: HeaderTableCellComponent;
   let changeDetectorRef: ChangeDetectorRef;
-  let translationService: FusionComponentsTranslationService;
 
   beforeEach(() => {
     changeDetectorRef = ComponentStubFactory.getChangeDetectorRefStub() as ChangeDetectorRef;
-    translationService = new FusionComponentsTranslationService();
-    component = new HeaderTableCellComponent(changeDetectorRef, translationService);
+    component = new HeaderTableCellComponent(changeDetectorRef);
   });
 
   it('should create', () => {
@@ -43,8 +40,8 @@ describe('HeaderTableCellComponent', () => {
     /* eslint-disable @typescript-eslint/dot-notation */
 
     beforeEach(() => {
-      component.cssClasses = undefined;
-      component.prevCssClasses = undefined;
+      component.cssClasses = undefined as any;
+      component.prevCssClasses = undefined as any;
 
       component.spacing = TableSpacing.NORMAL;
       component.prevSpacing = TableSpacing.NORMAL;
@@ -96,7 +93,7 @@ describe('HeaderTableCellComponent', () => {
 
     beforeEach(() => {
       spyOn(component.stopResize, 'emit').and.stub();
-      component['_resizeCoordinates'] = { start: 100, stop: undefined };
+      component['_resizeCoordinates'] = { start: 100, stop: undefined as any };
       component.col = {
         width: '100px',
         updatedWidth: undefined,
@@ -125,7 +122,7 @@ describe('HeaderTableCellComponent', () => {
     it('should emit the new column sort config if col is defined', () => {
       spyOn(component.sort, 'emit').and.stub();
 
-      component.col = null;
+      component.col = null as any;
       component.changeSort();
       expect(component.sort.emit).not.toHaveBeenCalled();
 
@@ -145,10 +142,10 @@ describe('HeaderTableCellComponent', () => {
     let expectedResult: string[];
 
     beforeEach(() => {
-      expectedResult = undefined;
-      component.col = undefined;
-      component.isSticky = undefined;
-      component.spacing = undefined;
+      expectedResult = undefined as any;
+      component.col = undefined as any;
+      component.isSticky = undefined as any;
+      component.spacing = undefined as any;
     });
 
     it('should append the "f-table__table-cell" class by default', () => {
@@ -205,7 +202,7 @@ describe('HeaderTableCellComponent', () => {
     it('should append the "f-table__table-cell--sorted" class if the input is defined', () => {
       component.col = {} as TableColumnConfig;
 
-      component.col.sorted = null;
+      component.col.sorted = null as any;
       expectedResult = defaultClasses;
       expect(component.generateTableCellClasses()).toEqual(expectedResult);
 
@@ -273,7 +270,7 @@ describe('HeaderTableCellComponent', () => {
     });
 
     it('should append any custom classes', () => {
-      component.cssClasses = undefined;
+      component.cssClasses = undefined as any;
       expectedResult = defaultClasses;
       expect(component.generateTableCellClasses()).toEqual(expectedResult);
 

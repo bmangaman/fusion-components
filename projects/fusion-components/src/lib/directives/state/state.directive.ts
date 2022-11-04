@@ -1,6 +1,6 @@
 import { ComponentFactory, ComponentFactoryResolver, ComponentRef, Directive, Input, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
 
-import { get } from 'lodash';
+import { get } from 'lodash-es';
 
 import { StateComponent, StateHeadlines, StateLocation, StateMessages, StateMessageTemplates } from '../../components/state';
 import { State } from '../../shared';

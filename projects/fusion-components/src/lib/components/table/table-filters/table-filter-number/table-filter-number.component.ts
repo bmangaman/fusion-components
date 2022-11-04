@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { FilterComparator } from '../table-filter-comparator';
 import { TableFilterComponent } from '../table-filter/table-filter.component';
-import { TableFilterNumberInputComparator, TableFilterNumberTranslations } from './table-filter-number.interface';
+import { DEFAULT_TABLE_FILTER_NUMBER_TRANSLATIONS, TableFilterNumberInputComparator, TableFilterNumberTranslations } from './table-filter-number.interface';
 
 /**
  * NUMBER TABLE FILTER COMPONENT
@@ -22,7 +22,7 @@ import { TableFilterNumberInputComparator, TableFilterNumberTranslations } from 
 export class TableFilterNumberComponent extends TableFilterComponent {
   override TableFilter = TableFilterNumberComponent;
 
-  @Input() override translations: TableFilterNumberTranslations | undefined;
+  @Input() override translations: TableFilterNumberTranslations = DEFAULT_TABLE_FILTER_NUMBER_TRANSLATIONS;
 
   override filterComparators: FilterComparator[] = [
     {
@@ -60,10 +60,11 @@ export class TableFilterNumberComponent extends TableFilterComponent {
    * @returns Either the string provided by the translations input or the translated value.
    */
   override generateComparatorLabel(comparator: TableFilterNumberInputComparator): string | Observable<string> {
-    if (this.translations?.comparators && this.translations.comparators[comparator]) {
+    if (this.translations.comparators && this.translations.comparators[comparator]) {
       return this.translations.comparators[comparator]!;
     }
-    return this.translateService.get(`${this.translationService.baseTranslationKey}.table.filters.number.comparators.${comparator}`);
+
+    return '';
   }
 
   /**

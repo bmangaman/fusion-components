@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 import { TableRowData } from '../../table.interface';
 import { AreAnyRowsSelectedPipe } from './are-any-rows-selected.pipe';
 
@@ -32,7 +32,7 @@ describe('AreAnyRowsSelectedPipe', () => {
   });
 
   it('should return false if the data provided is undefined or empty', () => {
-    expect(pipe.transform(undefined)).toBeFalse();
+    expect(pipe.transform(undefined as any)).toBeFalse();
     expect(pipe.transform([])).toBeFalse();
   });
 

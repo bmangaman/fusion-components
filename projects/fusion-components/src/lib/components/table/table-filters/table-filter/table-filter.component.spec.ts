@@ -1,9 +1,7 @@
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
-import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services/translation';
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
 import { TableFilterConfig } from '../../table-filter-selector';
@@ -12,13 +10,9 @@ import { TableFilterComponent } from './table-filter.component';
 
 describe('TableFilter', () => {
   let component: TableFilterComponent;
-  let translationService: FusionComponentsTranslationService;
-  let translateService: TranslateService;
 
   beforeEach(() => {
-    translationService = new FusionComponentsTranslationService();
-    translateService = ComponentStubFactory.getTranslateServiceStub();
-    component = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
+    component = new TableFilterComponent(new UntypedFormBuilder());
   });
 
   it('should create', () => {
@@ -60,17 +54,6 @@ describe('TableFilter', () => {
 
       expect(component.generateComparatorLabel('testComparator')).toEqual('test');
     });
-
-    it('should use the translateService to generate the comparator label if no translation was provided', (done: DoneFn) => {
-      (translateService.get as jasmine.Spy).calls.reset();
-      (translateService.get as jasmine.Spy).and.returnValue(of('test'));
-      spyOnProperty(translationService, 'baseTranslationKey').and.returnValue('components');
-      (component.generateComparatorLabel('testComparator') as Observable<string>).subscribe((label: string) => {
-        expect(label).toEqual('test');
-        expect(translateService.get).toHaveBeenCalledWith('components.table.filters.base.comparators.testComparator');
-        done();
-      });
-    });
   });
 
   describe('generateDisplayString()', () => {
@@ -87,7 +70,7 @@ describe('TableFilter', () => {
     it('should return false if filterForm is defined, true otherwise', () => {
       let form: UntypedFormGroup = component.fb.group({});
 
-      component.filterForm = undefined;
+      component.filterForm = undefined as any;
       expect(component.isFormInvalid()).toBeTrue();
 
       form = component.fb.group({ input: [null, Validators.required]});
@@ -102,7 +85,7 @@ describe('TableFilter', () => {
 
   describe('useValueTransformFunctionIfItExists', () => {
     it('should transform the value if valueTransformFunction was provided', () => {
-      component.valueTransformFunction = undefined;
+      component.valueTransformFunction = undefined as any;
       expect(component.useValueTransformFunctionIfItExists('value')).toEqual('value');
 
       component.valueTransformFunction = (_val: any) => 'new value';

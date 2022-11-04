@@ -8,11 +8,27 @@ export enum TableFilterBytesInputComparator {
 }
 
 export interface TableFilterBytesTranslations extends TableFilterTranslations {
-  comparators?: {
+  comparators: {
     [key in TableFilterBytesInputComparator]?: string;
   };
-  fields?: {
-    bytes?: string;
-    unit?: string;
+  fields: {
+    bytes: string;
+    unit: string;
   };
 }
+
+export const DEFAULT_TABLE_FILTER_BYTES_TRANSLATIONS: TableFilterBytesTranslations = {
+  comparator: {
+    comparatorLabel: 'Bytes',
+  },
+  comparators: {
+    equalTo: 'equal to',
+    notEqualTo: 'not equal to',
+    lessThan: 'less than',
+    greaterThan: 'greater than',
+  },
+  fields: {
+    bytes: 'Bytes',
+    unit: 'Unit',
+  },
+};

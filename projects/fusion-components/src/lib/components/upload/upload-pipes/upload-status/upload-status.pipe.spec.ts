@@ -17,7 +17,7 @@ describe('UploadStatusPipe', () => {
       const fileInfo: UploadInfo = {} as UploadInfo;
 
       // undefined and/ or no subscription
-      expect(pipe.transform(null)).toEqual(ProgressBarStatus.NOT_STARTED);
+      expect(pipe.transform(null as any)).toEqual(ProgressBarStatus.NOT_STARTED);
       expect(pipe.transform(fileInfo)).toEqual(ProgressBarStatus.NOT_STARTED);
 
       // subscription

@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 
 import { FilterComparator } from '../table-filter-comparator';
 import { TableFilterComponent } from '../table-filter/table-filter.component';
-import { TableFilterBytesInputComparator, TableFilterBytesTranslations } from './table-filter-bytes.interface';
+import { DEFAULT_TABLE_FILTER_BYTES_TRANSLATIONS, TableFilterBytesInputComparator, TableFilterBytesTranslations } from './table-filter-bytes.interface';
 
 /**
  * BYTES TABLE FILTER COMPONENT
@@ -33,7 +33,7 @@ export class TableFilterBytesComponent extends TableFilterComponent {
 
   bytesOptions: (BiBytesUnit | BytesUnit)[] = this.enumToArrayPipe.transform(BiBytesUnit) as (BiBytesUnit | BytesUnit)[];
 
-  @Input() override translations: TableFilterBytesTranslations | undefined;
+  @Input() override translations: TableFilterBytesTranslations = DEFAULT_TABLE_FILTER_BYTES_TRANSLATIONS;
 
   override filterComparators: FilterComparator[] = [
     {
@@ -124,10 +124,11 @@ export class TableFilterBytesComponent extends TableFilterComponent {
    * @returns Either the string provided by the translations input or the translated value.
    */
   override generateComparatorLabel(comparator: TableFilterBytesInputComparator): string | Observable<string> {
-    if (this.translations?.comparators && this.translations.comparators[comparator]) {
+    if (this.translations.comparators && this.translations.comparators[comparator]) {
       return this.translations.comparators[comparator]!;
     }
-    return this.translateService.get(`${this.translationService.baseTranslationKey}.table.filters.bytes.comparators.${comparator}`);
+
+    return '';
   }
 
   /**

@@ -11,7 +11,7 @@ import { GetStatusLevelTextPipe } from '@fusion-components/lib/pipes/get-status-
  */
 export class CardPageObject {
   private fixture: ComponentFixture<any>;
-  private cardClass: string;
+  private cardClass: string | undefined;
 
   private _getStatusLevelTextPipe: GetStatusLevelTextPipe = new GetStatusLevelTextPipe();
 

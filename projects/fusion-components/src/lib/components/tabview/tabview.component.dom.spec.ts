@@ -164,14 +164,14 @@ describe('TabviewComponent', () => {
     testTabSelectedAndLoaded(tabs[0], true, true);
     testTabSelectedAndLoaded(tabs[1], false, false);
 
-    tabs[1].button.click();
+    tabs[1].button?.click();
     await waitForComponentToLoad();
 
     tabs = page.tabview.tabs;
     testTabSelectedAndLoaded(tabs[0], false, true);
     testTabSelectedAndLoaded(tabs[1], true, true);
 
-    tabs[0].button.click();
+    tabs[0].button?.click();
     await waitForComponentToLoad();
 
     tabs = page.tabview.tabs;
@@ -190,14 +190,14 @@ describe('TabviewComponent', () => {
     testTabSelectedAndLoaded(tabs[0], true, true);
     testTabSelectedAndLoaded(tabs[1], false, false);
 
-    tabs[1].button.click();
+    tabs[1].button?.click();
     await waitForComponentToLoad();
 
     tabs = page.tabview.tabs;
     testTabSelectedAndLoaded(tabs[0], false, false);
     testTabSelectedAndLoaded(tabs[1], true, true);
 
-    tabs[0].button.click();
+    tabs[0].button?.click();
     await waitForComponentToLoad();
 
     tabs = page.tabview.tabs;
@@ -216,7 +216,7 @@ describe('TabviewComponent', () => {
     testTabSelectedAndLoaded(tabs[0], false, false);
     testTabSelectedAndLoaded(tabs[1], true, true);
 
-    tabs[0].button.click();
+    tabs[0].button?.click();
     await waitForComponentToLoad();
 
     tabs = page.tabview.tabs;
@@ -236,10 +236,10 @@ describe('TabviewComponent', () => {
     expect(tab).toBeTruthy();
     expect(tab.button).toBeTruthy();
 
-    const navButtonClasslist: DOMTokenList = tab.button.classList;
+    const navButtonClasslist: DOMTokenList = tab.button!.classList;
 
     if (isSelected) {
-      const panelClasslist: DOMTokenList = tab.content.classList;
+      const panelClasslist: DOMTokenList = tab.content!.classList;
 
       expect(navButtonClasslist.contains('selected')).toBeTruthy(`${tab} should be selected`);
       expect(panelClasslist.contains('selected')).toBeTruthy();

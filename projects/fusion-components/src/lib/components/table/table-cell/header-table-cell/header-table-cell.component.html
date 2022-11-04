@@ -1,7 +1,7 @@
 <!-- START: Sortable Column -->
 
 <button
-  *ngIf="col?.isResizable"
+  *ngIf="col.isResizable"
   class="f-table__table-cell-column-resizer"
   [ngClass]="{ 'f-table__table-cell-column-resizer--resizing': isResizing }"
   aria-hidden="true"
@@ -11,29 +11,27 @@
 </button>
 
 <button
-  *ngIf="col?.isSortable; else nonSortableCell"
+  *ngIf="col.isSortable; else nonSortableCell"
   (click)="changeSort()"
-  [style.width]="col?.updatedWidth || col?.width"
-  [attr.aria-label]="col?.sorted === TableColumnSorted.ASCENDING
-    ? translations?.sortDescending || ( baseTranslationKey + '.table.cell.sortDescending' | translate )
-    : translations?.sortAscending || ( baseTranslationKey + '.table.cell.sortAscending' | translate )"
+  [style.width]="col.updatedWidth || col.width"
+  [attr.aria-label]="col.sorted === TableColumnSorted.ASCENDING ? translations.sortDescending : translations.sortAscending"
   class="f-table__table-cell-inner">
 
-  <div *ngIf="!!col?.isFiltered" class="f-table__table-cell-filter-icon">
-    <i class="mdi mdi-filter" [attr.aria-label]="translations?.isFiltered || ( baseTranslationKey + '.table.cell.isFiltered' | translate )"></i>
+  <div *ngIf="!!col.isFiltered" class="f-table__table-cell-filter-icon">
+    <i class="mdi mdi-filter" [attr.aria-label]="translations.isFiltered"></i>
   </div>
 
   <div class="f-table__table-cell-content">
     <ng-container *ngTemplateOutlet="cellContent"></ng-container>
   </div>
 
-  <div *ngIf="!!col?.sorted" class="f-table__table-cell-sorter">
+  <div *ngIf="!!col.sorted" class="f-table__table-cell-sorter">
     <i
       aria-hidden="true"
       class="mdi"
       [ngClass]="{
-        'mdi-arrow-up' : col?.sorted === TableColumnSorted.ASCENDING,
-        'mdi-arrow-down' : col?.sorted === TableColumnSorted.DESCENDING
+        'mdi-arrow-up' : col.sorted === TableColumnSorted.ASCENDING,
+        'mdi-arrow-down' : col.sorted === TableColumnSorted.DESCENDING
       }">
     </i>
   </div>
@@ -42,7 +40,7 @@
 
 <!-- START: Non-sortable Column -->
 <ng-template #nonSortableCell>
-  <div class="f-table__table-cell-inner" [style.width]="col?.width">
+  <div class="f-table__table-cell-inner" [style.width]="col.width">
     <ng-container *ngIf="!shouldProjectContent; else nonDataCell">
       <ng-container *ngTemplateOutlet="cellContent"></ng-container>
     </ng-container>
@@ -53,11 +51,11 @@
 
 <!-- START: Shared Content Template -->
 <ng-template #cellContent>
-  <ng-container *ngIf="col?.headerTemplateRef; else noTemplate">
-    <ng-container *ngTemplateOutlet="col?.headerTemplateRef || null"></ng-container>
+  <ng-container *ngIf="col.headerTemplateRef; else noTemplate">
+    <ng-container *ngTemplateOutlet="col.headerTemplateRef || null"></ng-container>
   </ng-container>
   <ng-template #noTemplate>
-    {{ col?.header }}
+    {{ col.header }}
   </ng-template>
 </ng-template>
 <!-- END: Shared Content Template -->

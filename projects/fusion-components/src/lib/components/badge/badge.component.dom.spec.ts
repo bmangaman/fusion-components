@@ -90,34 +90,34 @@ describe('BadgeComponent', () => {
       component.type = null!;
       component.size = null!;
       fixture.detectChanges();
-      expect(page.badge.badge.classList).toContain(baseClass);
-      expect(page.badge.badge.classList).toContain(`${baseClass}--`);
+      expect(page.badge.badge?.classList).toContain(baseClass);
+      expect(page.badge.badge?.classList).toContain(`${baseClass}--`);
 
       enumToArrayPipe.transform(StatusLevel).forEach((value: string | number) => {
         const levelString: string = getStatusLevelTextPipe.transform(Number(value), undefined, true);
         component.type = Number(value);
         component.size = null!;
         fixture.detectChanges();
-        expect(page.badge.badge.classList).toContain(baseClass);
-        expect(page.badge.badge.classList).toContain(`${baseClass}--${levelString}`);
-        expect(page.badge.badge.classList).toContain(`${baseClass}--`);
+        expect(page.badge.badge?.classList).toContain(baseClass);
+        expect(page.badge.badge?.classList).toContain(`${baseClass}--${levelString}`);
+        expect(page.badge.badge?.classList).toContain(`${baseClass}--`);
       });
 
       enumToArrayPipe.transform(Size).forEach((value: string | number) => {
         component.type = null!;
         component.size = value as Size;
         fixture.detectChanges();
-        expect(page.badge.badge.classList).toContain(baseClass);
-        expect(page.badge.badge.classList).toContain(`${baseClass}--${value}`);
-        expect(page.badge.badge.classList).toContain(`${baseClass}--`);
+        expect(page.badge.badge?.classList).toContain(baseClass);
+        expect(page.badge.badge?.classList).toContain(`${baseClass}--${value}`);
+        expect(page.badge.badge?.classList).toContain(`${baseClass}--`);
       });
 
       component.type = StatusLevel.BASE;
       component.size = Size.SMALL;
       fixture.detectChanges();
-      expect(page.badge.badge.classList).toContain(baseClass);
-      expect(page.badge.badge.classList).toContain(`${baseClass}--base`);
-      expect(page.badge.badge.classList).toContain(`${baseClass}--small`);
+      expect(page.badge.badge?.classList).toContain(baseClass);
+      expect(page.badge.badge?.classList).toContain(`${baseClass}--base`);
+      expect(page.badge.badge?.classList).toContain(`${baseClass}--small`);
     });
 
     it('should append f-badge__wrapper classes to the host element', () => {

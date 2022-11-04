@@ -8,7 +8,7 @@ describe('PercentMapPipe', () => {
   });
 
   it('should return 0 if the provided value is undefined', () => {
-    expect(pipe.transform(undefined)).toEqual(0);
+    expect(pipe.transform(undefined as any)).toEqual(0);
   });
 
   it('should correctly map the provided range to a number between 0 and 100', () => {

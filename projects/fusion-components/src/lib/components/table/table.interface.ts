@@ -1,12 +1,24 @@
-
 import { TemplateRef } from '@angular/core';
-import { State, StringKeyObject } from '../../shared';
 
-import { TableActionsTranslations } from './table-actions/';
-import { TableColumnSelectorTranslations } from './table-column-selector';
+import { State, StringKeyObject } from '../../shared';
+import { DEFAULT_TABLE_ACTIONS_TRANSLATIONS, TableActionsTranslations } from './table-actions/';
+import { TableColumnSelectorTranslations, DEFAULT_TABLE_COLUMN_SELECTOR_TRANSLATIONS } from './table-column-selector';
 import { TableColumnSort } from './table-column-sorts';
-import { TableFilterConfig, TableFilterSelectorTranslations } from './table-filter-selector';
-import { TablePaginationConfig, TablePaginationTranslations } from './table-pagination';
+import { DEFAULT_TABLE_FILTER_SELECTOR_TRANSLATIONS, TableFilterConfig, TableFilterSelectorTranslations } from './table-filter-selector';
+import {
+  DEFAULT_TABLE_FILTER_ARRAY_TRANSLATIONS,
+  DEFAULT_TABLE_FILTER_BYTES_TRANSLATIONS,
+  DEFAULT_TABLE_FILTER_IP_TRANSLATIONS,
+  DEFAULT_TABLE_FILTER_NUMBER_TRANSLATIONS,
+  DEFAULT_TABLE_FILTER_STRING_TRANSLATIONS,
+  TableFilterArrayTranslations,
+  TableFilterBytesTranslations,
+  TableFilterIpTranslations,
+  TableFilterNumberTranslations,
+  TableFilterStringTranslations,
+  TableFilterTranslations,
+} from './table-filters';
+import { DEFAULT_TABLE_PAGINATION_TRANSLATIONS, TablePaginationConfig, TablePaginationTranslations } from './table-pagination';
 
 export enum TableSpacing {
   CONDENSED = 'condensed',
@@ -206,30 +218,72 @@ export enum TableTemplate {
 }
 
 export interface TableCellTranslations {
-  sortAscending?: string;
-  sortDescending?: string;
-  isFiltered?: string;
+  sortAscending: string;
+  sortDescending: string;
+  isFiltered: string;
+}
+
+export const DEFAULT_TABLE_CELL_TRANSLATIONS: TableCellTranslations = {
+  sortAscending: 'Sort column by ascending.',
+  sortDescending: 'Sort column by descending.',
+  isFiltered: 'Column is filtered.',
 }
 
 export interface TableTranslations {
-  state?: {
-    loadingSpinnerAriaLabel?: string;
-    error?: string;
-    noResults?: string;
+  state: {
+    loadingSpinnerAriaLabel: string;
+    error: string;
+    noResults: string;
   };
-  actions?: TableActionsTranslations;
-  pagination?: TablePaginationTranslations;
-  selection?: {
-    selectAll?: string;
-    select?: string;
+  actions: TableActionsTranslations;
+  pagination: TablePaginationTranslations;
+  selection: {
+    selectAll: string;
+    select: string;
   };
   expansion?: {
-    expandAll?: string;
-    expand?: string;
+    expandAll: string;
+    expand: string;
   };
-  filtering?: TableFilterSelectorTranslations;
-  tableCell?: TableCellTranslations;
-  columnSelector?: TableColumnSelectorTranslations;
+  filters: {
+    array: TableFilterArrayTranslations;
+    bytes: TableFilterBytesTranslations;
+    ip: TableFilterIpTranslations,
+    number: TableFilterNumberTranslations,
+    string: TableFilterStringTranslations,
+    [key: string]: TableFilterTranslations;
+  },
+  filtering: TableFilterSelectorTranslations;
+  tableCell: TableCellTranslations;
+  columnSelector: TableColumnSelectorTranslations;
+}
+
+export const DEFAULT_TABLE_TRANSLATIONS: TableTranslations = {
+  state: {
+    loadingSpinnerAriaLabel: 'Getting table data',
+    error: 'ERROR',
+    noResults: 'No Results',
+  },
+  actions: DEFAULT_TABLE_ACTIONS_TRANSLATIONS,
+  pagination: DEFAULT_TABLE_PAGINATION_TRANSLATIONS,
+  selection: {
+    selectAll: 'Select all visible rows',
+    select: 'Select row',
+  },
+  expansion: {
+    expandAll: 'Expand all visible rows',
+    expand: 'Expand row',
+  },
+  filtering: DEFAULT_TABLE_FILTER_SELECTOR_TRANSLATIONS,
+  filters: {
+    array: DEFAULT_TABLE_FILTER_ARRAY_TRANSLATIONS,
+    bytes: DEFAULT_TABLE_FILTER_BYTES_TRANSLATIONS,
+    ip: DEFAULT_TABLE_FILTER_IP_TRANSLATIONS,
+    number: DEFAULT_TABLE_FILTER_NUMBER_TRANSLATIONS,
+    string: DEFAULT_TABLE_FILTER_STRING_TRANSLATIONS,
+  },
+  tableCell: DEFAULT_TABLE_CELL_TRANSLATIONS,
+  columnSelector: DEFAULT_TABLE_COLUMN_SELECTOR_TRANSLATIONS,
 }
 
 /**

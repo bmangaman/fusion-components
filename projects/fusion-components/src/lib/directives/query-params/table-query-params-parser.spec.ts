@@ -2,7 +2,6 @@ import { ChangeDetectorRef } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { Params } from '@angular/router';
 
-import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 
 import {
@@ -18,31 +17,27 @@ import {
 } from '@fusion-components/lib/components/table';
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 
-import { FusionComponentsTranslationService } from '../../services';
 import { TableQueryParamsParser } from './table-query-params-parser';
 
 function generateFilterComponents(): TableFilterComponent[] {
-  const translationService: FusionComponentsTranslationService = new FusionComponentsTranslationService();
-  const translateService: TranslateService = ComponentStubFactory.getTranslateServiceStub();
-
   const filterComponents: TableFilterComponent[] = [];
-  const stringFilterComponent = new TableFilterStringComponent(new UntypedFormBuilder(), translationService, translateService);
+  const stringFilterComponent = new TableFilterStringComponent(new UntypedFormBuilder());
   stringFilterComponent.field = 'stringField';
   filterComponents.push(stringFilterComponent);
 
-  const numberFilterComponent = new TableFilterNumberComponent(new UntypedFormBuilder(), translationService, translateService);
+  const numberFilterComponent = new TableFilterNumberComponent(new UntypedFormBuilder());
   numberFilterComponent.field = 'numberField';
   filterComponents.push(numberFilterComponent);
 
-  const ipAddressFilterDirective = new TableFilterIpComponent(new UntypedFormBuilder(), translationService, translateService);
+  const ipAddressFilterDirective = new TableFilterIpComponent(new UntypedFormBuilder());
   ipAddressFilterDirective.field = 'ipField';
   filterComponents.push(ipAddressFilterDirective);
 
-  const filterComponent = new TableFilterComponent(new UntypedFormBuilder(), translationService, translateService);
+  const filterComponent = new TableFilterComponent(new UntypedFormBuilder());
   filterComponent.field = 'field';
   filterComponents.push(filterComponent);
 
-  const bytesFilterComponent = new TableFilterBytesComponent(new UntypedFormBuilder(), translationService, translateService);
+  const bytesFilterComponent = new TableFilterBytesComponent(new UntypedFormBuilder());
   bytesFilterComponent.field = 'bytesField';
   filterComponents.push(bytesFilterComponent);
 
@@ -108,11 +103,11 @@ describe('TableQueryParamsParser', () => {
           formValues: { string },
         })),
         columns: [],
-        sort: null,
-        view: null
+        sort: null as any,
+        view: null as any,
       };
       const queryParams: Params = TableQueryParamsParser.createQueryParams(parsedData, allFilters);
-      const parsedFilters = TableQueryParamsParser.getFiltersFromQueryParams(queryParams.filters, allFilters);
+      const parsedFilters = TableQueryParamsParser.getFiltersFromQueryParams(queryParams['filters'], allFilters);
       expect(parsedFilters).toEqual(parsedData.filters.map(filter => ({ ...filter, label: jasmine.any(Observable)})));
     });
 
@@ -372,12 +367,12 @@ describe('TableQueryParamsParser', () => {
             filterName: 'stringField',
             field: 'stringField',
             comparatorName: 'isEmpty',
-            formValues: null,
+            formValues: null as any,
           },
         ];
 
         expect(TableQueryParamsParser
-          .createQueryParams({ filters: appliedFilters, sort: null, columns: [], view: null }, allFilters).filters)
+          .createQueryParams({ filters: appliedFilters, sort: null as any, columns: [], view: null as any }, allFilters)['filters'])
           .toBe(expectedFilterString);
       });
     });
@@ -432,7 +427,7 @@ describe('TableQueryParamsParser', () => {
           order: 1
         };
 
-        expect(TableQueryParamsParser.createQueryParams({ filters: [], sort, columns: [], view: null }, allFilters).sort)
+        expect(TableQueryParamsParser.createQueryParams({ filters: [], sort, columns: [], view: null as any }, allFilters)['sort'])
           .toBe(expectedSortsString);
       });
     });
@@ -495,7 +490,7 @@ describe('TableQueryParamsParser', () => {
           { field: 'field4', isVisible: true },
         ];
 
-        expect(TableQueryParamsParser.createQueryParams({ filters: [], sort: null, columns, view: null }, allFilters).columns)
+        expect(TableQueryParamsParser.createQueryParams({ filters: [], sort: null as any, columns, view: null as any }, allFilters)['columns'])
           .toBe(expectedColumnsString);
       });
     });
@@ -519,7 +514,7 @@ describe('TableQueryParamsParser', () => {
       it('should map view to a string', () => {
         const expectedViewString = 'deleted';
 
-        expect(TableQueryParamsParser.createQueryParams({ filters: [], sort: null, columns: [], view: allViews[1] }, allFilters).view)
+        expect(TableQueryParamsParser.createQueryParams({ filters: [], sort: null as any, columns: [], view: allViews[1] }, allFilters)['view'])
           .toBe(expectedViewString);
       });
     });
@@ -572,9 +567,9 @@ describe('TableQueryParamsParser', () => {
 
     const paramData = {
       filters: [],
-      sort: null,
+      sort: null as any,
       columns: [],
-      view: null,
+      view: null as any,
     };
 
     expect(TableQueryParamsParser.createQueryParams(paramData, allFilters)).toEqual(expectedParams);

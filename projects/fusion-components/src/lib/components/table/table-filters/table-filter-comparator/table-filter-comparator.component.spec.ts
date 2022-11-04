@@ -1,14 +1,11 @@
-import { FusionComponentsTranslationService } from '@fusion-components/lib/services';
 import { TableFilterComparatorComponent } from './table-filter-comparator.component';
 import { FilterComparator } from './table-filter-comparator.interface';
 
 describe('TableFilterComparatorComponent', () => {
   let component: TableFilterComparatorComponent;
-  let translationService: FusionComponentsTranslationService;
 
   beforeEach(() => {
-    translationService = new FusionComponentsTranslationService();
-    component = new TableFilterComparatorComponent(translationService);
+    component = new TableFilterComparatorComponent();
   });
 
   it('should create', () => {
@@ -24,7 +21,7 @@ describe('TableFilterComparatorComponent', () => {
         // eslint-disable-next-line @typescript-eslint/dot-notation
         component['_comparators'] = existingComparators;
 
-        component.comparators = undefined;
+        component.comparators = undefined as any;
         expect(component.comparators).toEqual(existingComparators);
 
         component.comparators = newComparators;

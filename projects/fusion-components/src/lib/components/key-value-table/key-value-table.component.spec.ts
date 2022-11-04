@@ -1,6 +1,6 @@
 import { QueryList } from '@angular/core';
 
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
 import { TemplateDirective } from '../../directives/template';
 import { KeyValueTableComponent } from './key-value-table.component';

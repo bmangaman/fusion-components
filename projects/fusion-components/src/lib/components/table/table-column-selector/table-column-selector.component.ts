@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, QueryList } from '@angular/core';
 
-import { Location, Size, TranslatedComponent } from '../../../shared';
+import { Location, Size } from '../../../shared';
 import { ButtonType } from '../../button';
 import { TableColumnComponent } from '../table-column/table-column.component';
-import { TableColumnSelectorTranslations } from './table-column-selector.interface';
+import { DEFAULT_TABLE_COLUMN_SELECTOR_TRANSLATIONS, TableColumnSelectorTranslations } from './table-column-selector.interface';
 
 /**
  * TABLE COLUMN SELECTOR COMPONENT
@@ -16,7 +16,7 @@ import { TableColumnSelectorTranslations } from './table-column-selector.interfa
   templateUrl: './table-column-selector.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableColumnSelectorComponent extends TranslatedComponent {
+export class TableColumnSelectorComponent {
   readonly ButtonType = ButtonType;
   readonly Location = Location;
   readonly Size = Size;
@@ -31,7 +31,7 @@ export class TableColumnSelectorComponent extends TranslatedComponent {
   /**
    * Determines the translations for the static text and aria attributes.
    */
-  @Input() translations: TableColumnSelectorTranslations | undefined;
+  @Input() translations: TableColumnSelectorTranslations = DEFAULT_TABLE_COLUMN_SELECTOR_TRANSLATIONS;
 
   /**
    * Emits the list of visible columns.

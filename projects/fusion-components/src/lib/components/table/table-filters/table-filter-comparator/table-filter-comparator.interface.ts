@@ -23,5 +23,5 @@ export interface FilterComparator {
 }
 
 export interface FilterComparatorTranslations {
-  comparatorLabel?: string;
+  comparatorLabel: string;
 }

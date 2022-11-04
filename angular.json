@@ -30,6 +30,13 @@
             "main": "projects/fusion-components/src/test.ts",
             "tsConfig": "projects/fusion-components/tsconfig.spec.json",
             "karmaConfig": "projects/fusion-components/karma.conf.js"
+          },
+          "configurations": {
+            "DOM": {
+              "main": "projects/fusion-components/src/test.dom.ts",
+              "tsConfig": "projects/fusion-components/tsconfig.spec.dom.json",
+              "karmaConfig": "projects/fusion-components/karma.dom.conf.js"
+            }
           }
         }
       }
