@@ -18,7 +18,9 @@ import {
  * The DOM Service provides a consistent way to append new components to the DOM and remove
  * existing elements from the DOM.
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DomService {
   private renderer: Renderer2;
 

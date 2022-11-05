@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { ModalModule, ButtonModule, MenuModule, DomService, ModalService } from '@fusion-components';
+import { ModalModule, ButtonModule, MenuModule } from '@fusion-components';
 
 import { DemoModule } from '../../../shared/components/demo/demo.module';
 import { InnerModalComponent, ModalDemoComponent } from './modal-demo.component';
@@ -19,9 +19,5 @@ import { ModalDemoRoutingModule } from './modal-demo-routing.module';
 
     ModalDemoRoutingModule,
   ],
-  providers: [
-    ModalService,
-    DomService,
-  ]
 })
 export class ModalDemoModule {}

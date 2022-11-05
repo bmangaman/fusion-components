@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { from, Observable } from 'rxjs';
 
-import { SidenavModule, TranslationService, WindowProvider } from '@fusion-components';
+import { DomService, ModalService, SidenavModule, TooltipService, TranslationService, WindowProvider } from '@fusion-components';
 
 import { UploadDemoInterceptor } from './demos/components/upload-demo/upload-demo.interceptor';
 
@@ -45,6 +45,9 @@ export class LazyTranslateLoader implements TranslateLoader {
       useClass: UploadDemoInterceptor,
       multi: true,
     },
+    DomService,
+    ModalService,
+    TooltipService,
     TranslationService,
   ],
   bootstrap: [

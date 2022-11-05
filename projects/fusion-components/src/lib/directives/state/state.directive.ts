@@ -1,4 +1,4 @@
-import { ComponentFactory, ComponentFactoryResolver, ComponentRef, Directive, Input, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
+import { ComponentRef, Directive, Input, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
 
 import { get } from 'lodash-es';
 
@@ -165,7 +165,7 @@ export class StateDirective {
   constructor(
     private viewContainer: ViewContainerRef,
     private templateRef: TemplateRef<any>,
-    private factoryResolver: ComponentFactoryResolver,
+    private viewContainerRef: ViewContainerRef,
     private renderer: Renderer2,
   ) {}
 
@@ -211,8 +211,7 @@ export class StateDirective {
     if (!!state) {
       this.viewContainer.createEmbeddedView(state);
     } else {
-      const factory: ComponentFactory<StateComponent> = this.factoryResolver.resolveComponentFactory(StateComponent);
-      const component: ComponentRef<StateComponent> = this.viewContainer.createComponent(factory);
+      const component: ComponentRef<StateComponent> = this.viewContainer.createComponent(StateComponent);
       component.instance.state = this._state || component.instance.state;
       component.instance.location = this._location || component.instance.location;
       component.instance.headlines = this._headlines || component.instance.headlines;

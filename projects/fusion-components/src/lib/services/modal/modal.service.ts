@@ -17,26 +17,28 @@ import { DomService } from '../dom';
 
 
 /**
+ * MODAL SERVICE
+ *
  * This service should be used to open all modals so that we may have on central service that knows about all open modals.
  * All options for the modal should be provided at the time of opening through the OpenModalConfig param.
  *
- * EX:
- const myModalConfig = {
-   type: ModalType.FULL,
-   container: 'body',
- }
- const openModalConfig: OpenModalConfig<InnerModalComponent> = {
-   component: InnerModalComponent,
-   modalConfig: myModalConfig,
-   componentProps: {
-     stringProp: 'my-string',
-     numberProp: 2,
-     objectProp: { id: 'blah' }
-   },
- }
- this.modalService.openModal(openModalConfig).subscribe(closeEvent => {
-   // Handle modal close here.
- })
+ * @example
+ * const myModalConfig = {
+ *   type: ModalType.FULL,
+ *   container: 'body',
+ * }
+ * const openModalConfig: OpenModalConfig<InnerModalComponent> = {
+ *   component: InnerModalComponent,
+ *   modalConfig: myModalConfig,
+ *   componentProps: {
+ *     stringProp: 'my-string',
+ *     numberProp: 2,
+ *     objectProp: { id: 'blah' }
+ *   },
+ * }
+ * this.modalService.openModal(openModalConfig).subscribe(closeEvent => {
+ *   // Handle modal close here.
+ * })
  */
 @Injectable({
   providedIn: 'root'

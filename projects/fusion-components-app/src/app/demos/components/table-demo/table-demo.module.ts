@@ -2,11 +2,9 @@ import { NgModule } from '@angular/core';
 
 import {
   BytesModule,
-  DomService,
   QueryParamsModule,
   TableModule,
   TooltipDirectiveModule,
-  TooltipService,
 } from '@fusion-components';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -27,10 +25,6 @@ import { TableDemoRoutingModule } from './table-demo-routing.module';
     TranslateModule,
 
     TableDemoRoutingModule,
-  ],
-  providers: [
-    DomService,
-    TooltipService,
   ],
 })
 export class TableDemoModule {}

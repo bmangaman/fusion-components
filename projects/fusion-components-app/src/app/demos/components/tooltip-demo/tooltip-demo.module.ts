@@ -16,9 +16,5 @@ import { TooltipDemoRoutingModule } from './tooltip-demo-routing.module';
     TooltipDirectiveModule,
     TooltipDemoRoutingModule,
   ],
-  providers: [
-    DomService,
-    TooltipService,
-  ],
 })
 export class TooltipDemoModule {}

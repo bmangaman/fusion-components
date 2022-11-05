@@ -3,8 +3,6 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ComponentFactory,
-  ComponentFactoryResolver,
   ComponentRef,
   EventEmitter,
   Input,
@@ -162,7 +160,7 @@ export class TableFilterSelectorComponent extends UnsubscribeComponent implement
   @ViewChild(TableFilterHostDirective, { static: false }) tableFilterTemplate: TableFilterHostDirective;
 
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
+    private viewContainerRef: ViewContainerRef,
     private cdr: ChangeDetectorRef,
   ) {
     super();
@@ -214,13 +212,10 @@ export class TableFilterSelectorComponent extends UnsubscribeComponent implement
   loadComponent(filter: TableFilterComponent): void {
     const newFilter: TableFilterComponent = this.generateFilter(filter.config);
 
-    const componentFactory: ComponentFactory<TableFilterComponent> =
-      this.componentFactoryResolver.resolveComponentFactory(newFilter.TableFilter);
-
     const viewContainerRef: ViewContainerRef = this.tableFilterTemplate.viewContainerRef;
     viewContainerRef.clear();
 
-    const componentRef: ComponentRef<TableFilterComponent> = viewContainerRef.createComponent(componentFactory);
+    const componentRef: ComponentRef<TableFilterComponent> = viewContainerRef.createComponent(newFilter.TableFilter);
     Object.keys(newFilter).forEach((key: string) => (componentRef as any).instance[key] = (newFilter as any)[key]);
     componentRef.instance.filterForm.reset();
     componentRef.instance.isLoaded = true;
@@ -436,7 +431,7 @@ export class TableFilterSelectorComponent extends UnsubscribeComponent implement
    * @returns true if the target clicked is the (x) button of an applied filter, false otherwise.
    */
   menuLogic(target: HTMLElement): boolean {
-    const classList: DOMTokenList = get(target, 'parentElement.parentElement.classList');
+    const classList: DOMTokenList | undefined = get(target, 'parentElement.parentElement.classList');
     const containsButtonClass: boolean = classList ? classList.contains('f-table__filter-selector-remove-filter-button') : false;
     const containsItemClass: boolean = classList ? classList.contains('f-table__filter-selector-filter-list-group-item') : false;
     return containsButtonClass || containsItemClass;
