@@ -330,11 +330,11 @@ describe('ModalComponent', () => {
       expect(component.currentState).toEqual(ModalType.SIDE);
     });
 
-    it('should set the currentState to null if it is already set', () => {
+    it('should set the currentState to undefined if it is already set', () => {
       component['_currentState'] = ModalType.FULL;
 
       component.changeState();
-      expect(component.currentState).toEqual(null as any);
+      expect(component.currentState).toEqual(undefined);
     });
     /* eslint-enable @typescript-eslint/dot-notation */
   });

@@ -3,7 +3,7 @@ import { QueryList } from '@angular/core';
 import { TemplateDirective } from '@fusion-components';
 
 import { NotificationComponent } from './notification.component';
-import { NotificationType } from './notification.interface';
+import { DEFAULT_NOTIFICATION_TRANSLATIONS, NotificationType } from './notification.interface';
 
 describe('NotificationComponent', () => {
   let component: NotificationComponent;
@@ -21,7 +21,13 @@ describe('NotificationComponent', () => {
   describe('ariaTypeLabel', () => {
     it('should return the correct label', () => {
       component.notificationType = NotificationType.SUCCESS;
-      component.translations = { ariaTypeLabel: {success: 'blah'}};
+      component.translations = {
+        ...DEFAULT_NOTIFICATION_TRANSLATIONS,
+        ariaTypeLabel: {
+          ...DEFAULT_NOTIFICATION_TRANSLATIONS.ariaTypeLabel,
+          success: 'blah',
+        },
+      };
 
       expect(component.ariaTypeLabel).toBe('blah');
 

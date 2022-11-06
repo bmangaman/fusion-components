@@ -9,7 +9,7 @@
     class="f-menu__dialog"
     [ngClass]="menuDialogClasses"
     *ngIf="isMenuDialogOpen"
-    [attr.aria-labelledby]="aria?.menuDialogLabelledBy"
+    [attr.aria-labelledby]="aria.menuDialogLabelledBy"
     [style.zIndex]="dialogZIndex"
     [style.minWidth]="dialogMinWidth">
 
@@ -22,7 +22,7 @@
         [isAutofocused]="isCloseButtonAutofocused"
         [noBorder]="true"
         icon="mdi-close"
-        [attr.aria-label]="aria?.closeButtonLabel"
+        [attr.aria-label]="aria.closeButtonLabel"
         (buttonClick)="closeMenuDialog()">
       </f-button>
     </div>

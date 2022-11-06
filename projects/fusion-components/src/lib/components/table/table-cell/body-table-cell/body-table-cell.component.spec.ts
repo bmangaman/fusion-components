@@ -4,6 +4,7 @@ import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/compo
 import {
   TableCellContentAlignment,
   TableCellContentVerticalAlignment,
+  TableCellTranslations,
   TableColumnConfig,
   TableRowData,
   TableSpacing,
@@ -27,8 +28,8 @@ describe('BodyTableCellComponent', () => {
     /* eslint-disable @typescript-eslint/dot-notation */
 
     beforeEach(() => {
-      component.cssClasses = undefined as any;
-      component.prevCssClasses = undefined as any;
+      component.cssClasses = [];
+      component.prevCssClasses = [];
 
       component.spacing = TableSpacing.NORMAL;
       component.prevSpacing = TableSpacing.NORMAL;
@@ -36,8 +37,8 @@ describe('BodyTableCellComponent', () => {
       component.shouldProjectContent = false;
       component.prevShouldProjectContent = false;
 
-      component.translations = {};
-      component.prevTranslations = {};
+      component.translations = {} as any as TableCellTranslations;
+      component.prevTranslations = {} as any as TableCellTranslations;
 
       component.col = {};
       component.prevCol = {};
@@ -206,10 +207,6 @@ describe('BodyTableCellComponent', () => {
     });
 
     it('should append any custom classes', () => {
-      component.cssClasses = undefined as any;
-      expectedResult = defaultClasses;
-      expect(component.generateTableCellClasses()).toEqual(expectedResult);
-
       component.cssClasses = [];
       expectedResult = defaultClasses;
       expect(component.generateTableCellClasses()).toEqual(expectedResult);

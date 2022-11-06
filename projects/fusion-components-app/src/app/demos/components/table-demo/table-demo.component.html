@@ -5,7 +5,7 @@
     <div class="f-form__fieldset">
       <label class="f-form__input-label">Number of Data Items</label>
       <div class="f-form__input-wrapper">
-        <input class="f-form__input" type="number" min="0" [attr.max]="generatedData?.length" formControlName="numberOfDataItems" />
+        <input class="f-form__input" type="number" min="0" [attr.max]="generatedData.length" formControlName="numberOfDataItems" />
         <span class="f-form__input-wrapper-status-icon"></span>
       </div>
     </div>
@@ -221,23 +221,23 @@
     fusionUiDeepLinkedTable
     [data]="data | async"
     dataKey="id"
-    [type]="tableDemoForm?.get('type')?.value"
-    [spacing]="tableDemoForm?.get('spacing')?.value"
-    [state]="tableDemoForm?.get('state')?.value"
-    [fillContainer]="tableDemoForm?.get('fillContainer')?.value"
+    [type]="tableDemoForm.get('type')?.value"
+    [spacing]="tableDemoForm.get('spacing')?.value"
+    [state]="tableDemoForm.get('state')?.value"
+    [fillContainer]="tableDemoForm.get('fillContainer')?.value"
     [quickFilters]="quickFilters"
     [tableViews]="tableViews"
-    [appliedTableViewName]="tableDemoForm?.get('appliedTableViewName')?.value"
-    [tableTitle]="tableDemoForm?.get('tableTitle')?.value"
-    [selectionMode]="tableDemoForm?.get('selectionMode')?.value"
-    [rowExpansionMode]="tableDemoForm?.get('rowExpansionMode')?.value"
+    [appliedTableViewName]="tableDemoForm.get('appliedTableViewName')?.value"
+    [tableTitle]="tableDemoForm.get('tableTitle')?.value"
+    [selectionMode]="tableDemoForm.get('selectionMode')?.value"
+    [rowExpansionMode]="tableDemoForm.get('rowExpansionMode')?.value"
 
-    [appliedFilters]="tableDemoForm?.get('useAppliedFilters')?.value ? appliedFilters : undefined"
+    [appliedFilters]="tableDemoForm.get('useAppliedFilters')?.value ? appliedFilters : undefined"
     [defaultColumns]="defaultColumns"
 
-    [disableRowActionsButtonFunction]="tableDemoForm?.get('disableRowActionsFunction')?.value ? disableRowActionsButtonFunction : null"
-    [disableRowSelectionFunction]="tableDemoForm?.get('disableRowSelectionFunction')?.value ? disableRowSelectionFunction: null"
-    [disableRowExpansionFunction]="tableDemoForm?.get('disableRowExpansionFunction')?.value ? disableRowExpansionFunction : null"
+    [disableRowActionsButtonFunction]="tableDemoForm.get('disableRowActionsFunction')?.value ? disableRowActionsButtonFunction : null"
+    [disableRowSelectionFunction]="tableDemoForm.get('disableRowSelectionFunction')?.value ? disableRowSelectionFunction: null"
+    [disableRowExpansionFunction]="tableDemoForm.get('disableRowExpansionFunction')?.value ? disableRowExpansionFunction : null"
     [downloadTransformationFunction]="downloadTransformationFunction"
 
     (selectChange)="selectChange($event)"

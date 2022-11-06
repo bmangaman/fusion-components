@@ -39,7 +39,7 @@ describe('TooltipComponent', () => {
     describe('style.left', () => {
       it('should return elementPosition.leff', () => {
         component.elementPosition.left = null as any;
-        expect(component.setHostLeft).toEqual(null as any);
+        expect(component.setHostLeft).toEqual('');
 
         component.elementPosition.left = '100px';
         expect(component.setHostLeft).toEqual('100px');
@@ -49,7 +49,7 @@ describe('TooltipComponent', () => {
     describe('style.right', () => {
       it('should return elementPosition.right', () => {
         component.elementPosition.right = null as any;
-        expect(component.setHostRight).toEqual(null as any);
+        expect(component.setHostRight).toEqual('');
 
         component.elementPosition.right = '100px';
         expect(component.setHostRight).toEqual('100px');
@@ -59,7 +59,7 @@ describe('TooltipComponent', () => {
     describe('style.top', () => {
       it('should return elementPosition.top', () => {
         component.elementPosition.top = null as any;
-        expect(component.setHostTop).toEqual(null as any);
+        expect(component.setHostTop).toEqual('null as any');
 
         component.elementPosition.top = '100px';
         expect(component.setHostTop).toEqual('100px');
@@ -69,7 +69,7 @@ describe('TooltipComponent', () => {
     describe('style.bottom', () => {
       it('should return elementPosition.bottom', () => {
         component.elementPosition.bottom = null as any;
-        expect(component.setHostBottom).toEqual(null as any);
+        expect(component.setHostBottom).toEqual('');
 
         component.elementPosition.bottom = '100px';
         expect(component.setHostBottom).toEqual('100px');
@@ -79,7 +79,7 @@ describe('TooltipComponent', () => {
     describe('style.transform', () => {
       it('should return elementPosition.transform', () => {
         component.elementPosition.transform = null as any;
-        expect(component.setHostTransform).toEqual(null as any);
+        expect(component.setHostTransform).toEqual('');
 
         component.elementPosition.transform = 'translate(-50%, -50%)';
         expect(component.setHostTransform).toEqual('translate(-50%, -50%)');

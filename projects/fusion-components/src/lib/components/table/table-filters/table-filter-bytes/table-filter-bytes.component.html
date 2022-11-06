@@ -13,7 +13,7 @@
           type="number"
           formControlName="bytes"
           class="f-form__input"
-          [attr.aria-label]="translations.fields?.bytes" />
+          [attr.aria-label]="translations.fields.bytes" />
       </div>
     </div>
 
@@ -22,7 +22,7 @@
         <select
           formControlName="unit"
           class="f-form__input f-form__select"
-          [attr.aria-label]="translations.fields?.unit">
+          [attr.aria-label]="translations.fields.unit">
           <option *ngFor="let unit of bytesOptions" [ngValue]="unit">
             {{ unit }}
           </option>

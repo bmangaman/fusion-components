@@ -254,17 +254,17 @@
   <ng-container result>
     <f-card
       *ngIf="isLoaded"
-      [title]="cardForm?.get('title')?.value"
-      [content]="cardForm?.get('content')?.value"
-      [details]="cardForm?.get('details')?.value"
-      [footer]="cardForm?.get('footer')?.value"
-      [hideStatusBarStyling]="cardForm?.get('hideStatusBarStyling')?.value"
-      [size]="cardForm?.get('size')?.value"
+      [title]="cardForm.get('title')?.value"
+      [content]="cardForm.get('content')?.value"
+      [details]="cardForm.get('details')?.value"
+      [footer]="cardForm.get('footer')?.value"
+      [hideStatusBarStyling]="cardForm.get('hideStatusBarStyling')?.value"
+      [size]="cardForm.get('size')?.value"
       [statuses]="statuses">
-      <ng-template *ngIf="cardForm?.get('useTitleTemplate')?.value" [fusionUiTemplate]="CardTemplate.TITLE">Template Title</ng-template>
-      <ng-template *ngIf="cardForm?.get('useContentTemplate')?.value" [fusionUiTemplate]="CardTemplate.CONTENT">Template Content</ng-template>
-      <ng-template *ngIf="cardForm?.get('useDetailsTemplate')?.value" [fusionUiTemplate]="CardTemplate.DETAILS">Template Details</ng-template>
-      <ng-template *ngIf="cardForm?.get('useFooterTemplate')?.value" [fusionUiTemplate]="CardTemplate.FOOTER">Template Footer</ng-template>
+      <ng-template *ngIf="cardForm.get('useTitleTemplate')?.value" [fusionUiTemplate]="CardTemplate.TITLE">Template Title</ng-template>
+      <ng-template *ngIf="cardForm.get('useContentTemplate')?.value" [fusionUiTemplate]="CardTemplate.CONTENT">Template Content</ng-template>
+      <ng-template *ngIf="cardForm.get('useDetailsTemplate')?.value" [fusionUiTemplate]="CardTemplate.DETAILS">Template Details</ng-template>
+      <ng-template *ngIf="cardForm.get('useFooterTemplate')?.value" [fusionUiTemplate]="CardTemplate.FOOTER">Template Footer</ng-template>
     </f-card>
   </ng-container>
 

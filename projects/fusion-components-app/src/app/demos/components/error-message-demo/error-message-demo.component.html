@@ -20,14 +20,14 @@
         <input [formControl]="errorMessageFormControl" class="f-form__input" type="text" fusionUiValidationStyling />
         <f-error-message
           [control]="errorMessageFormControl"
-          [errors]="errorMessageForm?.get('hasErrors')?.value ? errorMessages : []"
-          [displayMultiple]="errorMessageForm?.get('displayMultiple')?.value">
+          [errors]="errorMessageForm.get('hasErrors')?.value ? errorMessages : []"
+          [displayMultiple]="errorMessageForm.get('displayMultiple')?.value">
         </f-error-message>
       </div>
     </form>
 
     <h3 class="f-h3">Possible Error Messages</h3>
-    <ng-container *ngIf="errorMessageForm?.get('hasErrors')?.value">
+    <ng-container *ngIf="errorMessageForm.get('hasErrors')?.value">
       <div *ngFor="let message of errorMessages">{{ message?.priority }} : {{ message?.error }}</div>
     </ng-container>
     <br />

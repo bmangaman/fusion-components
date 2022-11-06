@@ -1,18 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 
-import { UploadInfo, UploadTranslations } from '../../upload.interface';
+import { DEFAULT_UPLOAD_TRANSLATIONS, UploadInfo, UploadTranslations } from '../../upload.interface';
 import { UploadFileStatusPipe } from './upload-file-status.pipe';
 
 describe('UploadFileStatusPipe', () => {
   let pipe: UploadFileStatusPipe;
   const fileInfo: UploadInfo = {} as UploadInfo;
-
-  const translations: Partial<UploadTranslations> = {
-    statuses: {
-      pending: 'Custom Pending Message'
-    }
-  };
+  const translations: UploadTranslations = { ...DEFAULT_UPLOAD_TRANSLATIONS };
 
   beforeEach(() => {
     pipe = new UploadFileStatusPipe();

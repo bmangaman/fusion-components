@@ -16,7 +16,7 @@
       class="f-button f-button--secondary f-button--small f-upload__browse-label"
       [ngClass]="{ 'f-button--disabled': (isBrowseDisabled || isUploadInProgress) }"
       [for]="uploadId">
-      {{ translations.buttons?.browse }}
+      {{ translations.buttons.browse }}
     </label>
   </div>
 </div>
@@ -34,7 +34,7 @@
         <f-button
           *ngIf="isUploadManual && !fileInfo?.subscription"
           [size]="Size.SMALL"
-          [text]="translations.buttons?.upload"
+          [text]="translations.buttons.upload"
           [classes]="['f-upload__file-info-button', 'f-upload__file-upload-button']"
           [type]="ButtonType.PRIMARY"
           (buttonClick)="uploadFile(fileInfo)">
@@ -42,7 +42,7 @@
         <f-button
           *ngIf="fileInfo?.subscription && !fileInfo?.isComplete"
           [size]="Size.X_SMALL"
-          [text]="translations.buttons?.cancel"
+          [text]="translations.buttons.cancel"
           [classes]="['f-upload__file-info-button', 'f-upload__file-cancel-button']"
           [type]="ButtonType.SECONDARY"
           (buttonClick)="cancelFile(fileInfo)">
@@ -50,7 +50,7 @@
         <f-button
           *ngIf="removeFilesFunction && fileInfo?.isComplete"
           [size]="Size.SMALL"
-          [text]="translations.buttons?.remove"
+          [text]="translations.buttons.remove"
           [classes]="['f-upload__file-info-button', 'f-upload__file-remove-button']"
           [type]="ButtonType.SECONDARY"
           (buttonClick)="removeFile(fileInfo)">
@@ -58,7 +58,7 @@
         <f-button
           *ngIf="!isDismissButtonHidden && (!fileInfo?.subscription || fileInfo?.isComplete)"
           [size]="Size.SMALL"
-          [aria]="{ label: translations.buttons?.dismiss }"
+          [aria]="{ label: translations.buttons.dismiss }"
           icon="mdi-close"
           [classes]="['f-upload__file-info-button', 'f-upload__file-dismiss-button']"
           [type]="ButtonType.SECONDARY"

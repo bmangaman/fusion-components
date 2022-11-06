@@ -1,9 +1,5 @@
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
-import { Observable, of } from 'rxjs';
-
-import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
-
 import { TableFilterConfig } from '../../table-filter-selector';
 import { FilterComparator } from '../table-filter-comparator';
 import { TableFilterComponent } from './table-filter.component';
@@ -49,6 +45,10 @@ describe('TableFilter', () => {
       component.translations = {
         comparators: {
           testComparator: 'test',
+        },
+        fields: {},
+        comparator: {
+          comparatorLabel: 'test label',
         },
       };
 

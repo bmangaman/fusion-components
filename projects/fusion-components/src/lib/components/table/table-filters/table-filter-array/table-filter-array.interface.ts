@@ -7,7 +7,7 @@ export enum TableFilterArrayInputComparator {
 
 export interface TableFilterArrayTranslations extends TableFilterTranslations {
   comparators: {
-    [key in TableFilterArrayInputComparator]: string;
+    [key in TableFilterArrayInputComparator]?: string;
   };
   fields: {
     value: string;

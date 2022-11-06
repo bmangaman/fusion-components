@@ -152,19 +152,19 @@
 
   <ng-container result>
     <f-accordion
-      [onePanelLimit]="accordionForm?.get('onePanelLimit')?.value"
-      [maxContentHeight]="accordionForm?.get('maxContentHeight')?.value ? accordionForm?.get('maxContentHeight')?.value + 'px' : ''"
-      [expandIconClasses]="accordionForm?.get('expandIconClasses')?.value"
-      [collapseIconClasses]="accordionForm?.get('collapseIconClasses')?.value"
+      [onePanelLimit]="accordionForm.get('onePanelLimit')?.value"
+      [maxContentHeight]="accordionForm.get('maxContentHeight')?.value ? accordionForm.get('maxContentHeight')?.value + 'px' : ''"
+      [expandIconClasses]="accordionForm.get('expandIconClasses')?.value"
+      [collapseIconClasses]="accordionForm.get('collapseIconClasses')?.value"
       [toggleAllPanels]="triggerExpandAll"
       (panelContentVisibilityChanged)="updateAccordionForm($event)">
 
       <f-accordion-panel
         *ngFor="let panel of panelsFormArray.controls; let i = index;"
-        [isDisabled]="panel?.get('isDisabled')?.value"
-        [isExpanded]="panel?.get('isExpanded')?.value">
-        <ng-template fusionUiTemplate="panelTitle">{{ panel?.get('title')?.value }}</ng-template>
-        <ng-template fusionUiTemplate="panelContent">{{ panel?.get('content')?.value }}</ng-template>
+        [isDisabled]="panel.get('isDisabled')?.value"
+        [isExpanded]="panel.get('isExpanded')?.value">
+        <ng-template fusionUiTemplate="panelTitle">{{ panel.get('title')?.value }}</ng-template>
+        <ng-template fusionUiTemplate="panelContent">{{ panel.get('content')?.value }}</ng-template>
       </f-accordion-panel>
 
     </f-accordion>

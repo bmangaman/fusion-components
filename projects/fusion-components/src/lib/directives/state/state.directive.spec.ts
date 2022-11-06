@@ -1,4 +1,4 @@
-import { ComponentFactoryResolver, ComponentRef, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
+import { ComponentRef, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
 
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { MockTemplateRef } from '@fusion-components/unit-test-helpers/mock-utils.spec';
@@ -13,19 +13,16 @@ describe('StateDirective', () => {
   let directive: StateDirective;
   let viewContainerRef: ViewContainerRef;
   let templateRef: TemplateRef<any>;
-  let componentFactoryResolver: ComponentFactoryResolver;
   let renderer2: Renderer2;
 
   beforeEach(() => {
     viewContainerRef = ComponentStubFactory.getViewContainerRefStub() as ViewContainerRef;
     templateRef = ComponentStubFactory.getTemplateRefStub() as TemplateRef<any>;
-    componentFactoryResolver = ComponentStubFactory.getComponentFactoryResolverStub() as ComponentFactoryResolver;
     renderer2 = ComponentStubFactory.getRenderer2Stub() as Renderer2;
 
     directive = new StateDirective(
       viewContainerRef,
       templateRef,
-      componentFactoryResolver,
       renderer2,
     );
   });
@@ -226,7 +223,6 @@ describe('StateDirective', () => {
       directive.generateViewHelper(mockTemplateRef);
       expect(viewContainerRef.createEmbeddedView).toHaveBeenCalledWith(mockTemplateRef);
       expect(viewContainerRef.createComponent).not.toHaveBeenCalled();
-      expect(componentFactoryResolver.resolveComponentFactory).not.toHaveBeenCalled();
     });
 
     it('should use the provided inputs to generate a component if the provided templateRef is undefined', () => {
@@ -242,7 +238,6 @@ describe('StateDirective', () => {
 
       directive.generateViewHelper(null);
       expect(viewContainerRef.createComponent).toHaveBeenCalled();
-      expect(componentFactoryResolver.resolveComponentFactory).toHaveBeenCalledWith(StateComponent);
       expect(stateComponentRef.instance.state).toEqual(null as any);
       expect(stateComponentRef.instance.location).toEqual(null as any);
       expect(stateComponentRef.instance.headlines).toEqual(null as any);
@@ -259,7 +254,6 @@ describe('StateDirective', () => {
 
       directive.generateViewHelper(null);
       expect(viewContainerRef.createComponent).toHaveBeenCalled();
-      expect(componentFactoryResolver.resolveComponentFactory).toHaveBeenCalledWith(StateComponent);
       expect(stateComponentRef.instance.state).toEqual(State.LOADING);
       expect(stateComponentRef.instance.location).toEqual(StateLocation.GENERIC);
       expect(stateComponentRef.instance.headlines).toEqual({});

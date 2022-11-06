@@ -21,16 +21,12 @@ describe('ErrorMessageGenerator', () => {
     let config: ErrorMessageGeneratorConfig;
     let result: ErrorMessage;
     let expectedResult: ErrorMessage;
-    let getTranslationSpy: jasmine.Spy;
-    let getTranslationObservable: Observable<string | SafeHtml>;
 
     beforeEach(() => {
       defaultError = '';
       config = undefined as any;
       result = undefined as any;
       expectedResult = undefined as any;
-      getTranslationObservable = of('get translation observable');
-      getTranslationSpy = spyOn((service as any), 'getTranslation').and.returnValue(getTranslationObservable);
     });
 
     describe('required()', () => {
@@ -42,20 +38,17 @@ describe('ErrorMessageGenerator', () => {
         expectedResult = {
           priority: undefined,
           error: defaultError,
-          translation: getTranslationObservable,
+          translation: of('required'),
         };
 
         result = service.required(null as any);
         expect(result).toEqual(expectedResult);
-        expect(getTranslationSpy).toHaveBeenCalledWith(undefined, defaultError);
 
         result = service.required(undefined as any);
         expect(result).toEqual(expectedResult);
-        expect(getTranslationSpy).toHaveBeenCalledWith(undefined, defaultError);
 
         result = service.required({});
         expect(result).toEqual(expectedResult);
-        expect(getTranslationSpy).toHaveBeenCalledWith(undefined, defaultError);
       });
 
       it('should create an error message using the provided config', () => {
@@ -73,7 +66,6 @@ describe('ErrorMessageGenerator', () => {
 
         result = service.required(config);
         expect(result).toEqual(expectedResult);
-        expect(getTranslationSpy).not.toHaveBeenCalled();
       });
     });
 
@@ -86,20 +78,17 @@ describe('ErrorMessageGenerator', () => {
         expectedResult = {
           priority: undefined,
           error: defaultError,
-          translation: getTranslationObservable,
+          translation: of('minLength'),
         };
 
         result = service.minLength(null as any);
         expect(result).toEqual(expectedResult);
-        expect(getTranslationSpy).toHaveBeenCalledWith(undefined, defaultError);
 
         result = service.minLength(undefined as any);
         expect(result).toEqual(expectedResult);
-        expect(getTranslationSpy).toHaveBeenCalledWith(undefined, defaultError);
 
         result = service.minLength({});
         expect(result).toEqual(expectedResult);
-        expect(getTranslationSpy).toHaveBeenCalledWith(undefined, defaultError);
       });
 
       it('should create an error message using the provided config', () => {
@@ -117,7 +106,6 @@ describe('ErrorMessageGenerator', () => {
 
         result = service.minLength(config as ErrorMessageMinlengthGeneratorConfig);
         expect(result).toEqual(expectedResult);
-        expect(getTranslationSpy).not.toHaveBeenCalled();
       });
     });
 
@@ -130,20 +118,17 @@ describe('ErrorMessageGenerator', () => {
         expectedResult = {
           priority: undefined,
           error: defaultError,
-          translation: getTranslationObservable,
+          translation: of('maxLength'),
         };
 
         result = service.maxLength(null as any);
         expect(result).toEqual(expectedResult);
-        expect(getTranslationSpy).toHaveBeenCalledWith(undefined, defaultError);
 
         result = service.maxLength(undefined as any);
         expect(result).toEqual(expectedResult);
-        expect(getTranslationSpy).toHaveBeenCalledWith(undefined, defaultError);
 
         result = service.maxLength({});
         expect(result).toEqual(expectedResult);
-        expect(getTranslationSpy).toHaveBeenCalledWith(undefined, defaultError);
       });
 
       it('should create an error message using the provided config', () => {
@@ -161,7 +146,6 @@ describe('ErrorMessageGenerator', () => {
 
         result = service.maxLength(config as ErrorMessageMaxlengthGeneratorConfig);
         expect(result).toEqual(expectedResult);
-        expect(getTranslationSpy).not.toHaveBeenCalled();
       });
     });
   });

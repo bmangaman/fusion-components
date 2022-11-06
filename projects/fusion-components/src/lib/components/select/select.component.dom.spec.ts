@@ -21,10 +21,10 @@ import { SelectModule } from './select.module';
 })
 export class SelectTestComponent {
   control: UntypedFormControl = new UntypedFormControl();
-  label: string;
+  label: string = '';
   options: SelectOption[] = [];
-  isSearchable: boolean;
-  cssClasses: string[];
+  isSearchable: boolean = false;
+  cssClasses: string[] = [];
 }
 
 describe('SelectComponent', () => {

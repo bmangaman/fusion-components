@@ -1,10 +1,13 @@
 import { StatusLevel } from '@fusion-components/lib/shared';
+import { TranslationService } from '@fusion-components/public-api';
 
 import { LinearGaugeComponent } from './linear-gauge.component';
-import { LinearGaugeState, LinearGaugeThreshold } from './linear-gauge.interface';
+import { DEFAULT_LINEAR_GAUGE_TRANSLATIONS, LinearGaugeState, LinearGaugeThreshold } from './linear-gauge.interface';
 
 describe('LinearGaugeComponent', () => {
   let component: LinearGaugeComponent;
+  let translationService: TranslationService;
+
   const thresholds: LinearGaugeThreshold[] = [
     {
       title: 'warning',
@@ -19,7 +22,8 @@ describe('LinearGaugeComponent', () => {
   ];
 
   beforeEach(() => {
-    component = new LinearGaugeComponent();
+    translationService = new TranslationService();
+    component = new LinearGaugeComponent(translationService);
   });
 
   it('should be defined', () => {
@@ -40,7 +44,7 @@ describe('LinearGaugeComponent', () => {
         maxValue: 10,
         minValue: 0,
         thresholds: [],
-        translations: {},
+        translations: { ...DEFAULT_LINEAR_GAUGE_TRANSLATIONS },
       };
 
       spyOn(component, 'generateLinearGaugeState').and.returnValue(state);

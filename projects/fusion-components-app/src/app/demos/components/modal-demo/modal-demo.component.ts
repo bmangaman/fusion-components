@@ -70,7 +70,7 @@ export class ModalDemoComponent {
   selector: 'fusion-demo-inner-content',
   styleUrls: ['./modal-demo.component.scss'],
   template: `
-    <f-modal-header [isFullModal]="modalConfig?.type === 'full'" (modalClosed)="modalClosed.emit('header (x) button')">Header</f-modal-header>
+    <f-modal-header [isFullModal]="modalConfig.type === 'full'" (modalClosed)="modalClosed.emit('header (x) button')">Header</f-modal-header>
     <f-modal-content>
       <h2 *ngIf="modalConfig?.type === 'full'" class="f-modal__full-header-content">Header</h2>
       Content
@@ -84,7 +84,7 @@ export class ModalDemoComponent {
     </f-modal-content>
     <f-modal-footer>
       <div
-        [ngClass]="{'f-modal__footer-buttons-left': modalConfig?.type === ModalType.FULL}"
+        [ngClass]="{'f-modal__footer-buttons-left': modalConfig.type === ModalType.FULL}"
         class="f-modal__footer-buttons"
       >
         <f-button text="Submit" (buttonClick)="modalClosed.emit('submit button')"></f-button>

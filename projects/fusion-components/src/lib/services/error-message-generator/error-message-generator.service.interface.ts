@@ -1,11 +1,6 @@
 import { SafeHtml } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 
-export interface ErrorMessageGeneratorTranslationConfig {
-  [key: string]: any;
-  isPlural?: boolean;
-}
-
 export interface ErrorMessageGeneratorConfig {
   priority?: number;
   translation?: Observable<string | SafeHtml>;

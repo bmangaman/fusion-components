@@ -123,11 +123,11 @@
 
   <ng-container result>
     <f-linear-gauge
-      [value]="linearGaugeForm?.get('value')?.value"
-      [maxValue]="linearGaugeForm?.get('maxValue')?.value"
-      [minValue]="linearGaugeForm?.get('minValue')?.value"
-      [dataFormatPipeItem]="linearGaugeForm?.get('useDataFormatPipe')?.value ? dataFormatPipeItem : null"
-      [valueFormatPipeItem]="linearGaugeForm?.get('useValueFormatPipe')?.value ? valueFormatPipeItem : null"
+      [value]="linearGaugeForm.get('value')?.value"
+      [maxValue]="linearGaugeForm.get('maxValue')?.value"
+      [minValue]="linearGaugeForm.get('minValue')?.value"
+      [dataFormatPipeItem]="linearGaugeForm.get('useDataFormatPipe')?.value ? dataFormatPipeItem : null"
+      [valueFormatPipeItem]="linearGaugeForm.get('useValueFormatPipe')?.value ? valueFormatPipeItem : null"
       [thresholds]="thresholds">
     </f-linear-gauge>
   </ng-container>

@@ -163,9 +163,8 @@ export class StateDirective {
   }
 
   constructor(
-    private viewContainer: ViewContainerRef,
-    private templateRef: TemplateRef<any>,
     private viewContainerRef: ViewContainerRef,
+    private templateRef: TemplateRef<any>,
     private renderer: Renderer2,
   ) {}
 
@@ -174,7 +173,7 @@ export class StateDirective {
    */
   generateView(): void {
     this.cssClasses = this.getClasses();
-    this.viewContainer.clear();
+    this.viewContainerRef.clear();
 
     switch (this._state) {
       case State.LOADING:
@@ -191,11 +190,11 @@ export class StateDirective {
         break;
       case State.LOADED:
       default:
-        this.viewContainer.createEmbeddedView(this.templateRef);
+        this.viewContainerRef.createEmbeddedView(this.templateRef);
         break;
     }
 
-    const nextElementSibling: HTMLElement = get(this.viewContainer, 'element.nativeElement.nextElementSibling');
+    const nextElementSibling: HTMLElement = get(this.viewContainerRef, 'element.nativeElement.nextElementSibling');
     if (!!nextElementSibling) {
       this.cssClasses.forEach((cssClass: string) => this.renderer.addClass(nextElementSibling, cssClass));
     }
@@ -209,9 +208,9 @@ export class StateDirective {
    */
   generateViewHelper(state: TemplateRef<any> | null): void {
     if (!!state) {
-      this.viewContainer.createEmbeddedView(state);
+      this.viewContainerRef.createEmbeddedView(state);
     } else {
-      const component: ComponentRef<StateComponent> = this.viewContainer.createComponent(StateComponent);
+      const component: ComponentRef<StateComponent> = this.viewContainerRef.createComponent(StateComponent);
       component.instance.state = this._state || component.instance.state;
       component.instance.location = this._location || component.instance.location;
       component.instance.headlines = this._headlines || component.instance.headlines;
@@ -227,7 +226,7 @@ export class StateDirective {
    * @returns The list of CSS classes to be appended.
    */
   getClasses(): string[] {
-    const classList: DOMTokenList = get(this.viewContainer, 'element.nativeElement.nextElementSibling.classList');
+    const classList: DOMTokenList = get(this.viewContainerRef, 'element.nativeElement.nextElementSibling.classList');
     return !!classList && classList.length ? Array.from(classList).filter(Boolean) : [];
   }
 }

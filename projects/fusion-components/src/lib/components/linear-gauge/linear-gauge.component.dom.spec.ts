@@ -154,7 +154,7 @@ describe('LinearGaugeComponent', () => {
     });
   });
 
-  describe('thresholds', () => {
+  fdescribe('thresholds', () => {
     it('should be displayed if provided', () => {
       let pageThresholds: NodeListOf<HTMLButtonElement> | null;
 
@@ -177,12 +177,12 @@ describe('LinearGaugeComponent', () => {
 
     xit('should display tooltips when hovered over', () => {
       // TODO: Having trouble figuring trigger the hover/mouseover/mouseenter event for the tooltip to appear.
-      // HCI-15575 - Need to create DOM unit tests for tooltip directive and then use findings to create this test.
+      // Need to create DOM unit tests for tooltip directive and then use findings to create this test.
     });
 
     xit('should display tooltips when focused', () => {
       // TODO: Having trouble figuring trigger the focus event for the tooltip to appear.
-      // HCI-15575 - Need to create DOM unit tests for tooltip directive and then use findings to create this test.
+      // Need to create DOM unit tests for tooltip directive and then use findings to create this test.
     });
   });
 });

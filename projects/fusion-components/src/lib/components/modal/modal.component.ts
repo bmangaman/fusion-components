@@ -22,18 +22,18 @@ import { ModalAnimationSpeeds, ModalConfig, ModalStyling, ModalType } from './mo
     <div class="f-modal">
       <div
         class="f-modal__backdrop"
-        [ngClass]="config?.backdropClasses"
-        [@alertFadeAnimation]="config?.type === ModalType.ALERT ? currentState : null"
-        [@sideFadeAnimation]="config?.type === ModalType.SIDE ? currentState : null"
-        [@fullFadeAnimation]="config?.type === ModalType.FULL ? currentState : null">
+        [ngClass]="config.backdropClasses"
+        [@alertFadeAnimation]="config.type === ModalType.ALERT ? currentState : null"
+        [@sideFadeAnimation]="config.type === ModalType.SIDE ? currentState : null"
+        [@fullFadeAnimation]="config.type === ModalType.FULL ? currentState : null">
       </div>
       <div
         class="f-modal__window"
-        [ngStyle]="config?.type === ModalType.FULL ? modalStyling : undefined"
+        [ngStyle]="config.type === ModalType.FULL ? modalStyling : undefined"
         [ngClass]="windowClasses"
-        [@fadeAndScaleAnimation]="config?.type === ModalType.ALERT ? currentState : null"
-        [@sideSlideAnimation]="config?.type === ModalType.SIDE ? currentState : null"
-        [@fullSlideAnimation]="config?.type === ModalType.FULL ? currentState : null">
+        [@fadeAndScaleAnimation]="config.type === ModalType.ALERT ? currentState : null"
+        [@sideSlideAnimation]="config.type === ModalType.SIDE ? currentState : null"
+        [@fullSlideAnimation]="config.type === ModalType.FULL ? currentState : null">
         <div [ngClass]="containerClasses">
           <div class="f-modal__content-wrapper">
             <ng-content></ng-content>

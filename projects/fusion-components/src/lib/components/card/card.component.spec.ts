@@ -1,4 +1,5 @@
 import { QueryList } from '@angular/core';
+import { TranslationService } from '@fusion-components/public-api';
 
 import { TemplateDirective } from '../../directives/template';
 import { Size, StatusLevel } from '../../shared';
@@ -7,9 +8,11 @@ import { CardStatus } from './card.interface';
 
 describe('ButtonComponent', () => {
   let component: CardComponent;
+  let translationService: TranslationService;
 
   beforeEach(() => {
-    component = new CardComponent();
+    translationService = new TranslationService();
+    component = new CardComponent(translationService);
   });
 
   it('should be defined', () => {

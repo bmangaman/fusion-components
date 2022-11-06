@@ -4,6 +4,7 @@ import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/compo
 import {
   TableCellContentAlignment,
   TableCellContentVerticalAlignment,
+  TableCellTranslations,
   TableColumnConfig,
   TableColumnSorted,
   TableSpacing,
@@ -49,8 +50,8 @@ describe('HeaderTableCellComponent', () => {
       component.shouldProjectContent = false;
       component.prevShouldProjectContent = false;
 
-      component.translations = {};
-      component.prevTranslations = {};
+      component.translations = {} as any as TableCellTranslations;
+      component.prevTranslations = {} as any as TableCellTranslations;
 
       component.col = {};
       component.prevCol = {};

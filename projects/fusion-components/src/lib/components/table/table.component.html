@@ -161,7 +161,7 @@
                   (change)="updateSelectedData(undefined, true)"
                   name="f-table-{{ tableUuid }}-checkbox-toggle-all"
                   id="f-table-{{ tableUuid }}-checkbox-toggle-all"
-                  [attr.aria-label]="translations.selection?.selectAll"
+                  [attr.aria-label]="translations.selection.selectAll"
                   [checked]="finalTableData | areAllVisibleRowsSelected"
                   [indeterminate]="finalTableData | areAnyRowsSelected">
                 <span class="f-form__checkbox-button"></span>
@@ -182,7 +182,7 @@
           <button
             *ngIf="rowExpansionMode === RowExpansionMode.MULTIPLE"
             class="f-table__table-cell-expansion-button"
-            [attr.aria-label]="translations.expansion?.expandAll"
+            [attr.aria-label]="translations.expansion.expandAll"
             (click)="handleRowExpansion()">
             <i class="mdi" [ngClass]="flags.areAllVisibleRowsExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
           </button>
@@ -210,7 +210,7 @@
           [shouldProjectContent]="true"
           [isSticky]="fillContainer"
           [spacing]="spacing">
-          {{ translations.actions?.columnTitle }}
+          {{ translations.actions.columnTitle }}
         </f-table-cell-header>
         <!-- END: actions column header -->
 
@@ -248,7 +248,7 @@
                     (change)="updateSelectedData(rowData)"
                     name="f-table-{{ tableUuid }}-checkbox-{{ i }}"
                     id="f-table-{{ tableUuid }}-checkbox-{{ i }}"
-                    [attr.aria-label]="translations.selection?.select + ' ' + i"
+                    [attr.aria-label]="translations.selection.select + ' ' + i"
                     [checked]="rowData?.isSelected">
                   <span class="f-form__checkbox-button"></span>
                 </label>
@@ -267,7 +267,7 @@
                     (click)="updateSelectedData(rowData)"
                     name="f-table-{{ tableUuid }}-radio-{{ i }}"
                     id="f-table-{{ tableUuid }}-radio-{{ i }}"
-                    [attr.aria-label]="translations.selection?.select + ' ' + i"
+                    [attr.aria-label]="translations.selection.select + ' ' + i"
                     [checked]="rowData?.isSelected">
                   <span class="f-form__radio-button"></span>
                 </label>
@@ -291,7 +291,7 @@
               class="f-table__table-cell-expansion-button"
               (click)="handleRowExpansion(rowData, i)"
               [disabled]="!rowData?.isExpandable"
-              [attr.aria-label]="translations.expansion?.expand + ' ' + i"
+              [attr.aria-label]="translations.expansion.expand + ' ' + i"
               [attr.aria-disabled]="!rowData?.isExpandable">
               <i class="mdi" [ngClass]="rowData?.isExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
             </button>

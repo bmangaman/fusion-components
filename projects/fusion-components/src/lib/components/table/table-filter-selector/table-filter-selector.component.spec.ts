@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, ComponentFactoryResolver, QueryList, ViewContainerRef } from '@angular/core';
+import { ChangeDetectorRef, QueryList, ViewContainerRef } from '@angular/core';
 import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 import { UntypedFormBuilder } from '@angular/forms';
 
@@ -21,18 +21,15 @@ import { TableFilterSelectorComponent } from './table-filter-selector.component'
 import { TableFilterConfig } from './table-filter-selector.interface';
 
 describe('TableFilterSelectorComponent', () => {
-  let componentFactoryResolver: ComponentFactoryResolver;
   let component: TableFilterSelectorComponent;
   let viewContainerRef: ViewContainerRef;
   let changeDetectorRef: ChangeDetectorRef;
 
   beforeEach(() => {
-    componentFactoryResolver = ComponentStubFactory.getComponentFactoryResolverStub() as ComponentFactoryResolver;
     viewContainerRef = ComponentStubFactory.getViewContainerRefStub() as ViewContainerRef;
     changeDetectorRef = ComponentStubFactory.getChangeDetectorRefStub() as ChangeDetectorRef;
 
     component = new TableFilterSelectorComponent(
-      componentFactoryResolver,
       changeDetectorRef,
     );
   });
@@ -464,25 +461,25 @@ describe('TableFilterSelectorComponent', () => {
     it('should do nothing/ just return the pass in value if it is undefined, has no length, or if there are no applied filters', () => {
       component.data = null;
       component.filterData();
-      expect(component.filteredData.emit).toHaveBeenCalledWith(null as any);
+      expect(component.filteredData.emit).toHaveBeenCalledWith([]);
       expect(component.appliedFiltersChange.emit).toHaveBeenCalledWith(component.appliedFilters);
 
       component.appliedFilters = [];
       component.data = null;
       component.filterData();
-      expect(component.filteredData.emit).toHaveBeenCalledWith(null as any);
+      expect(component.filteredData.emit).toHaveBeenCalledWith([]);
       expect(component.appliedFiltersChange.emit).toHaveBeenCalledWith(component.appliedFilters);
 
       component.appliedFilters = [cloneDeep(appliedFilter)];
       component.data = null;
       component.filterData();
-      expect(component.filteredData.emit).toHaveBeenCalledWith(null as any);
+      expect(component.filteredData.emit).toHaveBeenCalledWith([]);
       expect(component.appliedFiltersChange.emit).toHaveBeenCalledWith(component.appliedFilters);
 
       component.appliedFilters = [cloneDeep(appliedFilter)];
       component.data = [];
       component.filterData();
-      expect(component.filteredData.emit).toHaveBeenCalledWith(null as any);
+      expect(component.filteredData.emit).toHaveBeenCalledWith([]);
       expect(component.appliedFiltersChange.emit).toHaveBeenCalledWith(component.appliedFilters);
 
       component.appliedFilters = [];

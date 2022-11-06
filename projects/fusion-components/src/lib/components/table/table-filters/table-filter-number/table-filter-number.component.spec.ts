@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 
 import { FilterComparator } from '../table-filter-comparator';
 import { TableFilterNumberComponent } from './table-filter-number.component';
-import { TableFilterNumberInputComparator } from './table-filter-number.interface';
+import { DEFAULT_TABLE_FILTER_NUMBER_TRANSLATIONS, TableFilterNumberInputComparator } from './table-filter-number.interface';
 
 describe('TableFilterNumberComponent', () => {
   let component: TableFilterNumberComponent;
@@ -84,6 +84,7 @@ describe('TableFilterNumberComponent', () => {
   describe('generateComparatorLabel()', () => {
     it('should handle if a translation for the comparator was provided', () => {
       component.translations = {
+        ...DEFAULT_TABLE_FILTER_NUMBER_TRANSLATIONS,
         comparators: {
           [TableFilterNumberInputComparator.EQUAL_TO]: 'equal to',
         },

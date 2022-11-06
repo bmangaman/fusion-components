@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 
 import { FilterComparator } from '../table-filter-comparator';
 import { TableFilterStringComponent } from './table-filter-string.component';
-import { TableFilterStringInputComparator } from './table-filter-string.interface';
+import { DEFAULT_TABLE_FILTER_STRING_TRANSLATIONS, TableFilterStringInputComparator } from './table-filter-string.interface';
 
 describe('TableFilterStringComponent', () => {
   let component: TableFilterStringComponent;
@@ -143,6 +143,7 @@ describe('TableFilterStringComponent', () => {
   describe('generateComparatorLabel()', () => {
     it('should handle if a translation for the comparator was provided', () => {
       component.translations = {
+        ...DEFAULT_TABLE_FILTER_STRING_TRANSLATIONS,
         comparators: {
           [TableFilterStringInputComparator.IS]: 'is',
         },

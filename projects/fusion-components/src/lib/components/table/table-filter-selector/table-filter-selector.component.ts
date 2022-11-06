@@ -160,7 +160,6 @@ export class TableFilterSelectorComponent extends UnsubscribeComponent implement
   @ViewChild(TableFilterHostDirective, { static: false }) tableFilterTemplate: TableFilterHostDirective;
 
   constructor(
-    private viewContainerRef: ViewContainerRef,
     private cdr: ChangeDetectorRef,
   ) {
     super();

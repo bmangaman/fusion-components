@@ -108,7 +108,7 @@ describe('TableQueryParamsParser', () => {
       };
       const queryParams: Params = TableQueryParamsParser.createQueryParams(parsedData, allFilters);
       const parsedFilters = TableQueryParamsParser.getFiltersFromQueryParams(queryParams['filters'], allFilters);
-      expect(parsedFilters).toEqual(parsedData.filters.map(filter => ({ ...filter, label: jasmine.any(Observable)})));
+      expect(parsedFilters).toEqual(parsedData.filters.map((filter, index) => ({ ...filter, label: `contains ${inputStringsToTest[index]}`})));
     });
 
     describe('Query Params -> table objects', () => {
@@ -278,7 +278,7 @@ describe('TableQueryParamsParser', () => {
                   {
                     field: 'ipField',
                     formValues: jasmine.objectContaining({
-                      octet1: jasmine.any(Number),
+                      octet1: '1',
                       octet4: null,
                     })
                   }
@@ -323,8 +323,8 @@ describe('TableQueryParamsParser', () => {
               jasmine.objectContaining({
                 field: 'ipField', comparatorName: 'contains', formValues: {
                   ip: null,
-                  octet1: 10,
-                  octet2: 192,
+                  octet1: '10',
+                  octet2: '192',
                   octet3: null,
                   octet4: null,
                 }

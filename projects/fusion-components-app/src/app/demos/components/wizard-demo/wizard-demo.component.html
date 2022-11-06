@@ -60,8 +60,8 @@
   <ng-container result>
     <f-wizard
       [(steps)]="steps"
-      [disableNextSteps]="wizardForm?.get('disableNextSteps')?.value"
-      [disablePreviousSteps]="wizardForm?.get('disablePreviousSteps')?.value"
+      [disableNextSteps]="wizardForm.get('disableNextSteps')?.value"
+      [disablePreviousSteps]="wizardForm.get('disablePreviousSteps')?.value"
       (stepsChanged)="stepsChanged($event)">
       <img class="f-wizard__brand-image" src="assets/images/na_logo_hrz_1c-rev_rgb_sm.png" style="height: 30px"/>
 

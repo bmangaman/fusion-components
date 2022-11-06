@@ -179,20 +179,20 @@
   </form>
 
   <ng-container result>
-    <div [ngClass]="{'sticky-scroll': notificationForm?.get('sticky')?.value}">
+    <div [ngClass]="{'sticky-scroll': notificationForm.get('sticky')?.value}">
       <f-notification
-        (bannerDismissed)="notificationForm?.get('displayed')?.patchValue(false)"
-        *ngIf="notificationForm?.get('displayed')?.value"
-        [dismissible]="notificationForm?.get('dismissible')?.value"
-        [notificationType]="notificationForm?.get('notificationType')?.value"
-        [sticky]="notificationForm?.get('sticky')?.value"
-        [id]="notificationForm?.get('id')?.value"
-        [detailsMaxHeight]="notificationForm?.get('detailsMaxHeight')?.value"
-        [disableAnimations]="notificationForm?.get('animationsDisabled')?.value"
-        [notificationIcon]="notificationForm?.get('notificationIcon')?.value"
-        [disappearDelay]="notificationForm?.get('disappearDelay')?.value">
-        {{ notificationForm?.get('message')?.value }}
-        <ng-container *ngIf="notificationForm?.get('details')?.value">
+        (bannerDismissed)="notificationForm.get('displayed')?.patchValue(false)"
+        *ngIf="notificationForm.get('displayed')?.value"
+        [dismissible]="notificationForm.get('dismissible')?.value"
+        [notificationType]="notificationForm.get('notificationType')?.value"
+        [sticky]="notificationForm.get('sticky')?.value"
+        [id]="notificationForm.get('id')?.value"
+        [detailsMaxHeight]="notificationForm.get('detailsMaxHeight')?.value"
+        [disableAnimations]="notificationForm.get('animationsDisabled')?.value"
+        [notificationIcon]="notificationForm.get('notificationIcon')?.value"
+        [disappearDelay]="notificationForm.get('disappearDelay')?.value">
+        {{ notificationForm.get('message')?.value }}
+        <ng-container *ngIf="notificationForm.get('details')?.value">
           <ng-template [fusionUiTemplate]="NotificationTemplate.DETAILS">
             <h5 class="f-h5">Error Details:</h5>
             <pre>{{ notificationForm.value | json }}</pre>

@@ -40,9 +40,9 @@
     <f-menu
       [isMenuDialogOpen]="isMenuDialogOpen"
       [aria]="{ closeButtonLabel: 'Close Demo Menu Dialog', menuDialogLabelledBy: 'demo-menu' }"
-      [dialogMinWidth]="menuForm?.get('minWidth')?.value + 'px'"
-      [dialogContentMaxHeight]="menuForm?.get('maxHeight')?.value + 'px'"
-      [dialogLocation]="menuForm?.get('dialogLocation')?.value"
+      [dialogMinWidth]="menuForm.get('minWidth')?.value + 'px'"
+      [dialogContentMaxHeight]="menuForm.get('maxHeight')?.value + 'px'"
+      [dialogLocation]="menuForm.get('dialogLocation')?.value"
       (menuClosed)="isMenuDialogOpen = false">
       <ng-template fusionUiTemplate="menuButton">
         <f-button

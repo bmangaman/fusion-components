@@ -16,18 +16,17 @@
 
   <div class="f-linear-gauge__bar-container">
     <div class="f-linear-gauge__bar">
-
-      <ng-template *ngFor="let threshold of thresholds">
+      <ng-container *ngFor="let threshold of thresholds">
         <button
           *ngIf="!!threshold"
           class="f-linear-gauge__threshold"
           [ngStyle]="{ 'left': threshold.value | percentage: maxValue:minValue | percent }"
           [ngClass]="{
-            'f-linear-gauge__threshold--normal' : threshold?.level === StatusLevel.NORMAL,
-            'f-linear-gauge__threshold--warning' : threshold?.level === StatusLevel.WARNING,
-            'f-linear-gauge__threshold--error' : threshold?.level === StatusLevel.ERROR,
-            'f-linear-gauge__threshold--critical' : threshold?.level === StatusLevel.CRITICAL,
-            'f-linear-gauge__threshold--passed' : threshold?.passed
+            'f-linear-gauge__threshold--normal' : threshold.level === StatusLevel.NORMAL,
+            'f-linear-gauge__threshold--warning' : threshold.level === StatusLevel.WARNING,
+            'f-linear-gauge__threshold--error' : threshold.level === StatusLevel.ERROR,
+            'f-linear-gauge__threshold--critical' : threshold.level === StatusLevel.CRITICAL,
+            'f-linear-gauge__threshold--passed' : threshold.passed
           }"
           fusionUiTooltip
           [attr.aria-label]="threshold.level | getStatusLevelText: translations:true"
@@ -35,7 +34,7 @@
           [hideDelay]="2000"
           [classes]="[ 'f-linear-gauge__threshold-tooltip', 'f-linear-gauge__threshold-tooltip--' + (threshold.level | getStatusLevelText: undefined:true) ]">
         </button>
-      </ng-template>
+      </ng-container>
 
       <div
         class="f-linear-gauge__value-bar"

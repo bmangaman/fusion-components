@@ -82,9 +82,9 @@
   <ng-container result>
     <f-select
       [formControl]="selectFormControl"
-      [label]="selectForm?.get('label')?.value"
+      [label]="selectForm.get('label')?.value"
       [options]="selectOptions"
-      [isSearchable]="selectForm?.get('isSearchable')?.value"
+      [isSearchable]="selectForm.get('isSearchable')?.value"
       [cssClasses]="['max-width-200']">
     </f-select>
   </ng-container>

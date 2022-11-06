@@ -7,7 +7,7 @@ import { BiBytesUnit, BytesUnit } from '@fusion-components/lib/shared';
 
 import { FilterComparator } from '../table-filter-comparator';
 import { TableFilterBytesComponent } from './table-filter-bytes.component';
-import { TableFilterBytesInputComparator } from './table-filter-bytes.interface';
+import { DEFAULT_TABLE_FILTER_BYTES_TRANSLATIONS, TableFilterBytesInputComparator } from './table-filter-bytes.interface';
 
 describe('TableFilterBytesComponent', () => {
   let component: TableFilterBytesComponent;
@@ -145,6 +145,7 @@ describe('TableFilterBytesComponent', () => {
   describe('generateComparatorLabel()', () => {
     it('should handle if a translation for the comparator was provided', () => {
       component.translations = {
+        ...DEFAULT_TABLE_FILTER_BYTES_TRANSLATIONS,
         comparators: {
           [TableFilterBytesInputComparator.EQUAL_TO]: 'equal to',
         },

@@ -6,7 +6,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TemplateModule, WINDOW } from '@fusion-components';
 import { NotificationPageObject } from '@fusion-components/unit-test-helpers';
 import { NotificationComponent } from './notification.component';
-import { NotificationTranslations, NotificationType } from './notification.interface';
+import { DEFAULT_NOTIFICATION_TRANSLATIONS, NotificationTranslations, NotificationType } from './notification.interface';
 
 
 import createSpy = jasmine.createSpy;
@@ -215,9 +215,13 @@ describe('NotificationComponent', () => {
       const buttonIcon = fusionUiNotification.notificationIcon;
       expect(buttonIcon.attributes.getNamedItem('aria-label')?.value).toEqual('.notification.type.success');
 
-      component.translations = { ariaTypeLabel: {
-        success: 'fake-success'
-        }};
+      component.translations = {
+        ...DEFAULT_NOTIFICATION_TRANSLATIONS,
+        ariaTypeLabel: {
+          ...DEFAULT_NOTIFICATION_TRANSLATIONS.ariaTypeLabel,
+          success: 'fake-success'
+        }
+      };
       fixture.detectChanges();
 
       expect(buttonIcon.attributes.getNamedItem('aria-label')?.value).toEqual('fake-success');
@@ -227,7 +231,10 @@ describe('NotificationComponent', () => {
       const buttonIcon = fusionUiNotification.closeButtonIcon;
       expect(buttonIcon.attributes.getNamedItem('aria-label')?.value).toEqual('.notification.ariaCloseLabel');
 
-      component.translations = { ariaCloseLabel: 'translatedClose'};
+      component.translations = {
+        ...DEFAULT_NOTIFICATION_TRANSLATIONS,
+        ariaCloseLabel: 'translatedClose',
+      };
       fixture.detectChanges();
 
       expect(buttonIcon.attributes.getNamedItem('aria-label')?.value).toEqual('translatedClose');

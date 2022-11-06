@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, TemplateRef } from '@angular/core';
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { TableActionsComponent } from './table-actions.component';
+import { TableActionsTranslations } from './table-actions.interface';
 
 describe('TableActionsComponent', () => {
   let component: TableActionsComponent;
@@ -71,7 +72,7 @@ describe('TableActionsComponent', () => {
       component.ngDoCheck();
       expect(changeDetectorRef.markForCheck).not.toHaveBeenCalled();
 
-      component.translations = {};
+      component.translations = {}  as any as TableActionsTranslations;
       (changeDetectorRef.markForCheck as jasmine.Spy).calls.reset();
       component.ngDoCheck();
       expect(changeDetectorRef.markForCheck).toHaveBeenCalled();

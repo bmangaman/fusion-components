@@ -9,7 +9,7 @@ export enum TableFilterIpInputComparator {
 
 export interface TableFilterIpTranslations extends TableFilterTranslations {
   comparators: {
-    [key in TableFilterIpInputComparator]: string;
+    [key in TableFilterIpInputComparator]?: string;
   };
   fields: {
     octet1: string;

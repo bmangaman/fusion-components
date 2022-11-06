@@ -1,6 +1,6 @@
 import { ChangeDetectorRef } from '@angular/core';
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
-import { TableColumnConfig, TableSpacing } from '../../table.interface';
+import { TableCellTranslations, TableColumnConfig, TableSpacing } from '../../table.interface';
 import { TableCellComponent } from './table-cell.component';
 
 describe('TableCellComponent', () => {
@@ -81,8 +81,8 @@ describe('TableCellComponent', () => {
       component.shouldProjectContent = false;
       component.prevShouldProjectContent = false;
 
-      component.translations = {};
-      component.prevTranslations = {};
+      component.translations = {} as any as TableCellTranslations;
+      component.prevTranslations = {} as any as TableCellTranslations;
 
       component.col = {};
       component.prevCol = {};
@@ -128,7 +128,7 @@ describe('TableCellComponent', () => {
       expect(changeDetectorRef.markForCheck).not.toHaveBeenCalled();
       (changeDetectorRef.markForCheck as jasmine.Spy).calls.reset();
 
-      component.translations = undefined;
+      component.translations = undefined as any as TableCellTranslations;
       (changeDetectorRef.markForCheck as jasmine.Spy).calls.reset();
       component.ngDoCheck();
       expect(changeDetectorRef.markForCheck).toHaveBeenCalled();

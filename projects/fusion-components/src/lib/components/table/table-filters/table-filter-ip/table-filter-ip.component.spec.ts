@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 
 import { FilterComparator } from '../table-filter-comparator';
 import { TableFilterIpComponent } from './table-filter-ip.component';
-import { TableFilterIpInputComparator } from './table-filter-ip.interface';
+import { DEFAULT_TABLE_FILTER_IP_TRANSLATIONS, TableFilterIpInputComparator } from './table-filter-ip.interface';
 
 describe('TableFilterIpComponent', () => {
   let component: TableFilterIpComponent;
@@ -217,6 +217,7 @@ describe('TableFilterIpComponent', () => {
   describe('generateComparatorLabel()', () => {
     it('should handle if a translation for the comparator was provided', () => {
       component.translations = {
+        ...DEFAULT_TABLE_FILTER_IP_TRANSLATIONS,
         comparators: {
           [TableFilterIpInputComparator.IS]: 'is',
         },

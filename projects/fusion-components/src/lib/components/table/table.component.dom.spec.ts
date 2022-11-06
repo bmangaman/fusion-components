@@ -6,9 +6,10 @@ import { cloneDeep } from 'lodash-es';
 import { State } from '../../shared';
 import { TableFilterConfig } from './table-filter-selector';
 import { TableFilterNumberComponent, TableFilterNumberInputComparator } from './table-filters';
-import { TABLE_PAGINATION_CONFIG, TablePaginationConfig } from './table-pagination';
+import { TABLE_PAGINATION_CONFIG, TablePaginationConfig, TablePaginationTranslations, DEFAULT_TABLE_PAGINATION_TRANSLATIONS } from './table-pagination';
 import { TableComponentPageObject } from './table.component.spec.po';
 import {
+  DEFAULT_TABLE_TRANSLATIONS,
   RowExpansionMode,
   SelectionMode,
   TableColumnConfig,
@@ -94,7 +95,7 @@ export class TableTestComponent {
 
   quickFilters: TableFilterConfig[];
 
-  translations: TableTranslations = {};
+  translations: TableTranslations = { ...DEFAULT_TABLE_TRANSLATIONS };
 
   disableRowExpansionFunction(d: TableRowData): boolean {
     // eslint-disable-next-line @typescript-eslint/dot-notation
@@ -598,7 +599,7 @@ describe('TableComponent', () => {
       expect(page.table.tableBodyRows?.length).toEqual(30);
 
       // Custom results string
-      component.translations = { pagination: { results: 'Displaying $min - $max of $total' } };
+      component.translations = { ...DEFAULT_TABLE_TRANSLATIONS, pagination: { ...DEFAULT_TABLE_PAGINATION_TRANSLATIONS, results: 'Displaying $min - $max of $total' } };
       await asyncDetectChanges();
       expect(page.table.paginationNumOfResults).toEqual(' Displaying 1 - 30 of 100 ');
       expect(page.table.tableBodyRows?.length).toEqual(30);

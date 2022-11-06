@@ -66,13 +66,13 @@ export const getElementAbsolutePositioning = (
   const elementHeight: number = element.nativeElement.offsetHeight;
   const elementWidth: number = element.nativeElement.offsetWidth;
 
-  const triggerElementHeight: number = triggerElement.nativeElement.offsetHeight;
-  const triggerElementWidth: number = triggerElement.nativeElement.offsetWidth;
+  const triggerElementRect: DOMRect = triggerElement.nativeElement.getBoundingClientRect();
 
-  const triggerElementRect: ClientRect = triggerElement.nativeElement.getBoundingClientRect();
+  const triggerElementHeight: number = triggerElementRect.height || triggerElement.nativeElement.offsetHeight;
+  const triggerElementWidth: number = triggerElementRect.width || triggerElement.nativeElement.offsetWidth;
 
-  const scrollTop: number = (win.pageYOffset || doc.documentElement.scrollTop) - (doc.documentElement.clientTop || 0);
-  const scrollLeft: number = (win.pageXOffset || doc.documentElement.scrollLeft) - (doc.documentElement.clientLeft || 0);
+  const scrollTop: number = (win.scrollY || doc.documentElement.scrollTop) - (doc.documentElement.clientTop || 0);
+  const scrollLeft: number = (win.scrollX || doc.documentElement.scrollLeft) - (doc.documentElement.clientLeft || 0);
 
   const triggerElementLeft: number = triggerElementRect.left + scrollTop;
   const triggerElementTop: number = triggerElementRect.top + scrollLeft;

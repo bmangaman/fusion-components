@@ -241,7 +241,7 @@ export interface TableTranslations {
     selectAll: string;
     select: string;
   };
-  expansion?: {
+  expansion: {
     expandAll: string;
     expand: string;
   };

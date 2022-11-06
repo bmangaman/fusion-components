@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 
 import { FilterComparator } from '../table-filter-comparator';
 import { TableFilterArrayComponent } from './table-filter-array.component';
-import { TableFilterArrayInputComparator } from './table-filter-array.interface';
+import { DEFAULT_TABLE_FILTER_ARRAY_TRANSLATIONS, TableFilterArrayInputComparator } from './table-filter-array.interface';
 
 describe('TableFilterArrayComponent', () => {
   let component: TableFilterArrayComponent;
@@ -60,6 +60,7 @@ describe('TableFilterArrayComponent', () => {
   describe('generateComparatorLabel()', () => {
     it('should handle if a translation for the comparator was provided', () => {
       component.translations = {
+        ...DEFAULT_TABLE_FILTER_ARRAY_TRANSLATIONS,
         comparators: {
           [TableFilterArrayInputComparator.CONTAINS]: 'contains',
         },

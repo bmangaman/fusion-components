@@ -5,7 +5,6 @@ import { Observable, of } from 'rxjs';
 import { ErrorMessage } from '../../components/error-message/error-message.interface';
 import {
   ErrorMessageGeneratorConfig,
-  ErrorMessageGeneratorTranslationConfig,
   ErrorMessageMaxlengthGeneratorConfig,
   ErrorMessageMinlengthGeneratorConfig,
 } from './error-message-generator.service.interface';
