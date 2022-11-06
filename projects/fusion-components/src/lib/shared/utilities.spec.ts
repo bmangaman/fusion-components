@@ -61,11 +61,13 @@ describe('Utilities', () => {
   describe('unsubscribeSubject', () => {
     it('should complete the subject if the provided subject is defined', () => {
       const subject: Subject<void> = new Subject<void>();
-      spyOn(subject, 'next').and.callThrough();
       spyOn(subject, 'complete').and.callThrough();
+      spyOn(subject, 'unsubscribe').and.callThrough();
+
       utils.unsubscribeSubject(subject);
-      expect(subject.next).toHaveBeenCalled();
+
       expect(subject.complete).toHaveBeenCalled();
+      expect(subject.unsubscribe).toHaveBeenCalled();
       utils.unsubscribeSubject(undefined as any); // just call this to make sure no errors are thrown
     });
   });

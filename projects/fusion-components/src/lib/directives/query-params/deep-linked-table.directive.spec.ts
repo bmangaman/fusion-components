@@ -92,11 +92,11 @@ describe('DeepLinkedTable', () => {
   });
 
   it('should cleanup on destroy', () => {
-    spyOn((directive as any)._destroy$, 'next');
     spyOn((directive as any)._destroy$, 'complete');
+    spyOn((directive as any)._destroy$, 'unsubscribe');
     directive.ngOnDestroy();
-    expect((directive as any)._destroy$.next).toHaveBeenCalled();
     expect((directive as any)._destroy$.complete).toHaveBeenCalled();
+    expect((directive as any)._destroy$.unsubscribe).toHaveBeenCalled();
   });
 
   describe('init', () => {
@@ -219,9 +219,9 @@ describe('DeepLinkedTable', () => {
 
       expect(directive.paramData).toEqual({
         filters: [],
-        sort: null as any,
+        sort: undefined,
         columns: [],
-        view: null as any,
+        view: undefined,
       });
     });
 
@@ -345,9 +345,9 @@ describe('DeepLinkedTable', () => {
       });
 
       (TableQueryParamsParser.getFiltersFromQueryParams as jasmine.Spy).and.returnValue([]);
-      (TableQueryParamsParser.getSortFromQueryParams as jasmine.Spy).and.returnValue(null);
+      (TableQueryParamsParser.getSortFromQueryParams as jasmine.Spy).and.returnValue(undefined);
       (TableQueryParamsParser.getColumnsFromQueryParams as jasmine.Spy).and.returnValue([]);
-      (TableQueryParamsParser.getViewFromQueryParams as jasmine.Spy).and.returnValue(null);
+      (TableQueryParamsParser.getViewFromQueryParams as jasmine.Spy).and.returnValue(undefined);
 
       const filtersNextSpy = spyOn((directive as any).table.filterChange, 'next').and.callThrough();
       const sortNextSpy = spyOn((directive as any).table.sortChange, 'next').and.callThrough();
@@ -361,9 +361,9 @@ describe('DeepLinkedTable', () => {
       expect(viewNextSpy).not.toHaveBeenCalled();
 
       expect(directive.paramData.filters.length).toBe(0);
-      expect(directive.paramData.sort).toBe(null as any,);
+      expect(directive.paramData.sort).toBe(undefined);
       expect(directive.paramData.columns.length).toBe(0);
-      expect(directive.paramData.view).toBe(null as any,);
+      expect(directive.paramData.view).toBe(undefined);
     });
   });
 
@@ -390,7 +390,7 @@ describe('DeepLinkedTable', () => {
         directive.handleFiltersChange(newFilters);
 
         expect(TableQueryParamsParser.createQueryParams)
-          .toHaveBeenCalledWith({ filters: newFilters, sort: null as any, columns: [], view: null as any }, jasmine.anything());
+          .toHaveBeenCalledWith({ filters: newFilters, sort: undefined, columns: [], view: undefined }, jasmine.anything());
         expect(router.navigate).toHaveBeenCalledWith([jasmine.any(String)], {
           replaceUrl: true,
           queryParams: fakeParams
@@ -409,7 +409,7 @@ describe('DeepLinkedTable', () => {
         directive.handleFiltersChange(newFilters);
 
         expect(TableQueryParamsParser.createQueryParams)
-          .toHaveBeenCalledWith({ filters: [], sort: null as any, columns: [], view: null as any }, jasmine.anything());
+          .toHaveBeenCalledWith({ filters: [], sort: undefined, columns: [], view: undefined }, jasmine.anything());
         expect(router.navigate).toHaveBeenCalledWith([jasmine.any(String)], {
           replaceUrl: true,
           queryParams: fakeParams
@@ -429,7 +429,7 @@ describe('DeepLinkedTable', () => {
         directive.handleFiltersChange(newFilters);
 
         expect(TableQueryParamsParser.createQueryParams)
-          .toHaveBeenCalledWith({ filters: [], sort: null as any, columns: [], view: null as any }, jasmine.anything());
+          .toHaveBeenCalledWith({ filters: [], sort: undefined, columns: [], view: undefined }, jasmine.anything());
         expect(router.navigate).toHaveBeenCalledWith([jasmine.any(String)], {
           replaceUrl: true,
           queryParams: fakeParams
@@ -446,7 +446,7 @@ describe('DeepLinkedTable', () => {
         directive.handleSortChange(sort);
 
         expect(TableQueryParamsParser.createQueryParams)
-          .toHaveBeenCalledWith({ filters: [], sort: { field: 'name', order: -1 }, columns: [], view: null as any }, jasmine.anything());
+          .toHaveBeenCalledWith({ filters: [], sort: { field: 'name', order: -1 }, columns: [], view: undefined }, jasmine.anything());
         expect(router.navigate).toHaveBeenCalledWith([jasmine.any(String)], {
           replaceUrl: true,
           queryParams: fakeParams
@@ -462,7 +462,7 @@ describe('DeepLinkedTable', () => {
         directive.handleSortChange(sort);
 
         expect(TableQueryParamsParser.createQueryParams)
-          .toHaveBeenCalledWith({ filters: [], sort: null as any, columns: [], view: null as any }, jasmine.anything());
+          .toHaveBeenCalledWith({ filters: [], sort: undefined, columns: [], view: undefined }, jasmine.anything());
         expect(router.navigate).toHaveBeenCalledWith([jasmine.any(String)], {
           replaceUrl: true,
           queryParams: fakeParams
@@ -482,7 +482,7 @@ describe('DeepLinkedTable', () => {
         directive.handleColumnsChange(newColumns);
 
         expect(TableQueryParamsParser.createQueryParams)
-          .toHaveBeenCalledWith({ filters: [], sort: null as any, columns: newColumns, view: null as any }, jasmine.anything());
+          .toHaveBeenCalledWith({ filters: [], sort: undefined, columns: newColumns, view: undefined }, jasmine.anything());
         expect(router.navigate).toHaveBeenCalledWith([jasmine.any(String)], {
           replaceUrl: true,
           queryParams: fakeParams
@@ -497,7 +497,7 @@ describe('DeepLinkedTable', () => {
         directive.handleColumnsChange(newColumns);
 
         expect(TableQueryParamsParser.createQueryParams)
-          .toHaveBeenCalledWith({ filters: [], sort: null as any, columns: [], view: null as any }, jasmine.anything());
+          .toHaveBeenCalledWith({ filters: [], sort: undefined, columns: [], view: undefined }, jasmine.anything());
         expect(router.navigate).toHaveBeenCalledWith([jasmine.any(String)], {
           replaceUrl: true,
           queryParams: fakeParams
@@ -519,7 +519,7 @@ describe('DeepLinkedTable', () => {
         directive.handleColumnsChange(newColumns);
 
         expect(TableQueryParamsParser.createQueryParams)
-          .toHaveBeenCalledWith({ filters: [], sort: null as any, columns: [], view: null as any }, jasmine.anything());
+          .toHaveBeenCalledWith({ filters: [], sort: undefined, columns: [], view: undefined }, jasmine.anything());
         expect(router.navigate).toHaveBeenCalledWith([jasmine.any(String)], {
           replaceUrl: true,
           queryParams: fakeParams
@@ -535,7 +535,7 @@ describe('DeepLinkedTable', () => {
         directive.handleViewChange(newView);
 
         expect(TableQueryParamsParser.createQueryParams)
-          .toHaveBeenCalledWith({ filters: [], sort: null as any, columns: [], view: newView }, jasmine.anything());
+          .toHaveBeenCalledWith({ filters: [], sort: undefined, columns: [], view: newView }, jasmine.anything());
         expect(router.navigate).toHaveBeenCalledWith([jasmine.any(String)], {
           replaceUrl: true,
           queryParams: fakeParams
@@ -550,7 +550,7 @@ describe('DeepLinkedTable', () => {
         directive.handleViewChange(newView);
 
         expect(TableQueryParamsParser.createQueryParams)
-          .toHaveBeenCalledWith({ filters: [], sort: null as any, columns: [], view: null as any }, jasmine.anything());
+          .toHaveBeenCalledWith({ filters: [], sort: undefined, columns: [], view: undefined }, jasmine.anything());
         expect(router.navigate).toHaveBeenCalledWith([jasmine.any(String)], {
           replaceUrl: true,
           queryParams: fakeParams
@@ -563,7 +563,7 @@ describe('DeepLinkedTable', () => {
     it('should return an empty applied sort if the sort column was not found', () => {
       directive.allColumns = [];
       // eslint-disable-next-line @typescript-eslint/dot-notation
-      expect(directive['getDefaultSort']()).toEqual({ field: undefined as any, order: 1 });
+      expect(directive['getDefaultSort']()).toEqual({ field: '', order: 1 });
     });
   });
 });

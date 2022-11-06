@@ -154,7 +154,7 @@ describe('LinearGaugeComponent', () => {
     });
   });
 
-  fdescribe('thresholds', () => {
+  describe('thresholds', () => {
     it('should be displayed if provided', () => {
       let pageThresholds: NodeListOf<HTMLButtonElement> | null;
 

@@ -30,7 +30,7 @@ export class TranslationService {
   /**
    * Sets all the fusion components translations.
    */
-  set transitions(newTranslations: FusionTranslations) {
+  set translations(newTranslations: FusionTranslations) {
     this._translations$.next(newTranslations);
   }
 }

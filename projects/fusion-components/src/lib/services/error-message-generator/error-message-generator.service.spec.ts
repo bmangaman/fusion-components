@@ -42,13 +42,13 @@ describe('ErrorMessageGenerator', () => {
         };
 
         result = service.required(null as any);
-        expect(result).toEqual(expectedResult);
+        expect(result).toEqual({ ...expectedResult, translation: jasmine.any(Observable)});
 
         result = service.required(undefined as any);
-        expect(result).toEqual(expectedResult);
+        expect(result).toEqual({ ...expectedResult, translation: jasmine.any(Observable)});
 
         result = service.required({});
-        expect(result).toEqual(expectedResult);
+        expect(result).toEqual({ ...expectedResult, translation: jasmine.any(Observable)});
       });
 
       it('should create an error message using the provided config', () => {
@@ -82,13 +82,13 @@ describe('ErrorMessageGenerator', () => {
         };
 
         result = service.minLength(null as any);
-        expect(result).toEqual(expectedResult);
+        expect(result).toEqual({ ...expectedResult, translation: jasmine.any(Observable)});
 
         result = service.minLength(undefined as any);
-        expect(result).toEqual(expectedResult);
+        expect(result).toEqual({ ...expectedResult, translation: jasmine.any(Observable)});
 
         result = service.minLength({});
-        expect(result).toEqual(expectedResult);
+        expect(result).toEqual({ ...expectedResult, translation: jasmine.any(Observable)});
       });
 
       it('should create an error message using the provided config', () => {
@@ -122,13 +122,13 @@ describe('ErrorMessageGenerator', () => {
         };
 
         result = service.maxLength(null as any);
-        expect(result).toEqual(expectedResult);
+        expect(result).toEqual({ ...expectedResult, translation: jasmine.any(Observable)});
 
         result = service.maxLength(undefined as any);
-        expect(result).toEqual(expectedResult);
+        expect(result).toEqual({ ...expectedResult, translation: jasmine.any(Observable)});
 
         result = service.maxLength({});
-        expect(result).toEqual(expectedResult);
+        expect(result).toEqual({ ...expectedResult, translation: jasmine.any(Observable)});
       });
 
       it('should create an error message using the provided config', () => {

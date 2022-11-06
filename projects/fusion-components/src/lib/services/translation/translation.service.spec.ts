@@ -1,3 +1,4 @@
+import { fakeAsync, tick } from '@angular/core/testing';
 import { Subscription } from 'rxjs';
 
 import { unsubscribeAll } from '../../shared/utilities';
@@ -13,7 +14,7 @@ describe('TranslationService', () => {
   });
 
   it('should have default translations', () => {
-    expect(service.transitions).toEqual(DEFAULT_FUSION_TRANSLATIONS);
+    expect(service.translations).toEqual(DEFAULT_FUSION_TRANSLATIONS);
     subscriptions.push(
       service.translations$.subscribe((translations: FusionTranslations) => {
         expect(translations).toEqual(DEFAULT_FUSION_TRANSLATIONS);
@@ -21,17 +22,21 @@ describe('TranslationService', () => {
     );
   });
 
-  it('should allow custom translations to be set', () => {
+  it('should allow custom translations to be set', fakeAsync(() => {
     const expectedResult: FusionTranslations = {} as FusionTranslations;
 
-    service.transitions = {} as FusionTranslations;
-    expect(service.transitions).toEqual(expectedResult);
+    service.translations = {} as FusionTranslations;
+
+    tick();
+
+    expect(service.translations).toEqual(expectedResult);
+
     subscriptions.push(
       service.translations$.subscribe((translations: FusionTranslations) => {
         expect(translations).toEqual(expectedResult);
       })
     );
-  });
+  }));
 
   afterEach(() => {
     unsubscribeAll(subscriptions);

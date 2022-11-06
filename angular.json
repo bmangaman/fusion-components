@@ -29,14 +29,10 @@
           "options": {
             "main": "projects/fusion-components/src/test.ts",
             "tsConfig": "projects/fusion-components/tsconfig.spec.json",
-            "karmaConfig": "projects/fusion-components/karma.conf.js"
-          },
-          "configurations": {
-            "DOM": {
-              "main": "projects/fusion-components/src/test.dom.ts",
-              "tsConfig": "projects/fusion-components/tsconfig.spec.dom.json",
-              "karmaConfig": "projects/fusion-components/karma.dom.conf.js"
-            }
+            "karmaConfig": "projects/fusion-components/karma.conf.js",
+            "codeCoverageExclude": [
+              "/**/*.spec.po.ts"
+            ]
           }
         }
       }
@@ -122,24 +118,6 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "fusion-components-app:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/fusion-components-app/src/test.ts",
-            "polyfills": "projects/fusion-components-app/src/polyfills.ts",
-            "tsConfig": "projects/fusion-components-app/tsconfig.spec.json",
-            "karmaConfig": "projects/fusion-components-app/karma.conf.js",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/fusion-components-app/src/favicon.ico",
-              "projects/fusion-components-app/src/assets"
-            ],
-            "styles": [
-              "projects/fusion-components-app/src/styles.scss"
-            ],
-            "scripts": []
           }
         }
       }
