@@ -158,3 +158,12 @@ export interface StringKeyObject {
 export interface NumberKeyObject {
   [key: number]: any;
 }
+
+/**
+ * Checks if the provided value is null or undefined.
+ * @param val The value to be checked.
+ * @returns True if the provided value is null or undefined; false otherwise.
+ */
+export const isNullOrUndefined = (val: any): boolean => {
+  return val === null || val === 'undefined' || typeof val === 'undefined';
+}

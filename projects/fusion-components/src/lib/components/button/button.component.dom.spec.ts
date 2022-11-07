@@ -326,7 +326,7 @@ describe('ButtonComponent', () => {
 
       component.aria = { haspopup: false };
       fixture.detectChanges();
-      expect(page.button.button?.getAttribute('aria-haspopup')).toEqual('false');
+      expect(page.button.button?.getAttribute('aria-haspopup')).toBeFalsy();
 
       component.aria = { expanded: true };
       fixture.detectChanges();
@@ -334,7 +334,7 @@ describe('ButtonComponent', () => {
 
       component.aria = { expanded: false };
       fixture.detectChanges();
-      expect(page.button.button?.getAttribute('aria-expanded')).toEqual('false');
+      expect(page.button.button?.getAttribute('aria-expanded')).toBeFalsy();
     });
 
     it('should add a down-chevron icon if opensMenu is true', () => {

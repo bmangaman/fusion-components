@@ -43,7 +43,8 @@ describe('BadgeComponent', () => {
       imports: [
         BadgeModule,
       ],
-    }).compileComponents();
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {
@@ -91,7 +92,6 @@ describe('BadgeComponent', () => {
       component.size = null!;
       fixture.detectChanges();
       expect(page.badge.badge?.classList).toContain(baseClass);
-      expect(page.badge.badge?.classList).toContain(`${baseClass}--`);
 
       enumToArrayPipe.transform(StatusLevel).forEach((value: string | number) => {
         const levelString: string = getStatusLevelTextPipe.transform(Number(value), undefined, true);
@@ -100,7 +100,6 @@ describe('BadgeComponent', () => {
         fixture.detectChanges();
         expect(page.badge.badge?.classList).toContain(baseClass);
         expect(page.badge.badge?.classList).toContain(`${baseClass}--${levelString}`);
-        expect(page.badge.badge?.classList).toContain(`${baseClass}--`);
       });
 
       enumToArrayPipe.transform(Size).forEach((value: string | number) => {
@@ -109,7 +108,6 @@ describe('BadgeComponent', () => {
         fixture.detectChanges();
         expect(page.badge.badge?.classList).toContain(baseClass);
         expect(page.badge.badge?.classList).toContain(`${baseClass}--${value}`);
-        expect(page.badge.badge?.classList).toContain(`${baseClass}--`);
       });
 
       component.type = StatusLevel.BASE;

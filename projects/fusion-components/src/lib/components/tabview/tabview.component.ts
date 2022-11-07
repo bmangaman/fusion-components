@@ -131,7 +131,9 @@ export class TabviewComponent implements AfterContentInit, OnDestroy {
       classes.push(`f-tabview-type-${this.type}`);
     }
 
-    classes.push(...this.classes);
+    if (this.classes) {
+      classes.push(...this.classes);
+    }
 
     return classes.join(' ');
   }

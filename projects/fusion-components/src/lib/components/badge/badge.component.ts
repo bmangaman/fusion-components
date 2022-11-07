@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 
-import { Size, StatusLevel } from '../../shared';
+import { isNullOrUndefined, Size, StatusLevel } from '../../shared';
+
 import { BadgeStyling } from './badge.interface';
 
 /**
@@ -41,7 +42,7 @@ export class BadgeComponent {
   private _type: StatusLevel = StatusLevel.BASE;
   @Input()
   set type(type: StatusLevel | undefined) {
-    this._type = type || StatusLevel.BASE;
+    this._type = isNullOrUndefined(type) ? StatusLevel.BASE : type!;
   }
   get type(): StatusLevel {
     return this._type;

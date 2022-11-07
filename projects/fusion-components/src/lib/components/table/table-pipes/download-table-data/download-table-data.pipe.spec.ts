@@ -89,7 +89,7 @@ describe('DownloadTableDataPipe', () => {
     const fieldColumn: TableColumnComponent = new TableColumnComponent(changeDetectorRef);
     fieldColumn.field = 'data';
 
-    columns['_results'](idColumn, fieldColumn);
+    columns['_results'] = [idColumn, fieldColumn];
 
     const expectedResult: any[] = [
       { data: 'string0' },
