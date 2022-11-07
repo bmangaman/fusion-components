@@ -32,7 +32,7 @@ export class ProgressBarTestComponent {
   size: Size;
   status: ProgressBarStatus;
   displayText: string;
-  classes: string[];
+  classes: string[] = [];
   ariaValueText: string;
 }
 

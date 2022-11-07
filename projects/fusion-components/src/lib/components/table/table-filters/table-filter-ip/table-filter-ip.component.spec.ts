@@ -109,9 +109,9 @@ describe('TableFilterIpComponent', () => {
       it('test should decode properly', () => {
         expect(component.filterComparators[2].decodeQueryParam('10.x.1.x')).toEqual({
           ip: null,
-          octet1: 10,
+          octet1: '10',
           octet2: null,
-          octet3: 1,
+          octet3: '1',
           octet4: null,
         });
       });
@@ -166,9 +166,9 @@ describe('TableFilterIpComponent', () => {
       it('test should decode properly', () => {
         expect(component.filterComparators[3].decodeQueryParam('10.x.1.x')).toEqual({
           ip: null,
-          octet1: 10,
+          octet1: '10',
           octet2: null,
-          octet3: 1,
+          octet3: '1',
           octet4: null,
         });
       });

@@ -41,8 +41,8 @@ describe('HeaderTableCellComponent', () => {
     /* eslint-disable @typescript-eslint/dot-notation */
 
     beforeEach(() => {
-      component.cssClasses = undefined as any;
-      component.prevCssClasses = undefined as any;
+      component.cssClasses = [];
+      component.prevCssClasses = [];
 
       component.spacing = TableSpacing.NORMAL;
       component.prevSpacing = TableSpacing.NORMAL;

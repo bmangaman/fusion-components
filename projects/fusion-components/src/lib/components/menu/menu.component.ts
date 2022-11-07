@@ -120,7 +120,7 @@ export class MenuComponent implements OnInit, AfterContentInit, OnChanges, OnDes
   /**
    * Sets the text to the displayed for the various aria attributes.
    */
-  @Input() aria: MenuAria = {
+  @Input() aria: MenuAria | undefined = {
     closeButtonLabel: 'Close menu dialog',
   };
 

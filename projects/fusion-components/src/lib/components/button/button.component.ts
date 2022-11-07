@@ -91,7 +91,7 @@ export class ButtonComponent implements AfterViewInit, OnChanges {
    *  - buttons that open menus,
    *  - and buttons that could have a LOADING state
    */
-  @Input() aria: ButtonAria = {
+  @Input() aria: ButtonAria | undefined = {
     loadingSpinner: 'Loading',
     menuIconAriaLabel: 'Opens Menu',
   };

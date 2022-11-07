@@ -1,5 +1,5 @@
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
-import { Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { ControlValueAccessor, UntypedFormControl, NgControl } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
@@ -140,6 +140,12 @@ export class SelectComponent implements ControlValueAccessor, OnInit, OnDestroy 
   defaultLabel: string = this.translations.defaultLabel;
 
   /**
+   * Emits the complete list of filtered options.
+   */
+  @Output()
+  currentOptions: EventEmitter<SelectOption[]> = new EventEmitter<SelectOption[]>();
+
+  /**
    * If the escape key is pressed while the dropdown menu is open, close it.
    */
   @HostListener('document:keydown.escape', ['$event']) onEscapeKeydown(): void {
@@ -222,6 +228,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit, OnDestroy 
       this.filteredOptions = this.options;
     }
 
+    this.currentOptions.emit(this.filteredOptions);
     this.setDropdownMinHeight();
   }
 

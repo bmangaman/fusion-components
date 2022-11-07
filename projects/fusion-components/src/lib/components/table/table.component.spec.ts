@@ -1121,19 +1121,19 @@ describe('TableComponent', () => {
       config.sorted = TableColumnSorted.ASCENDING;
       component.finalTableData$['_value'] = undefined;
       component.sortTableData(config, false);
-      expect(component.visibleColumns[0].sorted).toEqual(null as any);
+      expect(component.visibleColumns[0].sorted).toEqual(undefined);
       expect(component.visibleColumns[1].sorted).toEqual(TableColumnSorted.ASCENDING);
 
       config.sorted = TableColumnSorted.DESCENDING;
       component.finalTableData$['_value'] = [];
       component.sortTableData(config, false);
-      expect(component.visibleColumns[0].sorted).toEqual(null as any);
+      expect(component.visibleColumns[0].sorted).toEqual(undefined);
       expect(component.visibleColumns[1].sorted).toEqual(TableColumnSorted.DESCENDING);
 
       config.sorted = TableColumnSorted.ASCENDING;
       component.finalTableData$['_value'] = cloneDeep(data);
       component.sortTableData(config, false);
-      expect(component.visibleColumns[0].sorted).toEqual(null as any);
+      expect(component.visibleColumns[0].sorted).toEqual(undefined);
       expect(component.visibleColumns[1].sorted).toEqual(TableColumnSorted.ASCENDING);
     });
 
@@ -1142,13 +1142,13 @@ describe('TableComponent', () => {
       config.field = 'column2Field';
 
       component.sortTableData(config, true);
-      expect(component.visibleColumns[0].sorted).toEqual(null as any);
+      expect(component.visibleColumns[0].sorted).toEqual(undefined);
       expect(component.visibleColumns[1].sorted).toEqual(TableColumnSorted.ASCENDING);
     });
 
     it('should sort by the custom sort function if provided', () => {
       config.sortFunction = () => 1;
-      spyOnProperty(config, 'sortFunction').and.callThrough();
+      spyOn(config as any, 'sortFunction').and.callThrough();
       component.sortTableData(config, true);
       expect(config.sortFunction).toHaveBeenCalled();
     });
@@ -1252,12 +1252,12 @@ describe('TableComponent', () => {
       component.visibleColumns = null as any;
       tick();
       component.updateSortingOnDataChange();
-      expect(component.sortTableData).toHaveBeenCalledWith(null as any, undefined);
+      expect(component.sortTableData).toHaveBeenCalledWith(undefined, undefined);
 
       component.visibleColumns = [];
       tick();
       component.updateSortingOnDataChange();
-      expect(component.sortTableData).toHaveBeenCalledWith(null as any, undefined);
+      expect(component.sortTableData).toHaveBeenCalledWith(undefined, undefined);
 
       discardPeriodicTasks();
     }));

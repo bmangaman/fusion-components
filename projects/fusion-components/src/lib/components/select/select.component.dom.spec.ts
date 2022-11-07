@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { ComponentFixture, discardPeriodicTasks, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, discardPeriodicTasks, fakeAsync, flush, flushMicrotasks, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { UntypedFormControl } from '@angular/forms';
 
 import { SelectComponentPageObject } from './select.component.spec.po';
-import { SelectOption } from './select.interface';
+import { DEFAULT_SELECT_TRANSLATIONS, SelectOption } from './select.interface';
 import { SelectModule } from './select.module';
 
 @Component({
@@ -14,7 +14,8 @@ import { SelectModule } from './select.module';
       [label]="label"
       [options]="options"
       [isSearchable]="isSearchable"
-      [cssClasses]="cssClasses">
+      [cssClasses]="cssClasses"
+      (currentOptions)="handleCurrentOptions($event)">
     </f-select>
     <button class="outside-element">Outside Element</button>
   `,
@@ -25,6 +26,11 @@ export class SelectTestComponent {
   options: SelectOption[] = [];
   isSearchable: boolean = false;
   cssClasses: string[] = [];
+
+  currentOptions: SelectOption[] = [];
+  handleCurrentOptions(options: SelectOption[]): void {
+    this.currentOptions = options;
+  }
 }
 
 describe('SelectComponent', () => {
@@ -84,10 +90,11 @@ describe('SelectComponent', () => {
   });
 
   describe('the search input', () => {
-    beforeEach(() => {
+    beforeEach(fakeAsync(() => {
       component.isSearchable = true;
       fixture.detectChanges();
-    });
+      tick(1000);
+    }));
 
     it('should open dropdown menu when clicked', () => {
       expect(page.select.inputSearch?.disabled).toBeFalsy();
@@ -123,6 +130,8 @@ describe('SelectComponent', () => {
       page.select.inputSearch?.dispatchEvent(new Event('input'));
       fixture.detectChanges();
       tick(1000);
+      flush();
+      expect(component.currentOptions.length).toEqual(1);
       expect(page.select.options?.length).toEqual(1);
       expect(page.select.getOptionAtIndex(0)?.innerText).toEqual('label5');
 
@@ -130,8 +139,10 @@ describe('SelectComponent', () => {
       page.select.inputSearch?.dispatchEvent(new Event('input'));
       fixture.detectChanges();
       tick(1000);
+      flush();
+      expect(component.currentOptions.length).toEqual(0);
       expect(page.select.options?.length).toEqual(0);
-      expect(page.select.dropdownMenu?.innerText).toEqual('.select.noResults'); // 'No Results'
+      expect(page.select.dropdownMenu?.innerText).toEqual(DEFAULT_SELECT_TRANSLATIONS.noResults); // 'No Results'
     }));
   });
 

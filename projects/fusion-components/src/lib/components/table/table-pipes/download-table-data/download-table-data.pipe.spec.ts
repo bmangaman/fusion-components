@@ -110,7 +110,7 @@ describe('DownloadTableDataPipe', () => {
     fieldColumn.field = 'data';
     fieldColumn.downloadTransformationFunction = (data: string) => data.toUpperCase();
 
-    columns['_results'](idColumn, fieldColumn);
+    columns['_results'] = [idColumn, fieldColumn];
 
     const expectedResult: any[] = [
       { 'id header': 0, data: 'STRING0' },
