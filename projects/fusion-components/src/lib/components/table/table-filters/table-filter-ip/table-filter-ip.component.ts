@@ -103,7 +103,7 @@ export class TableFilterIpComponent extends TableFilterComponent implements OnIn
       const value: any = form?.ip || this.getFormValue();
 
       if (label instanceof Observable) {
-        return label.pipe(map((l: string) => `${l} ${value}`));
+        return label.pipe(map((l: string) => `${l || ''} ${value || ''}`));
       }
       return `${label} ${value}`;
     } else {
@@ -111,9 +111,9 @@ export class TableFilterIpComponent extends TableFilterComponent implements OnIn
       const octetString: string = (octets.map((octet: number) => (!!octet || octet === 0) ? octet.toString() : 'x')).join('.');
 
       if (label instanceof Observable) {
-        return label.pipe(map((l: string) => `${l} ${octetString}`));
+        return label.pipe(map((l: string) => `${l || ''} ${octetString || ''}`));
       }
-      return `${label} ${octetString}`;
+      return `${label || ''} ${octetString || ''}`;
     }
   }
 

@@ -145,9 +145,9 @@ export class TableFilterBytesComponent extends TableFilterComponent {
     const unit: BiBytesUnit = form?.unit || this.filterForm.get('unit')!.value;
 
     if (label instanceof Observable) {
-      return label.pipe(map((l: string) => `${l} ${bytes} ${unit}`));
+      return label.pipe(map((l: string) => `${l || ''} ${bytes || ''} ${unit || ''}`));
     }
-    return `${label} ${bytes} ${unit}`;
+    return `${label || ''} ${bytes || ''} ${unit || ''}`;
   }
 
   /**

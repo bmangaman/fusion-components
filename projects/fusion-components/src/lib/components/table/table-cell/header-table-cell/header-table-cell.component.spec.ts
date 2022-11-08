@@ -271,10 +271,6 @@ describe('HeaderTableCellComponent', () => {
     });
 
     it('should append any custom classes', () => {
-      component.cssClasses = undefined as any;
-      expectedResult = defaultClasses;
-      expect(component.generateTableCellClasses()).toEqual(expectedResult);
-
       component.cssClasses = [];
       expectedResult = defaultClasses;
       expect(component.generateTableCellClasses()).toEqual(expectedResult);

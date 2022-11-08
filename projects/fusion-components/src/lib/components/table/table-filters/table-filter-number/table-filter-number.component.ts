@@ -79,9 +79,9 @@ export class TableFilterNumberComponent extends TableFilterComponent {
     const value: any = form?.number || this.getFormValue();
 
     if (label instanceof Observable) {
-      return label.pipe(map((l: string) => `${l} ${value}`));
+      return label.pipe(map((l: string) => `${l || ''} ${value || ''}`));
     }
-    return `${label} ${value}`;
+    return `${label || ''} ${value || ''}`;
   }
 
   /**

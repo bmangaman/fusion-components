@@ -134,22 +134,22 @@ describe('TableFilterNumberComponent', () => {
     it('should just return the value if the label is undefined', (done: DoneFn) => {
       filterComparator.label = of(undefined as any);
       (component.generateDisplayString(filterComparator) as Observable<string>).subscribe((displayString: string) => {
-        expect(displayString).toEqual('undefined 1');
+        expect(displayString).toEqual(' 1');
         done();
       });
 
       filterComparator.label = undefined as any;
-      expect(component.generateDisplayString(filterComparator)).toEqual('undefined 1');
+      expect(component.generateDisplayString(filterComparator)).toEqual(' 1');
 
       component.selectedFilterComparator.next(filterComparator);
-      expect(component.generateDisplayString()).toEqual('undefined 1');
+      expect(component.generateDisplayString()).toEqual(' 1');
 
       filterComparator = undefined as any;
       component.selectedFilterComparator.next(filterComparator);
-      expect(component.generateDisplayString()).toEqual('undefined 1');
+      expect(component.generateDisplayString()).toEqual(' 1');
 
       component.selectedFilterComparator = undefined as any;
-      expect(component.generateDisplayString()).toEqual('undefined 1');
+      expect(component.generateDisplayString()).toEqual(' 1');
     });
   });
 

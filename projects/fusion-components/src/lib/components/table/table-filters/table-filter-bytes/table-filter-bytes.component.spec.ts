@@ -197,22 +197,22 @@ describe('TableFilterBytesComponent', () => {
     it('should just return the value if the label is undefined', (done: DoneFn) => {
       filterComparator.label = of(undefined as any);
       (component.generateDisplayString(filterComparator) as Observable<string>).subscribe((displayString: string) => {
-        expect(displayString).toEqual('undefined 1000 B');
+        expect(displayString).toEqual(' 1000 B');
         done();
       });
 
       filterComparator.label = undefined as any;
-      expect(component.generateDisplayString(filterComparator)).toEqual('undefined 1000 B');
+      expect(component.generateDisplayString(filterComparator)).toEqual(' 1000 B');
 
       component.selectedFilterComparator.next(filterComparator);
-      expect(component.generateDisplayString()).toEqual('undefined 1000 B');
+      expect(component.generateDisplayString()).toEqual(' 1000 B');
 
       filterComparator = undefined as any;
       component.selectedFilterComparator.next(filterComparator);
-      expect(component.generateDisplayString()).toEqual('undefined 1000 B');
+      expect(component.generateDisplayString()).toEqual(' 1000 B');
 
       component.selectedFilterComparator = undefined as any;
-      expect(component.generateDisplayString()).toEqual('undefined 1000 B');
+      expect(component.generateDisplayString()).toEqual(' 1000 B');
     });
   });
 

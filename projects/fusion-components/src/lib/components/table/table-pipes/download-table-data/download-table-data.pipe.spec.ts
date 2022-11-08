@@ -56,7 +56,7 @@ describe('DownloadTableDataPipe', () => {
   });
 
   it('should handle if the provided data is undefined or empty', () => {
-    expect(pipe.transform(undefined as any, null as any, null as any)).toEqual(undefined as any);
+    expect(pipe.transform(undefined as any, null as any, null as any)).toEqual([]);
     expect(pipe.transform([], null as any, null as any)).toEqual([]);
   });
 

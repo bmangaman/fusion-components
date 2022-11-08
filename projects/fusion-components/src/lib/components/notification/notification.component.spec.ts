@@ -30,10 +30,6 @@ describe('NotificationComponent', () => {
       };
 
       expect(component.ariaTypeLabel).toBe('blah');
-
-      component.translations = null as any;
-
-      expect(component.ariaTypeLabel).toBeNull();
     });
   });
 

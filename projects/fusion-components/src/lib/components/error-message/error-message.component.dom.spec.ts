@@ -16,12 +16,12 @@ import { ErrorMessageModule } from './error-message.module';
         <label class="f-form__label" for="test-input">Test Input Label</label>
         <input formControlName="testInput" class="f-form__input" id="test-input" type="text" />
           <f-error-message
-            [control]="testForm.get('testInput')?"
+            [control]="testForm.get('testInput')"
             [errors]="testInputErrors"
             id="single-error-message">
           </f-error-message>
           <f-error-message
-            [control]="testForm.get('testInput')?"
+            [control]="testForm.get('testInput')"
             [errors]="testInputErrors"
             [displayMultiple]="true"
             id="multiple-error-messages">
