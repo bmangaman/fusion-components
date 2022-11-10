@@ -431,8 +431,8 @@ export class TableFilterSelectorComponent extends UnsubscribeComponent implement
    */
   menuLogic(target: HTMLElement): boolean {
     const classList: DOMTokenList | undefined = get(target, 'parentElement.parentElement.classList');
-    const containsButtonClass: boolean = classList ? classList.contains('f-table__filter-selector-remove-filter-button') : false;
-    const containsItemClass: boolean = classList ? classList.contains('f-table__filter-selector-filter-list-group-item') : false;
+    const containsButtonClass: boolean = !!classList?.contains('f-table__filter-selector-remove-filter-button');
+    const containsItemClass: boolean = !!classList?.contains('f-table__filter-selector-filter-list-group-item');
     return containsButtonClass || containsItemClass;
   }
 
