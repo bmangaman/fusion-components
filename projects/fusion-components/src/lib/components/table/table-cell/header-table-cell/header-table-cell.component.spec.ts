@@ -123,9 +123,9 @@ describe('HeaderTableCellComponent', () => {
     it('should emit the new column sort config if col is defined', () => {
       spyOn(component.sort, 'emit').and.stub();
 
-      component.col = null as any;
+      component.col = undefined; // automatically updates to {} with an input setter
       component.changeSort();
-      expect(component.sort.emit).not.toHaveBeenCalled();
+      expect(component.sort.emit).toHaveBeenCalledWith({ sorted: TableColumnSorted.ASCENDING } as TableColumnConfig);
 
       component.col = {} as TableColumnConfig;
       component.changeSort();

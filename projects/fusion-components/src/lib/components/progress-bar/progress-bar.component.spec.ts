@@ -27,7 +27,7 @@ describe('ProgressBarComponent', () => {
       spyOn(component, 'generateClasses').and.callThrough();
 
       component.size = undefined as any;
-      component.classes = undefined as any;
+      component.classes = [];
 
       component.size = Size.MEDIUM;
       component.ngOnChanges({

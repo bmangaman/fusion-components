@@ -39,7 +39,7 @@ class TestComponent {
   notificationIcon: string;
   text: string;
   sticky = false;
-  translations: NotificationTranslations = null as any;
+  translations: NotificationTranslations = DEFAULT_NOTIFICATION_TRANSLATIONS;
   disappearDelay: number = null as any;
 
   show: boolean = true;
@@ -213,7 +213,7 @@ describe('NotificationComponent', () => {
   describe('Aria labels', () => {
     it('should use aria type label when provided', () => {
       const buttonIcon = fusionUiNotification.notificationIcon;
-      expect(buttonIcon.attributes.getNamedItem('aria-label')?.value).toEqual('.notification.type.success');
+      expect(buttonIcon.attributes.getNamedItem('aria-label')?.value).toEqual(DEFAULT_NOTIFICATION_TRANSLATIONS.ariaTypeLabel.success);
 
       component.translations = {
         ...DEFAULT_NOTIFICATION_TRANSLATIONS,
@@ -229,7 +229,7 @@ describe('NotificationComponent', () => {
 
     it('should use aria close label when provided', () => {
       const buttonIcon = fusionUiNotification.closeButtonIcon;
-      expect(buttonIcon.attributes.getNamedItem('aria-label')?.value).toEqual('.notification.ariaCloseLabel');
+      expect(buttonIcon.attributes.getNamedItem('aria-label')?.value).toEqual(DEFAULT_NOTIFICATION_TRANSLATIONS.ariaCloseLabel);
 
       component.translations = {
         ...DEFAULT_NOTIFICATION_TRANSLATIONS,

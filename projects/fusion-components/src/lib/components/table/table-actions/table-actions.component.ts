@@ -44,16 +44,16 @@ export class TableActionsComponent implements DoCheck {
   /**
    * Determines the default "static" text for the actions menu.
    */
-  private _prevTranslations: TableActionsTranslations;
+  private _prevTranslations: TableActionsTranslations = DEFAULT_TABLE_ACTIONS_TRANSLATIONS;
   @Input() translations: TableActionsTranslations = DEFAULT_TABLE_ACTIONS_TRANSLATIONS;
 
   /**
    * Determines any custom css classes to be appended to menu dialog/ popup.
    */
-  private _prevDialogCssClasses: string[];
-  private _dialogCssClasses: string[];
+  private _prevDialogCssClasses: string[] = [];
+  private _dialogCssClasses: string[] = [];
   @Input() 
-  set dialogCssClasses(classes: string[] | undefined) {
+  set dialogCssClasses(classes: string[]) {
     this._dialogCssClasses = classes || [];
   }
   get dialogCssClasses(): string[] {

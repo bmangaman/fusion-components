@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, TemplateRef } from '@angular/core';
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { TableActionsComponent } from './table-actions.component';
-import { TableActionsTranslations } from './table-actions.interface';
+import { DEFAULT_TABLE_ACTIONS_TRANSLATIONS, TableActionsTranslations } from './table-actions.interface';
 
 describe('TableActionsComponent', () => {
   let component: TableActionsComponent;
@@ -20,20 +20,20 @@ describe('TableActionsComponent', () => {
     /* eslint-disable @typescript-eslint/dot-notation */
 
     beforeEach(() => {
-      component.rowData = undefined as any;
-      component['_prevRowData'] = undefined as any;
+      component.rowData = [];
+      component['_prevRowData'] = [];
 
-      component.templateRef = undefined as any;
-      component['_prevTemplateRef'] = undefined as any;
+      component.templateRef = null;
+      component['_prevTemplateRef'] = null;
 
-      component.isDisabled = undefined as any;
-      component['_prevIsDisabled'] = undefined as any;
+      component.isDisabled = false;
+      component['_prevIsDisabled'] = false;
 
-      component.translations = undefined as any;
-      component['_prevTranslations'] = undefined as any;
+      component.translations = DEFAULT_TABLE_ACTIONS_TRANSLATIONS;
+      component['_prevTranslations'] = DEFAULT_TABLE_ACTIONS_TRANSLATIONS;
 
-      component.dialogCssClasses = undefined as any;
-      component['_prevDialogCssClasses'] = undefined as any;
+      component.dialogCssClasses = [];
+      component['_prevDialogCssClasses'] = [];
 
       (changeDetectorRef.markForCheck as jasmine.Spy).calls.reset();
     });
@@ -42,7 +42,7 @@ describe('TableActionsComponent', () => {
       component.ngDoCheck();
       expect(changeDetectorRef.markForCheck).not.toHaveBeenCalled();
 
-      component.rowData = [];
+      component.rowData = [{}];
       (changeDetectorRef.markForCheck as jasmine.Spy).calls.reset();
       component.ngDoCheck();
       expect(changeDetectorRef.markForCheck).toHaveBeenCalled();
@@ -82,7 +82,7 @@ describe('TableActionsComponent', () => {
       component.ngDoCheck();
       expect(changeDetectorRef.markForCheck).not.toHaveBeenCalled();
 
-      component.dialogCssClasses = [];
+      component.dialogCssClasses = ['test-css-class'];
       (changeDetectorRef.markForCheck as jasmine.Spy).calls.reset();
       component.ngDoCheck();
       expect(changeDetectorRef.markForCheck).toHaveBeenCalled();

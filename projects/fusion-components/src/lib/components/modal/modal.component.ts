@@ -99,7 +99,7 @@ export class ModalComponent implements OnDestroy {
   /**
    * Determines the configuration of the modal.
    */
-  private _config: ModalConfig;
+  private _config: ModalConfig = {};
   set config(config: ModalConfig) {
     this._config = config;
   }
