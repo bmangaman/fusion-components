@@ -429,14 +429,4 @@ export class TableDemoComponent implements OnInit {
       console.log('finalTableDataChange', data);
     }
   }
-
-  /**
-   * Custom transformation function to modify how the table data looks when downloaded.
-   *
-   * @param bytes The bytes of the size column.
-   * @returns The bytes value transformed by the bytesPipe.
-   */
-  sizeDownloadTransformationFunction(bytes: number): string {
-    return this.bytesPipe.transform(bytes, BytesPipeBase.TWO, true, 2) as string;
-  }
 }

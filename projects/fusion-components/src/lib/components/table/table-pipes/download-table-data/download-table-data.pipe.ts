@@ -44,15 +44,6 @@ export class DownloadTableDataPipe implements PipeTransform {
 
           // If the column is visible, add it to the downloaded data; delete it otherwise
           if (column.isVisible) {
-
-            // If the downloadTransformationFunction is set, update the data using that function
-            if (!!column?.downloadTransformationFunction) {
-              console.warn(`WARNING: The TableColumnComponent downloadTransformationFunction @Input is deprecated.
-                It is recommended to use the TableComponent downloadTransformationFunction @Input instead to
-                transform downloaded data formatting.`);
-              d[column.field] = column.downloadTransformationFunction(d[column.field]);
-            }
-
             // If the column has a header set, update the data key to use the column header instead of the field
             if (column?.header) {
               d[column.header] = d[column.field];

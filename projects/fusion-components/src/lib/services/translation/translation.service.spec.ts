@@ -1,7 +1,7 @@
 import { fakeAsync, tick } from '@angular/core/testing';
 import { Subscription } from 'rxjs';
 
-import { unsubscribeAll } from '../../shared/utilities';
+import { Utilities } from '../../shared/utilities';
 import { DEFAULT_FUSION_TRANSLATIONS, FusionTranslations } from './translation.interface';
 import { TranslationService } from './translation.service';
 
@@ -39,6 +39,6 @@ describe('TranslationService', () => {
   }));
 
   afterEach(() => {
-    unsubscribeAll(subscriptions);
+    Utilities.unsubscribeAll(subscriptions);
   });
 });

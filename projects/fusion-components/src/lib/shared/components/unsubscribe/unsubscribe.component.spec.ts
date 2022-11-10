@@ -16,8 +16,8 @@ describe('UnsubscribeComponent', () => {
   describe('ngOnDestroy()', () => {
     it('should complete the subject (to unsubscribe from any active subscriptions)', () => {
       const subject: Subject<void> = new Subject<void>();
-      spyOn(subject, 'next').and.stub();
       spyOn(subject, 'complete').and.stub();
+      spyOn(subject, 'unsubscribe').and.stub();
 
       // eslint-disable-next-line @typescript-eslint/dot-notation
       component['unsubscribe$'] = subject;
@@ -26,8 +26,8 @@ describe('UnsubscribeComponent', () => {
 
       component.ngOnDestroy();
 
-      expect(subject.next).toHaveBeenCalled();
       expect(subject.complete).toHaveBeenCalled();
+      expect(subject.unsubscribe).toHaveBeenCalled();
       expect(subscription.closed).toBeTrue();
     });
   });

@@ -3,7 +3,7 @@ import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 
 import { ComponentStubFactory } from '@fusion-components/unit-test-helpers/component-stub-factory.spec';
 import { Position, PositionConfig } from '../../shared';
-import * as Utilities from '../../shared/utilities';
+import { Utilities } from '../../shared/utilities';
 import { TooltipComponent } from './tooltip.component';
 
 describe('TooltipComponent', () => {
@@ -170,8 +170,7 @@ describe('TooltipComponent', () => {
         bottom: '100px',
         transform: 'translate(-50%, -50%)',
       };
-      const spy = jasmine.createSpy('getElementAbsolutePositioning').and.returnValue(positionConfig);
-      spyOnProperty(Utilities, 'getElementAbsolutePositioning').and.returnValue(spy);
+      spyOn(Utilities, 'getElementAbsolutePositioning').and.returnValue(positionConfig);
     });
 
     it('should do nothing if the provided element is undefined', () => {

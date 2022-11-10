@@ -6,7 +6,7 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 import { cloneDeep } from 'lodash-es';
 
 import { Size, UnsubscribeComponent} from '@fusion-components/lib/shared';
-import * as Utils from '@fusion-components/lib/shared/utilities';
+import { Utilities } from '@fusion-components/lib/shared/utilities';
 import { ButtonType } from '../../button/button.interface';
 import { TableRowData } from '../table.interface';
 import {
@@ -122,7 +122,7 @@ export class TablePaginationComponent extends UnsubscribeComponent implements On
    * On component unload, unsubscribe from all active subscriptions.
    */
   override ngOnDestroy(): void {
-    Utils.unsubscribeAll(this.subscriptions);
+    Utilities.unsubscribeAll(this.subscriptions);
   }
 
   /**

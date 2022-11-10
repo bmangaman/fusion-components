@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
-import { unsubscribeSubject } from '../../utilities';
+import { Utilities } from '../../utilities';
 
 /**
  * UNSUBSCRIBE COMPONENT
@@ -18,6 +18,6 @@ export class UnsubscribeComponent implements OnDestroy {
    * On component teardown, unsubscribe from all active subscrptions.
    */
   ngOnDestroy(): void {
-    unsubscribeSubject(this.unsubscribe$);
+    Utilities.unsubscribeSubject(this.unsubscribe$);
   }
 }

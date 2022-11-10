@@ -134,14 +134,6 @@ export class TableColumnComponent implements AfterContentInit {
   @Input() columnCellStyleClassesFunction: (...args: any[]) => string[];
 
   /**
-   * WARNING: downloadTransformationFunction is deprecated. Should use the table-level downloadTransformationFunction input instead.
-   *
-   * Determines how the data will be formatted when downloaded.
-   * Useful if the provided data is an advanced data type (like and Object).
-   */
-  @Input() downloadTransformationFunction: (...args: any[]) => any;
-
-  /**
    * A list of all the TemplateDirectives nested within this component.
    * Used to generate the table cell content.
    */

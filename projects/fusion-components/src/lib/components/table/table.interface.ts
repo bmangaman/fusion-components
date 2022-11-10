@@ -1,6 +1,6 @@
 import { TemplateRef } from '@angular/core';
 
-import { State, StringKeyObject } from '../../shared';
+import { State } from '../../shared';
 import { DEFAULT_TABLE_ACTIONS_TRANSLATIONS, TableActionsTranslations } from './table-actions/';
 import { TableColumnSelectorTranslations, DEFAULT_TABLE_COLUMN_SELECTOR_TRANSLATIONS } from './table-column-selector';
 import { TableColumnSort } from './table-column-sorts';
@@ -59,7 +59,7 @@ export interface TableConfig {
   rowExpansionMode?: RowExpansionMode;
   disableRowExpansionFunction?: () => boolean;
   disableRowActionsButtonFunction?: () => boolean;
-  downloadTransformationFunction?: () => any;
+  downloadTransformationFunction?: (...args: any[]) => any;
   paginationConfig?: TablePaginationConfig;
   quickFilters?: TableFilterConfig[];
   tableViews?: TableView[];
@@ -290,7 +290,7 @@ export const DEFAULT_TABLE_TRANSLATIONS: TableTranslations = {
  * Object made up of the enums usually used to configure the table component.
  * Replaces the need to individually import and set all of these enums in a component.
  */
-export const TableComponentEnums: StringKeyObject = {
+export const TableComponentEnums: Record<string, any> = {
   RowExpansionMode,
   SelectionMode,
   TableColumnSorted,

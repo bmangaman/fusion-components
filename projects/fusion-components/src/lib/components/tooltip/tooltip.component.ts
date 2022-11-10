@@ -10,7 +10,7 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { Location, Position, PositionConfig } from '../../shared';
-import * as Utilities from '../../shared/utilities';
+import { Utilities } from '../../shared/utilities';
 
 /**
  * TOOLTIP COMPONENT

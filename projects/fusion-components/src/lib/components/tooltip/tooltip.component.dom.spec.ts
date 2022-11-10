@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { Location, Position, PositionConfig } from '../../shared';
-import * as Utilities from '../../shared/utilities';
+import { Utilities } from '../../shared/utilities';
 import { TooltipComponent } from './tooltip.component';
 import { TooltipComponentPageObject } from './tooltip.component.spec.po';
 
@@ -91,8 +91,7 @@ describe('TooltipComponent', () => {
         transform: 'translate(-50%, -50%)',
       };
 
-      const spy = jasmine.createSpy('getElementAbsolutePositioning').and.returnValue(position);
-      spyOnProperty(Utilities, 'getElementAbsolutePositioning').and.returnValue(spy);
+      spyOn(Utilities, 'getElementAbsolutePositioning').and.returnValue(position);
       component.position = Position.LEFT;
       fixture.detectChanges();
       await fixture.whenStable();

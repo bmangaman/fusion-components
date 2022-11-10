@@ -1,6 +1,6 @@
 import { Subscription } from 'rxjs';
 
-import { unsubscribeAll } from './../../shared/utilities';
+import { Utilities } from './../../shared/utilities';
 
 import { DocumentClickService } from './document-click.service';
 
@@ -36,6 +36,6 @@ describe('DocumentClickService', () => {
   });
 
   afterEach(() => {
-    unsubscribeAll(subscriptions);
+    Utilities.unsubscribeAll(subscriptions);
   });
 });

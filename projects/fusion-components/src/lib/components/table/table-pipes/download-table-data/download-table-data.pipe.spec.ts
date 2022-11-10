@@ -79,8 +79,6 @@ describe('DownloadTableDataPipe', () => {
   });
 
   it('should remove the data if the column is NOT visible', () => {
-    const columns: QueryList<TableColumnComponent> = new QueryList<TableColumnComponent>();
-
     const idColumn: TableColumnComponent = new TableColumnComponent(changeDetectorRef);
     idColumn.field = 'id';
     idColumn.header = 'id header';
@@ -89,33 +87,15 @@ describe('DownloadTableDataPipe', () => {
     const fieldColumn: TableColumnComponent = new TableColumnComponent(changeDetectorRef);
     fieldColumn.field = 'data';
 
-    columns['_results'] = [idColumn, fieldColumn];
+    const columns: QueryList<TableColumnComponent> = Object.assign(
+      new QueryList<TableColumnComponent>(),
+      { _results: [idColumn, fieldColumn], length: 2 },
+    );
 
     const expectedResult: any[] = [
       { data: 'string0' },
       { data: 'string1' },
       { data: 'string2' },
-    ];
-    expect(pipe.transform(tableRowData, columns, null as any)).toEqual(expectedResult);
-  });
-
-  it('should apply the downloadTransformationFunction if provided', () => {
-    const columns: QueryList<TableColumnComponent> = new QueryList<TableColumnComponent>();
-
-    const idColumn: TableColumnComponent = new TableColumnComponent(changeDetectorRef);
-    idColumn.field = 'id';
-    idColumn.header = 'id header';
-
-    const fieldColumn: TableColumnComponent = new TableColumnComponent(changeDetectorRef);
-    fieldColumn.field = 'data';
-    fieldColumn.downloadTransformationFunction = (data: string) => data.toUpperCase();
-
-    columns['_results'] = [idColumn, fieldColumn];
-
-    const expectedResult: any[] = [
-      { 'id header': 0, data: 'STRING0' },
-      { 'id header': 1, data: 'STRING1' },
-      { 'id header': 2, data: 'STRING2' },
     ];
     expect(pipe.transform(tableRowData, columns, null as any)).toEqual(expectedResult);
   });

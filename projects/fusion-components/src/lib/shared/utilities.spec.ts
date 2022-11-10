@@ -3,7 +3,7 @@ import { ElementRef } from '@angular/core';
 import { Subject, Subscription, timer } from 'rxjs';
 
 import { Location, Position, PositionConfig } from './interfaces';
-import * as utils from './utilities';
+import { Utilities } from './utilities';
 
 describe('Utilities', () => {
   describe('unsubscribe', () => {
@@ -12,7 +12,7 @@ describe('Utilities', () => {
       const obs = timer(10);
       const sub = obs.subscribe(() => true);
       expect(sub.closed).toBe(false);
-      utils.unsubscribe(sub);
+      Utilities.unsubscribe(sub);
       expect(sub.closed).toBe(true);
     });
 
@@ -23,16 +23,16 @@ describe('Utilities', () => {
       expect(sub.closed).toBe(false);
 
       // should unsubscribe if NOT closed
-      utils.unsubscribe(sub);
+      Utilities.unsubscribe(sub);
       expect(sub.closed).toBe(true);
 
       // subscription state should not chage if already closed
-      utils.unsubscribe(sub);
+      Utilities.unsubscribe(sub);
       expect(sub.closed).toBe(true);
     });
 
     it('should not error on null', () => {
-      utils.unsubscribe(undefined as any);
+      Utilities.unsubscribe(undefined as any);
       // if you got here you didn't error, hurray
       expect(true).toBe(true);
     });
@@ -50,7 +50,7 @@ describe('Utilities', () => {
       spyOn(sub2, 'unsubscribe').and.callThrough();
       spyOn(sub3, 'unsubscribe').and.callThrough();
 
-      utils.unsubscribeAll(subscriptions);
+      Utilities.unsubscribeAll(subscriptions);
 
       expect(sub1.unsubscribe).toHaveBeenCalled();
       expect(sub2.unsubscribe).toHaveBeenCalled();
@@ -64,11 +64,11 @@ describe('Utilities', () => {
       spyOn(subject, 'complete').and.callThrough();
       spyOn(subject, 'unsubscribe').and.callThrough();
 
-      utils.unsubscribeSubject(subject);
+      Utilities.unsubscribeSubject(subject);
 
       expect(subject.complete).toHaveBeenCalled();
       expect(subject.unsubscribe).toHaveBeenCalled();
-      utils.unsubscribeSubject(undefined as any); // just call this to make sure no errors are thrown
+      Utilities.unsubscribeSubject(undefined as any); // just call this to make sure no errors are thrown
     });
   });
 
@@ -112,26 +112,26 @@ describe('Utilities', () => {
     describe('with invalid/ undefined parameters', () => {
       it('should return an empty object if element is not valid', () => {
         element.nativeElement = undefined;
-        expect(utils.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
+        expect(Utilities.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
         element = null as any;
-        expect(utils.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
+        expect(Utilities.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
       });
 
       it('should return an empty object if trigger element is not valid', () => {
         triggerElement.nativeElement = undefined;
-        expect(utils.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
+        expect(Utilities.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
         triggerElement = null as any;
-        expect(utils.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
+        expect(Utilities.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
       });
 
       it('should return an empty object if window is not valid', () => {
         mockWindow = null as any;
-        expect(utils.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
+        expect(Utilities.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
       });
 
       it('should return an empty object if document is not valid', () => {
         mockDocument = null as any;
-        expect(utils.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
+        expect(Utilities.getElementAbsolutePositioning(element, triggerElement, position, spacing, mockWindow, mockDocument)).toEqual({});
       });
     });
 
@@ -395,7 +395,7 @@ describe('Utilities', () => {
 
     describe('with preset params', () => {
       it('should return a fusion position config', () => {
-        const response: PositionConfig = utils.getElementAbsolutePositioning(
+        const response: PositionConfig = Utilities.getElementAbsolutePositioning(
           element,
           triggerElement,
           Position.TOP,
@@ -410,7 +410,7 @@ describe('Utilities', () => {
       expectedLeft: string,
       expectedTransform: string,
     ): void {
-      const response: PositionConfig = utils.getElementAbsolutePositioning(
+      const response: PositionConfig = Utilities.getElementAbsolutePositioning(
         element,
         triggerElement,
         position,
@@ -428,7 +428,7 @@ describe('Utilities', () => {
       expectedTop: string,
       expectedLeft: string,
     ): void {
-      const response: PositionConfig = utils.getElementAbsolutePositioning(
+      const response: PositionConfig = Utilities.getElementAbsolutePositioning(
         element,
         triggerElement,
         position,

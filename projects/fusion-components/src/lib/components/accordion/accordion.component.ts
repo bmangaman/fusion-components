@@ -1,7 +1,7 @@
 import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { unsubscribeAll } from '../../shared';
+import { Utilities } from '../../shared';
 import { HccAccordionIcontype, PanelContentVisibilityChangedEmit } from './accordion.interface';
 import { AccordionPanelComponent } from './panel';
 
@@ -146,7 +146,7 @@ export class AccordionComponent implements AfterContentInit {
    * whether or not all expandable (non-disabled) panels are expanded.
    */
   subscribeToPanelChanges(): void {
-    unsubscribeAll(this.subscriptions);
+    Utilities.unsubscribeAll(this.subscriptions);
 
     if (this.panels) {
       this.panels.forEach((panel: AccordionPanelComponent) => {

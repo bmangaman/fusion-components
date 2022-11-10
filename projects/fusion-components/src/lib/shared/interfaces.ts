@@ -1,5 +1,3 @@
-import { StringKeyObject } from './utilities';
-
 export enum State {
   LOADING = 'loading',
   LOADED = 'loaded',
@@ -116,7 +114,7 @@ export enum FormInputStatus {
   DISABLED = 'DISABLED'
 }
 
-export const Enums: StringKeyObject = {
+export const Enums: Record<string, any> = {
   BiBytesUnit,
   BytesUnit,
   FormInputStatus,

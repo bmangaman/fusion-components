@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { unsubscribeAll } from '../../shared';
+import { Utilities } from '../../shared';
 
 import { Subscription } from 'rxjs';
 
@@ -115,7 +115,7 @@ export class TabviewComponent implements AfterContentInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    unsubscribeAll(this.subscriptions);
+    Utilities.unsubscribeAll(this.subscriptions);
   }
 
   /**

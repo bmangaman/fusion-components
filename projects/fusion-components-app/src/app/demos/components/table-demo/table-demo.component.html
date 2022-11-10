@@ -311,8 +311,7 @@
     </f-table-column>
     <f-table-column
       header="Size"
-      field="size"
-      [downloadTransformationFunction]="sizeDownloadTransformationFunction.bind(this)">
+      field="size">
       <ng-template [fusionUiTemplate]="TableComponentEnums['TableTemplate'].TABLE_CELL" let-volume>
         {{ volume?.size | bytes: BytesPipeBase.TWO:true:2 }}
       </ng-template>

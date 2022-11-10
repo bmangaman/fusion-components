@@ -14,7 +14,7 @@ import {
   TableFilterConfig,
   TableView,
 } from '@fusion-components/lib/components/table';
-import { unsubscribeSubject } from '@fusion-components/lib/shared/utilities';
+import { Utilities } from '@fusion-components/lib/shared/utilities';
 import { TableQueryParamsParser } from './table-query-params-parser';
 import { AppliedSort, ParamData } from './table-query-params-parser.interface';
 
@@ -74,7 +74,7 @@ export class DeepLinkedTableDirective implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    unsubscribeSubject(this._destroy$);
+    Utilities.unsubscribeSubject(this._destroy$);
   }
 
   /**
