@@ -6,10 +6,12 @@ import { UploadFileStatusPipe } from './upload-file-status.pipe';
 
 describe('UploadFileStatusPipe', () => {
   let pipe: UploadFileStatusPipe;
-  const fileInfo: UploadInfo = {} as UploadInfo;
-  const translations: UploadTranslations = { ...DEFAULT_UPLOAD_TRANSLATIONS };
+  let fileInfo: UploadInfo;
+  let translations: UploadTranslations;
 
   beforeEach(() => {
+    translations = { ...DEFAULT_UPLOAD_TRANSLATIONS };
+    fileInfo = {} as UploadInfo;
     pipe = new UploadFileStatusPipe();
   });
 
@@ -46,8 +48,8 @@ describe('UploadFileStatusPipe', () => {
       fileInfo.isComplete = false;
       fileInfo.error = null;
 
-      pipe.transform(null as any, translations).subscribe((status: string) => {
-        expect(status).toBe(translations.statuses!.pending as string);
+      pipe.transform(fileInfo, translations).subscribe((status: string) => {
+        expect(status).toBe(translations.statuses!.uploading as string);
         done();
       });
     });
@@ -57,8 +59,8 @@ describe('UploadFileStatusPipe', () => {
       fileInfo.isComplete = true;
       fileInfo.error = null;
 
-      pipe.transform(null as any, translations).subscribe((status: string) => {
-        expect(status).toBe(translations.statuses!.pending as string);
+      pipe.transform(fileInfo, translations).subscribe((status: string) => {
+        expect(status).toBe(translations.statuses!.successful as string);
         done();
       });
     });
@@ -71,6 +73,43 @@ describe('UploadFileStatusPipe', () => {
       translations.errors = { 404: 'Custom Error Message' };
       pipe.transform(fileInfo, translations).subscribe((status: string) => {
         expect(status).toBe(translations.errors![404] as string);
+        done();
+      });
+    });
+
+    it('should use the message backup if no translations were found', (done: DoneFn) => {
+      fileInfo.subscription = new Subscription();
+      fileInfo.isComplete = true;
+      const errorMessage = new HttpErrorResponse({ status: 404, statusText: 'Not Found' });
+      (errorMessage as any).message = 'error message';
+      fileInfo.error = errorMessage;
+
+      pipe.transform(fileInfo, translations).subscribe((status: string) => {
+        expect(status).toBe('error message');
+        done();
+      });
+    });
+
+    it('should use the message backup if no translations were provided', (done: DoneFn) => {
+      fileInfo.subscription = new Subscription();
+      fileInfo.isComplete = true;
+      const errorMessage = new HttpErrorResponse({ status: 404, statusText: 'Not Found' });
+      (errorMessage as any).message = 'error message';
+      fileInfo.error = errorMessage;
+
+      pipe.transform(fileInfo, undefined).subscribe((status: string) => {
+        expect(status).toBe('error message');
+        done();
+      });
+    });
+
+    it('should return an empty string if no translations', (done: DoneFn) => {
+      fileInfo.subscription = new Subscription();
+      fileInfo.isComplete = true;
+      fileInfo.error = null;
+
+      pipe.transform(fileInfo, undefined).subscribe((status: string) => {
+        expect(status).toBe('');
         done();
       });
     });

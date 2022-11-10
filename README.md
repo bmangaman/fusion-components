@@ -16,8 +16,8 @@ Run `ng build` or `npm run build` to build the project. The build artifacts will
 
 ## Running unit tests
 
-Run `ng test` or `npm run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-Run `ng test -c DOM` or `npm run test:DOM` to execute the DOM unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test fusion-components` or `npm run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test fusion-components --no-watch --code-coverage` or `npm run test:coverage` to execute the unit tests and generate the coverage results via [Karma](https://karma-runner.github.io).
 
 ## Further help
 

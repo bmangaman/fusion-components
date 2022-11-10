@@ -68,27 +68,27 @@ describe('DownloadDirective', () => {
       // An array of arrays
       const arrayArrayData: any = [['id 0', 'data 0'], ['id 1', 'data 1']];
       directive.content = arrayArrayData;
-      expect(typeof directive.createCsv() === 'string');
+      expect(typeof directive.createCsv()).toEqual('string');
 
       // An Array of Objects
       const arrayObjectData: any = [{ id: 0, data: 'data 0' }, { id: 1, data: 'data 1' }];
       directive.content = arrayObjectData;
-      expect(typeof directive.createCsv() === 'string');
+      expect(typeof directive.createCsv()).toEqual('string');
 
       // And Array of any
       const arrayAnyData: any = [true, false];
       directive.content = arrayAnyData;
-      expect(typeof directive.createCsv() === 'string');
+      expect(typeof directive.createCsv()).toEqual('string');
 
       // An Object
       const objectData: any = { id: 0, data1: 'data 1', data2: 'data 2' };
       directive.content = objectData;
-      expect(typeof directive.createCsv() === 'string');
+      expect(typeof directive.createCsv()).toEqual('string');
 
       // any
       const anyData: any = true;
       directive.content = anyData;
-      expect(typeof directive.createCsv() === 'string');
+      expect(typeof directive.createCsv()).toEqual('string');
     });
   });
 

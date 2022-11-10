@@ -1883,8 +1883,20 @@ describe('TableComponent', () => {
     });
 
     it('should use either the provided columns or component level columns', () => {
+      const colC: TableColumnComponent = new TableColumnComponent(changeDetectorRef);
+      colC.field = 'c';
+      colC.isVisible = true;
+
+      const componentColumnsQuery = new QueryList<TableColumnComponent>();
+      componentColumnsQuery['_results'] = [cloneDeep(colC)];
+
+      component.columns = componentColumnsQuery;
       component.updateColumns(columnsQuery);
+      expect(component.visibleColumns).toEqual(columnsQuery.toArray());
+
+      component.columns = componentColumnsQuery;
       component.updateColumns();
+      expect(component.visibleColumns).toEqual(componentColumnsQuery.toArray());
     });
 
     it('should do nothing if there are no columns', () => {
