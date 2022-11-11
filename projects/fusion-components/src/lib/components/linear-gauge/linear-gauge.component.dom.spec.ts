@@ -9,7 +9,7 @@ import { PipeItem } from '../../pipes/meta';
 import { DomService } from '../../services/dom';
 import { StatusLevel } from '../../shared';
 import { LinearGaugeComponentPageObject } from './linear-gauge.component.spec.po';
-import { LinearGaugeThreshold } from './linear-gauge.interface';
+import { DEFAULT_LINEAR_GAUGE_TRANSLATIONS, LinearGaugeThreshold, LinearGaugeTranslations } from './linear-gauge.interface';
 import { LinearGaugeModule } from './linear-gauge.module';
 
 @Component({
@@ -22,6 +22,7 @@ import { LinearGaugeModule } from './linear-gauge.module';
         [minValue]="minValue"
         [dataFormatPipeItem]="useDataFormatPipe ? dataFormatPipe : null"
         [valueFormatPipeItem]="useValueFormatPipe ? valueFormatPipe : null"
+        [translations]="translations"
         [thresholds]="thresholds">
       </f-linear-gauge>
     </body>
@@ -38,6 +39,7 @@ export class LinearGaugeTestComponent {
   useDataFormatPipe: boolean;
   useValueFormatPipe: boolean;
   thresholds: LinearGaugeThreshold[] = [];
+  translations: LinearGaugeTranslations = DEFAULT_LINEAR_GAUGE_TRANSLATIONS;
 }
 
 describe('LinearGaugeComponent', () => {

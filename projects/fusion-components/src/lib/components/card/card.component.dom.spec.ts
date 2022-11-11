@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 
 import { Size, StatusLevel } from '../../shared';
 import { CardComponentPageObject } from './card.component.spec.po';
-import { CardStatus, CardTemplate, CardTranslations } from './card.interface';
+import { CardStatus, CardTemplate, CardTranslations, DEFAULT_CARD_TRANSLATIONS } from './card.interface';
 import { CardModule } from './card.module';
 
 @Component({
@@ -18,6 +18,7 @@ import { CardModule } from './card.module';
     [footer]="footer"
     [hideStatusBarStyling]="hideStatusBarStyling"
     [size]="size"
+    [translations]="translations"
     [statuses]="statuses">
     <ng-template *ngIf="useTitleTemplate" [fusionUiTemplate]="CardTemplate.TITLE">Template Title</ng-template>
     <ng-template *ngIf="useContentTemplate" [fusionUiTemplate]="CardTemplate.CONTENT">Template Content</ng-template>
@@ -37,7 +38,7 @@ export class CardTestComponent {
   cssClasses: string[];
   statuses: CardStatus[];
   hideStatusBarStyling: boolean;
-  translations: CardTranslations;
+  translations: CardTranslations = DEFAULT_CARD_TRANSLATIONS;
 
   useTitleTemplate: boolean;
   useContentTemplate: boolean;

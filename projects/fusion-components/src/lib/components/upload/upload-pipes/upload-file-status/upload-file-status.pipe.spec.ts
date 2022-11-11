@@ -114,5 +114,4 @@ describe('UploadFileStatusPipe', () => {
       });
     });
   });
-
 });

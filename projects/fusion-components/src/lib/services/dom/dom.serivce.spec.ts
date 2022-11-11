@@ -121,10 +121,16 @@ describe('DomService', () => {
         .withArgs('.appendto-element').and.returnValue(appendToElement);
     });
 
+    it('should append the component to the body if appendTo is null', () => {
+      service.attachComponent(mockComponentRef, null as any as Element);
+      expect(renderer2.appendChild).toHaveBeenCalledWith(body, element);
+    });
+
     it('should append the component to the body if appendTo is undefined', () => {
       service.attachComponent(mockComponentRef, undefined);
       expect(renderer2.appendChild).toHaveBeenCalledWith(body, element);
     });
+
 
     it('should append the component to the appendTo element if found (string)', () => {
       service.attachComponent(mockComponentRef, '.unfound-element');

@@ -51,7 +51,12 @@ describe('TooltipService', () => {
 
   describe('removeTooltip()', () => {
     it('should remove the tooltip with the provided id', () => {
-      const components: TooltipConfig[] = [ { id: '1' }, { id: '2'} ];
+      spyOn(domService, 'removeComponent').and.callThrough();
+
+      const components: TooltipConfig[] = [
+        { id: '1' },
+        { id: '2', appendedElement: document.createElement('div') }
+      ];
       // eslint-disable-next-line @typescript-eslint/dot-notation
       service['_components'] = components;
       expect(service.components.length).toEqual(2);
@@ -61,10 +66,12 @@ describe('TooltipService', () => {
       expect(service.components).toEqual(components);
 
       service.removeTooltip('2');
+      expect(domService.removeComponent).toHaveBeenCalled();
       expect(service.components.length).toEqual(1);
       expect(service.components).toEqual([ components[0] ]);
 
       service.removeTooltip('1');
+      expect(domService.removeComponent).toHaveBeenCalled();
       expect(service.components.length).toEqual(0);
       expect(service.components).toEqual([]);
     });
