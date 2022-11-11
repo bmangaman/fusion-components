@@ -24,6 +24,8 @@
   }
 
   &.f-notification__error {
+    border: 1px solid $f-color-error-primary;
+
     .f-notification__inner, .f-notification__details-button-wrapper {
       background-color: $f-color-error-background;
 
@@ -32,12 +34,21 @@
       }
     }
 
-    .f-notification__details-content {
-      border: solid 3px $f-color-error-background;
+    .f-notification__details {
+      &-button {
+        background-color: $f-color-error-primary;
+        color: $f-color-white;
+      }
+
+      &-content {
+        border: solid 5px $f-color-error-background;
+      }
     }
   }
 
   &.f-notification__success {
+    border: 1px solid $f-color-success-primary;
+
     .f-notification__inner, .f-notification__details-button-wrapper {
       background-color: $f-color-success-background;
 
@@ -46,27 +57,44 @@
       }
     }
 
-    .f-notification__details-content {
-      border: solid 3px $f-color-success-background;
+    .f-notification__details {
+      &-button {
+        background-color: $f-color-success-primary;
+        color: $f-color-white;
+      }
+
+      &-content {
+        border: solid 5px $f-color-success-background;
+      }
     }
   }
 
   &.f-notification__info {
+    border: 1px solid $f-color-blue-medium;
+
     .f-notification__inner, .f-notification__details-button-wrapper {
-      // May change as we figure out how we’re aligning with ONTAP, but for now use this yellow.
-      background-color: #fff7c0;
+      background-color: $f-color-blue-lightest;
 
       .f-notification__icon {
-        color: $f-color-greyscale-27;
+        color: $f-color-blue-medium;
       }
     }
 
-    .f-notification__details-content {
-      border: solid 3px #fff7c0;
+    .f-notification__details {
+      &-button {
+        background-color: $f-color-blue-medium;
+        color: $f-color-white;
+      }
+
+      &-content {
+        border: solid 5px $f-color-blue-lightest;
+      }
     }
   }
 
   &.f-notification__warning {
+    border: 1px solid $f-color-warning-primary;
+
     .f-notification__inner, .f-notification__details-button-wrapper {
       background-color: $f-color-warning-background;
 
@@ -75,8 +103,15 @@
       }
     }
 
-    .f-notification__details-content {
-      border: solid 3px $f-color-warning-background;
+    .f-notification__details {
+      &-button {
+        background-color: $f-color-warning-primary;
+        color: $f-color-white;
+      }
+
+      &-content {
+        border: solid 5px $f-color-warning-background;
+      }
     }
   }
 
@@ -109,15 +144,18 @@
     border-top: 1px solid $f-border-light;
 
     &-button-wrapper {
-      margin-top: -8px;
-      text-align: left;
-      padding-left: 36px;
-      padding-bottom: $f-spacing-md;
       width: 100%
     }
 
     &-button {
-      margin: 0 auto;
+      align-items: center;
+      border: none;
+      cursor: pointer;
+      font-size: $f-font-size-sm;
+      display: flex;
+      justify-content: flex-end;
+      padding: $f-spacing-xxxs $f-spacing-md $f-spacing-xxxs $f-spacing-xxxs;
+      width: 100%;
 
       &-text {
         line-height: 20px;
@@ -126,6 +164,7 @@
       &-icon {
         line-height: 20px;
         font-size: $f-font-size-icon-md;
+        margin-right: $f-spacing-xxs;
       }
     }
 
@@ -163,8 +202,11 @@
     border: none;
 
     &:hover {
-      background-color: rgba(0, 0, 0, 0.50);
       color: $f-color-primary-text-on-dark;
+
+      .f-notification__close-button-icon {
+        background: rgba(0, 0, 0, 0.50);
+      }
     }
 
     &-icon {
@@ -172,6 +214,7 @@
       height: auto;
       position: absolute;
       left: 50%;
+      padding: $f-spacing-xxs;
       top: 50%;
       transform: translate(-50%, -50%);
     }

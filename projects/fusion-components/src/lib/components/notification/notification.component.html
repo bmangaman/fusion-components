@@ -25,7 +25,7 @@
 <ng-container *ngIf="details">
   <div class="f-notification--break"></div>
   <div class="f-notification__details-button-wrapper">
-    <button class="f-notification__details-button f-button__link" (click)="toggleDetailsSection()">
+    <button class="f-notification__details-button" (click)="toggleDetailsSection()">
       <i class="f-notification__details-button-icon mdi" [ngClass]="isDetailsExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
       <span class="f-notification__details-button-text">{{ isDetailsExpanded ? translations.hideDetails : translations.showDetails }}</span>
     </button>
