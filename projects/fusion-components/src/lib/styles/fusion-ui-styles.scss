@@ -1,10 +1,10 @@
-@import '@mdi/font/css/materialdesignicons.min.css';
+@use './fonts.scss' as *;
+@use './tokens/tokens.scss' as *;
+@use './mixins/mixins.scss' as *;
+@forward './components/components.scss';
+@forward './utilities/utilities.scss';
 
-@import './fonts.scss';
-@import './tokens/tokens.scss';
-@import './mixins/mixins.scss';
-@import './components/components.scss';
-@import './utilities/utilities.scss';
+@import '@mdi/font/css/materialdesignicons.min.css';
 
 * {
     box-sizing: border-box;

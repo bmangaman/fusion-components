@@ -1,4 +1,4 @@
-@import './colors.scss';
-@import './misc.scss';
-@import './spacing.scss';
-@import './text.scss';
+@forward './colors.scss';
+@forward './misc.scss';
+@forward './spacing.scss';
+@forward './text.scss';

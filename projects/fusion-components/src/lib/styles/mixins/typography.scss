@@ -1,4 +1,4 @@
-@import '../tokens/text.scss';
+@use '../tokens/tokens.scss' as *;
 
 @mixin reset-margin-and-padding {
   margin: 0;

@@ -1,4 +1,4 @@
-@import 'projects/fusion-components/src/lib/styles/tokens/tokens.scss';
+@use 'projects/fusion-components/src/lib/styles/tokens/tokens.scss' as *;
 
 :host {
   display: grid;

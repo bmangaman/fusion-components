@@ -1,5 +1,5 @@
-@import '../../styles/tokens/tokens.scss';
-@import '../../styles/mixins/mixins.scss';
+@use '../../styles/tokens/tokens.scss' as *;
+@use '../../styles/mixins/mixins.scss' as *;
 
 $xSmall: 10px;
 $small: 14px;
