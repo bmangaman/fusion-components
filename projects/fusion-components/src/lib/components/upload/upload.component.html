@@ -23,7 +23,7 @@
     }
   </div>
 
-  @if (!!fileList?.length && !isProgressSectionHidden) {
+  @if (!!fileList.length && !isProgressSectionHidden) {
     <div class="f-upload__files">
       @for (fileInfo of fileList; track fileInfo; let i = $index) {
         <div class="f-upload__file f-upload__file--{{ i }}">

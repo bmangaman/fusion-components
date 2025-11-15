@@ -20,7 +20,7 @@
     <!-- END: Title Text -->
 
     <!-- START: Statuses -->
-    @if (!!statuses && !!statuses?.length) {
+    @if (!!statuses && !!statuses.length) {
       <div class="f-card__title-statuses">
         @for (status of statuses; track status) {
           @if (!!status && !status.isHidden) {

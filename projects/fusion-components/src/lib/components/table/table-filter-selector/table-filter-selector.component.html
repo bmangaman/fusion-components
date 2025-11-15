@@ -1,7 +1,7 @@
 <div class="f-table__filter-selector">
 
   <!-- START: Quick Filters -->
-  @if (quickFilters?.length) {
+  @if (quickFilters.length) {
     <div class="f-inline-buttons f-table__filter-selector-quick-filters">
       @for (quickFilter of quickFilters; track quickFilter) {
         <f-button
@@ -84,14 +84,16 @@
             [formControl]="filterField"
             class="f-form__input f-form__select"
             [attr.aria-label]="translations.columnSelectorLabel">
-            @if (filterField?.disabled) {
+            @if (filterField.disabled) {
               <option [ngValue]="undefined">{{ translations.allColumnsHidden }}</option>
             }
-            @for (filter of filters?.toArray(); track filter) {
-              @if (filter?.isVisibleInSelector) {
-                <option [ngValue]="filter">
-                  {{ filter?.filterName }}
-                </option>
+            @if (filters) {
+              @for (filter of filters.toArray(); track filter) {
+                @if (filter?.isVisibleInSelector) {
+                  <option [ngValue]="filter">
+                    {{ filter?.filterName }}
+                  </option>
+                }
               }
             }
           </select>

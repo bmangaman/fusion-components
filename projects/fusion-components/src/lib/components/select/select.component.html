@@ -89,7 +89,7 @@
               (keydown.arrowup)="onArrowPress($event, 'UP')">
               {{ option?.label }}
             </li>
-            @if (!(isSearchable ? filteredOptions?.length : options?.length)) {
+            @if (!(isSearchable ? filteredOptions.length : options.length)) {
               <div
                 class="f-form__select-no-results f-form__select-option"
                 >

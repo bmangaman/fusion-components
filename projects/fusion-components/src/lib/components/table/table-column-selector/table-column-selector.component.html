@@ -36,7 +36,7 @@
 
     <ng-template fusionUiTemplate="menuDialogContent">
       <div class="f-form__field-group">
-        @for (col of columns?.toArray(); track colTrackByFn(i, col); let i = $index) {
+        @for (col of columns.toArray(); track colTrackByFn(i, col); let i = $index) {
           @if (col?.isHidable) {
             <div class="f-form__fieldset">
               <span class="f-form__checkbox">

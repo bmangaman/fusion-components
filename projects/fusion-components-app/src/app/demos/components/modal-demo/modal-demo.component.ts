@@ -73,7 +73,7 @@ export class ModalDemoComponent {
     template: `
     <f-modal-header [isFullModal]="modalConfig.type === 'full'" (modalClosed)="modalClosed.emit('header (x) button')">Header</f-modal-header>
     <f-modal-content>
-      @if (modalConfig?.type === 'full') {
+      @if (modalConfig.type === 'full') {
         <h2 class="f-modal__full-header-content">Header</h2>
       }
       Content

@@ -1,7 +1,7 @@
 @if (displayError()) {
   @if (displayMultiple) {
     <div class="f-error-messages">
-      @for (errorMessage of errors | getAllErrors:control?.errors; track errorMessage) {
+      @for (errorMessage of errors | getAllErrors:control.errors; track errorMessage) {
         <div class="f-error-message">
           {{ errorMessage | async }}
         </div>

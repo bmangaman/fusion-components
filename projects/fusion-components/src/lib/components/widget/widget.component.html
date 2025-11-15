@@ -31,9 +31,9 @@
   <!-- END: header -->
 
   <!-- START: info boxes -->
-  @if (!!infoBoxes?.length || !!infoBoxesDetails?.length) {
+  @if (!!infoBoxes.length || !!infoBoxesDetails.length) {
     <div class="f-widget__info-boxes">
-      @if (!!infoBoxes?.length) {
+      @if (!!infoBoxes.length) {
         @for (box of infoBoxes; track box) {
           <div class="f-widget__info-boxes-box">
             <ng-content *ngTemplateOutlet="box"></ng-content>

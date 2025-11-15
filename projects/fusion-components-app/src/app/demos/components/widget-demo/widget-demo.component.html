@@ -100,14 +100,14 @@
                     [infoDetailsData]="infoDetailsData"
                     [infoBoxesDetails]="infoBoxesDetails">
                     <!-- START: header -->
-                    @if (widgetForm?.get('isCustomHeader')?.value) {
+                    @if (widgetForm.get('isCustomHeader')?.value) {
                       <ng-template [fusionUiTemplate]="WidgetTemplate.HEADER">
                         Custom Widget Header
                       </ng-template>
                     }
                     <!-- END: header -->
                     <!-- START: info boxes -->
-                    @if (widgetForm?.get('isCustomInfoBoxes')?.value) {
+                    @if (widgetForm.get('isCustomInfoBoxes')?.value) {
                       <ng-template [fusionUiTemplate]="WidgetTemplate.INFO_BOX">
                         Custom info box
                       </ng-template>
@@ -117,7 +117,7 @@
                     }
                     <!-- END: info boxes -->
                     <!-- START: info details -->
-                    @if (widgetForm?.get('isCustomInfoDetails')?.value) {
+                    @if (widgetForm.get('isCustomInfoDetails')?.value) {
                       <ng-template [fusionUiTemplate]="WidgetTemplate.INFO_DETAILS">
                         Custom info details
                       </ng-template>
