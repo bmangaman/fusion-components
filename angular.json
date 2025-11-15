@@ -52,12 +52,15 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/fusion-components-app",
+            "outputPath": {
+              "base": "dist/fusion-components-app"
+            },
             "index": "projects/fusion-components-app/src/index.html",
-            "main": "projects/fusion-components-app/src/main.ts",
-            "polyfills": "projects/fusion-components-app/src/polyfills.ts",
+            "polyfills": [
+              "projects/fusion-components-app/src/polyfills.ts"
+            ],
             "tsConfig": "projects/fusion-components-app/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -67,7 +70,8 @@
             "styles": [
               "projects/fusion-components-app/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "projects/fusion-components-app/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -92,9 +96,7 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
