@@ -14,7 +14,8 @@ import { ErrorMessageModule } from '../../../../../../fusion-components/src/lib/
     templateUrl: './error-message-demo.component.html',
     styleUrls: ['./error-message-demo.component.scss'],
     standalone: true,
-    imports: [DemoComponent, FormsModule, ReactiveFormsModule, CheckboxModule, ValidationStylingModule, ErrorMessageModule]
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, CheckboxModule, ValidationStylingModule, ErrorMessageModule],
+    providers: [ErrorMessageGeneratorService]
 })
 export class ErrorMessageDemoComponent {
   errorMessageForm: UntypedFormGroup;
@@ -28,21 +29,23 @@ export class ErrorMessageDemoComponent {
     ],
   );
 
-  errorMessages: ErrorMessage[] = [
-    this.errorMessageGenerator.required({ priority: 0 }),
-    this.errorMessageGenerator.minLength({ priority: 1, translationConfig: { min: 5, isPlural: true }}),
-    this.errorMessageGenerator.maxLength({ priority: 2, translationConfig: { max: 10, isPlural: true }}),
-    {
-      priority: 4,
-      translation: of('No numbers'),
-      error: 'pattern'
-    },
-  ];
+  errorMessages: ErrorMessage[];
 
   constructor(
     private fb: UntypedFormBuilder,
     private errorMessageGenerator: ErrorMessageGeneratorService,
   ) {
+    this.errorMessages = [
+      this.errorMessageGenerator.required({ priority: 0 }),
+      this.errorMessageGenerator.minLength({ priority: 1, translationConfig: { min: 5, isPlural: true }}),
+      this.errorMessageGenerator.maxLength({ priority: 2, translationConfig: { max: 10, isPlural: true }}),
+      {
+        priority: 4,
+        translation: of('No numbers'),
+        error: 'pattern'
+      },
+    ];
+
     this.buildErrorMessageForm();
 
     this.errorMessageFormControl.valueChanges.subscribe(() => console.log('errors', this.errorMessageFormControl.errors));
