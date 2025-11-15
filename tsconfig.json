@@ -12,8 +12,12 @@
         "dist/fusion-components/fusion-components",
         "dist/fusion-components"
       ],
-      "@fusion-components": ["projects/fusion-components/src/index.ts"],
-      "@fusion-components/*": ["projects/fusion-components/src/*"]
+      "@fusion-components": [
+        "projects/fusion-components/src/index.ts"
+      ],
+      "@fusion-components/*": [
+        "projects/fusion-components/src/*"
+      ]
     },
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -25,7 +29,7 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "strictPropertyInitialization": false,
-    "target": "es2020",
+    "target": "ES2022",
     "module": "es2020",
     "lib": [
       "es2020",
@@ -33,6 +37,7 @@
     ],
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
