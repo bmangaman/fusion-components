@@ -4,9 +4,10 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { Position, MouseInteraction } from '@fusion-components';
 
 @Component({
-  selector: 'fusion-demo-tooltip',
-  templateUrl: './tooltip-demo.component.html',
-  styleUrls: ['./tooltip-demo.component.scss']
+    selector: 'fusion-demo-tooltip',
+    templateUrl: './tooltip-demo.component.html',
+    styleUrls: ['./tooltip-demo.component.scss'],
+    standalone: false
 })
 export class TooltipDemoComponent {
   readonly Position = Position;

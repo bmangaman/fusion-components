@@ -8,8 +8,9 @@ import { Utilities } from '../../utilities';
  * The Unsubscribe Component provides a consistent way unsubscribe from any active subscriptions.
  */
 @Component({
-  selector: 'f-unsubscribe',
-  template: '',
+    selector: 'f-unsubscribe',
+    template: '',
+    standalone: false
 })
 export class UnsubscribeComponent implements OnDestroy {
   protected unsubscribe$: Subject<void> = new Subject<void>();

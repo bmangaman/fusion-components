@@ -12,8 +12,8 @@ import { DEFAULT_NOTIFICATION_TRANSLATIONS, NotificationTranslations, Notificati
 import createSpy = jasmine.createSpy;
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
     <f-notification
       *ngIf="show"
       [id]="id"
@@ -31,6 +31,7 @@ import createSpy = jasmine.createSpy;
       </ng-container>
     </f-notification>
   `,
+    standalone: false
 })
 class TestComponent {
   id: string;

@@ -8,8 +8,8 @@ import { AccordionComponentPageObject } from './accordion.component.spec.po';
 import { AccordionModule } from './accordion.module';
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
   <f-accordion
     [onePanelLimit]="onePanelLimit"
     [maxContentHeight]="maxContentHeight"
@@ -24,6 +24,7 @@ import { AccordionModule } from './accordion.module';
     </f-accordion-panel>
   </f-accordion>
   `,
+    standalone: false
 })
 export class AccordionTestComponent {
   onePanelLimit: boolean;

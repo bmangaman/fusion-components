@@ -14,8 +14,9 @@ import { DEFAULT_SELECT_TRANSLATIONS, SelectOption, SelectTranslations } from '.
  * SELECT COMPONENT
  */
 @Component({
-  selector: 'f-select',
-  templateUrl: './select.component.html',
+    selector: 'f-select',
+    templateUrl: './select.component.html',
+    standalone: false
 })
 export class SelectComponent implements ControlValueAccessor, OnInit, OnDestroy {
   private onChange: (...args: unknown[]) => void;

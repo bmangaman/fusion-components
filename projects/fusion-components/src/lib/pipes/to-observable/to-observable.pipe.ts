@@ -7,7 +7,10 @@ import { Observable, of } from 'rxjs';
  *
  * Ensures the value provided will be returned as an observable.
  */
-@Pipe({name: 'toObservable'})
+@Pipe({
+    name: 'toObservable',
+    standalone: false
+})
 export class ToObservablelPipe implements PipeTransform {
 
   /**

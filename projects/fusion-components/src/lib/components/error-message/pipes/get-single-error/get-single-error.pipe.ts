@@ -13,7 +13,10 @@ import { ErrorMessage } from '../../error-message.interface';
  * The Get Single Error Pipe gets the highest priority error of the provided current errors and returns its
  * translation value.
  */
-@Pipe({ name: 'getSingleError' })
+@Pipe({
+    name: 'getSingleError',
+    standalone: false
+})
 export class GetSingleErrorPipe implements PipeTransform {
 
   /**

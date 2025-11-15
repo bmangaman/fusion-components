@@ -4,9 +4,10 @@ import { UntypedFormBuilder, UntypedFormGroup, UntypedFormArray, Validators, Abs
 import { StatusLevel, LinearGaugeThreshold, PipeItem, BytesPipe, BytesPipeBase } from '@fusion-components';
 
 @Component({
-  selector: 'fusion-demo-linear-gauge',
-  templateUrl: './linear-gauge-demo.component.html',
-  styleUrls: ['./linear-gauge-demo.component.scss']
+    selector: 'fusion-demo-linear-gauge',
+    templateUrl: './linear-gauge-demo.component.html',
+    styleUrls: ['./linear-gauge-demo.component.scss'],
+    standalone: false
 })
 export class LinearGaugeDemoComponent {
   readonly StatusLevel = StatusLevel;

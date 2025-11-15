@@ -13,9 +13,10 @@ import {
  * TABLE COLUMN COMPONENT
  */
 @Component({
-  selector: 'f-table-column',
-  template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-table-column',
+    template: '',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableColumnComponent implements AfterContentInit {
   private _contentTemplateRef: TemplateRef<any>;

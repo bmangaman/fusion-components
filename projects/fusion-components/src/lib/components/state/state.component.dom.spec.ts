@@ -16,8 +16,8 @@ import {
 import { StateComponentsModule } from './state.module';
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
   <f-state
     [state]="state"
     [location]="location"
@@ -31,6 +31,7 @@ import { StateComponentsModule } from './state.module';
   <ng-template #noResults>No Results</ng-template>
   <ng-template #error>Error</ng-template>
   `,
+    standalone: false
 })
 export class StateTestComponent {
   @ViewChild('error') [State.ERROR]: TemplateRef<any>;

@@ -3,9 +3,10 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { Size, ProgressBarStatus } from '@fusion-components';
 
 @Component({
-  selector: 'fusion-demo-progress-bar',
-  templateUrl: './progress-bar-demo.component.html',
-  styleUrls: ['./progress-bar-demo.component.scss']
+    selector: 'fusion-demo-progress-bar',
+    templateUrl: './progress-bar-demo.component.html',
+    styleUrls: ['./progress-bar-demo.component.scss'],
+    standalone: false
 })
 export class ProgressBarDemoComponent {
   readonly Size = Size;

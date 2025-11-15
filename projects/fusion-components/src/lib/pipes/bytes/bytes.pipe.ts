@@ -14,7 +14,10 @@ import { BytesPipeBase } from './bytes.interface';
  *  - the base, either TEN (1000) or two (1024)
  *  - the precision (how many places after the decimal are displayed)
  */
-@Pipe({ name: 'bytes' })
+@Pipe({
+    name: 'bytes',
+    standalone: false
+})
 export class BytesPipe implements PipeTransform {
   readonly enumToArrayPipe: EnumToArrayPipe = new EnumToArrayPipe();
   private byteSizes: string[];

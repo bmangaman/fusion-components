@@ -8,7 +8,10 @@ import { State } from '@fusion-components/lib/shared';
  * The Get Table State Pipe gets the final state of the table based on the input value and
  * the number of data points (if any).
  */
-@Pipe({name: 'getTableState'})
+@Pipe({
+    name: 'getTableState',
+    standalone: false
+})
 export class GetTableStatePipe implements PipeTransform {
 
   /**

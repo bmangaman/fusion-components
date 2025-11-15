@@ -8,8 +8,8 @@ import { CardStatus, CardTemplate, CardTranslations, DEFAULT_CARD_TRANSLATIONS }
 import { CardModule } from './card.module';
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
   <f-card
     *ngIf="isLoaded"
     [title]="title"
@@ -26,6 +26,7 @@ import { CardModule } from './card.module';
     <ng-template *ngIf="useFooterTemplate" [fusionUiTemplate]="CardTemplate.FOOTER">Template Footer</ng-template>
   </f-card>
   `,
+    standalone: false
 })
 export class CardTestComponent {
   readonly CardTemplate = CardTemplate;

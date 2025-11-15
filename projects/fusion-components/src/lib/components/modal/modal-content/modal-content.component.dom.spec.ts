@@ -5,8 +5,9 @@ import { ModalContentComponentPageObject } from './modal-content.component.spec.
 import { ModalContentModule } from './modal-content.module';
 
 @Component({
-  selector: 'f-test-component',
-  template: '<f-modal-content>Header Title</f-modal-content>',
+    selector: 'f-test-component',
+    template: '<f-modal-content>Header Title</f-modal-content>',
+    standalone: false
 })
 export class ModalContentTestComponent {}
 

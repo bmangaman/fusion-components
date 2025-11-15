@@ -13,9 +13,10 @@ import { TableCellComponent } from '../table-cell/table-cell.component';
  * It is used primarily for appending the correct CSS classes and styles to the cell.
  */
 @Component({
-  selector: 'f-table-cell-body',
-  templateUrl: './body-table-cell.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-table-cell-body',
+    templateUrl: './body-table-cell.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class BodyTableCellComponent extends TableCellComponent implements DoCheck {
   fieldData: any;

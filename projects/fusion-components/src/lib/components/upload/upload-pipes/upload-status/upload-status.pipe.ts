@@ -7,7 +7,10 @@ import { UploadInfo } from '../../upload.interface';
  *
  * The Upload Status Pipe interprets and returns the status of the provided file upload info.
  */
-@Pipe({ name: 'uploadStatus', pure: false })
+@Pipe({
+    name: 'uploadStatus', pure: false,
+    standalone: false
+})
 export class UploadStatusPipe implements PipeTransform {
 
   /**

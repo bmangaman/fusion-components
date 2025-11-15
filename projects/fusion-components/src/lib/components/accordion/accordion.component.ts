@@ -23,8 +23,9 @@ import { AccordionPanelComponent } from './panel';
  * </f-accordion>
  */
 @Component({
-  selector: 'f-accordion',
-  template: '<div class="f-accordion"><ng-content></ng-content></div>',
+    selector: 'f-accordion',
+    template: '<div class="f-accordion"><ng-content></ng-content></div>',
+    standalone: false
 })
 export class AccordionComponent implements AfterContentInit {
   subscriptions: Subscription[] = [];

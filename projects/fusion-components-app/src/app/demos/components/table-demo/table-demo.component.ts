@@ -31,9 +31,10 @@ import {
 import { VolumeState, VolumeAccess } from './table-demo.interface';
 
 @Component({
-  selector: 'fusion-demo-table',
-  templateUrl: './table-demo.component.html',
-  styleUrls: ['./table-demo.component.scss']
+    selector: 'fusion-demo-table',
+    templateUrl: './table-demo.component.html',
+    styleUrls: ['./table-demo.component.scss'],
+    standalone: false
 })
 export class TableDemoComponent implements OnInit {
   readonly TableComponentEnums = TableComponentEnums;

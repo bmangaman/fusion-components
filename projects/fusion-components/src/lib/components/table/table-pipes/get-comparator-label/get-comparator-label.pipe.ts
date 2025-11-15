@@ -9,7 +9,10 @@ import { FilterComparator } from '../../table-filters';
  * The Get Comparator Label Pipe gets the label value of a comparator. Determines if the label is
  * either an observable or a string and gets the value accordingly.
  */
-@Pipe({name: 'getComparatorLabel'})
+@Pipe({
+    name: 'getComparatorLabel',
+    standalone: false
+})
 export class GetComparatorLabelPipe implements PipeTransform {
 
   /**

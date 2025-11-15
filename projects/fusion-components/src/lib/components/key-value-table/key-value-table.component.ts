@@ -10,8 +10,9 @@ import { KeyValueTableData, KeyValueTableType } from './key-value-table.interfac
  * The Key Value Table Component creates a consistent way to display simple kay-value data.
  */
 @Component({
-  selector: 'f-key-value-table',
-  templateUrl: 'key-value-table.component.html',
+    selector: 'f-key-value-table',
+    templateUrl: 'key-value-table.component.html',
+    standalone: false
 })
 export class KeyValueTableComponent implements AfterContentInit {
   readonly Observable = Observable;

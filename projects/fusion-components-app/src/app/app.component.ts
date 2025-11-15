@@ -6,9 +6,10 @@ import { filter, map, tap } from 'rxjs/operators';
 import { NavItem } from '@fusion-components/lib/components/sidenav/sidenav.interface';
 
 @Component({
-  selector: 'fusion-demo-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'fusion-demo-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    standalone: false
 })
 export class AppComponent implements OnInit {
   rootRoute: string;

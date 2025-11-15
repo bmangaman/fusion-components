@@ -9,10 +9,11 @@ import { TableFilterComponent } from '../table-filter/table-filter.component';
 import { DEFAULT_TABLE_FILTER_IP_TRANSLATIONS, TableFilterIpForm, TableFilterIpInputComparator, TableFilterIpTranslations } from './table-filter-ip.interface';
 
 @Component({
-  selector: 'f-table-ip-filter',
-  templateUrl: './table-filter-ip.component.html',
-  providers: [{ provide: TableFilterComponent, useExisting: TableFilterIpComponent }],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-table-ip-filter',
+    templateUrl: './table-filter-ip.component.html',
+    providers: [{ provide: TableFilterComponent, useExisting: TableFilterIpComponent }],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableFilterIpComponent extends TableFilterComponent implements OnInit {
   override TableFilter = TableFilterIpComponent;

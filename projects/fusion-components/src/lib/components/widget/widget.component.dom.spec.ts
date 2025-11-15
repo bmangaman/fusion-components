@@ -7,8 +7,8 @@ import { DEFAULT_WIDGET_TRANSLATIONS, InfoBoxDetail, WidgetTemplate, WidgetTrans
 import { WidgetModule } from './widget.module';
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
   <f-widget
     *ngIf="isComponentRendered"
     [isTimestampDisplayed]="isTimestampDisplayed"
@@ -38,6 +38,7 @@ import { WidgetModule } from './widget.module';
 
   </f-widget>
   `,
+    standalone: false
 })
 export class WidgetTestComponent {
   readonly WidgetTemplate = WidgetTemplate;

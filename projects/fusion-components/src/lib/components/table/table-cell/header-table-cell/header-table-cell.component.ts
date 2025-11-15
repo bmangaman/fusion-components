@@ -15,9 +15,10 @@ export interface ResizeCoordinates {
  * It has logic to allow both ascending and descending sorting of the column, if sorting is enabled.
  */
 @Component({
-  selector: 'f-table-cell-header',
-  templateUrl: './header-table-cell.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-table-cell-header',
+    templateUrl: './header-table-cell.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class HeaderTableCellComponent extends TableCellComponent implements DoCheck {
   readonly TableColumnSorted = TableColumnSorted;

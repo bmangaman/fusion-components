@@ -59,9 +59,10 @@ interface HtmlInputEvent extends Event {
  * </f-upload>
  */
 @Component({
-  selector: 'f-upload',
-  templateUrl: 'upload.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-upload',
+    templateUrl: 'upload.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class UploadComponent extends UnsubscribeComponent implements OnDestroy {
   readonly ButtonType = ButtonType;

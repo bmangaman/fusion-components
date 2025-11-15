@@ -3,9 +3,10 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { Size } from '@fusion-components';
 
 @Component({
-  selector: 'fusion-demo-loading-spinner',
-  templateUrl: './loading-spinner-demo.component.html',
-  styleUrls: ['./loading-spinner-demo.component.scss']
+    selector: 'fusion-demo-loading-spinner',
+    templateUrl: './loading-spinner-demo.component.html',
+    styleUrls: ['./loading-spinner-demo.component.scss'],
+    standalone: false
 })
 export class LoadingSpinnerDemoComponent {
   readonly Size = Size;

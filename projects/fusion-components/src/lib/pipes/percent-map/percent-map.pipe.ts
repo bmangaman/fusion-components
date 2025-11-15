@@ -5,7 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
  *
  * The percent-map pipe maps a value based on the provied min and max values to a value in between 0 and 100.
  */
-@Pipe({ name: 'percentMap' })
+@Pipe({
+    name: 'percentMap',
+    standalone: false
+})
 export class PercentMapPipe implements PipeTransform {
   /**
    * Maps the provided value to a 0 to 100 percentage

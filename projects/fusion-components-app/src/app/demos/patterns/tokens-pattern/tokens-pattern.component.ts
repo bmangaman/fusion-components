@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'fusion-demo-tokens',
-  templateUrl: './tokens-pattern.component.html',
-  styleUrls: ['./tokens-pattern.component.scss']
+    selector: 'fusion-demo-tokens',
+    templateUrl: './tokens-pattern.component.html',
+    styleUrls: ['./tokens-pattern.component.scss'],
+    standalone: false
 })
 export class TokensPatternComponent {
   blues = [

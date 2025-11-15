@@ -8,8 +8,8 @@ import { ButtonAria, ButtonInputType, ButtonType } from './button.interface';
 import { ButtonModule } from './button.module';
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
     <f-button
       [type]="type"
       [inputType]="inputType"
@@ -28,6 +28,7 @@ import { ButtonModule } from './button.module';
       (buttonClick)="buttonClick()">
     </f-button>
   `,
+    standalone: false
 })
 export class ButtonTestComponent {
   type: ButtonType;

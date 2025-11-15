@@ -2,8 +2,9 @@ import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/co
 import { ModalType } from '../modal.interface';
 
 @Component({
-  selector: 'f-modal-header',
-  templateUrl: './modal-header.component.html',
+    selector: 'f-modal-header',
+    templateUrl: './modal-header.component.html',
+    standalone: false
 })
 export class ModalHeaderComponent {
   readonly ModalType = ModalType;

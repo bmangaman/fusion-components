@@ -35,9 +35,10 @@ interface WidthAndHeightAttributes {
  * component, but should be used for any menu-like dialogs/ popups.
  */
 @Component({
-  selector: 'f-menu',
-  templateUrl: 'menu.component.html',
-  styleUrls: ['menu.component.scss'],
+    selector: 'f-menu',
+    templateUrl: 'menu.component.html',
+    styleUrls: ['menu.component.scss'],
+    standalone: false
 })
 export class MenuComponent implements OnInit, AfterContentInit, OnChanges, OnDestroy {
   readonly ButtonType = ButtonType;

@@ -5,11 +5,12 @@ import { By } from '@angular/platform-browser';
 import { ValidationStylingDirective } from './validation-styling.directive';
 
 @Component({
-  template: `
+    template: `
     <form [formGroup]="validationStylingDemoForm">
       <input fusionUiValidationStyling formControlName="basicInput" />
     </form>
-  `
+  `,
+    standalone: false
 })
 class TestComponent implements OnInit {
   public validationStylingDemoForm: UntypedFormGroup;

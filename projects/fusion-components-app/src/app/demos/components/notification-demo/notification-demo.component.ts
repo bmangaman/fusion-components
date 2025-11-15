@@ -3,9 +3,10 @@ import { NotificationTemplate, NotificationType } from '@fusion-components/lib/c
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'fusion-demo-notification-demo',
-  templateUrl: './notification-demo.component.html',
-  styleUrls: ['./notification-demo.component.scss']
+    selector: 'fusion-demo-notification-demo',
+    templateUrl: './notification-demo.component.html',
+    styleUrls: ['./notification-demo.component.scss'],
+    standalone: false
 })
 export class NotificationDemoComponent implements OnInit {
 

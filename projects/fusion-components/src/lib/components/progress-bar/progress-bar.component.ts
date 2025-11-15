@@ -13,8 +13,8 @@ import { ProgressBarStatus } from './progress-bar.interface';
  * some simple statuses based on the calculated progress. Otherwise the provided status is used.
  */
 @Component({
-  selector: 'f-progress-bar',
-  template: `
+    selector: 'f-progress-bar',
+    template: `
 <div
   class="f-progress-bar"
   role="progressbar"
@@ -32,6 +32,7 @@ import { ProgressBarStatus } from './progress-bar.interface';
     </div>
   </div>
 </div>`,
+    standalone: false
 })
 
 export class ProgressBarComponent implements OnInit, OnChanges {

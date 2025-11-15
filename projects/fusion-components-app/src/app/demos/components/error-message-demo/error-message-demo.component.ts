@@ -6,9 +6,10 @@ import { of } from 'rxjs';
 import { ErrorMessage, ErrorMessageGeneratorService } from '@fusion-components';
 
 @Component({
-  selector: 'fusion-demo-error-message',
-  templateUrl: './error-message-demo.component.html',
-  styleUrls: ['./error-message-demo.component.scss'],
+    selector: 'fusion-demo-error-message',
+    templateUrl: './error-message-demo.component.html',
+    styleUrls: ['./error-message-demo.component.scss'],
+    standalone: false
 })
 export class ErrorMessageDemoComponent {
   errorMessageForm: UntypedFormGroup;

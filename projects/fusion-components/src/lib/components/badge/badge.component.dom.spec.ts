@@ -8,8 +8,8 @@ import { BadgeComponentPageObject } from './badge.component.spec.po';
 import { BadgeModule } from './badge.module';
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
   <f-badge
     [fillContainer]="fillContainer"
     [type]="type"
@@ -18,6 +18,7 @@ import { BadgeModule } from './badge.module';
     [subText]="subText">
   </f-badge>
   `,
+    standalone: false
 })
 export class BadgeTestComponent {
   type: StatusLevel;

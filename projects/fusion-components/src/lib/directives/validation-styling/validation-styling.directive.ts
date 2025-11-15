@@ -27,7 +27,8 @@ import { FormInputStatus } from '@fusion-components/lib/shared';
  * </div>
  */
 @Directive({
-  selector: '[fusionUiValidationStyling]'
+    selector: '[fusionUiValidationStyling]',
+    standalone: false
 })
 export class ValidationStylingDirective implements OnInit, OnDestroy {
   private inputElement: any;

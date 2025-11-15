@@ -17,10 +17,11 @@ import { DEFAULT_TABLE_FILTER_BYTES_TRANSLATIONS, TableFilterBytesInputComparato
  * with bytes. It allows two inputs: the unit (B, MB, TB, etc.) and the value of that unit.
  */
 @Component({
-  selector: 'f-table-bytes-filter',
-  templateUrl: './table-filter-bytes.component.html',
-  providers: [{ provide: TableFilterComponent, useExisting: TableFilterBytesComponent }],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-table-bytes-filter',
+    templateUrl: './table-filter-bytes.component.html',
+    providers: [{ provide: TableFilterComponent, useExisting: TableFilterBytesComponent }],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableFilterBytesComponent extends TableFilterComponent {
   override TableFilter = TableFilterBytesComponent;

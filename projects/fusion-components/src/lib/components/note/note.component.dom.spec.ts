@@ -5,12 +5,13 @@ import { NoteComponentPageObject } from './note.component.spec.po';
 import { NoteModule } from './note.module';
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
     <f-note>
       <div class="projected-content">Projected Text</div>
     </f-note>
   `,
+    standalone: false
 })
 export class NoteTestComponent {}
 

@@ -3,9 +3,10 @@ import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms
 import { StatusLevel, Size } from '@fusion-components';
 
 @Component({
-  selector: 'fusion-demo-badge',
-  templateUrl: './badge-demo.component.html',
-  styleUrls: ['./badge-demo.component.scss'],
+    selector: 'fusion-demo-badge',
+    templateUrl: './badge-demo.component.html',
+    styleUrls: ['./badge-demo.component.scss'],
+    standalone: false
 })
 export class BadgeDemoComponent {
   readonly Size = Size;

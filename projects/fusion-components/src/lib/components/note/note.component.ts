@@ -11,8 +11,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
  * </f-note>
  */
 @Component({
-  selector: 'f-note',
-  template: '<div class="f-note"><ng-content></ng-content></div>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-note',
+    template: '<div class="f-note"><ng-content></ng-content></div>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class NoteComponent {}

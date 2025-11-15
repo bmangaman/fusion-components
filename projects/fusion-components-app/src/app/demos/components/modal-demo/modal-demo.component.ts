@@ -3,9 +3,10 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { BaseModalComponent, Size, ModalConfig, ModalService, ModalType, OpenModalConfig, ButtonType } from '@fusion-components';
 
 @Component({
-  selector: 'fusion-demo-modal',
-  templateUrl: './modal-demo.component.html',
-  styleUrls: ['./modal-demo.component.scss']
+    selector: 'fusion-demo-modal',
+    templateUrl: './modal-demo.component.html',
+    styleUrls: ['./modal-demo.component.scss'],
+    standalone: false
 })
 export class ModalDemoComponent {
   readonly ButtonType = ButtonType;
@@ -67,9 +68,9 @@ export class ModalDemoComponent {
 }
 
 @Component({
-  selector: 'fusion-demo-inner-content',
-  styleUrls: ['./modal-demo.component.scss'],
-  template: `
+    selector: 'fusion-demo-inner-content',
+    styleUrls: ['./modal-demo.component.scss'],
+    template: `
     <f-modal-header [isFullModal]="modalConfig.type === 'full'" (modalClosed)="modalClosed.emit('header (x) button')">Header</f-modal-header>
     <f-modal-content>
       <h2 *ngIf="modalConfig?.type === 'full'" class="f-modal__full-header-content">Header</h2>
@@ -91,7 +92,8 @@ export class ModalDemoComponent {
         <f-button text="Cancel" [type]="ButtonType.SECONDARY" (buttonClick)="modalClosed.emit('cancel button')"></f-button>
       </div>
     </f-modal-footer>
-  `
+  `,
+    standalone: false
 })
 export class InnerModalComponent extends BaseModalComponent {
   readonly ButtonType = ButtonType;

@@ -7,8 +7,8 @@ import { DEFAULT_SELECT_TRANSLATIONS, SelectOption } from './select.interface';
 import { SelectModule } from './select.module';
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
     <f-select
       [formControl]="control"
       [label]="label"
@@ -19,6 +19,7 @@ import { SelectModule } from './select.module';
     </f-select>
     <button class="outside-element">Outside Element</button>
   `,
+    standalone: false
 })
 export class SelectTestComponent {
   control: UntypedFormControl = new UntypedFormControl();

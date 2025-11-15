@@ -13,7 +13,8 @@ import { Position, MouseInteraction } from '../../shared';
  * hovered.
  */
 @Directive({
-  selector: '[fusionUiTooltip]',
+    selector: '[fusionUiTooltip]',
+    standalone: false
 })
 export class TooltipDirective implements OnDestroy {
   /**

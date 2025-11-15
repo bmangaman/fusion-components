@@ -13,7 +13,10 @@ import { PipeItem } from './meta.interface';
  *  2. a clean way to apply a pipe (or pipes) dynamically based on the provided inputs
  *     (used in LinearGaugeComponent to apply custom pipes within the component)
  */
-@Pipe({ name: 'meta' })
+@Pipe({
+    name: 'meta',
+    standalone: false
+})
 export class MetaPipe implements PipeTransform {
 
   /**

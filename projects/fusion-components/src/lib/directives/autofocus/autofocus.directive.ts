@@ -7,7 +7,8 @@ import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
  * fusionUiAutofocus is set to true.
  */
 @Directive({
-  selector: '[fusionUiAutofocus]',
+    selector: '[fusionUiAutofocus]',
+    standalone: false
 })
 export class AutofocusDirective implements AfterViewInit {
   private _focus: boolean = true;

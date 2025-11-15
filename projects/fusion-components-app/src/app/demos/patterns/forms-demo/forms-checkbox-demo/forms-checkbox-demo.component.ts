@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'fusion-demo-forms-checkbox',
-  templateUrl: './forms-checkbox-demo.component.html',
-  styleUrls: ['../forms-demo-shared.scss'],
+    selector: 'fusion-demo-forms-checkbox',
+    templateUrl: './forms-checkbox-demo.component.html',
+    styleUrls: ['../forms-demo-shared.scss'],
+    standalone: false
 })
 export class FormsCheckboxDemoComponent {
 

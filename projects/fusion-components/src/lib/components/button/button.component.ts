@@ -11,8 +11,9 @@ import { ButtonAria, ButtonInputType, ButtonType } from './button.interface';
  * to specify the button type, size, content, etc. It also supports disabled and loading states.
  */
 @Component({
-  selector: 'f-button',
-  templateUrl: 'button.component.html',
+    selector: 'f-button',
+    templateUrl: 'button.component.html',
+    standalone: false
 })
 export class ButtonComponent implements AfterViewInit, OnChanges {
   readonly State = State;

@@ -8,7 +8,10 @@ import { TableRowData } from '../../table.interface';
  * The visible-table-rows pipe is to be used with the table component.
  * It filters and returns visible table row data.
  */
-@Pipe({name: 'visibleTableRows'})
+@Pipe({
+    name: 'visibleTableRows',
+    standalone: false
+})
 export class VisibleTableRowsPipe implements PipeTransform {
 
   /**

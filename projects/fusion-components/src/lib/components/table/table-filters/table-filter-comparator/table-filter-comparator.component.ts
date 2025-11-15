@@ -11,9 +11,10 @@ import { FilterComparator, FilterComparatorTranslations } from './table-filter-c
  * select and use the correct comparator for a given filter.
  */
 @Component({
-  selector: 'f-table-filter-comparator',
-  templateUrl: './table-filter-comparator.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-table-filter-comparator',
+    templateUrl: './table-filter-comparator.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableFilterComparatorComponent implements OnInit {
   readonly Observable = Observable;

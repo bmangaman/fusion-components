@@ -10,7 +10,10 @@ import { TableRowData } from '../../table.interface';
  * The are-all-visible-rows-selected pipe is to be used with the table component.
  * This pipe checks whether or not the selected and visible data is exactly the same.
  */
-@Pipe({name: 'areAllVisibleRowsSelected'})
+@Pipe({
+    name: 'areAllVisibleRowsSelected',
+    standalone: false
+})
 export class AreAllVisibleRowsSelectedPipe implements PipeTransform {
 
   /**

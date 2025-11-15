@@ -9,9 +9,10 @@ import { TableRowData } from '../table.interface';
 import { DEFAULT_TABLE_ACTIONS_TRANSLATIONS, TableActionsTranslations } from './table-actions.interface';
 
 @Component({
-  selector: 'f-table-actions',
-  templateUrl: './table-actions.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-table-actions',
+    templateUrl: './table-actions.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableActionsComponent implements DoCheck {
   readonly Location = Location;

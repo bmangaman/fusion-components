@@ -8,8 +8,8 @@ import { MenuAria } from './menu.interface';
 import { MenuModule } from './menu.module';
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
     <div style="width: 500px; height: 500px; position: relative; display: flex; align-items: center; justify-content: center;">
       <f-menu
         [isMenuDialogOpen]="isMenuDialogOpen"
@@ -29,6 +29,7 @@ import { MenuModule } from './menu.module';
       </f-menu>
     </div>
   `,
+    standalone: false
 })
 export class MenuTestComponent {
   isMenuDialogOpen: boolean = false;

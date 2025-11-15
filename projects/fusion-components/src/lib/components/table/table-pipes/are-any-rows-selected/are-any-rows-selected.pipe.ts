@@ -9,7 +9,10 @@ import { AreAllVisibleRowsSelectedPipe } from '../are-all-visible-rows-selected/
  * The are-any-rows-selected pipe is to be used with the table component.
  * This pipe checks whether or not any (but NOT all) rows are selected.
  */
-@Pipe({name: 'areAnyRowsSelected'})
+@Pipe({
+    name: 'areAnyRowsSelected',
+    standalone: false
+})
 export class AreAnyRowsSelectedPipe implements PipeTransform {
   readonly areAllVisibleRowsSelectedPipe: AreAllVisibleRowsSelectedPipe = new AreAllVisibleRowsSelectedPipe();
 

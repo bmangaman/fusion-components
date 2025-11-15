@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'fusion-demo-forms-switch',
-  templateUrl: './forms-switch-demo.component.html',
-  styleUrls: ['../forms-demo-shared.scss'],
+    selector: 'fusion-demo-forms-switch',
+    templateUrl: './forms-switch-demo.component.html',
+    styleUrls: ['../forms-demo-shared.scss'],
+    standalone: false
 })
 export class FormsSwitchDemoComponent implements OnInit {
   switchDemoForm: UntypedFormGroup;

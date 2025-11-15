@@ -21,16 +21,17 @@ import { v4 as uuidv4 } from 'uuid';
 import { DEFAULT_NOTIFICATION_TRANSLATIONS, NotificationTemplate, NotificationTranslations, NotificationType } from './notification.interface';
 
 @Component({
-  selector: 'f-notification',
-  templateUrl: './notification.component.html',
-  animations: [
-    trigger('fadeOut', [
-      transition(':leave', [
-        animate('500ms', style({ opacity: 0 })),
-      ]),
-    ]),
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'f-notification',
+    templateUrl: './notification.component.html',
+    animations: [
+        trigger('fadeOut', [
+            transition(':leave', [
+                animate('500ms', style({ opacity: 0 })),
+            ]),
+        ]),
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class NotificationComponent implements OnInit, AfterContentInit {
   /**

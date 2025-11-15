@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'fusion-demo-forms-button',
-  templateUrl: './forms-button-demo.component.html',
-  styleUrls: ['../forms-demo-shared.scss'],
+    selector: 'fusion-demo-forms-button',
+    templateUrl: './forms-button-demo.component.html',
+    styleUrls: ['../forms-demo-shared.scss'],
+    standalone: false
 })
 export class FormsButtonDemoComponent {
 

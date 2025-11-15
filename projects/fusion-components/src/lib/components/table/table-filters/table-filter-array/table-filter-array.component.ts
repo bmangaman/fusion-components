@@ -14,10 +14,11 @@ import { DEFAULT_TABLE_FILTER_ARRAY_TRANSLATIONS, TableFilterArrayInputComparato
  * It has one input for the value.
  */
 @Component({
-  selector: 'f-table-array-filter',
-  templateUrl: './table-filter-array.component.html',
-  providers: [{ provide: TableFilterComponent, useExisting: TableFilterArrayComponent }],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-table-array-filter',
+    templateUrl: './table-filter-array.component.html',
+    providers: [{ provide: TableFilterComponent, useExisting: TableFilterArrayComponent }],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableFilterArrayComponent extends TableFilterComponent {
   override TableFilter = TableFilterArrayComponent;

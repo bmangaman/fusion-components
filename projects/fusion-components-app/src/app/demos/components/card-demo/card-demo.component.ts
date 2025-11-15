@@ -5,9 +5,10 @@ import { UntypedFormGroup, UntypedFormBuilder, UntypedFormArray, AbstractControl
 import { merge } from 'rxjs';
 
 @Component({
-  selector: 'fusion-demo-card',
-  templateUrl: './card-demo.component.html',
-  styleUrls: ['./card-demo.component.scss']
+    selector: 'fusion-demo-card',
+    templateUrl: './card-demo.component.html',
+    styleUrls: ['./card-demo.component.scss'],
+    standalone: false
 })
 export class CardDemoComponent {
   readonly StatusLevel = StatusLevel;

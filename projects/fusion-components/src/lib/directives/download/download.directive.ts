@@ -9,7 +9,8 @@ import { DownloadDirectiveFileType } from './download.interface';
  * is clicked. This directive should be appended to buttons or elements with role="button".
  */
 @Directive({
-  selector: '[fusionUiDownload]',
+    selector: '[fusionUiDownload]',
+    standalone: false
 })
 export class DownloadDirective {
   /**

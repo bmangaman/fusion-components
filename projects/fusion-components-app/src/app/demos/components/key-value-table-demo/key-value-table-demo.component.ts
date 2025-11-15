@@ -4,9 +4,10 @@ import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { KeyValueTableData } from '@fusion-components';
 
 @Component({
-  selector: 'fusion-demo-key-value-table',
-  templateUrl: './key-value-table-demo.component.html',
-  styleUrls: ['./key-value-table-demo.component.scss']
+    selector: 'fusion-demo-key-value-table',
+    templateUrl: './key-value-table-demo.component.html',
+    styleUrls: ['./key-value-table-demo.component.scss'],
+    standalone: false
 })
 export class KeyValueTableDemoComponent {
   keyValueTableForm: UntypedFormGroup;

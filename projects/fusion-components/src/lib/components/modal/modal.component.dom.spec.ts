@@ -10,8 +10,8 @@ import { ModalModule } from './modal.module';
 import { ModalConfig, ModalType } from './modal.interface';
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
     <body>
       <div class="height-adjustment-element" style="display: block; height: 50px;"></div>
       <div class="width-adjustment-element" style="display: block; width: 50px;"></div>
@@ -31,7 +31,8 @@ import { ModalConfig, ModalType } from './modal.interface';
         </f-modal-footer>
       </f-modal>
     </body>
-  `
+  `,
+    standalone: false
 })
 export class ModalTestComponent {
   @ViewChild(ModalComponent) modalComponent: ModalComponent;

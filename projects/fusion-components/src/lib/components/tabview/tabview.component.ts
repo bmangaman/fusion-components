@@ -39,8 +39,9 @@ import { TabviewType } from './tabview.interface';
  * </f-tabview>
  */
 @Component({
-  selector: 'f-tabview',
-  templateUrl: 'tabview.component.html',
+    selector: 'f-tabview',
+    templateUrl: 'tabview.component.html',
+    standalone: false
 })
 export class TabviewComponent implements AfterContentInit, OnDestroy {
   /**

@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'fusion-demo-download',
-  templateUrl: './download-demo.component.html',
-  styleUrls: ['./download-demo.component.scss']
+    selector: 'fusion-demo-download',
+    templateUrl: './download-demo.component.html',
+    styleUrls: ['./download-demo.component.scss'],
+    standalone: false
 })
 export class DownloadDemoComponent {
   downloadForm: UntypedFormGroup;

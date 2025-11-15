@@ -7,8 +7,9 @@ import { v4 as uuidv4 } from 'uuid';
  * CHECKBOX COMPONENT
  */
 @Component({
-  selector: 'f-checkbox',
-  templateUrl: './checkbox.component.html',
+    selector: 'f-checkbox',
+    templateUrl: './checkbox.component.html',
+    standalone: false
 })
 export class CheckboxComponent implements ControlValueAccessor {
   private onChange: (...args: unknown[]) => void;

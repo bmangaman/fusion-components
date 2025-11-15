@@ -8,8 +8,8 @@ import { TooltipComponent } from './tooltip.component';
 import { TooltipComponentPageObject } from './tooltip.component.spec.po';
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
   <f-tooltip
     [id]="id"
     [text]="text"
@@ -23,6 +23,7 @@ import { TooltipComponentPageObject } from './tooltip.component.spec.po';
 
   <ng-template #template>Custom Template Text</ng-template>
   `,
+    standalone: false
 })
 export class TooltipTestComponent {
   @ViewChild('element', { read: ElementRef }) element !: ElementRef;

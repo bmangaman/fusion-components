@@ -14,8 +14,9 @@ import { Subject } from 'rxjs';
 import Spy = jasmine.Spy;
 
 @Component({
-  selector: 'f-modal-service-test',
-  template: ''
+    selector: 'f-modal-service-test',
+    template: '',
+    standalone: false
 })
 export class ModalServiceTestComponent extends BaseModalComponent {
   constructor() {

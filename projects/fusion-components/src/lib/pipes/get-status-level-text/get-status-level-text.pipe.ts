@@ -13,7 +13,10 @@ import {
  * Used with the linear gauge and card components. It will use a custom stranslated string if provided, but otherwise
  * will just use the default English string.
  */
-@Pipe({ name: 'getStatusLevelText' })
+@Pipe({
+    name: 'getStatusLevelText',
+    standalone: false
+})
 export class GetStatusLevelTextPipe implements PipeTransform {
   /**
    * Transforms the provided level to a string for use in the linear gauge component.

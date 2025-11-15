@@ -7,8 +7,8 @@ import { ProgressBarStatus } from './progress-bar.interface';
 import { ProgressBarModule } from './progress-bar.module';
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
   <f-progress-bar
     [value]="value"
     [minValue]="minValue"
@@ -22,6 +22,7 @@ import { ProgressBarModule } from './progress-bar.module';
     [ariaValueText]="ariaValueText">
   </f-progress-bar>
   `,
+    standalone: false
 })
 export class ProgressBarTestComponent {
   value: number;

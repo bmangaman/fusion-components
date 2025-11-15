@@ -40,8 +40,9 @@ import { DEFAULT_WIDGET_TRANSLATIONS, InfoBoxDetail, WidgetTemplate, WidgetTrans
  * </f-widget>
  */
 @Component({
-  selector: 'f-widget',
-  templateUrl: 'widget.component.html',
+    selector: 'f-widget',
+    templateUrl: 'widget.component.html',
+    standalone: false
 })
 export class WidgetComponent implements AfterContentInit {
   readonly ButtonType =  ButtonType;

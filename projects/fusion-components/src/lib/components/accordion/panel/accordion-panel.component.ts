@@ -12,29 +12,21 @@ import { TemplateDirective } from '@fusion-components/lib/directives/template';
  * content.
  */
 @Component({
-  selector: 'f-accordion-panel',
-  templateUrl: './accordion-panel.component.html',
-  animations: [
-    trigger(
-      'inOutAnimation',
-      [
-        transition(
-          ':enter',
-          [
-            style({ height: 0 }),
-            animate('350ms ease-out', style({ height: '*' })),
-          ]
-        ),
-        transition(
-          ':leave',
-          [
-            style({ height: '*' }),
-            animate('250ms ease-in', style({ height: 0 })),
-          ]
-        ),
-      ],
-    ),
-  ],
+    selector: 'f-accordion-panel',
+    templateUrl: './accordion-panel.component.html',
+    animations: [
+        trigger('inOutAnimation', [
+            transition(':enter', [
+                style({ height: 0 }),
+                animate('350ms ease-out', style({ height: '*' })),
+            ]),
+            transition(':leave', [
+                style({ height: '*' }),
+                animate('250ms ease-in', style({ height: 0 })),
+            ]),
+        ]),
+    ],
+    standalone: false
 })
 export class AccordionPanelComponent implements AfterContentInit {
   /**

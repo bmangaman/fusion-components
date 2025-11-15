@@ -14,10 +14,11 @@ import { DEFAULT_TABLE_FILTER_NUMBER_TRANSLATIONS, TableFilterNumberInputCompara
  * It has one input for the numerical value.
  */
 @Component({
-  selector: 'f-table-number-filter',
-  templateUrl: './table-filter-number.component.html',
-  providers: [{ provide: TableFilterComponent, useExisting: TableFilterNumberComponent }],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-table-number-filter',
+    templateUrl: './table-filter-number.component.html',
+    providers: [{ provide: TableFilterComponent, useExisting: TableFilterNumberComponent }],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableFilterNumberComponent extends TableFilterComponent {
   override TableFilter = TableFilterNumberComponent;

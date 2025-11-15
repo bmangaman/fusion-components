@@ -14,8 +14,9 @@ import { DEFAULT_LINEAR_GAUGE_TRANSLATIONS, LinearGaugeState, LinearGaugeThresho
  * of something.
  */
 @Component({
-  selector: 'f-linear-gauge',
-  templateUrl: './linear-gauge.component.html',
+    selector: 'f-linear-gauge',
+    templateUrl: './linear-gauge.component.html',
+    standalone: false
 })
 export class LinearGaugeComponent extends UnsubscribeComponent implements OnChanges {
   readonly StatusLevel = StatusLevel;

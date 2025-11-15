@@ -19,9 +19,10 @@ import { BadgeStyling } from './badge.interface';
  * </f-badge>
  */
 @Component({
-  selector: 'f-badge',
-  templateUrl: 'badge.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-badge',
+    templateUrl: 'badge.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class BadgeComponent {
   /**

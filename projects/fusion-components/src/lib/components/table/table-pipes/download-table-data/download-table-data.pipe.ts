@@ -9,7 +9,10 @@ import { RemoveTableRowFormattingPipe } from '../remove-table-row-formatting';
  *
  * The Download Data Pipe transforms the provided data to be downloaded.
  */
-@Pipe({name: 'downloadTableData'})
+@Pipe({
+    name: 'downloadTableData',
+    standalone: false
+})
 export class DownloadTableDataPipe implements PipeTransform {
   readonly removeTableRowFormattingPipe: RemoveTableRowFormattingPipe = new RemoveTableRowFormattingPipe();
 

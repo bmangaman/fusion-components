@@ -6,9 +6,10 @@ import { of } from 'rxjs';
 import { NavItem } from '@fusion-components/lib/components/sidenav/sidenav.interface';
 
 @Component({
-  selector: 'fusion-demo-sidenav',
-  templateUrl: './sidenav-demo.component.html',
-  styleUrls: ['./sidenav-demo.component.scss']
+    selector: 'fusion-demo-sidenav',
+    templateUrl: './sidenav-demo.component.html',
+    styleUrls: ['./sidenav-demo.component.scss'],
+    standalone: false
 })
 export class SidenavDemoComponent {
   sidenavForm: UntypedFormGroup;

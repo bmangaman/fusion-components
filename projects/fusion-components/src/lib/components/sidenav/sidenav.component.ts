@@ -12,8 +12,9 @@ import { NavItem, SidenavTemplate } from './sidenav.interface';
  * SIDENAV COMPONENT
  */
 @Component({
-  selector: 'f-sidenav',
-  templateUrl: './sidenav.component.html',
+    selector: 'f-sidenav',
+    templateUrl: './sidenav.component.html',
+    standalone: false
 })
 export class SidenavComponent implements AfterContentInit {
   readonly Observable = Observable;

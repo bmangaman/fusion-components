@@ -20,8 +20,8 @@ import { Utilities } from '../../shared/utilities';
  * Tooltip Directive applied.
  */
 @Component({
-  selector: 'f-tooltip',
-  template: `
+    selector: 'f-tooltip',
+    template: `
     <div class="f-tooltip__content">
       <ng-container *ngIf="templateWithContext; else justTemplate">
         <ng-container *ngTemplateOutlet="templateWithContext?.template || null; context: templateWithContext?.context || null"></ng-container>
@@ -34,7 +34,8 @@ import { Utilities } from '../../shared/utilities';
       <ng-template #justText>{{ text }}</ng-template>
     </div>
   `,
-  styles: [':host:not(.f-tooltip) { display: none; }']
+    styles: [':host:not(.f-tooltip) { display: none; }'],
+    standalone: false
 })
 export class TooltipComponent implements AfterViewInit, OnChanges {
   cssClasses: string[] = [];

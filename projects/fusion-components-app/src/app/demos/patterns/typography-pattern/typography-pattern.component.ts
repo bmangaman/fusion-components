@@ -4,9 +4,10 @@ import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 import { State, TableTemplate, TableType, TableColumnSorted } from '@fusion-components';
 
 @Component({
-  selector: 'fusion-demo-typography',
-  templateUrl: './typography-pattern.component.html',
-  styleUrls: ['./typography-pattern.component.scss']
+    selector: 'fusion-demo-typography',
+    templateUrl: './typography-pattern.component.html',
+    styleUrls: ['./typography-pattern.component.scss'],
+    standalone: false
 })
 export class TypographyPatternComponent {
   readonly TableTemplate = TableTemplate;

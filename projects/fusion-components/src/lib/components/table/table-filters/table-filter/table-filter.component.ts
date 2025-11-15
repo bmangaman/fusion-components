@@ -14,9 +14,10 @@ import { TableFilterTranslations } from './table-filter.interface';
  * The base class on which all other table filters should be based.
  */
 @Component({
-  selector: 'f-table-filter',
-  template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-table-filter',
+    template: '',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableFilterComponent extends UnsubscribeComponent {
   TableFilter = TableFilterComponent;

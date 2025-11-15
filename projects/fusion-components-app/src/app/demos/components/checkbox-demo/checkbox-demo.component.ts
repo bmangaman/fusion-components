@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'fusion-demo-checkbox',
-  templateUrl: './checkbox-demo.component.html',
-  styleUrls: ['./checkbox-demo.component.scss']
+    selector: 'fusion-demo-checkbox',
+    templateUrl: './checkbox-demo.component.html',
+    styleUrls: ['./checkbox-demo.component.scss'],
+    standalone: false
 })
 export class CheckboxDemoComponent {
   checkboxForm: UntypedFormGroup;

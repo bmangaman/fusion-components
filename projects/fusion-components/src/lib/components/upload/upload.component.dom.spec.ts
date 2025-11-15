@@ -15,8 +15,8 @@ import { UploadModule } from './upload.module';
 // TODO: HCI-16901 - Flush out and add more DOM unit tests to test all the different permuations
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
   <f-upload
     [uploadFilesFunction]="uploadFilesFunction.bind(this)"
     [removeFilesFunction]="removeFilesFunction.bind(this)"
@@ -37,6 +37,7 @@ import { UploadModule } from './upload.module';
     (uploadFinished)="uploadFinished($event)"
     (uploadCancelled)="uploadCancelled($event)">
   </f-upload>`,
+    standalone: false
 })
 export class UploadTestComponent {
   isBrowseHidden: boolean;

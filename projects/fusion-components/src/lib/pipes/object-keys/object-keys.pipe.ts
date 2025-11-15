@@ -5,7 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
  *
  * The object-keys pipe returns all the keys of an object as an array of strings.
  */
-@Pipe({ name: 'objectKeys' })
+@Pipe({
+    name: 'objectKeys',
+    standalone: false
+})
 export class ObjectKeysPipe implements PipeTransform {
 
   /**

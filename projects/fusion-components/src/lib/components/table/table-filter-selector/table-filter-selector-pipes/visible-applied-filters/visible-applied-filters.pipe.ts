@@ -8,7 +8,10 @@ import { TableFilterComponent } from '../../../table-filters/table-filter/table-
  * The visible-applied-filters pipe is to be used with the table fitler selector component.
  * It returns all the applied filters that are visible.
  */
-@Pipe({name: 'visibleAppliedFilters'})
+@Pipe({
+    name: 'visibleAppliedFilters',
+    standalone: false
+})
 export class VisibleAppliedFiltersPipe implements PipeTransform {
 
   /**

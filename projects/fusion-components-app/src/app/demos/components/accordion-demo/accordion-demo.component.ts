@@ -4,9 +4,10 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators, UntypedFormArray, For
 import { PanelContentVisibilityChangedEmit, AccordionPanelComponent } from '@fusion-components';
 
 @Component({
-  selector: 'fusion-demo-accordion',
-  templateUrl: './accordion-demo.component.html',
-  styleUrls: ['./accordion-demo.component.scss']
+    selector: 'fusion-demo-accordion',
+    templateUrl: './accordion-demo.component.html',
+    styleUrls: ['./accordion-demo.component.scss'],
+    standalone: false
 })
 export class AccordionDemoComponent {
   private numberOfPanels: number = 0;

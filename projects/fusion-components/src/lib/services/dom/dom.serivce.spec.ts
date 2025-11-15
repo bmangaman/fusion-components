@@ -17,8 +17,9 @@ import { DomService } from './dom.service';
 import Spy = jasmine.Spy;
 
 @Component({
-  selector: 'f-test-component',
-  template: '',
+    selector: 'f-test-component',
+    template: '',
+    standalone: false
 })
 class TestComponent {
   @Input() stringInput: string;

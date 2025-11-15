@@ -16,8 +16,9 @@ import { WizardStep } from './wizard.interface';
  * </f-wizard>
  */
 @Component({
-  selector: 'f-wizard',
-  templateUrl: 'wizard.component.html',
+    selector: 'f-wizard',
+    templateUrl: 'wizard.component.html',
+    standalone: false
 })
 export class WizardComponent implements OnChanges {
   /**

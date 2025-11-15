@@ -12,7 +12,10 @@ import { ErrorMessage } from '../../error-message.interface';
  *
  * The GET All Errors Pipe gets all the applied errors messages.
  */
-@Pipe({ name: 'getAllErrors' })
+@Pipe({
+    name: 'getAllErrors',
+    standalone: false
+})
 export class GetAllErrorsPipe implements PipeTransform {
 
   /**

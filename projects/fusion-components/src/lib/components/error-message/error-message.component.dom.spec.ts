@@ -9,8 +9,8 @@ import { ErrorMessage } from './error-message.interface';
 import { ErrorMessageModule } from './error-message.module';
 
 @Component({
-  selector: 'f-error-test-component',
-  template: `
+    selector: 'f-error-test-component',
+    template: `
     <form *ngIf="testForm" [formGroup]="testForm" class="f-form">
       <div class="f-form__fieldset">
         <label class="f-form__label" for="test-input">Test Input Label</label>
@@ -27,7 +27,8 @@ import { ErrorMessageModule } from './error-message.module';
             id="multiple-error-messages">
           </f-error-message>
       </div>
-    </form>`
+    </form>`,
+    standalone: false
 })
 class TestComponent implements OnInit {
   testForm: UntypedFormGroup;

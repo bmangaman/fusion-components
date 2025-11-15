@@ -12,9 +12,10 @@ import { DEFAULT_TABLE_COLUMN_SELECTOR_TRANSLATIONS, TableColumnSelectorTranslat
  * It uses the menu component to display the list of columns.
  */
 @Component({
-  selector: 'f-table-column-selector',
-  templateUrl: './table-column-selector.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-table-column-selector',
+    templateUrl: './table-column-selector.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableColumnSelectorComponent {
   readonly ButtonType = ButtonType;

@@ -6,10 +6,11 @@ import { CheckboxComponentPageObject } from './checkbox.component.spec.po';
 import { CheckboxModule } from './checkbox.module';
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
     <f-checkbox [formControl]="control">{{ label }}</f-checkbox>
   `,
+    standalone: false
 })
 export class CheckboxTestComponent {
   control: UntypedFormControl = new UntypedFormControl();

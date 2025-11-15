@@ -13,8 +13,8 @@ import { DEFAULT_LINEAR_GAUGE_TRANSLATIONS, LinearGaugeThreshold, LinearGaugeTra
 import { LinearGaugeModule } from './linear-gauge.module';
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
     <body>
       <f-linear-gauge
         [value]="value"
@@ -27,6 +27,7 @@ import { LinearGaugeModule } from './linear-gauge.module';
       </f-linear-gauge>
     </body>
   `,
+    standalone: false
 })
 export class LinearGaugeTestComponent {
   readonly bytesPipe: BytesPipe = new BytesPipe();

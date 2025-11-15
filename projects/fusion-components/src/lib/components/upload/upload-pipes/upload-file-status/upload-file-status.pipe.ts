@@ -16,7 +16,10 @@ enum UploadState {
  *
  * Converts the array of file name(s) to a string to be displayed.
  */
-@Pipe({ name: 'uploadFileStatus', pure: false })
+@Pipe({
+    name: 'uploadFileStatus', pure: false,
+    standalone: false
+})
 export class UploadFileStatusPipe implements PipeTransform {
 
   /**

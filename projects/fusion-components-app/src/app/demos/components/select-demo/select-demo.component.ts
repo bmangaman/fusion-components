@@ -8,9 +8,10 @@ import { debounce } from 'rxjs/operators';
 import { SelectOption, SelectComponentUtils } from '@fusion-components';
 
 @Component({
-  selector: 'fusion-demo-select',
-  templateUrl: './select-demo.component.html',
-  styleUrls: ['./select-demo.component.scss']
+    selector: 'fusion-demo-select',
+    templateUrl: './select-demo.component.html',
+    styleUrls: ['./select-demo.component.scss'],
+    standalone: false
 })
 export class SelectDemoComponent {
   selectForm: UntypedFormGroup;

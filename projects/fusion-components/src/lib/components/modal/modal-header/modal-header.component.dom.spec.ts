@@ -5,14 +5,15 @@ import { ModalHeaderComponentPageObject } from './modal-header.component.spec.po
 import { ModalHeaderModule } from './modal-header.module';
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
     <f-modal-header
       [hideCloseButton]="hideCloseButton"
       [isFullModal]="isFullModal"
       [disableCloseButton]="disableCloseButton">
       Header Text
-    </f-modal-header>'`
+    </f-modal-header>'`,
+    standalone: false
 })
 export class ModalHeaderTestComponent {
   hideCloseButton = false;

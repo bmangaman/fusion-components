@@ -5,9 +5,10 @@ import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'fusion-demo-upload',
-  templateUrl: './upload-demo.component.html',
-  styleUrls: ['./upload-demo.component.scss']
+    selector: 'fusion-demo-upload',
+    templateUrl: './upload-demo.component.html',
+    styleUrls: ['./upload-demo.component.scss'],
+    standalone: false
 })
 export class UploadDemoComponent {
   uploadForm: UntypedFormGroup;

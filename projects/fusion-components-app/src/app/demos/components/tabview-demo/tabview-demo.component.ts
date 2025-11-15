@@ -3,9 +3,10 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { TabviewType } from '@fusion-components';
 
 @Component({
-  selector: 'fusion-demo-tabview',
-  templateUrl: './tabview-demo.component.html',
-  styleUrls: ['./tabview-demo.component.scss']
+    selector: 'fusion-demo-tabview',
+    templateUrl: './tabview-demo.component.html',
+    styleUrls: ['./tabview-demo.component.scss'],
+    standalone: false
 })
 export class TabviewDemoComponent implements OnInit {
   readonly TabviewType = TabviewType;

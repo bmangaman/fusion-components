@@ -3,9 +3,10 @@ import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { InfoBoxDetail, WidgetTemplate, StatusLevel } from '@fusion-components';
 
 @Component({
-  selector: 'fusion-demo-widget',
-  templateUrl: './widget-demo.component.html',
-  styleUrls: ['./widget-demo.component.scss'],
+    selector: 'fusion-demo-widget',
+    templateUrl: './widget-demo.component.html',
+    styleUrls: ['./widget-demo.component.scss'],
+    standalone: false
 })
 export class WidgetDemoComponent {
   readonly WidgetTemplate = WidgetTemplate;

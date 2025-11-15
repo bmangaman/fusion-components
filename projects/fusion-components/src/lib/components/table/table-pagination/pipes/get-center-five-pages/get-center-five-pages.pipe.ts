@@ -16,7 +16,10 @@ import { Pipe, PipeTransform } from '@angular/core';
  *  - current page is 5 (index 4); 10 pages total; will display [3, 4, 5, 6, 7]
  *  - current page is 10 (index 9); 10 pages total; will display [6. 7, 8 , 9, 10]
  */
-@Pipe({ name: 'getCenterFivePages' })
+@Pipe({
+    name: 'getCenterFivePages',
+    standalone: false
+})
 export class GetCenterFivePagesPipe implements PipeTransform {
 
   /**

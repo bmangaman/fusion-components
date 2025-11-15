@@ -6,7 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
  * The Instance Of Pipe checks to see if the provided item is an instance of the provided interface, class, type, etc.
  */
 @Pipe({
-  name: 'instanceOf'
+    name: 'instanceOf',
+    standalone: false
 })
 export class InstanceOfPipe implements PipeTransform {
 

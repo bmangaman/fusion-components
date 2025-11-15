@@ -4,8 +4,9 @@ import { AbstractControl } from '@angular/forms';
 import { ErrorMessage } from './error-message.interface';
 
 @Component({
-  selector: 'f-error-message',
-  templateUrl: './error-message.component.html',
+    selector: 'f-error-message',
+    templateUrl: './error-message.component.html',
+    standalone: false
 })
 export class ErrorMessageComponent {
   /**

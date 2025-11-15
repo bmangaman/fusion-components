@@ -7,7 +7,10 @@ import { UploadInfo } from '../../upload.interface';
  *
  * Converts the array of file name(s) to a string to be displayed.
  */
-@Pipe({ name: 'uploadFileName' })
+@Pipe({
+    name: 'uploadFileName',
+    standalone: false
+})
 export class UploadFileNamePipe implements PipeTransform {
 
   /**

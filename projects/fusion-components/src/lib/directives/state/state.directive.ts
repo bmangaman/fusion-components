@@ -41,7 +41,8 @@ import { State } from '../../shared';
  *
  */
 @Directive({
-  selector: '[fusionUiState]',
+    selector: '[fusionUiState]',
+    standalone: false
 })
 export class StateDirective {
   private cssClasses: string[];

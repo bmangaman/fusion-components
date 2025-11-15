@@ -3,9 +3,10 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { BytesPipeBase, BytesPipe } from '@fusion-components';
 
 @Component({
-  selector: 'fusion-demo-pipes',
-  templateUrl: './pipes-demo.component.html',
-  styleUrls: ['./pipes-demo.component.scss']
+    selector: 'fusion-demo-pipes',
+    templateUrl: './pipes-demo.component.html',
+    styleUrls: ['./pipes-demo.component.scss'],
+    standalone: false
 })
 export class PipesDemoComponent {
   readonly BytesPipeBase = BytesPipeBase;

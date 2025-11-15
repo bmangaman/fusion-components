@@ -9,7 +9,10 @@ import { AppliedFilterGroup } from './group-applied-filters.interface';
  * The group-applied-filters pipe is to be used with the table fitler selector component.
  * It groups the applied filters together by their names.
  */
-@Pipe({name: 'groupAppliedFilters'})
+@Pipe({
+    name: 'groupAppliedFilters',
+    standalone: false
+})
 export class GroupAppliedFiltersPipe implements PipeTransform {
 
   /**

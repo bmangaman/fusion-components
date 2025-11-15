@@ -6,7 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
  * The To CSS Class Pipe transform a given string to a standard CSS class string (no spaces, no capital letters).
  */
 @Pipe({
-  name: 'toCssClass'
+    name: 'toCssClass',
+    standalone: false
 })
 export class ToCssClassPipe implements PipeTransform {
 

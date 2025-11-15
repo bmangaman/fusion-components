@@ -6,7 +6,8 @@ import { Directive, ViewContainerRef } from '@angular/core';
  * Used to provide consistent location for the table filter to be rendered in the TableFilterSelectorComponent.
  */
 @Directive({
-  selector: '[fusionUiFilterHost]',
+    selector: '[fusionUiFilterHost]',
+    standalone: false
 })
 export class TableFilterHostDirective {
   constructor(

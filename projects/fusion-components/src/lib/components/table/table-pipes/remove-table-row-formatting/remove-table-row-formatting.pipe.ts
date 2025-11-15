@@ -13,7 +13,10 @@ import { TableRowData } from '../../table.interface';
  *  - emitting what rows/ values are expanded
  *  - downloading the data
  */
-@Pipe({name: 'removeTableRowFormatting'})
+@Pipe({
+    name: 'removeTableRowFormatting',
+    standalone: false
+})
 export class RemoveTableRowFormattingPipe implements PipeTransform {
 
   /**

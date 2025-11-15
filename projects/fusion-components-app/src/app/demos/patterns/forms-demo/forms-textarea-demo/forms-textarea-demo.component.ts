@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'fusion-demo-forms-textarea',
-  templateUrl: './forms-textarea-demo.component.html',
-  styleUrls: ['../forms-demo-shared.scss'],
+    selector: 'fusion-demo-forms-textarea',
+    templateUrl: './forms-textarea-demo.component.html',
+    styleUrls: ['../forms-demo-shared.scss'],
+    standalone: false
 })
 export class FormsTextareaDemoComponent {
 

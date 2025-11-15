@@ -19,8 +19,8 @@ export interface TestTabConfig {
 }
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
   <f-tabview
     *ngIf="loadTabs"
     [lazyLoading]="lazyLoading"
@@ -41,6 +41,7 @@ export interface TestTabConfig {
     </f-tabview-tab>
   </f-tabview>
   `,
+    standalone: false
 })
 export class TabviewTestComponent implements OnInit {
   tabConfigs: TestTabConfig[] = [

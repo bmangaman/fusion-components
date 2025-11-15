@@ -5,8 +5,9 @@ import { ModalFooterComponentPageObject } from './modal-footer.component.spec.po
 import { ModalFooterModule } from './modal-footer.module';
 
 @Component({
-  selector: 'f-test-component',
-  template: '<f-modal-footer>Footer Content</f-modal-footer>',
+    selector: 'f-test-component',
+    template: '<f-modal-footer>Footer Content</f-modal-footer>',
+    standalone: false
 })
 export class ModalFooterTestComponent {}
 

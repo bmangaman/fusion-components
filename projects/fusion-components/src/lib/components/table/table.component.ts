@@ -63,9 +63,10 @@ import {
  *  2. ADVANCED - same as basic, but by default displays controls and pagination
  */
 @Component({
-  selector: 'f-table',
-  templateUrl: 'table.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-table',
+    templateUrl: 'table.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableComponent extends UnsubscribeComponent implements OnInit, OnDestroy, AfterContentInit, OnChanges {
   readonly ButtonType = ButtonType;

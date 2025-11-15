@@ -19,7 +19,8 @@ import { Directive, ElementRef, EventEmitter, HostBinding, Output, Renderer2 } f
  * </form>
  */
 @Directive({
-  selector: '[fusionUiPasswordVisibilityToggle]'
+    selector: '[fusionUiPasswordVisibilityToggle]',
+    standalone: false
 })
 export class PasswordVisibilityToggleDirective {
   private _isPasswordVisible: boolean;

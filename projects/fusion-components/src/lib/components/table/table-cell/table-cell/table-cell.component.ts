@@ -12,8 +12,9 @@ import { DEFAULT_TABLE_CELL_TRANSLATIONS, TableCellTranslations, TableColumnConf
  * behave similarly.
  */
 @Component({
-  template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    template: '',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableCellComponent implements DoCheck {
   tableCellClasses: string[] = [];

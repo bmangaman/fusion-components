@@ -21,9 +21,9 @@ import { Size } from '@fusion-components/lib/shared/interfaces';
  *
  */
 @Component({
-  selector: 'f-loading-spinner',
-  styleUrls: ['./loading-spinner.component.scss'],
-  template: `
+    selector: 'f-loading-spinner',
+    styleUrls: ['./loading-spinner.component.scss'],
+    template: `
     <div
       class="f-loading-spinner__spinner f-loading-spinner__spinner--{{ size }}"
       [style.minWidth]="minWidth"
@@ -34,7 +34,8 @@ import { Size } from '@fusion-components/lib/shared/interfaces';
         [style.opacity]="opacity">
       </div>
     </div>
-  `
+  `,
+    standalone: false
 })
 export class LoadingSpinnerComponent {
   readonly Size = Size;

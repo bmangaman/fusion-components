@@ -48,7 +48,8 @@ export class MockComponentFactoryResolver {
 }
 
 @Directive({
-  selector: '[fusionUiTemplate]',
+    selector: '[fusionUiTemplate]',
+    standalone: false
 })
 export class MockTemplateDirective {
   name: string;

@@ -4,9 +4,10 @@ import { ButtonType, Size, State, ButtonInputType } from '@fusion-components';
 import { UntypedFormGroup, Validators, UntypedFormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'fusion-demo-button',
-  templateUrl: './button-demo.component.html',
-  styleUrls: ['./button-demo.component.scss']
+    selector: 'fusion-demo-button',
+    templateUrl: './button-demo.component.html',
+    styleUrls: ['./button-demo.component.scss'],
+    standalone: false
 })
 export class ButtonDemoComponent {
   readonly ButtonType = ButtonType;

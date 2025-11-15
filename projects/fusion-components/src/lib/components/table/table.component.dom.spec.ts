@@ -22,8 +22,8 @@ import {
 import { TableModule } from './table.module';
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
   <f-table
     *ngIf="loaded"
     [data]="data"
@@ -69,6 +69,7 @@ import { TableModule } from './table.module';
 
   </f-table>
   `,
+    standalone: false
 })
 export class TableTestComponent {
   readonly TableTemplate = TableTemplate;
@@ -114,8 +115,8 @@ export class TableTestComponent {
 }
 
 @Component({
-  selector: 'f-test-component-with-refresh',
-  template: `
+    selector: 'f-test-component-with-refresh',
+    template: `
   <f-table (refresh)="refreshCallback()" [data]="data" [type]="type" [state]="state">
     <f-table-column
       *ngFor="let col of columns"
@@ -126,6 +127,7 @@ export class TableTestComponent {
     </f-table-column>
   </f-table>
   `,
+    standalone: false
 })
 export class TableWithRefreshTestComponent {
   columns: TableColumnConfig[] = [];

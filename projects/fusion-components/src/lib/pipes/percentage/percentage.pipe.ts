@@ -7,7 +7,10 @@ import { Pipe, PipeTransform } from '@angular/core';
  * If the calculated decimal falls below 0 or exceeds 1, the limit parameter forces the minimum and maximum
  * percentages to 0 and 1, respectively.
  */
-@Pipe({ name: 'percentage' })
+@Pipe({
+    name: 'percentage',
+    standalone: false
+})
 export class PercentagePipe implements PipeTransform {
   /**
    * Maps the provided value to a percentage (as a decimal). By default is limited between 0 and 1.

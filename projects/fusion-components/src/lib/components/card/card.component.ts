@@ -13,8 +13,9 @@ import { CardStatus, CardTemplate, CardTranslations, DEFAULT_CARD_TRANSLATIONS }
  * CARD COMPONENT
  */
 @Component({
-  selector: 'f-card',
-  templateUrl: 'card.component.html',
+    selector: 'f-card',
+    templateUrl: 'card.component.html',
+    standalone: false
 })
 export class CardComponent extends UnsubscribeComponent implements OnInit, AfterContentInit, OnChanges {
   readonly StatusLevel = StatusLevel;

@@ -4,9 +4,10 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ButtonType, Location, Size } from '@fusion-components';
 
 @Component({
-  selector: 'fusion-demo-menu',
-  templateUrl: './menu-demo.component.html',
-  styleUrls: ['./menu-demo.component.scss']
+    selector: 'fusion-demo-menu',
+    templateUrl: './menu-demo.component.html',
+    styleUrls: ['./menu-demo.component.scss'],
+    standalone: false
 })
 export class MenuDemoComponent {
   readonly ButtonType = ButtonType;

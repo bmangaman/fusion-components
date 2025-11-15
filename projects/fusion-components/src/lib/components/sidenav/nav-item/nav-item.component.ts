@@ -8,29 +8,21 @@ import { NavItem } from '../sidenav.interface';
  * NAV ITEM COMPONENT
  */
 @Component({
-  selector: 'f-nav-item',
-  templateUrl: './nav-item.component.html',
-  animations: [
-    trigger(
-      'inOutAnimation',
-      [
-        transition(
-          ':enter',
-          [
-            style({ height: 0, opacity: 0 }),
-            animate('500ms ease-out', style({ height: '*', opacity: 1 })),
-          ]
-        ),
-        transition(
-          ':leave',
-          [
-            style({ height: '*', opacity: 1 }),
-            animate('250ms ease-in', style({ height: 0, opacity: 1 })),
-          ]
-        ),
-      ],
-    ),
-  ],
+    selector: 'f-nav-item',
+    templateUrl: './nav-item.component.html',
+    animations: [
+        trigger('inOutAnimation', [
+            transition(':enter', [
+                style({ height: 0, opacity: 0 }),
+                animate('500ms ease-out', style({ height: '*', opacity: 1 })),
+            ]),
+            transition(':leave', [
+                style({ height: '*', opacity: 1 }),
+                animate('250ms ease-in', style({ height: 0, opacity: 1 })),
+            ]),
+        ]),
+    ],
+    standalone: false
 })
 export class NavItemComponent implements OnChanges {
   readonly Observable = Observable;

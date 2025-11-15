@@ -5,7 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
  *
  * The enum-to-array pipe converts a provided enum to an array of either the enum KEYs or VALUEs.
  */
-@Pipe({ name: 'enumToArray' })
+@Pipe({
+    name: 'enumToArray',
+    standalone: false
+})
 export class EnumToArrayPipe implements PipeTransform {
 
   /**

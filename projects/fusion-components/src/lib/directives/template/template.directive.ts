@@ -4,7 +4,8 @@ import { Directive, Input, TemplateRef } from '@angular/core';
  * TEMPLATE DIRECTIVE
  */
 @Directive({
-  selector: '[fusionUiTemplate]',
+    selector: '[fusionUiTemplate]',
+    standalone: false
 })
 export class TemplateDirective {
   /**

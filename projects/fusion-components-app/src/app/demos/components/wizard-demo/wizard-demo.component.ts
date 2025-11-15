@@ -3,9 +3,10 @@ import { WizardStep, WizardComponent } from '@fusion-components';
 import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'fusion-demo-wizard',
-  templateUrl: './wizard-demo.component.html',
-  styleUrls: ['./wizard-demo.component.scss']
+    selector: 'fusion-demo-wizard',
+    templateUrl: './wizard-demo.component.html',
+    styleUrls: ['./wizard-demo.component.scss'],
+    standalone: false
 })
 export class WizardDemoComponent {
   wizardForm: UntypedFormGroup;

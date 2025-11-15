@@ -38,9 +38,10 @@ import { DEFAULT_TABLE_FILTER_SELECTOR_TRANSLATIONS, TableFilterConfig, TableFil
  *  - regular filters (that are applied and removed via the table filter selector menu dialog)
  */
 @Component({
-  selector: 'f-table-filter-selector',
-  templateUrl: './table-filter-selector.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-table-filter-selector',
+    templateUrl: './table-filter-selector.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableFilterSelectorComponent extends UnsubscribeComponent implements OnInit, OnDestroy {
   readonly ButtonType = ButtonType;

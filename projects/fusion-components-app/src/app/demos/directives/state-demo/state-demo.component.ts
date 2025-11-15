@@ -11,9 +11,10 @@ import {
 } from '@fusion-components';
 
 @Component({
-  selector: 'fusion-demo-state',
-  templateUrl: './state-demo.component.html',
-  styleUrls: ['./state-demo.component.scss']
+    selector: 'fusion-demo-state',
+    templateUrl: './state-demo.component.html',
+    styleUrls: ['./state-demo.component.scss'],
+    standalone: false
 })
 export class StateDemoComponent {
   readonly State = State;

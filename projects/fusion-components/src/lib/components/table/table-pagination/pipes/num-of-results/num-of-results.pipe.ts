@@ -7,7 +7,10 @@ import { Observable, of } from 'rxjs';
  * The number-of-results pipe is to be used with the table pagination component.
  * The pipe generates the "x - x of x results" text in the bottom right hand corner of the pagination component.
  */
-@Pipe({ name: 'numOfResults' })
+@Pipe({
+    name: 'numOfResults',
+    standalone: false
+})
 export class NumOfResultsPipe implements PipeTransform {
 
   /**

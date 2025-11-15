@@ -5,8 +5,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { TemplateDirective } from '@fusion-components/lib/directives/template';
 
 @Component({
-  selector: 'f-tabview-tab',
-  template: '',
+    selector: 'f-tabview-tab',
+    template: '',
+    standalone: false
 })
 export class TabviewTabComponent implements AfterContentInit {
   /**

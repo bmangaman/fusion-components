@@ -14,10 +14,11 @@ import { TableFilterStringInputComparator, TableFilterStringTranslations, DEFAUL
  * It has one input for the text value.
  */
 @Component({
-  selector: 'f-table-string-filter',
-  templateUrl: './table-filter-string.component.html',
-  providers: [{ provide: TableFilterComponent, useExisting: TableFilterStringComponent }],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-table-string-filter',
+    templateUrl: './table-filter-string.component.html',
+    providers: [{ provide: TableFilterComponent, useExisting: TableFilterStringComponent }],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableFilterStringComponent extends TableFilterComponent implements OnInit {
   override TableFilter = TableFilterStringComponent;

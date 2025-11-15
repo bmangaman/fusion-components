@@ -18,8 +18,9 @@ import {
  * the STATE DIRECTIVE, but can be used in isolation.
  */
 @Component({
-  selector: 'f-state',
-  templateUrl: './state.component.html',
+    selector: 'f-state',
+    templateUrl: './state.component.html',
+    standalone: false
 })
 export class StateComponent {
   readonly Size = Size;

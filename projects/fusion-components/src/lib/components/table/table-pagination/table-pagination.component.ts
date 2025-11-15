@@ -19,9 +19,10 @@ import {
 } from './table-pagination.interface';
 
 @Component({
-  selector: 'f-table-pagination',
-  templateUrl: './table-pagination.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'f-table-pagination',
+    templateUrl: './table-pagination.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TablePaginationComponent extends UnsubscribeComponent implements OnInit, OnDestroy {
   readonly ButtonType = ButtonType;

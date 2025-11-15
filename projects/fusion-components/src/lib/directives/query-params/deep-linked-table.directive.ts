@@ -32,7 +32,8 @@ import { AppliedSort, ParamData } from './table-query-params-parser.interface';
  */
 
 @Directive({
-  selector: '[fusionUiDeepLinkedTable]'
+    selector: '[fusionUiDeepLinkedTable]',
+    standalone: false
 })
 export class DeepLinkedTableDirective implements AfterViewInit, OnDestroy {
 

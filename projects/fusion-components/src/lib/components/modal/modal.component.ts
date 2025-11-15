@@ -17,8 +17,8 @@ import { ModalHeaderComponent } from './modal-header';
 import { ModalAnimationSpeeds, ModalConfig, ModalStyling, ModalType } from './modal.interface';
 
 @Component({
-  selector: 'f-modal',
-  template: `
+    selector: 'f-modal',
+    template: `
     <div class="f-modal">
       <div
         class="f-modal__backdrop"
@@ -42,38 +42,39 @@ import { ModalAnimationSpeeds, ModalConfig, ModalStyling, ModalType } from './mo
       </div>
     </div>
   `,
-  animations: [
-    trigger('alertFadeAnimation', [
-      state(ModalType.ALERT, style({opacity: 1})),
-      state('*', style({opacity: 0})),
-      transition(`* <=> ${ModalType.ALERT}`, animate(`${ModalAnimationSpeeds.ALERT}ms ease-out`)),
-    ]),
-    trigger('sideFadeAnimation', [
-      state(ModalType.SIDE, style({opacity: 1})),
-      state('*', style({opacity: 0})),
-      transition(`* <=> ${ModalType.SIDE}`, animate(`${ModalAnimationSpeeds.SIDE}ms ease-out`)),
-    ]),
-    trigger('fullFadeAnimation', [
-      state(ModalType.FULL, style({opacity: 1})),
-      state('*', style({opacity: 0})),
-      transition(`* <=> ${ModalType.FULL}`, animate(`${ModalAnimationSpeeds.FULL}ms ease-out`)),
-    ]),
-    trigger('fadeAndScaleAnimation', [
-      state(ModalType.ALERT, style({opacity: 1, transform: 'scale(1)'})),
-      state('*', style({opacity: 0, transform: 'scale(0.5)'})),
-      transition(`* <=> ${ModalType.ALERT}`, animate(`${ModalAnimationSpeeds.ALERT}ms ease-out`)),
-    ]),
-    trigger('sideSlideAnimation', [
-      state(ModalType.SIDE, style({opacity: 1, transform: 'translateX(0)'})),
-      state('*', style({opacity: 0, transform: 'translateX(50%)'})),
-      transition(`* <=> ${ModalType.SIDE}`, animate(`${ModalAnimationSpeeds.SIDE}ms ease-out`)),
-    ]),
-    trigger('fullSlideAnimation', [
-      state(ModalType.FULL, style({opacity: 1, transform: 'translateX(0)'})),
-      state('*', style({opacity: 0, transform: 'translateX(100%)'})),
-      transition(`* <=> ${ModalType.FULL}`, animate(`${ModalAnimationSpeeds.FULL}ms ease-out`)),
-    ]),
-  ]
+    animations: [
+        trigger('alertFadeAnimation', [
+            state(ModalType.ALERT, style({ opacity: 1 })),
+            state('*', style({ opacity: 0 })),
+            transition(`* <=> ${ModalType.ALERT}`, animate(`${ModalAnimationSpeeds.ALERT}ms ease-out`)),
+        ]),
+        trigger('sideFadeAnimation', [
+            state(ModalType.SIDE, style({ opacity: 1 })),
+            state('*', style({ opacity: 0 })),
+            transition(`* <=> ${ModalType.SIDE}`, animate(`${ModalAnimationSpeeds.SIDE}ms ease-out`)),
+        ]),
+        trigger('fullFadeAnimation', [
+            state(ModalType.FULL, style({ opacity: 1 })),
+            state('*', style({ opacity: 0 })),
+            transition(`* <=> ${ModalType.FULL}`, animate(`${ModalAnimationSpeeds.FULL}ms ease-out`)),
+        ]),
+        trigger('fadeAndScaleAnimation', [
+            state(ModalType.ALERT, style({ opacity: 1, transform: 'scale(1)' })),
+            state('*', style({ opacity: 0, transform: 'scale(0.5)' })),
+            transition(`* <=> ${ModalType.ALERT}`, animate(`${ModalAnimationSpeeds.ALERT}ms ease-out`)),
+        ]),
+        trigger('sideSlideAnimation', [
+            state(ModalType.SIDE, style({ opacity: 1, transform: 'translateX(0)' })),
+            state('*', style({ opacity: 0, transform: 'translateX(50%)' })),
+            transition(`* <=> ${ModalType.SIDE}`, animate(`${ModalAnimationSpeeds.SIDE}ms ease-out`)),
+        ]),
+        trigger('fullSlideAnimation', [
+            state(ModalType.FULL, style({ opacity: 1, transform: 'translateX(0)' })),
+            state('*', style({ opacity: 0, transform: 'translateX(100%)' })),
+            transition(`* <=> ${ModalType.FULL}`, animate(`${ModalAnimationSpeeds.FULL}ms ease-out`)),
+        ]),
+    ],
+    standalone: false
 })
 export class ModalComponent implements OnDestroy {
   readonly ModalType = ModalType;

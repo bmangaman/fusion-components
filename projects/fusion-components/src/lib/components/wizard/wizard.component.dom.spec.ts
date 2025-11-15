@@ -8,8 +8,8 @@ import { WizardStep } from './wizard.interface';
 import { WizardModule } from './wizard.module';
 
 @Component({
-  selector: 'f-test-component',
-  template: `
+    selector: 'f-test-component',
+    template: `
     <f-wizard
       [steps]="steps"
       [disableNextSteps]="disableNextSteps"
@@ -19,6 +19,7 @@ import { WizardModule } from './wizard.module';
     Inner Content
     </f-wizard>
   `,
+    standalone: false
 })
 export class WizardTestComponent {
   isBrandVisible: boolean;
