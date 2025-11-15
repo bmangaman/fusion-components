@@ -17,23 +17,20 @@ import { FormsSwitchDemoModule } from './forms-swtich-demo/forms-switch-demo.mod
 import { FormsTextareaDemoModule } from './forms-textarea-demo/forms-textarea-demo.module';
 
 @NgModule({
-  declarations: [
-    FormsDemoComponent,
-  ],
-  imports: [
-    DemoModule,
-    EscapeHtmlModule,
-    TabviewModule,
-
-    FormsCheckboxDemoModule,
-    FormsRadioDemoModule,
-    FormsInputDemoModule,
-    FormsSelectDemoModule,
-    FormsButtonDemoModule,
-    FormsButtonGroupDemoModule,
-    FormsSwitchDemoModule,
-    FormsDemoRoutingModule,
-    FormsTextareaDemoModule,
-  ],
+    imports: [
+        DemoModule,
+        EscapeHtmlModule,
+        TabviewModule,
+        FormsCheckboxDemoModule,
+        FormsRadioDemoModule,
+        FormsInputDemoModule,
+        FormsSelectDemoModule,
+        FormsButtonDemoModule,
+        FormsButtonGroupDemoModule,
+        FormsSwitchDemoModule,
+        FormsDemoRoutingModule,
+        FormsTextareaDemoModule,
+        FormsDemoComponent,
+    ],
 })
 export class FormsDemoModule {}

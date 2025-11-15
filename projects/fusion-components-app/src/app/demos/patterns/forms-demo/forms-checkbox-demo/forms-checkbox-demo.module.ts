@@ -6,16 +6,14 @@ import { EscapeHtmlModule } from '../../../../shared';
 import { FormsCheckboxDemoComponent } from './forms-checkbox-demo.component';
 
 @NgModule({
-  declarations: [
-    FormsCheckboxDemoComponent,
-  ],
-  imports: [
-    CommonModule,
-    EscapeHtmlModule,
-    FormsModule,
-  ],
-  exports: [
-    FormsCheckboxDemoComponent,
-  ]
+    imports: [
+        CommonModule,
+        EscapeHtmlModule,
+        FormsModule,
+        FormsCheckboxDemoComponent,
+    ],
+    exports: [
+        FormsCheckboxDemoComponent,
+    ]
 })
 export class FormsCheckboxDemoModule {}

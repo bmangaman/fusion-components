@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Size } from '@fusion-components';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { LoadingSpinnerModule } from '../../../../../../fusion-components/src/lib/components/loading-spinner/loading-spinner.module';
 
 @Component({
     selector: 'fusion-demo-loading-spinner',
     templateUrl: './loading-spinner-demo.component.html',
     styleUrls: ['./loading-spinner-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, LoadingSpinnerModule]
 })
 export class LoadingSpinnerDemoComponent {
   readonly Size = Size;

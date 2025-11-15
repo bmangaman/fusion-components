@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
 
 import { Size, StatusLevel, CardTemplate, CardStatus } from '@fusion-components';
-import { UntypedFormGroup, UntypedFormBuilder, UntypedFormArray, AbstractControl, FormArray } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormArray, AbstractControl, FormArray, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { merge } from 'rxjs';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { CardModule } from '../../../../../../fusion-components/src/lib/components/card/card.module';
+import { TemplateModule } from '../../../../../../fusion-components/src/lib/directives/template/template.module';
 
 @Component({
     selector: 'fusion-demo-card',
     templateUrl: './card-demo.component.html',
     styleUrls: ['./card-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, CardModule, TemplateModule]
 })
 export class CardDemoComponent {
   readonly StatusLevel = StatusLevel;

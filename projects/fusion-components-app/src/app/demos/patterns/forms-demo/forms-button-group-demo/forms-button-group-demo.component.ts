@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { EscapeHtmlPipe } from '../../../../shared/pipes/escape-html/escape-html.pipe';
 
 @Component({
     selector: 'fusion-demo-forms-button-group',
     templateUrl: './forms-button-group-demo.component.html',
     styleUrls: ['../forms-demo-shared.scss'],
-    standalone: false
+    imports: [EscapeHtmlPipe]
 })
 export class FormsButtonGroupDemoComponent {
 

@@ -8,15 +8,12 @@ import { NotificationDemoComponent } from './notification-demo.component';
 import { NotificationDemoRoutingModule } from './notification-demo-routing-module';
 
 @NgModule({
-  declarations: [
-    NotificationDemoComponent
-  ],
-  imports: [
-    DemoModule,
-    NotificationModule,
-    TemplateModule,
-
-    NotificationDemoRoutingModule,
-  ]
+    imports: [
+        DemoModule,
+        NotificationModule,
+        TemplateModule,
+        NotificationDemoRoutingModule,
+        NotificationDemoComponent,
+    ]
 })
 export class NotificationDemoModule {}

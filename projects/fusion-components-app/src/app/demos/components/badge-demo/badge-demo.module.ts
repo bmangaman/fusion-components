@@ -7,14 +7,11 @@ import { BadgeDemoComponent } from './badge-demo.component';
 import { BadgeDemoRoutingModule } from './badge-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    BadgeDemoComponent,
-  ],
-  imports: [
-    BadgeModule,
-    DemoModule,
-
-    BadgeDemoRoutingModule,
-  ],
+    imports: [
+        BadgeModule,
+        DemoModule,
+        BadgeDemoRoutingModule,
+        BadgeDemoComponent,
+    ],
 })
 export class BadgeDemoModule {}

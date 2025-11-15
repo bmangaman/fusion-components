@@ -7,15 +7,12 @@ import { PipesDemoComponent } from './pipes-demo.component';
 import { PipesDemoRoutingModule } from './pipes-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    PipesDemoComponent,
-  ],
-  imports: [
-    DemoModule,
-    PipesModule,
-    TabviewModule,
-
-    PipesDemoRoutingModule,
-  ],
+    imports: [
+        DemoModule,
+        PipesModule,
+        TabviewModule,
+        PipesDemoRoutingModule,
+        PipesDemoComponent,
+    ],
 })
 export class PipesDemoModule {}

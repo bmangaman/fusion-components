@@ -7,14 +7,11 @@ import { ButtonDemoComponent } from './button-demo.component';
 import { ButtonDemoRoutingModule } from './button-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    ButtonDemoComponent,
-  ],
-  imports: [
-    ButtonModule,
-    DemoModule,
-
-    ButtonDemoRoutingModule,
-  ],
+    imports: [
+        ButtonModule,
+        DemoModule,
+        ButtonDemoRoutingModule,
+        ButtonDemoComponent,
+    ],
 })
 export class ButtonDemoModule {}

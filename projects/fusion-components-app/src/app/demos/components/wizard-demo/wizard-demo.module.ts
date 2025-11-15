@@ -7,14 +7,11 @@ import { WizardDemoComponent } from './wizard-demo.component';
 import { WizardDemoRoutingModule } from './wizard-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    WizardDemoComponent,
-  ],
-  imports: [
-    DemoModule,
-    WizardModule,
-
-    WizardDemoRoutingModule,
-  ],
+    imports: [
+        DemoModule,
+        WizardModule,
+        WizardDemoRoutingModule,
+        WizardDemoComponent,
+    ],
 })
 export class WizardDemoModule {}

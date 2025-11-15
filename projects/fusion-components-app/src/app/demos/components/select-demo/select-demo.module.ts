@@ -7,14 +7,11 @@ import { SelectDemoComponent } from './select-demo.component';
 import { SelectDemoRoutingModule } from './select-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    SelectDemoComponent,
-  ],
-  imports: [
-    DemoModule,
-    SelectModule,
-
-    SelectDemoRoutingModule,
-  ],
+    imports: [
+        DemoModule,
+        SelectModule,
+        SelectDemoRoutingModule,
+        SelectDemoComponent,
+    ],
 })
 export class SelectDemoModule {}

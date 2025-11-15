@@ -7,14 +7,11 @@ import { PasswordVisibilitytoggleDemoComponent } from './password-visibility-tog
 import { PasswordVisibilityToggleDemoRoutingModule } from './password-visibility-toggle-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    PasswordVisibilitytoggleDemoComponent,
-  ],
-  imports: [
-    DemoModule,
-    PasswordVisibilityToggleModule,
-
-    PasswordVisibilityToggleDemoRoutingModule,
-  ],
+    imports: [
+        DemoModule,
+        PasswordVisibilityToggleModule,
+        PasswordVisibilityToggleDemoRoutingModule,
+        PasswordVisibilitytoggleDemoComponent,
+    ],
 })
 export class PasswordVisibilityToggleDemoModule {}

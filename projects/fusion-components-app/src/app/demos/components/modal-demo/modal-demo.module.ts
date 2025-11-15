@@ -7,17 +7,14 @@ import { InnerModalComponent, ModalDemoComponent } from './modal-demo.component'
 import { ModalDemoRoutingModule } from './modal-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    ModalDemoComponent,
-    InnerModalComponent,
-  ],
-  imports: [
-    ButtonModule,
-    DemoModule,
-    MenuModule,
-    ModalModule,
-
-    ModalDemoRoutingModule,
-  ],
+    imports: [
+        ButtonModule,
+        DemoModule,
+        MenuModule,
+        ModalModule,
+        ModalDemoRoutingModule,
+        ModalDemoComponent,
+        InnerModalComponent,
+    ],
 })
 export class ModalDemoModule {}

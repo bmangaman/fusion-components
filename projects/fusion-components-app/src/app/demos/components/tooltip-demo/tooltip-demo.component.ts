@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { Position, MouseInteraction } from '@fusion-components';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { TooltipDirectiveModule } from '../../../../../../fusion-components/src/lib/directives/tooltip/tooltip.module';
 
 @Component({
     selector: 'fusion-demo-tooltip',
     templateUrl: './tooltip-demo.component.html',
     styleUrls: ['./tooltip-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, TooltipDirectiveModule]
 })
 export class TooltipDemoComponent {
   readonly Position = Position;

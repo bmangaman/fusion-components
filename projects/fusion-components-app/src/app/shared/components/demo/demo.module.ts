@@ -5,17 +5,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoComponent } from './demo.component';
 
 @NgModule({
-  declarations: [
-    DemoComponent,
-  ],
-  imports: [
-    CommonModule,
-  ],
-  exports: [
-    CommonModule,
-    DemoComponent,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+    imports: [
+        CommonModule,
+        DemoComponent,
+    ],
+    exports: [
+        CommonModule,
+        DemoComponent,
+        FormsModule,
+        ReactiveFormsModule,
+    ],
 })
 export class DemoModule {}

@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationTemplate, NotificationType } from '@fusion-components/lib/components/notification';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { NgClass, JsonPipe } from '@angular/common';
+import { NotificationModule } from '../../../../../../fusion-components/src/lib/components/notification/notification.module';
+import { TemplateModule } from '../../../../../../fusion-components/src/lib/directives/template/template.module';
 
 @Component({
     selector: 'fusion-demo-notification-demo',
     templateUrl: './notification-demo.component.html',
     styleUrls: ['./notification-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, NgClass, NotificationModule, TemplateModule, JsonPipe]
 })
 export class NotificationDemoComponent implements OnInit {
 

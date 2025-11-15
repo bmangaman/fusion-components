@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StatusLevel, Size } from '@fusion-components';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { BadgeModule } from '../../../../../../fusion-components/src/lib/components/badge/badge.module';
 
 @Component({
     selector: 'fusion-demo-badge',
     templateUrl: './badge-demo.component.html',
     styleUrls: ['./badge-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, BadgeModule]
 })
 export class BadgeDemoComponent {
   readonly Size = Size;

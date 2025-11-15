@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { cloneDeep } from 'lodash-es';
 import { interval } from 'rxjs';
 import { debounce } from 'rxjs/operators';
 
 import { SelectOption, SelectComponentUtils } from '@fusion-components';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { SelectModule } from '../../../../../../fusion-components/src/lib/components/select/select.module';
 
 @Component({
     selector: 'fusion-demo-select',
     templateUrl: './select-demo.component.html',
     styleUrls: ['./select-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, SelectModule]
 })
 export class SelectDemoComponent {
   selectForm: UntypedFormGroup;

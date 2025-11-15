@@ -7,14 +7,11 @@ import { SidenavDemoComponent } from './sidenav-demo.component';
 import { SidenavDemoRoutingModule } from './sidenav-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    SidenavDemoComponent,
-  ],
-  imports: [
-    DemoModule,
-    SidenavModule,
-
-    SidenavDemoRoutingModule,
-  ],
+    imports: [
+        DemoModule,
+        SidenavModule,
+        SidenavDemoRoutingModule,
+        SidenavDemoComponent,
+    ],
 })
 export class SidenavDemoModule {}

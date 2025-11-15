@@ -1,12 +1,18 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseModalComponent, Size, ModalConfig, ModalService, ModalType, OpenModalConfig, ButtonType } from '@fusion-components';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { ButtonModule } from '../../../../../../fusion-components/src/lib/components/button/button.module';
+import { ModalHeaderModule } from '../../../../../../fusion-components/src/lib/components/modal/modal-header/modal-header.module';
+import { ModalContentModule } from '../../../../../../fusion-components/src/lib/components/modal/modal-content/modal-content.module';
+import { ModalFooterModule } from '../../../../../../fusion-components/src/lib/components/modal/modal-footer/modal-footer.module';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'fusion-demo-modal',
     templateUrl: './modal-demo.component.html',
     styleUrls: ['./modal-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, ButtonModule]
 })
 export class ModalDemoComponent {
   readonly ButtonType = ButtonType;
@@ -99,7 +105,7 @@ export class ModalDemoComponent {
           </div>
         </f-modal-footer>
     `,
-    standalone: false
+    imports: [ModalHeaderModule, ModalContentModule, FormsModule, ButtonModule, ModalFooterModule, NgClass]
 })
 export class InnerModalComponent extends BaseModalComponent {
   readonly ButtonType = ButtonType;

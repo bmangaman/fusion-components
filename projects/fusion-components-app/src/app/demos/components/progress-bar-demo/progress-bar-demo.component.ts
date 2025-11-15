@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Size, ProgressBarStatus } from '@fusion-components';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { ProgressBarModule } from '../../../../../../fusion-components/src/lib/components/progress-bar/progress-bar.module';
 
 @Component({
     selector: 'fusion-demo-progress-bar',
     templateUrl: './progress-bar-demo.component.html',
     styleUrls: ['./progress-bar-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, ProgressBarModule]
 })
 export class ProgressBarDemoComponent {
   readonly Size = Size;

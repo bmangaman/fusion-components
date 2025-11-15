@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators, UntypedFormArray, FormArray } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, UntypedFormArray, FormArray, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PanelContentVisibilityChangedEmit, AccordionPanelComponent } from '@fusion-components';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { AccordionModule } from '../../../../../../fusion-components/src/lib/components/accordion/accordion.module';
+import { TemplateModule } from '../../../../../../fusion-components/src/lib/directives/template/template.module';
 
 @Component({
     selector: 'fusion-demo-accordion',
     templateUrl: './accordion-demo.component.html',
     styleUrls: ['./accordion-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, AccordionModule, TemplateModule]
 })
 export class AccordionDemoComponent {
   private numberOfPanels: number = 0;

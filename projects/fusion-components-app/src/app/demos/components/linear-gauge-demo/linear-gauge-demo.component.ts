@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, UntypedFormArray, Validators, AbstractControl, FormGroup, FormControl, FormArray } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, UntypedFormArray, Validators, AbstractControl, FormGroup, FormControl, FormArray, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { StatusLevel, LinearGaugeThreshold, PipeItem, BytesPipe, BytesPipeBase } from '@fusion-components';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { LinearGaugeModule } from '../../../../../../fusion-components/src/lib/components/linear-gauge/linear-gauge.module';
 
 @Component({
     selector: 'fusion-demo-linear-gauge',
     templateUrl: './linear-gauge-demo.component.html',
     styleUrls: ['./linear-gauge-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, LinearGaugeModule]
 })
 export class LinearGaugeDemoComponent {
   readonly StatusLevel = StatusLevel;

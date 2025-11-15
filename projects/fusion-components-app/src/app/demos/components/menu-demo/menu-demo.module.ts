@@ -7,17 +7,14 @@ import { MenuDemoComponent } from './menu-demo.component';
 import { MenuDemoRoutingModule } from './menu-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    MenuDemoComponent,
-  ],
-  imports: [
-    AutofocusModule,
-    ButtonModule,
-    DemoModule,
-    MenuModule,
-    PipesModule,
-
-    MenuDemoRoutingModule,
-  ],
+    imports: [
+        AutofocusModule,
+        ButtonModule,
+        DemoModule,
+        MenuModule,
+        PipesModule,
+        MenuDemoRoutingModule,
+        MenuDemoComponent,
+    ],
 })
 export class MenuDemoModule {}

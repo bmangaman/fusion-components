@@ -2,12 +2,15 @@ import { Component } from '@angular/core';
 
 import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { KeyValueTableData } from '@fusion-components';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { KeyValueTableModule } from '../../../../../../fusion-components/src/lib/components/key-value-table/key-value-table.module';
+import { TemplateModule } from '../../../../../../fusion-components/src/lib/directives/template/template.module';
 
 @Component({
     selector: 'fusion-demo-key-value-table',
     templateUrl: './key-value-table-demo.component.html',
     styleUrls: ['./key-value-table-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, KeyValueTableModule, TemplateModule]
 })
 export class KeyValueTableDemoComponent {
   keyValueTableForm: UntypedFormGroup;

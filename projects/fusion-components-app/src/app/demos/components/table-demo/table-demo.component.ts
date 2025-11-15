@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BehaviorSubject, interval, Observable, of } from 'rxjs';
 import { debounce, delay } from 'rxjs/operators';
@@ -29,12 +29,25 @@ import {
 } from '@fusion-components';
 
 import { VolumeState, VolumeAccess } from './table-demo.interface';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { TableModule } from '../../../../../../fusion-components/src/lib/components/table/table.module';
+import { QueryParamsModule } from '../../../../../../fusion-components/src/lib/directives/query-params/query-params.module';
+import { TableFilterNumberModule } from '../../../../../../fusion-components/src/lib/components/table/table-filters/table-filter-number/table-filter-number.module';
+import { TableFilterStringModule } from '../../../../../../fusion-components/src/lib/components/table/table-filters/table-filter-string/table-filter-string.module';
+import { TableFilterArrayModule } from '../../../../../../fusion-components/src/lib/components/table/table-filters/table-filter-array/table-filter-array.module';
+import { TableFilterIpModule } from '../../../../../../fusion-components/src/lib/components/table/table-filters/table-filter-ip/table-filter-ip.module';
+import { TableFilterBytesModule } from '../../../../../../fusion-components/src/lib/components/table/table-filters/table-filter-bytes/table-filter-bytes.module';
+import { TableColumnModule } from '../../../../../../fusion-components/src/lib/components/table/table-column/table-column.module';
+import { TemplateModule } from '../../../../../../fusion-components/src/lib/directives/template/template.module';
+import { TooltipDirectiveModule } from '../../../../../../fusion-components/src/lib/directives/tooltip/tooltip.module';
+import { BytesModule } from '../../../../../../fusion-components/src/lib/pipes/bytes/bytes.module';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'fusion-demo-table',
     templateUrl: './table-demo.component.html',
     styleUrls: ['./table-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, TableModule, QueryParamsModule, TableFilterNumberModule, TableFilterStringModule, TableFilterArrayModule, TableFilterIpModule, TableFilterBytesModule, TableColumnModule, TemplateModule, TooltipDirectiveModule, BytesModule, AsyncPipe]
 })
 export class TableDemoComponent implements OnInit {
   readonly TableComponentEnums = TableComponentEnums;

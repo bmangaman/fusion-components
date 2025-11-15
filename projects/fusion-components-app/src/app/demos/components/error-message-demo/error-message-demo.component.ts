@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { of } from 'rxjs';
 
 import { ErrorMessage, ErrorMessageGeneratorService } from '@fusion-components';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { CheckboxModule } from '../../../../../../fusion-components/src/lib/components/checkbox/checkbox.module';
+import { ValidationStylingModule } from '../../../../../../fusion-components/src/lib/directives/validation-styling/validation-styling.module';
+import { ErrorMessageModule } from '../../../../../../fusion-components/src/lib/components/error-message/error-message.module';
 
 @Component({
     selector: 'fusion-demo-error-message',
     templateUrl: './error-message-demo.component.html',
     styleUrls: ['./error-message-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, CheckboxModule, ValidationStylingModule, ErrorMessageModule]
 })
 export class ErrorMessageDemoComponent {
   errorMessageForm: UntypedFormGroup;

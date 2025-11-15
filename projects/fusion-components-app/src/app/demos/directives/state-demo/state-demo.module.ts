@@ -7,14 +7,11 @@ import { StateDemoComponent } from './state-demo.component';
 import { StateDemoRoutingModule } from './state-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    StateDemoComponent,
-  ],
-  imports: [
-    DemoModule,
-    StateDirectiveModule,
-
-    StateDemoRoutingModule,
-  ],
+    imports: [
+        DemoModule,
+        StateDirectiveModule,
+        StateDemoRoutingModule,
+        StateDemoComponent,
+    ],
 })
 export class StateDemoModule {}

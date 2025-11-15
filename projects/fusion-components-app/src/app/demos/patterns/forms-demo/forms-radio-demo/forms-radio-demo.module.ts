@@ -6,16 +6,14 @@ import { EscapeHtmlModule } from '../../../../shared';
 import { FormsRadioDemoComponent } from './forms-radio-demo.component';
 
 @NgModule({
-  declarations: [
-    FormsRadioDemoComponent,
-  ],
-  imports: [
-    CommonModule,
-    EscapeHtmlModule,
-    FormsModule,
-  ],
-  exports: [
-    FormsRadioDemoComponent,
-  ]
+    imports: [
+        CommonModule,
+        EscapeHtmlModule,
+        FormsModule,
+        FormsRadioDemoComponent,
+    ],
+    exports: [
+        FormsRadioDemoComponent,
+    ]
 })
 export class FormsRadioDemoModule {}

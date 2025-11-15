@@ -7,14 +7,11 @@ import { TypographyPatternComponent } from './typography-pattern.component';
 import { TypographyPatternRoutingModule } from './typography-pattern-routing.module';
 
 @NgModule({
-  declarations: [
-    TypographyPatternComponent,
-  ],
-  imports: [
-    DemoModule,
-    TableModule,
-
-    TypographyPatternRoutingModule,
-  ],
+    imports: [
+        DemoModule,
+        TableModule,
+        TypographyPatternRoutingModule,
+        TypographyPatternComponent,
+    ],
 })
 export class TypographyPatternModule {}

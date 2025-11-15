@@ -8,20 +8,17 @@ import { ErrorMessageDemoComponent } from './error-message-demo.component';
 import { ErrorMessageDemoRoutingModule } from './error-message-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    ErrorMessageDemoComponent,
-  ],
-  imports: [
-    DemoModule,
-    CheckboxModule,
-    ErrorMessageModule,
-    ValidationStylingModule,
-    TranslateModule,
-
-    ErrorMessageDemoRoutingModule,
-  ],
-  providers: [
-    ErrorMessageGeneratorService,
-  ],
+    imports: [
+        DemoModule,
+        CheckboxModule,
+        ErrorMessageModule,
+        ValidationStylingModule,
+        TranslateModule,
+        ErrorMessageDemoRoutingModule,
+        ErrorMessageDemoComponent,
+    ],
+    providers: [
+        ErrorMessageGeneratorService,
+    ],
 })
 export class ErrorMessageDemoModule {}

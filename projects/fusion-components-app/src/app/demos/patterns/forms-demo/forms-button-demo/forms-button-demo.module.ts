@@ -6,16 +6,14 @@ import { EscapeHtmlModule } from '../../../../shared';
 import { FormsButtonDemoComponent } from './forms-button-demo.component';
 
 @NgModule({
-  declarations: [
-    FormsButtonDemoComponent,
-  ],
-  imports: [
-    CommonModule,
-    EscapeHtmlModule,
-    FormsModule,
-  ],
-  exports: [
-    FormsButtonDemoComponent,
-  ]
+    imports: [
+        CommonModule,
+        EscapeHtmlModule,
+        FormsModule,
+        FormsButtonDemoComponent,
+    ],
+    exports: [
+        FormsButtonDemoComponent,
+    ]
 })
 export class FormsButtonDemoModule {}

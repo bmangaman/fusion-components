@@ -7,14 +7,11 @@ import { TooltipDemoComponent } from './tooltip-demo.component';
 import { TooltipDemoRoutingModule } from './tooltip-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    TooltipDemoComponent,
-  ],
-  imports: [
-    DemoModule,
-
-    TooltipDirectiveModule,
-    TooltipDemoRoutingModule,
-  ],
+    imports: [
+        DemoModule,
+        TooltipDirectiveModule,
+        TooltipDemoRoutingModule,
+        TooltipDemoComponent,
+    ],
 })
 export class TooltipDemoModule {}

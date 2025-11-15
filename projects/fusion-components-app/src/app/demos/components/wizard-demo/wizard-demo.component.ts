@@ -1,12 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { WizardStep, WizardComponent } from '@fusion-components';
-import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { WizardModule } from '../../../../../../fusion-components/src/lib/components/wizard/wizard.module';
 
 @Component({
     selector: 'fusion-demo-wizard',
     templateUrl: './wizard-demo.component.html',
     styleUrls: ['./wizard-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, WizardModule]
 })
 export class WizardDemoComponent {
   wizardForm: UntypedFormGroup;

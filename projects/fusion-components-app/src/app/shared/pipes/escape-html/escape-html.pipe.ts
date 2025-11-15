@@ -7,8 +7,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
  * The keep-html pipe allows a clean way to santize or bypass html.
  */
 @Pipe({
-    name: 'keepHtml', pure: false,
-    standalone: false
+    name: 'keepHtml', pure: false
 })
 export class EscapeHtmlPipe implements PipeTransform {
   constructor(

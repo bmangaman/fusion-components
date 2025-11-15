@@ -7,18 +7,16 @@ import { EscapeHtmlModule } from '../../../../shared';
 import { FormsTextareaDemoComponent } from './forms-textarea-demo.component';
 
 @NgModule({
-  declarations: [
-    FormsTextareaDemoComponent,
-  ],
-  imports: [
-    CommonModule,
-    EscapeHtmlModule,
-    FormsModule,
-    ValidationStylingModule,
-    ReactiveFormsModule,
-  ],
-  exports: [
-    FormsTextareaDemoComponent,
-  ]
+    imports: [
+        CommonModule,
+        EscapeHtmlModule,
+        FormsModule,
+        ValidationStylingModule,
+        ReactiveFormsModule,
+        FormsTextareaDemoComponent,
+    ],
+    exports: [
+        FormsTextareaDemoComponent,
+    ]
 })
 export class FormsTextareaDemoModule {}

@@ -7,15 +7,12 @@ import { TokensPatternComponent } from './tokens-pattern.component';
 import { TokensPatternRoutingModule } from './tokens-pattern-routing.module';
 
 @NgModule({
-  declarations: [
-    TokensPatternComponent,
-  ],
-  imports: [
-    DemoModule,
-    PipesModule,
-    TabviewModule,
-
-    TokensPatternRoutingModule,
-  ],
+    imports: [
+        DemoModule,
+        PipesModule,
+        TabviewModule,
+        TokensPatternRoutingModule,
+        TokensPatternComponent,
+    ],
 })
 export class TokensPatternModule {}

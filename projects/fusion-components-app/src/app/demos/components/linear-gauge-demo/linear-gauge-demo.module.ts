@@ -7,14 +7,11 @@ import { LinearGaugeDemoComponent } from './linear-gauge-demo.component';
 import { LinearGaugeDemoRoutingModule } from './linear-gauge-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    LinearGaugeDemoComponent,
-  ],
-  imports: [
-    DemoModule,
-    LinearGaugeModule,
-
-    LinearGaugeDemoRoutingModule,
-  ],
+    imports: [
+        DemoModule,
+        LinearGaugeModule,
+        LinearGaugeDemoRoutingModule,
+        LinearGaugeDemoComponent,
+    ],
 })
 export class LinearGaugeDemoModule {}

@@ -7,14 +7,11 @@ import { NoteDemoComponent } from './note-demo.component';
 import { NoteDemoRoutingModule } from './note-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    NoteDemoComponent,
-  ],
-  imports: [
-    DemoModule,
-    NoteModule,
-
-    NoteDemoRoutingModule,
-  ],
+    imports: [
+        DemoModule,
+        NoteModule,
+        NoteDemoRoutingModule,
+        NoteDemoComponent,
+    ],
 })
 export class NoteDemoModule {}

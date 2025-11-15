@@ -2,12 +2,16 @@ import { Component } from '@angular/core';
 import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 
 import { State, TableTemplate, TableType, TableColumnSorted } from '@fusion-components';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { TableModule } from '../../../../../../fusion-components/src/lib/components/table/table.module';
+import { TableColumnModule } from '../../../../../../fusion-components/src/lib/components/table/table-column/table-column.module';
+import { TemplateModule } from '../../../../../../fusion-components/src/lib/directives/template/template.module';
 
 @Component({
     selector: 'fusion-demo-typography',
     templateUrl: './typography-pattern.component.html',
     styleUrls: ['./typography-pattern.component.scss'],
-    standalone: false
+    imports: [DemoComponent, TableModule, TableColumnModule, TemplateModule]
 })
 export class TypographyPatternComponent {
   readonly TableTemplate = TableTemplate;

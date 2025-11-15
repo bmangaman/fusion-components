@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ValidationStylingModule } from '../../../../../../../fusion-components/src/lib/directives/validation-styling/validation-styling.module';
+import { EscapeHtmlPipe } from '../../../../shared/pipes/escape-html/escape-html.pipe';
 
 @Component({
     selector: 'fusion-demo-forms-input',
     templateUrl: './forms-input-demo.component.html',
     styleUrls: ['../forms-demo-shared.scss'],
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, ValidationStylingModule, EscapeHtmlPipe]
 })
 export class FormsInputDemoComponent {
 

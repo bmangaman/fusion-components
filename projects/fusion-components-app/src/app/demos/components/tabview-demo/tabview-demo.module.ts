@@ -7,14 +7,11 @@ import { TabviewDemoComponent } from './tabview-demo.component';
 import { TabviewDemoRoutingModule } from './tabview-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    TabviewDemoComponent,
-  ],
-  imports: [
-    DemoModule,
-    TabviewModule,
-
-    TabviewDemoRoutingModule,
-  ],
+    imports: [
+        DemoModule,
+        TabviewModule,
+        TabviewDemoRoutingModule,
+        TabviewDemoComponent,
+    ],
 })
 export class TabviewDemoModule {}

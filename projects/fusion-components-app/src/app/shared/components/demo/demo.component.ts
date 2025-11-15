@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'fusion-demo',
     templateUrl: './demo.component.html',
-    standalone: false
+    imports: [NgClass]
 })
 export class DemoComponent {
   @Input() titleText: string;

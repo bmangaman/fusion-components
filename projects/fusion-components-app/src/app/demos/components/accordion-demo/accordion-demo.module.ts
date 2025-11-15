@@ -7,14 +7,11 @@ import { AccordionDemoComponent } from './accordion-demo.component';
 import { AccordionDemoRoutingModule } from './accordion-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    AccordionDemoComponent,
-  ],
-  imports: [
-    AccordionModule,
-    DemoModule,
-
-    AccordionDemoRoutingModule,
-  ],
+    imports: [
+        AccordionModule,
+        DemoModule,
+        AccordionDemoRoutingModule,
+        AccordionDemoComponent,
+    ],
 })
 export class AccordionDemoModule {}

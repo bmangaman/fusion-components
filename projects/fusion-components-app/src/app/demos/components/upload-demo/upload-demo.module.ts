@@ -7,15 +7,12 @@ import { UploadDemoComponent } from './upload-demo.component';
 import { UploadDemoRoutingModule } from './upload-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    UploadDemoComponent,
-  ],
-  imports: [
-    ButtonModule,
-    DemoModule,
-    UploadModule,
-
-    UploadDemoRoutingModule,
-  ],
+    imports: [
+        ButtonModule,
+        DemoModule,
+        UploadModule,
+        UploadDemoRoutingModule,
+        UploadDemoComponent,
+    ],
 })
 export class UploadDemoModule {}

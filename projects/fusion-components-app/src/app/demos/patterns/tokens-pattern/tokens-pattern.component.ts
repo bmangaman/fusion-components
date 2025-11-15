@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { NgStyle } from '@angular/common';
+import { ObjectKeysModule } from '../../../../../../fusion-components/src/lib/pipes/object-keys/object-keys.module';
 
 @Component({
     selector: 'fusion-demo-tokens',
     templateUrl: './tokens-pattern.component.html',
     styleUrls: ['./tokens-pattern.component.scss'],
-    standalone: false
+    imports: [DemoComponent, NgStyle, ObjectKeysModule]
 })
 export class TokensPatternComponent {
   blues = [

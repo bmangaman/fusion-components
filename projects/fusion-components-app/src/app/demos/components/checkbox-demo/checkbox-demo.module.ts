@@ -8,14 +8,11 @@ import { CheckboxDemoComponent } from './checkbox-demo.component';
 import { CheckboxDemoRoutingModule } from './checkbox-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    CheckboxDemoComponent,
-  ],
-  imports: [
-    DemoModule,
-    CheckboxModule,
-
-    CheckboxDemoRoutingModule,
-  ],
+    imports: [
+        DemoModule,
+        CheckboxModule,
+        CheckboxDemoRoutingModule,
+        CheckboxDemoComponent,
+    ],
 })
 export class CheckboxDemoModule {}

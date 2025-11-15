@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfoBoxDetail, WidgetTemplate, StatusLevel } from '@fusion-components';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { WidgetModule } from '../../../../../../fusion-components/src/lib/components/widget/widget.module';
+import { TemplateModule } from '../../../../../../fusion-components/src/lib/directives/template/template.module';
 
 @Component({
     selector: 'fusion-demo-widget',
     templateUrl: './widget-demo.component.html',
     styleUrls: ['./widget-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, WidgetModule, TemplateModule]
 })
 export class WidgetDemoComponent {
   readonly WidgetTemplate = WidgetTemplate;

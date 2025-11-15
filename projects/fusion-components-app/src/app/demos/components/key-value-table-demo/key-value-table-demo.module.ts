@@ -7,14 +7,11 @@ import { KeyValueTableDemoComponent } from './key-value-table-demo.component';
 import { KeyValueTableDemoRoutingModule } from './key-value-table-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    KeyValueTableDemoComponent,
-  ],
-  imports: [
-    DemoModule,
-    KeyValueTableModule,
-
-    KeyValueTableDemoRoutingModule,
-  ],
+    imports: [
+        DemoModule,
+        KeyValueTableModule,
+        KeyValueTableDemoRoutingModule,
+        KeyValueTableDemoComponent,
+    ],
 })
 export class KeyValueTableDemoModule {}

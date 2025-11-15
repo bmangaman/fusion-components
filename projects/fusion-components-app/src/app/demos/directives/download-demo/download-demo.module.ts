@@ -7,15 +7,12 @@ import { DownloadDemoComponent } from './download-demo.component';
 import { DownloadDemoRoutingModule } from './download-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    DownloadDemoComponent,
-  ],
-  imports: [
-    ButtonModule,
-    DemoModule,
-    DownloadModule,
-
-    DownloadDemoRoutingModule,
-  ],
+    imports: [
+        ButtonModule,
+        DemoModule,
+        DownloadModule,
+        DownloadDemoRoutingModule,
+        DownloadDemoComponent,
+    ],
 })
 export class DownloadDemoModule {}

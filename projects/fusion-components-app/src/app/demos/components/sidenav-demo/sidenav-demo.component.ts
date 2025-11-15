@@ -4,12 +4,14 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { of } from 'rxjs';
 
 import { NavItem } from '@fusion-components/lib/components/sidenav/sidenav.interface';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { SidenavModule } from '../../../../../../fusion-components/src/lib/components/sidenav/sidenav.module';
 
 @Component({
     selector: 'fusion-demo-sidenav',
     templateUrl: './sidenav-demo.component.html',
     styleUrls: ['./sidenav-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, SidenavModule]
 })
 export class SidenavDemoComponent {
   sidenavForm: UntypedFormGroup;

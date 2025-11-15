@@ -7,18 +7,16 @@ import { EscapeHtmlModule } from '../../../../shared';
 import { FormsInputDemoComponent } from './forms-input-demo.component';
 
 @NgModule({
-  declarations: [
-    FormsInputDemoComponent,
-  ],
-  imports: [
-    CommonModule,
-    EscapeHtmlModule,
-    FormsModule,
-    ValidationStylingModule,
-    ReactiveFormsModule,
-  ],
-  exports: [
-    FormsInputDemoComponent,
-  ]
+    imports: [
+        CommonModule,
+        EscapeHtmlModule,
+        FormsModule,
+        ValidationStylingModule,
+        ReactiveFormsModule,
+        FormsInputDemoComponent,
+    ],
+    exports: [
+        FormsInputDemoComponent,
+    ]
 })
 export class FormsInputDemoModule {}

@@ -1,5 +1,5 @@
 import { Component, ViewChild, TemplateRef } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   DEFAULT_STATE_HEADLINES,
   DEFAULT_STATE_MESSAGES,
@@ -9,12 +9,14 @@ import {
   StateMessages,
   StateMessageTemplates,
 } from '@fusion-components';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { StateDirectiveModule } from '../../../../../../fusion-components/src/lib/directives/state/state.module';
 
 @Component({
     selector: 'fusion-demo-state',
     templateUrl: './state-demo.component.html',
     styleUrls: ['./state-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, StateDirectiveModule]
 })
 export class StateDemoComponent {
   readonly State = State;

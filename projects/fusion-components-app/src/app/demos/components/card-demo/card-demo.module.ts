@@ -7,14 +7,11 @@ import { CardDemoComponent } from './card-demo.component';
 import { CardDemoRoutingModule } from './card-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    CardDemoComponent,
-  ],
-  imports: [
-    CardModule,
-    DemoModule,
-
-    CardDemoRoutingModule,
-  ],
+    imports: [
+        CardModule,
+        DemoModule,
+        CardDemoRoutingModule,
+        CardDemoComponent,
+    ],
 })
 export class CardDemoModule {}

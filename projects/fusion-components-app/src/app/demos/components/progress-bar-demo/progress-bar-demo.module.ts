@@ -7,14 +7,11 @@ import { ProgressBarDemoComponent } from './progress-bar-demo.component';
 import { ProgressBarDemoRoutingModule } from './progress-bar-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    ProgressBarDemoComponent,
-  ],
-  imports: [
-    DemoModule,
-    ProgressBarModule,
-
-    ProgressBarDemoRoutingModule,
-  ],
+    imports: [
+        DemoModule,
+        ProgressBarModule,
+        ProgressBarDemoRoutingModule,
+        ProgressBarDemoComponent,
+    ],
 })
 export class ProgressBarDemoModule {}

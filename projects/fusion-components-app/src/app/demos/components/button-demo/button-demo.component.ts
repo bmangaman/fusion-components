@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 
 import { ButtonType, Size, State, ButtonInputType } from '@fusion-components';
-import { UntypedFormGroup, Validators, UntypedFormBuilder } from '@angular/forms';
+import { UntypedFormGroup, Validators, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { ButtonModule } from '../../../../../../fusion-components/src/lib/components/button/button.module';
 
 @Component({
     selector: 'fusion-demo-button',
     templateUrl: './button-demo.component.html',
     styleUrls: ['./button-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, ButtonModule]
 })
 export class ButtonDemoComponent {
   readonly ButtonType = ButtonType;

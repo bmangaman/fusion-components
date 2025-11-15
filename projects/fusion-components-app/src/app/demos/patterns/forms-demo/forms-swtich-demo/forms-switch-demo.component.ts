@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EscapeHtmlPipe } from '../../../../shared/pipes/escape-html/escape-html.pipe';
 
 @Component({
     selector: 'fusion-demo-forms-switch',
     templateUrl: './forms-switch-demo.component.html',
     styleUrls: ['../forms-demo-shared.scss'],
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, EscapeHtmlPipe]
 })
 export class FormsSwitchDemoComponent implements OnInit {
   switchDemoForm: UntypedFormGroup;

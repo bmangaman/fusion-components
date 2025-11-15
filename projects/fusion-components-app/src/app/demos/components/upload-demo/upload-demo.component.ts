@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UploadInfo } from '@fusion-components';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { DemoComponent } from '../../../shared/components/demo/demo.component';
+import { UploadModule } from '../../../../../../fusion-components/src/lib/components/upload/upload.module';
+import { NgClass } from '@angular/common';
+import { ButtonModule } from '../../../../../../fusion-components/src/lib/components/button/button.module';
 
 @Component({
     selector: 'fusion-demo-upload',
     templateUrl: './upload-demo.component.html',
     styleUrls: ['./upload-demo.component.scss'],
-    standalone: false
+    imports: [DemoComponent, FormsModule, ReactiveFormsModule, UploadModule, NgClass, ButtonModule]
 })
 export class UploadDemoComponent {
   uploadForm: UntypedFormGroup;

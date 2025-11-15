@@ -7,14 +7,11 @@ import { WidgetDemoComponent } from './widget-demo.component';
 import { WidgetDemoRoutingModule } from './widget-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    WidgetDemoComponent,
-  ],
-  imports: [
-    DemoModule,
-    WidgetModule,
-
-    WidgetDemoRoutingModule,
-  ],
+    imports: [
+        DemoModule,
+        WidgetModule,
+        WidgetDemoRoutingModule,
+        WidgetDemoComponent,
+    ],
 })
 export class WidgetdDemoModule {}

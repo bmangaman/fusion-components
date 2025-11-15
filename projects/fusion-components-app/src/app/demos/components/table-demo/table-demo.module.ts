@@ -13,18 +13,15 @@ import { TableDemoComponent } from './table-demo.component';
 import { TableDemoRoutingModule } from './table-demo-routing.module';
 
 @NgModule({
-  declarations: [
-    TableDemoComponent,
-  ],
-  imports: [
-    BytesModule,
-    DemoModule,
-    QueryParamsModule,
-    TableModule,
-    TooltipDirectiveModule,
-    TranslateModule,
-
-    TableDemoRoutingModule,
-  ],
+    imports: [
+        BytesModule,
+        DemoModule,
+        QueryParamsModule,
+        TableModule,
+        TooltipDirectiveModule,
+        TranslateModule,
+        TableDemoRoutingModule,
+        TableDemoComponent,
+    ],
 })
 export class TableDemoModule {}
