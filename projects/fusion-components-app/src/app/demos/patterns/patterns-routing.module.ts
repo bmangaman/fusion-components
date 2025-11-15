@@ -9,15 +9,15 @@ const routes: Route[] = [
   },
   {
     path: 'forms',
-    loadChildren: () => import('./forms-demo/forms-demo.module').then(m => m.FormsDemoModule),
+    loadComponent: () => import('./forms-demo/forms-demo.component').then(m => m.FormsDemoComponent),
   },
   {
     path: 'tokens',
-    loadChildren: () => import('./tokens-pattern/tokens-pattern.module').then(m => m.TokensPatternModule),
+    loadComponent: () => import('./tokens-pattern/tokens-pattern.component').then(m => m.TokensPatternComponent),
   },
   {
     path: 'typography',
-    loadChildren: () => import('./typography-pattern/typography-pattern.module').then(m => m.TypographyPatternModule),
+    loadComponent: () => import('./typography-pattern/typography-pattern.component').then(m => m.TypographyPatternComponent),
   },
 ];
 

@@ -8,6 +8,7 @@ import { LoadingSpinnerModule } from '../../../../../../fusion-components/src/li
     selector: 'fusion-demo-loading-spinner',
     templateUrl: './loading-spinner-demo.component.html',
     styleUrls: ['./loading-spinner-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, LoadingSpinnerModule]
 })
 export class LoadingSpinnerDemoComponent {

@@ -13,6 +13,7 @@ import { ErrorMessageModule } from '../../../../../../fusion-components/src/lib/
     selector: 'fusion-demo-error-message',
     templateUrl: './error-message-demo.component.html',
     styleUrls: ['./error-message-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, CheckboxModule, ValidationStylingModule, ErrorMessageModule]
 })
 export class ErrorMessageDemoComponent {

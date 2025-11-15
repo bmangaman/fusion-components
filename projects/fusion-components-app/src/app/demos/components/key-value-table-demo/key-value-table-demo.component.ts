@@ -10,6 +10,7 @@ import { TemplateModule } from '../../../../../../fusion-components/src/lib/dire
     selector: 'fusion-demo-key-value-table',
     templateUrl: './key-value-table-demo.component.html',
     styleUrls: ['./key-value-table-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, KeyValueTableModule, TemplateModule]
 })
 export class KeyValueTableDemoComponent {

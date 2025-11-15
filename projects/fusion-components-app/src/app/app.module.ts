@@ -1,12 +1,12 @@
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { importProvidersFrom } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { from, Observable } from 'rxjs';
 
-import { DomService, ModalService, SidenavModule, TooltipService, TranslationService, WindowProvider } from '@fusion-components';
+import { DomService, ModalService, TooltipService, TranslationService, WindowProvider } from '@fusion-components';
 
 import { UploadDemoInterceptor } from './demos/components/upload-demo/upload-demo.interceptor';
 
@@ -20,31 +20,29 @@ export class LazyTranslateLoader implements TranslateLoader {
   }
 }
 
-@NgModule({ declarations: [
-        AppComponent,
-    ],
-    bootstrap: [
-        AppComponent,
-    ], imports: [AppRoutingModule,
-        BrowserAnimationsModule,
-        BrowserModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useClass: LazyTranslateLoader
-            }
-        }),
-        SidenavModule], providers: [
-        WindowProvider,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: UploadDemoInterceptor,
-            multi: true,
-        },
-        DomService,
-        ModalService,
-        TooltipService,
-        TranslationService,
-        provideHttpClient(withInterceptorsFromDi()),
-    ] })
-export class AppModule {}
+export const appConfig = {
+  providers: [
+    importProvidersFrom(
+      BrowserModule,
+      AppRoutingModule,
+      TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useClass: LazyTranslateLoader
+        }
+      })
+    ),
+    provideAnimations(),
+    WindowProvider,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UploadDemoInterceptor,
+      multi: true,
+    },
+    DomService,
+    ModalService,
+    TooltipService,
+    TranslationService,
+    provideHttpClient(withInterceptorsFromDi()),
+  ]
+};

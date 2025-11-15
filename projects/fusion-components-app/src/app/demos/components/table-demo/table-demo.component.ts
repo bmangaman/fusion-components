@@ -47,6 +47,7 @@ import { AsyncPipe } from '@angular/common';
     selector: 'fusion-demo-table',
     templateUrl: './table-demo.component.html',
     styleUrls: ['./table-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, TableModule, QueryParamsModule, TableFilterNumberModule, TableFilterStringModule, TableFilterArrayModule, TableFilterIpModule, TableFilterBytesModule, TableColumnModule, TemplateModule, TooltipDirectiveModule, BytesModule, AsyncPipe]
 })
 export class TableDemoComponent implements OnInit {

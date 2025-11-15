@@ -8,6 +8,7 @@ import { BadgeModule } from '../../../../../../fusion-components/src/lib/compone
     selector: 'fusion-demo-badge',
     templateUrl: './badge-demo.component.html',
     styleUrls: ['./badge-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, BadgeModule]
 })
 export class BadgeDemoComponent {

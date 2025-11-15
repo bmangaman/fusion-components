@@ -7,6 +7,7 @@ import { PasswordVisibilityToggleModule } from '../../../../../../fusion-compone
     selector: 'fusion-demo-password-visibility-toggle-demo',
     templateUrl: './password-visibility-toggle-demo.component.html',
     styleUrls: ['./password-visibility-toggle-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, PasswordVisibilityToggleModule, ReactiveFormsModule]
 })
 export class PasswordVisibilitytoggleDemoComponent {

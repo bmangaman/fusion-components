@@ -16,6 +16,7 @@ import { StateDirectiveModule } from '../../../../../../fusion-components/src/li
     selector: 'fusion-demo-state',
     templateUrl: './state-demo.component.html',
     styleUrls: ['./state-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, StateDirectiveModule]
 })
 export class StateDemoComponent {

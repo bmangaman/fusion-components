@@ -11,6 +11,7 @@ import { TemplateModule } from '../../../../../../fusion-components/src/lib/dire
     selector: 'fusion-demo-typography',
     templateUrl: './typography-pattern.component.html',
     styleUrls: ['./typography-pattern.component.scss'],
+    standalone: true,
     imports: [DemoComponent, TableModule, TableColumnModule, TemplateModule]
 })
 export class TypographyPatternComponent {

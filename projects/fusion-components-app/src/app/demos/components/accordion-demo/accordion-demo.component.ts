@@ -10,6 +10,7 @@ import { TemplateModule } from '../../../../../../fusion-components/src/lib/dire
     selector: 'fusion-demo-accordion',
     templateUrl: './accordion-demo.component.html',
     styleUrls: ['./accordion-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, AccordionModule, TemplateModule]
 })
 export class AccordionDemoComponent {

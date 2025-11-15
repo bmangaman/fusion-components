@@ -8,6 +8,7 @@ import { ProgressBarModule } from '../../../../../../fusion-components/src/lib/c
     selector: 'fusion-demo-progress-bar',
     templateUrl: './progress-bar-demo.component.html',
     styleUrls: ['./progress-bar-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, ProgressBarModule]
 })
 export class ProgressBarDemoComponent {

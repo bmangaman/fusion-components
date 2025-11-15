@@ -11,6 +11,7 @@ import { TemplateModule } from '../../../../../../fusion-components/src/lib/dire
     selector: 'fusion-demo-card',
     templateUrl: './card-demo.component.html',
     styleUrls: ['./card-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, CardModule, TemplateModule]
 })
 export class CardDemoComponent {

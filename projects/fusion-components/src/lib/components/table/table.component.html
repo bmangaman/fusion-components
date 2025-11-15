@@ -57,7 +57,7 @@
             </f-table-filter-selector>
           }
           <div class="f-table__controls-button-separator"></div>
-          @if (!!columns.length) {
+          @if (columns && !!columns.length) {
             <f-table-column-selector
               [columns]="columns"
               [translations]="translations.columnSelector"

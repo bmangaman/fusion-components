@@ -9,6 +9,7 @@ import { TemplateModule } from '../../../../../fusion-components/src/lib/directi
     selector: 'fusion-demo-pipes',
     templateUrl: './pipes-demo.component.html',
     styleUrls: ['./pipes-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, TabviewModule, TemplateModule, FormsModule, ReactiveFormsModule]
 })
 export class PipesDemoComponent {

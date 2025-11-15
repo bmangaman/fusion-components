@@ -4,6 +4,7 @@ import { NgClass } from '@angular/common';
 @Component({
     selector: 'fusion-demo',
     templateUrl: './demo.component.html',
+    standalone: true,
     imports: [NgClass]
 })
 export class DemoComponent {

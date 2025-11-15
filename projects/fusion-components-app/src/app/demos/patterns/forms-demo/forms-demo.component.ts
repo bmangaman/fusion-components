@@ -15,6 +15,7 @@ import { FormsSwitchDemoComponent } from './forms-swtich-demo/forms-switch-demo.
     selector: 'fusion-demo-form',
     templateUrl: './forms-demo.component.html',
     styleUrls: ['./forms-demo.component.scss', './forms-demo-shared.scss'],
+    standalone: true,
     imports: [DemoComponent, TabviewModule, TemplateModule, FormsCheckboxDemoComponent, FormsRadioDemoComponent, FormsInputDemoComponent, FormsTextareaDemoComponent, FormsSelectDemoComponent, FormsButtonDemoComponent, FormsButtonGroupDemoComponent, FormsSwitchDemoComponent]
 })
 export class FormsDemoComponent {}

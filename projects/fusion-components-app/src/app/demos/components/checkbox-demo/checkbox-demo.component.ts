@@ -7,6 +7,7 @@ import { CheckboxModule } from '../../../../../../fusion-components/src/lib/comp
     selector: 'fusion-demo-checkbox',
     templateUrl: './checkbox-demo.component.html',
     styleUrls: ['./checkbox-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, CheckboxModule]
 })
 export class CheckboxDemoComponent {

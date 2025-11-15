@@ -9,6 +9,7 @@ import { ButtonModule } from '../../../../../../fusion-components/src/lib/compon
     selector: 'fusion-demo-button',
     templateUrl: './button-demo.component.html',
     styleUrls: ['./button-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, ButtonModule]
 })
 export class ButtonDemoComponent {

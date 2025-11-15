@@ -8,6 +8,7 @@ import { DownloadModule } from '../../../../../../fusion-components/src/lib/dire
     selector: 'fusion-demo-download',
     templateUrl: './download-demo.component.html',
     styleUrls: ['./download-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, ButtonModule, DownloadModule]
 })
 export class DownloadDemoComponent {

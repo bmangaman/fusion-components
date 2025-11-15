@@ -16,7 +16,7 @@ const routes: Route[] = [
   },
   {
     path: 'pipes',
-    loadChildren: () => import('./demos/pipes-demo/pipes-demo.module').then(m => m.PipesDemoModule),
+    loadComponent: () => import('./demos/pipes-demo/pipes-demo.component').then(m => m.PipesDemoComponent),
   },
 ];
 

@@ -9,19 +9,15 @@ const routes: Route[] = [
   },
   {
     path: 'download',
-    loadChildren: () => import('./download-demo/download-demo.module').then(m => m.DownloadDemoModule),
+    loadComponent: () => import('./download-demo/download-demo.component').then(m => m.DownloadDemoComponent),
   },
   {
     path: 'password-visibility-toggle',
-    loadChildren: () => import('./password-visility-toggle/password-visibility-toggle-demo.module').then(m => m.PasswordVisibilityToggleDemoModule),
+    loadComponent: () => import('./password-visility-toggle/password-visibility-toggle-demo.component').then(m => m.PasswordVisibilitytoggleDemoComponent),
   },
   {
     path: 'state',
-    loadChildren: () => import('./state-demo/state-demo.module').then(m => m.StateDemoModule),
-  },
-  {
-    path: 'download',
-    loadChildren: () => import('./download-demo/download-demo.module').then(m => m.DownloadDemoModule),
+    loadComponent: () => import('./state-demo/state-demo.component').then(m => m.StateDemoComponent),
   },
 ];
 

@@ -11,6 +11,7 @@ import { SidenavModule } from '../../../../../../fusion-components/src/lib/compo
     selector: 'fusion-demo-sidenav',
     templateUrl: './sidenav-demo.component.html',
     styleUrls: ['./sidenav-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, SidenavModule]
 })
 export class SidenavDemoComponent {

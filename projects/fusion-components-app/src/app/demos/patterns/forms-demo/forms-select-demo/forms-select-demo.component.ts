@@ -5,6 +5,7 @@ import { EscapeHtmlPipe } from '../../../../shared/pipes/escape-html/escape-html
     selector: 'fusion-demo-forms-select',
     templateUrl: './forms-select-demo.component.html',
     styleUrls: ['../forms-demo-shared.scss'],
+    standalone: true,
     imports: [EscapeHtmlPipe]
 })
 export class FormsSelectDemoComponent {

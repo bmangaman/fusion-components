@@ -73,7 +73,7 @@ export class WidgetComponent implements AfterContentInit {
   /**
    * Determines the data to be displayed in the infoBoxes section.
    */
-  @Input() infoBoxesDetails: InfoBoxDetail[];
+  @Input() infoBoxesDetails: InfoBoxDetail[] = [];
 
   /**
    * Determines the data to be displayed in the infoDetails section.
@@ -97,7 +97,7 @@ export class WidgetComponent implements AfterContentInit {
     return this._header;
   }
 
-  private _infoBoxes: TemplateRef<any>[];
+  private _infoBoxes: TemplateRef<any>[] = [];
   get infoBoxes(): TemplateRef<any>[] {
     return this._infoBoxes;
   }

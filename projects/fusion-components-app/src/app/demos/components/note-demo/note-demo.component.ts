@@ -6,6 +6,7 @@ import { NoteModule } from '../../../../../../fusion-components/src/lib/componen
     selector: 'fusion-demo-note',
     templateUrl: './note-demo.component.html',
     styleUrls: ['./note-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, NoteModule]
 })
 export class NoteDemoComponent {}

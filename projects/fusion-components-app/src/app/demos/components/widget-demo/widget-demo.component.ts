@@ -9,6 +9,7 @@ import { TemplateModule } from '../../../../../../fusion-components/src/lib/dire
     selector: 'fusion-demo-widget',
     templateUrl: './widget-demo.component.html',
     styleUrls: ['./widget-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, WidgetModule, TemplateModule]
 })
 export class WidgetDemoComponent {

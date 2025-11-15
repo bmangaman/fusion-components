@@ -12,6 +12,7 @@ import { ButtonModule } from '../../../../../../fusion-components/src/lib/compon
     selector: 'fusion-demo-upload',
     templateUrl: './upload-demo.component.html',
     styleUrls: ['./upload-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, UploadModule, NgClass, ButtonModule]
 })
 export class UploadDemoComponent {

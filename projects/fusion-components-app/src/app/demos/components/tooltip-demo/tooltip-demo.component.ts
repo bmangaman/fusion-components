@@ -9,6 +9,7 @@ import { TooltipDirectiveModule } from '../../../../../../fusion-components/src/
     selector: 'fusion-demo-tooltip',
     templateUrl: './tooltip-demo.component.html',
     styleUrls: ['./tooltip-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, TooltipDirectiveModule]
 })
 export class TooltipDemoComponent {

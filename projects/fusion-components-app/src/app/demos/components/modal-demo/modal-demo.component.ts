@@ -12,6 +12,7 @@ import { NgClass } from '@angular/common';
     selector: 'fusion-demo-modal',
     templateUrl: './modal-demo.component.html',
     styleUrls: ['./modal-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, ButtonModule]
 })
 export class ModalDemoComponent {
@@ -76,6 +77,7 @@ export class ModalDemoComponent {
 @Component({
     selector: 'fusion-demo-inner-content',
     styleUrls: ['./modal-demo.component.scss'],
+    standalone: true,
     template: `
     <f-modal-header [isFullModal]="modalConfig.type === 'full'" (modalClosed)="modalClosed.emit('header (x) button')">Header</f-modal-header>
     <f-modal-content>

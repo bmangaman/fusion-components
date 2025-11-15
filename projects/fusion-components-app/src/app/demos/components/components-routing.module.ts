@@ -9,91 +9,91 @@ const routes: Route[] = [
   },
   {
     path: 'accordion',
-    loadChildren: () => import('./accordion-demo/accordion-demo.module').then(m => m.AccordionDemoModule),
+    loadComponent: () => import('./accordion-demo/accordion-demo.component').then(m => m.AccordionDemoComponent),
   },
   {
     path: 'badge',
-    loadChildren: () => import('./badge-demo/badge-demo.module').then(m => m.BadgeDemoModule),
+    loadComponent: () => import('./badge-demo/badge-demo.component').then(m => m.BadgeDemoComponent),
   },
   {
     path: 'button',
-    loadChildren: () => import('./button-demo/button-demo.module').then(m => m.ButtonDemoModule),
+    loadComponent: () => import('./button-demo/button-demo.component').then(m => m.ButtonDemoComponent),
   },
   {
     path: 'card',
-    loadChildren: () => import('./card-demo/card-demo.module').then(m => m.CardDemoModule),
+    loadComponent: () => import('./card-demo/card-demo.component').then(m => m.CardDemoComponent),
   },
   {
     path: 'checkbox',
-    loadChildren: () => import('./checkbox-demo/checkbox-demo.module').then(m => m.CheckboxDemoModule),
+    loadComponent: () => import('./checkbox-demo/checkbox-demo.component').then(m => m.CheckboxDemoComponent),
   },
   {
     path: 'error-message',
-    loadChildren: () => import('./error-message-demo/error-message-demo.module').then(m => m.ErrorMessageDemoModule),
+    loadComponent: () => import('./error-message-demo/error-message-demo.component').then(m => m.ErrorMessageDemoComponent),
   },
   {
     path: 'key-value-table',
-    loadChildren: () => import('./key-value-table-demo/key-value-table-demo.module').then(m => m.KeyValueTableDemoModule),
+    loadComponent: () => import('./key-value-table-demo/key-value-table-demo.component').then(m => m.KeyValueTableDemoComponent),
   },
   {
     path: 'linear-gauge',
-    loadChildren: () => import('./linear-gauge-demo/linear-gauge-demo.module').then(m => m.LinearGaugeDemoModule),
+    loadComponent: () => import('./linear-gauge-demo/linear-gauge-demo.component').then(m => m.LinearGaugeDemoComponent),
   },
   {
     path: 'loading-spinner',
-    loadChildren: () => import('./loading-spinner-demo/loading-spinner-demo.module').then(m => m.LoadingSpinnerDemoModule),
+    loadComponent: () => import('./loading-spinner-demo/loading-spinner-demo.component').then(m => m.LoadingSpinnerDemoComponent),
   },
   {
     path: 'menu',
-    loadChildren: () => import('./menu-demo/menu-demo.module').then(m => m.MenuDemoModule),
+    loadComponent: () => import('./menu-demo/menu-demo.component').then(m => m.MenuDemoComponent),
   },
   {
     path: 'modal',
-    loadChildren: () => import('./modal-demo/modal-demo.module').then(m => m.ModalDemoModule),
+    loadComponent: () => import('./modal-demo/modal-demo.component').then(m => m.ModalDemoComponent),
   },
   {
     path: 'note',
-    loadChildren: () => import('./note-demo/note-demo.module').then(m => m.NoteDemoModule),
+    loadComponent: () => import('./note-demo/note-demo.component').then(m => m.NoteDemoComponent),
   },
   {
     path: 'notification',
-    loadChildren: () => import('./notification-demo/notification-demo.module').then(m => m.NotificationDemoModule),
+    loadComponent: () => import('./notification-demo/notification-demo.component').then(m => m.NotificationDemoComponent),
   },
   {
     path: 'progress-bar',
-    loadChildren: () => import('./progress-bar-demo/progress-bar-demo.module').then(m => m.ProgressBarDemoModule),
+    loadComponent: () => import('./progress-bar-demo/progress-bar-demo.component').then(m => m.ProgressBarDemoComponent),
   },
   {
     path: 'select',
-    loadChildren: () => import('./select-demo/select-demo.module').then(m => m.SelectDemoModule),
+    loadComponent: () => import('./select-demo/select-demo.component').then(m => m.SelectDemoComponent),
   },
   {
     path: 'sidenav',
-    loadChildren: () => import('./sidenav-demo/sidenav-demo.module').then(m => m.SidenavDemoModule),
+    loadComponent: () => import('./sidenav-demo/sidenav-demo.component').then(m => m.SidenavDemoComponent),
   },
   {
     path: 'table',
-    loadChildren: () => import('./table-demo/table-demo.module').then(m => m.TableDemoModule),
+    loadComponent: () => import('./table-demo/table-demo.component').then(m => m.TableDemoComponent),
   },
   {
     path: 'tabview',
-    loadChildren: () => import('./tabview-demo/tabview-demo.module').then(m => m.TabviewDemoModule),
+    loadComponent: () => import('./tabview-demo/tabview-demo.component').then(m => m.TabviewDemoComponent),
   },
   {
     path: 'tooltip',
-    loadChildren: () => import('./tooltip-demo/tooltip-demo.module').then(m => m.TooltipDemoModule),
+    loadComponent: () => import('./tooltip-demo/tooltip-demo.component').then(m => m.TooltipDemoComponent),
   },
   {
     path: 'upload',
-    loadChildren: () => import('./upload-demo/upload-demo.module').then(m => m.UploadDemoModule),
+    loadComponent: () => import('./upload-demo/upload-demo.component').then(m => m.UploadDemoComponent),
   },
   {
     path: 'widget',
-    loadChildren: () => import('./widget-demo/widget-demo.module').then(m => m.WidgetdDemoModule),
+    loadComponent: () => import('./widget-demo/widget-demo.component').then(m => m.WidgetDemoComponent),
   },
   {
     path: 'wizard',
-    loadChildren: () => import('./wizard-demo/wizard-demo.module').then(m => m.WizardDemoModule),
+    loadComponent: () => import('./wizard-demo/wizard-demo.component').then(m => m.WizardDemoComponent),
   },
 ];
 

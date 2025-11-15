@@ -7,6 +7,7 @@ import { EscapeHtmlPipe } from '../../../../shared/pipes/escape-html/escape-html
     selector: 'fusion-demo-forms-textarea',
     templateUrl: './forms-textarea-demo.component.html',
     styleUrls: ['../forms-demo-shared.scss'],
+    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, ValidationStylingModule, EscapeHtmlPipe]
 })
 export class FormsTextareaDemoComponent {

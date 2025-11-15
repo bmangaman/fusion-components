@@ -13,6 +13,7 @@ import { SelectModule } from '../../../../../../fusion-components/src/lib/compon
     selector: 'fusion-demo-select',
     templateUrl: './select-demo.component.html',
     styleUrls: ['./select-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, SelectModule]
 })
 export class SelectDemoComponent {

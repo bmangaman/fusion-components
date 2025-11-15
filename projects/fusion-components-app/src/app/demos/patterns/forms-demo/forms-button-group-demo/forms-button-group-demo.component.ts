@@ -5,6 +5,7 @@ import { EscapeHtmlPipe } from '../../../../shared/pipes/escape-html/escape-html
     selector: 'fusion-demo-forms-button-group',
     templateUrl: './forms-button-group-demo.component.html',
     styleUrls: ['../forms-demo-shared.scss'],
+    standalone: true,
     imports: [EscapeHtmlPipe]
 })
 export class FormsButtonGroupDemoComponent {

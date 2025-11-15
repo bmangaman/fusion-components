@@ -1,15 +1,16 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
-import { ActivatedRoute, Data, Event, NavigationEnd, Router, RoutesRecognized } from '@angular/router';
+import { ActivatedRoute, Data, Event, NavigationEnd, Router, RoutesRecognized, RouterOutlet } from '@angular/router';
 
 import { filter, map, tap } from 'rxjs/operators';
 
-import { NavItem } from '@fusion-components/lib/components/sidenav/sidenav.interface';
+import { NavItem, SidenavModule } from '@fusion-components';
 
 @Component({
     selector: 'fusion-demo-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [RouterOutlet, SidenavModule]
 })
 export class AppComponent implements OnInit {
   rootRoute: string;

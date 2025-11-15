@@ -9,6 +9,7 @@ import { TemplateModule } from '../../../../../../fusion-components/src/lib/dire
     selector: 'fusion-demo-tabview',
     templateUrl: './tabview-demo.component.html',
     styleUrls: ['./tabview-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, TabviewModule, TemplateModule]
 })
 export class TabviewDemoComponent implements OnInit {

@@ -8,6 +8,7 @@ import { WizardModule } from '../../../../../../fusion-components/src/lib/compon
     selector: 'fusion-demo-wizard',
     templateUrl: './wizard-demo.component.html',
     styleUrls: ['./wizard-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, WizardModule]
 })
 export class WizardDemoComponent {

@@ -7,6 +7,7 @@ import { ObjectKeysModule } from '../../../../../../fusion-components/src/lib/pi
     selector: 'fusion-demo-tokens',
     templateUrl: './tokens-pattern.component.html',
     styleUrls: ['./tokens-pattern.component.scss'],
+    standalone: true,
     imports: [DemoComponent, NgStyle, ObjectKeysModule]
 })
 export class TokensPatternComponent {

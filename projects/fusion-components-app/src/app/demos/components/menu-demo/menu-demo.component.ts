@@ -13,6 +13,7 @@ import { EnumToArrayModule } from '../../../../../../fusion-components/src/lib/p
     selector: 'fusion-demo-menu',
     templateUrl: './menu-demo.component.html',
     styleUrls: ['./menu-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, MenuModule, TemplateModule, ButtonModule, AutofocusModule, EnumToArrayModule]
 })
 export class MenuDemoComponent {

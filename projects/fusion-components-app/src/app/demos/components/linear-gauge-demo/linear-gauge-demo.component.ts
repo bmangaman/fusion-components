@@ -9,6 +9,7 @@ import { LinearGaugeModule } from '../../../../../../fusion-components/src/lib/c
     selector: 'fusion-demo-linear-gauge',
     templateUrl: './linear-gauge-demo.component.html',
     styleUrls: ['./linear-gauge-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, LinearGaugeModule]
 })
 export class LinearGaugeDemoComponent {

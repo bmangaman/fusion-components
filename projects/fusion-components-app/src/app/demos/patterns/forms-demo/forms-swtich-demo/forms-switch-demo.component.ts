@@ -6,6 +6,7 @@ import { EscapeHtmlPipe } from '../../../../shared/pipes/escape-html/escape-html
     selector: 'fusion-demo-forms-switch',
     templateUrl: './forms-switch-demo.component.html',
     styleUrls: ['../forms-demo-shared.scss'],
+    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, EscapeHtmlPipe]
 })
 export class FormsSwitchDemoComponent implements OnInit {

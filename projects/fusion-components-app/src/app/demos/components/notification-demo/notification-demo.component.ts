@@ -10,6 +10,7 @@ import { TemplateModule } from '../../../../../../fusion-components/src/lib/dire
     selector: 'fusion-demo-notification-demo',
     templateUrl: './notification-demo.component.html',
     styleUrls: ['./notification-demo.component.scss'],
+    standalone: true,
     imports: [DemoComponent, FormsModule, ReactiveFormsModule, NgClass, NotificationModule, TemplateModule, JsonPipe]
 })
 export class NotificationDemoComponent implements OnInit {
