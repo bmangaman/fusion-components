@@ -87,7 +87,7 @@ export class UploadComponent extends UnsubscribeComponent implements OnDestroy {
    * after successful file upload. It should return the http observable which this component will subscribe to in order to do the delete.
    *  Note that it should explicitly scoped to work properly, like [removeFilesFunction]="myUploadFunction.bind(this)".
    */
-  @Input() removeFilesFunction: (files: File[]) => Observable<HttpEvent<any>>;
+  @Input({ required: false }) removeFilesFunction?: (files: File[]) => Observable<HttpEvent<any>>;
 
   /**
    * Determines the id of the upload input and label.
@@ -161,7 +161,7 @@ export class UploadComponent extends UnsubscribeComponent implements OnDestroy {
   @Input() isProgressInBytes: boolean = false;
 
   /**
-   * Determiens whether or not all active subscriptions are terminated on component teardown.
+   * Determines whether or not all active subscriptions are terminated on component teardown.
    * True by default.
    */
   @Input() areSubscriptionsCancelledOnDestroy: boolean = true;

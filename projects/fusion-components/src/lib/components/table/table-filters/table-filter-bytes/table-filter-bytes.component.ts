@@ -51,14 +51,18 @@ export class TableFilterBytesComponent extends TableFilterComponent {
     {
       name: TableFilterBytesInputComparator.GREATER_THAN,
       label: this.generateComparatorLabel(TableFilterBytesInputComparator.GREATER_THAN),
-      test: (value: number): boolean =>
-        this.bytesPipe.transform(this.useValueTransformFunctionIfItExists(value), this.bytesBase, false) > this.getFormValue(),
+      test: (value: number): boolean => {
+        const transformValue: number = +this.bytesPipe.transform(this.useValueTransformFunctionIfItExists(value), this.bytesBase, false);
+        return transformValue > this.getFormValue();
+      }
     },
     {
       name: TableFilterBytesInputComparator.LESS_THAN,
       label: this.generateComparatorLabel(TableFilterBytesInputComparator.LESS_THAN),
-      test: (value: number): boolean =>
-        this.bytesPipe.transform(this.useValueTransformFunctionIfItExists(value), this.bytesBase, false) < this.getFormValue(),
+      test: (value: number): boolean => {
+        const transformValue: number = +this.bytesPipe.transform(this.useValueTransformFunctionIfItExists(value), this.bytesBase, false);
+        return transformValue < this.getFormValue();
+      }
     },
   ].map(comparator => ({
     ...comparator,
