@@ -1,4 +1,4 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,38 +20,31 @@ export class LazyTranslateLoader implements TranslateLoader {
   }
 }
 
-@NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    BrowserModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useClass: LazyTranslateLoader
-      }
-    }),
-
-    SidenavModule,
-  ],
-  providers: [
-    WindowProvider,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: UploadDemoInterceptor,
-      multi: true,
-    },
-    DomService,
-    ModalService,
-    TooltipService,
-    TranslationService,
-  ],
-  bootstrap: [
-    AppComponent,
-  ],
-})
+@NgModule({ declarations: [
+        AppComponent,
+    ],
+    bootstrap: [
+        AppComponent,
+    ], imports: [AppRoutingModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useClass: LazyTranslateLoader
+            }
+        }),
+        SidenavModule], providers: [
+        WindowProvider,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: UploadDemoInterceptor,
+            multi: true,
+        },
+        DomService,
+        ModalService,
+        TooltipService,
+        TranslationService,
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {}

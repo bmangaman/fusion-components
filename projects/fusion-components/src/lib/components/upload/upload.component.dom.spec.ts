@@ -1,5 +1,5 @@
-import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClient, HttpEvent, HttpRequest, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { Component } from '@angular/core';
 import { ComponentFixture, discardPeriodicTasks, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 
@@ -81,14 +81,12 @@ describe('UploadComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
+    declarations: [
         UploadTestComponent,
-      ],
-      imports: [
-        HttpClientTestingModule,
-        UploadModule,
-      ],
-    }).compileComponents();
+    ],
+    imports: [UploadModule],
+    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+}).compileComponents();
   }));
 
   beforeEach(() => {
