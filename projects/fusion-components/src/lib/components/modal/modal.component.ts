@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { DOCUMENT } from '@angular/common';
+
 import {
   Component,
   ContentChild,
@@ -9,6 +9,7 @@ import {
   HostListener,
   Inject, OnDestroy,
   Output,
+  DOCUMENT
 } from '@angular/core';
 
 import { ModalContentComponent } from './modal-content';

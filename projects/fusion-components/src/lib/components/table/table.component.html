@@ -1,366 +1,371 @@
 <div [ngClass]="tableCssClasses" [attr.id]="'f-table--' + tableUuid">
 
   <!-- START: header -->
-  <div class="f-table__header" *ngIf="enabledFunctionality.header">
-    <ng-container *ngIf="tableHeader; else isTableTitle">
-      <ng-container *ngTemplateOutlet="tableHeader"></ng-container>
-    </ng-container>
-    <ng-template #isTableTitle>
-      <h3 class="f-h3 f-table__header-title">{{ tableTitle }}</h3>
-    </ng-template>
-  </div>
+  @if (enabledFunctionality.header) {
+    <div class="f-table__header">
+      @if (tableHeader) {
+        <ng-container *ngTemplateOutlet="tableHeader"></ng-container>
+      } @else {
+        <h3 class="f-h3 f-table__header-title">{{ tableTitle }}</h3>
+      }
+    </div>
+  }
   <!-- END: header -->
 
   <!-- START: controls -->
-  <div class="f-table__controls" *ngIf="enabledFunctionality.controls">
-    <div class="f-table__controls-left">
-
-      <!-- START: Table Views -->
-      <div class="f-button-group f-table__controls-table-views">
-        <ng-container *ngFor="let tableView of tableViews">
-          <label
-            class="f-button__radio"
-            for="table-{{ tableUuid }}-views-{{ tableView?.label }}"
-            role="button"
-            *ngIf="tableView?.isVisible">
-            <input
-              class="f-button__radio-input"
-              id="table-{{ tableUuid }}-views-{{ tableView?.label }}"
-              type="radio"
-              name="table-views"
-              [value]="tableView"
-              [(ngModel)]="appliedTableView" />
-            <span class="f-button f-button--secondary f-button--small f-button__radio-inner f-table__controls--button f-table__controls--button-view">
-              <span class="f-button__radio-inner-text">{{ tableView?.label }}</span>
-            </span>
-          </label>
-        </ng-container>
+  @if (enabledFunctionality.controls) {
+    <div class="f-table__controls">
+      <div class="f-table__controls-left">
+        <!-- START: Table Views -->
+        <div class="f-button-group f-table__controls-table-views">
+          @for (tableView of tableViews; track tableView) {
+            @if (tableView?.isVisible) {
+              <label
+                class="f-button__radio"
+                for="table-{{ tableUuid }}-views-{{ tableView?.label }}"
+                role="button"
+                >
+                <input
+                  class="f-button__radio-input"
+                  id="table-{{ tableUuid }}-views-{{ tableView?.label }}"
+                  type="radio"
+                  name="table-views"
+                  [value]="tableView"
+                  [(ngModel)]="appliedTableView" />
+                  <span class="f-button f-button--secondary f-button--small f-button__radio-inner f-table__controls--button f-table__controls--button-view">
+                    <span class="f-button__radio-inner-text">{{ tableView?.label }}</span>
+                  </span>
+                </label>
+              }
+            }
+          </div>
+          <!-- END: Table Views -->
+          <ng-container *ngTemplateOutlet="leftControls"></ng-container>
+        </div>
+        <div class="f-table__controls-right">
+          <ng-container *ngTemplateOutlet="rightControls"></ng-container>
+          @if (enabledFunctionality.filtering) {
+            <f-table-filter-selector
+              [filters]="filters"
+              [externalAppliedFilters]="appliedFilters"
+              [quickFilters]="quickFilters"
+              [tableView]="appliedTableView"
+              [data]="selectedTableData$ | async"
+              (filteredData)="filterTableData($event)"
+              [translations]="translations.filtering"
+              (appliedFiltersChange)="appliedFiltersChange($event)">
+            </f-table-filter-selector>
+          }
+          <div class="f-table__controls-button-separator"></div>
+          @if (!!columns?.length) {
+            <f-table-column-selector
+              [columns]="columns"
+              [translations]="translations.columnSelector"
+              (visibleColumns)="updateColumnVisibilityChange($event)">
+            </f-table-column-selector>
+          }
+          <div class="f-table__controls-button-separator"></div>
+          <!-- START: Refresh Button -->
+          @if (refresh.observers.length > 0) {
+            <f-button
+              [classes]="['f-table__controls-button', 'f-table__controls--button--refresh']"
+              [type]="ButtonType.SECONDARY"
+              [size]="Size.SMALL"
+              [noBorder]="true"
+              ariaLabel="refresh"
+              icon="mdi-refresh"
+              (buttonClick)="refreshData()">
+            </f-button>
+            <!-- END: Refresh Button -->
+            <div class="f-table__controls-button-separator"></div>
+          }
+          <!-- START: Download Button -->
+          <f-button
+            fusionUiDownload
+            [fileName]="exportFileName || 'table-data'"
+            [fileExtension]="DownloadDirectiveFileType.CSV"
+            [content]="finalTableData$ | async | downloadTableData: columns:downloadTransformationFunction"
+            [classes]="['f-table__controls-button', 'f-table__controls--button--download']"
+            [type]="ButtonType.SECONDARY"
+            [noBorder]="true"
+            [size]="Size.SMALL"
+            ariaLabel="download"
+            icon="mdi-download">
+          </f-button>
+          <!-- END: Download Button -->
+        </div>
       </div>
-      <!-- END: Table Views -->
+    }
+    <!-- END: controls -->
 
-      <ng-container *ngTemplateOutlet="leftControls"></ng-container>
-    </div>
-    <div class="f-table__controls-right">
-      <ng-container *ngTemplateOutlet="rightControls"></ng-container>
+    <!-- START: table -->
+    <div class="f-table__container" [ngClass]="{ 'f-table__container--fill-container': fillContainer }">
 
-      <f-table-filter-selector
-        *ngIf="enabledFunctionality.filtering"
-        [filters]="filters"
-        [externalAppliedFilters]="appliedFilters"
-        [quickFilters]="quickFilters"
-        [tableView]="appliedTableView"
-        [data]="selectedTableData$ | async"
-        (filteredData)="filterTableData($event)"
-        [translations]="translations.filtering"
-        (appliedFiltersChange)="appliedFiltersChange($event)">
-      </f-table-filter-selector>
+      @if (flags.resizeIndicatorVisibleListener) {
+        <span
+          class="f-table__table-cell-column-resize-indicator"
+          [ngStyle]="{left: resizeXCoordinate + 'px'}">
+        </span>
+      }
 
-      <div class="f-table__controls-button-separator"></div>
-
-      <f-table-column-selector
-        *ngIf="!!columns?.length"
-        [columns]="columns"
-        [translations]="translations.columnSelector"
-        (visibleColumns)="updateColumnVisibilityChange($event)">
-      </f-table-column-selector>
-
-      <div class="f-table__controls-button-separator"></div>
-
-      <!-- START: Refresh Button -->
-      <ng-container *ngIf="refresh.observers.length > 0">
-        <f-button
-          [classes]="['f-table__controls-button', 'f-table__controls--button--refresh']"
-          [type]="ButtonType.SECONDARY"
-          [size]="Size.SMALL"
-          [noBorder]="true"
-          ariaLabel="refresh"
-          icon="mdi-refresh"
-          (buttonClick)="refreshData()">
-        </f-button>
-        <!-- END: Refresh Button -->
-
-        <div class="f-table__controls-button-separator"></div>
-      </ng-container>
-
-      <!-- START: Download Button -->
-      <f-button
-        fusionUiDownload
-        [fileName]="exportFileName || 'table-data'"
-        [fileExtension]="DownloadDirectiveFileType.CSV"
-        [content]="finalTableData$ | async | downloadTableData: columns:downloadTransformationFunction"
-        [classes]="['f-table__controls-button', 'f-table__controls--button--download']"
-        [type]="ButtonType.SECONDARY"
-        [noBorder]="true"
-        [size]="Size.SMALL"
-        ariaLabel="download"
-        icon="mdi-download">
-      </f-button>
-      <!-- END: Download Button -->
-
-    </div>
-  </div>
-  <!-- END: controls -->
-
-  <!-- START: table -->
-  <div class="f-table__container" [ngClass]="{ 'f-table__container--fill-container': fillContainer }">
-
-    <span
-      *ngIf="flags.resizeIndicatorVisibleListener"
-      class="f-table__table-cell-column-resize-indicator"
-      [ngStyle]="{left: resizeXCoordinate + 'px'}">
-    </span>
-
-    <div class="f-table__state f-table__state--{{ state | getTableState: !!flags.noResults }}">
-      <ng-container
+      <div class="f-table__state f-table__state--{{ state | getTableState: !!flags.noResults }}">
+        <ng-container
         *fusionUiState="
           state | getTableState: !!flags.noResults; location: StateLocation.TABLE;
           error:tableError;
           loading:tableLoading;
           noResults:tableNoResults;">
-        <ng-container *ngTemplateOutlet="table"></ng-container>
-      </ng-container>
+          <ng-container *ngTemplateOutlet="table"></ng-container>
+        </ng-container>
+      </div>
+
     </div>
+    <!-- END: table -->
 
+    <!-- START: pagination -->
+    @if (enabledFunctionality.pagination) {
+      <f-table-pagination
+        [isDisabled]="(state | getTableState: !!flags.noResults) !== State.LOADED"
+        [data]="filteredTableData$ | async"
+        [config]="paginationConfig"
+        [translations]="translations.pagination"
+        (paginatedTableData)="paginateTableData($event)"
+        (paginationChange)="paginationChange.emit($event)"
+        (deselectAll)="deselectAll()">
+      </f-table-pagination>
+    }
+    <!-- END: pagination -->
   </div>
-  <!-- END: table -->
 
-  <!-- START: pagination -->
-  <f-table-pagination
-    *ngIf="enabledFunctionality.pagination"
-    [isDisabled]="(state | getTableState: !!flags.noResults) !== State.LOADED"
-    [data]="filteredTableData$ | async"
-    [config]="paginationConfig"
-    [translations]="translations.pagination"
-    (paginatedTableData)="paginateTableData($event)"
-    (paginationChange)="paginationChange.emit($event)"
-    (deselectAll)="deselectAll()">
-  </f-table-pagination>
-  <!-- END: pagination -->
-</div>
-
-<ng-template #table>
-  <table class="f-table__table" *ngIf="finalTableData$ | async as finalTableData">
-
-    <thead class="f-table__table-thead">
-      <tr class="f-table__table-row f-table__table-row--head">
-
-        <!-- START: row selection column header -->
-        <f-table-cell-header
-          *ngIf="enabledFunctionality.rowSelection"
-          [cssClasses]="['f-table__table-cell--selection-control']"
-          [col]="{ width: '25px', cellContentAlignment: TableCellContentAlignment.CENTER }"
-          [isSticky]="fillContainer"
-          [shouldProjectContent]="true"
-          [spacing]="spacing">
-          <div *ngIf="selectionMode === SelectionMode.MULTIPLE" class="f-form__fieldset f-form__fieldset--no-margin">
-            <span class="f-form__checkbox">
-              <label for="f-table-{{ tableUuid }}-checkbox-toggle-all" class="f-form__checkbox-label">
-                <input
-                  class="f-form__checkbox-input"
-                  type="checkbox"
-                  (change)="updateSelectedData(undefined, true)"
-                  name="f-table-{{ tableUuid }}-checkbox-toggle-all"
-                  id="f-table-{{ tableUuid }}-checkbox-toggle-all"
-                  [attr.aria-label]="translations.selection.selectAll"
-                  [checked]="finalTableData | areAllVisibleRowsSelected"
-                  [indeterminate]="finalTableData | areAnyRowsSelected">
-                <span class="f-form__checkbox-button"></span>
-              </label>
-            </span>
-          </div>
-        </f-table-cell-header>
-        <!-- END: row selection column header -->
-
-        <!-- START: row expansion column header -->
-        <f-table-cell-header
-          *ngIf="enabledFunctionality.rowExpansion"
-          [cssClasses]="['f-table__table-cell--expansion-control']"
-          [col]="{ width: '25px', cellContentAlignment: TableCellContentAlignment.CENTER }"
-          [isSticky]="fillContainer"
-          [shouldProjectContent]="true"
-          [spacing]="spacing">
-          <button
-            *ngIf="rowExpansionMode === RowExpansionMode.MULTIPLE"
-            class="f-table__table-cell-expansion-button"
-            [attr.aria-label]="translations.expansion.expandAll"
-            (click)="handleRowExpansion()">
-            <i class="mdi" [ngClass]="flags.areAllVisibleRowsExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
-          </button>
-        </f-table-cell-header>
-        <!-- END: row expansion column header -->
-
-        <!-- START: data column header -->
-        <f-table-cell-header
-          *ngFor="let col of visibleColumns; index as j; trackBy: colTrackByFn"
-          [translations]="translations.tableCell"
-          (sort)="sortTableData($event)"
-          (startResize)="startResize()"
-          (stopResize)="stopResize(col?.field, $event)"
-          [col]="col?.config"
-          [isSticky]="fillContainer"
-          [spacing]="spacing">
-        </f-table-cell-header>
-        <!-- END: data column header -->
-
-        <!-- START: actions column header -->
-        <f-table-cell-header
-          *ngIf="enabledFunctionality.rowActions"
-          [cssClasses]="['f-table__table-cell--actions']"
-          [col]="{ width: '30px', cellContentAlignment: TableCellContentAlignment.CENTER }"
-          [shouldProjectContent]="true"
-          [isSticky]="fillContainer"
-          [spacing]="spacing">
-          {{ translations.actions.columnTitle }}
-        </f-table-cell-header>
-        <!-- END: actions column header -->
-
-      </tr>
-    </thead>
-
-    <tbody class="f-table__table-tbody" *ngIf="(state | getTableState: !!flags.noResults) === State.LOADED">
-      <ng-container *ngFor="let rowData of finalTableData | visibleTableRows ; index as i; trackBy: rowTrackByFn">
-        <tr
-          class="f-table__table-row f-table__table-row--body f-table__table-row--{{ i }} f-table__table-row--{{ rowData?.tableRowUuid }}"
+  <ng-template #table>
+    @if (finalTableData$ | async; as finalTableData) {
+      <table class="f-table__table">
+        <thead class="f-table__table-thead">
+          <tr class="f-table__table-row f-table__table-row--head">
+            <!-- START: row selection column header -->
+            @if (enabledFunctionality.rowSelection) {
+              <f-table-cell-header
+                [cssClasses]="['f-table__table-cell--selection-control']"
+                [col]="{ width: '25px', cellContentAlignment: TableCellContentAlignment.CENTER }"
+                [isSticky]="fillContainer"
+                [shouldProjectContent]="true"
+                [spacing]="spacing">
+                @if (selectionMode === SelectionMode.MULTIPLE) {
+                  <div class="f-form__fieldset f-form__fieldset--no-margin">
+                    <span class="f-form__checkbox">
+                      <label for="f-table-{{ tableUuid }}-checkbox-toggle-all" class="f-form__checkbox-label">
+                        <input
+                          class="f-form__checkbox-input"
+                          type="checkbox"
+                          (change)="updateSelectedData(undefined, true)"
+                          name="f-table-{{ tableUuid }}-checkbox-toggle-all"
+                          id="f-table-{{ tableUuid }}-checkbox-toggle-all"
+                          [attr.aria-label]="translations.selection.selectAll"
+                          [checked]="finalTableData | areAllVisibleRowsSelected"
+                          [indeterminate]="finalTableData | areAnyRowsSelected">
+                          <span class="f-form__checkbox-button"></span>
+                        </label>
+                      </span>
+                    </div>
+                  }
+                </f-table-cell-header>
+              }
+              <!-- END: row selection column header -->
+              <!-- START: row expansion column header -->
+              @if (enabledFunctionality.rowExpansion) {
+                <f-table-cell-header
+                  [cssClasses]="['f-table__table-cell--expansion-control']"
+                  [col]="{ width: '25px', cellContentAlignment: TableCellContentAlignment.CENTER }"
+                  [isSticky]="fillContainer"
+                  [shouldProjectContent]="true"
+                  [spacing]="spacing">
+                  @if (rowExpansionMode === RowExpansionMode.MULTIPLE) {
+                    <button
+                      class="f-table__table-cell-expansion-button"
+                      [attr.aria-label]="translations.expansion.expandAll"
+                      (click)="handleRowExpansion()">
+                      <i class="mdi" [ngClass]="flags.areAllVisibleRowsExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
+                    </button>
+                  }
+                </f-table-cell-header>
+              }
+              <!-- END: row expansion column header -->
+              <!-- START: data column header -->
+              @for (col of visibleColumns; track colTrackByFn(j, col); let j = $index) {
+                <f-table-cell-header
+                  [translations]="translations.tableCell"
+                  (sort)="sortTableData($event)"
+                  (startResize)="startResize()"
+                  (stopResize)="stopResize(col?.field, $event)"
+                  [col]="col?.config"
+                  [isSticky]="fillContainer"
+                  [spacing]="spacing">
+                </f-table-cell-header>
+              }
+              <!-- END: data column header -->
+              <!-- START: actions column header -->
+              @if (enabledFunctionality.rowActions) {
+                <f-table-cell-header
+                  [cssClasses]="['f-table__table-cell--actions']"
+                  [col]="{ width: '30px', cellContentAlignment: TableCellContentAlignment.CENTER }"
+                  [shouldProjectContent]="true"
+                  [isSticky]="fillContainer"
+                  [spacing]="spacing">
+                  {{ translations.actions.columnTitle }}
+                </f-table-cell-header>
+              }
+              <!-- END: actions column header -->
+            </tr>
+          </thead>
+          @if ((state | getTableState: !!flags.noResults) === State.LOADED) {
+            <tbody class="f-table__table-tbody">
+              @for (rowData of finalTableData | visibleTableRows ; track rowTrackByFn(i, rowData); let i = $index) {
+                <tr
+                  class="f-table__table-row f-table__table-row--body f-table__table-row--{{ i }} f-table__table-row--{{ rowData?.tableRowUuid }}"
           [ngClass]="{
             'f-table__table-row--gray' : i % 2 !== 0,
             'f-table__table-row--expandable': enabledFunctionality.rowExpansion && rowData?.isExpandable,
             'f-table__table-row--expanded': enabledFunctionality.rowExpansion && rowData?.isExpanded
           }">
+                  <!-- START: row selection column body -->
+                  @if (enabledFunctionality.rowSelection) {
+                    <f-table-cell-body
+                      [cssClasses]="['f-table__table-cell--selection-control']"
+                      [col]="{ width: '25px', cellContentAlignment: TableCellContentAlignment.CENTER, isOverflowVisible: true }"
+                      [rowData]="rowData"
+                      [shouldProjectContent]="true"
+                      [index]="i"
+                      [spacing]="spacing">
+                      <!-- START: row selection checkbox -->
+                      @if (selectionMode === SelectionMode.MULTIPLE) {
+                        <div class="f-form__fieldset f-form__fieldset--no-margin">
+                          <span class="f-form__checkbox">
+                            <label for="f-table-{{ tableUuid }}-checkbox-{{ i }}" class="f-form__checkbox-label">
+                              <input
+                                [disabled]="!rowData?.isSelectable"
+                                class="f-form__checkbox-input"
+                                [ngClass]="{ 'f-form__checkbox-input--disabled' : !rowData?.isSelectable, 'f-form__radio-input--checked' : rowData?.isSelected }"
+                                type="checkbox"
+                                (change)="updateSelectedData(rowData)"
+                                name="f-table-{{ tableUuid }}-checkbox-{{ i }}"
+                                id="f-table-{{ tableUuid }}-checkbox-{{ i }}"
+                                [attr.aria-label]="translations.selection.select + ' ' + i"
+                                [checked]="rowData?.isSelected">
+                                <span class="f-form__checkbox-button"></span>
+                              </label>
+                            </span>
+                          </div>
+                        }
+                        <!-- END: row selection checkbox -->
+                        <!-- START: row selection radio button -->
+                        @if (selectionMode === SelectionMode.SINGLE) {
+                          <div class="f-form__fieldset f-form__fieldset--no-margin">
+                            <span class="f-form__radio">
+                              <label for="f-table-{{ tableUuid }}-radio-{{ i }}" class="f-form__radio-label">
+                                <input
+                                  [disabled]="!rowData?.isSelectable"
+                                  class="f-form__radio-input"
+                                  [ngClass]="{ 'f-form__radio-input--disabled' : !rowData?.isSelectable, 'f-form__radio-input--checked' : rowData?.isSelected }"
+                                  type="radio"
+                                  (click)="updateSelectedData(rowData)"
+                                  name="f-table-{{ tableUuid }}-radio-{{ i }}"
+                                  id="f-table-{{ tableUuid }}-radio-{{ i }}"
+                                  [attr.aria-label]="translations.selection.select + ' ' + i"
+                                  [checked]="rowData?.isSelected">
+                                  <span class="f-form__radio-button"></span>
+                                </label>
+                              </span>
+                            </div>
+                          }
+                          <!-- END: row selection radio button -->
+                          <ng-container *ngTemplateOutlet="selectionColumn; context: { $implicit: rowData }"></ng-container>
+                        </f-table-cell-body>
+                      }
+                      <!-- END: row selection column body -->
+                      <!-- START: row expansion column body -->
+                      @if (enabledFunctionality.rowExpansion) {
+                        <f-table-cell-body
+                          [cssClasses]="['f-table__table-cell--expansion-control']"
+                          [col]="{ width: '25px', cellContentAlignment: TableCellContentAlignment.CENTER }"
+                          [rowData]="rowData"
+                          [shouldProjectContent]="true"
+                          [index]="i"
+                          [spacing]="spacing">
+                          <button
+                            class="f-table__table-cell-expansion-button"
+                            (click)="handleRowExpansion(rowData, i)"
+                            [disabled]="!rowData?.isExpandable"
+                            [attr.aria-label]="translations.expansion.expand + ' ' + i"
+                            [attr.aria-disabled]="!rowData?.isExpandable">
+                            <i class="mdi" [ngClass]="rowData?.isExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
+                          </button>
+                        </f-table-cell-body>
+                      }
+                      <!-- END: row expansion column body -->
+                      <!-- START: data column body -->
+                      @for (col of visibleColumns; track colTrackByFn(j, col); let j = $index) {
+                        <f-table-cell-body
+                          [col]="col?.config"
+                          [rowData]="rowData"
+                          [index]="i"
+                          [spacing]="spacing">
+                        </f-table-cell-body>
+                      }
+                      <!-- END: data column body -->
+                      <!-- START: actions column body -->
+                      @if (enabledFunctionality.rowActions) {
+                        <f-table-cell-body
+                          [cssClasses]="['f-table__table-cell--actions']"
+                          [col]="{ width: '30px', cellContentAlignment: TableCellContentAlignment.CENTER, isOverflowVisible: true }"
+                          [rowData]="rowData"
+                          [shouldProjectContent]="true"
+                          [index]="i"
+                          [spacing]="spacing">
+                          <f-table-actions
+                            [templateRef]="rowActions.template || null"
+                            [rowData]="rowData"
+                            [isDisabled]="!rowData?.isActionable"
+                            [dialogCssClasses]="rowActions.dialogCssClasses">
+                          </f-table-actions>
+                        </f-table-cell-body>
+                      }
+                      <!-- END: actions column body -->
+                    </tr>
+                    <!-- START: expansion row -->
+                    @if (enabledFunctionality.rowExpansion && rowData?.isExpanded) {
+                      <tr
+                        class="f-table__table-row f-table__table-row--body f-table__table-row--expansion"
+                        [ngClass]="{ 'f-table__table-row--gray' : i % 2 !== 0 }">
+                        <td [attr.colspan]="(visibleColumns.length || 0) + (!!rowExpansion ? 1 : 0) + (!!rowActions ? 1 : 0) + (!!selectionMode ? 1 : 0)">
+                          <ng-container *ngTemplateOutlet="rowExpansion; context: { $implicit: rowData }"></ng-container>
+                        </td>
+                      </tr>
+                    }
+                    <!-- END: expansion row -->
+                  }
+                </tbody>
+              }
+            </table>
+          }
+        </ng-template>
 
-          <!-- START: row selection column body -->
-          <f-table-cell-body
-            *ngIf="enabledFunctionality.rowSelection"
-            [cssClasses]="['f-table__table-cell--selection-control']"
-            [col]="{ width: '25px', cellContentAlignment: TableCellContentAlignment.CENTER, isOverflowVisible: true }"
-            [rowData]="rowData"
-            [shouldProjectContent]="true"
-            [index]="i"
-            [spacing]="spacing">
-            <!-- START: row selection checkbox -->
-            <div *ngIf="selectionMode === SelectionMode.MULTIPLE" class="f-form__fieldset f-form__fieldset--no-margin">
-              <span class="f-form__checkbox">
-                <label for="f-table-{{ tableUuid }}-checkbox-{{ i }}" class="f-form__checkbox-label">
-                  <input
-                    [disabled]="!rowData?.isSelectable"
-                    class="f-form__checkbox-input"
-                    [ngClass]="{ 'f-form__checkbox-input--disabled' : !rowData?.isSelectable, 'f-form__radio-input--checked' : rowData?.isSelected }"
-                    type="checkbox"
-                    (change)="updateSelectedData(rowData)"
-                    name="f-table-{{ tableUuid }}-checkbox-{{ i }}"
-                    id="f-table-{{ tableUuid }}-checkbox-{{ i }}"
-                    [attr.aria-label]="translations.selection.select + ' ' + i"
-                    [checked]="rowData?.isSelected">
-                  <span class="f-form__checkbox-button"></span>
-                </label>
-              </span>
-            </div>
-            <!-- END: row selection checkbox -->
-            <!-- START: row selection radio button -->
-            <div *ngIf="selectionMode === SelectionMode.SINGLE" class="f-form__fieldset f-form__fieldset--no-margin">
-              <span class="f-form__radio">
-                <label for="f-table-{{ tableUuid }}-radio-{{ i }}" class="f-form__radio-label">
-                  <input
-                    [disabled]="!rowData?.isSelectable"
-                    class="f-form__radio-input"
-                    [ngClass]="{ 'f-form__radio-input--disabled' : !rowData?.isSelectable, 'f-form__radio-input--checked' : rowData?.isSelected }"
-                    type="radio"
-                    (click)="updateSelectedData(rowData)"
-                    name="f-table-{{ tableUuid }}-radio-{{ i }}"
-                    id="f-table-{{ tableUuid }}-radio-{{ i }}"
-                    [attr.aria-label]="translations.selection.select + ' ' + i"
-                    [checked]="rowData?.isSelected">
-                  <span class="f-form__radio-button"></span>
-                </label>
-              </span>
-            </div>
-            <!-- END: row selection radio button -->
-            <ng-container *ngTemplateOutlet="selectionColumn; context: { $implicit: rowData }"></ng-container>
-          </f-table-cell-body>
-          <!-- END: row selection column body -->
+        <ng-template #tableError>
+          <ng-container *ngTemplateOutlet="table"></ng-container>
+          <div class="f-table__state-wrapper">
+            <f-state [state]="State.ERROR" [location]="StateLocation.TABLE"></f-state>
+          </div>
+        </ng-template>
 
-          <!-- START: row expansion column body -->
-          <f-table-cell-body
-            *ngIf="enabledFunctionality.rowExpansion"
-            [cssClasses]="['f-table__table-cell--expansion-control']"
-            [col]="{ width: '25px', cellContentAlignment: TableCellContentAlignment.CENTER }"
-            [rowData]="rowData"
-            [shouldProjectContent]="true"
-            [index]="i"
-            [spacing]="spacing">
-            <button
-              class="f-table__table-cell-expansion-button"
-              (click)="handleRowExpansion(rowData, i)"
-              [disabled]="!rowData?.isExpandable"
-              [attr.aria-label]="translations.expansion.expand + ' ' + i"
-              [attr.aria-disabled]="!rowData?.isExpandable">
-              <i class="mdi" [ngClass]="rowData?.isExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
-            </button>
-          </f-table-cell-body>
-          <!-- END: row expansion column body -->
+        <ng-template #tableLoading>
+          <ng-container *ngTemplateOutlet="table"></ng-container>
+          <div class="f-table__state-wrapper">
+            <f-state [state]="State.LOADING" [location]="StateLocation.TABLE"></f-state>
+          </div>
+        </ng-template>
 
-          <!-- START: data column body -->
-          <f-table-cell-body
-            *ngFor="let col of visibleColumns; index as j; trackBy: colTrackByFn"
-            [col]="col?.config"
-            [rowData]="rowData"
-            [index]="i"
-            [spacing]="spacing">
-          </f-table-cell-body>
-          <!-- END: data column body -->
-
-          <!-- START: actions column body -->
-          <f-table-cell-body
-            *ngIf="enabledFunctionality.rowActions"
-            [cssClasses]="['f-table__table-cell--actions']"
-            [col]="{ width: '30px', cellContentAlignment: TableCellContentAlignment.CENTER, isOverflowVisible: true }"
-            [rowData]="rowData"
-            [shouldProjectContent]="true"
-            [index]="i"
-            [spacing]="spacing">
-            <f-table-actions
-              [templateRef]="rowActions.template || null"
-              [rowData]="rowData"
-              [isDisabled]="!rowData?.isActionable"
-              [dialogCssClasses]="rowActions.dialogCssClasses">
-            </f-table-actions>
-          </f-table-cell-body>
-          <!-- END: actions column body -->
-
-        </tr>
-
-        <!-- START: expansion row -->
-        <tr
-          *ngIf="enabledFunctionality.rowExpansion && rowData?.isExpanded"
-          class="f-table__table-row f-table__table-row--body f-table__table-row--expansion"
-          [ngClass]="{ 'f-table__table-row--gray' : i % 2 !== 0 }">
-          <td [attr.colspan]="(visibleColumns.length || 0) + (!!rowExpansion ? 1 : 0) + (!!rowActions ? 1 : 0) + (!!selectionMode ? 1 : 0)">
-            <ng-container *ngTemplateOutlet="rowExpansion; context: { $implicit: rowData }"></ng-container>
-          </td>
-        </tr>
-        <!-- END: expansion row -->
-      </ng-container>
-    </tbody>
-
-  </table>
-</ng-template>
-
-<ng-template #tableError>
-  <ng-container *ngTemplateOutlet="table"></ng-container>
-  <div class="f-table__state-wrapper">
-    <f-state [state]="State.ERROR" [location]="StateLocation.TABLE"></f-state>
-  </div>
-</ng-template>
-
-<ng-template #tableLoading>
-  <ng-container *ngTemplateOutlet="table"></ng-container>
-  <div class="f-table__state-wrapper">
-    <f-state [state]="State.LOADING" [location]="StateLocation.TABLE"></f-state>
-  </div>
-</ng-template>
-
-<ng-template #tableNoResults>
-  <ng-container *ngTemplateOutlet="table"></ng-container>
-  <div class="f-table__state-wrapper">
-    <f-state [state]="State.NO_RESULTS" [location]="StateLocation.TABLE"></f-state>
-  </div>
-</ng-template>
+        <ng-template #tableNoResults>
+          <ng-container *ngTemplateOutlet="table"></ng-container>
+          <div class="f-table__state-wrapper">
+            <f-state [state]="State.NO_RESULTS" [location]="StateLocation.TABLE"></f-state>
+          </div>
+        </ng-template>

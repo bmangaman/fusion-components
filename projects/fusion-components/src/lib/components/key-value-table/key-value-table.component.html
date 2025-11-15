@@ -1,24 +1,24 @@
 <table class="f-key-value-table">
-  <ng-container *ngFor="let rowData of data; index as i;">
-    <tr
-      *ngIf="rowData"
-      class="f-key-value-table__row f-key-value-table__row--{{ rowData?.key }}"
-      [ngClass]="{ 'f-key-value-table__row--grey': i % 2 === 0 }">
-
-      <th class="f-key-value-table__cell f-key-value-table__cell--header">
-        <ng-container *ngIf="rowData?.keyTemplate; else noKeyTemplate">
-          <ng-container *ngTemplateOutlet="rowData.keyTemplate || null; context: { $implicit: rowData }"></ng-container>
-        </ng-container>
-        <ng-template #noKeyTemplate>{{ rowData?.keyText | toObservable | async }}</ng-template>
-      </th>
-
-      <td class="f-key-value-table__cell f-key-value-table__cell--body">
-        <ng-container *ngIf="rowData?.valueTemplate; else noValueTemplate">
-          <ng-container *ngTemplateOutlet="rowData.valueTemplate || null; context: { $implicit: rowData }"></ng-container>
-        </ng-container>
-        <ng-template #noValueTemplate>{{ rowData?.value | toObservable | async }}</ng-template>
-      </td>
-
-    </tr>
-  </ng-container>
+  @for (rowData of data; track rowData; let i = $index) {
+    @if (rowData) {
+      <tr
+        class="f-key-value-table__row f-key-value-table__row--{{ rowData?.key }}"
+        [ngClass]="{ 'f-key-value-table__row--grey': i % 2 === 0 }">
+        <th class="f-key-value-table__cell f-key-value-table__cell--header">
+          @if (rowData?.keyTemplate) {
+            <ng-container *ngTemplateOutlet="rowData.keyTemplate || null; context: { $implicit: rowData }"></ng-container>
+          } @else {
+            {{ rowData?.keyText | toObservable | async }}
+          }
+        </th>
+        <td class="f-key-value-table__cell f-key-value-table__cell--body">
+          @if (rowData?.valueTemplate) {
+            <ng-container *ngTemplateOutlet="rowData.valueTemplate || null; context: { $implicit: rowData }"></ng-container>
+          } @else {
+            {{ rowData?.value | toObservable | async }}
+          }
+        </td>
+      </tr>
+    }
+  }
 </table>

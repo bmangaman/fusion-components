@@ -1,140 +1,132 @@
 <fusion-demo titleText="Widget">
 
-  <form form class="fusion-components-demo__form f-form" *ngIf="widgetForm" [formGroup]="widgetForm">
-    <h3>Configuration Options:</h3>
+  @if (widgetForm) {
+    <form form class="fusion-components-demo__form f-form" [formGroup]="widgetForm">
+      <h3>Configuration Options:</h3>
+      <!-- START: isTimestampDisplayed checkbox -->
+      <div class="f-form__fieldset">
+        <span class="f-form__checkbox">
+          <label for="isTimestampDisplayed-checkbox" class="f-form__checkbox-label">
+            <input
+              class="f-form__checkbox-input"
+              type="checkbox"
+              value="true"
+              name="isTimestampDisplayed-checkbox"
+              id="isTimestampDisplayed-checkbox"
+              formControlName="isTimestampDisplayed">
+              <span class="f-form__checkbox-button"></span>
+              <span class="f-form__checkbox-label-text">Is Timestamp Displayed</span>
+            </label>
+          </span>
+        </div>
+        <!-- END: isTimestampDisplayed checkbox -->
+        <!-- START: isRefreshButtonDisplayed checkbox -->
+        <div class="f-form__fieldset">
+          <span class="f-form__checkbox">
+            <label for="isRefreshButtonDisplayed-checkbox" class="f-form__checkbox-label">
+              <input
+                class="f-form__checkbox-input"
+                type="checkbox"
+                value="true"
+                name="isRefreshButtonDisplayed-checkbox"
+                id="isRefreshButtonDisplayed-checkbox"
+                formControlName="isRefreshButtonDisplayed">
+                <span class="f-form__checkbox-button"></span>
+                <span class="f-form__checkbox-label-text">Is Refresh Button Displayed</span>
+              </label>
+            </span>
+          </div>
+          <!-- END: isRefreshButtonDisplayed checkbox -->
+          <!-- START: isCustomHeader checkbox -->
+          <div class="f-form__fieldset">
+            <span class="f-form__checkbox">
+              <label for="isCustomHeader-checkbox" class="f-form__checkbox-label">
+                <input
+                  class="f-form__checkbox-input"
+                  type="checkbox"
+                  value="true"
+                  name="isCustomHeader-checkbox"
+                  id="isCustomHeader-checkbox"
+                  formControlName="isCustomHeader">
+                  <span class="f-form__checkbox-button"></span>
+                  <span class="f-form__checkbox-label-text">Is Custom Header Displayed</span>
+                </label>
+              </span>
+            </div>
+            <!-- END: isCustomHeader checkbox -->
+            <!-- START: isCustomInfoBoxes checkbox -->
+            <div class="f-form__fieldset">
+              <span class="f-form__checkbox">
+                <label for="isCustomInfoBoxes-checkbox" class="f-form__checkbox-label">
+                  <input
+                    class="f-form__checkbox-input"
+                    type="checkbox"
+                    value="true"
+                    name="isCustomInfoBoxes-checkbox"
+                    id="isCustomInfoBoxes-checkbox"
+                    formControlName="isCustomInfoBoxes">
+                    <span class="f-form__checkbox-button"></span>
+                    <span class="f-form__checkbox-label-text">Is Custom Info Boxes Used</span>
+                  </label>
+                </span>
+              </div>
+              <!-- END: isCustomInfoBoxes checkbox -->
+              <!-- START: isCustomInfoDetails checkbox -->
+              <div class="f-form__fieldset">
+                <span class="f-form__checkbox">
+                  <label for="isCustomInfoDetails-checkbox" class="f-form__checkbox-label">
+                    <input
+                      class="f-form__checkbox-input"
+                      type="checkbox"
+                      value="true"
+                      name="isCustomInfoDetails-checkbox"
+                      id="isCustomInfoDetails-checkbox"
+                      formControlName="isCustomInfoDetails">
+                      <span class="f-form__checkbox-button"></span>
+                      <span class="f-form__checkbox-label-text">Is Custom Info Details Used</span>
+                    </label>
+                  </span>
+                </div>
+                <!-- END: isCustomInfoDetails checkbox -->
+              </form>
+            }
 
-    <!-- START: isTimestampDisplayed checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="isTimestampDisplayed-checkbox" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="isTimestampDisplayed-checkbox"
-            id="isTimestampDisplayed-checkbox"
-            formControlName="isTimestampDisplayed">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Is Timestamp Displayed</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: isTimestampDisplayed checkbox -->
+            <ng-container result>
+              <div class="f-components-demo__result--f-widget">
+                @if (isComponentRendered) {
+                  <f-widget
+                    [isTimestampDisplayed]="widgetForm.get('isTimestampDisplayed')?.value"
+                    [isRefreshButtonDisplayed]="widgetForm.get('isRefreshButtonDisplayed')?.value"
+                    [infoDetailsData]="infoDetailsData"
+                    [infoBoxesDetails]="infoBoxesDetails">
+                    <!-- START: header -->
+                    @if (widgetForm?.get('isCustomHeader')?.value) {
+                      <ng-template [fusionUiTemplate]="WidgetTemplate.HEADER">
+                        Custom Widget Header
+                      </ng-template>
+                    }
+                    <!-- END: header -->
+                    <!-- START: info boxes -->
+                    @if (widgetForm?.get('isCustomInfoBoxes')?.value) {
+                      <ng-template [fusionUiTemplate]="WidgetTemplate.INFO_BOX">
+                        Custom info box
+                      </ng-template>
+                      <ng-template [fusionUiTemplate]="WidgetTemplate.INFO_BOX">
+                        Custom info box 2
+                      </ng-template>
+                    }
+                    <!-- END: info boxes -->
+                    <!-- START: info details -->
+                    @if (widgetForm?.get('isCustomInfoDetails')?.value) {
+                      <ng-template [fusionUiTemplate]="WidgetTemplate.INFO_DETAILS">
+                        Custom info details
+                      </ng-template>
+                    }
+                    <!-- END: info details -->
+                  </f-widget>
+                }
+              </div>
+            </ng-container>
 
-    <!-- START: isRefreshButtonDisplayed checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="isRefreshButtonDisplayed-checkbox" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="isRefreshButtonDisplayed-checkbox"
-            id="isRefreshButtonDisplayed-checkbox"
-            formControlName="isRefreshButtonDisplayed">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Is Refresh Button Displayed</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: isRefreshButtonDisplayed checkbox -->
-
-    <!-- START: isCustomHeader checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="isCustomHeader-checkbox" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="isCustomHeader-checkbox"
-            id="isCustomHeader-checkbox"
-            formControlName="isCustomHeader">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Is Custom Header Displayed</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: isCustomHeader checkbox -->
-
-    <!-- START: isCustomInfoBoxes checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="isCustomInfoBoxes-checkbox" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="isCustomInfoBoxes-checkbox"
-            id="isCustomInfoBoxes-checkbox"
-            formControlName="isCustomInfoBoxes">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Is Custom Info Boxes Used</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: isCustomInfoBoxes checkbox -->
-
-    <!-- START: isCustomInfoDetails checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="isCustomInfoDetails-checkbox" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="isCustomInfoDetails-checkbox"
-            id="isCustomInfoDetails-checkbox"
-            formControlName="isCustomInfoDetails">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Is Custom Info Details Used</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: isCustomInfoDetails checkbox -->
-
-  </form>
-
-  <ng-container result>
-    <div class="f-components-demo__result--f-widget">
-      <f-widget
-        *ngIf="isComponentRendered"
-        [isTimestampDisplayed]="widgetForm.get('isTimestampDisplayed')?.value"
-        [isRefreshButtonDisplayed]="widgetForm.get('isRefreshButtonDisplayed')?.value"
-        [infoDetailsData]="infoDetailsData"
-        [infoBoxesDetails]="infoBoxesDetails">
-
-        <!-- START: header -->
-        <ng-container *ngIf="widgetForm?.get('isCustomHeader')?.value">
-          <ng-template [fusionUiTemplate]="WidgetTemplate.HEADER">
-            Custom Widget Header
-          </ng-template>
-        </ng-container>
-        <!-- END: header -->
-
-        <!-- START: info boxes -->
-        <ng-container *ngIf="widgetForm?.get('isCustomInfoBoxes')?.value">
-          <ng-template [fusionUiTemplate]="WidgetTemplate.INFO_BOX">
-            Custom info box
-          </ng-template>
-
-          <ng-template [fusionUiTemplate]="WidgetTemplate.INFO_BOX">
-            Custom info box 2
-          </ng-template>
-        </ng-container>
-        <!-- END: info boxes -->
-
-        <!-- START: info details -->
-        <ng-container *ngIf="widgetForm?.get('isCustomInfoDetails')?.value">
-          <ng-template [fusionUiTemplate]="WidgetTemplate.INFO_DETAILS">
-            Custom info details
-          </ng-template>
-        </ng-container>
-        <!-- END: info details -->
-
-      </f-widget>
-    </div>
-  </ng-container>
-
-</fusion-demo>
+          </fusion-demo>
 

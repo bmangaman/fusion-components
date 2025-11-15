@@ -1,19 +1,20 @@
-<form class="f-form" *ngIf="isLoaded" [formGroup]="filterForm">
-
-  <f-table-filter-comparator
-    [comparators]="filterComparators"
-    (comparatorChange)="selectedFilterComparator.next($event)"
-    [translations]="translations.comparator">
-  </f-table-filter-comparator>
-
-  <div class="f-table__filter-input f-form__fieldset" *ngIf="!hideInput">
-    <div class="f-form__input-wrapper">
-      <input
-        type="text"
-        formControlName="string"
-        class="f-form__input"
-        [attr.aria-label]="translations.fields.string" />
-    </div>
-  </div>
-
-</form>
+@if (isLoaded) {
+  <form class="f-form" [formGroup]="filterForm">
+    <f-table-filter-comparator
+      [comparators]="filterComparators"
+      (comparatorChange)="selectedFilterComparator.next($event)"
+      [translations]="translations.comparator">
+    </f-table-filter-comparator>
+    @if (!hideInput) {
+      <div class="f-table__filter-input f-form__fieldset">
+        <div class="f-form__input-wrapper">
+          <input
+            type="text"
+            formControlName="string"
+            class="f-form__input"
+            [attr.aria-label]="translations.fields.string" />
+          </div>
+        </div>
+      }
+    </form>
+  }

@@ -4,12 +4,13 @@
       [formControl]="selectedComparator"
       class="f-form__input f-form__select"
       [attr.aria-label]="translations.comparatorLabel">
-      <option
-        *ngFor="let comparator of comparators; let i = index;"
-        [ngValue]="comparator"
-        [selected]="i === 0">
-        {{ comparator ? (comparator | getComparatorLabel | async) : '' }}
-      </option>
+      @for (comparator of comparators; track comparator; let i = $index) {
+        <option
+          [ngValue]="comparator"
+          [selected]="i === 0">
+          {{ comparator ? (comparator | getComparatorLabel | async) : '' }}
+        </option>
+      }
     </select>
   </div>
 </div>

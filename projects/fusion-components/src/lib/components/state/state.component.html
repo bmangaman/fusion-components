@@ -1,30 +1,30 @@
 <div [ngClass]="cssClasses.wrapper">
   <div [ngClass]="cssClasses.inner">
 
-    <ng-container *ngIf="state !== State.LOADING; else loading">
+    @if (state !== State.LOADING) {
       <i [ngClass]="cssClasses.graphic"></i>
       <div [ngClass]="cssClasses.content">
-
-        <h3 class="f-state__inner-content-headline" *ngIf="!!headlines && !!headlines[state]">
-          {{ headlines[state] }}
-        </h3>
-
-        <div class="f-state__inner-content-message" *ngIf="!!messageTemplates && !!messageTemplates[state]; else messageText">
-          <ng-container *ngTemplateOutlet="messageTemplates[state] || null"></ng-container>
-        </div>
-
-        <ng-template #messageText>
-          <p class="f-state__inner-content-message" *ngIf="!!messages && !!messages[state]">
-            {{ messages[state] }}
-          </p>
-        </ng-template>
-
+        @if (!!headlines && !!headlines[state]) {
+          <h3 class="f-state__inner-content-headline">
+            {{ headlines[state] }}
+          </h3>
+        }
+        @if (!!messageTemplates && !!messageTemplates[state]) {
+          <div class="f-state__inner-content-message">
+            <ng-container *ngTemplateOutlet="messageTemplates[state] || null"></ng-container>
+          </div>
+        } @else {
+          @if (!!messages && !!messages[state]) {
+            <p class="f-state__inner-content-message">
+              {{ messages[state] }}
+            </p>
+          }
+        }
       </div>
-    </ng-container>
-
-    <ng-template #loading>
+    } @else {
       <f-loading-spinner [size]="Size.MEDIUM" [ariaLabel]="loadingAriaLabel"></f-loading-spinner>
-    </ng-template>
+    }
+
 
   </div>
 </div>

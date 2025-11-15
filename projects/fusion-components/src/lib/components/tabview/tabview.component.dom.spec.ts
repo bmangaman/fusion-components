@@ -21,25 +21,27 @@ export interface TestTabConfig {
 @Component({
     selector: 'f-test-component',
     template: `
-  <f-tabview
-    *ngIf="loadTabs"
-    [lazyLoading]="lazyLoading"
-    [unloadOnUnselect]="unloadOnUnselect"
-    [routingParent]="routingParent"
-    [type]="type">
-    <f-tabview-tab
-      *ngFor="let tab of tabConfigs"
-      [id]="tab.id"
-      [isDisabled]="tab.isDisabled"
-      [route]="tab.route">
-      <ng-template hccTemplate="tabHeader">
-        {{ tab.tabTitle }}
-      </ng-template>
-      <ng-template hccTemplate="tabContent">
-        {{ tab.tabContent }}
-      </ng-template>
-    </f-tabview-tab>
-  </f-tabview>
+  @if (loadTabs) {
+    <f-tabview
+      [lazyLoading]="lazyLoading"
+      [unloadOnUnselect]="unloadOnUnselect"
+      [routingParent]="routingParent"
+      [type]="type">
+      @for (tab of tabConfigs; track tab) {
+        <f-tabview-tab
+          [id]="tab.id"
+          [isDisabled]="tab.isDisabled"
+          [route]="tab.route">
+          <ng-template hccTemplate="tabHeader">
+            {{ tab.tabTitle }}
+          </ng-template>
+          <ng-template hccTemplate="tabContent">
+            {{ tab.tabContent }}
+          </ng-template>
+        </f-tabview-tab>
+      }
+    </f-tabview>
+  }
   `,
     standalone: false
 })

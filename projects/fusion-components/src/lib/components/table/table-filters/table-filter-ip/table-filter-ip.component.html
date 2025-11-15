@@ -1,83 +1,73 @@
-<form
-  class="f-form"
-  *ngIf="isLoaded"
-  [formGroup]="filterForm"
-  [ngStyle]="{ 'min-width' : isContainsOrDoesNotContainSelector ? '300px' : 'auto' }">
-
-  <f-table-filter-comparator
-    [comparators]="filterComparators"
-    (comparatorChange)="selectedFilterComparator.next($event)"
-    [translations]="translations.comparator">
-  </f-table-filter-comparator>
-
-  <div class="f-form__field-group f-form__field-group--inline" *ngIf="isContainsOrDoesNotContainSelector; else equalsInput">
-
-    <div class="f-table__filter-input f-form__fieldset">
-      <div class="f-form__input-wrapper">
-        <input
-          type="number"
-          min="0"
-          max="999"
-          formControlName="octet1"
-          class="f-form__input"
-          [attr.aria-label]="translations.fields.octet1" />
-      </div>
-    </div>
-
-    <span class="f-table__filter-inline-text">.</span>
-
-    <div class="f-table__filter-input f-form__fieldset">
-      <div class="f-form__input-wrapper">
-        <input
-        type="number"
-        min="0"
-        max="999" 
-        formControlName="octet2" 
-        class="f-form__input"
-        [attr.aria-label]="translations.fields.octet2" />
-      </div>
-    </div>
-
-    <span class="f-table__filter-inline-text">.</span>
-
-    <div class="f-table__filter-input f-form__fieldset">
-      <div class="f-form__input-wrapper">
-        <input
-          type="number"
-          min="0"
-          max="999" 
-          formControlName="octet3"
-          class="f-form__input"
-          [attr.aria-label]="translations.fields.octet3" />
-      </div>
-    </div>
-
-    <span class="f-table__filter-inline-text">.</span>
-
-    <div class="f-table__filter-input f-form__fieldset">
-      <div class="f-form__input-wrapper">
-        <input
-          type="number"
-          min="0" 
-          max="999"
-          formControlName="octet4"
-          class="f-form__input"
-          [attr.aria-label]="translations.fields.octet4" />
-      </div>
-    </div>
-
-  </div>
-
-  <ng-template #equalsInput>
-    <div class="f-table__filter-input f-form__fieldset">
-      <div class="f-form__input-wrapper">
-        <input
-          type="string"
-          formControlName="ip"
-          class="f-form__input"
-          [attr.aria-label]="translations.fields.ip" />
-      </div>
-    </div>
-  </ng-template>
-
-</form>
+@if (isLoaded) {
+  <form
+    class="f-form"
+    [formGroup]="filterForm"
+    [ngStyle]="{ 'min-width' : isContainsOrDoesNotContainSelector ? '300px' : 'auto' }">
+    <f-table-filter-comparator
+      [comparators]="filterComparators"
+      (comparatorChange)="selectedFilterComparator.next($event)"
+      [translations]="translations.comparator">
+    </f-table-filter-comparator>
+    @if (isContainsOrDoesNotContainSelector) {
+      <div class="f-form__field-group f-form__field-group--inline">
+        <div class="f-table__filter-input f-form__fieldset">
+          <div class="f-form__input-wrapper">
+            <input
+              type="number"
+              min="0"
+              max="999"
+              formControlName="octet1"
+              class="f-form__input"
+              [attr.aria-label]="translations.fields.octet1" />
+            </div>
+          </div>
+          <span class="f-table__filter-inline-text">.</span>
+          <div class="f-table__filter-input f-form__fieldset">
+            <div class="f-form__input-wrapper">
+              <input
+                type="number"
+                min="0"
+                max="999"
+                formControlName="octet2"
+                class="f-form__input"
+                [attr.aria-label]="translations.fields.octet2" />
+              </div>
+            </div>
+            <span class="f-table__filter-inline-text">.</span>
+            <div class="f-table__filter-input f-form__fieldset">
+              <div class="f-form__input-wrapper">
+                <input
+                  type="number"
+                  min="0"
+                  max="999"
+                  formControlName="octet3"
+                  class="f-form__input"
+                  [attr.aria-label]="translations.fields.octet3" />
+                </div>
+              </div>
+              <span class="f-table__filter-inline-text">.</span>
+              <div class="f-table__filter-input f-form__fieldset">
+                <div class="f-form__input-wrapper">
+                  <input
+                    type="number"
+                    min="0"
+                    max="999"
+                    formControlName="octet4"
+                    class="f-form__input"
+                    [attr.aria-label]="translations.fields.octet4" />
+                  </div>
+                </div>
+              </div>
+            } @else {
+              <div class="f-table__filter-input f-form__fieldset">
+                <div class="f-form__input-wrapper">
+                  <input
+                    type="string"
+                    formControlName="ip"
+                    class="f-form__input"
+                    [attr.aria-label]="translations.fields.ip" />
+                  </div>
+                </div>
+              }
+            </form>
+          }

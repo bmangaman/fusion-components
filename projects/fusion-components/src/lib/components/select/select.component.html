@@ -1,103 +1,105 @@
 <div class="f-form__fieldset f-select" #selectInput>
-  <label class="f-form__input-label f-select__label" *ngIf="!!label">{{ label | toObservable | async }}</label>
+  @if (!!label) {
+    <label class="f-form__input-label f-select__label">{{ label | toObservable | async }}</label>
+  }
   <div [ngClass]="selectClasses">
 
     <!-- START: Button to display of the list of options -->
-    <button
-      *ngIf="!isSearchable"
-      class="f-form__input-button-wrapper f-select__button"
-      aria-haspopup="listbox"
-      [attr.aria-expanded]="isDropdownOpen"
-      [attr.aria-controls]="isDropdownOpen ? uuid : null"
-      [attr.aria-disabled]="isDisabled"
-      [disabled]="isDisabled"
-      [fusionUiAutofocus]="isDropdownOpen === false"
-      (click)="toggleDropdown()"
-      (blur)="onBlur()">
-
-      <div
-        class="f-form__input f-form__select f-select__button-inner"
-        [ngClass]="{
-          'f-form__input--error': control?.touched && control?.invalid,
-          'f-form__input--valid': control?.valid,
-          'f-form__input--disabled': isDisabled
-        }">
-        {{ control?.value?.label || defaultLabel }}
-      </div>
-
-      <span class="f-form__input-wrapper-status-icon"></span>
-    </button>
-    <!-- END: Button to display of the list of options -->
-
-    <!-- START: Input to search the list of options -->
-    <div *ngIf="isSearchable" class="f-form__input-wrapper">
-      <input
-        class="f-form__input f-select__input"
-        type="text"
-        autocomplete="off"
+    @if (!isSearchable) {
+      <button
+        class="f-form__input-button-wrapper f-select__button"
         aria-haspopup="listbox"
         [attr.aria-expanded]="isDropdownOpen"
         [attr.aria-controls]="isDropdownOpen ? uuid : null"
         [attr.aria-disabled]="isDisabled"
-        [attr.placeholder]="defaultLabel"
-        [formControl]="searchInputControl"
-        (click)="isDropdownOpen = true"
-        (focus)="isDropdownOpen = true"
-        (keyup.enter)="onEnter()"
-        (blur)="onBlur()"
+        [disabled]="isDisabled"
+        [fusionUiAutofocus]="isDropdownOpen === false"
+        (click)="toggleDropdown()"
+        (blur)="onBlur()">
+        <div
+          class="f-form__input f-form__select f-select__button-inner"
         [ngClass]="{
           'f-form__input--error': control?.touched && control?.invalid,
           'f-form__input--valid': control?.valid,
           'f-form__input--disabled': isDisabled
         }">
-        <span class="f-form__input-wrapper-status-icon"></span>
-    </div>
-    <!-- END: Input to search the list of options -->
-
-    <!-- START: The list of options -->
-    <ul
-      role="listbox"
-      class="f-form__select-dropdown f-select__dropdown-menu"
-      *ngIf="isDropdownOpen"
-      [style.minHeight.px]="menuMinHeight"
-      [attr.aria-activedescendant]="uuid"
-      [attr.id]="uuid">
-
-      <cdk-virtual-scroll-viewport
-        [style.minHeight.px]="menuMinHeight"
-        class="f-form__select-dropdown-scroll-viewport"
-        [itemSize]="optionHeight"
-        [maxBufferPx]="optionHeight * 20"
-        [minBufferPx]="optionHeight * 20">
-
-        <li
-          role="option"
-          *cdkVirtualFor="let option of ( isSearchable ? filteredOptions : options ); index as i; trackBy: trackByFn"
-          class="f-form__select-option f-select__dropdown-menu-option f-select__dropdown-menu-option--{{ i }}"
-          [ngClass]="{ 'f-form__select-option--active' : option === value, 'f-form__select-option--disabled' : option?.isDisabled }"
-          [fusionUiAutofocus]="!isSearchable ? (value?.value ? value === option : i === 0) : false"
-          [attr.tabIndex]="option?.isDisabled ? -1 : 0"
-          [attr.value]="option"
-          [attr.disabled]="option?.isDisabled ? 'disabled' : null"
-          [attr.aria-disabled]="option?.isDisabled"
-          [attr.aria-selected]="option === value"
-          (click)="!option?.isDisabled ? templateSetValueWrapper($event, option, i) : null"
-          (keydown.enter)="!option?.isDisabled ? templateSetValueWrapper($event, option, i) : null"
-          (keydown.space)="!option?.isDisabled ? templateSetValueWrapper($event, option, i) : null"
-          (keydown.arrowdown)="onArrowPress($event, 'DOWN')"
-          (keydown.arrowup)="onArrowPress($event, 'UP')">
-          {{ option?.label }}
-        </li>
-
-        <div
-          class="f-form__select-no-results f-form__select-option"
-          *ngIf="!(isSearchable ? filteredOptions?.length : options?.length)">
-          {{ translations.noResults }}
+          {{ control?.value?.label || defaultLabel }}
         </div>
+        <span class="f-form__input-wrapper-status-icon"></span>
+      </button>
+    }
+    <!-- END: Button to display of the list of options -->
 
-      </cdk-virtual-scroll-viewport>
-    </ul>
-    <!-- END: The list of options -->
+    <!-- START: Input to search the list of options -->
+    @if (isSearchable) {
+      <div class="f-form__input-wrapper">
+        <input
+          class="f-form__input f-select__input"
+          type="text"
+          autocomplete="off"
+          aria-haspopup="listbox"
+          [attr.aria-expanded]="isDropdownOpen"
+          [attr.aria-controls]="isDropdownOpen ? uuid : null"
+          [attr.aria-disabled]="isDisabled"
+          [attr.placeholder]="defaultLabel"
+          [formControl]="searchInputControl"
+          (click)="isDropdownOpen = true"
+          (focus)="isDropdownOpen = true"
+          (keyup.enter)="onEnter()"
+          (blur)="onBlur()"
+        [ngClass]="{
+          'f-form__input--error': control?.touched && control?.invalid,
+          'f-form__input--valid': control?.valid,
+          'f-form__input--disabled': isDisabled
+        }">
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
+      }
+      <!-- END: Input to search the list of options -->
 
+      <!-- START: The list of options -->
+      @if (isDropdownOpen) {
+        <ul
+          role="listbox"
+          class="f-form__select-dropdown f-select__dropdown-menu"
+          [style.minHeight.px]="menuMinHeight"
+          [attr.aria-activedescendant]="uuid"
+          [attr.id]="uuid">
+          <cdk-virtual-scroll-viewport
+            [style.minHeight.px]="menuMinHeight"
+            class="f-form__select-dropdown-scroll-viewport"
+            [itemSize]="optionHeight"
+            [maxBufferPx]="optionHeight * 20"
+            [minBufferPx]="optionHeight * 20">
+            <li
+              role="option"
+              *cdkVirtualFor="let option of ( isSearchable ? filteredOptions : options ); index as i; trackBy: trackByFn"
+              class="f-form__select-option f-select__dropdown-menu-option f-select__dropdown-menu-option--{{ i }}"
+              [ngClass]="{ 'f-form__select-option--active' : option === value, 'f-form__select-option--disabled' : option?.isDisabled }"
+              [fusionUiAutofocus]="!isSearchable ? (value?.value ? value === option : i === 0) : false"
+              [attr.tabIndex]="option?.isDisabled ? -1 : 0"
+              [attr.value]="option"
+              [attr.disabled]="option?.isDisabled ? 'disabled' : null"
+              [attr.aria-disabled]="option?.isDisabled"
+              [attr.aria-selected]="option === value"
+              (click)="!option?.isDisabled ? templateSetValueWrapper($event, option, i) : null"
+              (keydown.enter)="!option?.isDisabled ? templateSetValueWrapper($event, option, i) : null"
+              (keydown.space)="!option?.isDisabled ? templateSetValueWrapper($event, option, i) : null"
+              (keydown.arrowdown)="onArrowPress($event, 'DOWN')"
+              (keydown.arrowup)="onArrowPress($event, 'UP')">
+              {{ option?.label }}
+            </li>
+            @if (!(isSearchable ? filteredOptions?.length : options?.length)) {
+              <div
+                class="f-form__select-no-results f-form__select-option"
+                >
+                {{ translations.noResults }}
+              </div>
+            }
+          </cdk-virtual-scroll-viewport>
+        </ul>
+      }
+      <!-- END: The list of options -->
+
+    </div>
   </div>
-</div>

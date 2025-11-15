@@ -1,9 +1,11 @@
 <div class="f-table__table-cell-inner" [style.width]="col.updatedWidth || col.width">
-  <ng-container *ngIf="col.contentTemplateRef || null; else noTemplate">
+  @if (col.contentTemplateRef || null) {
     <ng-container *ngTemplateOutlet="col.contentTemplateRef || null; context: { $implicit: rowData, index: index }"></ng-container>
-  </ng-container>
-  <ng-template #noTemplate>
-    <ng-container *ngIf="!shouldProjectContent; else nonDataCell">{{ fieldData }}</ng-container>
-    <ng-template #nonDataCell><ng-content></ng-content></ng-template>
-  </ng-template>
+  } @else {
+    @if (!shouldProjectContent) {
+      {{ fieldData }}
+    } @else {
+      <ng-content></ng-content>
+    }
+  }
 </div>

@@ -36,28 +36,30 @@
 
     <ng-template fusionUiTemplate="menuDialogContent">
       <div class="f-form__field-group">
-        <ng-container *ngFor="let col of columns?.toArray(); index as i; trackBy: colTrackByFn">
-          <div class="f-form__fieldset" *ngIf="col?.isHidable">
-            <span class="f-form__checkbox">
-              <label
-                for="f-column-selector-checkbox--{{ col?.header }}"
-                class="f-form__checkbox-label">
-                <input
-                  class="f-form__checkbox-input f-table__column-selector-checkbox"
-                  type="checkbox"
-                  (change)="updateColumnVisibility(i)"
-                  name="f-column-selector-checkbox--{{ col?.header }}"
-                  id="f-column-selector-checkbox--{{ col?.header }}"
-                  [checked]="col?.isVisible">
-                <span class="f-form__checkbox-button"></span>
-                <span class="f-form__checkbox-label-text">{{ col?.header }}</span>
-              </label>
-            </span>
-          </div>
-        </ng-container>
-      </div>
-    </ng-template>
+        @for (col of columns?.toArray(); track colTrackByFn(i, col); let i = $index) {
+          @if (col?.isHidable) {
+            <div class="f-form__fieldset">
+              <span class="f-form__checkbox">
+                <label
+                  for="f-column-selector-checkbox--{{ col?.header }}"
+                  class="f-form__checkbox-label">
+                  <input
+                    class="f-form__checkbox-input f-table__column-selector-checkbox"
+                    type="checkbox"
+                    (change)="updateColumnVisibility(i)"
+                    name="f-column-selector-checkbox--{{ col?.header }}"
+                    id="f-column-selector-checkbox--{{ col?.header }}"
+                    [checked]="col?.isVisible">
+                    <span class="f-form__checkbox-button"></span>
+                    <span class="f-form__checkbox-label-text">{{ col?.header }}</span>
+                  </label>
+                </span>
+              </div>
+            }
+          }
+        </div>
+      </ng-template>
 
-  </f-menu>
+    </f-menu>
 
-</div>
+  </div>

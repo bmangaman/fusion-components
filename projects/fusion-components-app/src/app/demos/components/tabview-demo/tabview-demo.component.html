@@ -1,20 +1,22 @@
 <fusion-demo titleText="Tabview">
 
-  <form form class="fusion-components-demo__form f-form" *ngIf="tabviewForm" [formGroup]="tabviewForm">
-    <!-- START: type select -->
-    <div class="f-form__fieldset f-table__filter-input-field-selector">
-      <label class="f-form__input-label">Tabview Type</label>
-      <div class="f-form__input-wrapper f-form__select-wrapper">
-        <select class="f-form__input f-form__select" formControlName="type">
-          <option [value]="TabviewType.CONTENT">{{ TabviewType.CONTENT }}</option>
-          <option [value]="TabviewType.TOP">{{ TabviewType.TOP }}</option>
-          <option [value]="TabviewType.INNER_CONTENT">{{ TabviewType.INNER_CONTENT }}</option>
-        </select>
-        <span class="f-form__input-wrapper-status-icon"></span>
+  @if (tabviewForm) {
+    <form form class="fusion-components-demo__form f-form" [formGroup]="tabviewForm">
+      <!-- START: type select -->
+      <div class="f-form__fieldset f-table__filter-input-field-selector">
+        <label class="f-form__input-label">Tabview Type</label>
+        <div class="f-form__input-wrapper f-form__select-wrapper">
+          <select class="f-form__input f-form__select" formControlName="type">
+            <option [value]="TabviewType.CONTENT">{{ TabviewType.CONTENT }}</option>
+            <option [value]="TabviewType.TOP">{{ TabviewType.TOP }}</option>
+            <option [value]="TabviewType.INNER_CONTENT">{{ TabviewType.INNER_CONTENT }}</option>
+          </select>
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: type select -->
-  </form>
+      <!-- END: type select -->
+    </form>
+  }
 
   <ng-container result>
     <f-tabview [type]="tabviewForm.get('type')?.value">
@@ -29,7 +31,7 @@
         </ng-template>
       </f-tabview-tab>
       <!-- END: test first tab -->
-  
+
       <!-- START: test second tab -->
       <f-tabview-tab route="tabview">
         <ng-template fusionUiTemplate="tabHeader">
@@ -40,7 +42,7 @@
         </ng-template>
       </f-tabview-tab>
       <!-- END: test second tab -->
-  
+
       <!-- START: test third tab -->
       <f-tabview-tab [isDisabled]="true">
         <ng-template fusionUiTemplate="tabHeader">
@@ -51,7 +53,7 @@
         </ng-template>
       </f-tabview-tab>
       <!-- END: test thrid tab -->
-  
+
     </f-tabview>
   </ng-container>
 </fusion-demo>

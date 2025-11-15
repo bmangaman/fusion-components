@@ -1,211 +1,200 @@
 <fusion-demo titleText="Button">
 
-  <form form class="fusion-components-demo__form f-form" *ngIf="buttonForm" [formGroup]="buttonForm">
-
-     <!-- START: text input -->
-    <div class="f-form__fieldset">
-      <label class="f-form__input-label" for="text-input">Text</label>
-      <div class="f-form__input-wrapper">
-        <input class="f-form__input" formControlName="text" id="text-input" />
-        <span class="f-form__input-wrapper-status-icon"></span>
+  @if (buttonForm) {
+    <form form class="fusion-components-demo__form f-form" [formGroup]="buttonForm">
+      <!-- START: text input -->
+      <div class="f-form__fieldset">
+        <label class="f-form__input-label" for="text-input">Text</label>
+        <div class="f-form__input-wrapper">
+          <input class="f-form__input" formControlName="text" id="text-input" />
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: text input -->
-
-    <!-- START: icon select -->
-    <div class="f-form__fieldset f-table__filter-input-field-selector">
-      <label class="f-form__input-label" for="icon-select">Icon</label>
-      <div class="f-form__input-wrapper f-form__select-wrapper">
-        <select class="f-form__input f-form__select" formControlName="icon" id="icon-select">
-          <option [value]="''">- None -</option>
-          <option [value]="'mdi-content-copy'">Copy Icon</option>
-        </select>
-        <span class="f-form__input-wrapper-status-icon"></span>
+      <!-- END: text input -->
+      <!-- START: icon select -->
+      <div class="f-form__fieldset f-table__filter-input-field-selector">
+        <label class="f-form__input-label" for="icon-select">Icon</label>
+        <div class="f-form__input-wrapper f-form__select-wrapper">
+          <select class="f-form__input f-form__select" formControlName="icon" id="icon-select">
+            <option [value]="''">- None -</option>
+            <option [value]="'mdi-content-copy'">Copy Icon</option>
+          </select>
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: icon select -->
-
-    <!-- START: type select -->
-    <div class="f-form__fieldset f-table__filter-input-field-selector">
-      <label class="f-form__input-label" for="type-select">Type</label>
-      <div class="f-form__input-wrapper f-form__select-wrapper">
-        <select class="f-form__input f-form__select" formControlName="type" id="type-select">
-          <option [value]="ButtonType.PRIMARY">Primary</option>
-          <option [value]="ButtonType.SECONDARY">Secondary</option>
-          <option [value]="ButtonType.TERTIARY">Tertiary</option>
-        </select>
-        <span class="f-form__input-wrapper-status-icon"></span>
+      <!-- END: icon select -->
+      <!-- START: type select -->
+      <div class="f-form__fieldset f-table__filter-input-field-selector">
+        <label class="f-form__input-label" for="type-select">Type</label>
+        <div class="f-form__input-wrapper f-form__select-wrapper">
+          <select class="f-form__input f-form__select" formControlName="type" id="type-select">
+            <option [value]="ButtonType.PRIMARY">Primary</option>
+            <option [value]="ButtonType.SECONDARY">Secondary</option>
+            <option [value]="ButtonType.TERTIARY">Tertiary</option>
+          </select>
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: type select -->
-
-    <!-- START: size select -->
-    <div class="f-form__fieldset f-table__filter-input-field-selector">
-      <label class="f-form__input-label" for="size-select">Size</label>
-      <div class="f-form__input-wrapper f-form__select-wrapper">
-        <select class="f-form__input f-form__select" formControlName="size" id="size-select">
-          <option [value]="Size.X_SMALL">X Small</option>
-          <option [value]="Size.SMALL">Small</option>
-          <option [value]="Size.MEDIUM">Medium</option>
-          <option [value]="Size.LARGE">Large</option>
-        </select>
-        <span class="f-form__input-wrapper-status-icon"></span>
+      <!-- END: type select -->
+      <!-- START: size select -->
+      <div class="f-form__fieldset f-table__filter-input-field-selector">
+        <label class="f-form__input-label" for="size-select">Size</label>
+        <div class="f-form__input-wrapper f-form__select-wrapper">
+          <select class="f-form__input f-form__select" formControlName="size" id="size-select">
+            <option [value]="Size.X_SMALL">X Small</option>
+            <option [value]="Size.SMALL">Small</option>
+            <option [value]="Size.MEDIUM">Medium</option>
+            <option [value]="Size.LARGE">Large</option>
+          </select>
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: size select -->
-
-    <!-- START: type select -->
-    <div class="f-form__fieldset f-table__filter-input-field-selector">
-      <label class="f-form__input-label" for="state-select">State</label>
-      <div class="f-form__input-wrapper f-form__select-wrapper">
-        <select class="f-form__input f-form__select" formControlName="state" id="state-select">
-          <option [value]="State.LOADED">Loaded</option>
-          <option [value]="State.LOADING">Loading</option>
-        </select>
-        <span class="f-form__input-wrapper-status-icon"></span>
+      <!-- END: size select -->
+      <!-- START: type select -->
+      <div class="f-form__fieldset f-table__filter-input-field-selector">
+        <label class="f-form__input-label" for="state-select">State</label>
+        <div class="f-form__input-wrapper f-form__select-wrapper">
+          <select class="f-form__input f-form__select" formControlName="state" id="state-select">
+            <option [value]="State.LOADED">Loaded</option>
+            <option [value]="State.LOADING">Loading</option>
+          </select>
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: type select -->
-
-    <!-- START: input type select -->
-    <div class="f-form__fieldset f-table__filter-input-field-selector">
-      <label class="f-form__input-label" for="inputType-select">Input Type</label>
-      <div class="f-form__input-wrapper f-form__select-wrapper">
-        <select class="f-form__input f-form__select" formControlName="inputType" id="inputType-select">
-          <option [value]="ButtonInputType.BUTTON">Button</option>
-          <option [value]="ButtonInputType.SUBMIT">Submit</option>
-          <option [value]="ButtonInputType.RESET">Reset</option>
-        </select>
-        <span class="f-form__input-wrapper-status-icon"></span>
+      <!-- END: type select -->
+      <!-- START: input type select -->
+      <div class="f-form__fieldset f-table__filter-input-field-selector">
+        <label class="f-form__input-label" for="inputType-select">Input Type</label>
+        <div class="f-form__input-wrapper f-form__select-wrapper">
+          <select class="f-form__input f-form__select" formControlName="inputType" id="inputType-select">
+            <option [value]="ButtonInputType.BUTTON">Button</option>
+            <option [value]="ButtonInputType.SUBMIT">Submit</option>
+            <option [value]="ButtonInputType.RESET">Reset</option>
+          </select>
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: input type select -->
+      <!-- END: input type select -->
+      <!-- START: is disabled checkbox -->
+      <div class="f-form__fieldset">
+        <span class="f-form__checkbox">
+          <label for="is-disabled" class="f-form__checkbox-label">
+            <input
+              class="f-form__checkbox-input"
+              type="checkbox"
+              value="true"
+              name="is-disabled"
+              id="is-disabled"
+              formControlName="isDisabled">
+              <span class="f-form__checkbox-button"></span>
+              <span class="f-form__checkbox-label-text">isDisabled</span>
+            </label>
+          </span>
+        </div>
+        <!-- END: is disabled checkbox -->
+        <!-- START: is selected checkbox -->
+        <div class="f-form__fieldset">
+          <span class="f-form__checkbox">
+            <label for="is-selected" class="f-form__checkbox-label">
+              <input
+                class="f-form__checkbox-input"
+                type="checkbox"
+                value="true"
+                name="is-selected"
+                id="is-selected"
+                formControlName="isSelected">
+                <span class="f-form__checkbox-button"></span>
+                <span class="f-form__checkbox-label-text">isSelected (for secondary button)</span>
+              </label>
+            </span>
+          </div>
+          <!-- END: is selected checkbox -->
+          <!-- START: is autofocused checkbox -->
+          <div class="f-form__fieldset">
+            <span class="f-form__checkbox">
+              <label for="is-autofocused" class="f-form__checkbox-label">
+                <input
+                  class="f-form__checkbox-input"
+                  type="checkbox"
+                  value="true"
+                  name="is-autofocused"
+                  id="is-autofocused"
+                  formControlName="isAutofocused">
+                  <span class="f-form__checkbox-button"></span>
+                  <span class="f-form__checkbox-label-text">isAutofocused</span>
+                </label>
+              </span>
+            </div>
+            <!-- END: is autofocused checkbox -->
+            <!-- START: opens menu checkbox -->
+            <div class="f-form__fieldset">
+              <span class="f-form__checkbox">
+                <label for="opens-menu" class="f-form__checkbox-label">
+                  <input
+                    class="f-form__checkbox-input"
+                    type="checkbox"
+                    value="true"
+                    name="opens-menu"
+                    id="opens-menu"
+                    formControlName="opensMenu">
+                    <span class="f-form__checkbox-button"></span>
+                    <span class="f-form__checkbox-label-text">opensMenu</span>
+                  </label>
+                </span>
+              </div>
+              <!-- END: opens menu checkbox -->
+              <!-- START: no border checkbox -->
+              <div class="f-form__fieldset">
+                <span class="f-form__checkbox">
+                  <label for="no-border" class="f-form__checkbox-label">
+                    <input
+                      class="f-form__checkbox-input"
+                      type="checkbox"
+                      value="true"
+                      name="no-border"
+                      id="no-border"
+                      formControlName="noBorder">
+                      <span class="f-form__checkbox-button"></span>
+                      <span class="f-form__checkbox-label-text">noBorder (for secondary button)</span>
+                    </label>
+                  </span>
+                </div>
+                <!-- END: no border checkbox -->
+                <!-- START: full-width checkbox -->
+                <div class="f-form__fieldset">
+                  <span class="f-form__checkbox">
+                    <label for="full-width" class="f-form__checkbox-label">
+                      <input
+                        class="f-form__checkbox-input"
+                        type="checkbox"
+                        value="true"
+                        name="full-width"
+                        id="full-width"
+                        formControlName="fullWidth">
+                        <span class="f-form__checkbox-button"></span>
+                        <span class="f-form__checkbox-label-text">fullWidth</span>
+                      </label>
+                    </span>
+                  </div>
+                  <!-- END: full-width checkbox -->
+                </form>
+              }
 
-    <!-- START: is disabled checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="is-disabled" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="is-disabled"
-            id="is-disabled"
-            formControlName="isDisabled">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">isDisabled</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: is disabled checkbox -->
+              <ng-container result>
+                <f-button
+                  [text]="buttonForm.get('text')?.value"
+                  [icon]="buttonForm.get('icon')?.value"
+                  [isDisabled]="buttonForm.get('isDisabled')?.value"
+                  [state]="buttonForm.get('state')?.value"
+                  [isSelected]="buttonForm.get('isSelected')?.value"
+                  [isAutofocused]="buttonForm.get('isAutofocused')?.value"
+                  [type]="buttonForm.get('type')?.value"
+                  [inputType]="buttonForm.get('inputType')?.value"
+                  [opensMenu]="buttonForm.get('opensMenu')?.value"
+                  [noBorder]="buttonForm.get('noBorder')?.value"
+                  (buttonClick)="buttonClicked()"
+                  [size]="buttonForm.get('size')?.value">
+                </f-button>
+              </ng-container>
 
-    <!-- START: is selected checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="is-selected" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="is-selected"
-            id="is-selected"
-            formControlName="isSelected">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">isSelected (for secondary button)</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: is selected checkbox -->
-
-    <!-- START: is autofocused checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="is-autofocused" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="is-autofocused"
-            id="is-autofocused"
-            formControlName="isAutofocused">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">isAutofocused</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: is autofocused checkbox -->
-
-    <!-- START: opens menu checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="opens-menu" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="opens-menu"
-            id="opens-menu"
-            formControlName="opensMenu">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">opensMenu</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: opens menu checkbox -->
-
-    <!-- START: no border checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="no-border" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="no-border"
-            id="no-border"
-            formControlName="noBorder">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">noBorder (for secondary button)</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: no border checkbox -->
-
-    <!-- START: full-width checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="full-width" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="full-width"
-            id="full-width"
-            formControlName="fullWidth">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">fullWidth</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: full-width checkbox -->
-
-  </form>
-
-  <ng-container result>
-    <f-button
-      [text]="buttonForm.get('text')?.value"
-      [icon]="buttonForm.get('icon')?.value"
-      [isDisabled]="buttonForm.get('isDisabled')?.value"
-      [state]="buttonForm.get('state')?.value"
-      [isSelected]="buttonForm.get('isSelected')?.value"
-      [isAutofocused]="buttonForm.get('isAutofocused')?.value"
-      [type]="buttonForm.get('type')?.value"
-      [inputType]="buttonForm.get('inputType')?.value"
-      [opensMenu]="buttonForm.get('opensMenu')?.value"
-      [noBorder]="buttonForm.get('noBorder')?.value"
-      (buttonClick)="buttonClicked()"
-      [size]="buttonForm.get('size')?.value">
-    </f-button>
-  </ng-container>
-
-</fusion-demo>
+            </fusion-demo>

@@ -1,9 +1,11 @@
-<div class="fusion-demo__example" *ngFor="let inputExample of inputExamples">
-  <div class="fusion-demo__example--demo" [innerHtml]="inputExample | keepHtml"></div>
-  <code class="fusion-demo__example--code">
-    <pre [innerText]="inputExample"></pre>
-  </code>
-</div>
+@for (inputExample of inputExamples; track inputExample) {
+  <div class="fusion-demo__example">
+    <div class="fusion-demo__example--demo" [innerHtml]="inputExample | keepHtml"></div>
+    <code class="fusion-demo__example--code">
+      <pre [innerText]="inputExample"></pre>
+    </code>
+  </div>
+}
 
 <div class="fusion-demo__example">
   <div class="fusion-demo__example--demo">

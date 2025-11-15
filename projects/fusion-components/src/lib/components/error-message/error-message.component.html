@@ -1,15 +1,15 @@
-<ng-container *ngIf="displayError()">
-
-  <div class="f-error-messages" *ngIf="displayMultiple; else displaySingle">
-    <div *ngFor="let errorMessage of errors | getAllErrors:control?.errors" class="f-error-message">
-      {{ errorMessage | async }}
+@if (displayError()) {
+  @if (displayMultiple) {
+    <div class="f-error-messages">
+      @for (errorMessage of errors | getAllErrors:control?.errors; track errorMessage) {
+        <div class="f-error-message">
+          {{ errorMessage | async }}
+        </div>
+      }
     </div>
-  </div>
-
-  <ng-template #displaySingle>
+  } @else {
     <div class="f-error-message">
       {{ (errors | getSingleError:control.errors) | async }}
     </div>
-  </ng-template>
-
-</ng-container>
+  }
+}

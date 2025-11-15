@@ -8,18 +8,21 @@ import { KeyValueTableModule } from './key-value-table.module';
 @Component({
     selector: 'f-test-component',
     template: `
-    <f-key-value-table *ngIf="loaded" [data]="data">
-
-      <ng-template fusionUiTemplate="hostname" type="key" *ngIf="customHostnameKey">
-        Custom Hostname
-      </ng-template>
-
-      <ng-template fusionUiTemplate="hostname" type="value" *ngIf="customHostnameValue" let-data>
-        Custom Hostname {{ data?.value }}
-      </ng-template>
-
-    </f-key-value-table>
-  `,
+    @if (loaded) {
+      <f-key-value-table [data]="data">
+        @if (customHostnameKey) {
+          <ng-template fusionUiTemplate="hostname" type="key">
+            Custom Hostname
+          </ng-template>
+        }
+        @if (customHostnameValue; as data) {
+          <ng-template fusionUiTemplate="hostname" type="value" let-data>
+            Custom Hostname {{ data?.value }}
+          </ng-template>
+        }
+      </f-key-value-table>
+    }
+    `,
     standalone: false
 })
 export class KeyValueTableTestComponent {

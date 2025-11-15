@@ -2,25 +2,27 @@
 <div class="f-linear-gauge" [ngClass]="classes">
 
   <div class="f-linear-gauge__title">
-    <i *ngIf="level !== StatusLevel.BASE"
-      class="f-linear-gauge__title-icon mdi"
+    @if (level !== StatusLevel.BASE) {
+      <i
+        class="f-linear-gauge__title-icon mdi"
       [ngClass]="{
         'mdi-check-circle' : level === StatusLevel.NORMAL,
         'mdi-alert' : level === StatusLevel.WARNING,
         'mdi-alert-circle' : level === StatusLevel.ERROR,
         'mdi-close-circle' : level === StatusLevel.CRITICAL
       }">
-    </i>
+      </i>
+    }
     <h3 class="f-linear-gauge__title-text">{{ translations.title }}</h3>
   </div>
 
   <div class="f-linear-gauge__bar-container">
     <div class="f-linear-gauge__bar">
-      <ng-container *ngFor="let threshold of thresholds">
-        <button
-          *ngIf="!!threshold"
-          class="f-linear-gauge__threshold"
-          [ngStyle]="{ 'left': threshold.value | percentage: maxValue:minValue | percent }"
+      @for (threshold of thresholds; track threshold) {
+        @if (!!threshold) {
+          <button
+            class="f-linear-gauge__threshold"
+            [ngStyle]="{ 'left': threshold.value | percentage: maxValue:minValue | percent }"
           [ngClass]="{
             'f-linear-gauge__threshold--normal' : threshold.level === StatusLevel.NORMAL,
             'f-linear-gauge__threshold--warning' : threshold.level === StatusLevel.WARNING,
@@ -28,13 +30,14 @@
             'f-linear-gauge__threshold--critical' : threshold.level === StatusLevel.CRITICAL,
             'f-linear-gauge__threshold--passed' : threshold.passed
           }"
-          fusionUiTooltip
-          [attr.aria-label]="threshold.level | getStatusLevelText: translations:true"
-          [templateWithContext]="{ template: tooltipContent, context: { $implicit: threshold } }"
-          [hideDelay]="2000"
-          [classes]="[ 'f-linear-gauge__threshold-tooltip', 'f-linear-gauge__threshold-tooltip--' + (threshold.level | getStatusLevelText: undefined:true) ]">
-        </button>
-      </ng-container>
+            fusionUiTooltip
+            [attr.aria-label]="threshold.level | getStatusLevelText: translations:true"
+            [templateWithContext]="{ template: tooltipContent, context: { $implicit: threshold } }"
+            [hideDelay]="2000"
+            [classes]="[ 'f-linear-gauge__threshold-tooltip', 'f-linear-gauge__threshold-tooltip--' + (threshold.level | getStatusLevelText: undefined:true) ]">
+          </button>
+        }
+      }
 
       <div
         class="f-linear-gauge__value-bar"
@@ -66,11 +69,15 @@
 </div>
 
 <ng-template #tooltipContent let-threshold>
-  <div class="f-linear-gauge__tooltip-content" *ngIf="!!threshold">
-    <h4 class="f-linear-gauge__threshold-tooltip-title f-h4" *ngIf="threshold.title">{{ threshold.title }}</h4>
-    <p class="f-linear-gauge__threshold-tooltip-level-and-value f-p-md">
-      <span class="f-linear-gauge__threshold-tooltip-level">{{ threshold.level | getStatusLevelText: translations }}</span>: 
-      <span class="f-linear-gauge__threshold-tooltip-value">{{ !!dataFormatPipeItem ? (threshold.value | meta:[dataFormatPipeItem]) : threshold.value }}</span>
-    </p>
-  </div>
+  @if (!!threshold) {
+    <div class="f-linear-gauge__tooltip-content">
+      @if (threshold.title) {
+        <h4 class="f-linear-gauge__threshold-tooltip-title f-h4">{{ threshold.title }}</h4>
+      }
+      <p class="f-linear-gauge__threshold-tooltip-level-and-value f-p-md">
+        <span class="f-linear-gauge__threshold-tooltip-level">{{ threshold.level | getStatusLevelText: translations }}</span>:
+        <span class="f-linear-gauge__threshold-tooltip-value">{{ !!dataFormatPipeItem ? (threshold.value | meta:[dataFormatPipeItem]) : threshold.value }}</span>
+      </p>
+    </div>
+  }
 </ng-template>

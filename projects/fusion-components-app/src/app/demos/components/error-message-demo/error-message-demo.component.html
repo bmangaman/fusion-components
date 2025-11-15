@@ -1,16 +1,15 @@
 <fusion-demo titleText="Select">
 
-  <form form class="fusion-components-demo__form f-form" *ngIf="errorMessageForm" [formGroup]="errorMessageForm">
-  
-    <!-- START: has errors checkbox -->
-    <f-checkbox formControlName="hasErrors">Has Errors</f-checkbox>
-    <!-- END: has errors checkbox -->
-
-    <!-- START: display multiple checkbox -->
-    <f-checkbox formControlName="displayMultiple">Display Multiple</f-checkbox>
-    <!-- END: display multiple checkbox -->
-
-  </form>
+  @if (errorMessageForm) {
+    <form form class="fusion-components-demo__form f-form" [formGroup]="errorMessageForm">
+      <!-- START: has errors checkbox -->
+      <f-checkbox formControlName="hasErrors">Has Errors</f-checkbox>
+      <!-- END: has errors checkbox -->
+      <!-- START: display multiple checkbox -->
+      <f-checkbox formControlName="displayMultiple">Display Multiple</f-checkbox>
+      <!-- END: display multiple checkbox -->
+    </form>
+  }
 
   <ng-container result>
 
@@ -27,9 +26,11 @@
     </form>
 
     <h3 class="f-h3">Possible Error Messages</h3>
-    <ng-container *ngIf="errorMessageForm.get('hasErrors')?.value">
-      <div *ngFor="let message of errorMessages">{{ message?.priority }} : {{ message?.error }}</div>
-    </ng-container>
+    @if (errorMessageForm.get('hasErrors')?.value) {
+      @for (message of errorMessages; track message) {
+        <div>{{ message?.priority }} : {{ message?.error }}</div>
+      }
+    }
     <br />
     <div>NOTE: To get multiple errors to show up, check the "Display Multiple" checkbox and input a number (like 8).</div>
 

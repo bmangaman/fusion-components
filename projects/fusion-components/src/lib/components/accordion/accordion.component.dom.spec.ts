@@ -14,14 +14,15 @@ import { AccordionModule } from './accordion.module';
     [onePanelLimit]="onePanelLimit"
     [maxContentHeight]="maxContentHeight"
     [toggleAllPanels]="toggleAllPanels">
-    <f-accordion-panel
-      *ngFor="let panel of panels"
-      [isExpanded]="panel?.isExpanded"
-      [isDisabled]="panel?.isDisabled"
-      [id]="panel?.id">
-      <ng-template fusionUiTemplate="panelTitle">{{ panel?.title }}</ng-template>
-      <ng-template fusionUiTemplate="panelContent">{{ panel?.content }}</ng-template>
-    </f-accordion-panel>
+    @for (panel of panels; track panel) {
+      <f-accordion-panel
+        [isExpanded]="panel?.isExpanded"
+        [isDisabled]="panel?.isDisabled"
+        [id]="panel?.id">
+        <ng-template fusionUiTemplate="panelTitle">{{ panel?.title }}</ng-template>
+        <ng-template fusionUiTemplate="panelContent">{{ panel?.content }}</ng-template>
+      </f-accordion-panel>
+    }
   </f-accordion>
   `,
     standalone: false

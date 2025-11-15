@@ -8,29 +8,31 @@
     [attr.aria-controls]="'accordion-panel-' + id"
     class="f-accordion-panel__title">
 
-    <i
-      *ngIf="collapseIconClasses && expandIconClasses"
-      class="f-accordion-panel__title-icon"
-      [ngClass]="isExpanded ? collapseIconClasses : expandIconClasses"
+    @if (collapseIconClasses && expandIconClasses) {
+      <i
+        class="f-accordion-panel__title-icon"
+        [ngClass]="isExpanded ? collapseIconClasses : expandIconClasses"
       aria-hidden="true"></i>
+    }
     <span class="f-accordion-panel__title-content">
       <ng-container *ngTemplateOutlet="titleTemplate"></ng-container>
     </span>
 
   </button>
 
-  <div
-    #panelContentContainer
-    class="f-accordion-panel__content-container"
-    [style.maxHeight]="maxContentHeight"
-    *ngIf="isExpanded"
-    [@inOutAnimation]
-    (@inOutAnimation.done)="toggleOverflow($event)"
-    [attr.aria-labelledby]="'accordion-panel-' + id"
-    role="region">
-    <div class="f-accordion-panel__content" [ngClass]="{ 'f-accordion-panel__content--title-has-icon' : collapseIconClasses && expandIconClasses }">
-      <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+  @if (isExpanded) {
+    <div
+      #panelContentContainer
+      class="f-accordion-panel__content-container"
+      [style.maxHeight]="maxContentHeight"
+      [@inOutAnimation]
+      (@inOutAnimation.done)="toggleOverflow($event)"
+      [attr.aria-labelledby]="'accordion-panel-' + id"
+      role="region">
+      <div class="f-accordion-panel__content" [ngClass]="{ 'f-accordion-panel__content--title-has-icon' : collapseIconClasses && expandIconClasses }">
+        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+      </div>
     </div>
-  </div>
+  }
 
 </div>

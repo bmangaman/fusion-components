@@ -24,50 +24,52 @@ import { TableModule } from './table.module';
 @Component({
     selector: 'f-test-component',
     template: `
-  <f-table
-    *ngIf="loaded"
-    [data]="data"
-    [dataKey]="dataKey"
-    [state]="state"
-    [fillContainer]="fillContainer"
-    [selectionMode]="selectionMode"
-    [type]="type"
-    [rowExpansionMode]="rowExpansionMode"
-    [disableRowExpansionFunction]="disableRowExpansionFunction"
-    [disableRowActionsButtonFunction]="disableRowActionsButtonFunction"
-    [disableRowSelectionFunction]="disableRowSelectionFunction"
-    [paginationConfig]="paginationConfig"
-    [quickFilters]="quickFilters"
-    [spacing]="spacing"
-    [translations]="translations"
-    [tableTitle]="tableTitle">
-
-    <ng-container *ngIf="includeTableFilters">
-      <f-table-number-filter field="id" filterName="ID"></f-table-number-filter>
-      <f-table-string-filter field="data0" filterName="Data0"></f-table-string-filter>
-    </ng-container>
-
-    <f-table-column
-      *ngFor="let col of columns"
-      [header]="col?.header"
-      [isVisible]="col?.isVisible"
-      [isHidable]="col?.isHidable"
-      [field]="col?.field">
-    </f-table-column>
-
-    <ng-template [fusionUiTemplate]="TableTemplate.TABLE_HEADER" *ngIf="headerTemplate">
-      Custom Header
-    </ng-template>
-
-    <ng-template [fusionUiTemplate]="TableTemplate.ROW_EXPANSION" *ngIf="rowExpansionTemplate">
-      Custom Row Expansion Content
-    </ng-template>
-
-    <ng-template [fusionUiTemplate]="TableTemplate.ROW_ACTIONS" *ngIf="rowActionsTemplate">
-      Custom Row Actions Content
-    </ng-template>
-
-  </f-table>
+  @if (loaded) {
+    <f-table
+      [data]="data"
+      [dataKey]="dataKey"
+      [state]="state"
+      [fillContainer]="fillContainer"
+      [selectionMode]="selectionMode"
+      [type]="type"
+      [rowExpansionMode]="rowExpansionMode"
+      [disableRowExpansionFunction]="disableRowExpansionFunction"
+      [disableRowActionsButtonFunction]="disableRowActionsButtonFunction"
+      [disableRowSelectionFunction]="disableRowSelectionFunction"
+      [paginationConfig]="paginationConfig"
+      [quickFilters]="quickFilters"
+      [spacing]="spacing"
+      [translations]="translations"
+      [tableTitle]="tableTitle">
+      @if (includeTableFilters) {
+        <f-table-number-filter field="id" filterName="ID"></f-table-number-filter>
+        <f-table-string-filter field="data0" filterName="Data0"></f-table-string-filter>
+      }
+      @for (col of columns; track col) {
+        <f-table-column
+          [header]="col?.header"
+          [isVisible]="col?.isVisible"
+          [isHidable]="col?.isHidable"
+          [field]="col?.field">
+        </f-table-column>
+      }
+      @if (headerTemplate) {
+        <ng-template [fusionUiTemplate]="TableTemplate.TABLE_HEADER">
+          Custom Header
+        </ng-template>
+      }
+      @if (rowExpansionTemplate) {
+        <ng-template [fusionUiTemplate]="TableTemplate.ROW_EXPANSION">
+          Custom Row Expansion Content
+        </ng-template>
+      }
+      @if (rowActionsTemplate) {
+        <ng-template [fusionUiTemplate]="TableTemplate.ROW_ACTIONS">
+          Custom Row Actions Content
+        </ng-template>
+      }
+    </f-table>
+  }
   `,
     standalone: false
 })
@@ -118,13 +120,14 @@ export class TableTestComponent {
     selector: 'f-test-component-with-refresh',
     template: `
   <f-table (refresh)="refreshCallback()" [data]="data" [type]="type" [state]="state">
-    <f-table-column
-      *ngFor="let col of columns"
-      [header]="col?.header"
-      [isVisible]="col?.isVisible"
-      [isHidable]="col?.isHidable"
-      [field]="col?.field">
-    </f-table-column>
+    @for (col of columns; track col) {
+      <f-table-column
+        [header]="col?.header"
+        [isVisible]="col?.isVisible"
+        [isHidable]="col?.isHidable"
+        [field]="col?.field">
+      </f-table-column>
+    }
   </f-table>
   `,
     standalone: false

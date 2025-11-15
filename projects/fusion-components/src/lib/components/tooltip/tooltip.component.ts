@@ -23,17 +23,17 @@ import { Utilities } from '../../shared/utilities';
     selector: 'f-tooltip',
     template: `
     <div class="f-tooltip__content">
-      <ng-container *ngIf="templateWithContext; else justTemplate">
+      @if (templateWithContext) {
         <ng-container *ngTemplateOutlet="templateWithContext?.template || null; context: templateWithContext?.context || null"></ng-container>
-      </ng-container>
-      <ng-template #justTemplate>
-        <ng-container *ngIf="template; else justText">
+      } @else {
+        @if (template) {
           <ng-container *ngTemplateOutlet="template"></ng-container>
-        </ng-container>
-      </ng-template>
-      <ng-template #justText>{{ text }}</ng-template>
+        } @else {
+          {{ text }}
+        }
+      }
     </div>
-  `,
+    `,
     styles: [':host:not(.f-tooltip) { display: none; }'],
     standalone: false
 })

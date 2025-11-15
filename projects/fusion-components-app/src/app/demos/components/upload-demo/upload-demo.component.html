@@ -1,237 +1,227 @@
 <fusion-demo titleText="Upload">
 
-  <form form class="fusion-components-demo__form f-form" *ngIf="uploadForm" [formGroup]="uploadForm">
-    <h3>Configuration Options:</h3>
+  @if (uploadForm) {
+    <form form class="fusion-components-demo__form f-form" [formGroup]="uploadForm">
+      <h3>Configuration Options:</h3>
+      <!-- START: is browse hidden checkbox -->
+      <div class="f-form__fieldset">
+        <span class="f-form__checkbox">
+          <label for="f-checkbox-isBrowseHidden" class="f-form__checkbox-label">
+            <input
+              class="f-form__checkbox-input"
+              type="checkbox"
+              value="true"
+              name="f-checkbox-isBrowseHidden"
+              id="f-checkbox-isBrowseHidden"
+              formControlName="isBrowseHidden">
+              <span class="f-form__checkbox-button"></span>
+              <span class="f-form__checkbox-label-text">Is Browse Hidden</span>
+            </label>
+          </span>
+        </div>
+        <!-- END: is browse hidden checkbox -->
+        <!-- START: is browse disabled checkbox -->
+        <div class="f-form__fieldset">
+          <span class="f-form__checkbox">
+            <label for="f-checkbox-isBrowseDisabled" class="f-form__checkbox-label">
+              <input
+                class="f-form__checkbox-input"
+                type="checkbox"
+                value="true"
+                name="f-checkbox-isBrowseDisabled"
+                id="f-checkbox-isBrowseDisabled"
+                formControlName="isBrowseDisabled">
+                <span class="f-form__checkbox-button"></span>
+                <span class="f-form__checkbox-label-text">Is Browse Disabled</span>
+              </label>
+            </span>
+          </div>
+          <!-- END: is browse disabled checkbox -->
+          <!-- START: are multiple files allowed checkbox -->
+          <div class="f-form__fieldset">
+            <span class="f-form__checkbox">
+              <label for="f-checkbox-areMultipleFilesAllowed" class="f-form__checkbox-label">
+                <input
+                  class="f-form__checkbox-input"
+                  type="checkbox"
+                  value="true"
+                  name="f-checkbox-areMultipleFilesAllowed"
+                  id="f-checkbox-areMultipleFilesAllowed"
+                  formControlName="areMultipleFilesAllowed">
+                  <span class="f-form__checkbox-button"></span>
+                  <span class="f-form__checkbox-label-text">Are Multiple Files Allowed</span>
+                </label>
+              </span>
+            </div>
+            <!-- END: are multiple files allowed checkbox -->
+            <!-- START: are files uploaded together checkbox -->
+            <div class="f-form__fieldset">
+              <span class="f-form__checkbox">
+                <label for="f-checkbox-areFilesUploadedTogether" class="f-form__checkbox-label">
+                  <input
+                    class="f-form__checkbox-input"
+                    type="checkbox"
+                    value="true"
+                    name="f-checkbox-areFilesUploadedTogether"
+                    id="f-checkbox-areFilesUploadedTogether"
+                    formControlName="areFilesUploadedTogether">
+                    <span class="f-form__checkbox-button"></span>
+                    <span class="f-form__checkbox-label-text">Are Files Uploaded Together</span>
+                  </label>
+                </span>
+              </div>
+              <!-- END: are files uploaded together checkbox -->
+              <!-- START: is upload manual checkbox -->
+              <div class="f-form__fieldset">
+                <span class="f-form__checkbox">
+                  <label for="f-checkbox-isUploadManual" class="f-form__checkbox-label">
+                    <input
+                      class="f-form__checkbox-input"
+                      type="checkbox"
+                      value="true"
+                      name="f-checkbox-isUploadManual"
+                      id="f-checkbox-isUploadManual"
+                      formControlName="isUploadManual">
+                      <span class="f-form__checkbox-button"></span>
+                      <span class="f-form__checkbox-label-text">Is Upload Manual</span>
+                    </label>
+                  </span>
+                </div>
+                <!-- END: is upload manual checkbox -->
+                <!-- START: is size hidden checkbox -->
+                <div class="f-form__fieldset">
+                  <span class="f-form__checkbox">
+                    <label for="f-checkbox-isSizeHidden" class="f-form__checkbox-label">
+                      <input
+                        class="f-form__checkbox-input"
+                        type="checkbox"
+                        value="true"
+                        name="f-checkbox-isSizeHidden"
+                        id="f-checkbox-isSizeHidden"
+                        formControlName="isSizeHidden">
+                        <span class="f-form__checkbox-button"></span>
+                        <span class="f-form__checkbox-label-text">Is Size Hidden</span>
+                      </label>
+                    </span>
+                  </div>
+                  <!-- END: is size hidden checkbox -->
+                  <!-- START: is dismiss button hidden checkbox -->
+                  <div class="f-form__fieldset">
+                    <span class="f-form__checkbox">
+                      <label for="f-checkbox-isDismissButtonHidden" class="f-form__checkbox-label">
+                        <input
+                          class="f-form__checkbox-input"
+                          type="checkbox"
+                          value="true"
+                          name="f-checkbox-isDismissButtonHidden"
+                          id="f-checkbox-isDismissButtonHidden"
+                          formControlName="isDismissButtonHidden">
+                          <span class="f-form__checkbox-button"></span>
+                          <span class="f-form__checkbox-label-text">Is Dismiss Button Hidden</span>
+                        </label>
+                      </span>
+                    </div>
+                    <!-- END: is dismiss button hidden checkbox -->
+                    <!-- START: is cancel button hidden checkbox -->
+                    <div class="f-form__fieldset">
+                      <span class="f-form__checkbox">
+                        <label for="f-checkbox-isCancelButtonHidden" class="f-form__checkbox-label">
+                          <input
+                            class="f-form__checkbox-input"
+                            type="checkbox"
+                            value="true"
+                            name="f-checkbox-isCancelButtonHidden"
+                            id="f-checkbox-isCancelButtonHidden"
+                            formControlName="isCancelButtonHidden">
+                            <span class="f-form__checkbox-button"></span>
+                            <span class="f-form__checkbox-label-text">Is Cancel Button Hidden</span>
+                          </label>
+                        </span>
+                      </div>
+                      <!-- END: is cancel button hidden checkbox -->
+                      <!-- START: is progress section checkbox -->
+                      <div class="f-form__fieldset">
+                        <span class="f-form__checkbox">
+                          <label for="f-checkbox-isProgressSectionHidden" class="f-form__checkbox-label">
+                            <input
+                              class="f-form__checkbox-input"
+                              type="checkbox"
+                              value="true"
+                              name="f-checkbox-isProgressSectionHidden"
+                              id="f-checkbox-isProgressSectionHidden"
+                              formControlName="isProgressSectionHidden">
+                              <span class="f-form__checkbox-button"></span>
+                              <span class="f-form__checkbox-label-text">Is Progress Section Hidden</span>
+                            </label>
+                          </span>
+                        </div>
+                        <!-- END: is progress section checkbox -->
+                        <!-- START: is progress in bytes checkbox -->
+                        <div class="f-form__fieldset">
+                          <span class="f-form__checkbox">
+                            <label for="f-checkbox-isProgressInBytes" class="f-form__checkbox-label">
+                              <input
+                                class="f-form__checkbox-input"
+                                type="checkbox"
+                                value="true"
+                                name="f-checkbox-isProgressInBytes"
+                                id="f-checkbox-isProgressInBytes"
+                                formControlName="isProgressInBytes">
+                                <span class="f-form__checkbox-button"></span>
+                                <span class="f-form__checkbox-label-text">Is Progress In Bytes</span>
+                              </label>
+                            </span>
+                          </div>
+                          <!-- END: is progress in bytes checkbox -->
+                          <!-- START: make upload error checkbox -->
+                          <div class="f-form__fieldset">
+                            <span class="f-form__checkbox">
+                              <label for="f-checkbox-makeUploadError" class="f-form__checkbox-label">
+                                <input
+                                  class="f-form__checkbox-input"
+                                  type="checkbox"
+                                  value="true"
+                                  name="f-checkbox-makeUploadError"
+                                  id="f-checkbox-makeUploadError"
+                                  formControlName="makeUploadError">
+                                  <span class="f-form__checkbox-button"></span>
+                                  <span class="f-form__checkbox-label-text">Simulate Upload Error</span>
+                                </label>
+                              </span>
+                            </div>
+                            <!-- END: make upload error checkbox -->
+                          </form>
+                        }
 
-    <!-- START: is browse hidden checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-isBrowseHidden" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-isBrowseHidden"
-            id="f-checkbox-isBrowseHidden"
-            formControlName="isBrowseHidden">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Is Browse Hidden</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: is browse hidden checkbox -->
+                        <ng-container result>
+                          <f-upload
+                            [uploadFilesFunction]="uploadFilesFunction.bind(this)"
+                            [removeFilesFunction]="removeFilesFunction.bind(this)"
 
-    <!-- START: is browse disabled checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-isBrowseDisabled" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-isBrowseDisabled"
-            id="f-checkbox-isBrowseDisabled"
-            formControlName="isBrowseDisabled">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Is Browse Disabled</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: is browse disabled checkbox -->
+                            [isBrowseHidden]="uploadForm.get('isBrowseHidden')?.value"
+                            [isBrowseDisabled]="uploadForm.get('isBrowseDisabled')?.value"
+                            [areMultipleFilesAllowed]="uploadForm.get('areMultipleFilesAllowed')?.value"
+                            [areFilesUploadedTogether]="uploadForm.get('areFilesUploadedTogether')?.value"
+                            [isUploadManual]="uploadForm.get('isUploadManual')?.value"
+                            [isSizeHidden]="uploadForm.get('isSizeHidden')?.value"
+                            [isDismissButtonHidden]="uploadForm.get('isDismissButtonHidden')?.value"
+                            [isCancelButtonHidden]="uploadForm.get('isCancelButtonHidden')?.value"
+                            [isProgressSectionHidden]="uploadForm.get('isProgressSectionHidden')?.value"
+                            [isProgressInBytes]="uploadForm.get('isProgressInBytes')?.value"
 
-    <!-- START: are multiple files allowed checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-areMultipleFilesAllowed" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-areMultipleFilesAllowed"
-            id="f-checkbox-areMultipleFilesAllowed"
-            formControlName="areMultipleFilesAllowed">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Are Multiple Files Allowed</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: are multiple files allowed checkbox -->
+                            (fileSelection)="fileSelection($event)"
+                            (uploadUpdated)="uploadUpdated($event)"
+                            (uploadFinished)="uploadFinished($event)"
+                            (uploadCancelled)="uploadCancelled($event)">
+                          </f-upload>
 
-    <!-- START: are files uploaded together checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-areFilesUploadedTogether" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-areFilesUploadedTogether"
-            id="f-checkbox-areFilesUploadedTogether"
-            formControlName="areFilesUploadedTogether">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Are Files Uploaded Together</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: are files uploaded together checkbox -->
+                          <div class="fusion-components-demo__result-events">
+                            <div class="fusion-components-demo__result-event" [ngClass]="{ 'fusion-components-demo__result-event--emitted' : fileSelectionCount }">File Selection ({{ fileSelectionCount }})</div>
+                            <div class="fusion-components-demo__result-event" [ngClass]="{ 'fusion-components-demo__result-event--emitted' : uploadUpdatedCount }">Upload Updated ({{ uploadUpdatedCount }})</div>
+                            <div class="fusion-components-demo__result-event" [ngClass]="{ 'fusion-components-demo__result-event--emitted' : uploadFinishedCount }">Upload Finished ({{ uploadFinishedCount }})</div>
+                            <div class="fusion-components-demo__result-event" [ngClass]="{ 'fusion-components-demo__result-event--emitted' : uploadCancelledCount }">Upload Cancelled ({{ uploadCancelledCount }})</div>
+                            <f-button text="Reset State" (buttonClick)="resetState()"></f-button>
+                          </div>
+                        </ng-container>
 
-    <!-- START: is upload manual checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-isUploadManual" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-isUploadManual"
-            id="f-checkbox-isUploadManual"
-            formControlName="isUploadManual">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Is Upload Manual</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: is upload manual checkbox -->
-
-    <!-- START: is size hidden checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-isSizeHidden" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-isSizeHidden"
-            id="f-checkbox-isSizeHidden"
-            formControlName="isSizeHidden">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Is Size Hidden</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: is size hidden checkbox -->
-
-    <!-- START: is dismiss button hidden checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-isDismissButtonHidden" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-isDismissButtonHidden"
-            id="f-checkbox-isDismissButtonHidden"
-            formControlName="isDismissButtonHidden">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Is Dismiss Button Hidden</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: is dismiss button hidden checkbox -->
-
-    <!-- START: is cancel button hidden checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-isCancelButtonHidden" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-isCancelButtonHidden"
-            id="f-checkbox-isCancelButtonHidden"
-            formControlName="isCancelButtonHidden">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Is Cancel Button Hidden</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: is cancel button hidden checkbox -->
-
-    <!-- START: is progress section checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-isProgressSectionHidden" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-isProgressSectionHidden"
-            id="f-checkbox-isProgressSectionHidden"
-            formControlName="isProgressSectionHidden">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Is Progress Section Hidden</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: is progress section checkbox -->
-
-    <!-- START: is progress in bytes checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-isProgressInBytes" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-isProgressInBytes"
-            id="f-checkbox-isProgressInBytes"
-            formControlName="isProgressInBytes">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Is Progress In Bytes</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: is progress in bytes checkbox -->
-
-    <!-- START: make upload error checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-makeUploadError" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-makeUploadError"
-            id="f-checkbox-makeUploadError"
-            formControlName="makeUploadError">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Simulate Upload Error</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: make upload error checkbox -->
-
-  </form>
-
-  <ng-container result>
-    <f-upload
-      [uploadFilesFunction]="uploadFilesFunction.bind(this)"
-      [removeFilesFunction]="removeFilesFunction.bind(this)"
-
-      [isBrowseHidden]="uploadForm.get('isBrowseHidden')?.value"
-      [isBrowseDisabled]="uploadForm.get('isBrowseDisabled')?.value"
-      [areMultipleFilesAllowed]="uploadForm.get('areMultipleFilesAllowed')?.value"
-      [areFilesUploadedTogether]="uploadForm.get('areFilesUploadedTogether')?.value"
-      [isUploadManual]="uploadForm.get('isUploadManual')?.value"
-      [isSizeHidden]="uploadForm.get('isSizeHidden')?.value"
-      [isDismissButtonHidden]="uploadForm.get('isDismissButtonHidden')?.value"
-      [isCancelButtonHidden]="uploadForm.get('isCancelButtonHidden')?.value"
-      [isProgressSectionHidden]="uploadForm.get('isProgressSectionHidden')?.value"
-      [isProgressInBytes]="uploadForm.get('isProgressInBytes')?.value"
-
-      (fileSelection)="fileSelection($event)"
-      (uploadUpdated)="uploadUpdated($event)"
-      (uploadFinished)="uploadFinished($event)"
-      (uploadCancelled)="uploadCancelled($event)">
-    </f-upload>
-
-    <div class="fusion-components-demo__result-events">
-      <div class="fusion-components-demo__result-event" [ngClass]="{ 'fusion-components-demo__result-event--emitted' : fileSelectionCount }">File Selection ({{ fileSelectionCount }})</div>
-      <div class="fusion-components-demo__result-event" [ngClass]="{ 'fusion-components-demo__result-event--emitted' : uploadUpdatedCount }">Upload Updated ({{ uploadUpdatedCount }})</div>
-      <div class="fusion-components-demo__result-event" [ngClass]="{ 'fusion-components-demo__result-event--emitted' : uploadFinishedCount }">Upload Finished ({{ uploadFinishedCount }})</div>
-      <div class="fusion-components-demo__result-event" [ngClass]="{ 'fusion-components-demo__result-event--emitted' : uploadCancelledCount }">Upload Cancelled ({{ uploadCancelledCount }})</div>
-      <f-button text="Reset State" (buttonClick)="resetState()"></f-button>
-    </div>
-  </ng-container>
-
-</fusion-demo>
+                      </fusion-demo>

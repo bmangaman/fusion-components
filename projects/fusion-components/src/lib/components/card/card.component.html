@@ -4,27 +4,31 @@
   <div class="f-card__title f-card__title--{{ size }}">
 
     <!-- START: Title Text -->
-    <div class="f-card__title-text" *ngIf="!!cardTitle; else isCardTitle">
-      <ng-container *ngTemplateOutlet="cardTitle"></ng-container>
-    </div>
-    <ng-template #isCardTitle>
-      <ng-container *ngIf="title">
-        <h4 *ngIf="size === Size.SMALL; else notSmallTitle" class="f-h4 f-card__title-text">{{ title }}</h4>
-        <ng-template #notSmallTitle>
+    @if (!!cardTitle) {
+      <div class="f-card__title-text">
+        <ng-container *ngTemplateOutlet="cardTitle"></ng-container>
+      </div>
+    } @else {
+      @if (title) {
+        @if (size === Size.SMALL) {
+          <h4 class="f-h4 f-card__title-text">{{ title }}</h4>
+        } @else {
           <h3 class="f-h3 f-card__title-text">{{ title }}</h3>
-        </ng-template>
-      </ng-container>
-    </ng-template>
+        }
+      }
+    }
     <!-- END: Title Text -->
 
     <!-- START: Statuses -->
-    <div *ngIf="!!statuses && !!statuses?.length" class="f-card__title-statuses">
-      <ng-container *ngFor="let status of statuses">
-        <div *ngIf="!!status && !status.isHidden" class="f-card__title-status f-card__title-status--{{ status.status | getStatusLevelText:undefined:true }}">
-          <i
-            *ngIf="!status.isIconHidden"
-            aria-hidden="true"
-            class="mdi f-card__title-status-icon f-card__title-status-icon--{{ status.status | getStatusLevelText:undefined:true }}"
+    @if (!!statuses && !!statuses?.length) {
+      <div class="f-card__title-statuses">
+        @for (status of statuses; track status) {
+          @if (!!status && !status.isHidden) {
+            <div class="f-card__title-status f-card__title-status--{{ status.status | getStatusLevelText:undefined:true }}">
+              @if (!status.isIconHidden) {
+                <i
+                  aria-hidden="true"
+                  class="mdi f-card__title-status-icon f-card__title-status-icon--{{ status.status | getStatusLevelText:undefined:true }}"
             [ngClass]="{
               'mdi-help-circle' : status.status === StatusLevel.UNKNOWN,
               'mdi-circle' : status.status === StatusLevel.BASE || status?.status === StatusLevel.NORMAL,
@@ -33,59 +37,74 @@
               'mdi-alert-circle' : status.status === StatusLevel.ERROR,
               'mdi-close-circle' : status.status === StatusLevel.CRITICAL
             }">
-          </i>
-          <div *ngIf="status.count" class="f-card__title-status-count">{{ status?.count }}</div>
-          <div *ngIf="!status.isTextHidden" class="f-card__title-status-text">
-            <ng-container *ngIf="!!status.text; else defaultStatus">{{ status.text | toObservable | async }}</ng-container>
-            <ng-template #defaultStatus>{{ status.status | getStatusLevelText:translations.statuses }}</ng-template>
-          </div>
-        </div>
-      </ng-container>
-    </div>
+                </i>
+              }
+              @if (status.count) {
+                <div class="f-card__title-status-count">{{ status?.count }}</div>
+              }
+              @if (!status.isTextHidden) {
+                <div class="f-card__title-status-text">
+                  @if (!!status.text) {
+                    {{ status.text | toObservable | async }}
+                  } @else {
+                    {{ status.status | getStatusLevelText:translations.statuses }}
+                  }
+                </div>
+              }
+            </div>
+          }
+        }
+      </div>
+    }
     <!-- END: Statuses-->
 
   </div>
   <!-- END: title -->
 
   <!-- START: Content -->
-  <div *ngIf="!!cardContent; else isCardContent" class="f-card__content">
-    <ng-container *ngTemplateOutlet="cardContent"></ng-container>
-  </div>
-  <ng-template #isCardContent>
-    <ng-container *ngIf="content">
+  @if (!!cardContent) {
+    <div class="f-card__content">
+      <ng-container *ngTemplateOutlet="cardContent"></ng-container>
+    </div>
+  } @else {
+    @if (content) {
       <p class="f-card__content" [ngClass]="size === Size.SMALL ? 'f-p-md' : 'f-p-lg'">{{ content }}</p>
-    </ng-container>
-  </ng-template>
+    }
+  }
   <!-- END: Content -->
 
   <!-- START: Details -->
-  <div *ngIf="!!cardDetails || !!details" class="f-card__details f-card__details--{{ size }}">
-    <button
-      class="f-card__details-button f-button__link"
-      [ngClass]="isDetailsSectionExpanded ? 'f-card__details-button--expanded' : 'f-card__details-button--collapsed'"
-      (click)="toggleDetailsSectionExpansion()">
-      <i class="f-card__details-button-icon mdi" [ngClass]="isDetailsSectionExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
-      {{ isDetailsSectionExpanded ? translations.hideDetails : translations.showDetails }}
-    </button>
-    <div *ngIf="isDetailsSectionExpanded" class="f-card__details-content">
-      <ng-container *ngIf="!!cardDetails; else isCardDetails">
-        <ng-container *ngTemplateOutlet="cardDetails"></ng-container>
-      </ng-container>
-      <ng-template #isCardDetails>
-        <p [ngClass]="size === Size.SMALL ? 'f-p-md' : 'f-p-lg'">{{ details }}</p>
-      </ng-template>
+  @if (!!cardDetails || !!details) {
+    <div class="f-card__details f-card__details--{{ size }}">
+      <button
+        class="f-card__details-button f-button__link"
+        [ngClass]="isDetailsSectionExpanded ? 'f-card__details-button--expanded' : 'f-card__details-button--collapsed'"
+        (click)="toggleDetailsSectionExpansion()">
+        <i class="f-card__details-button-icon mdi" [ngClass]="isDetailsSectionExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
+        {{ isDetailsSectionExpanded ? translations.hideDetails : translations.showDetails }}
+      </button>
+      @if (isDetailsSectionExpanded) {
+        <div class="f-card__details-content">
+          @if (!!cardDetails) {
+            <ng-container *ngTemplateOutlet="cardDetails"></ng-container>
+          } @else {
+            <p [ngClass]="size === Size.SMALL ? 'f-p-md' : 'f-p-lg'">{{ details }}</p>
+          }
+        </div>
+      }
     </div>
-  </div>
+  }
   <!-- END: Details -->
 
   <!-- START: Footer -->
-  <div *ngIf="!!cardFooter; else isCardFooter" class="f-card__footer">
-    <ng-container *ngTemplateOutlet="cardFooter"></ng-container>
-  </div>
-  <ng-template #isCardFooter>
-    <ng-container *ngIf="footer">
+  @if (!!cardFooter) {
+    <div class="f-card__footer">
+      <ng-container *ngTemplateOutlet="cardFooter"></ng-container>
+    </div>
+  } @else {
+    @if (footer) {
       <p class="f-card__footer" [ngClass]="size === Size.SMALL ? 'f-p-sm' : 'f-p-md'">{{ footer }}</p>
-    </ng-container>
-  </ng-template>
+    }
+  }
   <!-- END: Footer -->
 </div>

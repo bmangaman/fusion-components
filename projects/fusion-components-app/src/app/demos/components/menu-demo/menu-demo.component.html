@@ -1,40 +1,40 @@
 <fusion-demo titleText="Menu" [isResultCentered]="true">
 
-  <form form class="fusion-components-demo__form f-form" *ngIf="menuForm" [formGroup]="menuForm">
-    <!-- START: location select -->
-    <div class="f-form__fieldset f-table__filter-input-field-selector">
-      <label class="f-form__input-label" for="location-select">Location</label>
-      <div class="f-form__input-wrapper f-form__select-wrapper">
-        <select class="f-form__input f-form__select" formControlName="dialogLocation" id="location-select">
-          <ng-container *ngFor="let location of Location | enumToArray">
-            <option [value]="location">{{ location }}</option>
-          </ng-container>
-        </select>
-        <span class="f-form__input-wrapper-status-icon"></span>
+  @if (menuForm) {
+    <form form class="fusion-components-demo__form f-form" [formGroup]="menuForm">
+      <!-- START: location select -->
+      <div class="f-form__fieldset f-table__filter-input-field-selector">
+        <label class="f-form__input-label" for="location-select">Location</label>
+        <div class="f-form__input-wrapper f-form__select-wrapper">
+          <select class="f-form__input f-form__select" formControlName="dialogLocation" id="location-select">
+            @for (location of Location | enumToArray; track location) {
+              <option [value]="location">{{ location }}</option>
+            }
+          </select>
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: location select -->
-
-    <!-- START: minWidth input -->
-    <div class="f-form__fieldset">
-      <label class="f-form__input-label" for="minWidth-input">Min Width (in px)</label>
-      <div class="f-form__input-wrapper">
-        <input class="f-form__input" type="number" formControlName="minWidth" id="minWidth-input" />
-        <span class="f-form__input-wrapper-status-icon"></span>
+      <!-- END: location select -->
+      <!-- START: minWidth input -->
+      <div class="f-form__fieldset">
+        <label class="f-form__input-label" for="minWidth-input">Min Width (in px)</label>
+        <div class="f-form__input-wrapper">
+          <input class="f-form__input" type="number" formControlName="minWidth" id="minWidth-input" />
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: minWidth input -->
-
-    <!-- START: maxHeight input -->
-    <div class="f-form__fieldset">
-      <label class="f-form__input-label" for="maxHeight-input">Max Height (in px)</label>
-      <div class="f-form__input-wrapper">
-        <input class="f-form__input" type="number" formControlName="maxHeight" id="maxHeight-input" />
-        <span class="f-form__input-wrapper-status-icon"></span>
+      <!-- END: minWidth input -->
+      <!-- START: maxHeight input -->
+      <div class="f-form__fieldset">
+        <label class="f-form__input-label" for="maxHeight-input">Max Height (in px)</label>
+        <div class="f-form__input-wrapper">
+          <input class="f-form__input" type="number" formControlName="maxHeight" id="maxHeight-input" />
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: maxHeight input -->
-  </form>
+      <!-- END: maxHeight input -->
+    </form>
+  }
 
   <ng-container result>
     <f-menu

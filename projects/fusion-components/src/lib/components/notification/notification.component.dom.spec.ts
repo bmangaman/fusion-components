@@ -14,23 +14,24 @@ import createSpy = jasmine.createSpy;
 @Component({
     selector: 'f-test-component',
     template: `
-    <f-notification
-      *ngIf="show"
-      [id]="id"
-      [dismissible]="dismissible"
-      [notificationType]="notificationType"
-      [sticky]="sticky"
-      [notificationIcon]="notificationIcon"
-      [translations]="translations"
-      (bannerDismissed)="dismissedFn()"
-      [disappearDelay]="disappearDelay"
-    >
-      {{ text }}
-      <ng-container *ngIf="hasDetails">
-        <ng-template [fusionUiTemplate]="'details'">Details Template</ng-template>
-      </ng-container>
-    </f-notification>
-  `,
+    @if (show) {
+      <f-notification
+        [id]="id"
+        [dismissible]="dismissible"
+        [notificationType]="notificationType"
+        [sticky]="sticky"
+        [notificationIcon]="notificationIcon"
+        [translations]="translations"
+        (bannerDismissed)="dismissedFn()"
+        [disappearDelay]="disappearDelay"
+        >
+        {{ text }}
+        @if (hasDetails) {
+          <ng-template [fusionUiTemplate]="'details'">Details Template</ng-template>
+        }
+      </f-notification>
+    }
+    `,
     standalone: false
 })
 class TestComponent {

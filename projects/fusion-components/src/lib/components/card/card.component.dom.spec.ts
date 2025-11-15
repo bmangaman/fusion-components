@@ -10,21 +10,30 @@ import { CardModule } from './card.module';
 @Component({
     selector: 'f-test-component',
     template: `
-  <f-card
-    *ngIf="isLoaded"
-    [title]="title"
-    [content]="content"
-    [details]="details"
-    [footer]="footer"
-    [hideStatusBarStyling]="hideStatusBarStyling"
-    [size]="size"
-    [translations]="translations"
-    [statuses]="statuses">
-    <ng-template *ngIf="useTitleTemplate" [fusionUiTemplate]="CardTemplate.TITLE">Template Title</ng-template>
-    <ng-template *ngIf="useContentTemplate" [fusionUiTemplate]="CardTemplate.CONTENT">Template Content</ng-template>
-    <ng-template *ngIf="useDetailsTemplate" [fusionUiTemplate]="CardTemplate.DETAILS">Template Details</ng-template>
-    <ng-template *ngIf="useFooterTemplate" [fusionUiTemplate]="CardTemplate.FOOTER">Template Footer</ng-template>
-  </f-card>
+  @if (isLoaded) {
+    <f-card
+      [title]="title"
+      [content]="content"
+      [details]="details"
+      [footer]="footer"
+      [hideStatusBarStyling]="hideStatusBarStyling"
+      [size]="size"
+      [translations]="translations"
+      [statuses]="statuses">
+      @if (useTitleTemplate) {
+        <ng-template [fusionUiTemplate]="CardTemplate.TITLE">Template Title</ng-template>
+      }
+      @if (useContentTemplate) {
+        <ng-template [fusionUiTemplate]="CardTemplate.CONTENT">Template Content</ng-template>
+      }
+      @if (useDetailsTemplate) {
+        <ng-template [fusionUiTemplate]="CardTemplate.DETAILS">Template Details</ng-template>
+      }
+      @if (useFooterTemplate) {
+        <ng-template [fusionUiTemplate]="CardTemplate.FOOTER">Template Footer</ng-template>
+      }
+    </f-card>
+  }
   `,
     standalone: false
 })

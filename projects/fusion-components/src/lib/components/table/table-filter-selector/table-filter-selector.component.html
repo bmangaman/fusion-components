@@ -1,19 +1,21 @@
 <div class="f-table__filter-selector">
 
   <!-- START: Quick Filters -->
-  <div class="f-inline-buttons f-table__filter-selector-quick-filters" *ngIf="quickFilters?.length">
-    <ng-container *ngFor="let quickFilter of quickFilters">
-      <f-button
-        [classes]="['f-table__filter-selector-quick-filter-button']"
-        [type]="ButtonType.SECONDARY"
-        [size]="Size.X_SMALL"
-        [text]="quickFilter.label | toObservable | async"
-        [isSelected]="!!quickFilter.isApplied"
-        icon="mdi-filter"
-        (buttonClick)="toggleQuickFilter(quickFilter)">
-      </f-button>
-    </ng-container>
-  </div>
+  @if (quickFilters?.length) {
+    <div class="f-inline-buttons f-table__filter-selector-quick-filters">
+      @for (quickFilter of quickFilters; track quickFilter) {
+        <f-button
+          [classes]="['f-table__filter-selector-quick-filter-button']"
+          [type]="ButtonType.SECONDARY"
+          [size]="Size.X_SMALL"
+          [text]="quickFilter.label | toObservable | async"
+          [isSelected]="!!quickFilter.isApplied"
+          icon="mdi-filter"
+          (buttonClick)="toggleQuickFilter(quickFilter)">
+        </f-button>
+      }
+    </div>
+  }
   <!-- END: Quick Filters -->
 
   <!-- START: Filter Selector Menu -->
@@ -33,21 +35,22 @@
 
     <ng-template fusionUiTemplate="menuButton">
       <div class="f-table__filter-selector-button">
-        <f-button
-          class="f-table__filter-selector-clear-button-wrapper"
-          *ngIf="(appliedFilters | visibleAppliedFilters)?.length"
-          [classes]="['f-table__filter-selector-clear-button']"
-          [noBorder]="true"
-          [type]="ButtonType.SECONDARY"
-          [size]="Size.SMALL"
-          [isSelected]="!!(appliedFilters | visibleAppliedFilters)?.length"
+        @if ((appliedFilters | visibleAppliedFilters)?.length) {
+          <f-button
+            class="f-table__filter-selector-clear-button-wrapper"
+            [classes]="['f-table__filter-selector-clear-button']"
+            [noBorder]="true"
+            [type]="ButtonType.SECONDARY"
+            [size]="Size.SMALL"
+            [isSelected]="!!(appliedFilters | visibleAppliedFilters)?.length"
           [text]="(appliedFilters | visibleAppliedFilters)?.length + ' ' + (((appliedFilters | visibleAppliedFilters)?.length || 0) > 1
             ? translations.filtersApplied
             : translations.filterApplied)"
-          icon="mdi-close"
-          [aria]="{ label: translations.removeAll }"
-          (buttonClick)="removeAllFilters()">
-        </f-button>
+            icon="mdi-close"
+            [aria]="{ label: translations.removeAll }"
+            (buttonClick)="removeAllFilters()">
+          </f-button>
+        }
         <f-button
           class="f-table__filter-selector-open-button-wrapper"
           [classes]="['f-table__filter-selector-open-button']"
@@ -81,19 +84,23 @@
             [formControl]="filterField"
             class="f-form__input f-form__select"
             [attr.aria-label]="translations.columnSelectorLabel">
-            <option *ngIf="filterField?.disabled" [ngValue]="undefined">{{ translations.allColumnsHidden }}</option>
-            <ng-container *ngFor="let filter of filters?.toArray()">
-              <option *ngIf="filter?.isVisibleInSelector" [ngValue]="filter">
-                {{ filter?.filterName }}
-              </option>
-            </ng-container>
+            @if (filterField?.disabled) {
+              <option [ngValue]="undefined">{{ translations.allColumnsHidden }}</option>
+            }
+            @for (filter of filters?.toArray(); track filter) {
+              @if (filter?.isVisibleInSelector) {
+                <option [ngValue]="filter">
+                  {{ filter?.filterName }}
+                </option>
+              }
+            }
           </select>
         </div>
       </div>
       <!-- END: Select input with list of available filters -->
-  
+
       <ng-template fusionUiFilterHost></ng-template>
-  
+
       <f-button
         [classes]="['f-table__filter-selector-apply-filter-button']"
         text="Apply Filter"
@@ -104,30 +111,35 @@
       </f-button>
 
       <!-- START: List of applied filters -->
-      <div class="f-table__filter-selector-filter-list" *ngIf="((appliedFilters | visibleAppliedFilters)?.length || 0) > 0">
-        <div class="f-table__filter-selector-filter-list-group" *ngFor="let group of appliedFilters | groupAppliedFilters:filters">
-          <div class="f-table__filter-selector-filter-list-group-name">{{ group?.filterName }}</div>
-          <div class="f-table__filter-selector-filter-list-group-item" *ngFor="let application of group?.applications">
-            <div class="f-table__filter-selector-filter-list-group-item-text">
-              <ng-container *ngIf="application?.selectedFilterComparator?.value?.displayString; else standardText; let displayString;">
-                {{ displayString() | toObservable | async }}
-              </ng-container>
-              <ng-template #standardText>
-                {{ application?.selectedFilterComparator?.value ? (application.selectedFilterComparator.value | getComparatorLabel | async) : '' }} {{ application?.getFormValue() }}
-              </ng-template>
+      @if (((appliedFilters | visibleAppliedFilters)?.length || 0) > 0) {
+        <div class="f-table__filter-selector-filter-list">
+          @for (group of appliedFilters | groupAppliedFilters:filters; track group) {
+            <div class="f-table__filter-selector-filter-list-group">
+              <div class="f-table__filter-selector-filter-list-group-name">{{ group?.filterName }}</div>
+              @for (application of group?.applications; track application) {
+                <div class="f-table__filter-selector-filter-list-group-item">
+                  <div class="f-table__filter-selector-filter-list-group-item-text">
+                    @if (application?.selectedFilterComparator?.value?.displayString; as displayString) {
+                      {{ displayString() | toObservable | async }}
+                    } @else {
+                      {{ application?.selectedFilterComparator?.value ? (application.selectedFilterComparator.value | getComparatorLabel | async) : '' }} {{ application?.getFormValue() }}
+                    }
+                  </div>
+                  <f-button
+                    [classes]="['f-table__filter-selector-remove-filter-button']"
+                    icon="mdi-close"
+                    [noBorder]="true"
+                    [size]="Size.X_SMALL"
+                    [type]="ButtonType.SECONDARY"
+                    [aria]="{ label: translations.removeFilter + application?.field }"
+                    (buttonClick)="removeFilter(application)">
+                  </f-button>
+                </div>
+              }
             </div>
-            <f-button
-              [classes]="['f-table__filter-selector-remove-filter-button']"
-              icon="mdi-close"
-              [noBorder]="true"
-              [size]="Size.X_SMALL"
-              [type]="ButtonType.SECONDARY"
-              [aria]="{ label: translations.removeFilter + application?.field }"
-              (buttonClick)="removeFilter(application)">
-            </f-button>
-          </div>
+          }
         </div>
-      </div>
+      }
       <!-- END: List of applied filters -->
 
     </ng-template>

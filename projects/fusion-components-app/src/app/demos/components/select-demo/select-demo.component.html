@@ -1,92 +1,88 @@
 <fusion-demo titleText="Select">
 
-  <form form class="fusion-components-demo__form f-form" *ngIf="selectForm" [formGroup]="selectForm">
-    <h3>Configuration Options:</h3>
-
-     <!-- START: label input -->
-     <div class="f-form__fieldset">
-      <label class="f-form__input-label" for="select-input">Label</label>
-      <div class="f-form__input-wrapper">
-        <input class="f-form__input" formControlName="label" id="select-input" />
-        <span class="f-form__input-wrapper-status-icon"></span>
+  @if (selectForm) {
+    <form form class="fusion-components-demo__form f-form" [formGroup]="selectForm">
+      <h3>Configuration Options:</h3>
+      <!-- START: label input -->
+      <div class="f-form__fieldset">
+        <label class="f-form__input-label" for="select-input">Label</label>
+        <div class="f-form__input-wrapper">
+          <input class="f-form__input" formControlName="label" id="select-input" />
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: label input -->
-
-     <!-- START: numOfOptions input -->
-     <div class="f-form__fieldset">
-      <label class="f-form__input-label" for="num-of-options-select">Num Of Options</label>
-      <div class="f-form__input-wrapper">
-        <input class="f-form__input" type="number" min="0" formControlName="numOfOptions" id="num-of-options-select" />
-        <span class="f-form__input-wrapper-status-icon"></span>
+      <!-- END: label input -->
+      <!-- START: numOfOptions input -->
+      <div class="f-form__fieldset">
+        <label class="f-form__input-label" for="num-of-options-select">Num Of Options</label>
+        <div class="f-form__input-wrapper">
+          <input class="f-form__input" type="number" min="0" formControlName="numOfOptions" id="num-of-options-select" />
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: numOfOptions input -->
+      <!-- END: numOfOptions input -->
+      <!-- START: has disabled options checkbox -->
+      <div class="f-form__fieldset">
+        <span class="f-form__checkbox">
+          <label for="has-disabled" class="f-form__checkbox-label">
+            <input
+              class="f-form__checkbox-input"
+              type="checkbox"
+              value="true"
+              name="has-disabled"
+              id="has-disabled"
+              formControlName="hasDisabledOptions">
+              <span class="f-form__checkbox-button"></span>
+              <span class="f-form__checkbox-label-text">Has Disabled Options</span>
+            </label>
+          </span>
+        </div>
+        <!-- END: has disabled options checkbox -->
+        <!-- START: is disabled checkbox -->
+        <div class="f-form__fieldset">
+          <span class="f-form__checkbox">
+            <label for="is-disabled" class="f-form__checkbox-label">
+              <input
+                class="f-form__checkbox-input"
+                type="checkbox"
+                value="true"
+                name="is-disabled"
+                id="is-disabled"
+                formControlName="isDisabled">
+                <span class="f-form__checkbox-button"></span>
+                <span class="f-form__checkbox-label-text">isDisabled</span>
+              </label>
+            </span>
+          </div>
+          <!-- END: is disabled checkbox -->
+          <!-- START: is searchable checkbox -->
+          <div class="f-form__fieldset">
+            <span class="f-form__checkbox">
+              <label for="is-searchable" class="f-form__checkbox-label">
+                <input
+                  class="f-form__checkbox-input"
+                  type="checkbox"
+                  value="true"
+                  name="is-searchable"
+                  id="is-searchable"
+                  formControlName="isSearchable">
+                  <span class="f-form__checkbox-button"></span>
+                  <span class="f-form__checkbox-label-text">isSearchable</span>
+                </label>
+              </span>
+            </div>
+            <!-- END: is searchable checkbox -->
+          </form>
+        }
 
-    <!-- START: has disabled options checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="has-disabled" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="has-disabled"
-            id="has-disabled"
-            formControlName="hasDisabledOptions">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Has Disabled Options</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: has disabled options checkbox -->
+        <ng-container result>
+          <f-select
+            [formControl]="selectFormControl"
+            [label]="selectForm.get('label')?.value"
+            [options]="selectOptions"
+            [isSearchable]="selectForm.get('isSearchable')?.value"
+            [cssClasses]="['max-width-200']">
+          </f-select>
+        </ng-container>
 
-    <!-- START: is disabled checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="is-disabled" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="is-disabled"
-            id="is-disabled"
-            formControlName="isDisabled">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">isDisabled</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: is disabled checkbox -->
-
-    <!-- START: is searchable checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="is-searchable" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="is-searchable"
-            id="is-searchable"
-            formControlName="isSearchable">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">isSearchable</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: is searchable checkbox -->
-
-  </form>
-
-  <ng-container result>
-    <f-select
-      [formControl]="selectFormControl"
-      [label]="selectForm.get('label')?.value"
-      [options]="selectOptions"
-      [isSearchable]="selectForm.get('isSearchable')?.value"
-      [cssClasses]="['max-width-200']">
-    </f-select>
-  </ng-container>
-
-</fusion-demo>
+      </fusion-demo>

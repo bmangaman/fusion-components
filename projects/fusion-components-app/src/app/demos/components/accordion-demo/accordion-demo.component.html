@@ -1,172 +1,162 @@
 <fusion-demo titleText="Accordion">
 
-  <form form class="fusion-components-demo__form f-form" *ngIf="accordionForm" [formGroup]="accordionForm">
-
-    <button class="f-button f-button--primary f-button--small toggle-all-button" (click)="toggleAll()">
-      {{ isAllExpanded ? 'Collapse All' : 'Expand All' }}
-    </button>
-
-    <!-- START: max content height input -->
-    <div class="f-form__fieldset">
-      <label class="f-form__input-label">Max Content Height</label>
-      <div class="f-form__input-wrapper">
-        <input class="f-form__input" type="number" min="0" formControlName="maxContentHeight" />
-        <span class="f-form__input-wrapper-status-icon"></span>
-      </div>
-    </div>
-    <!-- END: max content height input -->
-
-    <!-- START: one panel limit checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="table-demo-one-panel-limit" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="table-demo-one-panel-limit"
-            id="table-demo-one-panel-limit"
-            formControlName="onePanelLimit">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">One Panel Limit</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: one panel limit checkbox -->
-
-    <!-- START: expand icon select -->
-    <div class="f-form__fieldset f-table__filter-input-field-selector">
-      <label class="f-form__input-label">Expand Icon</label>
-      <div class="f-form__input-wrapper f-form__select-wrapper">
-        <select class="f-form__input f-form__select" formControlName="expandIconClasses">
-          <option value="">- None -</option>
-          <option [value]="'mdi mdi-plus'">mdi mdi-plus</option>
-          <option [value]="'mdi mdi-chevron-down'">mdi mdi-chevron-down</option>
-        </select>
-        <span class="f-form__input-wrapper-status-icon"></span>
-      </div>
-    </div>
-    <!-- END: expand icon select -->
-
-    <!-- START: expand icon select -->
-    <div class="f-form__fieldset f-table__filter-input-field-selector">
-      <label class="f-form__input-label">Collapse Icon</label>
-      <div class="f-form__input-wrapper f-form__select-wrapper">
-        <select class="f-form__input f-form__select" formControlName="collapseIconClasses">
-          <option value="">- None -</option>
-          <option [value]="'mdi mdi-minus'">mdi mdi-minus</option>
-          <option [value]="'mdi mdi-chevron-up'">mdi mdi-chevron-up</option>
-        </select>
-        <span class="f-form__input-wrapper-status-icon"></span>
-      </div>
-    </div>
-    <!-- END: expand icon select -->
-
-    <h3 class="fusion-components-demo__form-array-header f-h3">Panels</h3>
-    <div class="fusion-components-demo__form-array">
-      <ng-container formArrayName="panels" *ngFor="let panel of panelsFormArray.controls; let i = index;">
-        <div class="fusion-components-demo__form-array-item" [formGroupName]="i">
-
-          <h3 class="fusion-components-demo__form-array-item-header f-h3">
-            Panel {{ i }}
-            <button class="fusion-components-demo__form-array-remove-button f-button f-button--secondary f-button--xSmall" (click)="removePanel(i)">
-              Remove Panel
-            </button>
-          </h3>
-
-          <!-- START: id input -->
-          <div class="f-form__fieldset">
-            <label class="f-form__input-label">ID</label>
-            <div class="f-form__input-wrapper">
-              <input class="f-form__input" formControlName="id" />
-              <span class="f-form__input-wrapper-status-icon"></span>
-            </div>
-          </div>
-          <!-- END: id input -->     
-          
-          <!-- START: id input -->
-          <div class="f-form__fieldset">
-            <label class="f-form__input-label">Title</label>
-            <div class="f-form__input-wrapper">
-              <input class="f-form__input" formControlName="title" />
-              <span class="f-form__input-wrapper-status-icon"></span>
-            </div>
-          </div>
-          <!-- END: id input -->       
-
-          <!-- START: content input -->
-          <div class="f-form__fieldset">
-            <label class="f-form__input-label">Content</label>
-            <div class="f-form__input-wrapper">
-              <textarea class="f-form__input" formControlName="content"></textarea>
-              <span class="f-form__input-wrapper-status-icon"></span>
-            </div>
-          </div>
-          <!-- END: content input -->
-
-          <!-- START: is disabled checkbox -->
-          <div class="f-form__fieldset">
-            <span class="f-form__checkbox">
-              <label for="table-demo-disabled-{{ i }}" class="f-form__checkbox-label">
-                <input
-                  class="f-form__checkbox-input"
-                  type="checkbox"
-                  value="true"
-                  name="table-demo-disabled-{{ i }}"
-                  id="table-demo-disabled-{{ i }}"
-                  formControlName="isDisabled">
-                <span class="f-form__checkbox-button"></span>
-                <span class="f-form__checkbox-label-text">Is Disabled</span>
-              </label>
-            </span>
-          </div>
-          <!-- END: is disabled checkbox -->
-
-          <!-- START: is disabled checkbox -->
-          <div class="f-form__fieldset">
-            <span class="f-form__checkbox">
-              <label for="table-demo-expanded-{{ i }}" class="f-form__checkbox-label">
-                <input
-                  class="f-form__checkbox-input"
-                  type="checkbox"
-                  value="true"
-                  name="table-demo-expanded-{{ i }}"
-                  id="table-demo-expanded-{{ i }}"
-                  formControlName="isExpanded">
-                <span class="f-form__checkbox-button"></span>
-                <span class="f-form__checkbox-label-text">Is Expanded</span>
-              </label>
-            </span>
-          </div>
-          <!-- END: is disabled checkbox -->
-
+  @if (accordionForm) {
+    <form form class="fusion-components-demo__form f-form" [formGroup]="accordionForm">
+      <button class="f-button f-button--primary f-button--small toggle-all-button" (click)="toggleAll()">
+        {{ isAllExpanded ? 'Collapse All' : 'Expand All' }}
+      </button>
+      <!-- START: max content height input -->
+      <div class="f-form__fieldset">
+        <label class="f-form__input-label">Max Content Height</label>
+        <div class="f-form__input-wrapper">
+          <input class="f-form__input" type="number" min="0" formControlName="maxContentHeight" />
+          <span class="f-form__input-wrapper-status-icon"></span>
         </div>
-      </ng-container>
-    </div>
+      </div>
+      <!-- END: max content height input -->
+      <!-- START: one panel limit checkbox -->
+      <div class="f-form__fieldset">
+        <span class="f-form__checkbox">
+          <label for="table-demo-one-panel-limit" class="f-form__checkbox-label">
+            <input
+              class="f-form__checkbox-input"
+              type="checkbox"
+              value="true"
+              name="table-demo-one-panel-limit"
+              id="table-demo-one-panel-limit"
+              formControlName="onePanelLimit">
+              <span class="f-form__checkbox-button"></span>
+              <span class="f-form__checkbox-label-text">One Panel Limit</span>
+            </label>
+          </span>
+        </div>
+        <!-- END: one panel limit checkbox -->
+        <!-- START: expand icon select -->
+        <div class="f-form__fieldset f-table__filter-input-field-selector">
+          <label class="f-form__input-label">Expand Icon</label>
+          <div class="f-form__input-wrapper f-form__select-wrapper">
+            <select class="f-form__input f-form__select" formControlName="expandIconClasses">
+              <option value="">- None -</option>
+              <option [value]="'mdi mdi-plus'">mdi mdi-plus</option>
+              <option [value]="'mdi mdi-chevron-down'">mdi mdi-chevron-down</option>
+            </select>
+            <span class="f-form__input-wrapper-status-icon"></span>
+          </div>
+        </div>
+        <!-- END: expand icon select -->
+        <!-- START: expand icon select -->
+        <div class="f-form__fieldset f-table__filter-input-field-selector">
+          <label class="f-form__input-label">Collapse Icon</label>
+          <div class="f-form__input-wrapper f-form__select-wrapper">
+            <select class="f-form__input f-form__select" formControlName="collapseIconClasses">
+              <option value="">- None -</option>
+              <option [value]="'mdi mdi-minus'">mdi mdi-minus</option>
+              <option [value]="'mdi mdi-chevron-up'">mdi mdi-chevron-up</option>
+            </select>
+            <span class="f-form__input-wrapper-status-icon"></span>
+          </div>
+        </div>
+        <!-- END: expand icon select -->
+        <h3 class="fusion-components-demo__form-array-header f-h3">Panels</h3>
+        <div class="fusion-components-demo__form-array">
+          @for (panel of panelsFormArray.controls; track panel; let i = $index) {
+            <ng-container formArrayName="panels">
+              <div class="fusion-components-demo__form-array-item" [formGroupName]="i">
+                <h3 class="fusion-components-demo__form-array-item-header f-h3">
+                  Panel {{ i }}
+                  <button class="fusion-components-demo__form-array-remove-button f-button f-button--secondary f-button--xSmall" (click)="removePanel(i)">
+                    Remove Panel
+                  </button>
+                </h3>
+                <!-- START: id input -->
+                <div class="f-form__fieldset">
+                  <label class="f-form__input-label">ID</label>
+                  <div class="f-form__input-wrapper">
+                    <input class="f-form__input" formControlName="id" />
+                    <span class="f-form__input-wrapper-status-icon"></span>
+                  </div>
+                </div>
+                <!-- END: id input -->
+                <!-- START: id input -->
+                <div class="f-form__fieldset">
+                  <label class="f-form__input-label">Title</label>
+                  <div class="f-form__input-wrapper">
+                    <input class="f-form__input" formControlName="title" />
+                    <span class="f-form__input-wrapper-status-icon"></span>
+                  </div>
+                </div>
+                <!-- END: id input -->
+                <!-- START: content input -->
+                <div class="f-form__fieldset">
+                  <label class="f-form__input-label">Content</label>
+                  <div class="f-form__input-wrapper">
+                    <textarea class="f-form__input" formControlName="content"></textarea>
+                    <span class="f-form__input-wrapper-status-icon"></span>
+                  </div>
+                </div>
+                <!-- END: content input -->
+                <!-- START: is disabled checkbox -->
+                <div class="f-form__fieldset">
+                  <span class="f-form__checkbox">
+                    <label for="table-demo-disabled-{{ i }}" class="f-form__checkbox-label">
+                      <input
+                        class="f-form__checkbox-input"
+                        type="checkbox"
+                        value="true"
+                        name="table-demo-disabled-{{ i }}"
+                        id="table-demo-disabled-{{ i }}"
+                        formControlName="isDisabled">
+                        <span class="f-form__checkbox-button"></span>
+                        <span class="f-form__checkbox-label-text">Is Disabled</span>
+                      </label>
+                    </span>
+                  </div>
+                  <!-- END: is disabled checkbox -->
+                  <!-- START: is disabled checkbox -->
+                  <div class="f-form__fieldset">
+                    <span class="f-form__checkbox">
+                      <label for="table-demo-expanded-{{ i }}" class="f-form__checkbox-label">
+                        <input
+                          class="f-form__checkbox-input"
+                          type="checkbox"
+                          value="true"
+                          name="table-demo-expanded-{{ i }}"
+                          id="table-demo-expanded-{{ i }}"
+                          formControlName="isExpanded">
+                          <span class="f-form__checkbox-button"></span>
+                          <span class="f-form__checkbox-label-text">Is Expanded</span>
+                        </label>
+                      </span>
+                    </div>
+                    <!-- END: is disabled checkbox -->
+                  </div>
+                </ng-container>
+              }
+            </div>
+            <button class="f-button f-button--primary f-button--small add-panel-button" (click)="addNewPanel()">
+              Add New Panel
+            </button>
+          </form>
+        }
 
-    <button class="f-button f-button--primary f-button--small add-panel-button" (click)="addNewPanel()">
-      Add New Panel
-    </button>
+        <ng-container result>
+          <f-accordion
+            [onePanelLimit]="accordionForm.get('onePanelLimit')?.value"
+            [maxContentHeight]="accordionForm.get('maxContentHeight')?.value ? accordionForm.get('maxContentHeight')?.value + 'px' : ''"
+            [expandIconClasses]="accordionForm.get('expandIconClasses')?.value"
+            [collapseIconClasses]="accordionForm.get('collapseIconClasses')?.value"
+            [toggleAllPanels]="triggerExpandAll"
+            (panelContentVisibilityChanged)="updateAccordionForm($event)">
 
-  </form>
+            @for (panel of panelsFormArray.controls; track panel; let i = $index) {
+              <f-accordion-panel
+                [isDisabled]="panel.get('isDisabled')?.value"
+                [isExpanded]="panel.get('isExpanded')?.value">
+                <ng-template fusionUiTemplate="panelTitle">{{ panel.get('title')?.value }}</ng-template>
+                <ng-template fusionUiTemplate="panelContent">{{ panel.get('content')?.value }}</ng-template>
+              </f-accordion-panel>
+            }
 
-  <ng-container result>
-    <f-accordion
-      [onePanelLimit]="accordionForm.get('onePanelLimit')?.value"
-      [maxContentHeight]="accordionForm.get('maxContentHeight')?.value ? accordionForm.get('maxContentHeight')?.value + 'px' : ''"
-      [expandIconClasses]="accordionForm.get('expandIconClasses')?.value"
-      [collapseIconClasses]="accordionForm.get('collapseIconClasses')?.value"
-      [toggleAllPanels]="triggerExpandAll"
-      (panelContentVisibilityChanged)="updateAccordionForm($event)">
-
-      <f-accordion-panel
-        *ngFor="let panel of panelsFormArray.controls; let i = index;"
-        [isDisabled]="panel.get('isDisabled')?.value"
-        [isExpanded]="panel.get('isExpanded')?.value">
-        <ng-template fusionUiTemplate="panelTitle">{{ panel.get('title')?.value }}</ng-template>
-        <ng-template fusionUiTemplate="panelContent">{{ panel.get('content')?.value }}</ng-template>
-      </f-accordion-panel>
-
-    </f-accordion>
-  </ng-container>
-</fusion-demo>
+          </f-accordion>
+        </ng-container>
+      </fusion-demo>

@@ -1,7 +1,7 @@
 <li class="f-navItem">
 
-  <ng-container *ngIf="!!href || !!route; else noLink;">
-    <ng-container *ngIf="!!route; else hrefLink">
+  @if (!!href || !!route) {
+    @if (!!route) {
       <a
         (click)="toggleExpansion(); setCurrentSelectedNavItem()"
         [routerLink]="route"
@@ -15,8 +15,7 @@
         [style.paddingLeft.px]="(index * 24) + 16">
         <ng-container *ngTemplateOutlet="linkContent"></ng-container>
       </a>
-    </ng-container>
-    <ng-template #hrefLink>
+    } @else {
       <a
         (click)="toggleExpansion(); setCurrentSelectedNavItem()"
         [ngClass]="linkCssClasses"
@@ -29,10 +28,8 @@
         [style.paddingLeft.px]="(index * 24) + 16">
         <ng-container *ngTemplateOutlet="linkContent"></ng-container>
       </a>
-    </ng-template>
-  </ng-container>
-
-  <ng-template #noLink>
+    }
+  } @else {
     <button
       (click)="toggleExpansion()"
       [ngClass]="linkCssClasses"
@@ -42,39 +39,45 @@
       [attr.aria-Disabled]="isDisabled">
       <ng-container *ngTemplateOutlet="linkContent"></ng-container>
     </button>
-  </ng-template>
+  }
 
-  <div
-    class="f-navItem__sub-items-container"
-    [@inOutAnimation]
-    *ngIf="isExpanded">
 
-    <ul class="f-sidenav__items f-navItem__sub-items">
-      <ng-container *ngFor="let navItem of children">
-        <f-nav-item
-          *ngIf="navItem"
-          (itemSelected)="setCurrentSelectedNavItem($event)"
-          [id]="navItem.id"
-          [title]="navItem.title | toObservable | async"
-          [text]="navItem.text | toObservable | async"
-          [icon]="navItem.icon"
-          [isExpanded]="!!navItem.isExpanded"
-          [isDisabled]="!!navItem.isDisabled"
-          [route]="navItem.route"
-          [href]="navItem.href"
-          [children]="navItem.children"
-          [target]="navItem.target"
-          [index]="index + 1">
-        </f-nav-item>
-      </ng-container>
-    </ul>
-
-  </div>
+  @if (isExpanded) {
+    <div
+      class="f-navItem__sub-items-container"
+      [@inOutAnimation]
+      >
+      <ul class="f-sidenav__items f-navItem__sub-items">
+        @for (navItem of children; track navItem) {
+          @if (navItem) {
+            <f-nav-item
+              (itemSelected)="setCurrentSelectedNavItem($event)"
+              [id]="navItem.id"
+              [title]="navItem.title | toObservable | async"
+              [text]="navItem.text | toObservable | async"
+              [icon]="navItem.icon"
+              [isExpanded]="!!navItem.isExpanded"
+              [isDisabled]="!!navItem.isDisabled"
+              [route]="navItem.route"
+              [href]="navItem.href"
+              [children]="navItem.children"
+              [target]="navItem.target"
+              [index]="index + 1">
+            </f-nav-item>
+          }
+        }
+      </ul>
+    </div>
+  }
 
 </li>
 
 <ng-template #linkContent>
-  <i *ngIf="icon" [ngClass]="iconCssClasses"></i>
+  @if (icon) {
+    <i [ngClass]="iconCssClasses"></i>
+  }
   <span class="f-navItem__text">{{ text | toObservable | async }}</span>
-  <i *ngIf="children?.length" class="f-navItem__isExpandable-icon mdi" [ngClass]="isExpanded ? 'mdi-chevron-down' : 'mdi-chevron-right'"></i>
+  @if (children?.length) {
+    <i class="f-navItem__isExpandable-icon mdi" [ngClass]="isExpanded ? 'mdi-chevron-down' : 'mdi-chevron-right'"></i>
+  }
 </ng-template>

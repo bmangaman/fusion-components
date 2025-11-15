@@ -1,4 +1,6 @@
-<div class="fusion-demo__example" *ngFor="let checkboxExample of checkboxExamples">
-  <div class="fusion-demo__example--demo" [innerHtml]="checkboxExample | keepHtml"></div>
-  <code class="fusion-demo__example--code"><pre [innerText]="checkboxExample"></pre></code>
-</div>
+@for (checkboxExample of checkboxExamples; track checkboxExample) {
+  <div class="fusion-demo__example">
+    <div class="fusion-demo__example--demo" [innerHtml]="checkboxExample | keepHtml"></div>
+    <code class="fusion-demo__example--code"><pre [innerText]="checkboxExample"></pre></code>
+  </div>
+}

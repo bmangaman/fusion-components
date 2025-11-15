@@ -1,100 +1,98 @@
 <fusion-demo titleText="Tooltip" [isResultCentered]="true">
 
-  <form form class="fusion-components-demo__form f-form" *ngIf="tooltipForm" [formGroup]="tooltipForm">
-    <!-- START: position select -->
-    <div class="f-form__fieldset f-table__filter-input-field-selector">
-      <label class="f-form__input-label">Status</label>
-      <div class="f-form__input-wrapper f-form__select-wrapper">
-        <select class="f-form__input f-form__select" formControlName="position">
-          <option value="">- None -</option>
-          <option [value]="Position.TOP">{{ Position.TOP }}</option>
-          <option [value]="Position.BOTTOM">{{ Position.BOTTOM }}</option>
-          <option [value]="Position.LEFT">{{ Position.LEFT }}</option>
-          <option [value]="Position.RIGHT">{{ Position.RIGHT }}</option>
-          <option [value]="Position.CENTER">{{ Position.CENTER }}</option>
-        </select>
-        <span class="f-form__input-wrapper-status-icon"></span>
+  @if (tooltipForm) {
+    <form form class="fusion-components-demo__form f-form" [formGroup]="tooltipForm">
+      <!-- START: position select -->
+      <div class="f-form__fieldset f-table__filter-input-field-selector">
+        <label class="f-form__input-label">Status</label>
+        <div class="f-form__input-wrapper f-form__select-wrapper">
+          <select class="f-form__input f-form__select" formControlName="position">
+            <option value="">- None -</option>
+            <option [value]="Position.TOP">{{ Position.TOP }}</option>
+            <option [value]="Position.BOTTOM">{{ Position.BOTTOM }}</option>
+            <option [value]="Position.LEFT">{{ Position.LEFT }}</option>
+            <option [value]="Position.RIGHT">{{ Position.RIGHT }}</option>
+            <option [value]="Position.CENTER">{{ Position.CENTER }}</option>
+          </select>
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: position select -->
-
-    <!-- START: displayOn select -->
-    <div class="f-form__fieldset f-table__filter-input-field-selector">
-      <label class="f-form__input-label">Display On Interaction</label>
-      <div class="f-form__input-wrapper f-form__select-wrapper">
-        <select class="f-form__input f-form__select" formControlName="displayOn">
-          <option value="">- None -</option>
-          <option [value]="MouseInteraction.CLICK">Click</option>
-          <option [value]="MouseInteraction.MOUSE_ENTER">Mouse Enter</option>
-          <option [value]="MouseInteraction.MOUSE_LEAVE">Mouse Leave</option>
-          <option [value]="MouseInteraction.FOCUS">Focus</option>
-          <option [value]="MouseInteraction.BLUR">Blur</option>
-        </select>
-        <span class="f-form__input-wrapper-status-icon"></span>
+      <!-- END: position select -->
+      <!-- START: displayOn select -->
+      <div class="f-form__fieldset f-table__filter-input-field-selector">
+        <label class="f-form__input-label">Display On Interaction</label>
+        <div class="f-form__input-wrapper f-form__select-wrapper">
+          <select class="f-form__input f-form__select" formControlName="displayOn">
+            <option value="">- None -</option>
+            <option [value]="MouseInteraction.CLICK">Click</option>
+            <option [value]="MouseInteraction.MOUSE_ENTER">Mouse Enter</option>
+            <option [value]="MouseInteraction.MOUSE_LEAVE">Mouse Leave</option>
+            <option [value]="MouseInteraction.FOCUS">Focus</option>
+            <option [value]="MouseInteraction.BLUR">Blur</option>
+          </select>
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: dislayOn select -->
-
-    <!-- START: hideOn select -->
-    <div class="f-form__fieldset f-table__filter-input-field-selector">
-      <label class="f-form__input-label">Hide On Interaction</label>
-      <div class="f-form__input-wrapper f-form__select-wrapper">
-        <select class="f-form__input f-form__select" formControlName="hideOn">
-          <option value="">- None -</option>
-          <option [value]="MouseInteraction.CLICK">Click</option>
-          <option [value]="MouseInteraction.MOUSE_ENTER">Mouse Enter</option>
-          <option [value]="MouseInteraction.MOUSE_LEAVE">Mouse Leave</option>
-          <option [value]="MouseInteraction.FOCUS">Focus</option>
-          <option [value]="MouseInteraction.BLUR">Blur</option>
-        </select>
-        <span class="f-form__input-wrapper-status-icon"></span>
+      <!-- END: dislayOn select -->
+      <!-- START: hideOn select -->
+      <div class="f-form__fieldset f-table__filter-input-field-selector">
+        <label class="f-form__input-label">Hide On Interaction</label>
+        <div class="f-form__input-wrapper f-form__select-wrapper">
+          <select class="f-form__input f-form__select" formControlName="hideOn">
+            <option value="">- None -</option>
+            <option [value]="MouseInteraction.CLICK">Click</option>
+            <option [value]="MouseInteraction.MOUSE_ENTER">Mouse Enter</option>
+            <option [value]="MouseInteraction.MOUSE_LEAVE">Mouse Leave</option>
+            <option [value]="MouseInteraction.FOCUS">Focus</option>
+            <option [value]="MouseInteraction.BLUR">Blur</option>
+          </select>
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: hideOn select -->
-
-    <!-- START: text input -->
-    <div class="f-form__fieldset">
-      <label class="f-form__input-label">Text</label>
-      <div class="f-form__input-wrapper">
-        <input class="f-form__input" formControlName="text" />
-        <span class="f-form__input-wrapper-status-icon"></span>
+      <!-- END: hideOn select -->
+      <!-- START: text input -->
+      <div class="f-form__fieldset">
+        <label class="f-form__input-label">Text</label>
+        <div class="f-form__input-wrapper">
+          <input class="f-form__input" formControlName="text" />
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: text input -->
+      <!-- END: text input -->
+      <!-- START: use custom template checkbox -->
+      <div class="f-form__fieldset">
+        <span class="f-form__checkbox">
+          <label for="f-checkbox-1" class="f-form__checkbox-label">
+            <input
+              class="f-form__checkbox-input"
+              type="checkbox"
+              value="true"
+              name="f-checkbox-1"
+              id="f-checkbox-1"
+              formControlName="template">
+              <span class="f-form__checkbox-button"></span>
+              <span class="f-form__checkbox-label-text">Use Template</span>
+            </label>
+          </span>
+        </div>
+        <!-- END: use custom template checkbox -->
+      </form>
+    }
 
-    <!-- START: use custom template checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-1" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-1"
-            id="f-checkbox-1"
-            formControlName="template">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Use Template</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: use custom template checkbox -->
-  </form>
+    <ng-container result>
+      <button
+        fusionUiTooltip
+        [displayOn]="tooltipForm.get('displayOn')?.value"
+        [hideOn]="tooltipForm.get('hideOn')?.value"
+        [template]="tooltipForm.get('template')?.value ? customTooltipContent : null"
+        [text]="tooltipForm.get('text')?.value"
+        [position]="tooltipForm.get('position')?.value">
+        ToolTip Button
+      </button>
 
-  <ng-container result>
-    <button
-      fusionUiTooltip
-      [displayOn]="tooltipForm.get('displayOn')?.value"
-      [hideOn]="tooltipForm.get('hideOn')?.value"
-      [template]="tooltipForm.get('template')?.value ? customTooltipContent : null"
-      [text]="tooltipForm.get('text')?.value"
-      [position]="tooltipForm.get('position')?.value">
-      ToolTip Button
-    </button>
-
-    <ng-template #customTooltipContent>
-      <p>Custom Tooltip Content</p>
-      <button>With interactable elements</button>
-    </ng-template>
-  </ng-container>
-</fusion-demo>
+      <ng-template #customTooltipContent>
+        <p>Custom Tooltip Content</p>
+        <button>With interactable elements</button>
+      </ng-template>
+    </ng-container>
+  </fusion-demo>

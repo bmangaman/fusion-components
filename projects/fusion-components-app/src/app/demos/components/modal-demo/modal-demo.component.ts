@@ -73,26 +73,32 @@ export class ModalDemoComponent {
     template: `
     <f-modal-header [isFullModal]="modalConfig.type === 'full'" (modalClosed)="modalClosed.emit('header (x) button')">Header</f-modal-header>
     <f-modal-content>
-      <h2 *ngIf="modalConfig?.type === 'full'" class="f-modal__full-header-content">Header</h2>
+      @if (modalConfig?.type === 'full') {
+        <h2 class="f-modal__full-header-content">Header</h2>
+      }
       Content
       <br>
-      Show Long content <input type="checkbox" [ngModel]="longContent.show" (ngModelChange)="change($event)">
-      <div *ngIf="longContent.show">
-        <span *ngFor="let x of paragraphs">{{longContent.text}} <br></span>
-      </div>
-      <br>
-      <f-button (buttonClick)="openModal()" text="Open Modal"></f-button>
-    </f-modal-content>
-    <f-modal-footer>
-      <div
-        [ngClass]="{'f-modal__footer-buttons-left': modalConfig.type === ModalType.FULL}"
-        class="f-modal__footer-buttons"
-      >
-        <f-button text="Submit" (buttonClick)="modalClosed.emit('submit button')"></f-button>
-        <f-button text="Cancel" [type]="ButtonType.SECONDARY" (buttonClick)="modalClosed.emit('cancel button')"></f-button>
-      </div>
-    </f-modal-footer>
-  `,
+        Show Long content <input type="checkbox" [ngModel]="longContent.show" (ngModelChange)="change($event)">
+        @if (longContent.show) {
+          <div>
+            @for (x of paragraphs; track x) {
+              <span>{{longContent.text}} <br></span>
+            }
+          </div>
+        }
+        <br>
+          <f-button (buttonClick)="openModal()" text="Open Modal"></f-button>
+        </f-modal-content>
+        <f-modal-footer>
+          <div
+            [ngClass]="{'f-modal__footer-buttons-left': modalConfig.type === ModalType.FULL}"
+            class="f-modal__footer-buttons"
+            >
+            <f-button text="Submit" (buttonClick)="modalClosed.emit('submit button')"></f-button>
+            <f-button text="Cancel" [type]="ButtonType.SECONDARY" (buttonClick)="modalClosed.emit('cancel button')"></f-button>
+          </div>
+        </f-modal-footer>
+    `,
     standalone: false
 })
 export class InnerModalComponent extends BaseModalComponent {

@@ -1,4 +1,6 @@
-<div class="fusion-demo__example" *ngFor="let radioExample of radioExamples">
-  <div class="fusion-demo__example--demo" [innerHtml]="radioExample | keepHtml"></div>
-  <code class="fusion-demo__example--code"><pre [innerText]="radioExample"></pre></code>
-</div>
+@for (radioExample of radioExamples; track radioExample) {
+  <div class="fusion-demo__example">
+    <div class="fusion-demo__example--demo" [innerHtml]="radioExample | keepHtml"></div>
+    <code class="fusion-demo__example--code"><pre [innerText]="radioExample"></pre></code>
+  </div>
+}

@@ -1,31 +1,32 @@
-<ng-container *ngIf="!isFullModal; else fullHeader">
+@if (!isFullModal) {
   <h1 class="f-modal__header-content">
     <ng-container *ngTemplateOutlet="headerText"></ng-container>
   </h1>
-  <button
-    type="button"
-    class="f-modal__header-close-button"
-    (click)="close()"
-    *ngIf="!hideCloseButton"
-    [disabled]="disableCloseButton"
-    [attr.aria-disabled]="disableCloseButton">
-    <i class="mdi mdi-close f-modal__header-close-button-icon"></i>
-  </button>
-</ng-container>
-
-<ng-template #fullHeader>
-  <div class="f-modal__full-header-top-bar">
+  @if (!hideCloseButton) {
     <button
       type="button"
-      class="f-modal__full-header-close-button"
+      class="f-modal__header-close-button"
       (click)="close()"
-      *ngIf="!hideCloseButton"
       [disabled]="disableCloseButton"
       [attr.aria-disabled]="disableCloseButton">
-      <i class="mdi mdi-close f-modal__full-header-close-button-icon"></i>
+      <i class="mdi mdi-close f-modal__header-close-button-icon"></i>
     </button>
+  }
+} @else {
+  <div class="f-modal__full-header-top-bar">
+    @if (!hideCloseButton) {
+      <button
+        type="button"
+        class="f-modal__full-header-close-button"
+        (click)="close()"
+        [disabled]="disableCloseButton"
+        [attr.aria-disabled]="disableCloseButton">
+        <i class="mdi mdi-close f-modal__full-header-close-button-icon"></i>
+      </button>
+    }
   </div>
-</ng-template>
+}
+
 
 <ng-template #headerText>
   <ng-content></ng-content>

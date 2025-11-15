@@ -11,10 +11,11 @@ import { ErrorMessageModule } from './error-message.module';
 @Component({
     selector: 'f-error-test-component',
     template: `
-    <form *ngIf="testForm" [formGroup]="testForm" class="f-form">
-      <div class="f-form__fieldset">
-        <label class="f-form__label" for="test-input">Test Input Label</label>
-        <input formControlName="testInput" class="f-form__input" id="test-input" type="text" />
+    @if (testForm) {
+      <form [formGroup]="testForm" class="f-form">
+        <div class="f-form__fieldset">
+          <label class="f-form__label" for="test-input">Test Input Label</label>
+          <input formControlName="testInput" class="f-form__input" id="test-input" type="text" />
           <f-error-message
             [control]="testForm.get('testInput')"
             [errors]="testInputErrors"
@@ -26,8 +27,9 @@ import { ErrorMessageModule } from './error-message.module';
             [displayMultiple]="true"
             id="multiple-error-messages">
           </f-error-message>
-      </div>
-    </form>`,
+        </div>
+      </form>
+    }`,
     standalone: false
 })
 class TestComponent implements OnInit {

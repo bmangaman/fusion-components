@@ -25,11 +25,13 @@ import { ProgressBarStatus } from './progress-bar.interface';
   <div
     [ngStyle]="{ width: resultingValue$.value + '%' }"
     [ngClass]="generatedClasses">
-    <div
-      class="f-progress-bar__value"
-      *ngIf="isValueDisplayed && (resultingValue$.value > minDisplayedPercent)">
-      {{ displayText || (resultingValue$.value ? resultingValue$.value + '%' : '-') }}
-    </div>
+    @if (isValueDisplayed && (resultingValue$.value > minDisplayedPercent)) {
+      <div
+        class="f-progress-bar__value"
+        >
+        {{ displayText || (resultingValue$.value ? resultingValue$.value + '%' : '-') }}
+      </div>
+    }
   </div>
 </div>`,
     standalone: false

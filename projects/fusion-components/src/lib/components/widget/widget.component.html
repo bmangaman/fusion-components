@@ -1,79 +1,104 @@
 <div class="f-widget">
 
   <!-- START: header -->
-  <div *ngIf="isTimestampDisplayed || isRefreshButtonDisplayed || header" class="f-widget__header">
-    <div *ngIf="isTimestampDisplayed" class="f-widget__header-timestamp">
-      <span *ngIf="translations.lastUpdated" class="f-widget__header-timestamp-label">{{ translations.lastUpdated }}:</span>
-      <span class="f-widget__header-timestamp-time">{{ timeStamp | date:'y-MM-dd HH:mm:ss' }}</span>
+  @if (isTimestampDisplayed || isRefreshButtonDisplayed || header) {
+    <div class="f-widget__header">
+      @if (isTimestampDisplayed) {
+        <div class="f-widget__header-timestamp">
+          @if (translations.lastUpdated) {
+            <span class="f-widget__header-timestamp-label">{{ translations.lastUpdated }}:</span>
+          }
+          <span class="f-widget__header-timestamp-time">{{ timeStamp | date:'y-MM-dd HH:mm:ss' }}</span>
+        </div>
+      }
+      @if (header) {
+        <div class="f-widget__header-content">
+          <ng-content *ngTemplateOutlet="header"></ng-content>
+        </div>
+      }
+      @if (isRefreshButtonDisplayed) {
+        <f-button
+          [type]="ButtonType.SECONDARY"
+          [size]="Size.SMALL"
+          [noBorder]="true"
+          [classes]="['f-widget__header-refresh-button']"
+          icon="mdi-refresh"
+          (buttonClick)="refreshData()">
+        </f-button>
+      }
     </div>
-    <div *ngIf="header" class="f-widget__header-content">
-      <ng-content *ngTemplateOutlet="header"></ng-content>
-    </div>
-    <f-button
-      *ngIf="isRefreshButtonDisplayed"
-      [type]="ButtonType.SECONDARY"
-      [size]="Size.SMALL"
-      [noBorder]="true"
-      [classes]="['f-widget__header-refresh-button']"
-      icon="mdi-refresh"
-      (buttonClick)="refreshData()">
-    </f-button>
-  </div>
+  }
   <!-- END: header -->
 
   <!-- START: info boxes -->
-  <div *ngIf="!!infoBoxes?.length || !!infoBoxesDetails?.length" class="f-widget__info-boxes">
-    <ng-container *ngIf="!!infoBoxes?.length; else infoBoxData">
-      <div *ngFor="let box of infoBoxes" class="f-widget__info-boxes-box">
-        <ng-content *ngTemplateOutlet="box"></ng-content>
-      </div>
-    </ng-container>
-
-    <ng-template #infoBoxData>
-      <div *ngFor="let box of infoBoxesDetails" class="f-widget__info-boxes-box">
-        <div *ngIf="box?.header" class="f-widget__info-boxes-box-header">{{ box?.header }}</div>
-        <div *ngIf="box?.content" class="f-widget__info-boxes-box-content">{{ box?.content }}</div>
-        <div *ngIf="box?.badges?.length" class="f-widget__info-boxes-box-badges">
-          <f-badge
-            *ngFor="let badge of box?.badges; index as i;"
-            [hostCssClasses]="['f-widget__info-boxes-box-badges-badge', 'f-widget__info-boxes-box-badges-badge--' + i]"
-            [fillContainer]="true"
-            [type]="badge?.type"
-            [size]="Size.LARGE"
-            [text]="badge?.text"
-            [subText]="badge?.subText">
-          </f-badge>
-        </div>
-        <div *ngIf="box?.footer" class="f-widget__info-boxes-box-footer">{{ box?.footer }}</div>
-      </div>
-    </ng-template>
-  </div>
+  @if (!!infoBoxes?.length || !!infoBoxesDetails?.length) {
+    <div class="f-widget__info-boxes">
+      @if (!!infoBoxes?.length) {
+        @for (box of infoBoxes; track box) {
+          <div class="f-widget__info-boxes-box">
+            <ng-content *ngTemplateOutlet="box"></ng-content>
+          </div>
+        }
+      } @else {
+        @for (box of infoBoxesDetails; track box) {
+          <div class="f-widget__info-boxes-box">
+            @if (box?.header) {
+              <div class="f-widget__info-boxes-box-header">{{ box?.header }}</div>
+            }
+            @if (box?.content) {
+              <div class="f-widget__info-boxes-box-content">{{ box?.content }}</div>
+            }
+            @if (box?.badges?.length) {
+              <div class="f-widget__info-boxes-box-badges">
+                @for (badge of box?.badges; track badge; let i = $index) {
+                  <f-badge
+                    [hostCssClasses]="['f-widget__info-boxes-box-badges-badge', 'f-widget__info-boxes-box-badges-badge--' + i]"
+                    [fillContainer]="true"
+                    [type]="badge?.type"
+                    [size]="Size.LARGE"
+                    [text]="badge?.text"
+                    [subText]="badge?.subText">
+                  </f-badge>
+                }
+              </div>
+            }
+            @if (box?.footer) {
+              <div class="f-widget__info-boxes-box-footer">{{ box?.footer }}</div>
+            }
+          </div>
+        }
+      }
+    </div>
+  }
   <!-- END: info boxes -->
 
   <!-- START: info details -->
-  <div *ngIf="infoDetails || infoDetailsData" class="f-widget__info-details">
-    <div class="f-widget__info-details-button-wrapper">
-      <button class="f-widget__info-details-button f-button__link" (click)="toggleInfoDetailsSection()">
-        <span class="f-widget_info-details-button-text">{{ translations.infoDetailsButton }}</span>
-        <i class="f-widget__info-details-button-icon mdi" [ngClass]="isInfoDetailsExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
-      </button>
-    </div>
-
-    <div *ngIf="isInfoDetailsExpanded" class="f-widget__info-details-content">
-      <ng-container *ngIf="infoDetails; else infoDetailsTable">
-        <ng-content *ngTemplateOutlet="infoDetails"></ng-content>
-      </ng-container>
-      
-      <ng-template #infoDetailsTable>
-        <div class="f-widget__info-details-table">
-          <div *ngFor="let cell of infoDetailsData | keyvalue" class="f-widget__info-details-table-cell">
-            <div class="f-widget__info-details-table-cell-key">{{ cell?.key }}</div>
-            <div class="f-widget__info-details-table-cell-value">{{ cell?.value }}</div>
-          </div>
+  @if (infoDetails || infoDetailsData) {
+    <div class="f-widget__info-details">
+      <div class="f-widget__info-details-button-wrapper">
+        <button class="f-widget__info-details-button f-button__link" (click)="toggleInfoDetailsSection()">
+          <span class="f-widget_info-details-button-text">{{ translations.infoDetailsButton }}</span>
+          <i class="f-widget__info-details-button-icon mdi" [ngClass]="isInfoDetailsExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"></i>
+        </button>
+      </div>
+      @if (isInfoDetailsExpanded) {
+        <div class="f-widget__info-details-content">
+          @if (infoDetails) {
+            <ng-content *ngTemplateOutlet="infoDetails"></ng-content>
+          } @else {
+            <div class="f-widget__info-details-table">
+              @for (cell of infoDetailsData | keyvalue; track cell) {
+                <div class="f-widget__info-details-table-cell">
+                  <div class="f-widget__info-details-table-cell-key">{{ cell?.key }}</div>
+                  <div class="f-widget__info-details-table-cell-value">{{ cell?.value }}</div>
+                </div>
+              }
+            </div>
+          }
         </div>
-      </ng-template>
+      }
     </div>
-  </div>
+  }
   <!-- END: info boxes-->
 
 </div>

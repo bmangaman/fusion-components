@@ -1,34 +1,34 @@
-<form class="f-form" *ngIf="isLoaded" [formGroup]="filterForm">
-
-  <f-table-filter-comparator
-    [comparators]="filterComparators"
-    (comparatorChange)="selectedFilterComparator.next($event)"
-    [translations]="translations.comparator">
-  </f-table-filter-comparator>
-
-  <div class="f-form__group f-form__field-group--inline">
-    <div class="f-form__fieldset f-form__fieldset--inline f-table__filter-input">
-      <div class="f-input__input-wrapper">
-        <input
-          type="number"
-          formControlName="bytes"
-          class="f-form__input"
-          [attr.aria-label]="translations.fields.bytes" />
+@if (isLoaded) {
+  <form class="f-form" [formGroup]="filterForm">
+    <f-table-filter-comparator
+      [comparators]="filterComparators"
+      (comparatorChange)="selectedFilterComparator.next($event)"
+      [translations]="translations.comparator">
+    </f-table-filter-comparator>
+    <div class="f-form__group f-form__field-group--inline">
+      <div class="f-form__fieldset f-form__fieldset--inline f-table__filter-input">
+        <div class="f-input__input-wrapper">
+          <input
+            type="number"
+            formControlName="bytes"
+            class="f-form__input"
+            [attr.aria-label]="translations.fields.bytes" />
+          </div>
+        </div>
+        <div class="f-form__fieldset f-form__fieldset--inline f-table__filter-input">
+          <div class="f-form__input-wrapper f-form__select-wrapper">
+            <select
+              formControlName="unit"
+              class="f-form__input f-form__select"
+              [attr.aria-label]="translations.fields.unit">
+              @for (unit of bytesOptions; track unit) {
+                <option [ngValue]="unit">
+                  {{ unit }}
+                </option>
+              }
+            </select>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="f-form__fieldset f-form__fieldset--inline f-table__filter-input">
-      <div class="f-form__input-wrapper f-form__select-wrapper">
-        <select
-          formControlName="unit"
-          class="f-form__input f-form__select"
-          [attr.aria-label]="translations.fields.unit">
-          <option *ngFor="let unit of bytesOptions" [ngValue]="unit">
-            {{ unit }}
-          </option>
-        </select>
-      </div>
-    </div>
-  </div>
-
-</form>
+    </form>
+  }

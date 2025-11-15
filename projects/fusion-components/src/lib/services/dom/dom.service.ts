@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+
 import {
   ApplicationRef,
   ComponentFactory,
@@ -10,6 +10,7 @@ import {
   Injector,
   Renderer2,
   RendererFactory2, Type,
+  DOCUMENT
 } from '@angular/core';
 
 /**

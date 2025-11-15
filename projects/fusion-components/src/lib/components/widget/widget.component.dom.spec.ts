@@ -9,34 +9,31 @@ import { WidgetModule } from './widget.module';
 @Component({
     selector: 'f-test-component',
     template: `
-  <f-widget
-    *ngIf="isComponentRendered"
-    [isTimestampDisplayed]="isTimestampDisplayed"
-    [isRefreshButtonDisplayed]="isRefreshButtonDisplayed"
-    [infoDetailsData]="infoDetailsData"
-    [infoBoxesDetails]="infoBoxesDetails"
-    (refresh)="refresh()">
-
-    <!-- START: header -->
-    <ng-container *ngIf="isContentHeader">
-      <ng-template [fusionUiTemplate]="WidgetTemplate.HEADER">Custom Widget Header</ng-template>
-    </ng-container>
-    <!-- END: header -->
-
-    <!-- START: info boxes -->
-    <ng-container *ngIf="isCustomInfoBoxes">
-      <ng-template [fusionUiTemplate]="WidgetTemplate.INFO_BOX">Custom info box</ng-template>
-      <ng-template [fusionUiTemplate]="WidgetTemplate.INFO_BOX">Custom info box 2</ng-template>
-    </ng-container>
-    <!-- END: info boxes -->
-
-    <!-- START: info details -->
-    <ng-container *ngIf="isCustomInfoDetails">
-      <ng-template [fusionUiTemplate]="WidgetTemplate.INFO_DETAILS">Custom info details</ng-template>
-    </ng-container>
-    <!-- END: info details -->
-
-  </f-widget>
+  @if (isComponentRendered) {
+    <f-widget
+      [isTimestampDisplayed]="isTimestampDisplayed"
+      [isRefreshButtonDisplayed]="isRefreshButtonDisplayed"
+      [infoDetailsData]="infoDetailsData"
+      [infoBoxesDetails]="infoBoxesDetails"
+      (refresh)="refresh()">
+      <!-- START: header -->
+      @if (isContentHeader) {
+        <ng-template [fusionUiTemplate]="WidgetTemplate.HEADER">Custom Widget Header</ng-template>
+      }
+      <!-- END: header -->
+      <!-- START: info boxes -->
+      @if (isCustomInfoBoxes) {
+        <ng-template [fusionUiTemplate]="WidgetTemplate.INFO_BOX">Custom info box</ng-template>
+        <ng-template [fusionUiTemplate]="WidgetTemplate.INFO_BOX">Custom info box 2</ng-template>
+      }
+      <!-- END: info boxes -->
+      <!-- START: info details -->
+      @if (isCustomInfoDetails) {
+        <ng-template [fusionUiTemplate]="WidgetTemplate.INFO_DETAILS">Custom info details</ng-template>
+      }
+      <!-- END: info details -->
+    </f-widget>
+  }
   `,
     standalone: false
 })

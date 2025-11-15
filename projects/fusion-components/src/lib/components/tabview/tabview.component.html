@@ -1,29 +1,32 @@
 <div class="f-tabview__nav" role="tablist" [attr.aria-label]="tablistAriaLabel">
-  <button *ngFor="let tab of tabs"
-    [attr.aria-disabled]="tab?.isDisabled"
-    [attr.aria-selected]="tab?.isSelected"
-    [attr.aria-controls]="'panel-' + tab.id"
-    [attr.id]="'tab-' + tab?.id"
-    role="tab"
-    class="f-tabview-tab__button"
-    [ngClass]="{ 'selected' : tab?.isSelected, 'disabled' : tab?.isDisabled }"
-    (click)="selectTab(tab)"
-    [disabled]="tab?.isDisabled"
-    [fusionUiAutofocus]="tab?.isSelected">
-    <ng-container *ngTemplateOutlet="tab?.headerTemplate || null"></ng-container>
-  </button>
+  @for (tab of tabs; track tab) {
+    <button
+      [attr.aria-disabled]="tab?.isDisabled"
+      [attr.aria-selected]="tab?.isSelected"
+      [attr.aria-controls]="'panel-' + tab.id"
+      [attr.id]="'tab-' + tab?.id"
+      role="tab"
+      class="f-tabview-tab__button"
+      [ngClass]="{ 'selected' : tab?.isSelected, 'disabled' : tab?.isDisabled }"
+      (click)="selectTab(tab)"
+      [disabled]="tab?.isDisabled"
+      [fusionUiAutofocus]="tab?.isSelected">
+      <ng-container *ngTemplateOutlet="tab?.headerTemplate || null"></ng-container>
+    </button>
+  }
 </div>
 <div class="f-tabview__panels">
-  <ng-container *ngFor="let tab of tabs">
-    <div
-      role="tabpanel"
-      [attr.id]="'panel-' + tab?.id"
-      [attr.aria-labelledby]="'tab-' + tab?.id"
-      [attr.aria-hidden]="!tab?.isSelected"
-      class="f-tabview-tab__content"
-      *ngIf="tab.isLoaded"
-      [ngClass]="{ 'selected' : tab?.isSelected }">
-      <ng-container *ngTemplateOutlet="tab?.contentTemplate || null"></ng-container>
-    </div>
-  </ng-container>
+  @for (tab of tabs; track tab) {
+    @if (tab.isLoaded) {
+      <div
+        role="tabpanel"
+        [attr.id]="'panel-' + tab?.id"
+        [attr.aria-labelledby]="'tab-' + tab?.id"
+        [attr.aria-hidden]="!tab?.isSelected"
+        class="f-tabview-tab__content"
+        [ngClass]="{ 'selected' : tab?.isSelected }">
+        <ng-container *ngTemplateOutlet="tab?.contentTemplate || null"></ng-container>
+      </div>
+    }
+  }
 </div>

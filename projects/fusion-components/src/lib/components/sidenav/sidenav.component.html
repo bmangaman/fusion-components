@@ -9,46 +9,45 @@
     [style.width]="isMenuExpanded ? (isWindowWidthGreaterThan768px ? 'auto' : minWidth) : '25px'"
     [style.minWidth]="isMenuExpanded ? minWidth : '25px'">
 
-    <ng-container *ngIf="isMenuExpanded">
-
+    @if (isMenuExpanded) {
       <div class="f-sidenav__top">
         <ng-container *ngTemplateOutlet="sidenavTopTemplate"></ng-container>
       </div>
-
       <ul class="f-sidenav__items f-sidenav__container">
-        <ng-container *ngFor="let navItem of navItems">
-          <f-nav-item
-            *ngIf="navItem"
-            (itemSelected)="setCurrentSelectedNavItem($event)"
-            [id]="navItem.id"
-            [title]="navItem.title | toObservable | async"
-            [text]="navItem.text | toObservable | async"
-            [icon]="navItem.icon"
-            [isExpanded]="!!navItem.isExpanded"
-            [isDisabled]="!!navItem.isDisabled"
-            [isPathMatchFull]="!!navItem.isPathMatchFull"
-            [route]="navItem.route"
-            [href]="navItem.href"
-            [target]="navItem.target"
-            [children]="navItem.children">
-          </f-nav-item>
-        </ng-container>
+        @for (navItem of navItems; track navItem) {
+          @if (navItem) {
+            <f-nav-item
+              (itemSelected)="setCurrentSelectedNavItem($event)"
+              [id]="navItem.id"
+              [title]="navItem.title | toObservable | async"
+              [text]="navItem.text | toObservable | async"
+              [icon]="navItem.icon"
+              [isExpanded]="!!navItem.isExpanded"
+              [isDisabled]="!!navItem.isDisabled"
+              [isPathMatchFull]="!!navItem.isPathMatchFull"
+              [route]="navItem.route"
+              [href]="navItem.href"
+              [target]="navItem.target"
+              [children]="navItem.children">
+            </f-nav-item>
+          }
+        }
       </ul>
-
       <div class="f-sidenav__bottom">
         <ng-container *ngTemplateOutlet="sidenavBottomTemplate"></ng-container>
       </div>
-
-    </ng-container>
+    }
   </nav>
 </div>
 
-<button
-  class="f-sidenav__expand-collapse-button"
-  [style.left]="isMenuExpanded ? minWidth : '25px'"
-  *ngIf="!isWindowWidthGreaterThan768px" (click)="isMenuExpanded = !isMenuExpanded">
-  <i
-    class="f-sidenav__expand-collapse-button-icon mdi"
-    [ngClass]="isMenuExpanded ? 'mdi-chevron-left' : 'mdi-chevron-right'">
-  </i>
-</button>
+@if (!isWindowWidthGreaterThan768px) {
+  <button
+    class="f-sidenav__expand-collapse-button"
+    [style.left]="isMenuExpanded ? minWidth : '25px'"
+    (click)="isMenuExpanded = !isMenuExpanded">
+    <i
+      class="f-sidenav__expand-collapse-button-icon mdi"
+      [ngClass]="isMenuExpanded ? 'mdi-chevron-left' : 'mdi-chevron-right'">
+    </i>
+  </button>
+}

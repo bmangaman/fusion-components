@@ -29,12 +29,14 @@ import { Size } from '@fusion-components/lib/shared/interfaces';
       [style.minWidth]="minWidth"
       aria-hidden="false"
       [attr.aria-label]="ariaLabel">
-      <div *ngFor="let dot of dots"
-        class="f-loading-spinner__bounce f-loading-spinner__bounce--{{ size }} f-loading-spinner__bounce--{{ dot }}"
-        [style.opacity]="opacity">
-      </div>
+      @for (dot of dots; track dot) {
+        <div
+          class="f-loading-spinner__bounce f-loading-spinner__bounce--{{ size }} f-loading-spinner__bounce--{{ dot }}"
+          [style.opacity]="opacity">
+        </div>
+      }
     </div>
-  `,
+    `,
     standalone: false
 })
 export class LoadingSpinnerComponent {

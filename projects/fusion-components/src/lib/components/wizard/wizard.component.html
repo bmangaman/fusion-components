@@ -3,34 +3,35 @@
     <ng-content select="img.f-wizard__brand-image"></ng-content>
 
     <div class="f-wizard__step-navigation-buttons">
-      <ng-container *ngFor="let step of steps">
-        <button
-          class="f-wizard__step-navigation-button"
+      @for (step of steps; track step) {
+        @if (!step?.isHidden) {
+          <button
+            class="f-wizard__step-navigation-button"
           [ngClass]="{
             'f-wizard__step-navigation-button--current' : step?.isCurrent,
             'f-wizard__step-navigation-button--disabled' : step?.isDisabled,
             'f-wizard__step-navigation-button--completed' : step?.isCompleted
           }"
-          *ngIf="!step?.isHidden"
-          [disabled]="step?.isDisabled"
-          [attr.aria-current]="step?.isCurrent"
-          [attr.title]="step?.title"
-          (click)="setCurrentStep(step)">
-          <i
-            class="mdi f-wizard__step-navigation-button-icon"
+            [disabled]="step?.isDisabled"
+            [attr.aria-current]="step?.isCurrent"
+            [attr.title]="step?.title"
+            (click)="setCurrentStep(step)">
+            <i
+              class="mdi f-wizard__step-navigation-button-icon"
             [ngClass]="{
               'mdi-check-circle-outline' : step?.isCompleted,
               'mdi-circle' : step?.isCurrent,
               'mdi-circle-outline' : !step?.isCompleted && !step?.isCurrent
             }"
             aria-hidden="true"></i>
-          <span class="f-wizard__step-navigation-button-title">{{ step?.title }}</span>
-        </button>
-      </ng-container>
+            <span class="f-wizard__step-navigation-button-title">{{ step?.title }}</span>
+          </button>
+        }
+      }
     </div>
   </div>
 
   <div class="f-wizard__step-content">
-    <ng-content></ng-content> 
+    <ng-content></ng-content>
   </div>
 </div>

@@ -1,9 +1,13 @@
-<div class="fusion-demo__example" *ngFor="let textButtonExample of textButtonExamples">
-  <div class="fusion-demo__example--demo" [innerHtml]="textButtonExample | keepHtml"></div>
-  <code class="fusion-demo__example--code"><pre [innerText]="textButtonExample"></pre></code>
-</div>
+@for (textButtonExample of textButtonExamples; track textButtonExample) {
+  <div class="fusion-demo__example">
+    <div class="fusion-demo__example--demo" [innerHtml]="textButtonExample | keepHtml"></div>
+    <code class="fusion-demo__example--code"><pre [innerText]="textButtonExample"></pre></code>
+  </div>
+}
 
-<div class="fusion-demo__example" *ngFor="let iconButtonExample of iconButtonExamples">
-  <div class="fusion-demo__example--demo" [innerHtml]="iconButtonExample | keepHtml"></div>
-  <code class="fusion-demo__example--code"><pre [innerText]="iconButtonExample"></pre></code>
-</div>
+@for (iconButtonExample of iconButtonExamples; track iconButtonExample) {
+  <div class="fusion-demo__example">
+    <div class="fusion-demo__example--demo" [innerHtml]="iconButtonExample | keepHtml"></div>
+    <code class="fusion-demo__example--code"><pre [innerText]="iconButtonExample"></pre></code>
+  </div>
+}

@@ -1,60 +1,58 @@
 <fusion-demo titleText="Badge">
 
-  <form form class="fusion-components-demo__form f-form" *ngIf="badgeForm" [formGroup]="badgeForm">
-    <!-- START: type select -->
-    <div class="f-form__fieldset f-table__filter-input-field-selector">
-      <label class="f-form__input-label">Type</label>
-      <div class="f-form__input-wrapper f-form__select-wrapper">
-        <select class="f-form__input f-form__select" formControlName="type">
-          <option [value]="StatusLevel.UNKNOWN">UNKNOWN (0)</option>
-          <option [value]="StatusLevel.BASE">BASE (1)</option>
-          <option [value]="StatusLevel.NORMAL">NORMAL (2)</option>
-          <option [value]="StatusLevel.SUCCESS">SUCCESS (3)</option>
-          <option [value]="StatusLevel.WARNING">WARNING (4)</option>
-          <option [value]="StatusLevel.ERROR">ERROR (5)</option>
-          <option [value]="StatusLevel.CRITICAL">CRITICAL (6)</option>
-        </select>
-        <span class="f-form__input-wrapper-status-icon"></span>
+  @if (badgeForm) {
+    <form form class="fusion-components-demo__form f-form" [formGroup]="badgeForm">
+      <!-- START: type select -->
+      <div class="f-form__fieldset f-table__filter-input-field-selector">
+        <label class="f-form__input-label">Type</label>
+        <div class="f-form__input-wrapper f-form__select-wrapper">
+          <select class="f-form__input f-form__select" formControlName="type">
+            <option [value]="StatusLevel.UNKNOWN">UNKNOWN (0)</option>
+            <option [value]="StatusLevel.BASE">BASE (1)</option>
+            <option [value]="StatusLevel.NORMAL">NORMAL (2)</option>
+            <option [value]="StatusLevel.SUCCESS">SUCCESS (3)</option>
+            <option [value]="StatusLevel.WARNING">WARNING (4)</option>
+            <option [value]="StatusLevel.ERROR">ERROR (5)</option>
+            <option [value]="StatusLevel.CRITICAL">CRITICAL (6)</option>
+          </select>
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: type select -->
-
-    <!-- START: size select -->
-    <div class="f-form__fieldset f-table__filter-input-field-selector">
-      <label class="f-form__input-label">Size</label>
-      <div class="f-form__input-wrapper f-form__select-wrapper">
-        <select class="f-form__input f-form__select" formControlName="size">
-          <option [value]="Size.X_SMALL">X Small</option>
-          <option [value]="Size.SMALL">Small</option>
-          <option [value]="Size.MEDIUM">Medium</option>
-          <option [value]="Size.LARGE">Large</option>
-        </select>
-        <span class="f-form__input-wrapper-status-icon"></span>
+      <!-- END: type select -->
+      <!-- START: size select -->
+      <div class="f-form__fieldset f-table__filter-input-field-selector">
+        <label class="f-form__input-label">Size</label>
+        <div class="f-form__input-wrapper f-form__select-wrapper">
+          <select class="f-form__input f-form__select" formControlName="size">
+            <option [value]="Size.X_SMALL">X Small</option>
+            <option [value]="Size.SMALL">Small</option>
+            <option [value]="Size.MEDIUM">Medium</option>
+            <option [value]="Size.LARGE">Large</option>
+          </select>
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: size select -->
-
-    <!-- START: text input -->
-    <div class="f-form__fieldset">
-      <label class="f-form__input-label">Text</label>
-      <div class="f-form__input-wrapper">
-        <input class="f-form__input" formControlName="text" />
-        <span class="f-form__input-wrapper-status-icon"></span>
+      <!-- END: size select -->
+      <!-- START: text input -->
+      <div class="f-form__fieldset">
+        <label class="f-form__input-label">Text</label>
+        <div class="f-form__input-wrapper">
+          <input class="f-form__input" formControlName="text" />
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: text input -->
-
-    <!-- START: subtext input -->
-    <div class="f-form__fieldset">
-      <label class="f-form__input-label">Subtext</label>
-      <div class="f-form__input-wrapper">
-        <input class="f-form__input" formControlName="subText" />
-        <span class="f-form__input-wrapper-status-icon"></span>
+      <!-- END: text input -->
+      <!-- START: subtext input -->
+      <div class="f-form__fieldset">
+        <label class="f-form__input-label">Subtext</label>
+        <div class="f-form__input-wrapper">
+          <input class="f-form__input" formControlName="subText" />
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: subtext input -->
-
-  </form>
+      <!-- END: subtext input -->
+    </form>
+  }
 
   <ng-container result>
     <f-badge

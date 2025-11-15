@@ -1,5 +1,7 @@
 <div [ngStyle]="styling"
-     class="f-badge f-badge--{{ size }} f-badge--{{ type | getStatusLevelText: undefined:true }}">
+  class="f-badge f-badge--{{ size }} f-badge--{{ type | getStatusLevelText: undefined:true }}">
   <div class="f-badge__text">{{ text || '-' }}</div>
-  <div *ngIf="subText" class="f-badge__subtext">{{ subText }}</div>
+  @if (subText) {
+    <div class="f-badge__subtext">{{ subText }}</div>
+  }
 </div>

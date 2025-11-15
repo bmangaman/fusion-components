@@ -1,228 +1,214 @@
 <fusion-demo titleText="State">
 
-  <form form class="fusion-components-demo__form f-form" *ngIf="stateForm" [formGroup]="stateForm">
-
-    <!-- START: state select -->
-    <div class="f-form__fieldset f-table__filter-input-field-selector">
-      <label class="f-form__input-label">State</label>
-      <div class="f-form__input-wrapper f-form__select-wrapper">
-        <select class="f-form__input f-form__select" formControlName="state">
-          <option [value]="">- NONE -</option>
-          <option [value]="State.LOADED">{{ State.LOADED }}</option>
-          <option [value]="State.LOADING">{{ State.LOADING }}</option>
-          <option [value]="State.NO_RESULTS">{{ State.NO_RESULTS }}</option>
-          <option [value]="State.ERROR">{{ State.ERROR }}</option>
-          <option [value]="State.NOT_LOADED">{{ State.NOT_LOADED }}</option>
-        </select>
-        <span class="f-form__input-wrapper-status-icon"></span>
+  @if (stateForm) {
+    <form form class="fusion-components-demo__form f-form" [formGroup]="stateForm">
+      <!-- START: state select -->
+      <div class="f-form__fieldset f-table__filter-input-field-selector">
+        <label class="f-form__input-label">State</label>
+        <div class="f-form__input-wrapper f-form__select-wrapper">
+          <select class="f-form__input f-form__select" formControlName="state">
+            <option [value]="">- NONE -</option>
+            <option [value]="State.LOADED">{{ State.LOADED }}</option>
+            <option [value]="State.LOADING">{{ State.LOADING }}</option>
+            <option [value]="State.NO_RESULTS">{{ State.NO_RESULTS }}</option>
+            <option [value]="State.ERROR">{{ State.ERROR }}</option>
+            <option [value]="State.NOT_LOADED">{{ State.NOT_LOADED }}</option>
+          </select>
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: state select -->
-
-    <!-- START: location select -->
-    <div class="f-form__fieldset f-table__filter-input-field-selector">
-      <label class="f-form__input-label">Location</label>
-      <div class="f-form__input-wrapper f-form__select-wrapper">
-        <select class="f-form__input f-form__select" formControlName="location">
-          <option [value]="">- NONE -</option>
-          <option [value]="StateLocation.GENERIC">{{ StateLocation.GENERIC }}</option>
-          <option [value]="StateLocation.TABLE">{{ StateLocation.TABLE }}</option>
-        </select>
-        <span class="f-form__input-wrapper-status-icon"></span>
+      <!-- END: state select -->
+      <!-- START: location select -->
+      <div class="f-form__fieldset f-table__filter-input-field-selector">
+        <label class="f-form__input-label">Location</label>
+        <div class="f-form__input-wrapper f-form__select-wrapper">
+          <select class="f-form__input f-form__select" formControlName="location">
+            <option [value]="">- NONE -</option>
+            <option [value]="StateLocation.GENERIC">{{ StateLocation.GENERIC }}</option>
+            <option [value]="StateLocation.TABLE">{{ StateLocation.TABLE }}</option>
+          </select>
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: location select -->
-
-    <!-- START: not loaded headline input -->
-    <div class="f-form__fieldset">
-      <label class="f-form__input-label">Not Loaded Headline</label>
-      <div class="f-form__input-wrapper">
-        <input class="f-form__input" formControlName="notLoadedHeadline" />
-        <span class="f-form__input-wrapper-status-icon"></span>
+      <!-- END: location select -->
+      <!-- START: not loaded headline input -->
+      <div class="f-form__fieldset">
+        <label class="f-form__input-label">Not Loaded Headline</label>
+        <div class="f-form__input-wrapper">
+          <input class="f-form__input" formControlName="notLoadedHeadline" />
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: not loaded headline input -->
-
-    <!-- START: not loaded message input -->
-    <div class="f-form__fieldset">
-      <label class="f-form__input-label">Not Loaded Message</label>
-      <div class="f-form__input-wrapper">
-        <textarea class="f-form__input" formControlName="notLoadedMessage"></textarea>
-        <span class="f-form__input-wrapper-status-icon"></span>
+      <!-- END: not loaded headline input -->
+      <!-- START: not loaded message input -->
+      <div class="f-form__fieldset">
+        <label class="f-form__input-label">Not Loaded Message</label>
+        <div class="f-form__input-wrapper">
+          <textarea class="f-form__input" formControlName="notLoadedMessage"></textarea>
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: not loaded message input -->
+      <!-- END: not loaded message input -->
+      <!-- START: use custom not loaded message checkbox -->
+      <div class="f-form__fieldset">
+        <span class="f-form__checkbox">
+          <label for="f-checkbox-not-loaded-message" class="f-form__checkbox-label">
+            <input
+              class="f-form__checkbox-input"
+              type="checkbox"
+              value="true"
+              name="f-checkbox-not-loaded-message"
+              id="f-checkbox-not-loaded-message"
+              formControlName="useCustomNotLoadedMessageTemplate">
+              <span class="f-form__checkbox-button"></span>
+              <span class="f-form__checkbox-label-text">Use Custom Not Loaded Message Template</span>
+            </label>
+          </span>
+        </div>
+        <!-- END: use custom not loaded message checkbox -->
+        <!-- START: no results headline input -->
+        <div class="f-form__fieldset">
+          <label class="f-form__input-label">Not Results Headline</label>
+          <div class="f-form__input-wrapper">
+            <input class="f-form__input" formControlName="noResultsHeadline" />
+            <span class="f-form__input-wrapper-status-icon"></span>
+          </div>
+        </div>
+        <!-- END: no results headline input -->
+        <!-- START: no results message input -->
+        <div class="f-form__fieldset">
+          <label class="f-form__input-label">No Results Message</label>
+          <div class="f-form__input-wrapper">
+            <textarea class="f-form__input" formControlName="noResultsMessage"></textarea>
+            <span class="f-form__input-wrapper-status-icon"></span>
+          </div>
+        </div>
+        <!-- END: no results message input -->
+        <!-- START: use custom no results message checkbox -->
+        <div class="f-form__fieldset">
+          <span class="f-form__checkbox">
+            <label for="f-checkbox-no-results-message" class="f-form__checkbox-label">
+              <input
+                class="f-form__checkbox-input"
+                type="checkbox"
+                value="true"
+                name="f-checkbox-no-results-message"
+                id="f-checkbox-no-results-message"
+                formControlName="useCustomNoResultsMessageTemplate">
+                <span class="f-form__checkbox-button"></span>
+                <span class="f-form__checkbox-label-text">Use Custom No Results Message Template</span>
+              </label>
+            </span>
+          </div>
+          <!-- END: use custom no results message checkbox -->
+          <!-- START: error headline input -->
+          <div class="f-form__fieldset">
+            <label class="f-form__input-label">Error Headline</label>
+            <div class="f-form__input-wrapper">
+              <input class="f-form__input" formControlName="errorHeadline" />
+              <span class="f-form__input-wrapper-status-icon"></span>
+            </div>
+          </div>
+          <!-- END: error headline input -->
+          <!-- START: error message input -->
+          <div class="f-form__fieldset">
+            <label class="f-form__input-label">Error Message</label>
+            <div class="f-form__input-wrapper">
+              <textarea class="f-form__input" formControlName="errorMessage"></textarea>
+              <span class="f-form__input-wrapper-status-icon"></span>
+            </div>
+          </div>
+          <!-- END: error message input -->
+          <!-- START: use custom error message checkbox -->
+          <div class="f-form__fieldset">
+            <span class="f-form__checkbox">
+              <label for="f-checkbox-error-message" class="f-form__checkbox-label">
+                <input
+                  class="f-form__checkbox-input"
+                  type="checkbox"
+                  value="true"
+                  name="f-checkbox-error-message"
+                  id="f-checkbox-error-message"
+                  formControlName="useCustomErrorMessageTemplate">
+                  <span class="f-form__checkbox-button"></span>
+                  <span class="f-form__checkbox-label-text">Use Custom Error Message Template</span>
+                </label>
+              </span>
+            </div>
+            <!-- END: use custom error message checkbox -->
+            <!-- START: use custom error checkbox -->
+            <div class="f-form__fieldset">
+              <span class="f-form__checkbox">
+                <label for="f-checkbox-error" class="f-form__checkbox-label">
+                  <input
+                    class="f-form__checkbox-input"
+                    type="checkbox"
+                    value="true"
+                    name="f-checkbox-error"
+                    id="f-checkbox-error"
+                    formControlName="useCustomError">
+                    <span class="f-form__checkbox-button"></span>
+                    <span class="f-form__checkbox-label-text">Use Custom Error Template</span>
+                  </label>
+                </span>
+              </div>
+              <!-- END: use custom error checkbox -->
+              <!-- START: use custom loading checkbox -->
+              <div class="f-form__fieldset">
+                <span class="f-form__checkbox">
+                  <label for="f-checkbox-loading" class="f-form__checkbox-label">
+                    <input
+                      class="f-form__checkbox-input"
+                      type="checkbox"
+                      value="true"
+                      name="f-checkbox-loading"
+                      id="f-checkbox-loading"
+                      formControlName="useCustomLoading">
+                      <span class="f-form__checkbox-button"></span>
+                      <span class="f-form__checkbox-label-text">Use Custom Loading Template</span>
+                    </label>
+                  </span>
+                </div>
+                <!-- END: use custom loading checkbox -->
+                <!-- START: use custom empty checkbox -->
+                <div class="f-form__fieldset">
+                  <span class="f-form__checkbox">
+                    <label for="f-checkbox-empty" class="f-form__checkbox-label">
+                      <input
+                        class="f-form__checkbox-input"
+                        type="checkbox"
+                        value="true"
+                        name="f-checkbox-empty"
+                        id="f-checkbox-empty"
+                        formControlName="useCustomNoResults">
+                        <span class="f-form__checkbox-button"></span>
+                        <span class="f-form__checkbox-label-text">Use Custom No Results Template</span>
+                      </label>
+                    </span>
+                  </div>
+                  <!-- END: use custom empty checkbox -->
+                  <!-- START: use custom empty checkbox -->
+                  <div class="f-form__fieldset">
+                    <span class="f-form__checkbox">
+                      <label for="f-checkbox-not-loaded" class="f-form__checkbox-label">
+                        <input
+                          class="f-form__checkbox-input"
+                          type="checkbox"
+                          value="true"
+                          name="f-checkbox-not-loaded"
+                          id="f-checkbox-not-loaded"
+                          formControlName="useCustomNotLoaded">
+                          <span class="f-form__checkbox-button"></span>
+                          <span class="f-form__checkbox-label-text">Use Custom Not Loaded Template</span>
+                        </label>
+                      </span>
+                    </div>
+                    <!-- END: use custom empty checkbox -->
+                  </form>
+                }
 
-     <!-- START: use custom not loaded message checkbox -->
-     <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-not-loaded-message" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-not-loaded-message"
-            id="f-checkbox-not-loaded-message"
-            formControlName="useCustomNotLoadedMessageTemplate">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Use Custom Not Loaded Message Template</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: use custom not loaded message checkbox -->
-
-    <!-- START: no results headline input -->
-    <div class="f-form__fieldset">
-      <label class="f-form__input-label">Not Results Headline</label>
-      <div class="f-form__input-wrapper">
-        <input class="f-form__input" formControlName="noResultsHeadline" />
-        <span class="f-form__input-wrapper-status-icon"></span>
-      </div>
-    </div>
-    <!-- END: no results headline input -->
-
-    <!-- START: no results message input -->
-    <div class="f-form__fieldset">
-      <label class="f-form__input-label">No Results Message</label>
-      <div class="f-form__input-wrapper">
-        <textarea class="f-form__input" formControlName="noResultsMessage"></textarea>
-        <span class="f-form__input-wrapper-status-icon"></span>
-      </div>
-    </div>
-    <!-- END: no results message input -->
-
-     <!-- START: use custom no results message checkbox -->
-     <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-no-results-message" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-no-results-message"
-            id="f-checkbox-no-results-message"
-            formControlName="useCustomNoResultsMessageTemplate">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Use Custom No Results Message Template</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: use custom no results message checkbox -->
-
-    <!-- START: error headline input -->
-    <div class="f-form__fieldset">
-      <label class="f-form__input-label">Error Headline</label>
-      <div class="f-form__input-wrapper">
-        <input class="f-form__input" formControlName="errorHeadline" />
-        <span class="f-form__input-wrapper-status-icon"></span>
-      </div>
-    </div>
-    <!-- END: error headline input -->
-
-    <!-- START: error message input -->
-    <div class="f-form__fieldset">
-      <label class="f-form__input-label">Error Message</label>
-      <div class="f-form__input-wrapper">
-        <textarea class="f-form__input" formControlName="errorMessage"></textarea>
-        <span class="f-form__input-wrapper-status-icon"></span>
-      </div>
-    </div>
-    <!-- END: error message input -->
-
-     <!-- START: use custom error message checkbox -->
-     <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-error-message" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-error-message"
-            id="f-checkbox-error-message"
-            formControlName="useCustomErrorMessageTemplate">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Use Custom Error Message Template</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: use custom error message checkbox -->
-
-    <!-- START: use custom error checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-error" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-error"
-            id="f-checkbox-error"
-            formControlName="useCustomError">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Use Custom Error Template</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: use custom error checkbox -->
-
-    <!-- START: use custom loading checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-loading" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-loading"
-            id="f-checkbox-loading"
-            formControlName="useCustomLoading">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Use Custom Loading Template</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: use custom loading checkbox -->
-
-     <!-- START: use custom empty checkbox -->
-     <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-empty" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-empty"
-            id="f-checkbox-empty"
-            formControlName="useCustomNoResults">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Use Custom No Results Template</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: use custom empty checkbox -->
-
-    <!-- START: use custom empty checkbox -->
-    <div class="f-form__fieldset">
-      <span class="f-form__checkbox">
-        <label for="f-checkbox-not-loaded" class="f-form__checkbox-label">
-          <input
-            class="f-form__checkbox-input"
-            type="checkbox"
-            value="true"
-            name="f-checkbox-not-loaded"
-            id="f-checkbox-not-loaded"
-            formControlName="useCustomNotLoaded">
-          <span class="f-form__checkbox-button"></span>
-          <span class="f-form__checkbox-label-text">Use Custom Not Loaded Template</span>
-        </label>
-      </span>
-    </div>
-    <!-- END: use custom empty checkbox -->
-
-  </form>
-
-  <ng-container result>
-    <div
+                <ng-container result>
+                  <div
       *fusionUiState="
         stateForm?.get('state')?.value;
         location: stateForm?.get('location')?.value;
@@ -233,37 +219,37 @@
         loading: stateForm?.get('useCustomLoading')?.value ? customLoadingState : null;
         noResults: stateForm?.get('useCustomNoResults')?.value ? customNoResultsState : null;
         notLoaded: stateForm?.get('useCustomNotLoaded')?.value ? customNotLoadedState : null"
-      class="example-host-class example-host-class-2">
-      <span>LOADED STATE</span>
-    </div>
+                    class="example-host-class example-host-class-2">
+                    <span>LOADED STATE</span>
+                  </div>
 
-    <ng-template #customErrorState>
-      <div>CUSTOM ERROR STATE</div>
-    </ng-template>
+                  <ng-template #customErrorState>
+                    <div>CUSTOM ERROR STATE</div>
+                  </ng-template>
 
-    <ng-template #customLoadingState>
-      <div>CUSTOM LOADING STATE</div>
-    </ng-template>
+                  <ng-template #customLoadingState>
+                    <div>CUSTOM LOADING STATE</div>
+                  </ng-template>
 
-    <ng-template #customNoResultsState>
-      <div>CUSTOM NO RESULTS STATE</div>
-    </ng-template>
+                  <ng-template #customNoResultsState>
+                    <div>CUSTOM NO RESULTS STATE</div>
+                  </ng-template>
 
-    <ng-template #customNotLoadedState>
-      <div>CUSTOM NOT LOADED STATE</div>
-    </ng-template>
+                  <ng-template #customNotLoadedState>
+                    <div>CUSTOM NOT LOADED STATE</div>
+                  </ng-template>
 
-    <ng-template #customErrorMessage>
-      <div>CUSTOM ERROR MESSAGE</div>
-    </ng-template>
+                  <ng-template #customErrorMessage>
+                    <div>CUSTOM ERROR MESSAGE</div>
+                  </ng-template>
 
-    <ng-template #customNoResultsMessage>
-      <div>CUSTOM NO RESULTS MESSAGE</div>
-    </ng-template>
+                  <ng-template #customNoResultsMessage>
+                    <div>CUSTOM NO RESULTS MESSAGE</div>
+                  </ng-template>
 
-    <ng-template #customNotLoadedMessage>
-      <div>CUSTOM NOT LOADED MESSAGE</div>
-    </ng-template>
-  </ng-container>
+                  <ng-template #customNotLoadedMessage>
+                    <div>CUSTOM NOT LOADED MESSAGE</div>
+                  </ng-template>
+                </ng-container>
 
-</fusion-demo>
+              </fusion-demo>

@@ -1,17 +1,19 @@
 <fusion-demo titleText="Download">
 
 
-  <form form class="fusion-components-demo__form f-form" *ngIf="downloadForm" [formGroup]="downloadForm">
-    <!-- START: filename input -->
-    <div class="f-form__fieldset">
-      <label for="messageInput" class="f-form__input-label">File Name</label>
-      <div class="f-form__input-wrapper">
-        <input id="messageInput" class="f-form__input" formControlName="fileName"/>
-        <span class="f-form__input-wrapper-status-icon"></span>
+  @if (downloadForm) {
+    <form form class="fusion-components-demo__form f-form" [formGroup]="downloadForm">
+      <!-- START: filename input -->
+      <div class="f-form__fieldset">
+        <label for="messageInput" class="f-form__input-label">File Name</label>
+        <div class="f-form__input-wrapper">
+          <input id="messageInput" class="f-form__input" formControlName="fileName"/>
+          <span class="f-form__input-wrapper-status-icon"></span>
+        </div>
       </div>
-    </div>
-    <!-- END: filename input -->
-  </form>
+      <!-- END: filename input -->
+    </form>
+  }
 
   <ng-container result>
     <f-button

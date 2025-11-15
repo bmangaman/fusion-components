@@ -2,27 +2,28 @@
   class="f-notification__inner">
   <div class="f-notification__left">
     <i class="mdi f-notification__icon"
-       [attr.aria-label]="ariaTypeLabel"
-       [ngClass]="notificationIconClass">
+      [attr.aria-label]="ariaTypeLabel"
+      [ngClass]="notificationIconClass">
     </i>
     <div tabindex="0" class="f-notification__text">
       <ng-content></ng-content>
     </div>
   </div>
-  <button
-    [attr.aria-controls]="id"
-    tabindex="0"
-    class="f-notification__close-button"
-    *ngIf="dismissible"
-    (click)="dismissBanner();"
-  >
-    <i
-      [attr.aria-label]="translations.ariaCloseLabel"
-       class="mdi mdi-close f-notification__close-button-icon">
-    </i>
-  </button>
+  @if (dismissible) {
+    <button
+      [attr.aria-controls]="id"
+      tabindex="0"
+      class="f-notification__close-button"
+      (click)="dismissBanner();"
+      >
+      <i
+        [attr.aria-label]="translations.ariaCloseLabel"
+        class="mdi mdi-close f-notification__close-button-icon">
+      </i>
+    </button>
+  }
 </div>
-<ng-container *ngIf="details">
+@if (details) {
   <div class="f-notification--break"></div>
   <div class="f-notification__details-button-wrapper">
     <button class="f-notification__details-button" (click)="toggleDetailsSection()">
@@ -30,7 +31,9 @@
       <span class="f-notification__details-button-text">{{ isDetailsExpanded ? translations.hideDetails : translations.showDetails }}</span>
     </button>
   </div>
-  <div class="f-notification__details-content" [style.maxHeight]="detailsMaxHeight" *ngIf="isDetailsExpanded">
-    <ng-content select="[fusionUiTemplate=details]" *ngTemplateOutlet="details"></ng-content>
-  </div>
-</ng-container>
+  @if (isDetailsExpanded) {
+    <div class="f-notification__details-content" [style.maxHeight]="detailsMaxHeight">
+      <ng-content select="[fusionUiTemplate=details]" *ngTemplateOutlet="details"></ng-content>
+    </div>
+  }
+}

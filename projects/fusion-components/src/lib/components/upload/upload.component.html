@@ -1,87 +1,93 @@
 <div class="f-upload__container">
   <div class="f-upload__instructions">{{ translations.instructions }}</div>
-  <div *ngIf="!isBrowseHidden" class="f-upload__browse">
-    <input
-      #uploadInput
-      class="f-upload__browse-input"
-      type="file"
-      [disabled]="isBrowseDisabled || isUploadInProgress"
-      [attr.aria-disabled]="isBrowseDisabled || isUploadInProgress"
-      [multiple]="areMultipleFilesAllowed"
-      [accept]="validFileTypes.join(',')"
-      (change)="updateFileList($event)"
-      [name]="uploadId"
-      [id]="uploadId" />
-    <label
-      class="f-button f-button--secondary f-button--small f-upload__browse-label"
-      [ngClass]="{ 'f-button--disabled': (isBrowseDisabled || isUploadInProgress) }"
-      [for]="uploadId">
-      {{ translations.buttons.browse }}
-    </label>
-  </div>
-</div>
-
-<div *ngIf="!!fileList?.length && !isProgressSectionHidden" class="f-upload__files">
-
-  <div *ngFor="let fileInfo of fileList; index as i;" class="f-upload__file f-upload__file--{{ i }}">
-
-    <div class="f-upload__file-info">
-      <div class="f-upload__file-info-name-and-size">
-        <span class="f-upload__file-info-name">{{ fileInfo | uploadFileName }}</span>
-        <span *ngIf="!isSizeHidden" class="f-upload__file-info-size">({{ (fileInfo?.totalBytes || 0) | bytes: BytesPipeBase.TEN }})</span>
+  @if (!isBrowseHidden) {
+    <div class="f-upload__browse">
+      <input
+        #uploadInput
+        class="f-upload__browse-input"
+        type="file"
+        [disabled]="isBrowseDisabled || isUploadInProgress"
+        [attr.aria-disabled]="isBrowseDisabled || isUploadInProgress"
+        [multiple]="areMultipleFilesAllowed"
+        [accept]="validFileTypes.join(',')"
+        (change)="updateFileList($event)"
+        [name]="uploadId"
+        [id]="uploadId" />
+        <label
+          class="f-button f-button--secondary f-button--small f-upload__browse-label"
+          [ngClass]="{ 'f-button--disabled': (isBrowseDisabled || isUploadInProgress) }"
+          [for]="uploadId">
+          {{ translations.buttons.browse }}
+        </label>
       </div>
-      <div class="f-upload__file-info-buttons">
-        <f-button
-          *ngIf="isUploadManual && !fileInfo?.subscription"
-          [size]="Size.SMALL"
-          [text]="translations.buttons.upload"
-          [classes]="['f-upload__file-info-button', 'f-upload__file-upload-button']"
-          [type]="ButtonType.PRIMARY"
-          (buttonClick)="uploadFile(fileInfo)">
-        </f-button>
-        <f-button
-          *ngIf="fileInfo?.subscription && !fileInfo?.isComplete"
-          [size]="Size.X_SMALL"
-          [text]="translations.buttons.cancel"
-          [classes]="['f-upload__file-info-button', 'f-upload__file-cancel-button']"
-          [type]="ButtonType.SECONDARY"
-          (buttonClick)="cancelFile(fileInfo)">
-        </f-button>
-        <f-button
-          *ngIf="removeFilesFunction && fileInfo?.isComplete"
-          [size]="Size.SMALL"
-          [text]="translations.buttons.remove"
-          [classes]="['f-upload__file-info-button', 'f-upload__file-remove-button']"
-          [type]="ButtonType.SECONDARY"
-          (buttonClick)="removeFile(fileInfo)">
-        </f-button>
-        <f-button
-          *ngIf="!isDismissButtonHidden && (!fileInfo?.subscription || fileInfo?.isComplete)"
-          [size]="Size.SMALL"
-          [aria]="{ label: translations.buttons.dismiss }"
-          icon="mdi-close"
-          [classes]="['f-upload__file-info-button', 'f-upload__file-dismiss-button']"
-          [type]="ButtonType.SECONDARY"
-          (buttonClick)="cancelFile(fileInfo)">
-        </f-button>
-      </div>
-    </div>
-  
-    <div class="f-upload__progress-bar">
-      <f-progress-bar
-        [status]="fileInfo | uploadStatus"
-        [size]="Size.SMALL"
-        [value]="fileInfo?.progressBytes || 0"
-        [maxValue]="fileInfo?.totalBytes || 0"
-        [displayText]="isProgressInBytes ? ((fileInfo?.progressBytes || 0) | bytes: BytesPipeBase.TEN) : undefined"
-        [isValueDisplayed]="!fileInfo?.error">
-      </f-progress-bar>
-    </div>
-
-    <div class="f-upload__file-status">
-      {{ fileInfo | uploadFileStatus:translations | async }}
-    </div>
-
+    }
   </div>
 
-</div>
+  @if (!!fileList?.length && !isProgressSectionHidden) {
+    <div class="f-upload__files">
+      @for (fileInfo of fileList; track fileInfo; let i = $index) {
+        <div class="f-upload__file f-upload__file--{{ i }}">
+          <div class="f-upload__file-info">
+            <div class="f-upload__file-info-name-and-size">
+              <span class="f-upload__file-info-name">{{ fileInfo | uploadFileName }}</span>
+              @if (!isSizeHidden) {
+                <span class="f-upload__file-info-size">({{ (fileInfo?.totalBytes || 0) | bytes: BytesPipeBase.TEN }})</span>
+              }
+            </div>
+            <div class="f-upload__file-info-buttons">
+              @if (isUploadManual && !fileInfo?.subscription) {
+                <f-button
+                  [size]="Size.SMALL"
+                  [text]="translations.buttons.upload"
+                  [classes]="['f-upload__file-info-button', 'f-upload__file-upload-button']"
+                  [type]="ButtonType.PRIMARY"
+                  (buttonClick)="uploadFile(fileInfo)">
+                </f-button>
+              }
+              @if (fileInfo?.subscription && !fileInfo?.isComplete) {
+                <f-button
+                  [size]="Size.X_SMALL"
+                  [text]="translations.buttons.cancel"
+                  [classes]="['f-upload__file-info-button', 'f-upload__file-cancel-button']"
+                  [type]="ButtonType.SECONDARY"
+                  (buttonClick)="cancelFile(fileInfo)">
+                </f-button>
+              }
+              @if (removeFilesFunction && fileInfo?.isComplete) {
+                <f-button
+                  [size]="Size.SMALL"
+                  [text]="translations.buttons.remove"
+                  [classes]="['f-upload__file-info-button', 'f-upload__file-remove-button']"
+                  [type]="ButtonType.SECONDARY"
+                  (buttonClick)="removeFile(fileInfo)">
+                </f-button>
+              }
+              @if (!isDismissButtonHidden && (!fileInfo?.subscription || fileInfo?.isComplete)) {
+                <f-button
+                  [size]="Size.SMALL"
+                  [aria]="{ label: translations.buttons.dismiss }"
+                  icon="mdi-close"
+                  [classes]="['f-upload__file-info-button', 'f-upload__file-dismiss-button']"
+                  [type]="ButtonType.SECONDARY"
+                  (buttonClick)="cancelFile(fileInfo)">
+                </f-button>
+              }
+            </div>
+          </div>
+          <div class="f-upload__progress-bar">
+            <f-progress-bar
+              [status]="fileInfo | uploadStatus"
+              [size]="Size.SMALL"
+              [value]="fileInfo?.progressBytes || 0"
+              [maxValue]="fileInfo?.totalBytes || 0"
+              [displayText]="isProgressInBytes ? ((fileInfo?.progressBytes || 0) | bytes: BytesPipeBase.TEN) : undefined"
+              [isValueDisplayed]="!fileInfo?.error">
+            </f-progress-bar>
+          </div>
+          <div class="f-upload__file-status">
+            {{ fileInfo | uploadFileStatus:translations | async }}
+          </div>
+        </div>
+      }
+    </div>
+  }

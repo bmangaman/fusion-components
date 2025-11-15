@@ -15,10 +15,12 @@ import { WizardModule } from './wizard.module';
       [disableNextSteps]="disableNextSteps"
       [disablePreviousSteps]="disablePreviousSteps"
       (stepsChanged)="stepsChanged($event)">
-    <img class="f-wizard__brand-image" *ngIf="isBrandVisible" />
-    Inner Content
+      @if (isBrandVisible) {
+        <img class="f-wizard__brand-image" />
+      }
+      Inner Content
     </f-wizard>
-  `,
+    `,
     standalone: false
 })
 export class WizardTestComponent {
